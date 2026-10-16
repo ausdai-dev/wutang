@@ -1,0 +1,42 @@
+{
+  "case_id": "WUTANG-SYN-002",
+  "response_status": "ready",
+  "scenario_tag": "work",
+  "scenario_label": "去班味｜职场困扰",
+  "empathy": "你把这件事说出来，说明它已经在你心里转了很久。「手上三个项目同时催，晚上躺下还在排明…」，这种说不出口的憋闷，很多人都懂。",
+  "classic_reference": {
+    "quote": "物有本末，事有终始，知所先后，则近道矣。",
+    "book": "大学",
+    "chapter": "经一章",
+    "source_id": "CLASSIC-100",
+    "verification_status": "verified"
+  },
+  "classic_translation": "万物都有根本与枝末，世事都有终结与发端，懂得把握事物发展的先后次序与轻重缓急，就接近事物的根本法则了。",
+  "classic_note": "大学核心论旨。",
+  "modern_interpretation": "手头事情太多乱成一团时，停下来问自己：哪一件事是根本，哪一些只是枝叶杂音？先抓根本，枝叶自然迎刃而解。",
+  "micro_action": {
+    "title": "今晚 5 分钟微行动",
+    "headline": "今晚 5 分钟：只挑一件「可控的事」",
+    "steps": [
+      "写下此刻最让你不舒服的三件事。",
+      "在每件事后面标：我能改变 / 我改不了。",
+      "只给「我能改变」的那一件，安排明天一个 15 分钟的时段。",
+      "「我改不了」的那几件，今晚先放到一边，不必现在解决。"
+    ],
+    "optional": true
+  },
+  "further_reading": "读 大学·经一章。读完原文那一段，再回到今天这件事上：哪些是事实，哪些是评价，哪些是你能动的。",
+  "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
+  "public_content_permission": false,
+  "engine": "rules-offline-demo",
+  "generated_at": "2026-10-16T10:20:00+08:00",
+  "privacy": {
+    "consent_status": "denied",
+    "consent_timestamp": null,
+    "redacted_text": "手上三个项目同时催，晚上躺下还在排明天的优先级，越想越睡不着，第二天起来更没劲。",
+    "risk_items": [],
+    "review_required": true,
+    "allowed_next_step": "stop",
+    "notes": "未授权或授权字段缺失 = 未授权，公开内容流程终止（§3 铁律 1、2）。"
+  }
+}

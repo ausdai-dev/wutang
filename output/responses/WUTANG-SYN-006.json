@@ -1,0 +1,41 @@
+{
+  "case_id": "WUTANG-SYN-006",
+  "response_status": "ready",
+  "scenario_tag": "night",
+  "scenario_label": "安住｜深夜反刍",
+  "empathy": "「想到下个月要交房租和一笔还款，半夜突…」——白天能压住的东西，到了夜里全浮上来了。这不是你不够坚强，是脑子到了晚上本来就不讲道理。",
+  "classic_reference": {
+    "quote": "气量狭隘，则万物皆足以生嗔；心胸开朗，则世事无不可自适。",
+    "book": "格言联璧",
+    "chapter": "存养类",
+    "source_id": "CLASSIC-165",
+    "verification_status": "verified"
+  },
+  "classic_translation": "心胸气量狭窄小气，世间任何微小的事物都足以让你恼怒生气；胸怀博大开朗通达，世上所有遭遇变故没有一样不能安然自得其乐。",
+  "classic_note": "存养类传世修心名言。",
+  "modern_interpretation": "很多时候不是别人故意惹你，是你心里的弹簧压得太紧，别人稍微碰一下你就炸了。试着把心胸放宽，很多破事连让你抬眼皮都不配。",
+  "micro_action": {
+    "title": "今晚 5 分钟微行动",
+    "headline": "今晚 5 分钟：「担忧装箱法」",
+    "steps": [
+      "想象床边放着一个坚固古朴的木箱。",
+      "把你脑子里此刻正在盘旋的账单、绩效、别人的一句话，一件一件在心里装进箱子里。",
+      "咔哒一声把铜锁扣上，告诉自己：钥匙在我手里，明天天亮再开箱，今晚它们出不来。"
+    ],
+    "optional": true
+  },
+  "further_reading": "读 格言联璧·存养类。睡前读，读完就合上，不必写笔记。让它在夜里替你分担一点。",
+  "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
+  "public_content_permission": false,
+  "engine": "rules-offline-demo",
+  "generated_at": "2026-10-16T10:20:00+08:00",
+  "privacy": {
+    "consent_status": "denied",
+    "consent_timestamp": null,
+    "redacted_text": "想到下个月要交房租和一笔还款，半夜突然心慌得厉害，感觉什么都抓不住，又什么都放不下。",
+    "risk_items": [],
+    "review_required": true,
+    "allowed_next_step": "stop",
+    "notes": "未授权或授权字段缺失 = 未授权，公开内容流程终止（§3 铁律 1、2）。"
+  }
+}

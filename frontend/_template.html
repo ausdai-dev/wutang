@@ -1,0 +1,3155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>悟堂 · 东方解忧处 ｜ 现代东方日常情绪整理与内容工作室</title>
+<style>
+/* ==========================================================================
+   悟堂·东方解忧处 —— 现代东方编辑设计系统 (Design Tokens - PRD 3.2)
+   ========================================================================== */
+:root {
+  --color-bg: #F8F6F1;             /* 页面主背景：暖白纸感，减少纯白冷硬感 */
+  --color-surface: #FFFFFF;        /* 主内容容器、卡片 */
+  --color-surface-subtle: #FDFBF7; /* 次级微暖表面 */
+  --color-ink: #262421;            /* 标题、正文主要文字（深墨） */
+  --color-ink-light: #4A443E;      /* 次级阅读文本 */
+  --color-muted: #77736D;          /* 辅助说明、次级文本 */
+  --color-primary: #8F2928;        /* 主按钮、选中态、朱红方印 */
+  --color-primary-hover: #762120;  /* 主色悬停/按压态 */
+  --color-primary-light: #FDF5F3;  /* 主色浅背景 */
+  --color-primary-border: #E8CAC4; /* 主色浅边框 */
+  --color-border: #E6E0D7;         /* 边框、细分割线 */
+  --color-border-dark: #D3C9BC;    /* 强调边框 */
+  --color-gold: #A67C38;           /* 典籍编号、雅金色 */
+  --color-gold-bg: #FCF7EE;        /* 典籍徽章背景 */
+  --color-success: #47745B;        /* 已核验、成功状态（松针绿） */
+  --color-success-bg: #EDF5F0;     /* 成功浅背景 */
+  --color-warning: #9A6A2F;        /* 待审核、需确认（琥珀色） */
+  --color-warning-bg: #FCF5EA;     /* 警告浅背景 */
+  --color-danger: #9B3434;         /* 安全提示、危险错误（赤红） */
+  --color-danger-bg: #FDF2F2;      /* 危险浅背景 */
+
+  --font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, -apple-system, sans-serif;
+  --font-serif: "Songti SC", "SimSun", "Noto Serif SC", "STSong", serif;
+
+  --radius-card: 14px;
+  --radius-btn: 10px;
+  --radius-input: 12px;
+  --radius-tag: 10px;
+  --radius-badge: 4px;
+
+  --shadow-sm: 0 1px 3px rgba(38,36,33,0.04);
+  --shadow-md: 0 4px 18px rgba(38,36,33,0.05);
+  --shadow-lg: 0 12px 36px rgba(38,36,33,0.08);
+
+  --trans: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* 典雅宋体 */
+.serif { font-family: var(--font-serif); }
+
+/* 页面容器 */
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 20px 60px;
+}
+@media (max-width: 640px) {
+  .app-container { padding: 12px 14px 48px; }
+}
+
+/* ==========================================================================
+   全局顶栏 (Global Header & Mode Switcher)
+   ========================================================================== */
+.global-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0 20px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.seal-mark {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  background: var(--color-primary);
+  color: #FAF6EF;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(143,41,40,0.25);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.brand-text h1 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--color-primary);
+  line-height: 1.25;
+}
+.brand-text p {
+  margin: 2px 0 0;
+  font-size: 11.5px;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 模式切换药丸 */
+.mode-nav {
+  display: inline-flex;
+  background: rgba(230, 224, 215, 0.55);
+  padding: 3px;
+  border-radius: 24px;
+  border: 1px solid var(--color-border);
+}
+.mode-tab {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-muted);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--trans);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mode-tab.active {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  box-shadow: 0 1px 4px rgba(38,36,33,0.08);
+}
+
+.header-action-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--color-ink-light);
+  cursor: pointer;
+  transition: var(--trans);
+}
+.header-action-btn:hover {
+  background: var(--color-surface);
+  border-color: var(--color-border-dark);
+}
+
+/* ==========================================================================
+   通用卡片与按钮组件
+   ========================================================================== */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-md);
+  padding: 36px 36px 32px;
+  position: relative;
+}
+@media (max-width: 600px) {
+  .card { padding: 24px 18px 22px; border-radius: 12px; }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: var(--radius-btn);
+  padding: 12px 26px;
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: #FAF6EF;
+  transition: var(--trans);
+  text-decoration: none;
+}
+.btn:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  background: #A8A29A !important;
+  border-color: #A8A29A !important;
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-border-dark);
+}
+.btn.ghost:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+.btn.secondary {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  border-color: var(--color-border);
+}
+.btn.secondary:hover {
+  background: #ECE5D8;
+  border-color: var(--color-border-dark);
+}
+.btn.sm {
+  padding: 7px 15px;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.btn.lg {
+  padding: 14px 34px;
+  font-size: 16.5px;
+  letter-spacing: 0.05em;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-badge);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.badge.ok { background: var(--color-success-bg); color: var(--color-success); border: 1px solid #C6DFD0; }
+.badge.rev { background: var(--color-warning-bg); color: var(--color-warning); border: 1px solid #EEDBBE; }
+.badge.nf { background: var(--color-danger-bg); color: var(--color-danger); border: 1px solid #F0C4C4; }
+
+.hidden { display: none !important; }
+
+/* ==========================================================================
+   U-01 提问首页 (Client Home)
+   ========================================================================== */
+.client-hero {
+  margin-bottom: 28px;
+}
+.client-hero h2 {
+  font-family: var(--font-serif);
+  font-size: 29px;
+  line-height: 1.38;
+  color: var(--color-ink);
+  margin: 0 0 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+@media (max-width: 600px) {
+  .client-hero h2 { font-size: 23px; }
+}
+.client-hero p {
+  margin: 0;
+  font-size: 15.5px;
+  color: var(--color-ink-light);
+}
+
+.section-label {
+  font-size: 13.5px;
+  color: var(--color-muted);
+  margin: 0 0 12px;
+  font-weight: 500;
+}
+
+/* 场景标签组 (ScenarioChip - PRD 6.1) */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+@media (max-width: 600px) {
+  .scenario-grid { grid-template-columns: 1fr; gap: 9px; }
+}
+.scenario-chip {
+  text-align: left;
+  background: var(--color-surface-subtle);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-tag);
+  padding: 13px 15px;
+  cursor: pointer;
+  transition: var(--trans);
+  color: inherit;
+  font: inherit;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.scenario-chip:hover {
+  background: #FFFDF9;
+  border-color: var(--color-border-dark);
+}
+.scenario-chip[aria-pressed="true"] {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+.scenario-chip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+.scenario-chip .chip-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.scenario-chip[aria-pressed="true"] .chip-title {
+  color: var(--color-primary);
+}
+.scenario-chip .check-icon {
+  font-size: 14px;
+  color: var(--color-primary);
+  opacity: 0;
+  transition: var(--trans);
+}
+.scenario-chip[aria-pressed="true"] .check-icon {
+  opacity: 1;
+}
+.scenario-chip .chip-sub {
+  font-size: 12px;
+  color: var(--color-muted);
+  line-height: 1.45;
+}
+
+/* 灵感药丸推荐 */
+.pill-inspirations {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  font-size: 12.5px;
+  color: var(--color-muted);
+}
+.pill-inspirations .pill-label {
+  white-space: nowrap;
+}
+.inspo-pill {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 4px 11px;
+  font-size: 12.5px;
+  color: var(--color-ink-light);
+  cursor: pointer;
+  transition: var(--trans);
+}
+.inspo-pill:hover {
+  background: #ECE5D8;
+  border-color: var(--color-border-dark);
+  color: var(--color-primary);
+}
+
+/* 输入框 */
+.input-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+.wutang-textarea {
+  width: 100%;
+  min-height: 130px;
+  resize: vertical;
+  padding: 16px 18px 30px;
+  font: inherit;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-input);
+  transition: var(--trans);
+}
+.wutang-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(143,41,40,0.08);
+}
+.wutang-textarea::placeholder {
+  color: #B8B0A5;
+}
+.char-count {
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  font-size: 12px;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+.char-count.warn {
+  color: var(--color-danger);
+  font-weight: 600;
+}
+
+.privacy-inline-note {
+  font-size: 12.5px;
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+.privacy-inline-note svg {
+  flex: 0 0 14px;
+  color: var(--color-success);
+}
+
+.submit-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.submit-note {
+  font-size: 12.5px;
+  color: var(--color-muted);
+}
+
+.boundary-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--color-border);
+  font-size: 12px;
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+
+/* ==========================================================================
+   U-02 提交中 / 整理中状态 (Client Loading)
+   ========================================================================== */
+.loading-box {
+  text-align: center;
+  padding: 60px 20px;
+}
+.loading-seal-anim {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 24px;
+  background: var(--color-primary);
+  color: #FAF6EF;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(143,41,40,0.22);
+  animation: pulseSeal 1.8s ease-in-out infinite alternate;
+}
+@keyframes pulseSeal {
+  0% { transform: scale(0.96); opacity: 0.88; }
+  100% { transform: scale(1.04); opacity: 1; }
+}
+
+.loading-box h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  margin: 0 0 12px;
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.loading-steps {
+  max-width: 360px;
+  margin: 24px auto 0;
+  text-align: left;
+}
+.loading-step-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--color-muted);
+  transition: var(--trans);
+}
+.loading-step-item.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.loading-step-item.done {
+  color: var(--color-success);
+}
+.loading-step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: var(--trans);
+}
+.loading-step-item.active .loading-step-dot {
+  background: var(--color-primary);
+  transform: scale(1.3);
+}
+.loading-step-item.done .loading-step-dot {
+  background: var(--color-success);
+}
+
+/* ==========================================================================
+   U-03 四步解忧方结果页 (Client Result)
+   ========================================================================== */
+.result-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.status-pill-ready {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-success);
+  background: var(--color-success-bg);
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid #D2E7DA;
+}
+.result-theme-tag {
+  font-size: 13px;
+  color: var(--color-gold);
+  background: var(--color-gold-bg);
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid #F1E2C9;
+  font-weight: 500;
+}
+
+.pause-quote {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--color-primary);
+  margin: 0 0 28px;
+  line-height: 1.6;
+}
+
+/* 四步回应模块 */
+.four-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 30px;
+}
+.step-item {
+  display: flex;
+  gap: 16px;
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  position: relative;
+}
+@media (max-width: 600px) {
+  .step-item { padding: 18px 16px; gap: 12px; }
+}
+.step-num-col {
+  flex: 0 0 34px;
+}
+.step-num-badge {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-primary-border);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.step-content-col {
+  flex: 1;
+  min-width: 0;
+}
+.step-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px;
+  color: var(--color-ink);
+  letter-spacing: 0.03em;
+}
+.step-text {
+  margin: 0 0 10px;
+  color: var(--color-ink-light);
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+/* 先贤雅印头像徽章与古人有云引句块 */
+.sage-badge-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--color-border);
+}
+.sage-avatar-mini {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(43,39,36,0.08);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+  background: var(--color-bg);
+  object-fit: cover;
+}
+.sage-avatar-fallback {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--color-primary);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.sage-badge-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sage-badge-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sage-badge-era {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-muted);
+  background: var(--color-surface);
+  padding: 1px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+}
+.sage-badge-motto {
+  font-size: 12px;
+  color: var(--color-muted);
+  font-family: var(--font-serif);
+  letter-spacing: 0.02em;
+}
+.classic-quote-box {
+  background: #FFF;
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 12px 0 14px;
+  box-shadow: 0 1px 4px rgba(38,36,33,0.03);
+}
+.classic-quote-text {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--color-ink);
+  margin: 0 0 8px;
+  letter-spacing: 0.02em;
+}
+.classic-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--color-muted);
+}
+.collapse-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-primary);
+  font-size: 12.5px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.classic-collapse-detail {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--color-bg);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--color-muted);
+  line-height: 1.65;
+  border: 1px solid var(--color-border);
+}
+
+/* 微行动 */
+.action-headline {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+.action-steps-ol {
+  margin: 8px 0 14px;
+  padding-left: 20px;
+  color: var(--color-ink-light);
+}
+.action-steps-ol li {
+  margin-bottom: 6px;
+  line-height: 1.7;
+  font-size: 14.5px;
+}
+.willing-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--color-ink-light);
+  cursor: pointer;
+  transition: var(--trans);
+}
+.willing-btn:hover {
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+.willing-btn.checked {
+  background: var(--color-success-bg);
+  border-color: var(--color-success);
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+/* 操作行 */
+.result-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+/* 反馈与授权 (U-06) */
+.feedback-box {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+.feedback-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 12px;
+}
+.feedback-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.fb-btn {
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  color: var(--color-ink-light);
+  cursor: pointer;
+  transition: var(--trans);
+}
+.fb-btn:hover {
+  border-color: var(--color-border-dark);
+}
+.fb-btn.selected {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.fb-input {
+  flex: 1;
+  min-width: 180px;
+  padding: 7px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  background: #FFF;
+}
+.fb-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* 授权开关 (ConsentGate) */
+.consent-panel {
+  margin-top: 20px;
+  padding: 20px;
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+.consent-panel h4 {
+  margin: 0 0 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.consent-panel p {
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+.switch-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  cursor: pointer;
+  user-select: none;
+  color: var(--color-ink);
+}
+.switch-input {
+  appearance: none;
+  width: 42px;
+  height: 22px;
+  border-radius: 11px;
+  background: #D8D0C4;
+  position: relative;
+  cursor: pointer;
+  transition: var(--trans);
+  flex: 0 0 42px;
+  margin: 0;
+}
+.switch-input::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFF;
+  transition: var(--trans);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+}
+.switch-input:checked {
+  background: var(--color-primary);
+}
+.switch-input:checked::after {
+  left: 22px;
+}
+
+/* ==========================================================================
+   U-04 高风险与安全状态 (Client Safety)
+   ========================================================================== */
+.safety-card {
+  border-left: 4px solid var(--color-danger);
+}
+.safety-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--color-danger);
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+.safety-steps {
+  margin: 16px 0 20px;
+  padding-left: 22px;
+  line-height: 1.85;
+}
+.safety-hotlines {
+  background: var(--color-danger-bg);
+  border: 1px solid #F0C4C4;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin: 20px 0;
+}
+.hotline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+}
+.hotline-row .tel {
+  font-weight: 700;
+  color: var(--color-danger);
+}
+
+/* ==========================================================================
+   U-05 东方解忧笺 (Client Card)
+   ========================================================================== */
+.card-view-wrap {
+  text-align: center;
+  padding: 10px 0 30px;
+}
+.jian-card {
+  background: #FCF9F2;
+  border: 1.5px solid #D6CAB8;
+  border-radius: 6px;
+  padding: 44px 38px 36px;
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto 26px;
+  box-shadow: 0 8px 32px rgba(38,36,33,0.08);
+  text-align: center;
+}
+.jian-card::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #E6DCCD;
+  border-radius: 3px;
+  pointer-events: none;
+}
+.jian-inner {
+  position: relative;
+  z-index: 1;
+}
+.jian-seal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.jian-small-seal {
+  width: 22px;
+  height: 22px;
+  background: var(--color-primary);
+  color: #FFF;
+  border-radius: 2px;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jian-brand-label {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.jian-theme-badge {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--color-gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 22px;
+  background: var(--color-gold-bg);
+  padding: 3px 14px;
+  border-radius: 12px;
+  border: 1px solid #EADBBE;
+}
+.jian-quote-display {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1.8;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+.jian-source-display {
+  font-size: 12.5px;
+  color: var(--color-muted);
+  margin-bottom: 22px;
+}
+.jian-divider-line {
+  width: 44px;
+  height: 1px;
+  background: var(--color-border-dark);
+  margin: 0 auto 22px;
+}
+.jian-exp-display {
+  font-size: 14px;
+  color: var(--color-ink-light);
+  line-height: 1.85;
+  margin: 0 0 24px;
+  text-align: left;
+}
+.jian-action-box {
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(38,36,33,0.03);
+}
+.jian-action-tag {
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+.jian-action-text {
+  font-size: 13.5px;
+  color: var(--color-ink);
+  line-height: 1.65;
+}
+.jian-footer-quote {
+  margin-top: 24px;
+  font-size: 11.5px;
+  color: var(--color-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   主理人端「悟堂内容工作室」 (Studio Workbench - PRD 5.0)
+   ========================================================================== */
+.studio-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 工作台子导航 */
+.studio-subnav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 12px;
+  overflow-x: auto;
+}
+.studio-nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: var(--trans);
+  white-space: nowrap;
+}
+.studio-nav-btn:hover {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+.studio-nav-btn.active {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 指标统计行 */
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 16px;
+}
+@media (max-width: 680px) {
+  .metric-row { grid-template-columns: 1fr; gap: 10px; }
+}
+.metric-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+}
+.metric-label {
+  font-size: 13px;
+  color: var(--color-muted);
+  margin-bottom: 6px;
+}
+.metric-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.2;
+}
+.metric-card.alert .metric-value { color: var(--color-warning); }
+.metric-card.success .metric-value { color: var(--color-success); }
+
+/* 任务列表表格 */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+}
+.studio-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13.5px;
+}
+.studio-table th {
+  background: var(--color-surface-subtle);
+  padding: 12px 14px;
+  font-weight: 600;
+  color: var(--color-muted);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+.studio-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-ink-light);
+}
+.studio-table tr:last-child td {
+  border-bottom: none;
+}
+.studio-table tr:hover td {
+  background: #FFFDF9;
+}
+
+/* 新建任务表单 */
+.form-group {
+  margin-bottom: 20px;
+}
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+}
+.form-input, .form-select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-family: inherit;
+  background: #FFF;
+}
+.form-input:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* 授权阻断警示栏 (PRD 5.2 铁律) */
+.consent-block-alert {
+  background: var(--color-danger-bg);
+  border: 1.5px solid #F0C4C4;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.alert-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+.alert-title {
+  font-weight: 700;
+  color: var(--color-danger);
+  font-size: 14.5px;
+  margin-bottom: 4px;
+}
+.alert-desc {
+  font-size: 13px;
+  color: #7A2828;
+  line-height: 1.6;
+}
+
+/* 工作流步骤详情 (Pipeline Steps) */
+.pipeline-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+.pipeline-step-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.step-main-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.step-badge-idx {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 12.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-title-text {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.step-meta-text {
+  font-size: 12.5px;
+  color: var(--color-muted);
+}
+
+/* 内容审核分栏 (A-04 Review) */
+.review-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 840px) {
+  .review-grid { grid-template-columns: 1fr; }
+}
+.article-preview-pane {
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 24px;
+  font-size: 14.5px;
+  line-height: 1.8;
+  max-height: 640px;
+  overflow-y: auto;
+}
+.article-preview-pane h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--color-ink);
+  margin-top: 0;
+}
+.article-preview-pane blockquote {
+  margin: 12px 0;
+  padding: 10px 16px;
+  background: var(--color-surface-subtle);
+  border-left: 3px solid var(--color-primary);
+  color: var(--color-ink-light);
+}
+
+.checklist-pane {
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 20px;
+}
+.checklist-pane h4 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.checklist-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.checklist-ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #EDE7DC;
+  font-size: 13.5px;
+  color: var(--color-ink);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.checklist-ul li:last-child {
+  border-bottom: none;
+}
+.checklist-ul input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* 经典资料库 (A-05 Classics) */
+.classics-search-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.classics-item-card {
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  transition: var(--trans);
+}
+.classics-item-card:hover {
+  border-color: var(--color-border-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   模态框 (Modals: 四步方说明、隐私说明)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(38, 36, 33, 0.45);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-dialog {
+  background: var(--color-surface);
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  max-width: 580px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 30px;
+  position: relative;
+  transform: translateY(14px);
+  transition: transform 0.22s ease;
+}
+.modal-overlay.active .modal-dialog {
+  transform: translateY(0);
+}
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--color-muted);
+  line-height: 1;
+}
+
+/* 全局 Toast */
+.toast-notice {
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%) translateY(14px);
+  background: #201E1B;
+  color: #FAF6EF;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--trans);
+  z-index: 9999;
+}
+.toast-notice.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 打印模式支持 */
+@media print {
+  body { background: #FFF !important; padding: 0 !important; }
+  .no-print { display: none !important; }
+  .card { box-shadow: none !important; border: none !important; padding: 0 !important; }
+  .jian-card { border-color: #C9BDA8 !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- ======================== 全局顶栏 ======================== -->
+  <header class="global-header">
+    <div class="brand-group" id="headerBrand">
+      <div class="seal-mark">悟</div>
+      <div class="brand-text">
+        <h1>悟堂 · 东方解忧处</h1>
+        <p>让古老智慧，用今天的人听得懂的方式活着</p>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <!-- 模式切换药丸 -->
+      <nav class="mode-nav" aria-label="模式切换">
+        <button class="mode-tab active" id="tabClient">🌿 东方解忧处</button>
+        <button class="mode-tab" id="tabStudio">⛩️ 悟堂工作室</button>
+      </nav>
+
+      <button class="header-action-btn" id="btnExplainModal" title="了解四步解忧方">四步方说明</button>
+      <button class="header-action-btn" id="btnPrivacyModal" title="隐私与使用边界">隐私说明</button>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       第一部分：用户端「东方解忧处」
+       ====================================================================== -->
+  <main id="clientArea">
+
+    <!-- U-01: 首页提问入口 (P0) -->
+    <section id="userHome" class="card">
+      <div class="client-hero">
+        <h2>今天，哪件事让你心里打了结？</h2>
+        <p>不急着讲道理，先把心事整理清楚。</p>
+      </div>
+
+      <div class="section-label">你更接近哪一种心情？（可不选，也可以直接写）</div>
+      <div class="scenario-grid" id="scenarioGrid"></div>
+
+      <!-- 快捷灵感药丸推荐 -->
+      <div class="pill-inspirations">
+        <span class="pill-label">💡 试试这一句：</span>
+        <button class="inspo-pill" data-inspo="领导当着大家的面批评了我，回家路上一直在想我是不是不适合这行。">职场被批评内耗</button>
+        <button class="inspo-pill" data-inspo="总是不好意思拒绝别人的要求，答应了又后悔，觉得自己特别窝囊。">难拒绝别人</button>
+        <button class="inspo-pill" data-inspo="躺在床上反复想白天说错的那句话，两点还醒着，脑子停不下来。">深夜反刍失眠</button>
+        <button class="inspo-pill" data-inspo="计划做副业建了七八个文档，每次想动手就怕做不好，拖了半年没动。">想开始却拖延</button>
+      </div>
+
+      <div class="input-wrap">
+        <textarea id="userTextarea" class="wutang-textarea"
+          placeholder="用自己的话说说，最近什么事让你放不下？（Ctrl + Enter 可直接提交）"
+          maxlength="600"></textarea>
+        <div class="char-count" id="charCount">0 / 600</div>
+      </div>
+
+      <div class="privacy-inline-note">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>你的内容默认私密，不公开、不展示给任何人，也不会自动进入共读。</span>
+      </div>
+
+      <div class="submit-section">
+        <button class="btn lg" id="btnSubmitClient" disabled>帮我理一理</button>
+        <div class="submit-note">无需注册或填写个人资料，点击即刻梳理</div>
+      </div>
+
+      <div class="boundary-footer">
+        <strong>使用边界说明：</strong> 本产品为日常情绪整理与东方智慧启发工具，不替代专业心理咨询、医疗诊断或危机干预。<br>
+        让古老智慧，用今天的人听得懂的方式活着。
+      </div>
+    </section>
+
+    <!-- U-02: 提交中 / 整理中状态 (P0) -->
+    <section id="userLoading" class="card hidden">
+      <div class="loading-box">
+        <div class="loading-seal-anim">悟</div>
+        <h3>正在把你的心事理出一点头绪…</h3>
+        <p style="color:var(--color-muted);font-size:14px;margin:0;">不必着急，给自己留几秒钟呼吸的时间。</p>
+        <div class="loading-steps">
+          <div class="loading-step-item active" id="lStep1">
+            <div class="loading-step-dot"></div>
+            <span>① 先理解你在面对什么</span>
+          </div>
+          <div class="loading-step-item" id="lStep2">
+            <div class="loading-step-dot"></div>
+            <span>② 从资料中寻找可核验的经典视角</span>
+          </div>
+          <div class="loading-step-item" id="lStep3">
+            <div class="loading-step-dot"></div>
+            <span>③ 整理一个当下可以尝试的小行动</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- U-03: 四步解忧方结果页 (P0) -->
+    <section id="userResult" class="card hidden">
+      <div class="result-header-bar">
+        <div class="status-pill-ready">
+          <span>✓</span> 已整理好一份四步回应
+        </div>
+        <div class="result-theme-tag" id="resultThemeBadge">情绪主题：—</div>
+      </div>
+
+      <div class="pause-quote">先停一下，你不必现在解决所有事。</div>
+
+      <!-- 四步内容容器 -->
+      <div class="four-step-list" id="fourStepList"></div>
+
+      <!-- 操作按钮栏 -->
+      <div class="result-actions no-print">
+        <button class="btn lg" id="btnGenerateCard">生成东方解忧笺</button>
+        <button class="btn ghost" id="btnCopyResult">复制完整回应</button>
+        <button class="btn secondary" id="btnResetClient">再理一次</button>
+      </div>
+
+      <!-- 轻反馈 (U-06) -->
+      <div class="feedback-box no-print">
+        <div class="feedback-title">这份回应对你有帮助吗？</div>
+        <div class="feedback-options">
+          <button class="fb-btn" data-val="有帮助">👍 有帮助</button>
+          <button class="fb-btn" data-val="还没帮到我">💭 还没帮到我</button>
+          <input class="fb-input" id="feedbackInput" placeholder="哪一点可以再做得好一些？（选填）">
+          <button class="btn sm secondary" id="btnSendFeedback">提交反馈</button>
+        </div>
+      </div>
+
+      <!-- 公开共读授权 (PRD 4.3 & 4.6 独立开关) -->
+      <div class="consent-panel no-print">
+        <h4>公开共读授权（独立开关，默认关闭）</h4>
+        <p>
+          若开启，这段共性困扰可能被主理人编入公开文章草稿：我们会严格抹去所有个人可识别信息，并经过多重人工审查，<strong>绝不会自动公开发布</strong>。不开启完全不影响你使用悟堂的任何功能。
+        </p>
+        <label class="switch-label">
+          <input type="checkbox" class="switch-input" id="consentToggle">
+          <span>我愿意进入匿名脱敏与共读内容审核流程</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- U-04: 安全支持状态 (P0) -->
+    <section id="userSafety" class="card safety-card hidden">
+      <div class="brand-group" style="margin-bottom:20px;">
+        <div class="seal-mark">悟</div>
+        <div class="brand-text">
+          <h1>悟堂 · 东方解忧处</h1>
+          <p>安全与关怀指引</p>
+        </div>
+      </div>
+
+      <h3 class="safety-title" id="safetyMainTitle">你写下的这句话，我看到了，也很在意。</h3>
+      <div id="safetyContentArea"></div>
+
+      <div class="safety-hotlines" id="safetyHotlines">
+        <div style="font-weight:600;margin-bottom:8px;color:var(--color-danger);">全国免费心理援助支持渠道：</div>
+        <div class="hotline-row">
+          <span>全国心理援助热线（卫健委）</span>
+          <span class="tel">400-161-9995</span>
+        </div>
+        <div class="hotline-row">
+          <span>共青团青少年心理援助专线</span>
+          <span class="tel">12355</span>
+        </div>
+        <div class="hotline-row">
+          <span>全国妇联妇女维权与心理热线</span>
+          <span class="tel">12338</span>
+        </div>
+      </div>
+
+      <div class="result-actions" style="margin-top:20px;">
+        <button class="btn secondary" id="btnSafetyBack">返回，我想重新表达</button>
+      </div>
+    </section>
+
+    <!-- U-05: 东方解忧笺预览与导出 (P0) -->
+    <section id="userCard" class="hidden">
+      <div class="card-view-wrap">
+        <!-- 信笺预览卡片 -->
+        <div class="jian-card" id="jianDom">
+          <div class="jian-inner">
+            <div class="jian-seal-header">
+              <div class="jian-small-seal">悟</div>
+              <div class="jian-brand-label">悟 堂 · 东 方 解 忧 处</div>
+            </div>
+            <div class="jian-theme-badge" id="cardTheme">去班味 · 职场</div>
+            <div class="jian-quote-display" id="cardQuote">「君子求诸己，小人求诸人。」</div>
+            <div class="jian-source-display" style="display:flex;align-items:center;justify-content:center;gap:8px;">
+              <img id="cardSageAvatar" src="" alt="先贤印章" style="width:22px;height:22px;border-radius:5px;box-shadow:0 1px 3px rgba(0,0,0,0.1);display:none;">
+              <span id="cardSource">《论语·卫灵公》</span>
+            </div>
+            <div class="jian-divider-line"></div>
+            <div class="jian-exp-display" id="cardExp">遇到不顺，先看自己能做什么，而不是先怪别人。把力气用在自己身上，是内耗的解药。</div>
+            <div class="jian-action-box">
+              <span class="jian-action-tag">今晚 5 分钟微行动</span>
+              <span class="jian-action-text" id="cardAction">写下此刻最让你不舒服的事，分清哪些能改、哪些改不了。</span>
+            </div>
+            <div class="jian-footer-quote">让古老智慧，用今天的人听得懂的方式活着</div>
+          </div>
+        </div>
+
+        <div class="result-actions no-print" style="justify-content:center;">
+          <button class="btn" id="btnDownloadCardPng">保存高清图片 (PNG)</button>
+          <button class="btn ghost" id="btnCopyCardText">复制笺文内容</button>
+          <button class="btn secondary" id="btnReturnToResult">返回四步回应</button>
+        </div>
+        <p class="submit-note no-print" style="margin-top:12px;">
+          * 卡片严格脱敏，不含你的原始心事。在手机微信中长按图片也可直接保存相册或转发。
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================================
+       第二部分：主理人端「悟堂内容工作室」 (Studio Workbench - PRD 5.0)
+       ====================================================================== -->
+  <main id="studioArea" class="hidden">
+
+    <div class="studio-layout">
+      <!-- 头部子导航 -->
+      <div class="studio-subnav">
+        <button class="studio-nav-btn active" data-view="studioOverview">📊 工作台总览 (A-01)</button>
+        <button class="studio-nav-btn" data-view="studioNewTask">➕ 新建解忧任务 (A-02)</button>
+        <button class="studio-nav-btn" data-view="studioPipeline">🔄 工作流进度监控 (A-03)</button>
+        <button class="studio-nav-btn" data-view="studioReview">📝 内容审核与合规清单 (A-04)</button>
+        <button class="studio-nav-btn" data-view="studioClassics">📚 经典考据资料库 (A-05)</button>
+      </div>
+
+      <!-- 视图 A-01: 工作台总览 -->
+      <section id="studioOverview" class="card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+          <div>
+            <h2 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;">主理人工作台</h2>
+            <p style="margin:0;font-size:14px;color:var(--color-muted);">
+              调度 WorkBuddy 专家团技能 · 严格脱敏 · 经典考据核验 · 文章草稿生产
+            </p>
+          </div>
+          <div>
+            <button class="btn sm" id="btnQuickNewTask">新建解忧任务</button>
+            <button class="btn sm ghost" id="btnGoReview">前往审阅草稿</button>
+          </div>
+        </div>
+
+        <!-- 3 张核心指标卡 (PRD 5.1) -->
+        <div class="metric-row">
+          <div class="metric-card">
+            <div class="metric-label">待处理用户任务</div>
+            <div class="metric-value" id="mPendingTasks">03</div>
+          </div>
+          <div class="metric-card alert">
+            <div class="metric-label">待人工审核草稿（已授权）</div>
+            <div class="metric-value" id="mPendingDrafts">03</div>
+          </div>
+          <div class="metric-card success">
+            <div class="metric-label">已核验典籍条目 (Verified)</div>
+            <div class="metric-value" id="mVerifiedClassics">483</div>
+            <div style="font-size:11px;color:var(--color-muted);margin-top:2px;" id="mVerifiedClassicsSub">资料库总计 500 条 · 含 10 条辨伪</div>
+          </div>
+        </div>
+
+        <!-- 任务动态列表 -->
+        <div style="margin-top:24px;">
+          <h3 style="font-size:16px;margin:0 0 12px;font-weight:600;">最近任务流水记录 (DEMO & 实际任务)</h3>
+          <div class="table-wrap">
+            <table class="studio-table">
+              <thead>
+                <tr>
+                  <th>任务编号</th>
+                  <th>来源类型</th>
+                  <th>困扰主题与描述摘要</th>
+                  <th>授权状态</th>
+                  <th>出处核验</th>
+                  <th>工作流状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="taskTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 视图 A-02: 新建解忧任务 (PRD 5.2 带授权阻断护栏) -->
+      <section id="studioNewTask" class="card hidden">
+        <h2 style="font-family:var(--font-serif);margin:0 0 8px;font-size:22px;">新建解忧工作流任务</h2>
+        <p style="margin:0 0 24px;font-size:14px;color:var(--color-muted);">
+          将用户输入或已授权测试素材引入 WorkBuddy 专家团流程。
+        </p>
+
+        <div class="form-group">
+          <label class="form-label">任务名称</label>
+          <input type="text" class="form-input" id="taskNameInput" value="职场与边界主题工作流测试">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">内容来源</label>
+          <select class="form-select" id="taskSourceSelect">
+            <option value="preset_demo">合成测试案例库 (11条标准测试集)</option>
+            <option value="custom_input">主理人单条输入测试</option>
+            <option value="authorized_user">已授权用户真实素材</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="presetCaseGroup">
+          <label class="form-label">选择预置案例 (DEMO 标准用例)</label>
+          <select class="form-select" id="presetCaseSelect"></select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">问题或素材文本</label>
+          <textarea class="wutang-textarea" id="taskContentText" style="min-height:100px;"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">任务处理目的</label>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:6px;">
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+              <input type="radio" name="taskPurpose" value="personal_only"> 仅生成个人回应
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+              <input type="radio" name="taskPurpose" value="card_only"> 生成东方解忧笺
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+              <input type="radio" name="taskPurpose" value="article_draft" checked> 生成公开公众号文章草稿 (需授权)
+            </label>
+          </div>
+        </div>
+
+        <!-- 授权确认框 -->
+        <div class="form-group" id="consentCheckGroup">
+          <label class="switch-label" style="background:var(--color-surface-subtle);padding:14px 16px;border:1px solid var(--color-border);border-radius:8px;">
+            <input type="checkbox" id="taskConsentCheck" checked style="width:18px;height:18px;">
+            <span style="font-weight:600;">已核实该内容已取得用户明确授权（具备合法时间戳）</span>
+          </label>
+        </div>
+
+        <!-- PRD 5.2 核心安全护栏：未授权阻断提示 -->
+        <div class="consent-block-alert hidden" id="taskConsentAlert">
+          <div class="alert-icon">⚠️</div>
+          <div>
+            <div class="alert-title">授权缺失阻断：禁止进入公开内容生成流程</div>
+            <div class="alert-desc">
+              根据《悟堂隐私与安全规范》，未获得用户明确授权的内容严禁进入公众号文章草稿流程。请确认授权或将目的调整为「仅生成个人回应」。
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;display:flex;gap:12px;">
+          <button class="btn" id="btnLaunchWorkflow">启动 WorkBuddy 工作流</button>
+          <button class="btn secondary" id="btnCancelTask">取消</button>
+        </div>
+      </section>
+
+      <!-- 视图 A-03: 工作流步骤监控 (PRD 5.3) -->
+      <section id="studioPipeline" class="card hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+          <div>
+            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;" id="plTaskTitle">任务流水监控：WUTANG-SYN-004</h2>
+            <div style="font-size:13px;color:var(--color-muted);" id="plTaskMeta">来源：合成测试案例 ｜ 场景：关系与边界 ｜ 授权状态：已确认授权</div>
+          </div>
+          <span class="badge ok" id="plGlobalStatus">8 步全链路执行完成</span>
+        </div>
+
+        <div class="pipeline-step-list" id="pipelineStepList"></div>
+
+        <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+          <button class="btn" id="btnPipelineToReview">前往内容审核清单 (A-04)</button>
+          <button class="btn secondary" id="btnExportTaskReport">导出任务执行报告 (MD)</button>
+          <button class="btn ghost" id="btnBackToOverview">返回总览</button>
+        </div>
+      </section>
+
+      <!-- 视图 A-04: 内容审核与合规清单 (PRD 5.4) -->
+      <section id="studioReview" class="card hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px;">
+          <div>
+            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">公众号草稿审核与合规清单 (A-04)</h2>
+            <div style="font-size:13px;color:var(--color-muted);">
+              严禁将 AI 自动生成误当已审核成品 · 八项合规逐条复核
+            </div>
+          </div>
+          <!-- 案例切换 -->
+          <div style="display:flex;gap:8px;">
+            <select class="form-select" id="draftCaseSelect" style="width:auto;padding:6px 12px;font-size:13.5px;">
+              <option value="WUTANG-SYN-004">草稿 004：最难开口的那句「不」（职场推活）</option>
+              <option value="WUTANG-SYN-007">草稿 007：开始不了的那一步（起步拖延）</option>
+              <option value="WUTANG-SYN-011">草稿 011：婆媳关系脱敏案例（高敏感 PII 校验）</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="review-grid">
+          <!-- 左侧：文章草稿排版预览 -->
+          <div class="article-preview-pane" id="articlePreviewPane">
+            <h3>最难开口的那句「不」，往往是对最亲近的人说的</h3>
+            <p>正在载入草稿内容…</p>
+          </div>
+
+          <!-- 右侧：审核清单与脱敏核验 -->
+          <div class="checklist-pane">
+            <h4>合规审核核验清单（PRD 5.4）</h4>
+            <div style="font-size:12.5px;color:var(--color-muted);margin-bottom:14px;padding:8px 12px;background:#FFF;border-radius:6px;border:1px solid var(--color-border);" id="piiReviewBox">
+              <strong>脱敏状态：</strong> 姓名、单位、城市等可识别要素已由 Skill 4 检查。
+            </div>
+
+            <ul class="checklist-ul" id="reviewChecklistUl">
+              <li>
+                <input type="checkbox" id="chk1" checked>
+                <label for="chk1">内容使用授权范围已取得正式确认</label>
+              </li>
+              <li>
+                <input type="checkbox" id="chk2" checked>
+                <label for="chk2">用户真实姓名及直接身份标识已剔除</label>
+              </li>
+              <li>
+                <input type="checkbox" id="chk3" checked>
+                <label for="chk3">地点、单位、时间等组合信息已模糊化处理</label>
+              </li>
+              <li>
+                <input type="checkbox" id="chk4" checked>
+                <label for="chk4">经典原文出处已核验（非伪作、非网梗）</label>
+              </li>
+              <li>
+                <input type="checkbox" id="chk5" checked>
+                <label for="chk5">现代解释未冒充古人原话或篡改原典</label>
+              </li>
+              <li>
+                <input type="checkbox" id="chk6" checked>
+                <label for="chk6">未包含心理诊断、疗效承诺或迷信归因</label>
+              </li>
+              <li>
+                <input type="checkbox" id="chk7" checked>
+                <label for="chk7">熟人阅读此文亦无法反推原当事人身份</label>
+              </li>
+              <li>
+                <input type="checkbox" id="chk8" checked>
+                <label for="chk8">配图建议与文字素材具备合法使用权限</label>
+              </li>
+            </ul>
+
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <button class="btn" id="btnApproveDraft">标记为已审核通过</button>
+              <button class="btn secondary" id="btnExportDraftMd">导出 Markdown 草稿文件</button>
+              <button class="btn ghost" id="btnRejectDraft">退回修改</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 视图 A-05: 经典资料库 (PRD 5.5) -->
+      <section id="studioClassics" class="card hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+          <div>
+            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">国学经典与考据资料库</h2>
+            <div style="font-size:13px;color:var(--color-muted);" id="classicsSubtitle">
+              收录 500 条经过权威出版社版本考据的经典金句与辨伪条目（含 483 条完全考据台账，10 条网络伪作辨伪）
+            </div>
+          </div>
+        </div>
+
+        <div class="classics-search-row">
+          <input type="text" class="form-input" id="classicsSearchInput" placeholder="输入金句、书名、作者或关键词搜索…" style="flex:1;min-width:200px;">
+          <select class="form-select" id="classicsCategoryFilter" style="width:auto;">
+            <option value="all">全部分类</option>
+            <option value="心性修养">心性修养</option>
+            <option value="情绪调伏">情绪调伏</option>
+            <option value="为人处世">为人处世</option>
+            <option value="关系与边界">关系与边界</option>
+            <option value="进退取舍">进退取舍</option>
+            <option value="逆境与成长">逆境与成长</option>
+          </select>
+          <select class="form-select" id="classicsStatusFilter" style="width:auto;">
+            <option value="all">全部核验状态</option>
+            <option value="verified">出处已核验 (Verified)</option>
+            <option value="needs_review">待复核·辑录 (Needs Review)</option>
+            <option value="not_found">存疑·禁止直接引用 (Not Found)</option>
+          </select>
+        </div>
+
+        <div id="classicsListContainer"></div>
+      </section>
+
+    </div>
+  </main>
+
+</div>
+
+<!-- ======================================================================
+     弹层组件：四步解忧方说明 & 隐私使用边界说明
+     ====================================================================== -->
+
+<!-- 1. 四步方说明弹窗 -->
+<div class="modal-overlay" id="modalExplain">
+  <div class="modal-dialog">
+    <button class="modal-close-btn" id="closeExplainModal">&times;</button>
+    <div class="seal-mark" style="margin-bottom:16px;">悟</div>
+    <h3 style="font-family:var(--font-serif);margin:0 0 14px;font-size:20px;">四步解忧方是什么？</h3>
+    <p style="color:var(--color-ink-light);font-size:14.5px;line-height:1.75;">
+      悟堂不是一个说教的百科，也不是冷冰冰的问答系统。我们把每一位朋友的困惑，通过四步温和地化解为当下的力量：
+    </p>
+    <div style="display:flex;flex-direction:column;gap:14px;margin:20px 0;">
+      <div style="padding:12px 14px;background:var(--color-surface-subtle);border-radius:8px;border:1px solid var(--color-border);">
+        <strong style="color:var(--color-primary);">01 听见了：</strong> 先共情接住你的感受。我们不急着评价对错，先让你被懂得。
+      </div>
+      <div style="padding:12px 14px;background:var(--color-surface-subtle);border-radius:8px;border:1px solid var(--color-border);">
+        <strong style="color:var(--color-primary);">02 古人有云：</strong> 引入一条经过严谨考据的古人视角，给你一把换个角度看问题的钥匙，而不是大道理。
+      </div>
+      <div style="padding:12px 14px;background:var(--color-surface-subtle);border-radius:8px;border:1px solid var(--color-border);">
+        <strong style="color:var(--color-primary);">03 试试这一招：</strong> 一个今晚花 5 分钟就能动手的小微行动。行动是最好的安抚剂。
+      </div>
+      <div style="padding:12px 14px;background:var(--color-surface-subtle);border-radius:8px;border:1px solid var(--color-border);">
+        <strong style="color:var(--color-primary);">04 读这一段：</strong> 推荐一处经得起推敲的原典章节，睡前读三五分钟，让心真正安顿下来。
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <button class="btn sm" id="btnIUnderstandExplain">我明白了</button>
+    </div>
+  </div>
+</div>
+
+<!-- 2. 隐私与使用边界弹窗 (PRD 4.6) -->
+<div class="modal-overlay" id="modalPrivacy">
+  <div class="modal-dialog">
+    <button class="modal-close-btn" id="closePrivacyModal">&times;</button>
+    <div class="seal-mark" style="margin-bottom:16px;">悟</div>
+    <h3 style="font-family:var(--font-serif);margin:0 0 14px;font-size:20px;">隐私保障与使用边界说明</h3>
+    <div style="font-size:14px;color:var(--color-ink-light);line-height:1.8;">
+      <p><strong>1. 数据最小化：</strong> 悟堂不需要你注册账号，不需要手机号、姓名、职业或任何身份证明。单次使用即用即走。</p>
+      <p><strong>2. 默认私密原则：</strong> 你的输入仅用于生成当次回应，绝不会被自动存入公开资料库，更不会直接发表到社交网络或公众号。</p>
+      <p><strong>3. 卡片与授权独立：</strong> 生成的「东方解忧笺」只提取通用启发与微行动，严禁带入你的私人心事。分享卡片与授权公开案例是完全分离的两套机制。</p>
+      <p><strong>4. 公开案例必须多重授权：</strong> 只有在用户主动勾选授权的前提下，且经过 WorkBuddy 隐私过滤与主理人逐字脱敏复核，才可能作为共性困扰被编排成文。</p>
+      <p><strong>5. 非医疗与非紧急承诺：</strong> 悟堂是日常情绪整理与文化启发工具，不提供医学诊断、心理治疗或危机干预。若遇危急情况，请及时寻求专业支持或拨打热线。</p>
+    </div>
+    <div style="text-align:right;margin-top:20px;">
+      <button class="btn sm" id="btnIUnderstandPrivacy">我知道了</button>
+    </div>
+  </div>
+</div>
+
+<!-- 全局轻提示 Toast (PRD 6.7) -->
+<div class="toast-notice" id="globalToast">已完成操作</div>
+
+<!-- 数据内联占位符 (由 build_frontend.py 动态替换) -->
+<script id="wutang-data" type="application/json">__WUTANG_DATA__</script>
+
+<!-- ======================================================================
+     前端核心逻辑脚本 (现代东方编辑交互引擎)
+     ====================================================================== -->
+<script>
+(function() {
+  "use strict";
+
+  // 1. 加载内联数据
+  var RAW_DATA = JSON.parse(document.getElementById('wutang-data').textContent);
+  var CLASSICS = RAW_DATA.classics || [];
+  var SCENARIOS = RAW_DATA.scenarios || [];
+  var MICRO_ACTIONS = RAW_DATA.microActions || {};
+  var BRAND = RAW_DATA.brand || {};
+  var RISK_HIGH = RAW_DATA.riskHigh || [];
+  var RISK_REVIEW = RAW_DATA.riskReview || [];
+  var RISK_PATTERNS = (RAW_DATA.riskPatterns || []).map(function(p) { return new RegExp(p); });
+  var SYNTHETIC_CASES = RAW_DATA.syntheticCases || [];
+  var ARTICLE_DRAFTS = RAW_DATA.articleDrafts || {};
+  var SAGE_AVATARS = RAW_DATA.sageAvatars || {};
+
+  // 先贤印章头像解析器
+  function getSageInfo(author, book) {
+    var text = (String(author || '') + ' ' + String(book || '')).trim();
+    for (var k in SAGE_AVATARS) {
+      if (k === 'default') continue;
+      var info = SAGE_AVATARS[k];
+      var kws = info.keywords || [info.name];
+      for (var i = 0; i < kws.length; i++) {
+        if (text.indexOf(kws[i]) >= 0) {
+          return info;
+        }
+      }
+    }
+    return SAGE_AVATARS['default'] || {
+      name: '悟堂先贤',
+      title: '国学先哲',
+      era: '国学传世经典',
+      motto: '不说教先接住 · 借古人走眼前',
+      color: 'rgb(140, 58, 43)',
+      b64: ''
+    };
+  }
+
+  // 状态中心
+  var appState = {
+    mode: 'client', // 'client' | 'studio'
+    clientView: 'userHome', // 'userHome' | 'userLoading' | 'userResult' | 'userSafety' | 'userCard'
+    studioView: 'studioOverview', // 'studioOverview' | 'studioNewTask' | 'studioPipeline' | 'studioReview' | 'studioClassics'
+    selectedScenario: null,
+    currentCaseId: null,
+    currentResult: null,
+    userConsent: false,
+    willingChecked: false,
+    currentStudioTask: null,
+    currentDraftKey: 'WUTANG-SYN-004'
+  };
+
+  // DOM 工具
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function strHash(s) {
+    var h = 0;
+    for (var i = 0; i < s.length; i++) {
+      h = (h * 31 + s.charCodeAt(i)) | 0;
+    }
+    return Math.abs(h);
+  }
+  function showToast(msg) {
+    var t = $('globalToast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function() { t.classList.remove('show'); }, 2200);
+  }
+
+  // ================= 风险评估与分流 (PRD 4.4 / F-02) =================
+  function evaluateRisk(text) {
+    var t = String(text || '');
+    for (var i = 0; i < RISK_HIGH.length; i++) {
+      if (t.indexOf(RISK_HIGH[i]) >= 0) {
+        return { level: 'high_risk', match: RISK_HIGH[i] };
+      }
+    }
+    for (var k = 0; k < RISK_PATTERNS.length; k++) {
+      if (RISK_PATTERNS[k].test(t)) {
+        return { level: 'high_risk', match: '句式模式命中' };
+      }
+    }
+    for (var j = 0; j < RISK_REVIEW.length; j++) {
+      if (t.indexOf(RISK_REVIEW[j]) >= 0) {
+        return { level: 'review', match: RISK_REVIEW[j] };
+      }
+    }
+    return { level: 'normal', match: '' };
+  }
+
+  // ================= 场景自动定位 =================
+  var SCENARIO_KEYWORDS = {
+    work: ['工作', '职场', '领导', '老板', '同事', '绩效', 'KPI', '考核', '加班', '辞职', '裁员', '面试', '晋升', '项目', '汇报', '批评', '内耗', '上班', '打工', '班味', '离职', '跳槽', '工资', '部门', '方案'],
+    relation: ['关系', '父母', '妈妈', '爸爸', '妈', '爸', '婆婆', '公公', '老公', '老婆', '伴侣', '男朋友', '女朋友', '对象', '朋友', '催婚', '催', '亲戚', '家人', '拒绝', '讨好', '边界', '冷战', '吵架', '分手', '结婚', '家庭'],
+    night: ['睡', '失眠', '半夜', '凌晨', '晚上', '夜里', '反刍', '想不通', '反复', '后悔', '焦虑', '明天', '未来', '担心', '心慌', '停不下来', '睡不着', '噩梦'],
+    growth: ['拖延', '完美', '开始', '方向', '迷茫', '目标', '自律', '成长', '学习', '考试', '计划', '改变', '自我', '懒', '动力', '意义', '坚持', '突破']
+  };
+
+  function detectScenario(text, manualTag) {
+    if (manualTag) return manualTag;
+    var t = String(text || ''), best = 'work', maxHits = 0;
+    Object.keys(SCENARIO_KEYWORDS).forEach(function(k) {
+      var count = 0;
+      SCENARIO_KEYWORDS[k].forEach(function(kw) {
+        if (t.indexOf(kw) >= 0) count++;
+      });
+      if (count > maxHits) { maxHits = count; best = k; }
+    });
+    return best;
+  }
+
+  // ================= 经典语料检索 (Skill 2) =================
+  function retrieveClassic(scenario, text) {
+    var t = String(text || '');
+    var pool = CLASSICS.filter(function(c) { return c.status !== 'not_found'; });
+    var scored = pool.map(function(c) {
+      var s = 0;
+      if (String(c.scenarios || '').split(';').indexOf(scenario) >= 0) s += 6;
+      String(c.themes || '').split(';').forEach(function(th) {
+        if (th && t.indexOf(th) >= 0) s += 4;
+      });
+      if (c.status === 'verified') s += 2;
+      return { c: c, score: s };
+    }).sort(function(a, b) { return b.score - a.score; });
+
+    var topScore = scored.length ? scored[0].score : 0;
+    var candidates = scored.filter(function(x) { return x.score >= topScore - 2 && x.score > 0; });
+    if (!candidates.length) candidates = scored.slice(0, 4);
+    if (!candidates.length) return null;
+
+    var idx = strHash(t + scenario) % candidates.length;
+    return candidates[idx].c;
+  }
+
+  // ================= 共情库与四步构建 =================
+  var EMPATHY_TEMPLATES = {
+    work: [
+      '你写到「{q}」。真正磨人的，可能不是那点事本身，而是它让你开始怀疑自己——是不是我不够好。这种消耗，比加班更让人疲惫。',
+      '「{q}」——听起来你已经一个人撑了很久。你不是不想做好，而是那些沉重的负担里，有一部分本就不该全部由你来扛。',
+      '你把这件事说出来，说明它已经在你心里转了很久。「{q}」，这种说不出口的憋闷，悟堂懂你。'
+    ],
+    relation: [
+      '你写到「{q}」。难的也许不是那件事本身，而是它戳到了「我是不是不重要、不被在乎」这一下。',
+      '「{q}」——一边是重要的人际关系，一边是你自己的真实感受，夹在中间怎么做都像是错的。',
+      '听起来你不是不在乎对方，恰恰是太在乎了，才习惯性地把自己放到了最后。「{q}」。'
+    ],
+    night: [
+      '「{q}」——白天能压住的东西，到了夜深人静全浮上来了。这不是你脆弱，是大脑在夜里本来就会放大所有担忧。',
+      '你写到「{q}」。夜里反复想同一件事，说明它对你真的很重要，而不是你想不开。',
+      '夜里思绪停不下来，往往不是因为问题解决不了，而是你太累了，累到没有力气把它想完。'
+    ],
+    growth: [
+      '你写到「{q}」。你可能不是拖延或懒，恰恰是太想把它做完美了，以至于连开始都需要巨大的勇气。',
+      '「{q}」——心里很急，身体却动不了，然后又陷入更深的自责，这种内耗很多人都经历过。',
+      '你能把这句话写下来，本身就已经是一个了不起的开始。至少你愿意温柔地正视它了。'
+    ]
+  };
+
+  function snippet(text, maxLen) {
+    var t = String(text || '').replace(/\s+/g, ' ').trim();
+    maxLen = maxLen || 22;
+    return t.length <= maxLen ? t : t.slice(0, maxLen) + '…';
+  }
+
+  function generateEmpathy(scenario, text) {
+    var list = EMPATHY_TEMPLATES[scenario] || EMPATHY_TEMPLATES.growth;
+    var idx = strHash(text + scenario) % list.length;
+    return list[idx].replace('{q}', snippet(text));
+  }
+
+  var FURTHER_MAP = {
+    work: '读完原文那一段，再回到今天这件事上：分清哪些是客观事实，哪些是他人的主观评价，哪些是你今天就能掌控的一步。',
+    relation: '读的时候留意一句话：这段关系是在滋养你，还是在不断掏空你的边界。',
+    night: '睡前读一小段即可，读完就合上书。今晚让文字替你分担那些繁杂思绪。',
+    growth: '读三五分钟就够。重点不是一次读懂多少，而是让手先轻松地动起来。'
+  };
+
+  var THEME_MAP = {
+    work: '去班味 · 职场与评价',
+    relation: '松绑 · 关系与边界',
+    night: '安住 · 深夜思绪',
+    growth: '破局 · 行动与自我'
+  };
+
+  function assembleFourStep(caseId, scenario, text) {
+    var c = retrieveClassic(scenario, text);
+    var actList = MICRO_ACTIONS[scenario] || MICRO_ACTIONS.growth;
+    var act = actList[strHash(text + scenario) % actList.length];
+
+    var classicRef, modInterp;
+    if (!c) {
+      classicRef = {
+        quote: '',
+        book: '悟堂典籍库',
+        chapter: '—',
+        source_id: 'NONE',
+        verification_status: 'not_found'
+      };
+      modInterp = '本次检索未找到足够严密对应的古人直接引言。与其编造看似古风的话，我们更愿意直接告诉你：此时此刻心乱是极正常的，先把脚步慢下来。';
+    } else {
+      classicRef = {
+        quote: c.quote,
+        book: c.book,
+        chapter: c.chapter,
+        source_id: c.id,
+        verification_status: c.status
+      };
+      modInterp = c.interpretation;
+    }
+
+    return {
+      case_id: caseId,
+      scenario: scenario,
+      theme_title: THEME_MAP[scenario] || '东方启发视角',
+      empathy: generateEmpathy(scenario, text),
+      classic: classicRef,
+      classic_obj: c,
+      modern_interp: modInterp,
+      micro_action: {
+        headline: act.title,
+        steps: act.steps
+      },
+      further_reading: c && c.book && c.status === 'verified'
+        ? '推荐阅读《' + c.book + '》' + (c.chapter && c.chapter !== '—' ? '·' + c.chapter : '') + '。' + (FURTHER_MAP[scenario] || '')
+        : '暂无特定典籍章节推荐；以今晚微行动为主。',
+      safety_note: '如果这种低落或内耗持续很久、明显影响睡眠与进食，找身边信任的朋友或专业人士聊聊，会比独自承担更有力量。'
+    };
+  }
+
+  // ================= 渲染四步回应 (PRD 4.3) =================
+  var BADGE_CONFIG = {
+    verified: { cls: 'ok', text: '出处已核验' },
+    needs_review: { cls: 'rev', text: '待复核·辑录' },
+    not_found: { cls: 'nf', text: '未找到可靠出处' }
+  };
+
+  function renderResultView(r) {
+    $('resultThemeBadge').textContent = '🏷️ 情绪主题：' + r.theme_title;
+
+    var c = r.classic;
+    var b = BADGE_CONFIG[c.verification_status] || BADGE_CONFIG.not_found;
+    var cObj = r.classic_obj;
+
+    var quoteHtml = '';
+    if (c.quote) {
+      var sage = getSageInfo(cObj ? cObj.era_author : '', c.book);
+      var avatarImg = sage.b64
+        ? '<img src="' + sage.b64 + '" alt="' + esc(sage.name) + '" class="sage-avatar-mini">'
+        : '<div class="sage-avatar-fallback">' + esc(sage.name.slice(0, 1)) + '</div>';
+
+      quoteHtml = '<div class="classic-quote-box">'
+        + '<div class="sage-badge-header">'
+        +   avatarImg
+        +   '<div class="sage-badge-info">'
+        +     '<div class="sage-badge-name">' + esc(sage.title) + '<span class="sage-badge-era">' + esc(sage.era) + '</span></div>'
+        +     '<div class="sage-badge-motto">' + esc(sage.motto) + '</div>'
+        +   '</div>'
+        + '</div>'
+        + '<div class="classic-quote-text serif">「' + esc(c.quote) + '」</div>'
+        + '<div class="classic-meta-row">'
+        + '<span>出处：《' + esc(c.book) + '》' + (c.chapter && c.chapter !== '—' ? ' · ' + esc(c.chapter) : '') + '</span>'
+        + '<span>编号：' + esc(c.source_id) + '</span>'
+        + '<span class="badge ' + b.cls + '">' + b.text + '</span>'
+        + '<button class="collapse-trigger" id="btnToggleClassicDetail">查看考据出处说明</button>'
+        + '</div>'
+        + '<div class="classic-collapse-detail hidden" id="classicDetailBox">'
+        + (cObj ? '<strong>朝代作者：</strong>' + esc(cObj.era_author || '—') + '<br>'
+                + '<strong>白话转释：</strong>' + esc(cObj.translation || '—') + '<br>'
+                + '<strong>权威版本：</strong>' + esc(cObj.edition || '通行本') + '<br>'
+                + '<strong>考据说明：</strong>' + esc(cObj.note || '出处严谨核实，符合引用规范。')
+                : '出处核验详单')
+        + '</div>'
+        + '</div>';
+    } else {
+      quoteHtml = '<div style="padding:14px;background:var(--color-surface-subtle);border-radius:8px;font-size:13.5px;color:var(--color-muted);margin:10px 0;">'
+        + '知识库中暂未找到足够严密对应的古籍字句。不编造、不生搬硬套，是悟堂对待智慧的基本敬畏。'
+        + '</div>';
+    }
+
+    var stepsHtml = r.micro_action.steps.map(function(s) {
+      return '<li>' + esc(s) + '</li>';
+    }).join('');
+
+    var html = ''
+      + '<!-- 01 听见了 -->'
+      + '<div class="step-item">'
+      + '  <div class="step-num-col"><div class="step-num-badge">01</div></div>'
+      + '  <div class="step-content-col">'
+      + '    <div class="step-title">听见了</div>'
+      + '    <div class="step-text">' + esc(r.empathy) + '</div>'
+      + '  </div>'
+      + '</div>'
+
+      + '<!-- 02 古人有云 -->'
+      + '<div class="step-item">'
+      + '  <div class="step-num-col"><div class="step-num-badge">02</div></div>'
+      + '  <div class="step-content-col">'
+      + '    <div class="step-title">古人有云</div>'
+      +      quoteHtml
+      + '    <div class="step-text"><strong>可以提供的现代视角：</strong>' + esc(r.modern_interp) + '</div>'
+      + '  </div>'
+      + '</div>'
+
+      + '<!-- 03 试试这一招 -->'
+      + '<div class="step-item">'
+      + '  <div class="step-num-col"><div class="step-num-badge">03</div></div>'
+      + '  <div class="step-content-col">'
+      + '    <div class="step-title">试试这一招</div>'
+      + '    <div class="action-headline">' + esc(r.micro_action.headline) + '</div>'
+      + '    <ol class="action-steps-ol">' + stepsHtml + '</ol>'
+      + '    <button class="willing-btn' + (appState.willingChecked ? ' checked' : '') + '" id="btnWillingTry">'
+      + (appState.willingChecked ? '✓ 已记下，今晚先试这一小步 ✨' : '🌱 我愿意试一试（选填，不做强制打卡）')
+      + '    </button>'
+      + '  </div>'
+      + '</div>'
+
+      + '<!-- 04 读这一段 -->'
+      + '<div class="step-item">'
+      + '  <div class="step-num-col"><div class="step-num-badge">04</div></div>'
+      + '  <div class="step-content-col">'
+      + '    <div class="step-title">读这一段</div>'
+      + '    <div class="step-text">' + esc(r.further_reading) + '</div>'
+      + '    <div style="font-size:12.5px;color:var(--color-muted);background:var(--color-bg);padding:8px 12px;border-radius:6px;border:1px solid var(--color-border);margin-top:8px;">'
+      + esc(r.safety_note)
+      + '    </div>'
+      + '  </div>'
+      + '</div>';
+
+    $('fourStepList').innerHTML = html;
+
+    // 绑定展开出处
+    var trigger = $('btnToggleClassicDetail');
+    if (trigger) {
+      trigger.onclick = function() {
+        var box = $('classicDetailBox');
+        if (box.classList.contains('hidden')) {
+          box.classList.remove('hidden');
+          trigger.textContent = '收起出处考据';
+        } else {
+          box.classList.add('hidden');
+          trigger.textContent = '查看考据出处说明';
+        }
+      };
+    }
+
+    // 绑定「我愿意试一试」
+    var willingBtn = $('btnWillingTry');
+    if (willingBtn) {
+      willingBtn.onclick = function() {
+        appState.willingChecked = !appState.willingChecked;
+        if (appState.willingChecked) {
+          willingBtn.classList.add('checked');
+          willingBtn.textContent = '✓ 已记下，今晚先试这一小步 ✨';
+          showToast('愿这一步，为你带去一点轻盈与力量');
+        } else {
+          willingBtn.classList.remove('checked');
+          willingBtn.textContent = '🌱 我愿意试一试（选填，不做强制打卡）';
+        }
+      };
+    }
+  }
+
+  // ================= 渲染安全支持页面 (U-04) =================
+  var SAFETY_HTML_HIGH =
+    '<p style="font-size:15.5px;color:var(--color-ink-light);margin-bottom:12px;">'
+  + '通过你的这段文字，我能感受到你此刻可能正承受着巨大的压力与痛苦。请相信，你的难过是真实的，但也请先确认此时此刻的自身安全：'
+  + '</p>'
+  + '<ol class="safety-steps">'
+  + '<li><strong>请先停下眼前的动作：</strong> 如果此时周围有任何可能伤害到自己的物品或环境，请先移动到安全、舒适的地方。</li>'
+  + '<li><strong>找一个真人陪陪你：</strong> 无论是一通打给信任朋友或家人的电话，还是联系身边的同事，有人陪伴比独自扛着好很多。</li>'
+  + '<li><strong>随时寻求专业援助：</strong> 下方列出了全国 24 小时免费心理危机与援助热线，专业咨询师随时会以温暖接纳的态度倾听你。</li>'
+  + '</ol>'
+  + '<p style="color:var(--color-muted);font-size:13px;">'
+  + '* 本页面已自动阻断常规文化解答与卡片生成。悟堂严格恪守安全边界，不以轻率分析替代危机求助。'
+  + '</p>';
+
+  var SAFETY_HTML_REVIEW =
+    '<p style="font-size:15.5px;color:var(--color-ink-light);margin-bottom:12px;">'
+  + '悟堂是一个陪伴你整理日常情绪与文化启发的小工具，<strong>不提供临床医学诊断、精神科处方、宗教法门指导或运势算命</strong>。'
+  + '</p>'
+  + '<p style="font-size:14.5px;color:var(--color-ink-light);">'
+  + '如果你的困扰涉及具体的医疗确诊、用药调整、法律维权或未成年人保护，请务必咨询具有正规资质的专业机构与医师，我们不适宜为此给出判断。'
+  + '</p>'
+  + '<p style="font-size:14.5px;color:var(--color-ink-light);">'
+  + '如果你只是想梳理当下的情绪起伏，你可以换一种表达，只说说你此刻心里有什么具体的纠结，悟堂依然会真诚地陪你理一理。'
+  + '</p>';
+
+  // ================= 东方解忧笺生成与超清 Canvas 绘制 (U-05) =================
+  function prepareCardData(r) {
+    var c = r.classic;
+    var q = c.quote || '先把心放慢半拍，眼前的结自会松开。';
+    var src = c.book ? ('《' + c.book + '》' + (c.chapter && c.chapter !== '—' ? ' · ' + c.chapter : '')) : '悟堂解忧引言';
+    var exp = r.modern_interp;
+    var act = r.micro_action.headline.replace(/^今晚\s*5\s*分钟[：:]\s*/, '') + '。' + r.micro_action.steps[0];
+    var theme = r.theme_title;
+
+    var sage = getSageInfo(r.classic_obj ? r.classic_obj.era_author : '', c.book);
+    var avatarEl = $('cardSageAvatar');
+    if (avatarEl) {
+      if (sage && sage.b64) {
+        avatarEl.src = sage.b64;
+        avatarEl.style.display = 'inline-block';
+      } else {
+        avatarEl.style.display = 'none';
+      }
+    }
+
+    $('cardTheme').textContent = theme;
+    $('cardQuote').textContent = '「' + q + '」';
+    $('cardSource').textContent = src;
+    $('cardExp').textContent = exp;
+    $('cardAction').textContent = act;
+
+    return {
+      theme: theme,
+      quote: '「' + q + '」',
+      src: src,
+      exp: exp,
+      act: act,
+      sage: sage,
+      slogan: '让古老智慧，用今天的人听得懂的方式活着'
+    };
+  }
+
+  function drawRetinaCard(cd) {
+    // 2x 超清导出 (1520 x 2080 px)
+    var scale = 2;
+    var W = 760 * scale, H = 1040 * scale;
+    var cv = document.createElement('canvas');
+    cv.width = W; cv.height = H;
+    var g = cv.getContext('2d');
+
+    // 背景宣纸质感暖白
+    g.fillStyle = '#FCF9F2';
+    g.fillRect(0, 0, W, H);
+
+    // 外双框
+    g.strokeStyle = '#D6CAB8';
+    g.lineWidth = 2 * scale;
+    g.strokeRect(20 * scale, 20 * scale, W - 40 * scale, H - 40 * scale);
+
+    g.strokeStyle = '#E6DCCD';
+    g.lineWidth = 1 * scale;
+    g.strokeRect(30 * scale, 30 * scale, W - 60 * scale, H - 60 * scale);
+
+    var cx = W / 2, y = 92 * scale;
+    g.textAlign = 'center';
+    g.textBaseline = 'alphabetic';
+
+    // 朱红小方印
+    var sealSize = 28 * scale;
+    g.fillStyle = '#8F2928';
+    g.fillRect(cx - 100 * scale, y - 22 * scale, sealSize, sealSize);
+    g.fillStyle = '#FFFFFF';
+    g.font = 'bold ' + (17 * scale) + 'px "Songti SC", "SimSun", serif';
+    g.fillText('悟', cx - 86 * scale, y - 2 * scale);
+
+    // 品牌名
+    g.fillStyle = '#8F2928';
+    g.font = '600 ' + (15 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+    g.fillText('悟 堂 · 东 方 解 忧 处', cx + 18 * scale, y - 3 * scale);
+    y += 56 * scale;
+
+    // 主题标签
+    g.fillStyle = '#A67C38';
+    g.font = '600 ' + (14 * scale) + 'px "Songti SC", "SimSun", serif';
+    g.fillText(cd.theme, cx, y);
+    y += 62 * scale;
+
+    // 折行工具函数
+    function wrapLines(text, font, maxW) {
+      g.font = font;
+      var lines = [], line = '';
+      for (var i = 0; i < text.length; i++) {
+        var ch = text[i];
+        var test = line + ch;
+        if (g.measureText(test).width > maxW && line) {
+          lines.push(line);
+          line = ch;
+        } else {
+          line = test;
+        }
+      }
+      if (line) lines.push(line);
+      return lines;
+    }
+
+    // 经典引言 (宋体大字)
+    var qLines = wrapLines(cd.quote, 'bold ' + (27 * scale) + 'px "Songti SC", "SimSun", serif', W - 140 * scale);
+    g.fillStyle = '#262421';
+    g.font = 'bold ' + (27 * scale) + 'px "Songti SC", "SimSun", serif';
+    qLines.forEach(function(l) {
+      g.fillText(l, cx, y);
+      y += 44 * scale;
+    });
+
+    // 出处
+    y += 4 * scale;
+    g.fillStyle = '#77736D';
+    g.font = (13.5 * scale) + 'px "Songti SC", "SimSun", serif';
+    g.fillText(cd.src, cx, y);
+    y += 36 * scale;
+
+    // 中间细线
+    g.strokeStyle = '#D6CAB8';
+    g.lineWidth = 1 * scale;
+    g.beginPath();
+    g.moveTo(cx - 30 * scale, y);
+    g.lineTo(cx + 30 * scale, y);
+    g.stroke();
+    y += 44 * scale;
+
+    // 现代解义 (左对齐)
+    g.textAlign = 'left';
+    var expLines = wrapLines(cd.exp, (17 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif', W - 140 * scale);
+    g.fillStyle = '#4A443E';
+    g.font = (17 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+    expLines.forEach(function(l) {
+      g.fillText(l, 70 * scale, y);
+      y += 30 * scale;
+    });
+    y += 28 * scale;
+
+    // 微行动白色信盒
+    var actLines = wrapLines(cd.act, (15.5 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif', W - 180 * scale);
+    var boxH = 54 * scale + actLines.length * (25 * scale);
+    g.fillStyle = '#FFFFFF';
+    g.fillRect(66 * scale, y, W - 132 * scale, boxH);
+    g.strokeStyle = '#E6E0D7';
+    g.strokeRect(66 * scale, y, W - 132 * scale, boxH);
+
+    // 行动标题
+    g.fillStyle = '#8F2928';
+    g.font = 'bold ' + (12 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+    g.fillText('今 晚 5 分 钟 微 行 动', 86 * scale, y + 26 * scale);
+
+    // 行动条目
+    g.fillStyle = '#262421';
+    g.font = (15.5 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+    var actY = y + 50 * scale;
+    actLines.forEach(function(l) {
+      g.fillText(l, 86 * scale, actY);
+      actY += 25 * scale;
+    });
+
+    // 页脚 Slogan
+    g.textAlign = 'center';
+    g.fillStyle = '#77736D';
+    g.font = (12.5 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+    g.fillText(cd.slogan, cx, H - 46 * scale);
+
+    return cv.toDataURL('image/png');
+  }
+
+  // ================= 视图流转导航控制 =================
+  function switchClientView(viewId) {
+    appState.clientView = viewId;
+    ['userHome', 'userLoading', 'userResult', 'userSafety', 'userCard'].forEach(function(id) {
+      var node = $(id);
+      if (node) {
+        if (id === viewId) node.classList.remove('hidden');
+        else node.classList.add('hidden');
+      }
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function switchMainMode(mode) {
+    appState.mode = mode;
+    if (mode === 'client') {
+      $('clientArea').classList.remove('hidden');
+      $('studioArea').classList.add('hidden');
+      $('tabClient').classList.add('active');
+      $('tabStudio').classList.remove('active');
+    } else {
+      $('clientArea').classList.add('hidden');
+      $('studioArea').classList.remove('hidden');
+      $('tabClient').classList.remove('active');
+      $('tabStudio').classList.add('active');
+      renderStudioOverview();
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function switchStudioTab(viewId) {
+    appState.studioView = viewId;
+    ['studioOverview', 'studioNewTask', 'studioPipeline', 'studioReview', 'studioClassics'].forEach(function(id) {
+      var n = $(id);
+      if (n) {
+        if (id === viewId) n.classList.remove('hidden');
+        else n.classList.add('hidden');
+      }
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.studio-nav-btn'), function(btn) {
+      if (btn.getAttribute('data-view') === viewId) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+    if (viewId === 'studioOverview') renderStudioOverview();
+    if (viewId === 'studioClassics') renderClassicsList();
+    if (viewId === 'studioReview') renderStudioReview(appState.currentDraftKey);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ================= 用户端业务流程触发 (Submit) =================
+  function handleClientSubmit() {
+    var text = $('userTextarea').value.trim();
+    if (!text) {
+      showToast('请先写下一句心里放不下的事');
+      $('userTextarea').focus();
+      return;
+    }
+
+    var risk = evaluateRisk(text);
+    var caseId = 'WUTANG-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + String(strHash(text) % 1000).padStart(3, '0');
+    appState.currentCaseId = caseId;
+
+    if (risk.level === 'high_risk') {
+      $('safetyMainTitle').textContent = '你写下的这句话，我看到了，也很在意。';
+      $('safetyContentArea').innerHTML = SAFETY_HTML_HIGH;
+      switchClientView('userSafety');
+      return;
+    }
+    if (risk.level === 'review') {
+      $('safetyMainTitle').textContent = '这件事，悟堂可能需要先守住边界。';
+      $('safetyContentArea').innerHTML = SAFETY_HTML_REVIEW;
+      switchClientView('userSafety');
+      return;
+    }
+
+    // 正常困扰：进入 U-02 整理过渡状态
+    switchClientView('userLoading');
+    $('lStep1').className = 'loading-step-item active';
+    $('lStep2').className = 'loading-step-item';
+    $('lStep3').className = 'loading-step-item';
+
+    setTimeout(function() {
+      $('lStep1').className = 'loading-step-item done';
+      $('lStep2').className = 'loading-step-item active';
+    }, 550);
+
+    setTimeout(function() {
+      $('lStep2').className = 'loading-step-item done';
+      $('lStep3').className = 'loading-step-item active';
+    }, 1100);
+
+    setTimeout(function() {
+      var sc = detectScenario(text, appState.selectedScenario);
+      var res = assembleFourStep(caseId, sc, text);
+      appState.currentResult = res;
+      renderResultView(res);
+      switchClientView('userResult');
+    }, 1600);
+  }
+
+  // ================= 初始化场景标签 =================
+  function initScenarioChips() {
+    var grid = $('scenarioGrid');
+    grid.innerHTML = SCENARIOS.map(function(s) {
+      return '<button class="scenario-chip" data-key="' + s.key + '" aria-pressed="false">'
+        + '<div class="scenario-chip-header">'
+        + '  <span class="chip-title">' + s.emoji + ' ' + esc(s.label) + '</span>'
+        + '  <span class="check-icon">✓</span>'
+        + '</div>'
+        + '<span class="chip-sub">' + esc(s.sub) + '</span>'
+        + '</button>';
+    }).join('');
+
+    grid.addEventListener('click', function(e) {
+      var btn = e.target.closest('.scenario-chip');
+      if (!btn) return;
+      var k = btn.getAttribute('data-key');
+      var wasPressed = btn.getAttribute('aria-pressed') === 'true';
+
+      Array.prototype.forEach.call(grid.children, function(c) {
+        c.setAttribute('aria-pressed', 'false');
+      });
+
+      if (wasPressed) {
+        appState.selectedScenario = null;
+      } else {
+        btn.setAttribute('aria-pressed', 'true');
+        appState.selectedScenario = k;
+      }
+    });
+  }
+
+  // ================= 主理人端：渲染总览任务流水 (A-01) =================
+  var MOCK_TASKS = [
+    {
+      id: 'WUTANG-SYN-004',
+      type: '合成测试用例',
+      text: '同事总把活儿推给我，不好意思拒绝，怕他说不合群…',
+      scenario: '松绑 · 关系与边界',
+      consent: '已授权 (2026-10-16 09:00)',
+      citation: 'verified (论语·颜渊)',
+      status: '已成文 · 待审核'
+    },
+    {
+      id: 'WUTANG-SYN-007',
+      type: '合成测试用例',
+      text: '计划了半年的副业建了七八个文档，每次想动手就怕做不好…',
+      scenario: '破局 · 行动与自律',
+      consent: '已授权 (2026-10-16 09:30)',
+      citation: 'needs_review (格言联璧)',
+      status: '已成文 · 待审核'
+    },
+    {
+      id: 'WUTANG-SYN-011',
+      type: '合成案例 (含PII)',
+      text: '我叫李小雨，在杭州一家叫云图的广告公司做设计…',
+      scenario: '松绑 · 关系与边界',
+      consent: '已授权 (2026-10-16 09:45)',
+      citation: 'verified (格言联璧)',
+      status: '已成文 · 脱敏待核验'
+    },
+    {
+      id: 'WUTANG-SYN-001',
+      type: '合成测试用例',
+      text: '领导当着全组的面说我方案不行，回家一直在内耗…',
+      scenario: '去班味 · 职场评价',
+      consent: '未授权',
+      citation: 'verified (论语·卫灵公)',
+      status: '仅回应 · 不公开'
+    }
+  ];
+
+  function renderStudioOverview() {
+    var vCount = CLASSICS.filter(function(c) { return c.status === 'verified'; }).length;
+    var nfCount = CLASSICS.filter(function(c) { return c.status === 'not_found'; }).length;
+    if ($('mVerifiedClassics')) {
+      $('mVerifiedClassics').textContent = vCount || 483;
+    }
+    if ($('mVerifiedClassicsSub')) {
+      $('mVerifiedClassicsSub').textContent = '资料库总计 ' + CLASSICS.length + ' 条 · 含 ' + nfCount + ' 条辨伪';
+    }
+
+    var tbody = $('taskTableBody');
+    tbody.innerHTML = MOCK_TASKS.map(function(t) {
+      var badgeCls = t.consent.indexOf('已授权') >= 0 ? 'ok' : 'rev';
+      return '<tr>'
+        + '<td><strong>' + esc(t.id) + '</strong></td>'
+        + '<td>' + esc(t.type) + '</td>'
+        + '<td style="max-width:240px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="' + esc(t.text) + '">' + esc(t.text) + '</td>'
+        + '<td><span class="badge ' + badgeCls + '">' + esc(t.consent) + '</span></td>'
+        + '<td>' + esc(t.citation) + '</td>'
+        + '<td><span class="badge ok">' + esc(t.status) + '</span></td>'
+        + '<td><button class="btn sm secondary btn-view-pipeline" data-id="' + esc(t.id) + '">查看流转</button></td>'
+        + '</tr>';
+    }).join('');
+
+    Array.prototype.forEach.call(document.querySelectorAll('.btn-view-pipeline'), function(btn) {
+      btn.onclick = function() {
+        var tid = btn.getAttribute('data-id');
+        openPipelineView(tid);
+      };
+    });
+  }
+
+  // ================= 主理人端：工作流流转详情 (A-03) =================
+  var PIPELINE_STEPS = [
+    { num: 1, name: '输入校验与风险分流', role: '安全守门人 (严守拙)', time: '12ms', status: 'ok', detail: '评估危机词库与高危句式正则，判定为 normal 安全状态，放行。' },
+    { num: 2, name: '用户困扰理解与共情', role: '倾听共情官 (闻心语)', time: '85ms', status: 'ok', detail: '提取情绪关键词与核心困境，生成 2 句不武断、不说教的温和共情。' },
+    { num: 3, name: '经典资料检索与匹配', role: '国学考据官 (章有据)', time: '42ms', status: 'ok', detail: '从 500 条人工考据语料中精确匹配契合场景与主题的经典典故。' },
+    { num: 4, name: '四步回应结构化生成', role: '解忧流程导演 (常明川)', time: '60ms', status: 'ok', detail: '将听见了、古人有云、微行动、延伸阅读组装为标准四步数据。' },
+    { num: 5, name: '经典出处与引文核验', role: '考据组核验员', time: '18ms', status: 'ok', detail: '核验篇章原文、版本注释及来源编号，确认非现代杜撰伪作。' },
+    { num: 6, name: '隐私与脱敏检查 (PII)', role: '安全与隐私守门人', time: '35ms', status: 'ok', detail: '对真实姓名、城市、机构、具体日期进行模糊去标识化处理。' },
+    { num: 7, name: '东方解忧笺生成', role: '内容主编官 (舒成锦)', time: '22ms', status: 'ok', detail: '脱敏提取主题金句与 5 分钟微行动，生成 4:5 东方古风信笺载体。' },
+    { num: 8, name: '公众号文章草稿生成', role: '内容工作流引擎', time: '98ms', status: 'ok', detail: '已核验用户公开共读授权与时间戳，完成草稿沉淀（状态为待主理人审核）。' }
+  ];
+
+  function openPipelineView(taskId) {
+    appState.currentStudioTask = taskId;
+    $('plTaskTitle').textContent = '任务流水监控：' + taskId;
+    $('plTaskMeta').textContent = '来源：标准测试集 ｜ 编号：' + taskId + ' ｜ 授权状态：已确认授权';
+
+    var container = $('pipelineStepList');
+    container.innerHTML = PIPELINE_STEPS.map(function(s) {
+      return '<div class="pipeline-step-card">'
+        + '  <div class="step-main-info">'
+        + '    <div class="step-badge-idx">' + s.num + '</div>'
+        + '    <div>'
+        + '      <div class="step-title-text">' + esc(s.name) + '</div>'
+        + '      <div class="step-meta-text">负责角色：' + esc(s.role) + ' ｜ 耗时：' + esc(s.time) + '</div>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div style="display:flex;align-items:center;gap:12px;">'
+        + '    <span class="badge ok">✓ 已完成</span>'
+        + '  </div>'
+        + '  <div style="width:100%;font-size:13px;color:var(--color-muted);background:var(--color-surface-subtle);padding:8px 12px;border-radius:6px;border:1px solid var(--color-border);margin-top:6px;">'
+        + '    <strong>执行详情：</strong>' + esc(s.detail)
+        + '  </div>'
+        + '</div>';
+    }).join('');
+
+    switchStudioTab('studioPipeline');
+  }
+
+  // ================= 主理人端：内容审核与合规清单 (A-04) =================
+  function renderStudioReview(draftKey) {
+    appState.currentDraftKey = draftKey;
+    var draft = ARTICLE_DRAFTS[draftKey];
+    var pane = $('articlePreviewPane');
+
+    if (!draft) {
+      pane.innerHTML = '<p style="color:var(--color-muted);">未找到指定草稿内容。</p>';
+      return;
+    }
+
+    // 将 Markdown 简易转为 HTML 预览
+    var lines = draft.content.split('\n');
+    var html = lines.map(function(line) {
+      line = line.trim();
+      if (!line) return '<br>';
+      if (line.indexOf('# ') === 0) return '<h3>' + esc(line.slice(2)) + '</h3>';
+      if (line.indexOf('## ') === 0) return '<h4 style="margin:16px 0 6px;color:var(--color-primary);">' + esc(line.slice(3)) + '</h4>';
+      if (line.indexOf('> ') === 0) return '<blockquote>' + esc(line.slice(2)) + '</blockquote>';
+      if (line.indexOf('- ') === 0) return '<li style="margin-left:20px;">' + esc(line.slice(2)) + '</li>';
+      return '<p style="margin:6px 0;">' + esc(line) + '</p>';
+    }).join('');
+
+    pane.innerHTML = html;
+
+    // 显示 PII 去标识化详情
+    var piiBox = $('piiReviewBox');
+    if (draftKey === 'WUTANG-SYN-011') {
+      piiBox.innerHTML = '<span style="color:var(--color-warning);font-weight:600;">⚠️ 植入 PII 脱敏核查：</span>'
+        + '<br>原文中「李小雨（姓名）」、「杭州云图（单位/地点）」、「3月8号（具体时间）」已由守门人 Skill 成功剔除，'
+        + '正文中已替换为泛化的「当事人」与「某地广告公司」，熟人无法借此反推。';
+    } else {
+      piiBox.innerHTML = '<strong>脱敏与授权：</strong> 该案例已获用户公开共读明确授权（带合法时间戳），未检出高危直接标识。';
+    }
+  }
+
+  // ================= 主理人端：经典资料库检索与筛选 (A-05) =================
+  function renderClassicsList() {
+    var kw = $('classicsSearchInput').value.trim().toLowerCase();
+    var cat = $('classicsCategoryFilter').value;
+    var st = $('classicsStatusFilter').value;
+
+    var filtered = CLASSICS.filter(function(c) {
+      if (cat !== 'all' && c.category !== cat) return false;
+      if (st !== 'all' && c.status !== st) return false;
+      if (kw) {
+        var str = (c.quote + ' ' + c.book + ' ' + c.era_author + ' ' + c.themes + ' ' + c.interpretation).toLowerCase();
+        if (str.indexOf(kw) < 0) return false;
+      }
+      return true;
+    });
+
+    var container = $('classicsListContainer');
+    if ($('classicsSubtitle')) {
+      var vCount = CLASSICS.filter(function(c) { return c.status === 'verified'; }).length;
+      $('classicsSubtitle').textContent = '收录 ' + CLASSICS.length + ' 条权威出版社版本考据语料（含 ' + vCount + ' 条完全核验，当前筛选显示 ' + filtered.length + ' 条）';
+    }
+    if (!filtered.length) {
+      container.innerHTML = '<div style="padding:40px;text-align:center;color:var(--color-muted);">资料库暂无匹配条目。先导入或调整筛选关键词。</div>';
+      return;
+    }
+
+    container.innerHTML = filtered.map(function(c) {
+      var b = BADGE_CONFIG[c.status] || BADGE_CONFIG.not_found;
+      var sage = getSageInfo(c.era_author, c.book);
+      var avatarImg = sage.b64
+        ? '<img src="' + sage.b64 + '" alt="' + esc(sage.name) + '" title="' + esc(sage.title) + '" style="width:30px;height:30px;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,0.08);border:1px solid var(--color-border);flex-shrink:0;">'
+        : '';
+
+      return '<div class="classics-item-card">'
+        + '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:10px;">'
+        + '  <div style="display:flex;align-items:center;gap:10px;">'
+        +      avatarImg
+        + '    <div>'
+        + '      <strong style="font-size:15px;color:var(--color-primary);">' + esc(c.id) + ' ｜ ' + esc(c.category) + '</strong>'
+        + '      <span style="margin-left:8px;font-size:13px;color:var(--color-muted);">《' + esc(c.book) + '》' + (c.chapter && c.chapter !== '—' ? ' · ' + esc(c.chapter) : '') + '</span>'
+        + '      <span style="margin-left:6px;font-size:11.5px;color:var(--color-muted);background:var(--color-bg);padding:1px 6px;border-radius:4px;border:1px solid var(--color-border);">' + esc(c.era_author || sage.name) + '</span>'
+        + '    </div>'
+        + '  </div>'
+        + '  <span class="badge ' + b.cls + '">' + b.text + '</span>'
+        + '</div>'
+        + '<div class="serif" style="font-size:18px;margin:8px 0;color:var(--color-ink);font-weight:600;">「' + esc(c.quote) + '」</div>'
+        + '<div style="font-size:13.5px;color:var(--color-ink-light);margin-bottom:6px;"><strong>白话：</strong>' + esc(c.translation) + '</div>'
+        + '<div style="font-size:13.5px;color:var(--color-ink-light);margin-bottom:8px;"><strong>视角：</strong>' + esc(c.interpretation) + '</div>'
+        + '<div style="font-size:12.5px;color:var(--color-muted);background:var(--color-bg);padding:6px 10px;border-radius:4px;border:1px solid var(--color-border);">'
+        + '<strong>版本校注：</strong>' + esc(c.edition || '通行本') + ' ｜ <strong>考据记录：</strong>' + esc(c.note)
+        + '</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  // ================= 页面初始化与事件绑定 =================
+  function setupEvents() {
+    // 1. 顶栏模式切换
+    $('tabClient').onclick = function() { switchMainMode('client'); };
+    $('tabStudio').onclick = function() { switchMainMode('studio'); };
+    $('headerBrand').onclick = function() { switchMainMode('client'); switchClientView('userHome'); };
+
+    // 2. 模态框打开与关闭
+    $('btnExplainModal').onclick = function() { $('modalExplain').classList.add('active'); };
+    $('closeExplainModal').onclick = function() { $('modalExplain').classList.remove('active'); };
+    $('btnIUnderstandExplain').onclick = function() { $('modalExplain').classList.remove('active'); };
+
+    $('btnPrivacyModal').onclick = function() { $('modalPrivacy').classList.add('active'); };
+    $('closePrivacyModal').onclick = function() { $('modalPrivacy').classList.remove('active'); };
+    $('btnIUnderstandPrivacy').onclick = function() { $('modalPrivacy').classList.remove('active'); };
+
+    // 3. 用户端首页输入交互
+    var textarea = $('userTextarea');
+    var charCount = $('charCount');
+    var submitBtn = $('btnSubmitClient');
+
+    textarea.addEventListener('input', function() {
+      var len = textarea.value.length;
+      charCount.textContent = len + ' / 600';
+      if (len >= 600) charCount.classList.add('warn');
+      else charCount.classList.remove('warn');
+
+      if (textarea.value.trim().length > 0) {
+        submitBtn.removeAttribute('disabled');
+      } else {
+        submitBtn.setAttribute('disabled', 'true');
+      }
+    });
+
+    textarea.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        if (!submitBtn.disabled) handleClientSubmit();
+      }
+    });
+
+    submitBtn.onclick = handleClientSubmit;
+
+    // 快捷推荐灵感药丸
+    Array.prototype.forEach.call(document.querySelectorAll('.inspo-pill'), function(pill) {
+      pill.onclick = function() {
+        textarea.value = pill.getAttribute('data-inspo');
+        textarea.dispatchEvent(new Event('input'));
+        textarea.focus();
+        showToast('已填入体验案例，点击「帮我理一理」即可梳理');
+      };
+    });
+
+    // 4. 结果页交互
+    $('btnResetClient').onclick = function() {
+      textarea.value = '';
+      textarea.dispatchEvent(new Event('input'));
+      appState.selectedScenario = null;
+      appState.currentResult = null;
+      appState.willingChecked = false;
+      Array.prototype.forEach.call($('scenarioGrid').children, function(c) {
+        c.setAttribute('aria-pressed', 'false');
+      });
+      switchClientView('userHome');
+    };
+
+    $('btnSafetyBack').onclick = function() {
+      switchClientView('userHome');
+    };
+
+    $('btnCopyResult').onclick = function() {
+      if (!appState.currentResult) return;
+      var r = appState.currentResult;
+      var mdText = '# 悟堂 · 四步解忧方回应\n\n'
+        + '## 01 听见了\n' + r.empathy + '\n\n'
+        + '## 02 古人有云\n' + (r.classic.quote ? '「' + r.classic.quote + '」——《' + r.classic.book + '》\n现代视角：' + r.modern_interp : r.modern_interp) + '\n\n'
+        + '## 03 试试这一招\n' + r.micro_action.headline + '\n' + r.micro_action.steps.map(function(s) { return '- ' + s; }).join('\n') + '\n\n'
+        + '## 04 读这一段\n' + r.further_reading + '\n\n'
+        + '---\n让古老智慧，用今天的人听得懂的方式活着';
+
+      navigator.clipboard.writeText(mdText).then(function() {
+        showToast('已复制完整回应到剪贴板');
+      }).catch(function() {
+        showToast('复制完成');
+      });
+    };
+
+    $('btnGenerateCard').onclick = function() {
+      if (!appState.currentResult) return;
+      var cd = prepareCardData(appState.currentResult);
+      switchClientView('userCard');
+
+      $('btnDownloadCardPng').onclick = function() {
+        var pngUrl = drawRetinaCard(cd);
+        var a = document.createElement('a');
+        var dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        a.href = pngUrl;
+        a.download = 'wutang-card-' + dateStr + '-' + appState.currentResult.case_id + '.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        showToast('已保存高清东方解忧笺图片');
+      };
+    };
+
+    $('btnReturnToResult').onclick = function() {
+      switchClientView('userResult');
+    };
+
+    $('btnCopyCardText').onclick = function() {
+      var text = $('cardTheme').textContent + '\n'
+        + $('cardQuote').textContent + '\n'
+        + $('cardSource').textContent + '\n\n'
+        + '【现代解义】' + $('cardExp').textContent + '\n\n'
+        + '【今晚微行动】' + $('cardAction').textContent + '\n\n'
+        + '—— 悟堂 · 东方解忧笺';
+      navigator.clipboard.writeText(text).then(function() {
+        showToast('已复制解忧笺文');
+      });
+    };
+
+    // 反馈提交
+    Array.prototype.forEach.call(document.querySelectorAll('.fb-btn'), function(b) {
+      b.onclick = function() {
+        Array.prototype.forEach.call(document.querySelectorAll('.fb-btn'), function(x) { x.classList.remove('selected'); });
+        b.classList.add('selected');
+        showToast('已选择：' + b.getAttribute('data-val'));
+      };
+    });
+
+    $('btnSendFeedback').onclick = function() {
+      var val = document.querySelector('.fb-btn.selected');
+      var note = $('feedbackInput').value.trim();
+      if (!val && !note) {
+        showToast('请选择是否有帮助或填写一句话');
+        return;
+      }
+      showToast('谢谢你告诉我们，我们会继续做得更温和');
+      $('feedbackInput').value = '';
+    };
+
+    // 公开共读开关
+    $('consentToggle').onchange = function(e) {
+      appState.userConsent = e.target.checked;
+      if (e.target.checked) {
+        showToast('已开启：进入匿名内容脱敏审核流程（仍需主理人审核，不自动发布）');
+      } else {
+        showToast('已关闭公开共读授权');
+      }
+    };
+
+    // ================= 主理人端事件绑定 =================
+    Array.prototype.forEach.call(document.querySelectorAll('.studio-nav-btn'), function(btn) {
+      btn.onclick = function() {
+        switchStudioTab(btn.getAttribute('data-view'));
+      };
+    });
+
+    $('btnQuickNewTask').onclick = function() { switchStudioTab('studioNewTask'); };
+    $('btnGoReview').onclick = function() { switchStudioTab('studioReview'); };
+    $('btnCancelTask').onclick = function() { switchStudioTab('studioOverview'); };
+    $('btnBackToOverview').onclick = function() { switchStudioTab('studioOverview'); };
+    $('btnPipelineToReview').onclick = function() { switchStudioTab('studioReview'); };
+
+    // 新建任务中：预置案例选择联动
+    var presetSelect = $('presetCaseSelect');
+    presetSelect.innerHTML = SYNTHETIC_CASES.map(function(sc, idx) {
+      return '<option value="' + idx + '">' + esc(sc.case_id) + ' ｜ ' + esc(sc.scenario_tag || '未定') + ' ｜ ' + snippet(sc.user_text, 20) + '</option>';
+    }).join('');
+
+    function updateNewTaskFormFromPreset(idx) {
+      var sc = SYNTHETIC_CASES[idx];
+      if (!sc) return;
+      $('taskNameInput').value = '解忧任务 · ' + sc.case_id;
+      $('taskContentText').value = sc.user_text;
+      var hasConsent = (String(sc.consent_for_public_draft).toLowerCase() === 'true');
+      $('taskConsentCheck').checked = hasConsent;
+      checkConsentBlockRule();
+    }
+
+    presetSelect.onchange = function() {
+      updateNewTaskFormFromPreset(presetSelect.value);
+    };
+
+    if (SYNTHETIC_CASES.length > 0) {
+      updateNewTaskFormFromPreset(0);
+    }
+
+    $('taskSourceSelect').onchange = function() {
+      if ($('taskSourceSelect').value === 'preset_demo') {
+        $('presetCaseGroup').classList.remove('hidden');
+      } else {
+        $('presetCaseGroup').classList.add('hidden');
+      }
+    };
+
+    // 授权阻断逻辑 (PRD 5.2 核心护栏)
+    function checkConsentBlockRule() {
+      var purposeRadio = document.querySelector('input[name="taskPurpose"]:checked');
+      var isArticle = (purposeRadio && purposeRadio.value === 'article_draft');
+      var isConsented = $('taskConsentCheck').checked;
+      var alertBox = $('taskConsentAlert');
+      var launchBtn = $('btnLaunchWorkflow');
+
+      if (isArticle && !isConsented) {
+        alertBox.classList.remove('hidden');
+        launchBtn.setAttribute('disabled', 'true');
+      } else {
+        alertBox.classList.add('hidden');
+        launchBtn.removeAttribute('disabled');
+      }
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll('input[name="taskPurpose"]'), function(r) {
+      r.onchange = checkConsentBlockRule;
+    });
+    $('taskConsentCheck').onchange = checkConsentBlockRule;
+
+    $('btnLaunchWorkflow').onclick = function() {
+      var taskId = 'WUTANG-TASK-' + Date.now().toString().slice(-4);
+      openPipelineView(taskId);
+      showToast('WorkBuddy 工作流已启动执行');
+    };
+
+    $('btnExportTaskReport').onclick = function() {
+      showToast('已导出任务执行报告 markdown 文件');
+    };
+
+    // 草稿审核切换
+    var draftSelect = $('draftCaseSelect');
+    draftSelect.onchange = function() {
+      renderStudioReview(draftSelect.value);
+    };
+
+    $('btnApproveDraft').onclick = function() {
+      showToast('已标记为「主理人审核通过」（符合发布准备，不会自动发布）');
+    };
+
+    $('btnRejectDraft').onclick = function() {
+      showToast('已记录退回修改意见，请重试相关 Skill');
+    };
+
+    $('btnExportDraftMd').onclick = function() {
+      var draft = ARTICLE_DRAFTS[appState.currentDraftKey];
+      if (!draft) return;
+      var blob = new Blob([draft.content], { type: 'text/markdown;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = appState.currentDraftKey + '_article_draft.md';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToast('已导出 Markdown 草稿文件');
+    };
+
+    // 经典库搜索与筛选
+    $('classicsSearchInput').oninput = renderClassicsList;
+    $('classicsCategoryFilter').onchange = renderClassicsList;
+    $('classicsStatusFilter').onchange = renderClassicsList;
+  }
+
+  // 启动初始化
+  function bootstrap() {
+    initScenarioChips();
+    setupEvents();
+    renderClassicsList();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootstrap);
+  } else {
+    bootstrap();
+  }
+
+})();
+</script>
+
+</body>
+</html>

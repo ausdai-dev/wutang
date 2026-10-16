@@ -1,0 +1,42 @@
+{
+  "case_id": "WUTANG-SYN-008",
+  "response_status": "ready",
+  "scenario_tag": "growth",
+  "scenario_label": "破局｜自我成长",
+  "empathy": "「换了新工作三个月，每天都很迷茫，不知…」——这种状态很多人都经历过：心里急，身体却动不了，然后因为动不了更着急。",
+  "classic_reference": {
+    "quote": "学而不思则罔，思而不学则殆。",
+    "book": "论语",
+    "chapter": "为政",
+    "source_id": "CLASSIC-023",
+    "verification_status": "verified"
+  },
+  "classic_translation": "只读书学习而不深入思考就会感到迷茫，只空想揣摩而不去实践求证就会陷入危殆不安。",
+  "classic_note": "篇章确证。",
+  "modern_interpretation": "半夜脑子停不下来的很多时候，是在「空想而未行动」中内耗。与其在头脑里空转，不如去读两页确凿的知识，或者记下明天的一个微动作。",
+  "micro_action": {
+    "title": "今晚 5 分钟微行动",
+    "headline": "今晚 5 分钟：给目标设一个「起步动作」",
+    "steps": [
+      "写下你想做但一直没开始的那件事。",
+      "把它缩小到一个 5 分钟内能做完的动作（例如：只打开文档写标题）。",
+      "现在就用 5 分钟做这一个动作，做完就算成功。",
+      "告诉自己：今天只要求启动，不要求完成。"
+    ],
+    "optional": true
+  },
+  "further_reading": "读 论语·为政。读三分钟就够。重点不是读懂，是让手先动起来。",
+  "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
+  "public_content_permission": false,
+  "engine": "rules-offline-demo",
+  "generated_at": "2026-10-16T10:20:00+08:00",
+  "privacy": {
+    "consent_status": "denied",
+    "consent_timestamp": null,
+    "redacted_text": "换了新工作三个月，每天都很迷茫，不知道这份工作到底是不是我想要的，但也不敢再辞了，怕又选错。",
+    "risk_items": [],
+    "review_required": true,
+    "allowed_next_step": "stop",
+    "notes": "未授权或授权字段缺失 = 未授权，公开内容流程终止（§3 铁律 1、2）。"
+  }
+}

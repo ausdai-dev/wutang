@@ -1,0 +1,42 @@
+{
+  "case_id": "WUTANG-SYN-001",
+  "response_status": "ready",
+  "scenario_tag": "work",
+  "scenario_label": "去班味｜职场困扰",
+  "empathy": "「领导当着全组的面说我这个方案不行，我…」——听起来你已经撑了一阵子了。你不是不想做好，是用力的地方，有一部分不该由你来扛。",
+  "classic_reference": {
+    "quote": "君子生非异也，善假于物也。",
+    "book": "荀子",
+    "chapter": "劝学",
+    "source_id": "CLASSIC-394",
+    "verification_status": "verified"
+  },
+  "classic_translation": "君子的资质本性同普通人相比并没有什么天赋异禀的神奇之处，只是善于借助和利用外在客观的工具与规律罢了。",
+  "classic_note": "劝学篇结句千古名训。",
+  "modern_interpretation": "放下对自己智力和天赋的怀疑。在这个时代，懂得利用AI工具、懂得向专业前辈求教的人，就能轻易跑赢那些闭门造车的老黄牛。",
+  "micro_action": {
+    "title": "今晚 5 分钟微行动",
+    "headline": "今晚 5 分钟：把「事实」和「评价」分开写",
+    "steps": [
+      "拿一张纸，中间画一条竖线。",
+      "左边写今天发生的、可以被第三方证实的事（谁、在什么场合、说了什么）。",
+      "右边写你当时心里的判断（「他是不是看不起我」「我是不是不行」）。",
+      "看完两栏，只对左边那一栏，写下明天你能做的最小一件事。"
+    ],
+    "optional": true
+  },
+  "further_reading": "读 荀子·劝学。读完原文那一段，再回到今天这件事上：哪些是事实，哪些是评价，哪些是你能动的。",
+  "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
+  "public_content_permission": false,
+  "engine": "rules-offline-demo",
+  "generated_at": "2026-10-16T10:20:00+08:00",
+  "privacy": {
+    "consent_status": "denied",
+    "consent_timestamp": null,
+    "redacted_text": "领导当着全组的面说我这个方案不行，我一句话没说，回家路上一直在想是不是我不适合干这行。",
+    "risk_items": [],
+    "review_required": true,
+    "allowed_next_step": "stop",
+    "notes": "未授权或授权字段缺失 = 未授权，公开内容流程终止（§3 铁律 1、2）。"
+  }
+}

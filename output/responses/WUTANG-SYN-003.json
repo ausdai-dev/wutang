@@ -1,0 +1,41 @@
+{
+  "case_id": "WUTANG-SYN-003",
+  "response_status": "ready",
+  "scenario_tag": "relation",
+  "scenario_label": "松绑｜关系困扰",
+  "empathy": "你写到「我妈每周打电话都问什么时候结婚，我说…」。难的也许不是那件事本身，而是它戳到了「我是不是不重要」这一下。",
+  "classic_reference": {
+    "quote": "天下之至柔，驰骋天下之至坚。",
+    "book": "道德经",
+    "chapter": "第四十三章",
+    "source_id": "CLASSIC-082",
+    "verification_status": "verified"
+  },
+  "classic_translation": "天下最柔和无形的东西，往往能自由驰骋贯穿天下最坚硬牢固的事物。",
+  "classic_note": "老子贵柔思想核心。",
+  "modern_interpretation": "面对尖锐的冲突和刁难，硬碰硬只会两败俱伤。像水一样保持柔软与弹性，避开直接锋芒，你反而能在最后笑看风云。",
+  "micro_action": {
+    "title": "今晚 5 分钟微行动",
+    "headline": "今晚 5 分钟：练习一句「温和而坚定」的拒绝公式",
+    "steps": [
+      "在备忘录里练习写下：「这件事我特别理解，但我这周实在精力有限，这次可能帮不上了」。",
+      "读出声音来感受一下：温和地肯定关系，清晰地表达界限。",
+      "告诉自己：拒绝一件事，不等于否定一个人，更不等于你不够好。"
+    ],
+    "optional": true
+  },
+  "further_reading": "读 道德经·第四十三章。读的时候留意一句话：这句话是在要求你改变对方，还是在帮你把话说清楚。",
+  "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
+  "public_content_permission": false,
+  "engine": "rules-offline-demo",
+  "generated_at": "2026-10-16T10:20:00+08:00",
+  "privacy": {
+    "consent_status": "denied",
+    "consent_timestamp": null,
+    "redacted_text": "我妈每周打电话都问什么时候结婚，我说了不想聊，她还是每次都提，我后来干脆不接电话了，接完又难受。",
+    "risk_items": [],
+    "review_required": true,
+    "allowed_next_step": "stop",
+    "notes": "未授权或授权字段缺失 = 未授权，公开内容流程终止（§3 铁律 1、2）。"
+  }
+}

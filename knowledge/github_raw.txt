@@ -1,0 +1,566 @@
+新建 Markdown.md
+新建 Markdown.md
+QQ浏览器万能格式查看器
+排版优化
+实时编辑和渲染模式
+分屏
+分屏对照编辑和预览模式
+保存
+打印
+使用其他应用打开
+一级标题
+二级标题
+三级标题
+四级标题
+五级标题
+六级标题
+大纲
+一、最值得研究的 8 个 GitHub 项目
+第一类：AI 心理陪伴与咨询 Agent
+1. Mental Health Support Chatbot：基于 RAG 的心理支持机器人
+2. PsychAgent：具备长期记忆与技能调用能力的心理咨询 Agent
+3. PsyChatbot：中国人群心理咨询 Agent
+二、国学经典与古籍 AI：悟堂的知识引擎
+4. XunziALLM：面向中国古籍的开源大模型
+三、WorkBuddy Skills：最快形成比赛成果的方向
+5. WorkBuddy Skills 开源归档库
+6. Awesome WorkBuddy Skills：WorkBuddy 实用技能集合
+7. Agent Skills 通用技能仓库
+四、如果希望继续把悟堂做成完整应用：Dify
+8. Dify：可视化 Agent 和 RAG 工作流平台
+五、我建议你怎样组合这些项目？
+1. 主 Agent：悟堂陪伴助手
+2. 四个专用 Skills
+3. 一个完整的使用流程
+六、最关键的一点：不要把黑客松时间花在重复造轮子上
+我的最终判断
+有，而且我搜索后发现，
+**
+GitHub 上已经有几类项目与你的「悟堂」非常接近：AI 心理陪伴 Agent、国学古籍大模型、WorkBuddy Skills 技能库，以及 AI 工作流编排平台。
+**
+不过，我目前没有找到一个已经完整实现「国学智慧 ＋ 情绪陪伴 ＋ 行动建议 ＋ 悟卡生成 ＋ 公众号内容沉淀」的现成项目。这反而说明，你可以借鉴现有项目的技术和技能，把真正有特色的产品流程组合起来。
+考虑到你要参加 ACC 2026 × WorkBuddy 黑客松，我建议优先研究下面这些项目，而不是从零开始。
+#
+一、最值得研究的 8 个 GitHub 项目
+##
+第一类：AI 心理陪伴与咨询 Agent
+这类项目最接近悟堂的核心功能。
+###
+1. Mental Health Support Chatbot：基于 RAG 的心理支持机器人
+**
+推荐指数：★★★★★
+**
+GitHub：
+[
+Divyeshb3/mental-health-chatbot
+]
+(
+https://github.com/Divyeshb3/mental-health-chatbot?utm_source=chatgpt.com
+)
+这是我建议你首先研究的项目之一。
+它使用 Gemini 2.5 Flash、ChromaDB 和 FastAPI，构建基于 RAG（检索增强生成）的心理支持聊天机器人，具有危机检测、混合检索、对话记忆以及回答来源引用等功能。(
+[
+GitHub
+]
+(
+https://github.com/Divyeshb3/mental-health-chatbot?utm_source=chatgpt.com
+"GitHub - Divyeshb3/mental-health-chatbot · GitHub"
+)
+)
+它的核心工作流大致是：
+```
+​text
+用户输入困扰
+↓
+危机检测
+↓
+问题改写
+↓
+混合检索知识库
+↓
+提取相关资料
+↓
+AI 生成回答
+↓
+返回回答及参考来源
+用户输入困扰
+↓
+危机检测
+↓
+问题改写
+↓
+混合检索知识库
+↓
+提取相关资料
+↓
+AI 生成回答
+↓
+返回回答及参考来源
+​
+```
+这套架构与悟堂有很高的相似度。
+**
+哪些功能值得直接借鉴？
+**
+现有项目的能力
+在悟堂中的应用
+情绪支持对话
+先理解用户的情绪和困境
+RAG 知识检索
+检索与问题相关的国学经典
+回答来源引用
+展示经典原文、篇章及出处
+对话记忆
+在用户授权后保留必要的交流上下文
+危机检测
+遇到自伤等高风险表达时切换至安全处理流程
+评估机制
+测试回答是否准确、相关、有帮助
+**
+我的建议：不要直接复制它的聊天机器人，而是借鉴它的检索与安全架构。
+**
+尤其值得学习的是「先检索，再生成」。悟堂涉及经典原文，不能让模型随意编造名言或把现代人的解释误当成古籍原文。
+需要注意，该项目的心理知识和危机资源具有特定地区背景，不能直接照搬其中的求助热线或安全处置方案。
+###
+2. PsychAgent：具备长期记忆与技能调用能力的心理咨询 Agent
+**
+推荐指数：★★★★☆
+**
+GitHub：
+[
+ECNU-ICALK/PsychAgent
+]
+(
+https://github.com/ECNU-ICALK/PsychAgent?utm_source=chatgpt.com
+)
+这是一个由华东师范大学相关研究团队发布的心理咨询 Agent 研究项目。
+它关注的不只是单轮回答，还涉及多轮、跨会话交流，探索如何通过记忆、显式技能调用和奖励引导的轨迹选择来改善咨询过程。(
+[
+GitHub
+]
+(
+https://github.com/ECNU-ICALK/PsychAgent?utm_source=chatgpt.com
+"GitHub - ECNU-ICALK/PsychAgent: PsychAgent: An Experience-Driven Lifelong Learning Agent for Self-Evolving Psychological Counselor · GitHub"
+)
+)
+这个方向对悟堂的长期发展有启发。
+例如，用户第一次表达：
+我最近总觉得自己做什么都不对。
+几天后又表达：
+领导今天又批评我了，我觉得自己很失败。
+如果用户已经授权悟堂保留必要的个人成长记录，那么悟堂可以在适当的时候帮助用户看见反复出现的困扰，而不是每次都从零开始交流。
+不过，需要区分两种产品：
+\
+*
+\
+*
+黑客松版本：
+\
+*
+\
+*
+完成一次困扰整理，给出经典视角和行动建议。
+\
+*
+\
+*
+长期版本：
+\
+*
+\
+*
+在充分授权的基础上，逐步形成个人成长记录，帮助用户观察自己的变化。
+第二种产品更有长期价值，但涉及更高的隐私和安全要求。
+另外，PsychAgent 是研究代码库，公开版本不包含完整论文规模的训练资产和完整的会话后技能演化流程，因此不适合直接作为两天比赛的成品使用。(
+[
+GitHub
+]
+(
+https://github.com/ECNU-ICALK/PsychAgent?utm_source=chatgpt.com
+"GitHub - ECNU-ICALK/PsychAgent: PsychAgent: An Experience-Driven Lifelong Learning Agent for Self-Evolving Psychological Counselor · GitHub"
+)
+)
+###
+3. PsyChatbot：中国人群心理咨询 Agent
+**
+推荐指数：★★★★☆
+**
+GitHub：
+[
+slptongji/PsyChatbot
+]
+(
+https://github.com/slptongji/PsyChatbot?utm_source=chatgpt.com
+)
+这是一个面向中国抑郁人群、基于认知行为疗法（CBT）研究的心理咨询 Agent，相关论文发表于 2024 年。
+仓库介绍了中文心理问答数据集 cPsychQASet，包含近 8.9 万组问答数据，以及相关代码和研究资料。(
+[
+GitHub
+]
+(
+https://github.com/slptongji/PsyChatbot?utm_source=chatgpt.com
+"GitHub - slptongji/PsyChatbot · GitHub"
+)
+)
+它可以帮助你研究：
+怎样对用户的困扰进行分类。
+如何组织心理问答知识库。
+如何设计围绕具体问题展开的交流。
+如何利用评价机制衡量回答质量。
+不过，它的研究环境涉及较早版本的 Python、TensorFlow 和 CUDA，直接复用可能需要较多适配。
+此外，心理问答数据并不等于可以随意用于商业产品的数据。若想使用其中的数据集，必须先核实数据许可、个人隐私和具体使用限制。
+**
+对悟堂而言，最值得借鉴的是问题分类与回答结构，而不是把它变成另一个心理咨询机器人。
+**
+悟堂的定位应该坚持非医疗性质的日常情绪支持和自我反思，不应宣称提供临床心理治疗。
+#
+二、国学经典与古籍 AI：悟堂的知识引擎
+这是悟堂与普通情绪陪伴 Agent 拉开差距的重要方向。
+##
+4. XunziALLM：面向中国古籍的开源大模型
+**
+推荐指数：★★★★★
+**
+GitHub：
+[
+Xunzi-LLM-of-Chinese-classics/XunziALLM
+]
+(
+https://github.com/Xunzi-LLM-of-Chinese-classics/XunziALLM?utm_source=chatgpt.com
+)
+这个项目推出了面向古籍领域的模型 XunziALLM，以及用于古籍处理与对话的 XunziChat。
+公开介绍的能力包括古籍文本理解、智能标引、信息抽取、古文翻译和自动标点等。(
+[
+GitHub
+]
+(
+https://github.com/Xunzi-LLM-of-Chinese-classics/XunziALLM?utm_source=chatgpt.com
+"GitHub - Xunzi-LLM-of-Chinese-classics/XunziALLM · GitHub"
+)
+)
+这些能力可以为悟堂提供启发。
+例如，用户说：
+我现在特别在意别人对我的评价，领导说我一句，我就会难受很久。
+悟堂不应只搜索含有「评价」或「难受」字样的古文，而应该尝试识别问题背后的主题，例如：
+自我评价与他人评价。
+对认可的依赖。
+人际关系中的执着。
+如何区分外界评价与自身行动。
+然后从经过整理和核验的经典资料中检索相关内容。
+例如，《论语》《道德经》《庄子》《孟子》等文本，可以按照原文、篇章、主题和现代解释建立知识库。
+但要注意：
+**
+古籍模型不等于已经经过验证的国学心理知识库。
+**
+模型能够解释古文，不代表它的每次解释都准确，更不意味着经典语句能够直接解决现代人的心理困扰。
+我建议将 XunziALLM 作为技术和资料处理能力的参考；比赛期间则使用规模较小、出处清晰、经过人工核验的经典资料库即可。
+该仓库标注了 Apache-2.0 许可，但如果计划复用模型权重、数据或其他第三方资源，仍需分别核对相应许可。(
+[
+GitHub
+]
+(
+https://github.com/Xunzi-LLM-of-Chinese-classics/XunziALLM?utm_source=chatgpt.com
+"GitHub - Xunzi-LLM-of-Chinese-classics/XunziALLM · GitHub"
+)
+)
+#
+三、WorkBuddy Skills：最快形成比赛成果的方向
+前面几个项目主要提供产品架构和技术思路。
+如果你的目标是两天内做出可以运行、现场能够验证的作品，我更建议把重心放在 WorkBuddy Skills 上。
+这与比赛强调的专家团、Skills、连接器、自动化和资料库等能力更加吻合。
+##
+5. WorkBuddy Skills 开源归档库
+**
+推荐指数：★★★★★，适合研究和选型
+**
+GitHub：
+[
+infometa/workbuddyskills
+]
+(
+https://github.com/infometa/workbuddyskills?utm_source=chatgpt.com
+)
+这是一个用于学习和检索 WorkBuddy、CodeBuddy 公开技能包、连接器配置、专家包和插件的仓库。
+根据仓库说明，其中收录了 295 个技能包、316 个连接器和 429 个专家插件。(
+[
+GitHub
+]
+(
+https://github.com/infometa/workbuddyskills?utm_source=chatgpt.com
+"GitHub - infometa/workbuddyskills: WorkBuddy skills / connectors / experts archive for offline study · GitHub"
+)
+)
+它最大的价值，不是让你一次性安装所有技能，而是帮助你研究：
+一个完整的 Skill 应该怎样组织。
+专家 Agent 和 Skill 如何组合。
+连接器需要什么配置。
+怎样将多个任务编排成工作流。
+如何形成可以反复使用的工作能力。
+例如，你可以从中寻找文档处理、内容创作、资料整理、研究和自动化方面的技能，用于完善悟堂的运营流程。
+**
+重要提醒：这个仓库明确声明，它是供学习和对照的归档，不允许未经授权的商业再分发。
+**
+不建议把归档内容直接打包成参赛作品或商业产品，也不要假设其中每个技能都可以直接安装。(
+[
+GitHub
+]
+(
+https://github.com/infometa/workbuddyskills?utm_source=chatgpt.com
+"GitHub - infometa/workbuddyskills: WorkBuddy skills / connectors / experts archive for offline study · GitHub"
+)
+)
+##
+6. Awesome WorkBuddy Skills：WorkBuddy 实用技能集合
+**
+推荐指数：★★★★☆
+**
+GitHub：
+[
+shuangying0001-beep/awesome-workbuddy-skills
+]
+(
+https://github.com/shuangying0001-beep/awesome-workbuddy-skills?utm_source=chatgpt.com
+)
+这个仓库专门整理了面向 WorkBuddy、Coze 等 Agent 的技能，涉及自动化、数据处理、浏览器采集、微信生态以及 Canvas、PDF 等内容生产任务。(
+[
+GitHub
+]
+(
+https://github.com/shuangying0001-beep/awesome-workbuddy-skills?utm_source=chatgpt.com
+"GitHub - shuangying0001-beep/awesome-workbuddy-skills: 精选 22 个可直接用的 AI Agent 技能：自动化/RPA、数据接入、浏览器采集、小程序全栈、Canvas 内容工厂、微信生态等 · GitHub"
+)
+)
+对悟堂而言，特别值得研究的是下面三类能力：
+**
+第一类：内容生产。
+**
+将一次交流转换为标准化的回答、文章草稿和分享卡片。
+**
+第二类：数据整理。
+**
+将获得授权的用户问题整理为结构化记录，方便后续汇总和分析。
+**
+第三类：工作流自动化。
+**
+定期汇总已审核的内容，生成公众号文章草稿或每周共读材料。
+不过，该仓库中也有浏览器反检测、自动化规避风控等技能，与悟堂核心功能关系不大。建议只筛选实际需要的部分，并在使用前检查代码、权限和来源。
+##
+7. Agent Skills 通用技能仓库
+**
+推荐指数：★★★★☆
+**
+GitHub：
+[
+spockwangs/agent-skills
+]
+(
+https://github.com/spockwangs/agent-skills?utm_source=chatgpt.com
+)
+这个仓库同时考虑 Claude Code、Cursor、CodeBuddy、Codex 和 WorkBuddy 等 Agent 工具，提供使用
+`
+SKILL.md
+`
+组织技能的实践示例。
+仓库介绍了不同工具的技能目录，并将 WorkBuddy 对应目录列为
+`
+.workbuddy/skills/
+`
+。(
+[
+GitHub
+]
+(
+https://github.com/spockwangs/agent-skills?utm_source=chatgpt.com
+"GitHub - spockwangs/agent-skills: Skills for various agents. · GitHub"
+)
+)
+它的价值在于：
+**
+你可以把悟堂设计成一组独立、可维护、可复用的技能，而不是将所有逻辑都写进一份庞大的提示词。
+**
+不过，通用技能格式不意味着所有技能可以无条件互换。实际运行时仍需检查 WorkBuddy 的工具能力、目录要求和权限配置。
+#
+四、如果希望继续把悟堂做成完整应用：Dify
+##
+8. Dify：可视化 Agent 和 RAG 工作流平台
+GitHub：
+[
+langgenius/dify
+]
+(
+https://github.com/langgenius/dify?utm_source=chatgpt.com
+)
+Dify 是一个开源的 AI 应用开发平台，提供 Agent、RAG、工作流编排及模型管理等能力，可以用于搭建知识库问答和复杂任务流程。(
+[
+GitHub
+]
+(
+https://github.com/langgenius/dify?utm_source=chatgpt.com
+"GitHub - langgenius/dify: Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack. · GitHub"
+)
+)
+假设悟堂将来需要独立的网站或小程序，可以考虑这样的架构：
+```
+​text
+前端：悟堂心事整理界面
+↓
+后端：对话与任务处理
+↓
+AI 工作流：理解问题、检索经典、生成回答
+↓
+知识库：经典原文、出处、现代解释
+↓
+数据层：用户授权、反馈、内容审核
+↓
+内容运营：悟卡、每周共读、公众号草稿
+前端：悟堂心事整理界面
+↓
+后端：对话与任务处理
+↓
+AI 工作流：理解问题、检索经典、生成回答
+↓
+知识库：经典原文、出处、现代解释
+↓
+数据层：用户授权、反馈、内容审核
+↓
+内容运营：悟卡、每周共读、公众号草稿
+​
+```
+但对于这次比赛，我不建议你把时间分散到 Dify 等另一套平台上。
+原因很简单：
+**
+比赛的核心是验证你能否用 WorkBuddy 组织一个真实、完整、可运行的工作流。
+**
+先把 WorkBuddy 版本做出来，再考虑独立应用的技术架构，会更有利于控制两天的开发范围。
+#
+五、我建议你怎样组合这些项目？
+研究完这些仓库之后，我认为悟堂最适合采用的不是某一个大型 Agent，而是：
+**
+一个主 Agent + 四个专用 Skill + 一个经过核验的国学知识库。
+**
+下面是我建议的结构。
+##
+1. 主 Agent：悟堂陪伴助手
+负责协调各个技能，管理整个任务的执行过程。
+用户只需要进入一个简单的界面，选择自己遇到的困扰，或者直接描述一句话。
+例如：
+最近总觉得自己做什么都没有意义，工作也提不起劲。
+主 Agent 负责判断接下来应该执行哪些任务，而不是直接一次性生成全部答案。
+##
+2. 四个专用 Skills
+Skill 名称
+主要任务
+关键要求
+心事理解 Skill
+理解用户的情绪、问题类型和具体困境
+先回应困扰，不急于说教
+经典检索 Skill
+从经过整理的知识库检索相关经典
+原文、出处与现代解释分开呈现
+行动建议 Skill
+提供一个适合当下的小行动
+具体、可执行，不空谈大道理
+悟卡与内容 Skill
+生成分享卡片、整理内容草稿
+用户授权、隐私保护、人工审核
+另外，我建议把安全判断作为主工作流中的强制步骤，而不是一个可有可无的功能。
+当输入涉及自伤、伤害他人或其他高风险情形时，应暂停普通的经典解释和内容生成流程，转入更适当的安全回应与专业求助引导。
+##
+3. 一个完整的使用流程
+```
+​text
+用户打开悟堂
+↓
+选择困扰类型
+↓
+输入一句心事
+↓
+主 Agent 判断问题与风险
+↓
+四个 Skills 按需执行
+├── 理解困扰
+├── 检索经典
+├── 设计行动
+└── 生成悟卡
+↓
+返回一份完整的心事整理结果
+↓
+用户反馈：有帮助 / 没有帮助
+↓
+用户自主选择是否保存、分享
+↓
+经授权的内容进入待审核区
+↓
+生成每周共读或公众号文章草稿
+用户打开悟堂
+↓
+选择困扰类型
+↓
+输入一句心事
+↓
+主 Agent 判断问题与风险
+↓
+四个 Skills 按需执行
+├── 理解困扰
+├── 检索经典
+├── 设计行动
+└── 生成悟卡
+↓
+返回一份完整的心事整理结果
+↓
+用户反馈：有帮助 / 没有帮助
+↓
+用户自主选择是否保存、分享
+↓
+经授权的内容进入待审核区
+↓
+生成每周共读或公众号文章草稿
+​
+```
+这条流程将心理支持、经典知识、行动建议和内容运营连接起来，也更容易向评委展示 WorkBuddy 的实际协作能力。
+#
+六、最关键的一点：不要把黑客松时间花在重复造轮子上
+我建议按照下面的顺序开展。
+**
+第一步：先研究
+`
+Divyeshb3/mental-health-chatbot
+`
+。
+**
+理解 RAG、来源引用和安全检测的基本流程。这能帮助你确定悟堂怎样组织知识检索与回答生成。
+**
+第二步：研究
+`
+XunziALLM
+`
+。
+**
+重点学习古籍处理、文本理解和知识整理的思路。但不需要在两天内训练自己的国学大模型。
+**
+第三步：研究 WorkBuddy Skills 相关仓库。
+**
+从中了解 Skill 的结构、工作流组织方式和可复用能力。只挑选经过检查、与任务相关的部分。
+**
+第四步：直接制作悟堂专用 Skills。
+**
+不要为了显示技术复杂度而设置过多 Agent。先确保一个问题能够完整经过处理，并生成最终的悟卡。
+**
+第五步：现场演示一条真实工作流。
+**
+例如：
+用户输入心事 → 识别问题 → 检索经过核验的经典 → 给出回应和行动建议 → 生成悟卡 → 用户授权 → 生成待审核的公众号草稿。
+这比单独展示一个聊天窗口更容易证明作品确实具有工作流能力。
+##
+我的最终判断
+目前值得你优先掌握的不是某一个现成项目，而是三种能力的组合：
+**
+心理支持 Agent 的交互与安全架构、古籍知识处理能力、WorkBuddy Skills 的流程编排。
+**
+现有开源项目已经提供了不少可研究的实现思路。悟堂不需要重新开发全部底层能力，真正需要自己定义的，是如何将经过核验的国学智慧转化为现代人能够理解、愿意尝试、可以持续使用的具体体验。
+这也应该成为悟堂参加本次黑客松最鲜明的产品特色。
+Desktop
+Tablet
+Mobile/Wechat
+标题
+更多

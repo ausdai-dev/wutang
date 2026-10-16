@@ -1,0 +1,42 @@
+{
+  "case_id": "WUTANG-SYN-010",
+  "response_status": "ready",
+  "scenario_tag": "relation",
+  "scenario_label": "松绑｜关系困扰",
+  "empathy": "你写到「看到同龄人买房结婚生子，心里就不是滋…」。难的也许不是那件事本身，而是它戳到了「我是不是不重要」这一下。",
+  "classic_reference": {
+    "quote": "人之患，在好为人师。",
+    "book": "孟子",
+    "chapter": "离娄上",
+    "source_id": "CLASSIC-344",
+    "verification_status": "verified"
+  },
+  "classic_translation": "人身上最容易犯下的顽固毛病，就在于喜欢自以为是地去充当别人的导师居高临下指指点点。",
+  "classic_note": "孟子警策名言。",
+  "modern_interpretation": "克制住想要教育批评伴侣、朋友和年轻后辈的冲动。管好自己的课题，别人没主动向你求助时，闭上嘴，是最顶级的人际分寸感。",
+  "micro_action": {
+    "title": "今晚 5 分钟微行动",
+    "headline": "今晚 5 分钟：找出你的那一条线",
+    "steps": [
+      "回想最近一次你答应了却后悔的事。",
+      "写下：你当时答应，是因为想帮，还是因为怕对方不高兴？",
+      "用一句话写下你希望对方下次知道的事（例如「我需要提前一天被告知」）。",
+      "这句话不用现在说出口，先让自己知道它在哪儿。"
+    ],
+    "optional": true
+  },
+  "further_reading": "读 孟子·离娄上。读的时候留意一句话：这句话是在要求你改变对方，还是在帮你把话说清楚。",
+  "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
+  "public_content_permission": false,
+  "engine": "rules-offline-demo",
+  "generated_at": "2026-10-16T10:20:00+08:00",
+  "privacy": {
+    "consent_status": "denied",
+    "consent_timestamp": null,
+    "redacted_text": "看到同龄人买房结婚生子，心里就不是滋味，明明知道不该比，可就是控制不住地觉得自己输了。",
+    "risk_items": [],
+    "review_required": true,
+    "allowed_next_step": "stop",
+    "notes": "未授权或授权字段缺失 = 未授权，公开内容流程终止（§3 铁律 1、2）。"
+  }
+}

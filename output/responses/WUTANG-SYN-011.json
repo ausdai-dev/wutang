@@ -1,0 +1,72 @@
+{
+  "case_id": "WUTANG-SYN-011",
+  "response_status": "ready",
+  "scenario_tag": "relation",
+  "scenario_label": "松绑｜关系困扰",
+  "empathy": "听起来你不是不在乎对方，恰恰是太在乎了，才把自己放到了最后。「我叫李小雨，在杭州一家叫云图的广告公…」。",
+  "classic_reference": {
+    "quote": "与多疑人相处，莫说私密话；与好妒人相处，莫夸得意事。",
+    "book": "呻吟语",
+    "chapter": "应酬",
+    "source_id": "CLASSIC-239",
+    "verification_status": "verified"
+  },
+  "classic_translation": "同生性猜忌多疑的人相处，千万别去吐露自己的隐私秘密私房话；同心胸狭隘容易嫉妒的人相处，千万别去炫耀吹嘘自己的得意好事。",
+  "classic_note": "篇章确证。",
+  "modern_interpretation": "在办公室里，管好自己的嘴就是最好的护身符。升职加薪了闷声做事，别在天天加班的同事面前晒幸福，保护好别人的自尊，就是保护自己。",
+  "micro_action": {
+    "title": "今晚 5 分钟微行动",
+    "headline": "今晚 5 分钟：区分「我的责任」与「对方的情绪反应」",
+    "steps": [
+      "画两个圈，内圈写「我能为这段关系做的事」，外圈写「对方的情绪与评判」。",
+      "看着外圈对自己说：对方高兴或不高兴，是他自己的功课，我无法控制也无需全责。",
+      "把力气收回到内圈，今晚给自己倒一杯温水。"
+    ],
+    "optional": true
+  },
+  "further_reading": "读 呻吟语·应酬。读的时候留意一句话：这句话是在要求你改变对方，还是在帮你把话说清楚。",
+  "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
+  "public_content_permission": true,
+  "engine": "rules-offline-demo",
+  "generated_at": "2026-10-16T10:20:00+08:00",
+  "privacy": {
+    "consent_status": "granted",
+    "consent_timestamp": "2026-10-16T09:45:00+08:00",
+    "redacted_text": "一位来访者，在一家机构做设计，有一天，我家人当着全家的面说我不懂事，家人一句话都没帮我说。",
+    "risk_items": [
+      {
+        "type": "date",
+        "original": "今年3月8号那天",
+        "replacement": "有一天",
+        "reason": "具体日期"
+      },
+      {
+        "type": "organization",
+        "original": "杭州一家叫云图的广告公司",
+        "replacement": "一家机构",
+        "reason": "可识别的单位名称"
+      },
+      {
+        "type": "person_name",
+        "original": "我叫李小雨",
+        "replacement": "一位来访者",
+        "reason": "直接姓名"
+      },
+      {
+        "type": "person_name",
+        "original": "我老公张伟",
+        "replacement": "家人",
+        "reason": "亲属称谓 + 姓名，可定位到具体个人"
+      },
+      {
+        "type": "kinship",
+        "original": "婆婆",
+        "replacement": "家人",
+        "reason": "亲属关系可缩小识别范围"
+      }
+    ],
+    "review_required": true,
+    "allowed_next_step": "draft_with_manual_review",
+    "notes": "已授权；仍须主理人逐项确认残留可识别风险后才能使用（人名替换不等于充分脱敏）。"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "WUTANG-SYN-004",
+  "response_status": "ready",
+  "scenario_tag": "relation",
+  "scenario_label": "松绑｜关系困扰",
+  "empathy": "听起来你不是不在乎对方，恰恰是太在乎了，才把自己放到了最后。「同事总把活儿推给我，我不好意思拒绝，…」。",
+  "classic_reference": {
+    "quote": "己所不欲，勿施于人。",
+    "book": "论语",
+    "chapter": "颜渊",
+    "source_id": "CLASSIC-206",
+    "verification_status": "verified"
+  },
+  "classic_translation": "自己不愿意承受的，就不要加给别人。",
+  "classic_note": "篇章确证。原文为孔子答仲弓问仁。",
+  "modern_interpretation": "这一条能解决八成的人际冲突。反过来也成立：别人不愿承担的事，你也没有义务替他扛。",
+  "micro_action": {
+    "title": "今晚 5 分钟微行动",
+    "headline": "今晚 5 分钟：给彼此留一段「留白时间」",
+    "steps": [
+      "如果今晚正处于冷战或争吵的余波中，不要急着深更半夜去讲理。",
+      "给对方发一条温和的消息：「今天我们都累了，先好好休息，明天脑子清醒了再聊」。",
+      "关掉对话窗口，今晚不纠缠，留出缓冲带。"
+    ],
+    "optional": true
+  },
+  "further_reading": "读 论语·颜渊。读的时候留意一句话：这句话是在要求你改变对方，还是在帮你把话说清楚。",
+  "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
+  "public_content_permission": true,
+  "engine": "rules-offline-demo",
+  "generated_at": "2026-10-16T10:20:00+08:00",
+  "privacy": {
+    "consent_status": "granted",
+    "consent_timestamp": "2026-10-16T09:00:00+08:00",
+    "redacted_text": "同事总把活儿推给我，我不好意思拒绝，怕他说我不合群，可答应了又后悔，觉得自己特别窝囊。",
+    "risk_items": [],
+    "review_required": true,
+    "allowed_next_step": "draft_only",
+    "notes": "已授权；仍须主理人逐项确认残留可识别风险后才能使用（人名替换不等于充分脱敏）。"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "WUTANG-SYN-007",
+  "response_status": "ready",
+  "scenario_tag": "growth",
+  "scenario_label": "破局｜自我成长",
+  "empathy": "你把这件事写下来，本身就已经是一个开始。至少你愿意面对它了。",
+  "classic_reference": {
+    "quote": "风物长宜放眼量。",
+    "book": "七律·和柳亚子先生",
+    "chapter": "—",
+    "source_id": "CLASSIC-182",
+    "verification_status": "verified"
+  },
+  "classic_translation": "世间万物与人事盛衰的波澜起伏，应当把眼光放得极其宽广长远去综合衡量打量。",
+  "classic_note": "经典格言诗句。",
+  "modern_interpretation": "别为这一个月的绩效、这一次的失利而痛不欲生。把时间轴拉长到五年、十年来看，今天的大山往往不过是漫长旅途中的一个小土坡。",
+  "micro_action": {
+    "title": "今晚 5 分钟微行动",
+    "headline": "今晚 5 分钟：设定一个「允许犯错的沙盒试验」",
+    "steps": [
+      "告诉自己：接下来的三天，我不是在做一个严肃的决定，我只是在做一个微型沙盒实验。",
+      "允许这个实验出现偏差和不完美，实验本身就是收获数据。",
+      "只给明天安排一个 10 分钟的实验探针动作。"
+    ],
+    "optional": true
+  },
+  "further_reading": "读 七律·和柳亚子先生。读三分钟就够。重点不是读懂，是让手先动起来。",
+  "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
+  "public_content_permission": true,
+  "engine": "rules-offline-demo",
+  "generated_at": "2026-10-16T10:20:00+08:00",
+  "privacy": {
+    "consent_status": "granted",
+    "consent_timestamp": "2026-10-16T09:30:00+08:00",
+    "redacted_text": "计划了半年的副业，文档建了七八个，一个都没开始。每次想动手就先觉得自己肯定做不好，然后就又拖过去了。",
+    "risk_items": [],
+    "review_required": true,
+    "allowed_next_step": "draft_only",
+    "notes": "已授权；仍须主理人逐项确认残留可识别风险后才能使用（人名替换不等于充分脱敏）。"
+  }
+}

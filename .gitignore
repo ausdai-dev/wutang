@@ -1,0 +1,89 @@
+# ==========================================
+# 悟堂·东方解忧处 - Git 忽略规则
+# ==========================================
+
+# 1. 运行与编译缓存 (Python)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+ENV/
+
+# 2. 前端与 Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# 3. 敏感信息与本地凭据
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.cert
+
+# 4. 操作系统与网盘同步文件 (针对 Windows 与百度网盘环境)
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.baidudisk*
+*.conflict*
+*（冲突）*
+* (conflicted copy *)
+
+# 5. Office 临时锁文件 (防范 Word/PPT 打开时产生的隐藏锁文件)
+~$*.docx
+~$*.pptx
+~$*.xlsx
+~$*
+.~*
+
+# 6. 编辑器与本地 IDE 配置
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# 7. 本项目特有防护与中间产物
+# 解包提取的中间缓存，不提交
+DOC/_extracted/
+
+# inbox 提问入口：只保留说明文档与占位符，忽略后续投递的真实用户输入，严防隐私泄露
+inbox/*
+!inbox/README.md
+!inbox/.gitkeep

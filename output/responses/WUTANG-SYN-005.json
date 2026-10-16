@@ -1,0 +1,41 @@
+{
+  "case_id": "WUTANG-SYN-005",
+  "response_status": "ready",
+  "scenario_tag": "night",
+  "scenario_label": "安住｜深夜反刍",
+  "empathy": "夜里停不下来，常常不是因为问题太难，是因为你太累了，累到没有力气把它想完。",
+  "classic_reference": {
+    "quote": "功成名遂身退，天之道也。",
+    "book": "道德经",
+    "chapter": "第九章",
+    "source_id": "CLASSIC-425",
+    "verification_status": "verified"
+  },
+  "classic_translation": "大功告成、名声已立，就主动收敛锋芒适时抽身而退，这是顺应天道自然的至高智慧。",
+  "classic_note": "老子功成身退核心名言。",
+  "modern_interpretation": "不要恋栈权位或者高光时刻不放。在最顶峰的时候懂得优雅谢幕、转型幕后，不仅保全了晚节，更留出了下半场的无限空间。",
+  "micro_action": {
+    "title": "今晚 5 分钟微行动",
+    "headline": "今晚 5 分钟：给「想不通」写一封明天再读的便签",
+    "steps": [
+      "如果你心里一直卡着某件事想不通，拿一张纸写下：「这件事很复杂，但现在的我太累了，思考效率极低」。",
+      "「我批准自己今晚暂时搁置思考，明天早晨醒来后再来审阅它」。",
+      "把便签折起来压在台灯下，安心闭眼。"
+    ],
+    "optional": true
+  },
+  "further_reading": "读 道德经·第九章。睡前读，读完就合上，不必写笔记。让它在夜里替你分担一点。",
+  "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
+  "public_content_permission": false,
+  "engine": "rules-offline-demo",
+  "generated_at": "2026-10-16T10:20:00+08:00",
+  "privacy": {
+    "consent_status": "denied",
+    "consent_timestamp": null,
+    "redacted_text": "白天跟人吵了一架，晚上一直在回放自己当时应该怎么回嘴，越想越气，两点还醒着。",
+    "risk_items": [],
+    "review_required": true,
+    "allowed_next_step": "stop",
+    "notes": "未授权或授权字段缺失 = 未授权，公开内容流程终止（§3 铁律 1、2）。"
+  }
+}
