@@ -3,28 +3,103 @@
   "response_status": "ready",
   "scenario_tag": "growth",
   "scenario_label": "破局｜自我成长",
+  "cards": {
+    "mindset": {
+      "card_id": "M-003",
+      "card_type": "mindset",
+      "title": "不敢开始",
+      "theme_tags": [
+        "growth",
+        "procrastination",
+        "perfectionism"
+      ],
+      "front_text": "我真正担心的是做不好，还是担心别人怎么看？",
+      "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+      "follow_up_question": "如果这件事只有你一个人知道结果、没有人会评价你，你会愿意迈出第一步吗？",
+      "related_card_ids": [
+        "W-003",
+        "A-003"
+      ],
+      "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+      "status": "active",
+      "version": "1.0"
+    },
+    "wisdom": {
+      "card_id": "W-008",
+      "card_type": "wisdom",
+      "title": "自胜者强",
+      "theme_tags": [
+        "growth",
+        "peer_pressure",
+        "comparison"
+      ],
+      "original_text": "知人者智，自知者明。胜人者有力，自胜者强。",
+      "source_title": "《道德经》",
+      "source_section": "第三十三章",
+      "source_version": "陈鼓应《老子注译及评介》（中华书局）",
+      "source_url_or_ref": "CLASSIC-023",
+      "verification_status": "verified",
+      "modern_interpretation": "能看清别人是聪慧，能认清自己才是真正明智；能战胜别人是有力量，能战胜自己的惰性与攀比心才是真正的强者。成长不是打败同龄人，而是今天的自己比昨天的自己更清晰、更有觉知。",
+      "application_note": "适合同辈竞争焦虑、在社交媒体比较中感到挫败、急于求成的情境。",
+      "caveat": "自胜不是跟自己死磕，而是温柔而坚定地接纳自我、克制盲目攀比。",
+      "related_card_ids": [
+        "M-008",
+        "A-008"
+      ],
+      "status": "active",
+      "version": "1.0"
+    },
+    "action": {
+      "card_id": "A-003",
+      "card_type": "action",
+      "title": "完成一小步",
+      "theme_tags": [
+        "growth",
+        "procrastination",
+        "perfectionism"
+      ],
+      "front_text": "把手头目标改写成一个 5 分钟内可以开始的动作。",
+      "action_instruction": "不要想整件事情有多难。只找出一件 5 分钟就能做完的最小切片（例如：打开文档写一个标题、找出一份参考资料、洗一个杯子），设个 5 分钟闹钟立即动手。",
+      "steps": [
+        "将手头大目标拆出一个 5 分钟微切片",
+        "设好 5 分钟计时器",
+        "只专注于把这个微小切片做完，做完即可停下"
+      ],
+      "estimated_minutes": 5,
+      "optional": true,
+      "alternative_action": "只做 1 分钟：哪怕只是坐在桌前把电脑打开，不用写任何字。",
+      "related_card_ids": [
+        "M-003",
+        "W-003"
+      ],
+      "status": "active",
+      "version": "1.0"
+    }
+  },
   "empathy": "你把这件事写下来，本身就已经是一个开始。至少你愿意面对它了。",
   "classic_reference": {
-    "quote": "风物长宜放眼量。",
-    "book": "七律·和柳亚子先生",
-    "chapter": "—",
-    "source_id": "CLASSIC-182",
+    "quote": "知人者智，自知者明。胜人者有力，自胜者强。",
+    "book": "道德经",
+    "chapter": "第三十三章",
+    "source_id": "CLASSIC-023",
     "verification_status": "verified"
   },
-  "classic_translation": "世间万物与人事盛衰的波澜起伏，应当把眼光放得极其宽广长远去综合衡量打量。",
-  "classic_note": "经典格言诗句。",
-  "modern_interpretation": "别为这一个月的绩效、这一次的失利而痛不欲生。把时间轴拉长到五年、十年来看，今天的大山往往不过是漫长旅途中的一个小土坡。",
+  "classic_translation": "",
+  "classic_note": "自胜不是跟自己死磕，而是温柔而坚定地接纳自我、克制盲目攀比。",
+  "modern_interpretation": "能看清别人是聪慧，能认清自己才是真正明智；能战胜别人是有力量，能战胜自己的惰性与攀比心才是真正的强者。成长不是打败同龄人，而是今天的自己比昨天的自己更清晰、更有觉知。",
   "micro_action": {
-    "title": "今晚 5 分钟微行动",
-    "headline": "今晚 5 分钟：设定一个「允许犯错的沙盒试验」",
+    "title": "完成一小步",
+    "headline": "把手头目标改写成一个 5 分钟内可以开始的动作。",
     "steps": [
-      "告诉自己：接下来的三天，我不是在做一个严肃的决定，我只是在做一个微型沙盒实验。",
-      "允许这个实验出现偏差和不完美，实验本身就是收获数据。",
-      "只给明天安排一个 10 分钟的实验探针动作。"
+      "将手头大目标拆出一个 5 分钟微切片",
+      "设好 5 分钟计时器",
+      "只专注于把这个微小切片做完，做完即可停下"
     ],
-    "optional": true
+    "estimated_minutes": 5,
+    "optional": true,
+    "alternative_action": "只做 1 分钟：哪怕只是坐在桌前把电脑打开，不用写任何字。"
   },
-  "further_reading": "读 七律·和柳亚子先生。读三分钟就够。重点不是读懂，是让手先动起来。",
+  "further_reading": "读 《道德经》·第三十三章。读三分钟就够。重点不是读懂，是让手先动起来。",
   "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
   "public_content_permission": true,
   "engine": "rules-offline-demo",

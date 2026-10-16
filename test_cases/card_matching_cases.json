@@ -1,0 +1,103 @@
+[
+  {
+    "case_id": "CARD-TEST-001",
+    "theme_tag": "work",
+    "user_text": "领导当着全组的面说我这个方案不行，回家路上一直在想是不是我不适合干这行。",
+    "change_target": null,
+    "current_cards": {},
+    "expected_scenario": "work",
+    "expected_mindset_in": ["M-004", "M-005"],
+    "expected_wisdom_in": ["W-004", "W-005"],
+    "expected_action_in": ["A-004", "A-005"],
+    "verify_status_must_be": "verified",
+    "test_purpose": "验证职场主题下三张牌的匹配准确性与出处核验"
+  },
+  {
+    "case_id": "CARD-TEST-002",
+    "theme_tag": "relation",
+    "user_text": "同事总把活儿推给我，我不好意思拒绝，怕他说我不合群，可答应了又后悔，觉得自己特别窝囊。",
+    "change_target": null,
+    "current_cards": {},
+    "expected_scenario": "relation",
+    "expected_mindset_in": ["M-001", "M-006"],
+    "expected_wisdom_in": ["W-001", "W-006"],
+    "expected_action_in": ["A-002", "A-006"],
+    "verify_status_must_be": "verified",
+    "test_purpose": "验证关系边界主题下三张牌的匹配准确性与出处核验"
+  },
+  {
+    "case_id": "CARD-TEST-003",
+    "theme_tag": "night",
+    "user_text": "躺在床上反复想白天说错的那句话，两点还醒着，脑子停不下来。",
+    "change_target": null,
+    "current_cards": {},
+    "expected_scenario": "night",
+    "expected_mindset_in": ["M-002", "M-007"],
+    "expected_wisdom_in": ["W-002", "W-007"],
+    "expected_action_in": ["A-001", "A-007"],
+    "verify_status_must_be": "verified",
+    "test_purpose": "验证深夜反刍主题下三张牌的匹配准确性与出处核验"
+  },
+  {
+    "case_id": "CARD-TEST-004",
+    "theme_tag": "growth",
+    "user_text": "计划了半年的副业建了七八个文档，每次想动手就怕做不好，拖了半年没动。",
+    "change_target": null,
+    "current_cards": {},
+    "expected_scenario": "growth",
+    "expected_mindset_in": ["M-003", "M-008"],
+    "expected_wisdom_in": ["W-003", "W-008"],
+    "expected_action_in": ["A-003", "A-008"],
+    "verify_status_must_be": "verified",
+    "test_purpose": "验证自我成长拖延主题下三张牌的匹配准确性与出处核验"
+  },
+  {
+    "case_id": "CARD-TEST-005",
+    "theme_tag": "",
+    "user_text": "干了很多年，突然提不起劲，想走又不敢，怕失败、怕失去稳定，不知道到底该不该动。",
+    "change_target": null,
+    "current_cards": {},
+    "expected_scenario": "work",
+    "expected_mindset_in": ["M-004", "M-005"],
+    "expected_wisdom_in": ["W-004", "W-005"],
+    "expected_action_in": ["A-004", "A-005"],
+    "verify_status_must_be": "verified",
+    "test_purpose": "验证未传场景标签时的自动语义场景定位与卡牌匹配"
+  },
+  {
+    "case_id": "CARD-TEST-006",
+    "theme_tag": "relation",
+    "user_text": "总是不好意思拒绝别人",
+    "change_target": "mindset",
+    "current_cards": { "mindset": "M-001" },
+    "expected_scenario": "relation",
+    "expected_exclude": "M-001",
+    "expected_mindset_in": ["M-006"],
+    "verify_status_must_be": "verified",
+    "test_purpose": "验证换一张心境牌时不会返回相同卡牌（T-03 换牌无缝切换）"
+  },
+  {
+    "case_id": "CARD-TEST-007",
+    "theme_tag": "work",
+    "user_text": "工作压力很大，很疲惫",
+    "change_target": "action",
+    "current_cards": { "action": "A-004" },
+    "expected_scenario": "work",
+    "expected_exclude": "A-004",
+    "expected_action_in": ["A-005"],
+    "verify_status_must_be": "verified",
+    "test_purpose": "验证换一个行动时返回同主题替代行动（T-07 行动自主性）"
+  },
+  {
+    "case_id": "CARD-TEST-008",
+    "theme_tag": "night",
+    "user_text": "深夜睡不着",
+    "change_target": "wisdom",
+    "current_cards": { "wisdom": "W-002" },
+    "expected_scenario": "night",
+    "expected_exclude": "W-002",
+    "expected_wisdom_in": ["W-007"],
+    "verify_status_must_be": "verified",
+    "test_purpose": "验证换一张智慧牌时从已核验智慧池中切换（T-06 经典出处）"
+  }
+]

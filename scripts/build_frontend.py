@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-悟堂·东方解忧处 —— 前端构建脚本
-把 knowledge/classics.json + frontend/assets/wutang-data.json 内联进
-frontend/_template.html，产出**单文件、可离线打开**的 frontend/index.html。
-
-为什么内联：浏览器在 file:// 下会拦截 fetch() 读取本地 JSON（CORS），
-内联可保证「双击打开就能跑」，对应验收点 A-08 / A-12（故障降级）。
+悟堂·东方解忧处 —— 前端构建脚本 (PRD 2.0 卡牌融合版)
+把 classics.json + wutang-data.json + cards_mindset/wisdom/action.json 内联进
+frontend/_template.html，产出单文件、可离线双击打开运行的 frontend/index.html。
 """
 import json
 import os
@@ -18,6 +15,14 @@ def main():
         classics = json.load(f)
     with open(os.path.join(ROOT, "frontend", "assets", "wutang-data.json"), encoding="utf-8") as f:
         wd = json.load(f)
+
+    # 加载 PRD 2.0 基础卡牌库
+    with open(os.path.join(ROOT, "knowledge", "cards_mindset.json"), encoding="utf-8") as f:
+        cards_mindset = json.load(f)
+    with open(os.path.join(ROOT, "knowledge", "cards_wisdom.json"), encoding="utf-8") as f:
+        cards_wisdom = json.load(f)
+    with open(os.path.join(ROOT, "knowledge", "cards_action.json"), encoding="utf-8") as f:
+        cards_action = json.load(f)
 
     cases = []
     cases_path = os.path.join(ROOT, "test_cases", "synthetic_normal_cases.csv")
@@ -56,6 +61,9 @@ def main():
         syntheticCases=cases,
         articleDrafts=drafts,
         sageAvatars=sage_avatars,
+        cardsMindset=cards_mindset,
+        cardsWisdom=cards_wisdom,
+        cardsAction=cards_action,
     )
     # 内联时避免 </script> 破坏 HTML
     blob = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
@@ -74,6 +82,7 @@ def main():
 
     print(f"[ok] frontend/index.html  {len(html):,} 字符（数据已内联，可离线打开）")
     print(f"     语料 {len(classics)} 条 / 场景 {len(payload['scenarios'])} 个 / "
+          f"卡牌库 {len(cards_mindset)}+{len(cards_wisdom)}+{len(cards_action)} 张 / "
           f"高危词 {len(payload['riskHigh'])} / 复核词 {len(payload['riskReview'])}")
 
 

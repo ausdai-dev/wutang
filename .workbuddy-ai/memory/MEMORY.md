@@ -10,18 +10,22 @@
 ## 目录约定
 
 ```
-knowledge/     资料库 A（经典语料）+ B（品牌与安全规则）
+knowledge/     资料库 A（经典语料 500 条）+ B（品牌与安全规则）+ 原始素材 *_raw.txt
 .workbuddy-ai/skills/   4 个核心 Skill（项目级）
 frontend/      index.html 为构建产物；改样式/逻辑要改 _template.html 再跑 build_frontend.py
 scripts/       build_knowledge.py → build_frontend.py → wutang_pipeline.py（按此顺序）
-test_cases/    三份 CSV
-output/        responses / cards / article_drafts / qa_reports
+               gen_part1..7.py + knowledge_corpus/  语料扩充流水线（生成 500 条）
+               make_sage_avatars.py  先贤头像生成
+test_cases/    四份 CSV（synthetic_normal / citation / safety / consent）
+output/        responses / cards / article_drafts / qa_reports / weekly
 inbox/         待处理提问入口（自动化工作流读取）
 mcp/           wutang-kb-server.js 本地 MCP 连接器
 docs/          演示脚本 + 截图
 ```
 
 **重要**：`frontend/index.html` 是**生成物**，不要直接改；改 `frontend/_template.html` 后重跑 `build_frontend.py`。
+数据通过 `<script id="wutang-data" type="application/json">` 内联（构建后约 750KB），页面用 `JSON.parse` 读取。
+前端是**双模式单页**：用户端（`clientArea`，四步回应 + 解忧笺）+ 主理人端（studio，概览 / 复核 / 流水线）。
 
 ## 不可妥协的规则（写死在 safety_rules.md，优先级最高）
 
@@ -31,8 +35,9 @@ docs/          演示脚本 + 截图
 4. **同意分享个人卡片 ≠ 同意公开原始问题。**
 5. **公开内容一律「待主理人审核」，不自动发布。**
 6. **高风险案例永不进入公开内容生成**，即使已授权。
+   **边界案例（`review`：涉未成年人 / 医疗用药 / 精神科 / 玄学诉求）同样不进入，授权不改变结论。**
 7. **不宣称 100% 识别危机、不宣称引文 100% 准确。**
-8. **不生成伪造用户数量**；样本少时用定性描述。
+8. **不生成伪造用户数量**；样本少时用定性描述。**低于披露阈值时任何计数都是泄露**（连「出现于 1 条」都不行）。
 9. **卡片不含原始倾诉与任何 PII。**
 
 ## 数据纪律
@@ -46,8 +51,21 @@ docs/          演示脚本 + 截图
 
 - 前端与 `wutang_pipeline.py` 是**确定性规则引擎**，不调大模型 —— 用于离线降级、回归测试、
   「同一输入产出同一结果」的可验证性。完整版由 WorkBuddy 专家团生成。
+- 语料规模：**500 条**（verified 483 / needs_review 7 / not_found 10），风险词 48 + 复核词 70 + 正则 12 条。
 - 风险分流是**关键词 + 正则双轨兜底**，不是语义理解。正式部署必须叠加模型判断 + 人工复核测试集。
 - 修改风险词表后，**必须重跑 `wutang_pipeline.py`** 并检查 `output/qa_reports/safety_report.md` 的通过数。
+
+## 一键运行（完整链路）
+
+```bash
+PY="C:/Users/ausda/.workbuddy-ai/binaries/python/versions/3.13.12/python.exe"
+"$PY" scripts/build_knowledge.py   # 500 条语料 → classics.csv/json
+"$PY" scripts/build_frontend.py    # 数据内联 → index.html（约 750KB）
+"$PY" scripts/wutang_pipeline.py   # 四步回归：风险 / 引用 / 授权 / 案例 → output/
+```
+
+当前基线（2026-10-16）：风险 **14/14** ｜ 引用 **35/35** ｜ 授权 **7/7** ｜ 案例 11 条（草稿 3 份）。
+**任一项不是全绿就说明改动引入了回归。**
 
 ## 专家团
 

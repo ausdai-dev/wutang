@@ -1,0 +1,154 @@
+[
+  {
+    "card_id": "A-001",
+    "card_type": "action",
+    "title": "暂停一下",
+    "theme_tags": ["night", "overthinking", "stress"],
+    "front_text": "写下此刻最占据注意力的一件事，并在旁边标出「现在可做 / 暂时不可控」。",
+    "action_instruction": "拿出一张纸或手机备忘录，用一句话写下脑中最烦人的念头，并在旁边打上「今晚可做」或「暂时不可控」。对于不可控的，告诉自己明天 9 点后再看。",
+    "steps": [
+      "写下此刻最占脑容量的一件事",
+      "标出它是「现在可做」还是「暂时不可控」",
+      "对于不可控的事，允许自己留到明天再面对"
+    ],
+    "estimated_minutes": 3,
+    "optional": true,
+    "alternative_action": "做 5 次深呼吸，每次呼气时有意识地放松耸起的肩膀。",
+    "related_card_ids": ["M-002", "W-002"],
+    "status": "active",
+    "version": "1.0"
+  },
+  {
+    "card_id": "A-002",
+    "card_type": "action",
+    "title": "给自己一点时间",
+    "theme_tags": ["relation", "boundaries", "people_pleasing"],
+    "front_text": "下次遇到需要立即答应的请求时，先说「我考虑一下，再回复你」。",
+    "action_instruction": "在下一次有人向你提出请求或任务时，不要脱口而出「好的」，深呼吸一秒，温和地说：「我先看一下手头日程，稍后回复你。」为自己争取至少 5 分钟的思考间隙。",
+    "steps": [
+      "遇到请求时暂停 3 秒，不立刻答应",
+      "回复一句缓冲语：「我先确认下手头安排，稍后回复你」",
+      "私下评估自己的真实精力与意愿，再做决定"
+    ],
+    "estimated_minutes": 1,
+    "optional": true,
+    "alternative_action": "如果已经答应了，允许自己发消息补充：「我刚才看了下时间，可能只能协助部分内容」。",
+    "related_card_ids": ["M-001", "W-001"],
+    "status": "active",
+    "version": "1.0"
+  },
+  {
+    "card_id": "A-003",
+    "card_type": "action",
+    "title": "完成一小步",
+    "theme_tags": ["growth", "procrastination", "perfectionism"],
+    "front_text": "把手头目标改写成一个 5 分钟内可以开始的动作。",
+    "action_instruction": "不要想整件事情有多难。只找出一件 5 分钟就能做完的最小切片（例如：打开文档写一个标题、找出一份参考资料、洗一个杯子），设个 5 分钟闹钟立即动手。",
+    "steps": [
+      "将手头大目标拆出一个 5 分钟微切片",
+      "设好 5 分钟计时器",
+      "只专注于把这个微小切片做完，做完即可停下"
+    ],
+    "estimated_minutes": 5,
+    "optional": true,
+    "alternative_action": "只做 1 分钟：哪怕只是坐在桌前把电脑打开，不用写任何字。",
+    "related_card_ids": ["M-003", "W-003"],
+    "status": "active",
+    "version": "1.0"
+  },
+  {
+    "card_id": "A-004",
+    "card_type": "action",
+    "title": "说出需要",
+    "theme_tags": ["work", "burnout", "self_care"],
+    "front_text": "写下一句自己想表达的真实需要，先不要求自己立刻发送给对方。",
+    "action_instruction": "如果一件事情让你不堪重负，在私密备忘录里诚实写下一句话：「我现在真正需要的是……（比如：多一天时间 / 减少一项非核心工作 / 休息半小时）」。看见需要是解决的第一步。",
+    "steps": [
+      "在私密处写下「我此刻真正需要的是……」",
+      "诚实面对自己的身体极限",
+      "挑选一个合适的时机温和地向相关方提出"
+    ],
+    "estimated_minutes": 3,
+    "optional": true,
+    "alternative_action": "关掉一个不需要立刻关注的工作群通知 30 分钟。",
+    "related_card_ids": ["M-004", "W-004"],
+    "status": "active",
+    "version": "1.0"
+  },
+  {
+    "card_id": "A-005",
+    "card_type": "action",
+    "title": "分清事实与评价",
+    "theme_tags": ["work", "criticism", "self_blame"],
+    "front_text": "拿出一张纸中间画线：左边写客观发生的事实，右边写心中的自我评价。",
+    "action_instruction": "左边写：领导具体说了哪句话、在哪个时间；右边写：你脑中浮现的「我很没用」「他讨厌我」等推测。写完后对右边说一句「这只是我的想象，不是定论」。",
+    "steps": [
+      "纸上画一条竖线分成两半",
+      "左栏只写真实发生、能被录音确认的客观事实",
+      "右栏写自我批评，并打上问号"
+    ],
+    "estimated_minutes": 5,
+    "optional": true,
+    "alternative_action": "站起来去接一杯温水，慢慢喝下，感受水流过喉咙的温热。",
+    "related_card_ids": ["M-005", "W-005"],
+    "status": "active",
+    "version": "1.0"
+  },
+  {
+    "card_id": "A-006",
+    "card_type": "action",
+    "title": "练习温和拒绝",
+    "theme_tags": ["relation", "fear_of_rejection", "boundaries"],
+    "front_text": "在手机里保存一条温和坚定的话术模板，为边界发声。",
+    "action_instruction": "写下并读一遍这句模板：「我很想帮你，不过我目前手头的进度确实很满，这次实在无法分担，希望你理解。」把这段话存为输入法快捷语或备忘录。",
+    "steps": [
+      "阅读温和拒绝模板",
+      "根据自己的口吻稍作微调",
+      "存入手机备忘录作为备用护盾"
+    ],
+    "estimated_minutes": 2,
+    "optional": true,
+    "alternative_action": "默念三次：「拒绝一件事，不等于否定一个人。」",
+    "related_card_ids": ["M-006", "W-006"],
+    "status": "active",
+    "version": "1.0"
+  },
+  {
+    "card_id": "A-007",
+    "card_type": "action",
+    "title": "关照呼吸卸下紧绷",
+    "theme_tags": ["night", "future_anxiety", "control"],
+    "front_text": "把手机屏幕朝下扣在桌上，闭上眼做 3 组慢速深呼吸。",
+    "action_instruction": "吸气 4 秒，屏住 2 秒，呼气 6 秒。在每一次长长的呼气里，有意识地让咬紧的后槽牙松开，让高耸的双肩沉下去，告诉身体：今晚已经安全了。",
+    "steps": [
+      "手机息屏朝下放置",
+      "闭目进行 4-2-6 节奏呼吸",
+      "有意识地放松下颌与双肩"
+    ],
+    "estimated_minutes": 3,
+    "optional": true,
+    "alternative_action": "用温水洗一下脸，感受水温带走面部紧绷感。",
+    "related_card_ids": ["M-007", "W-007"],
+    "status": "active",
+    "version": "1.0"
+  },
+  {
+    "card_id": "A-008",
+    "card_type": "action",
+    "title": "记录微小进步",
+    "theme_tags": ["growth", "peer_pressure", "comparison"],
+    "front_text": "写下今天完成的任意一件微小成果，对自己说一句「辛苦了」。",
+    "action_instruction": "哪怕只是今天准时起了床、吃了一顿健康的早餐、或者在很累的时候依然认真洗了碗，都算。写在便利贴上，贴在看得见的地方，认可自己一步一步的努力。",
+    "steps": [
+      "找到今天做成的一件最小的事情",
+      "写下一句话肯定自己的付出",
+      "放下社交媒体 15 分钟"
+    ],
+    "estimated_minutes": 3,
+    "optional": true,
+    "alternative_action": "对自己微笑一下，承认自己的价值不依赖任何外在比较。",
+    "related_card_ids": ["M-008", "W-008"],
+    "status": "active",
+    "version": "1.0"
+  }
+]

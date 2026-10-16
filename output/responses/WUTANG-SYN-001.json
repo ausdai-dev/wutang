@@ -3,29 +3,103 @@
   "response_status": "ready",
   "scenario_tag": "work",
   "scenario_label": "去班味｜职场困扰",
+  "cards": {
+    "mindset": {
+      "card_id": "M-004",
+      "card_type": "mindset",
+      "title": "已经很累了",
+      "theme_tags": [
+        "work",
+        "burnout",
+        "self_care"
+      ],
+      "front_text": "如果今天不再多承担一点，会发生什么？",
+      "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+      "follow_up_question": "此刻压在你心上的所有事情里，哪一件其实可以先放一放？",
+      "related_card_ids": [
+        "W-004",
+        "A-004"
+      ],
+      "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+      "status": "active",
+      "version": "1.0"
+    },
+    "wisdom": {
+      "card_id": "W-005",
+      "card_type": "wisdom",
+      "title": "人不知而不愠",
+      "theme_tags": [
+        "work",
+        "criticism",
+        "self_blame"
+      ],
+      "original_text": "人不知而不愠，不亦君子乎？",
+      "source_title": "《论语》",
+      "source_section": "学而",
+      "source_version": "杨伯峻《论语译注》（中华书局）",
+      "source_url_or_ref": "CLASSIC-005",
+      "verification_status": "verified",
+      "modern_interpretation": "别人不理解我、评价我不好，我心里也不怨恨恼怒，这不就是有德行的人吗？外界的批评常常夹杂着对方的情绪与局限，分清客观反馈与主观苛责，不把别人的评价当成衡量自我价值的唯一法官。",
+      "application_note": "适合被领导批评、同事误解、工作中遭遇负面评价引发自我怀疑的情境。",
+      "caveat": "不愠并非傲慢或拒绝改进，而是情绪独立，把事实反思与自尊保护区分开来。",
+      "related_card_ids": [
+        "M-005",
+        "A-005"
+      ],
+      "status": "active",
+      "version": "1.0"
+    },
+    "action": {
+      "card_id": "A-004",
+      "card_type": "action",
+      "title": "说出需要",
+      "theme_tags": [
+        "work",
+        "burnout",
+        "self_care"
+      ],
+      "front_text": "写下一句自己想表达的真实需要，先不要求自己立刻发送给对方。",
+      "action_instruction": "如果一件事情让你不堪重负，在私密备忘录里诚实写下一句话：「我现在真正需要的是……（比如：多一天时间 / 减少一项非核心工作 / 休息半小时）」。看见需要是解决的第一步。",
+      "steps": [
+        "在私密处写下「我此刻真正需要的是……」",
+        "诚实面对自己的身体极限",
+        "挑选一个合适的时机温和地向相关方提出"
+      ],
+      "estimated_minutes": 3,
+      "optional": true,
+      "alternative_action": "关掉一个不需要立刻关注的工作群通知 30 分钟。",
+      "related_card_ids": [
+        "M-004",
+        "W-004"
+      ],
+      "status": "active",
+      "version": "1.0"
+    }
+  },
   "empathy": "「领导当着全组的面说我这个方案不行，我…」——听起来你已经撑了一阵子了。你不是不想做好，是用力的地方，有一部分不该由你来扛。",
   "classic_reference": {
-    "quote": "君子生非异也，善假于物也。",
-    "book": "荀子",
-    "chapter": "劝学",
-    "source_id": "CLASSIC-394",
+    "quote": "人不知而不愠，不亦君子乎？",
+    "book": "论语",
+    "chapter": "学而",
+    "source_id": "CLASSIC-005",
     "verification_status": "verified"
   },
-  "classic_translation": "君子的资质本性同普通人相比并没有什么天赋异禀的神奇之处，只是善于借助和利用外在客观的工具与规律罢了。",
-  "classic_note": "劝学篇结句千古名训。",
-  "modern_interpretation": "放下对自己智力和天赋的怀疑。在这个时代，懂得利用AI工具、懂得向专业前辈求教的人，就能轻易跑赢那些闭门造车的老黄牛。",
+  "classic_translation": "",
+  "classic_note": "不愠并非傲慢或拒绝改进，而是情绪独立，把事实反思与自尊保护区分开来。",
+  "modern_interpretation": "别人不理解我、评价我不好，我心里也不怨恨恼怒，这不就是有德行的人吗？外界的批评常常夹杂着对方的情绪与局限，分清客观反馈与主观苛责，不把别人的评价当成衡量自我价值的唯一法官。",
   "micro_action": {
-    "title": "今晚 5 分钟微行动",
-    "headline": "今晚 5 分钟：把「事实」和「评价」分开写",
+    "title": "说出需要",
+    "headline": "写下一句自己想表达的真实需要，先不要求自己立刻发送给对方。",
     "steps": [
-      "拿一张纸，中间画一条竖线。",
-      "左边写今天发生的、可以被第三方证实的事（谁、在什么场合、说了什么）。",
-      "右边写你当时心里的判断（「他是不是看不起我」「我是不是不行」）。",
-      "看完两栏，只对左边那一栏，写下明天你能做的最小一件事。"
+      "在私密处写下「我此刻真正需要的是……」",
+      "诚实面对自己的身体极限",
+      "挑选一个合适的时机温和地向相关方提出"
     ],
-    "optional": true
+    "estimated_minutes": 3,
+    "optional": true,
+    "alternative_action": "关掉一个不需要立刻关注的工作群通知 30 分钟。"
   },
-  "further_reading": "读 荀子·劝学。读完原文那一段，再回到今天这件事上：哪些是事实，哪些是评价，哪些是你能动的。",
+  "further_reading": "读 《论语》·学而。读完原文那一段，再回到今天这件事上：哪些是事实，哪些是评价，哪些是你能动的。",
   "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
   "public_content_permission": false,
   "engine": "rules-offline-demo",

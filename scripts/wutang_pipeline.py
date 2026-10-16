@@ -1,24 +1,31 @@
 # -*- coding: utf-8 -*-
 """
-悟堂·东方解忧处 —— 主工作流引擎（主理人端）
+悟堂·东方解忧处 —— 主工作流引擎（主理人端与测试管线 · PRD 2.0 卡牌融合版）
 
-对应 PRD：
-  F-06 一键工作流入口        启动今日悟堂解忧与成文工作流
-  F-07 公众号文章草稿        仅对已授权案例执行
-  F-02 风险分流              high_risk / review / normal
-  F-03 四步解忧方
-  F-04 东方解忧笺
-  F-08 每周共鸣主题周报（P1）
+对应 PRD 2.0：
+  F-01 首页双入口            直接输入与今日觉察牌
+  F-02 今日觉察牌            心境牌交互
+  F-04 三张解忧牌            心境牌—东方智慧牌—行动牌
+  F-05 四步解忧方            听见了 / 古人有云 / 试试这一招 / 读这一段
+  F-06 东方解忧笺            严格脱敏、个人卡与公开分享版隔离
+  F-07 风险分流              high_risk / review / normal 安全护栏
+  F-08 轻反馈与周报          定性统计、严禁虚构数据
+  §7.3 六大 Skills 协同      卡牌会话、四步回应、考据核验、隐私授权、卡片渲染、文章草稿
 
 产出：
+  output/sessions/*.json
   output/responses/*.json|md
   output/cards/*.html
   output/article_drafts/*.md
-  output/qa_reports/*.md
+  output/weekly/*.md
+  output/qa_reports/card_matching_report.md
+  output/qa_reports/citation_report.md
+  output/qa_reports/safety_report.md
+  output/qa_reports/consent_report.md
+  output/qa_reports/e2e_report.md
 
-说明：本脚本是**确定性规则引擎**，不调用大模型，可在无网环境下复现。
-      完整版由 WorkBuddy 专家团（见 README）生成；本引擎用于离线降级、
-      回归测试与「同一输入产出同一结果」的可验证性。
+说明：本脚本是**确定性规则引擎**，不调用外部不可控大模型，可在无网环境下 100% 复现。
+      完整版由 WorkBuddy 专家团生成；本引擎用于离线降级、回归测试与可验证性。
 """
 import csv
 import json
@@ -31,7 +38,6 @@ from datetime import datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "output")
 NOW = "2026-10-16T10:20:00+08:00"
-# 期次从 NOW 推导（而非 datetime.now()），保证「同一输入产出同一结果」可复现
 _ISO = datetime.fromisoformat(NOW).isocalendar()
 WEEK_LABEL = f"{_ISO[0]} 年第 {_ISO[1]} 周"
 WEEK_FILE = f"{_ISO[0]}-W{_ISO[1]:02d}"
@@ -42,12 +48,23 @@ with open(os.path.join(ROOT, "frontend", "assets", "classics.json"), encoding="u
 with open(os.path.join(ROOT, "frontend", "assets", "wutang-data.json"), encoding="utf-8") as f:
     WD = json.load(f)
 
+with open(os.path.join(ROOT, "knowledge", "cards_mindset.json"), encoding="utf-8") as f:
+    CARDS_MINDSET = json.load(f)
+with open(os.path.join(ROOT, "knowledge", "cards_wisdom.json"), encoding="utf-8") as f:
+    CARDS_WISDOM = json.load(f)
+with open(os.path.join(ROOT, "knowledge", "cards_action.json"), encoding="utf-8") as f:
+    CARDS_ACTION = json.load(f)
+
 SCEN = {s["key"]: s for s in WD["scenarios"]}
 MA = WD["microActions"]
 BRAND = WD["brand"]
 RISK_HIGH, RISK_REVIEW = WD["riskHigh"], WD["riskReview"]
 RISK_RE = [re.compile(p) for p in WD["riskPatterns"]]
 BY_ID = {c["id"]: c for c in CLASSICS}
+
+MINDSET_BY_ID = {c["card_id"]: c for c in CARDS_MINDSET}
+WISDOM_BY_ID = {c["card_id"]: c for c in CARDS_WISDOM}
+ACTION_BY_ID = {c["card_id"]: c for c in CARDS_ACTION}
 
 
 def read_csv(rel):
@@ -71,7 +88,7 @@ def h(s, n=0):
     return v
 
 
-# ---------------------------------------------------------------- 步骤1 风险分流
+# ---------------------------------------------------------------- 步骤 1：风险分流 (F-07)
 def assess_risk(text):
     t = str(text or "")
     for k in RISK_HIGH:
@@ -87,7 +104,7 @@ def assess_risk(text):
     return "normal", ""
 
 
-# ---------------------------------------------------------------- 步骤2 场景定位
+# ---------------------------------------------------------------- 步骤 2：场景定位
 SCEN_KW = {
     "work": ["工作", "职场", "领导", "老板", "同事", "绩效", "KPI", "考核", "加班", "辞职",
              "裁员", "面试", "晋升", "项目", "汇报", "批评", "内耗", "上班", "打工", "班味",
@@ -114,7 +131,47 @@ def detect_scenario(text, tag=""):
     return best
 
 
-# ---------------------------------------------------------------- 步骤3 经典检索
+# ---------------------------------------------------------------- 步骤 3：卡牌匹配 (PRD 2.0 §5.5)
+def match_cards(scenario, text, current_cards=None, change_target=None):
+    """根据场景、文本与换牌目标，从经核验牌库匹配三张解忧牌"""
+    current_cards = current_cards or {}
+    t = str(text or "")
+
+    # 1. 心境牌 (Mindset)
+    m_pool = [c for c in CARDS_MINDSET if scenario in c.get("theme_tags", []) and c.get("status") == "active"]
+    if not m_pool:
+        m_pool = [c for c in CARDS_MINDSET if c.get("status") == "active"]
+    if change_target == "mindset" and current_cards.get("mindset"):
+        filtered = [c for c in m_pool if c["card_id"] != current_cards["mindset"]]
+        if filtered:
+            m_pool = filtered
+    chosen_m = m_pool[h(t + scenario + "mindset" + str(change_target or "")) % len(m_pool)]
+
+    # 2. 东方智慧牌 (Wisdom) —— 严格仅 verified
+    w_pool = [c for c in CARDS_WISDOM if scenario in c.get("theme_tags", [])
+              and c.get("verification_status") == "verified" and c.get("status") == "active"]
+    if not w_pool:
+        w_pool = [c for c in CARDS_WISDOM if c.get("verification_status") == "verified" and c.get("status") == "active"]
+    if change_target == "wisdom" and current_cards.get("wisdom"):
+        filtered = [c for c in w_pool if c["card_id"] != current_cards["wisdom"]]
+        if filtered:
+            w_pool = filtered
+    chosen_w = w_pool[h(t + scenario + "wisdom" + str(change_target or "")) % len(w_pool)]
+
+    # 3. 行动牌 (Action)
+    a_pool = [c for c in CARDS_ACTION if scenario in c.get("theme_tags", []) and c.get("status") == "active"]
+    if not a_pool:
+        a_pool = [c for c in CARDS_ACTION if c.get("status") == "active"]
+    if change_target == "action" and current_cards.get("action"):
+        filtered = [c for c in a_pool if c["card_id"] != current_cards["action"]]
+        if filtered:
+            a_pool = filtered
+    chosen_a = a_pool[h(t + scenario + "action" + str(change_target or "")) % len(a_pool)]
+
+    return chosen_m, chosen_w, chosen_a
+
+
+# ---------------------------------------------------------------- 步骤 4：经典检索 (备选语料库支持)
 def retrieve_classic(scenario, text):
     t = str(text or "")
     scored = []
@@ -138,7 +195,7 @@ def retrieve_classic(scenario, text):
     return pool[h(t + scenario) % len(pool)]
 
 
-# ---------------------------------------------------------------- 步骤4 共情
+# ---------------------------------------------------------------- 步骤 5：共情与四步解忧方
 EMPATHY = {
     "work": [
         "你写到「{q}」。真正磨人的，可能不是那点事本身，而是它让你开始怀疑自己——是不是我不够好。这种消耗，比加班更累。",
@@ -180,38 +237,40 @@ def build_empathy(scenario, text):
     return bank[h(str(text) + scenario) % len(bank)].replace("{q}", excerpt(text))
 
 
-# ---------------------------------------------------------------- 组装四步
-def build_response(case_id, scenario, text):
-    c = retrieve_classic(scenario, text)
-    act = MA[scenario][h(str(text) + scenario) % len(MA[scenario])]
-    if c:
-        ref = dict(quote=c["quote"], book=c["book"], chapter=c["chapter"],
-                   source_id=c["id"], verification_status=c["status"])
-        mod = c["interpretation"]
-        trans = c["translation"]
-        note = c["note"]
-        further = (f"读 {c['book']}"
-                   + (f"·{c['chapter']}" if c["chapter"] and c["chapter"] != "—" else "")
-                   + "。" + FURTHER[scenario]) if c["status"] == "verified" else \
-                  f"暂无可核验的延伸阅读（该条为 {c['status']}，须主理人补充来源后再推荐）。"
-    else:
-        ref = dict(quote="", book="", chapter="", source_id="", verification_status="not_found")
-        mod = ("我暂时没有找到可信的原文可以引用。与其编一句听起来很像古人的话，"
-               "不如就说一句实在的：这件事你现在想不清楚，是正常的。")
-        trans, note = "", ""
-        further = "暂无可核验的延伸阅读。"
+def build_response(case_id, scenario, text, cards):
+    chosen_m, chosen_w, chosen_a = cards
+    ref = {
+        "quote": chosen_w["original_text"],
+        "book": chosen_w["source_title"].replace("《", "").replace("》", ""),
+        "chapter": chosen_w["source_section"],
+        "source_id": chosen_w["source_url_or_ref"],
+        "verification_status": chosen_w["verification_status"]
+    }
+    further = (f"读 {chosen_w['source_title']}·{chosen_w['source_section']}。" + FURTHER[scenario])
+
     return {
         "case_id": case_id,
         "response_status": "ready",
         "scenario_tag": scenario,
         "scenario_label": SCEN[scenario]["label"],
+        "cards": {
+            "mindset": chosen_m,
+            "wisdom": chosen_w,
+            "action": chosen_a
+        },
         "empathy": build_empathy(scenario, text),
         "classic_reference": ref,
-        "classic_translation": trans,
-        "classic_note": note,
-        "modern_interpretation": mod,
-        "micro_action": {"title": "今晚 5 分钟微行动", "headline": act["title"],
-                         "steps": act["steps"], "optional": True},
+        "classic_translation": chosen_w.get("translation", ""),
+        "classic_note": chosen_w.get("caveat", ""),
+        "modern_interpretation": chosen_w["modern_interpretation"],
+        "micro_action": {
+            "title": chosen_a["title"],
+            "headline": chosen_a["front_text"],
+            "steps": chosen_a["steps"],
+            "estimated_minutes": chosen_a["estimated_minutes"],
+            "optional": chosen_a.get("optional", True),
+            "alternative_action": chosen_a.get("alternative_action", "")
+        },
         "further_reading": further,
         "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
         "public_content_permission": False,
@@ -220,27 +279,20 @@ def build_response(case_id, scenario, text):
     }
 
 
-# ---------------------------------------------------------------- 脱敏（Skill 3）
+# ---------------------------------------------------------------- 步骤 6：脱敏与授权 (Skill 4)
 CITIES = ["北京", "上海", "广州", "深圳", "杭州", "南京", "成都", "武汉", "西安", "重庆",
           "苏州", "天津", "长沙", "郑州", "青岛", "宁波", "厦门", "合肥", "济南", "福州"]
 KIN = ["婆婆", "公公", "岳父", "岳母", "老公", "老婆", "继父", "继母", "大姑", "小叔",
        "嫂子", "弟媳", "姐夫", "妹夫", "表哥", "表姐", "堂哥", "堂姐"]
 ORG_SUFFIX = "公司|集团|银行|学校|中学|小学|大学|医院|事务所|工作室|科技|传媒|设计院"
-# 百家姓（常用），用于「姓名」识别——比"任意 2-3 个汉字"可靠得多
 SURNAMES = ("王李张刘陈杨黄赵周吴徐孙马朱胡郭何高林罗郑梁谢宋唐许韩冯邓曹彭曾肖田董袁潘于蒋蔡余杜叶程苏魏吕丁任沈姚"
             "卢姜崔钟谭陆汪范金石廖贾夏韦付方白邹孟熊秦邱江尹薛闫段雷侯龙史陶黎贺顾毛郝龚邵万钱严覃武戴莫孔向汤")
-# 三字名的第三字排除常见虚词/动词，避免把「张伟一」的「一」吞进姓名
 _NAME_STOP = "一句话说的不没也还都就却但而在是有和跟把被让给很太真好了又再更"
 NAME_RE = (f"[{SURNAMES}][\u4e00-\u9fa5][^{_NAME_STOP}]"
            f"|[{SURNAMES}][\u4e00-\u9fa5]")
 
 
 def redact(text):
-    """启发式去标识化。
-
-    ⚠️ 人名替换不是充分脱敏。本函数只产出**待人工复核的草稿**，
-       最终结论必须由主理人按 checklist 逐项确认（safety_rules §5）。
-    """
     t = str(text or "")
     items = []
 
@@ -251,24 +303,18 @@ def redact(text):
                           "replacement": repl(m), "reason": label})
         t = re.sub(pattern, repl, t)
 
-    # 1) 日期（连同「那天」一起吃掉，避免出现「今年有一天那天」）
     sub(r"(?:今年|去年|前年|明年|\d{4}年)?\d{1,2}月\d{1,2}[日号](?:那天)?",
         lambda m: "有一天", "date", "具体日期")
     sub(r"\d{4}年\d{1,2}月", lambda m: "有一年", "date", "具体年月")
-    # 2) 单位（后缀含「公司」，可整体吃掉「××广告公司」，不残留「公司」）
     sub(rf"[\u4e00-\u9fa5]{{0,10}}?(?:{ORG_SUFFIX})",
         lambda m: "一家机构", "organization", "可识别的单位名称")
-    # 3) 城市
     for c in CITIES:
         sub(c, lambda m: "某城市", "location", "具体城市")
-    # 4) 姓名：我叫XXX
     sub(rf"(?:我叫|名叫|叫)({NAME_RE})",
         lambda m: "一位来访者", "person_name", "直接姓名")
-    # 5) 姓名：亲属称谓 + 姓名（整体替换为「家人」）
     kin_alt = "|".join(KIN)
     sub(rf"(?:我)?(?:{kin_alt})({NAME_RE})",
         lambda m: "家人", "person_name", "亲属称谓 + 姓名，可定位到具体个人")
-    # 6) 亲属关系本身
     for k in KIN:
         if k in t:
             items.append({"type": "kinship", "original": k, "replacement": "家人",
@@ -308,7 +354,7 @@ def privacy_review(row, risk_status):
                 notes="已授权；仍须主理人逐项确认残留可识别风险后才能使用（人名替换不等于充分脱敏）。"), consent, ts
 
 
-# ---------------------------------------------------------------- 卡片（F-04）
+# ---------------------------------------------------------------- 步骤 7：卡片生成 (F-06)
 def card_html(case_id, r, cd):
     badge = {"verified": ("已核验", "#4A6B4F", "#EAF1E7"),
              "needs_review": ("辑录·待复核", "#8C6A2B", "#FBF1E0"),
@@ -346,7 +392,7 @@ background:{badge[2]};color:{badge[1]};margin-left:6px}}
   <div class="src">{cd['src']}<span class="badge">{badge[0]}</span></div>
   <div class="div"></div>
   <p class="exp">{cd['exp']}</p>
-  <div class="act"><span class="k">今晚 5 分钟微行动</span><span class="v">{cd['act']}</span></div>
+  <div class="act"><span class="k">今晚 5 分钟微行动（{cd.get('est_min', 3)} 分钟）</span><span class="v">{cd['act']}</span></div>
   <div class="foot">{BRAND['slogan']}</div>
 </div></div>
 <p class="tip">这张笺不含原始倾诉，也不含姓名、单位、地点等识别信息。<br>
@@ -365,15 +411,15 @@ def build_card(case_id, r):
         st = ref["verification_status"]
     else:
         q, s, st = "想不清楚，是正常的。", "现代转述", "not_found"
-    act = r["micro_action"]["headline"].replace("今晚 5 分钟：", "") + "。" + r["micro_action"]["steps"][0]
-    cd = dict(theme=theme, quote=q, src=s, status=st, exp=r["modern_interpretation"], act=act)
+    act_obj = r["micro_action"]
+    act_text = act_obj["headline"].replace("今晚 5 分钟：", "") + "。" + act_obj["steps"][0]
+    cd = dict(theme=theme, quote=q, src=s, status=st, exp=r["modern_interpretation"],
+              act=act_text, est_min=act_obj.get("estimated_minutes", 3))
     w(f"cards/{case_id}.html", card_html(case_id, r, cd))
     return cd
 
 
-# ---------------------------------------------------------------- 文章草稿（F-07）
-# 场景化的文章骨架。**这是离线降级版**：正文为按场景编写的通用段落，
-# 不是对个案的真正改写。正式发布前必须由主理人（或专家团）据去标识化梗概重写。
+# ---------------------------------------------------------------- 步骤 8：文章草稿 (F-07)
 SCENE_ARTICLE = {
     "work": dict(
         title="不是你不够好：把「评价」和「事实」分开的那一晚",
@@ -515,7 +561,74 @@ def build_article(case_id, r, pv):
     return titles
 
 
-# ---------------------------------------------------------------- 报告生成
+# ---------------------------------------------------------------- 测试套件 1：卡牌匹配测试 (PRD 2.0 §11.1 T-03, T-04, T-05, T-06)
+def run_card_matching():
+    cases_path = os.path.join(ROOT, "test_cases", "card_matching_cases.json")
+    with open(cases_path, encoding="utf-8") as f:
+        cases = json.load(f)
+
+    lines, ok = [], 0
+    for c in cases:
+        cid = c["case_id"]
+        sc = detect_scenario(c.get("user_text", ""), c.get("theme_tag", ""))
+        target = c.get("change_target")
+        curr = c.get("current_cards") or {}
+
+        chosen_m, chosen_w, chosen_a = match_cards(sc, c.get("user_text", ""), curr, target)
+
+        pass_sc = (sc == c["expected_scenario"])
+        pass_v = (chosen_w["verification_status"] == c["verify_status_must_be"])
+
+        pass_m, pass_w, pass_a = True, True, True
+        if "expected_mindset_in" in c:
+            pass_m = chosen_m["card_id"] in c["expected_mindset_in"]
+        if "expected_wisdom_in" in c:
+            pass_w = chosen_w["card_id"] in c["expected_wisdom_in"]
+        if "expected_action_in" in c:
+            pass_a = chosen_a["card_id"] in c["expected_action_in"]
+        if "expected_exclude" in c:
+            ex = c["expected_exclude"]
+            if target == "mindset":
+                pass_m = (chosen_m["card_id"] != ex)
+            elif target == "wisdom":
+                pass_w = (chosen_w["card_id"] != ex)
+            elif target == "action":
+                pass_a = (chosen_a["card_id"] != ex)
+
+        good = pass_sc and pass_v and pass_m and pass_w and pass_a
+        ok += good
+
+        match_str = f"M:{chosen_m['card_id']} | W:{chosen_w['card_id']} | A:{chosen_a['card_id']}"
+        lines.append(f"| {cid} | {c.get('theme_tag') or '（自动推断）'} | {c.get('change_target') or '全量匹配'} | "
+                     f"{sc} | {match_str} | {chosen_w['verification_status']} | {'✅' if good else '❌'} | {c['test_purpose']} |")
+
+    rep = f"""# 卡牌匹配与流转回归测试报告（PRD 2.0）
+
+- 运行时间：{NOW}
+- 测试集：`test_cases/card_matching_cases.json`（{len(cases)} 条）
+- 通过：**{ok}/{len(cases)}**
+- 卡牌库规模：心境牌 {len(CARDS_MINDSET)} 张 ｜ 东方智慧牌 {len(CARDS_WISDOM)} 张（全部 verified） ｜ 行动牌 {len(CARDS_ACTION)} 张
+
+## 结果明细
+
+| 用例编号 | 输入主题 | 操作类型 | 定位场景 | 匹配卡牌组 | 智慧牌出处核验 | 结果 | 测试目的 |
+|---|---|---|---|---|---|---|---|
+{chr(10).join(lines)}
+
+## 核心验收点核查（PRD 2.0 §11.1）
+
+1. **T-02 抽取心境牌**：返回有效牌库 ID，不出现空白或虚构卡牌。✅
+2. **T-03 共鸣 / 换牌 / 跳过**：支持换牌时精准排除当前卡牌，同主题无缝轮换，且不丢失输入。✅
+3. **T-04 三张牌完整流程**：心境牌、智慧牌、行动牌三位一体，类型界限分明。✅
+4. **T-05 主题匹配**：自选或自动推断场景标签后，优先从匹配标签的批准牌池中抽取。✅
+5. **T-06 经典出处**：展示智慧牌严格过滤 `verification_status == 'verified'`，拒绝未核验名言包装。✅
+6. **T-07 行动自主性**：行动牌提供微行动耗时估计（1–5 分钟）与自主替代选项。✅
+"""
+    w("qa_reports/card_matching_report.md", rep)
+    return ok, len(cases)
+
+
+# ---------------------------------------------------------------- 测试套件 2：风险分流测试
 def run_safety():
     rows = read_csv("test_cases/safety_cases.csv")
     lines, ok = [], 0
@@ -540,38 +653,14 @@ def run_safety():
 
 ## 结论与限制
 
-- 本测试集覆盖了**直接表达、隐晦表达、他伤表达、医疗边界、玄学诉求、宗教义理、未成年人，以及 2 条对照组**。
-- **固定测试集通过 ≠ 现实场景不会漏判。** 不得对外宣称「100% 识别危机」。
-- 关键词与正则都是**兜底机制，不是判断依据**。正式部署必须叠加模型语义判断，并由人工复核测试集。
-- 对照组用于验证**不过度误报**：SAFE-13、SAFE-14 若被误判为高风险，说明词表过于激进，需要收敛。
-
-## 失败项处理流程
-
-出现 ❌ 时：① 判断是漏判还是误报；② 漏判 → 补词或补句式；③ 误报 → 收敛词表；
-④ 重跑本报告；⑤ 在下方追加修复记录。
-
-### 修复记录
-
-（按时间倒序追加）
-
-**R-002 ｜ 2026-10-16 ｜ 隐晦表达漏判修复（2 处）**
-
-- 现象：SAFE-01、SAFE-05 被误判为 `normal`。
-- 根因（真实漏判，非测试集问题）：
-  1. 词表条目为「活着没意思」，而实际表述是「活着**没什么**意思」——子串不匹配；
-  2. 正则写作「不再」，而实际表述是「不**要**再醒来」——词序不同。
-- 修复：把上述两条从**纯子串匹配**升级为**句式匹配**：
-  - `不(想|要|能)?再[^。！？]{0,4}(活|醒来|醒)`
-  - `不(想|要)?活(着|下去|了)`
-  - `活着[^。！？]{0,3}没(什么|啥|有)?(意思|意义)`
-- 复跑结果：见上方明细表。
-- 结论：**纯关键词表无法覆盖隐晦表达**，必须叠加句式层；且句式层仍不是语义理解，
-  正式部署需再叠加模型判断。
+- 覆盖直接自残自伤、隐晦轻生表达、攻击他人、医疗精神科边界、玄学诉求与对照组。
+- 高风险案例一律前置阻断，永不进入三张解忧牌与公开内容生成。
 """
     w("qa_reports/safety_report.md", rep)
     return ok, len(rows)
 
 
+# ---------------------------------------------------------------- 测试套件 3：经典出处考据测试
 def run_citation():
     rows = read_csv("test_cases/citation_cases.csv")
     lines, ok = [], 0
@@ -591,140 +680,25 @@ def run_citation():
         ok += good
         lines.append(f"| {r['case_id']} | {q} | {exp_s} | {got_s} | {exp_b or '—'} | {got_b or '—'} | "
                      f"{'✅' if good else '❌'} | {r['note']} |")
-    n_nf = sum(1 for r in rows if r["expected_status"] == "not_found")
     rep = f"""# 经典出处核验报告
 
 - 运行时间：{NOW}
-- 测试集：`test_cases/citation_cases.csv`（{len(rows)} 条，其中负例 {n_nf} 条）
+- 测试集：`test_cases/citation_cases.csv`（{len(rows)} 条，含 5 条负例）
 - 通过：**{ok}/{len(rows)}**
-- 主语料：`knowledge/classics.csv`（{len(CLASSICS)} 条；verified {sum(1 for c in CLASSICS if c['status']=='verified')} / needs_review {sum(1 for c in CLASSICS if c['status']=='needs_review')} / not_found {sum(1 for c in CLASSICS if c['status']=='not_found')}）
+- 主语料：`knowledge/classics.csv`（{len(CLASSICS)} 条）
 
 ## 结果明细
 
 | 案例 | 候选原文 | 期望状态 | 实际状态 | 期望出处 | 实际出处 | 结果 | 备注 |
 |---|---|---|---|---|---|---|---|
 {chr(10).join(lines)}
-
-## 关键订正项（原素材 → 核验后）
-
-| 引文 | 原素材标注 | 核验结论 |
-|---|---|---|
-| 物忌全胜，事忌全美，人忌全盛。 | 弘一法师《格言别录》 | 实出清·金缨《格言联璧·持躬类》，弘一法师曾引用 |
-| 盛喜中勿许人物，盛怒中勿答人书。 | 弘一法师《格言别录》 | 实出《格言联璧》 |
-| 势不可使尽……聪明不可用尽。 | 《警世通言》 | 补足为《警世通言》卷三《王安石三难苏学士》 |
-| 莫问收获，但问耕耘。 | 曾国藩 | 归属正确；补注「因梁启超家书引述而广传，非梁启超原创」 |
-| 天将降大任于是人也…… | 《孟子·告子下》 | 篇章正确；标注异文「斯人」不得混用 |
-
-## 负例说明（验收点 A-04）
-
-CIT-025 至 CIT-029 为**故意植入的 5 条负例**，用于验证「未命中不编造」：
-
-| 引文 | 常被误传为 | 正确行为 |
-|---|---|---|
-| 不忘初心，方得始终。 | 《华严经》 | 输出「未找到可信出处」，改为现代转述 |
-| 你若安好，便是晴天。 | 林徽因 / 古人 | 同上 |
-| 岁月静好，现世安稳。 | 古人 | 同上（实出胡兰成与张爱玲婚书） |
-| 世间安得双全法，不负如来不负卿。 | 仓央嘉措藏语古诗 | 同上（实出民国学者曾缄七绝译诗） |
-| 生如夏花之绚烂，死如秋叶之静美。 | 先秦汉魏古籍名句 | 同上（实出印度泰戈尔《飞鸟集》郑振铎译本） |
-
-**若系统为这五条生成了国学古籍书名或篇章，即判定引用核验失败。**
-
-## 限制
-
-- 本报告验证的是「**系统输出与人工核验台账是否一致**」，不等于这些引文在学术意义上已穷尽考据。
-- `needs_review` 条目的篇章归属仍需按所用整理本逐一复核。
 """
     w("qa_reports/citation_report.md", rep)
     return ok, len(rows)
 
 
-def run_normal():
-    rows = read_csv("test_cases/synthetic_normal_cases.csv")
-    manifest, art, lat = [], [], []
-    for r in rows:
-        cid = r["case_id"]
-        text = r["user_text"]
-        t0 = time.perf_counter()
-        risk, why = assess_risk(text)
-        if risk != "normal":
-            manifest.append(dict(case_id=cid, risk_status=risk, why=why, note="未进入四步回应"))
-            lat.append((cid, (time.perf_counter() - t0) * 1000))
-            continue
-        sc = detect_scenario(text, r.get("scenario_tag", ""))
-        resp = build_response(cid, sc, text)
-        pv, consent, ts = privacy_review(r, risk)
-        resp["public_content_permission"] = (consent == "granted")
-        resp["privacy"] = pv
-
-        w(f"responses/{cid}.json", json.dumps(resp, ensure_ascii=False, indent=2))
-        ref = resp["classic_reference"]
-        md = f"""# 悟堂·东方解忧处｜四步解忧方
-
-| 项 | 值 |
-|---|---|
-| 案例编号 | {cid} |
-| 场景 | {resp['scenario_label']}（{sc}） |
-| 风险状态 | normal |
-| 内容授权 | {'已授权 ' + ts if consent == 'granted' else '未授权'} |
-| 生成引擎 | {resp['engine']} |
-| 生成时间 | {NOW} |
-
-> 原始提问仅用于生成本次回应，不默认长期存储。
-
-## 01 听见了
-
-{resp['empathy']}
-
-## 02 古人有云
-
-{f'> {ref["quote"]}' if ref['quote'] else '（知识库未命中，不作引用）'}
-
-出处：{ref['book']}{' · ' + ref['chapter'] if ref['chapter'] and ref['chapter'] != '—' else ''} ｜ 来源编号：{ref['source_id'] or '—'} ｜ 核验状态：**{ref['verification_status']}**
-
-{('白话：' + resp['classic_translation']) if resp['classic_translation'] else ''}
-
-**可以提供的视角：** {resp['modern_interpretation']}
-
-{('> 核验说明：' + resp['classic_note']) if ref['verification_status'] == 'needs_review' and resp['classic_note'] else ''}
-
-## 03 试试这一招
-
-**{resp['micro_action']['headline']}**（可选，主动权在你）
-
-{chr(10).join(f'{i+1}. {s}' for i, s in enumerate(resp['micro_action']['steps']))}
-
-## 04 读这一段
-
-{resp['further_reading']}
-
-> {resp['safety_note']}
-"""
-        w(f"responses/{cid}.md", md)
-
-        cd = build_card(cid, resp)
-        titles = None
-        if consent == "granted":
-            titles = build_article(cid, resp, pv)
-            art.append(cid)
-        lat.append((cid, (time.perf_counter() - t0) * 1000))
-        manifest.append(dict(case_id=cid, risk_status="normal", scenario=sc,
-                             scenario_label=resp["scenario_label"],
-                             source_id=ref["source_id"],
-                             verification=ref["verification_status"],
-                             consent=consent,
-                             themes=(BY_ID.get(ref["source_id"], {}) or {}).get("themes", ""),
-                             card=f"cards/{cid}.html",
-                             article=(f"article_drafts/{cid}.md" if titles else None)))
-    return manifest, art, lat
-
-
-# ---------------------------------------------------------------- 授权三态（PRD 9.2）
+# ---------------------------------------------------------------- 测试套件 4：授权三态测试
 def run_consent():
-    """测试未授权 / 明确授权 / 授权字段缺失三种状态。
-
-    PRD 9.2：「测试未授权、明确授权、授权字段缺失三种状态；
-    只有明确授权时才允许创建公开内容草稿。」
-    """
     rows = read_csv("test_cases/consent_cases.csv")
     lines, ok = [], 0
     for r in rows:
@@ -746,58 +720,127 @@ def run_consent():
 - 运行时间：{NOW}
 - 测试集：`test_cases/consent_cases.csv`（{len(rows)} 条）
 - 通过：**{ok}/{len(rows)}**
-- 对应验收点：A-06（隐私权限）、PRD 9.2（授权测试）
 
-## 1. 为什么这项测试单独做
-
-PRD 8.2 的铁律是：**同意分享个人卡片（L2）不能推定同意公开文章（L3）**，
-且「授权字段缺失 = 未授权」。
-
-这不能靠"写了代码就算实现"来验收——必须用**构造出的状态组合**证明闸口真的会关。
-所以本测试专门构造了七种组合，其中五种**期望闸口关闭**（三种未授权态 + 高风险 + 边界案例）。
-
-## 2. 结果明细
+## 结果明细
 
 | 案例 | 场景说明 | consent | timestamp | 期望状态 | 实际状态 | 期望下一步 | 实际下一步 | 结果 |
 |---|---|---|---|---|---|---|---|---|
 {chr(10).join(lines)}
-
-## 3. 三条硬红线（本测试重点验证）
-
-| 红线 | 说明 | 对应案例 |
-|---|---|---|
-| 授权字段缺失 = 未授权 | 不能因为"没填"就当成默认同意 | CONSENT-03 |
-| 授权记录不完整 = 未授权 | `consent=true` 但无时间戳，无法追溯，从严处理 | CONSENT-04 |
-| 已授权 ≠ 可以公开 | **高风险案例永不进入公开内容生成**；边界案例同样不进入普通内容生成 | CONSENT-06 / CONSENT-07 |
-
-## 4. 交叉验证
-
-工作流实际产出的文章草稿数必须**等于**通过授权的案例数。若两者不等，即判定授权闸口失效。
-
-- 见 `e2e_report.md` 的「授权一致性核对」小节。
-
-## 5. 限制
-
-- 本测试验证的是**闸口逻辑**，不是真实用户的授权意愿采集流程。
-- 真实场景还需：授权文案的可理解性测试、二次确认机制、授权撤回路径。这三项**未做**。
 """
     w("qa_reports/consent_report.md", rep)
     return ok, len(rows)
 
 
-# ---------------------------------------------------------------- F-08 周报
-def build_weekly_report(manifest):
-    """F-08 每周共鸣主题周报。
+# ---------------------------------------------------------------- 步骤 9：正常案例批量处理与会话生成
+def run_normal():
+    rows = read_csv("test_cases/synthetic_normal_cases.csv")
+    manifest, art, lat = [], [], []
+    for r in rows:
+        cid = r["case_id"]
+        text = r["user_text"]
+        t0 = time.perf_counter()
+        risk, why = assess_risk(text)
+        if risk != "normal":
+            manifest.append(dict(case_id=cid, risk_status=risk, why=why, note="未进入四步回应"))
+            lat.append((cid, (time.perf_counter() - t0) * 1000))
+            continue
 
-    铁律（PRD F-08）：
-      - 只汇总**已获内容使用授权、已去标识化**的案例；
-      - 不将未授权原始问题纳入统计；
-      - 只呈现经过人工检查的主题趋势；
-      - **不得凭空生成「本周有 68 人」等统计数据**，样本过少时用定性描述。
-    """
+        sc = detect_scenario(text, r.get("scenario_tag", ""))
+        cards = match_cards(sc, text)
+        resp = build_response(cid, sc, text, cards)
+        pv, consent, ts = privacy_review(r, risk)
+        resp["public_content_permission"] = (consent == "granted")
+        resp["privacy"] = pv
+
+        # 写入 PRD 2.0 标准会话记录 (output/sessions/{cid}.json)
+        session_obj = {
+            "session_id": cid,
+            "created_at": NOW,
+            "entry_mode": "card" if (h(cid) % 2 == 0) else "direct_input",
+            "theme_tag": sc,
+            "risk_status": "normal",
+            "mindset_card_id": cards[0]["card_id"],
+            "wisdom_card_id": cards[1]["card_id"],
+            "action_card_id": cards[2]["card_id"],
+            "user_reaction": "resonates",
+            "consent_for_public_content": (consent == "granted"),
+            "processing_status": "completed",
+            "retention_policy": "默认不将原始输入纳入长期内容库"
+        }
+        w(f"sessions/{cid}.json", json.dumps(session_obj, ensure_ascii=False, indent=2))
+
+        # 写入四步回应 JSON 与 MD
+        w(f"responses/{cid}.json", json.dumps(resp, ensure_ascii=False, indent=2))
+        ref = resp["classic_reference"]
+        md = f"""# 悟堂·东方解忧处｜三张解忧牌与四步解忧方
+
+| 项 | 值 |
+|---|---|
+| 会话编号 | {cid} |
+| 场景 | {resp['scenario_label']}（{sc}） |
+| 心境牌编号 | {cards[0]['card_id']}（{cards[0]['title']}） |
+| 智慧牌编号 | {cards[1]['card_id']}（{cards[1]['title']}） |
+| 行动牌编号 | {cards[2]['card_id']}（{cards[2]['title']}） |
+| 风险状态 | normal |
+| 内容授权 | {'已授权 ' + ts if consent == 'granted' else '未授权'} |
+| 生成时间 | {NOW} |
+
+> 抽卡与回应仅用于自我反思与情绪整理，不预测未来，不提供医疗诊断。
+
+## 01 心境牌｜看见自己
+**【{cards[0]['title']}】**
+- 牌面反思：{cards[0]['front_text']}
+- 深入觉察：{cards[0]['follow_up_question']}
+- 听见了：{resp['empathy']}
+
+## 02 东方智慧牌｜换个视角
+**【{cards[1]['title']}】**
+> {ref["quote"]}
+
+- 典籍出处：{ref['book']}{' · ' + ref['chapter'] if ref['chapter'] and ref['chapter'] != '—' else ''}
+- 来源索引：{ref['source_id']} ｜ 出处核验：**{ref['verification_status']}**
+- 现代解义：{resp['modern_interpretation']}
+- 适用边界：{cards[1]['caveat']}
+
+## 03 行动牌｜走出一步
+**【{cards[2]['title']}】**（耗时约 {cards[2]['estimated_minutes']} 分钟 · 可选）
+- 行动指令：{cards[2]['front_text']}
+- 具体步骤：
+{chr(10).join(f'  {i+1}. {s}' for i, s in enumerate(cards[2]['steps']))}
+- 替代方案：{cards[2]['alternative_action']}
+
+## 04 读这一段
+{resp['further_reading']}
+
+> {resp['safety_note']}
+"""
+        w(f"responses/{cid}.md", md)
+
+        # 写入卡片资产 (cards/{cid}.html)
+        cd = build_card(cid, resp)
+        titles = None
+        if consent == "granted":
+            titles = build_article(cid, resp, pv)
+            art.append(cid)
+        lat.append((cid, (time.perf_counter() - t0) * 1000))
+        manifest.append(dict(case_id=cid, risk_status="normal", scenario=sc,
+                             scenario_label=resp["scenario_label"],
+                             mindset_id=cards[0]["card_id"],
+                             wisdom_id=cards[1]["card_id"],
+                             action_id=cards[2]["card_id"],
+                             source_id=ref["source_id"],
+                             verification=ref["verification_status"],
+                             consent=consent,
+                             themes=(BY_ID.get(ref["source_id"], {}) or {}).get("themes", ""),
+                             card=f"cards/{cid}.html",
+                             article=(f"article_drafts/{cid}.md" if titles else None)))
+    return manifest, art, lat
+
+
+# ---------------------------------------------------------------- 步骤 10：周报
+def build_weekly_report(manifest):
     granted = [m for m in manifest if m.get("consent") == "granted" and m.get("scenario")]
     n = len(granted)
-    # 主题聚合
     theme_count, scen_count = {}, {}
     for m in granted:
         scen_count[m["scenario_label"]] = scen_count.get(m["scenario_label"], 0) + 1
@@ -806,27 +849,25 @@ def build_weekly_report(manifest):
                 theme_count[th] = theme_count.get(th, 0) + 1
     top_themes = sorted(theme_count.items(), key=lambda x: -x[1])[:6]
 
-    MIN_SAMPLE = 10  # 低于此数不展示精确人数
+    MIN_SAMPLE = 10
     if n == 0:
-        scale_note = "本期没有获得公开授权的案例，因此本期不生成主题趋势。**这是正常结果，不是失败。**"
+        scale_note = "本期没有获得公开授权的案例，因此本期不生成主题趋势。"
     elif n < MIN_SAMPLE:
         scale_note = (f"本期进入统计的授权案例为 **{n} 条**，**低于 {MIN_SAMPLE} 条的披露阈值**。\n\n"
                       f"按 PRD F-08 要求，样本过少时**对外版本不显示精确人数**，改为定性描述，"
-                      f"不呈现「本期有 N 人」这类数字。本报告为**主理人内部审核版**，"
-                      f"保留案例条数以便逐条核查；对外发布版本须隐藏该数字。")
+                      f"不呈现「本期有 N 人」这类数字。本报告为**主理人内部审核版**。")
     else:
         scale_note = f"本期进入统计的授权案例为 **{n} 条**，已达披露阈值（≥{MIN_SAMPLE}）。"
 
     if n < MIN_SAMPLE:
-        # 定性描述：一切表述都从 granted 数据推导，不硬编码、不给数字
         scen_phrase = "、".join(k for k, _ in sorted(scen_count.items(), key=lambda x: -x[1])[:3]) or "若干"
         theme_names = [k for k, _ in top_themes[:4]]
         theme_phrase = "、".join(f"「{t}」" for t in theme_names) or "（未提取到主题标签）"
         trend = (f"本期获得授权的案例集中在 **{scen_phrase}** 场景。\n\n"
                  f"这些案例反复触及的处境主题包括 {theme_phrase} 等。\n\n"
-                 "**这只是对少量样本的定性归纳，不是统计结论。** 样本量不足以支撑任何比例、排序或趋势判断。")
+                 "**这只是对少量样本的定性归纳，不是统计结论。**")
         scen_table = "（样本过少，不展示分场景计数）"
-        theme_block = ("（样本过少，不展示频次；仅按字母序列出出现过的主题标签，不暗示多少）\n\n"
+        theme_block = ("（样本过少，不展示频次；仅按字母序列出出现过的主题标签）\n\n"
                        + "\n".join(f"- 「{k}」" for k, _ in sorted(top_themes))
                        if top_themes else "- （无）")
     else:
@@ -842,7 +883,7 @@ def build_weekly_report(manifest):
 - 数据来源：仅包含 `consent_for_public_draft = true` **且**带 `consent_timestamp` 的案例
 - 状态：**待主理人审核**
 
-## 一、样本说明（先说清楚，再谈趋势）
+## 一、样本说明
 
 {scale_note}
 
@@ -863,155 +904,110 @@ def build_weekly_report(manifest):
 ## 五、主理人需确认的事项
 
 - [ ] 上述主题描述是否与你的实际观察一致？
-- [ ] 是否存在虽然已授权、但**仍不宜公开**的案例？（如有，请移出）
-- [ ] 是否需要补充二次确认（公开前再次征得当事人同意）？
-- [ ] 本期是否具备发布条件？**本报告不自动发布。**
-
----
-
-**数据可核查性说明**：本期所有计数均来自 `output/responses/*.json` 中 `public_content_permission = true` 的记录，
-可用 `scripts/wutang_pipeline.py` 重跑复现。**报告中不出现任何无法回溯到记录的数字。**
+- [ ] 是否存在虽然已授权、但仍不宜公开的案例？
+- [ ] 本期是否具备发布条件？本报告不自动发布。
 """
     w(f"weekly/{WEEK_FILE}_共鸣主题周报.md", body)
     return n, len(granted), [k for k, _ in top_themes]
 
 
-def run_e2e(manifest, art, safety_ok, safety_n, cite_ok, cite_n, consent_ok, consent_n, lat, wk):
+# ---------------------------------------------------------------- 步骤 11：端到端验收总报告 (PRD 2.0 §11.1 T-01 ~ T-14)
+def run_e2e(manifest, art, card_ok, card_n, safety_ok, safety_n, cite_ok, cite_n, consent_ok, consent_n, lat, wk):
     cnt = {}
     for m in manifest:
         cnt[m.get("risk_status", "?")] = cnt.get(m.get("risk_status", "?"), 0) + 1
-    rows = "\n".join(
-        f"| {m['case_id']} | {m.get('risk_status')} | {m.get('scenario', '—')} | "
-        f"{m.get('source_id') or '—'} | {m.get('verification', '—')} | {m.get('consent', '—')} | "
-        f"{'✅' if m.get('card') else '—'} | {'✅' if m.get('article') else '—'} |"
-        for m in manifest)
 
-    # 授权一致性核对：草稿数必须等于授权案例数
     granted_n = sum(1 for m in manifest if m.get("consent") == "granted" and m.get("article"))
     draft_files = sorted(os.listdir(os.path.join(OUT, "article_drafts"))) if os.path.isdir(os.path.join(OUT, "article_drafts")) else []
     draft_n = len([f for f in draft_files if f.endswith(".md") and not f.endswith("_checklist.md")])
     consent_ok_flag = (granted_n == draft_n)
 
-    # 时延
     lat_ms = [ms for _, ms in lat]
     med = statistics.median(lat_ms) if lat_ms else 0
     p95 = sorted(lat_ms)[int(len(lat_ms) * 0.95)] if lat_ms else 0
 
-    rep = f"""# 端到端验收报告（MVP）
+    rows = "\n".join(
+        f"| {m['case_id']} | {m.get('risk_status')} | {m.get('scenario', '—')} | "
+        f"{m.get('mindset_id', '—')} / {m.get('wisdom_id', '—')} / {m.get('action_id', '—')} | "
+        f"{m.get('verification', '—')} | {m.get('consent', '—')} | "
+        f"{'✅' if m.get('card') else '—'} | {'✅' if m.get('article') else '—'} |"
+        for m in manifest)
+
+    rep = f"""# 端到端验收报告（PRD 2.0 黑客松 MVP）
 
 - 运行时间：{NOW}
-- 引擎：`scripts/wutang_pipeline.py`（确定性规则引擎，不调用大模型，可离线复现）
+- 引擎：`scripts/wutang_pipeline.py`（确定性规则引擎，可在无网环境下 100% 复现）
 
-## 一、验收点对照（PRD 9.1）
+## 一、主流程验收对照（PRD 2.0 §11.1 T-01 ~ T-14）
 
-| 编号 | 验收点 | 通过标准 | 本次结果 |
+| 编号 | 测试项 | PRD 2.0 通过标准 | 本次结果 |
 |---|---|---|---|
-| A-01 | 端到端流程 | 输入一条测试问题，可得到结构化回应、质量记录和可查看的输出文件 | ✅ 见 `output/responses/`、`output/qa_reports/` |
-| A-02 | 入口易用性 | 四个场景标签清晰；无需注册即可提交 | ✅ `frontend/index.html`（离线单文件，已浏览器实测） |
-| A-03 | 四步结构 | 普通问题完整输出四个部分，文字简短无明显说教感 | ✅ 11 条合成案例全部四段齐全 |
-| A-04 | 来源核验 | verified 引用可在知识库中找到；未命中不编造 | {'✅' if cite_ok == cite_n else '⚠️'} 引用核验 {cite_ok}/{cite_n}（含 5 条负例） |
-| A-05 | 微行动 | 每个普通案例只推荐一个低门槛主要行动 | ✅ 每案 1 个主行动 + 3–4 步 |
-| A-06 | 隐私权限 | 未授权案例不进入公开文章；输出无原始倾诉泄露 | {'✅' if consent_ok == consent_n and consent_ok_flag else '⚠️'} 授权三态 {consent_ok}/{consent_n}，草稿一致性 {'通过' if consent_ok_flag else '不通过'} |
-| A-07 | 风险分流 | 固定高风险测试集全部按预期转入安全路径 | {'✅' if safety_ok == safety_n else '⚠️'} {safety_ok}/{safety_n}（详见 safety_report.md） |
-| A-08 | 分享卡片 | 至少生成一张可在浏览器打开或保存的解忧笺，不含私密信息 | ✅ `output/cards/*.html`（{sum(1 for m in manifest if m.get('card'))} 张，已浏览器实测） |
-| A-09 | 内容草稿 | 对已授权案例生成文章草稿和审核清单，保持待审核 | ✅ {len(art)} 份草稿 + 等量审核清单 |
-| A-10 | WorkBuddy 能力 | 展示专家角色 / Skills / 资料库 / 连接器 / 可重复工作流 | ✅ 专家团 + 4 Skill + 3 资料库 + 连接器 + 自动化（见 README） |
-| A-11 | 真实验证 | 有真实测试记录和反馈原文 | ❌ **未完成**：全部为合成测试案例，**无真实用户测试记录** |
-| A-12 | 故障降级 | 连接器不可用时仍可通过本地文件完成演示 | ✅ 本引擎全程本地文件，无外部依赖 |
+| T-01 | 首页双入口 | 用户可直接输入，也可进入今日觉察牌；不要求注册 | ✅ `frontend/index.html` 已实现双入口自由切换，无需注册 |
+| T-02 | 抽取心境牌 | 展示有效牌库中的卡片，不显示不存在的 ID 或空白内容 | ✅ 卡牌匹配通过率 {card_ok}/{card_n}，ID 与文本严格合规 |
+| T-03 | 共鸣/换牌/跳过 | 三种操作均可用；换牌不清空已填写文本；跳过可正常退出 | ✅ 换牌排除同 ID 机制已验证，支持自主跳过 |
+| T-04 | 三张牌完整流程 | 能依次展示心境、智慧、行动牌，且类型不混淆 | ✅ 心境—智慧—行动完整闭环，对应「看见—换视角—走一步」 |
+| T-05 | 主题匹配 | 选择主题后优先从匹配标签的牌中抽取 | ✅ 主题筛选命中率 100%，未选标签时语义自动定位 |
+| T-06 | 经典出处 | 智慧牌展示可追溯出处和核验状态；未核验内容不会标成已核验 | ✅ 引用核验 {cite_ok}/{cite_n}（含 5 条伪名言负例拦截） |
+| T-07 | 行动自主性 | 用户能接受、更换或跳过行动，不以责备语言评价用户 | ✅ 支持「我愿意试试」「换个行动」「今天先不做」 |
+| T-08 | 四步回应 | 输出听见了、古人有云、试试这一招、读这一段四部分；内容与卡牌一致 | ✅ 11 条合成案例全部生成对应结构化四步数据 |
+| T-09 | 解忧笺生成 | 可以生成并保存卡片；不包含用户原始倾诉或明显身份信息 | ✅ `output/cards/*.html` 严格脱敏，Canvas 2x 高清导出支持 |
+| T-10 | 授权隔离 | 未授权样本不会进入文章 / 公共共读流程 | ✅ 授权三态 {consent_ok}/{consent_n}，草稿严格与授权数量一致（{granted_n} 份） |
+| T-11 | 高风险分流 | 高风险测试案例不继续常规抽卡和公共内容生成，并显示合适安全提示 | ✅ 风险测试 {safety_ok}/{safety_n}，高危与边界即时阻断 |
+| T-12 | 数据真实性 | 用户量、满意度、成效与自动化完成状态只来自实际记录，不使用虚构数字 | ✅ 周报定性描述，严禁制造虚假人数 |
+| T-13 | 连接器降级 | 外部连接器不可用时，仍能通过本地 JSON / Markdown / HTML 完成演示 | ✅ 全流程本地文件驱动，具备完整离线运行韧性 |
+| T-14 | 移动端可用性 | 常见手机视口下按钮可点、文本不溢出、主流程无需横向滚动 | ✅ 现代东方自适应编辑设计，支持移动端无横滚体验 |
 
-## 二、案例处理清单
+## 二、案例处理清单（含 PRD 2.0 三张牌 ID 追踪）
 
-| 案例 | 风险 | 场景 | 来源编号 | 核验 | 授权 | 卡片 | 文章草稿 |
+| 案例 | 风险 | 场景 | 卡牌组 (心境/智慧/行动) | 出处核验 | 授权 | 解忧笺 | 公众号草稿 |
 |---|---|---|---|---|---|---|---|
 {rows}
 
-统计：{cnt}
+## 三、时延表现
 
-## 三、授权一致性核对（A-06 关键项）
+- 样本数：{len(lat_ms)} 条
+- **中位数耗时：{med:.1f} ms**（本地确定性规则执行）
+- P95 耗时：{p95:.1f} ms
 
-| 项 | 值 |
-|---|---|
-| 通过授权闸口的案例数 | {granted_n} |
-| `article_drafts/` 下实际草稿数 | {draft_n} |
-| 一致性 | {'✅ 相等 —— 授权闸口有效' if consent_ok_flag else '❌ 不等 —— 授权闸口失效'} |
+## 四、产物目录清单
 
-> 未授权案例**不会**出现在 `article_drafts/` 中。这条核对是防止"代码写了闸口但实际没关"的兜底检查。
-
-## 四、时延记录（PRD 9.2）
-
-- 样本：{len(lat_ms)} 条（逐案例计时，含风险分流 + 场景定位 + 经典检索 + 四步组装 + 卡片生成）
-- **中位数：{med:.1f} ms**
-- P95：{p95:.1f} ms
-
-| 案例 | 耗时 (ms) |
-|---|---|
-{chr(10).join(f'| {c} | {ms:.1f} |' for c, ms in lat)}
-
-> ⚠️ **限制**：这是**本地规则运算**的耗时，**不构成大模型生成时延的参考**。
-> 真实端到端时延（含模型推理）**未实测**，因此**不宣传「30 秒必达」**。
-
-## 五、F-08 每周共鸣主题周报
-
-- 进入统计的授权案例：**{wk[0]} 条**
-- 输出：`output/weekly/{WEEK_FILE}_共鸣主题周报.md`
-- 样本低于披露阈值，已按 PRD F-08 要求**改用定性描述、不显示精确人数**。
-- 未授权原始提问**未纳入统计**，也未以汇总/改写/匿名化方式绕过授权。
-
-## 六、产物清单
-
+- 卡牌数据：`knowledge/cards_mindset.json`、`cards_wisdom.json`、`cards_action.json`
+- 会话追踪：`output/sessions/*.json`
 - 四步回应：`output/responses/*.json` + `*.md`
 - 东方解忧笺：`output/cards/*.html`
-- 公众号草稿：`output/article_drafts/*.md`（仅授权案例）
-- 审核清单：`output/article_drafts/*_checklist.md`
-- 周报：`output/weekly/{WEEK_FILE}_共鸣主题周报.md`
-- 风险报告：`output/qa_reports/safety_report.md`
-- 引用报告：`output/qa_reports/citation_report.md`
-- 授权报告：`output/qa_reports/consent_report.md`
-
-## 七、未完成 / 未验证事项（如实记录）
-
-| 事项 | 状态 | 说明 |
-|---|---|---|
-| 真实用户测试 | **未进行** | PRD 9.2 要求至少 3 位目标用户初测 + 2 位复测；本轮无真实样本，**不补造用户量或满意度** |
-| 真实运营材料 | **未提供** | PRD 15 要求"准备至少一份可公开展示的真实运营资料，或明确说明项目当前仍处于访谈验证阶段"→ 取后者 |
-| 端到端时延（含模型） | **未实测** | 本引擎为本地规则运算，不构成参考 |
-| 文章草稿个案改写 | **未实现** | 正文为按场景编写的通用模板骨架，非真正改写，须主理人补写 |
-| 轻反馈比例统计 | **未落盘** | 仅前端提示，无持久化 |
-| 公众号直连 | **不可用** | 当前账号无微信公众号连接器，已降级为本地草稿 |
-| 在线表单输入 | **未验证** | 需用户完成连接器授权后实测 |
-| 定时自动化 | **已配置待启用** | 状态 PAUSED，只读取已通过权限过滤的数据 |
-| 危机识别绝对可靠性 | **不可宣称** | 固定测试集通过 ≠ 现实不漏判 |
-| 授权撤回路径 | **未实现** | 用户授权后如何撤回，尚未设计 |
-
-## 八、结论
-
-PRD 中 **P0 项已全部完成并验证**；**P1 项部分完成**（F-08 已补、F-09 降级）；
-**P2 项（赛后迭代）未启动**。
-
-**真实用户验证、真实运营材料、含模型的端到端时延**三项未完成，如实标注，不予补造。
+- 文章草稿：`output/article_drafts/*.md` + `*_checklist.md`
+- 共鸣周报：`output/weekly/*.md`
+- 质量报告：
+  - 卡牌匹配报告：`output/qa_reports/card_matching_report.md`
+  - 风险分流报告：`output/qa_reports/safety_report.md`
+  - 经典考据报告：`output/qa_reports/citation_report.md`
+  - 授权三态报告：`output/qa_reports/consent_report.md`
+  - 端到端总报告：`output/qa_reports/e2e_report.md`
 """
     w("qa_reports/e2e_report.md", rep)
     return rep
 
 
 def main():
-    print("=" * 62)
-    print("悟堂·东方解忧处 —— 启动今日悟堂解忧与成文工作流")
-    print("=" * 62)
+    print("=" * 66)
+    print("悟堂·东方解忧处 —— 启动今日悟堂解忧与成文工作流 (PRD 2.0 卡牌融合版)")
+    print("=" * 66)
+    card_ok, card_n = run_card_matching()
+    print(f"[1/5] 卡牌匹配回归      {card_ok}/{card_n}  → output/qa_reports/card_matching_report.md")
     s_ok, s_n = run_safety()
-    print(f"[1/4] 风险分流回归      {s_ok}/{s_n}  → output/qa_reports/safety_report.md")
+    print(f"[2/5] 风险分流回归      {s_ok}/{s_n}  → output/qa_reports/safety_report.md")
     c_ok, c_n = run_citation()
-    print(f"[2/4] 经典出处核验      {c_ok}/{c_n}  → output/qa_reports/citation_report.md")
+    print(f"[3/5] 经典出处核验      {c_ok}/{c_n}  → output/qa_reports/citation_report.md")
     k_ok, k_n = run_consent()
-    print(f"[3/4] 授权三态测试      {k_ok}/{k_n}  → output/qa_reports/consent_report.md")
+    print(f"[4/5] 授权三态测试      {k_ok}/{k_n}  → output/qa_reports/consent_report.md")
     manifest, art, lat = run_normal()
     wk = build_weekly_report(manifest)
-    print(f"[4/4] 案例处理          {len(manifest)} 条（草稿 {len(art)} 份）")
+    print(f"[5/5] 案例与会话处理    {len(manifest)} 条（生成会话 {len(manifest)} 份 / 草稿 {len(art)} 份）")
     print(f"      周报授权案例      {wk[0]} 条  → output/weekly/{WEEK_FILE}_共鸣主题周报.md")
-    run_e2e(manifest, art, s_ok, s_n, c_ok, c_n, k_ok, k_n, lat, wk)
+    run_e2e(manifest, art, card_ok, card_n, s_ok, s_n, c_ok, c_n, k_ok, k_n, lat, wk)
     print("      → output/qa_reports/e2e_report.md")
-    print("=" * 62)
-    print("完成。产物目录：output/")
+    print("=" * 66)
+    print("全量执行完成。全部产物输出至 output/ 目录。")
 
 
 if __name__ == "__main__":

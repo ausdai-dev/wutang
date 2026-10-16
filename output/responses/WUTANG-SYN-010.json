@@ -3,29 +3,103 @@
   "response_status": "ready",
   "scenario_tag": "relation",
   "scenario_label": "松绑｜关系困扰",
+  "cards": {
+    "mindset": {
+      "card_id": "M-001",
+      "card_type": "mindset",
+      "title": "总想让所有人满意",
+      "theme_tags": [
+        "relation",
+        "boundaries",
+        "people_pleasing"
+      ],
+      "front_text": "我是不是很久没有认真问过自己，真正想要的是什么？",
+      "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+      "follow_up_question": "最近有没有一件事，你其实不愿意做，却因为担心别人失望而答应了？",
+      "related_card_ids": [
+        "W-001",
+        "A-002"
+      ],
+      "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+      "status": "active",
+      "version": "1.0"
+    },
+    "wisdom": {
+      "card_id": "W-006",
+      "card_type": "wisdom",
+      "title": "和而不同",
+      "theme_tags": [
+        "relation",
+        "fear_of_rejection",
+        "boundaries"
+      ],
+      "original_text": "君子和而不同，小人同而不和。",
+      "source_title": "《论语》",
+      "source_section": "子路",
+      "source_version": "杨伯峻《论语译注》（中华书局）",
+      "source_url_or_ref": "CLASSIC-018",
+      "verification_status": "verified",
+      "modern_interpretation": "君子在人际交往中保持和谐友善，却坚持独立的原则；小人盲目迎合附和，内心却勾心斗角。健康的相处从来不是无底线的妥协，有棱角、有边界的彼此尊重，关系才能走得长远安定。",
+      "application_note": "适合害怕拒绝他人、担心说出不同意见会被孤立或排斥的情境。",
+      "caveat": "求同存异建立在坦诚沟通之上，不必用攻击性语气来表达不同。",
+      "related_card_ids": [
+        "M-006",
+        "A-006"
+      ],
+      "status": "active",
+      "version": "1.0"
+    },
+    "action": {
+      "card_id": "A-002",
+      "card_type": "action",
+      "title": "给自己一点时间",
+      "theme_tags": [
+        "relation",
+        "boundaries",
+        "people_pleasing"
+      ],
+      "front_text": "下次遇到需要立即答应的请求时，先说「我考虑一下，再回复你」。",
+      "action_instruction": "在下一次有人向你提出请求或任务时，不要脱口而出「好的」，深呼吸一秒，温和地说：「我先看一下手头日程，稍后回复你。」为自己争取至少 5 分钟的思考间隙。",
+      "steps": [
+        "遇到请求时暂停 3 秒，不立刻答应",
+        "回复一句缓冲语：「我先确认下手头安排，稍后回复你」",
+        "私下评估自己的真实精力与意愿，再做决定"
+      ],
+      "estimated_minutes": 1,
+      "optional": true,
+      "alternative_action": "如果已经答应了，允许自己发消息补充：「我刚才看了下时间，可能只能协助部分内容」。",
+      "related_card_ids": [
+        "M-001",
+        "W-001"
+      ],
+      "status": "active",
+      "version": "1.0"
+    }
+  },
   "empathy": "你写到「看到同龄人买房结婚生子，心里就不是滋…」。难的也许不是那件事本身，而是它戳到了「我是不是不重要」这一下。",
   "classic_reference": {
-    "quote": "人之患，在好为人师。",
-    "book": "孟子",
-    "chapter": "离娄上",
-    "source_id": "CLASSIC-344",
+    "quote": "君子和而不同，小人同而不和。",
+    "book": "论语",
+    "chapter": "子路",
+    "source_id": "CLASSIC-018",
     "verification_status": "verified"
   },
-  "classic_translation": "人身上最容易犯下的顽固毛病，就在于喜欢自以为是地去充当别人的导师居高临下指指点点。",
-  "classic_note": "孟子警策名言。",
-  "modern_interpretation": "克制住想要教育批评伴侣、朋友和年轻后辈的冲动。管好自己的课题，别人没主动向你求助时，闭上嘴，是最顶级的人际分寸感。",
+  "classic_translation": "",
+  "classic_note": "求同存异建立在坦诚沟通之上，不必用攻击性语气来表达不同。",
+  "modern_interpretation": "君子在人际交往中保持和谐友善，却坚持独立的原则；小人盲目迎合附和，内心却勾心斗角。健康的相处从来不是无底线的妥协，有棱角、有边界的彼此尊重，关系才能走得长远安定。",
   "micro_action": {
-    "title": "今晚 5 分钟微行动",
-    "headline": "今晚 5 分钟：找出你的那一条线",
+    "title": "给自己一点时间",
+    "headline": "下次遇到需要立即答应的请求时，先说「我考虑一下，再回复你」。",
     "steps": [
-      "回想最近一次你答应了却后悔的事。",
-      "写下：你当时答应，是因为想帮，还是因为怕对方不高兴？",
-      "用一句话写下你希望对方下次知道的事（例如「我需要提前一天被告知」）。",
-      "这句话不用现在说出口，先让自己知道它在哪儿。"
+      "遇到请求时暂停 3 秒，不立刻答应",
+      "回复一句缓冲语：「我先确认下手头安排，稍后回复你」",
+      "私下评估自己的真实精力与意愿，再做决定"
     ],
-    "optional": true
+    "estimated_minutes": 1,
+    "optional": true,
+    "alternative_action": "如果已经答应了，允许自己发消息补充：「我刚才看了下时间，可能只能协助部分内容」。"
   },
-  "further_reading": "读 孟子·离娄上。读的时候留意一句话：这句话是在要求你改变对方，还是在帮你把话说清楚。",
+  "further_reading": "读 《论语》·子路。读的时候留意一句话：这句话是在要求你改变对方，还是在帮你把话说清楚。",
   "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
   "public_content_permission": false,
   "engine": "rules-offline-demo",

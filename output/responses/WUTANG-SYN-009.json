@@ -3,28 +3,103 @@
   "response_status": "ready",
   "scenario_tag": "work",
   "scenario_label": "去班味｜职场困扰",
+  "cards": {
+    "mindset": {
+      "card_id": "M-005",
+      "card_type": "mindset",
+      "title": "为什么总是我的错",
+      "theme_tags": [
+        "work",
+        "criticism",
+        "self_blame"
+      ],
+      "front_text": "这件事里，有多少是客观事实，有多少是我强加给自己的自责？",
+      "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+      "follow_up_question": "如果这件事发生在最好的朋友身上，你会用同样苛刻的话批评他吗？",
+      "related_card_ids": [
+        "W-005",
+        "A-005"
+      ],
+      "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+      "status": "active",
+      "version": "1.0"
+    },
+    "wisdom": {
+      "card_id": "W-004",
+      "card_type": "wisdom",
+      "title": "持而盈之不如其已",
+      "theme_tags": [
+        "work",
+        "burnout",
+        "self_care"
+      ],
+      "original_text": "持而盈之，不如其已；揣而锐之，不可长保。功遂身退，天之道也。",
+      "source_title": "《道德经》",
+      "source_section": "第九章",
+      "source_version": "陈鼓应《老子注译及评介》（中华书局）",
+      "source_url_or_ref": "CLASSIC-016",
+      "verification_status": "verified",
+      "modern_interpretation": "端着装满水的容器容易溢出，不如适可而止；把刀刃磨得过分锋利，反而无法长久保持。在职场与生活中，当身心已经发出疲惫警告时，强行多扛一分就会带来损耗。适时停手、给自己松绑，符合自然规律。",
+      "application_note": "适合职场严重内耗、过度承担、身体疲累、情绪枯竭的情境。",
+      "caveat": "这不是教人消极避世或推卸职责，而是在极限状态下的自我保护与节奏调节。",
+      "related_card_ids": [
+        "M-004",
+        "A-004"
+      ],
+      "status": "active",
+      "version": "1.0"
+    },
+    "action": {
+      "card_id": "A-005",
+      "card_type": "action",
+      "title": "分清事实与评价",
+      "theme_tags": [
+        "work",
+        "criticism",
+        "self_blame"
+      ],
+      "front_text": "拿出一张纸中间画线：左边写客观发生的事实，右边写心中的自我评价。",
+      "action_instruction": "左边写：领导具体说了哪句话、在哪个时间；右边写：你脑中浮现的「我很没用」「他讨厌我」等推测。写完后对右边说一句「这只是我的想象，不是定论」。",
+      "steps": [
+        "纸上画一条竖线分成两半",
+        "左栏只写真实发生、能被录音确认的客观事实",
+        "右栏写自我批评，并打上问号"
+      ],
+      "estimated_minutes": 5,
+      "optional": true,
+      "alternative_action": "站起来去接一杯温水，慢慢喝下，感受水流过喉咙的温热。",
+      "related_card_ids": [
+        "M-005",
+        "W-005"
+      ],
+      "status": "active",
+      "version": "1.0"
+    }
+  },
   "empathy": "「干了很多年，突然提不起劲，想走又不敢…」——听起来你已经撑了一阵子了。你不是不想做好，是用力的地方，有一部分不该由你来扛。",
   "classic_reference": {
-    "quote": "处事须替别人想，论人先将自己想。",
-    "book": "格言联璧",
-    "chapter": "接物类",
-    "source_id": "CLASSIC-210",
+    "quote": "持而盈之，不如其已；揣而锐之，不可长保。功遂身退，天之道也。",
+    "book": "道德经",
+    "chapter": "第九章",
+    "source_id": "CLASSIC-016",
     "verification_status": "verified"
   },
-  "classic_translation": "做事先站到对方角度想一想；评价一个人前，先拿同样的尺子量量自己。",
-  "classic_note": "书名确证。",
-  "modern_interpretation": "换位思考，是最高的情商。很多冲突换一个坐姿就能完全看开。",
+  "classic_translation": "",
+  "classic_note": "这不是教人消极避世或推卸职责，而是在极限状态下的自我保护与节奏调节。",
+  "modern_interpretation": "端着装满水的容器容易溢出，不如适可而止；把刀刃磨得过分锋利，反而无法长久保持。在职场与生活中，当身心已经发出疲惫警告时，强行多扛一分就会带来损耗。适时停手、给自己松绑，符合自然规律。",
   "micro_action": {
-    "title": "今晚 5 分钟微行动",
-    "headline": "今晚 5 分钟：把「明天要做的事」缩小到只剩一个起步动作",
+    "title": "分清事实与评价",
+    "headline": "拿出一张纸中间画线：左边写客观发生的事实，右边写心中的自我评价。",
     "steps": [
-      "回想明天最让你发愁、想逃避的那个工作任务。",
-      "把它拆解到连初中生都能在 3 分钟内动手的程度（例如：仅打开表格，填写前两行表头）。",
-      "写在便签纸上，贴在电脑屏幕旁。告诉自己明天只要完成这个微动作就算及格。"
+      "纸上画一条竖线分成两半",
+      "左栏只写真实发生、能被录音确认的客观事实",
+      "右栏写自我批评，并打上问号"
     ],
-    "optional": true
+    "estimated_minutes": 5,
+    "optional": true,
+    "alternative_action": "站起来去接一杯温水，慢慢喝下，感受水流过喉咙的温热。"
   },
-  "further_reading": "读 格言联璧·接物类。读完原文那一段，再回到今天这件事上：哪些是事实，哪些是评价，哪些是你能动的。",
+  "further_reading": "读 《道德经》·第九章。读完原文那一段，再回到今天这件事上：哪些是事实，哪些是评价，哪些是你能动的。",
   "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
   "public_content_permission": false,
   "engine": "rules-offline-demo",

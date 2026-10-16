@@ -3,28 +3,103 @@
   "response_status": "ready",
   "scenario_tag": "night",
   "scenario_label": "安住｜深夜反刍",
+  "cards": {
+    "mindset": {
+      "card_id": "M-007",
+      "card_type": "mindset",
+      "title": "担心明天失控",
+      "theme_tags": [
+        "night",
+        "future_anxiety",
+        "control"
+      ],
+      "front_text": "此刻脑海里担心的那些未知，有哪一件是今晚就能改变的？",
+      "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+      "follow_up_question": "如果把担忧写在纸上锁进抽屉，允许自己明天早上再去面对它，会怎样？",
+      "related_card_ids": [
+        "W-007",
+        "A-007"
+      ],
+      "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+      "status": "active",
+      "version": "1.0"
+    },
+    "wisdom": {
+      "card_id": "W-002",
+      "card_type": "wisdom",
+      "title": "知止而后有定",
+      "theme_tags": [
+        "night",
+        "overthinking",
+        "stress"
+      ],
+      "original_text": "知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。",
+      "source_title": "《大学》",
+      "source_section": "经一章",
+      "source_version": "朱熹《四书章句集注》（中华书局）",
+      "source_url_or_ref": "CLASSIC-003",
+      "verification_status": "verified",
+      "modern_interpretation": "知道停留在哪里，心才能定得下来；定了才能静，静了才能安。深夜反复反刍，往往是因为我们没有给思维按下「暂停键」，把不能立刻解决的事硬拉到当下消耗。先知止，让大脑在夜里获得安歇。",
+      "application_note": "适合深夜反刍、思维停不下来、过度焦虑未来或过度复盘过去的情境。",
+      "caveat": "知止并非消极逃避现实，而是区分当下的可为与不可为，为心灵设立清晰的休整边界。",
+      "related_card_ids": [
+        "M-002",
+        "A-001"
+      ],
+      "status": "active",
+      "version": "1.0"
+    },
+    "action": {
+      "card_id": "A-007",
+      "card_type": "action",
+      "title": "关照呼吸卸下紧绷",
+      "theme_tags": [
+        "night",
+        "future_anxiety",
+        "control"
+      ],
+      "front_text": "把手机屏幕朝下扣在桌上，闭上眼做 3 组慢速深呼吸。",
+      "action_instruction": "吸气 4 秒，屏住 2 秒，呼气 6 秒。在每一次长长的呼气里，有意识地让咬紧的后槽牙松开，让高耸的双肩沉下去，告诉身体：今晚已经安全了。",
+      "steps": [
+        "手机息屏朝下放置",
+        "闭目进行 4-2-6 节奏呼吸",
+        "有意识地放松下颌与双肩"
+      ],
+      "estimated_minutes": 3,
+      "optional": true,
+      "alternative_action": "用温水洗一下脸，感受水温带走面部紧绷感。",
+      "related_card_ids": [
+        "M-007",
+        "W-007"
+      ],
+      "status": "active",
+      "version": "1.0"
+    }
+  },
   "empathy": "夜里停不下来，常常不是因为问题太难，是因为你太累了，累到没有力气把它想完。",
   "classic_reference": {
-    "quote": "功成名遂身退，天之道也。",
-    "book": "道德经",
-    "chapter": "第九章",
-    "source_id": "CLASSIC-425",
+    "quote": "知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。",
+    "book": "大学",
+    "chapter": "经一章",
+    "source_id": "CLASSIC-003",
     "verification_status": "verified"
   },
-  "classic_translation": "大功告成、名声已立，就主动收敛锋芒适时抽身而退，这是顺应天道自然的至高智慧。",
-  "classic_note": "老子功成身退核心名言。",
-  "modern_interpretation": "不要恋栈权位或者高光时刻不放。在最顶峰的时候懂得优雅谢幕、转型幕后，不仅保全了晚节，更留出了下半场的无限空间。",
+  "classic_translation": "",
+  "classic_note": "知止并非消极逃避现实，而是区分当下的可为与不可为，为心灵设立清晰的休整边界。",
+  "modern_interpretation": "知道停留在哪里，心才能定得下来；定了才能静，静了才能安。深夜反复反刍，往往是因为我们没有给思维按下「暂停键」，把不能立刻解决的事硬拉到当下消耗。先知止，让大脑在夜里获得安歇。",
   "micro_action": {
-    "title": "今晚 5 分钟微行动",
-    "headline": "今晚 5 分钟：给「想不通」写一封明天再读的便签",
+    "title": "关照呼吸卸下紧绷",
+    "headline": "把手机屏幕朝下扣在桌上，闭上眼做 3 组慢速深呼吸。",
     "steps": [
-      "如果你心里一直卡着某件事想不通，拿一张纸写下：「这件事很复杂，但现在的我太累了，思考效率极低」。",
-      "「我批准自己今晚暂时搁置思考，明天早晨醒来后再来审阅它」。",
-      "把便签折起来压在台灯下，安心闭眼。"
+      "手机息屏朝下放置",
+      "闭目进行 4-2-6 节奏呼吸",
+      "有意识地放松下颌与双肩"
     ],
-    "optional": true
+    "estimated_minutes": 3,
+    "optional": true,
+    "alternative_action": "用温水洗一下脸，感受水温带走面部紧绷感。"
   },
-  "further_reading": "读 道德经·第九章。睡前读，读完就合上，不必写笔记。让它在夜里替你分担一点。",
+  "further_reading": "读 《大学》·经一章。睡前读，读完就合上，不必写笔记。让它在夜里替你分担一点。",
   "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
   "public_content_permission": false,
   "engine": "rules-offline-demo",

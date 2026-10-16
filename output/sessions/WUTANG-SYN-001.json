@@ -1,0 +1,14 @@
+{
+  "session_id": "WUTANG-SYN-001",
+  "created_at": "2026-10-16T10:20:00+08:00",
+  "entry_mode": "direct_input",
+  "theme_tag": "work",
+  "risk_status": "normal",
+  "mindset_card_id": "M-004",
+  "wisdom_card_id": "W-005",
+  "action_card_id": "A-004",
+  "user_reaction": "resonates",
+  "consent_for_public_content": false,
+  "processing_status": "completed",
+  "retention_policy": "默认不将原始输入纳入长期内容库"
+}

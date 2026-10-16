@@ -3,29 +3,103 @@
   "response_status": "ready",
   "scenario_tag": "growth",
   "scenario_label": "破局｜自我成长",
+  "cards": {
+    "mindset": {
+      "card_id": "M-008",
+      "card_type": "mindset",
+      "title": "同辈追赶焦虑",
+      "theme_tags": [
+        "growth",
+        "peer_pressure",
+        "comparison"
+      ],
+      "front_text": "我是在按照自己的时钟生活，还是在追赶别人的时间表？",
+      "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+      "follow_up_question": "剥离掉与他人的比较，你当下真正热爱的、让你感到踏实的一件小事是什么？",
+      "related_card_ids": [
+        "W-008",
+        "A-008"
+      ],
+      "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+      "status": "active",
+      "version": "1.0"
+    },
+    "wisdom": {
+      "card_id": "W-003",
+      "card_type": "wisdom",
+      "title": "千里之行始于足下",
+      "theme_tags": [
+        "growth",
+        "procrastination",
+        "perfectionism"
+      ],
+      "original_text": "合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。",
+      "source_title": "《道德经》",
+      "source_section": "第六十四章",
+      "source_version": "陈鼓应《老子注译及评介》（中华书局）",
+      "source_url_or_ref": "CLASSIC-024",
+      "verification_status": "verified",
+      "modern_interpretation": "再粗壮的树木也是从嫩芽长起，再宏大的旅程也是从脚下一步开始。拖延往往不是因为懒，而是把目标想象得过于庞大完美而不敢迈步。放下对宏大结果的执念，只需开启极其微小的第一步。",
+      "application_note": "适合拖延、完美主义作祟、想做的事情很多却迟迟不敢动笔动手的情境。",
+      "caveat": "重视脚下一步，不是盲目行动，而是打破停滞的启动式尝试。",
+      "related_card_ids": [
+        "M-003",
+        "A-003"
+      ],
+      "status": "active",
+      "version": "1.0"
+    },
+    "action": {
+      "card_id": "A-008",
+      "card_type": "action",
+      "title": "记录微小进步",
+      "theme_tags": [
+        "growth",
+        "peer_pressure",
+        "comparison"
+      ],
+      "front_text": "写下今天完成的任意一件微小成果，对自己说一句「辛苦了」。",
+      "action_instruction": "哪怕只是今天准时起了床、吃了一顿健康的早餐、或者在很累的时候依然认真洗了碗，都算。写在便利贴上，贴在看得见的地方，认可自己一步一步的努力。",
+      "steps": [
+        "找到今天做成的一件最小的事情",
+        "写下一句话肯定自己的付出",
+        "放下社交媒体 15 分钟"
+      ],
+      "estimated_minutes": 3,
+      "optional": true,
+      "alternative_action": "对自己微笑一下，承认自己的价值不依赖任何外在比较。",
+      "related_card_ids": [
+        "M-008",
+        "W-008"
+      ],
+      "status": "active",
+      "version": "1.0"
+    }
+  },
   "empathy": "「换了新工作三个月，每天都很迷茫，不知…」——这种状态很多人都经历过：心里急，身体却动不了，然后因为动不了更着急。",
   "classic_reference": {
-    "quote": "学而不思则罔，思而不学则殆。",
-    "book": "论语",
-    "chapter": "为政",
-    "source_id": "CLASSIC-023",
+    "quote": "合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。",
+    "book": "道德经",
+    "chapter": "第六十四章",
+    "source_id": "CLASSIC-024",
     "verification_status": "verified"
   },
-  "classic_translation": "只读书学习而不深入思考就会感到迷茫，只空想揣摩而不去实践求证就会陷入危殆不安。",
-  "classic_note": "篇章确证。",
-  "modern_interpretation": "半夜脑子停不下来的很多时候，是在「空想而未行动」中内耗。与其在头脑里空转，不如去读两页确凿的知识，或者记下明天的一个微动作。",
+  "classic_translation": "",
+  "classic_note": "重视脚下一步，不是盲目行动，而是打破停滞的启动式尝试。",
+  "modern_interpretation": "再粗壮的树木也是从嫩芽长起，再宏大的旅程也是从脚下一步开始。拖延往往不是因为懒，而是把目标想象得过于庞大完美而不敢迈步。放下对宏大结果的执念，只需开启极其微小的第一步。",
   "micro_action": {
-    "title": "今晚 5 分钟微行动",
-    "headline": "今晚 5 分钟：给目标设一个「起步动作」",
+    "title": "记录微小进步",
+    "headline": "写下今天完成的任意一件微小成果，对自己说一句「辛苦了」。",
     "steps": [
-      "写下你想做但一直没开始的那件事。",
-      "把它缩小到一个 5 分钟内能做完的动作（例如：只打开文档写标题）。",
-      "现在就用 5 分钟做这一个动作，做完就算成功。",
-      "告诉自己：今天只要求启动，不要求完成。"
+      "找到今天做成的一件最小的事情",
+      "写下一句话肯定自己的付出",
+      "放下社交媒体 15 分钟"
     ],
-    "optional": true
+    "estimated_minutes": 3,
+    "optional": true,
+    "alternative_action": "对自己微笑一下，承认自己的价值不依赖任何外在比较。"
   },
-  "further_reading": "读 论语·为政。读三分钟就够。重点不是读懂，是让手先动起来。",
+  "further_reading": "读 《道德经》·第六十四章。读三分钟就够。重点不是读懂，是让手先动起来。",
   "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
   "public_content_permission": false,
   "engine": "rules-offline-demo",

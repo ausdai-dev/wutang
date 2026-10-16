@@ -3,28 +3,103 @@
   "response_status": "ready",
   "scenario_tag": "relation",
   "scenario_label": "松绑｜关系困扰",
+  "cards": {
+    "mindset": {
+      "card_id": "M-006",
+      "card_type": "mindset",
+      "title": "害怕被拒绝",
+      "theme_tags": [
+        "relation",
+        "fear_of_rejection",
+        "boundaries"
+      ],
+      "front_text": "如果我说出心里的真实边界，我最害怕失去的是什么？",
+      "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+      "follow_up_question": "那个真正珍惜你的人，会因为你偶尔表达一次真实需要就离开吗？",
+      "related_card_ids": [
+        "W-006",
+        "A-006"
+      ],
+      "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+      "status": "active",
+      "version": "1.0"
+    },
+    "wisdom": {
+      "card_id": "W-001",
+      "card_type": "wisdom",
+      "title": "求诸己",
+      "theme_tags": [
+        "relation",
+        "boundaries",
+        "people_pleasing"
+      ],
+      "original_text": "君子求诸己，小人求诸人。",
+      "source_title": "《论语》",
+      "source_section": "卫灵公",
+      "source_version": "杨伯峻《论语译注》（中华书局）",
+      "source_url_or_ref": "CLASSIC-001",
+      "verification_status": "verified",
+      "modern_interpretation": "君子把力气花在自己能掌控的事情上，小人总把期待寄托在别人身上。在人际关系里，当我们总想让所有人满意时，其实是在把自己的评价权拱手交给了别人；回到自己身上，先明确自己的边界与真实需要。",
+      "application_note": "适合面对讨好倾向、难以拒绝他人或总因他人反应而自责的情境。",
+      "caveat": "此句重在自主与向内观照，并非指责当事人自私，也不应理解为完全脱离人际责任与温情。",
+      "related_card_ids": [
+        "M-001",
+        "A-002"
+      ],
+      "status": "active",
+      "version": "1.0"
+    },
+    "action": {
+      "card_id": "A-006",
+      "card_type": "action",
+      "title": "练习温和拒绝",
+      "theme_tags": [
+        "relation",
+        "fear_of_rejection",
+        "boundaries"
+      ],
+      "front_text": "在手机里保存一条温和坚定的话术模板，为边界发声。",
+      "action_instruction": "写下并读一遍这句模板：「我很想帮你，不过我目前手头的进度确实很满，这次实在无法分担，希望你理解。」把这段话存为输入法快捷语或备忘录。",
+      "steps": [
+        "阅读温和拒绝模板",
+        "根据自己的口吻稍作微调",
+        "存入手机备忘录作为备用护盾"
+      ],
+      "estimated_minutes": 2,
+      "optional": true,
+      "alternative_action": "默念三次：「拒绝一件事，不等于否定一个人。」",
+      "related_card_ids": [
+        "M-006",
+        "W-006"
+      ],
+      "status": "active",
+      "version": "1.0"
+    }
+  },
   "empathy": "听起来你不是不在乎对方，恰恰是太在乎了，才把自己放到了最后。「我叫李小雨，在杭州一家叫云图的广告公…」。",
   "classic_reference": {
-    "quote": "与多疑人相处，莫说私密话；与好妒人相处，莫夸得意事。",
-    "book": "呻吟语",
-    "chapter": "应酬",
-    "source_id": "CLASSIC-239",
+    "quote": "君子求诸己，小人求诸人。",
+    "book": "论语",
+    "chapter": "卫灵公",
+    "source_id": "CLASSIC-001",
     "verification_status": "verified"
   },
-  "classic_translation": "同生性猜忌多疑的人相处，千万别去吐露自己的隐私秘密私房话；同心胸狭隘容易嫉妒的人相处，千万别去炫耀吹嘘自己的得意好事。",
-  "classic_note": "篇章确证。",
-  "modern_interpretation": "在办公室里，管好自己的嘴就是最好的护身符。升职加薪了闷声做事，别在天天加班的同事面前晒幸福，保护好别人的自尊，就是保护自己。",
+  "classic_translation": "",
+  "classic_note": "此句重在自主与向内观照，并非指责当事人自私，也不应理解为完全脱离人际责任与温情。",
+  "modern_interpretation": "君子把力气花在自己能掌控的事情上，小人总把期待寄托在别人身上。在人际关系里，当我们总想让所有人满意时，其实是在把自己的评价权拱手交给了别人；回到自己身上，先明确自己的边界与真实需要。",
   "micro_action": {
-    "title": "今晚 5 分钟微行动",
-    "headline": "今晚 5 分钟：区分「我的责任」与「对方的情绪反应」",
+    "title": "练习温和拒绝",
+    "headline": "在手机里保存一条温和坚定的话术模板，为边界发声。",
     "steps": [
-      "画两个圈，内圈写「我能为这段关系做的事」，外圈写「对方的情绪与评判」。",
-      "看着外圈对自己说：对方高兴或不高兴，是他自己的功课，我无法控制也无需全责。",
-      "把力气收回到内圈，今晚给自己倒一杯温水。"
+      "阅读温和拒绝模板",
+      "根据自己的口吻稍作微调",
+      "存入手机备忘录作为备用护盾"
     ],
-    "optional": true
+    "estimated_minutes": 2,
+    "optional": true,
+    "alternative_action": "默念三次：「拒绝一件事，不等于否定一个人。」"
   },
-  "further_reading": "读 呻吟语·应酬。读的时候留意一句话：这句话是在要求你改变对方，还是在帮你把话说清楚。",
+  "further_reading": "读 《论语》·卫灵公。读的时候留意一句话：这句话是在要求你改变对方，还是在帮你把话说清楚。",
   "safety_note": "如果这种状态已经持续很久、影响到吃饭睡觉，找真人聊聊会比找我更有用。",
   "public_content_permission": true,
   "engine": "rules-offline-demo",
