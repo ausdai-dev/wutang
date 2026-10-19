@@ -87,3 +87,14 @@ DOC/_extracted/
 inbox/*
 !inbox/README.md
 !inbox/.gitkeep
+
+# 8. 海报与打包产物（脚本/导出生成，不提交）
+output/*.zip
+output/poster/
+output/poster_*.png
+output/poster_*.jpg
+output/poster_*.pdf
+# assets 下未被前端引用的重复导出版本（poster.html 引用的是 frontend/wutang_poster_sanctuary.jpg，需保留）
+frontend/assets/poster_*.png
+frontend/assets/poster_*.jpg
+frontend/assets/wutang_poster_sanctuary.jpg

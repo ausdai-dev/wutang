@@ -1,0 +1,27 @@
+# Netlify 部署配置文件 - 悟堂·东方解忧处
+[build]
+  command = "python scripts/build_frontend.py"
+  publish = "frontend"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
+
+# 单页应用 (SPA) 路由重定向：所有路径统一回退到 index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# 安全响应头与缓存策略
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

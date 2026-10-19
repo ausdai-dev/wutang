@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>禅意卡牌与书笺雅集 · 悟堂·东方解忧处</title>
+<style>
+:root {
+  --color-bg: #F4EFE6;
+  --color-paper: #FAF6EF;
+  --color-surface: #FFFFFF;
+  --color-ink: #26221E;
+  --color-ink-light: #524B43;
+  --color-muted: #827C72;
+  --color-primary: #8F2928;
+  --color-gold: #A27632;
+  --color-green: #3D6852;
+  --color-border: #D8CEBE;
+  --color-border-light: #EBE3D5;
+  --font-serif: "Songti SC", "Source Han Serif SC", "Noto Serif SC", "SimSun", "STSong", "Songti", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --trans: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  background-image: radial-gradient(#DDD3C1 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* 顶部导览栏 */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 246, 239, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.seal-mark {
+  width: 32px;
+  height: 32px;
+  background: var(--color-primary);
+  color: #FFF;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+}
+.brand-title h1 {
+  margin: 0;
+  font-size: 18px;
+  font-family: var(--font-serif);
+  letter-spacing: 0.08em;
+}
+.top-links {
+  display: flex;
+  gap: 10px;
+}
+.nav-btn {
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: all var(--trans);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* 头部介绍 */
+.hero-header {
+  text-align: center;
+  padding: 40px 20px 24px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.hero-header h2 {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  margin: 0 0 10px;
+  letter-spacing: 0.05em;
+  color: var(--color-ink);
+}
+.hero-header p {
+  color: var(--color-muted);
+  font-size: 15px;
+  margin: 0 0 20px;
+}
+.meta-badges {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.meta-badge {
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--color-ink-light);
+}
+
+/* 筛选分类药丸栏 */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px 24px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  background: #FAF6EF;
+  border: 1px solid var(--color-border);
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  color: var(--color-ink-light);
+  cursor: pointer;
+  transition: all var(--trans);
+}
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.filter-btn.active {
+  background: var(--color-primary);
+  color: #FFF;
+  border-color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* 主展示网格 */
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+/* 卡牌单元 */
+.card-box {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(34,31,27,0.05);
+  transition: all var(--trans);
+}
+.card-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(34,31,27,0.09);
+  border-color: var(--color-border);
+}
+
+/* 3D 翻转交互卡 */
+.card-3d-stage {
+  width: 240px;
+  height: 360px;
+  perspective: 1200px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.card-3d-flipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.card-3d-stage.flipped .card-3d-flipper {
+  transform: rotateY(180deg);
+}
+.card-face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.card-face.face-back {
+  transform: rotateY(180deg);
+}
+
+.flip-tip {
+  font-size: 12px;
+  color: var(--color-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.card-detail {
+  text-align: center;
+  width: 100%;
+}
+.card-detail h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  margin: 0 0 6px;
+  color: var(--color-ink);
+}
+.card-detail p {
+  font-size: 13px;
+  color: var(--color-muted);
+  margin: 0 0 16px;
+  line-height: 1.5;
+  min-height: 38px;
+}
+.btn-group {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+}
+.action-btn {
+  flex: 1;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--trans);
+}
+.action-btn.front {
+  background: #FAF7F2;
+  border: 1px solid var(--color-border);
+  color: var(--color-ink);
+}
+.action-btn.front:hover {
+  background: #FFF;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.action-btn.back {
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: #FFF;
+}
+.action-btn.back:hover {
+  background: #762120;
+}
+
+/* 书笺展示模式 */
+.bookmark-box {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(34,31,27,0.05);
+  transition: all var(--trans);
+}
+.bookmark-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(34,31,27,0.09);
+}
+.bm-preview-img {
+  width: 180px;
+  height: 385px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+  border: 1px solid var(--color-border);
+}
+
+/* 禅茶竹意境大图展示模式 */
+.banner-box {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(34,31,27,0.05);
+  transition: all var(--trans);
+}
+.banner-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(34,31,27,0.09);
+}
+.banner-preview-img {
+  width: 100%;
+  height: 195px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  margin-bottom: 14px;
+  border: 1px solid var(--color-border);
+  background: #F8F5EE;
+}
+.banner-preview-img.contain {
+  object-fit: contain;
+  padding: 12px;
+}
+
+/* 页脚 */
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+
+<header class="top-nav">
+  <div class="brand-title">
+    <div class="seal-mark">悟</div>
+    <h1>悟堂 · 东方禅意卡牌与书笺雅集</h1>
+  </div>
+  <div class="top-links">
+    <a href="index.html" class="nav-btn">返回解忧处应用</a>
+    <a href="poster.html" class="nav-btn">查看宣传海报</a>
+  </div>
+</header>
+
+<section class="hero-header">
+  <h2>东方禅意意境 · 典藏卡牌与书笺雅集</h2>
+  <p>结合 PRD 2.0 工业化规范与 500 条国学分类数据库批量生成，保留古典回纹雅框与留白，支持程序化动态注入内容与独立保存导出；融合「禅、茶、竹」东方文人审美底蕴。</p>
+  <div class="meta-badges">
+    <span class="meta-badge">卡牌规格：480 × 720 px (2:3 黄金比例)</span>
+    <span class="meta-badge">书笺规格：420 × 900 px (长条诗笺格式)</span>
+    <span class="meta-badge">东方意境：禅石枯山水 · 宋韵点茶 · 窗纱修竹</span>
+    <span class="meta-badge">零延迟离线：内联矢量/PNG/JPG 双驱动</span>
+  </div>
+</section>
+
+<div class="filter-bar" id="filterBar">
+  <button class="filter-btn active" data-filter="all">全部展示 (30款雅集)</button>
+  <button class="filter-btn" data-filter="core">核心三牌 (4套)</button>
+  <button class="filter-btn" data-filter="database">国学6大门类 (6套)</button>
+  <button class="filter-btn" data-filter="scenario">4大解忧情境 (4套)</button>
+  <button class="filter-btn" data-filter="bookmark">9款东方解忧书笺 (9款)</button>
+  <button class="filter-btn" data-filter="zen_art">禅茶竹UI意境原画 (7款)</button>
+</div>
+
+<main class="gallery-container">
+  <div class="cards-grid" id="cardsGrid"></div>
+</main>
+
+<footer class="footer">
+  悟堂 · 东方解忧处 ｜ 让古老智慧，用今天的人听得懂的方式活着
+</footer>
+
+<script>
+var MANIFEST = null;
+
+async function init() {
+  try {
+    var res = await fetch('assets/cards_manifest.json');
+    MANIFEST = await res.json();
+  } catch(e) {
+    console.warn('Load manifest fallback');
+  }
+  setupFilters();
+  render('all');
+}
+
+function setupFilters() {
+  var btns = document.querySelectorAll('.filter-btn');
+  btns.forEach(function(b) {
+    b.onclick = function() {
+      btns.forEach(function(x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      render(b.getAttribute('data-filter'));
+    };
+  });
+}
+
+function render(filter) {
+  var grid = document.getElementById('cardsGrid');
+  if (!MANIFEST) return;
+
+  var cards = MANIFEST.cards || [];
+  var bookmarks = MANIFEST.bookmarks || [];
+  var html = '';
+
+  var showCards = (filter !== 'bookmark' && filter !== 'zen_art');
+  var fCards = cards;
+  if (filter === 'core') {
+    fCards = cards.filter(function(c) { return c.id.indexOf('card_') === 0; });
+  } else if (filter === 'database') {
+    fCards = cards.filter(function(c) { return c.id.indexOf('cat_') === 0; });
+  } else if (filter === 'scenario') {
+    fCards = cards.filter(function(c) { return c.id.indexOf('scn_') === 0; });
+  }
+
+  if (showCards && fCards.length > 0) {
+    fCards.forEach(function(c) {
+      html += `
+        <div class="card-box">
+          <div class="card-3d-stage" onclick="this.classList.toggle('flipped')" title="点击翻转正反面">
+            <div class="card-3d-flipper">
+              <div class="card-face face-front" style="background-image:url('${c.front_image}')"></div>
+              <div class="card-face face-back" style="background-image:url('${c.back_image}')"></div>
+            </div>
+          </div>
+          <div class="flip-tip">↺ 点击卡片翻转（当前显示正面）</div>
+          <div class="card-detail">
+            <h3>${c.name}</h3>
+            <p>${c.description}</p>
+            <div class="btn-group">
+              <a href="${c.front_image}" download="${c.id}_front.png" class="action-btn front">下载正面 PNG</a>
+              <a href="${c.back_image}" download="${c.id}_back.png" class="action-btn back">下载背面 PNG</a>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  var showBookmarks = (filter === 'all' || filter === 'bookmark');
+  if (showBookmarks && bookmarks.length > 0) {
+    bookmarks.forEach(function(b) {
+      html += `
+        <div class="bookmark-box">
+          <img src="${b.image}" alt="${b.name}" class="bm-preview-img">
+          <div class="card-detail">
+            <h3>${b.name}</h3>
+            <p>${b.description}</p>
+            <div class="btn-group">
+              <a href="${b.image}" download="${b.id}.png" class="action-btn back" style="flex:none;width:100%;">下载解忧书笺 PNG</a>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  var showZenArt = (filter === 'all' || filter === 'zen_art');
+  if (showZenArt) {
+    var zenArtList = [
+      { name: "枯山水 · 禅石涟漪", desc: "极简水墨枯山水，一石一波，宁静留白，用于解忧静心横幅与意境氛围。", img: "assets/ui/zen_stones_banner.jpg", isBanner: true },
+      { name: "宋韵点茶 · 影青温润", desc: "宋代影青瓷茶盏，微袅轻烟与天然竹筅，用于输入区顶部横幅与煮茶静候动画。", img: "assets/ui/tea_tranquility.jpg", isBanner: true },
+      { name: "窗纱竹影 · 虚心劲节", desc: "半透窗纱掩映修竹疏影，虚心挺拔，清风自来，用于氛围顶栏与文人意象。", img: "assets/ui/bamboo_breeze.jpg", isBanner: true },
+      { name: "古法手漉宣纸茶渍底图", desc: "宣纸肌理与茶汤晕染微透底色，全局网页背景平铺底图。", img: "assets/ui/zen_paper_bg.png", isBanner: false },
+      { name: "修竹清影 · 右上角饰", desc: "窗纱竹影半透微雕水印，网页右上角优雅浮饰。", img: "assets/ui/bamboo_corner.png", isBanner: false },
+      { name: "宋代青瓷盏 · 输入框水印", desc: "青瓷茶盏水墨细线稿，心事输入框右下角淡雅水印。", img: "assets/ui/tea_bowl_vignette.png", isBanner: false },
+      { name: "枯山水同心纹 · 左下角饰", desc: "水墨同心涟漪微雕，网页左下角优雅浮饰。", img: "assets/ui/zen_ripple_corner.png", isBanner: false }
+    ];
+    zenArtList.forEach(function(z) {
+      html += `
+        <div class="banner-box">
+          <img src="${z.img}" alt="${z.name}" class="banner-preview-img ${z.isBanner ? '' : 'contain'}">
+          <div class="card-detail">
+            <h3>${z.name}</h3>
+            <p>${z.desc}</p>
+            <div class="btn-group">
+              <a href="${z.img}" download="${z.img.split('/').pop()}" class="action-btn back" style="flex:none;width:100%;">下载意境原画 / 底图</a>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  grid.innerHTML = html;
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

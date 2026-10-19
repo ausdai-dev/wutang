@@ -6,69 +6,109 @@
 <title>悟堂 · 东方解忧处 ｜ 现代东方日常情绪整理与内容工作室</title>
 <style>
 /* ==========================================================================
-   悟堂·东方解忧处 —— 现代东方编辑设计系统 (Design Tokens - PRD 3.2)
+   悟堂 · 东方解忧处 —— 现代东方编辑设计系统 (Design Tokens 2.0)
    ========================================================================== */
 :root {
-  --color-bg: #F8F6F1;             /* 页面主背景：暖白纸感，减少纯白冷硬感 */
-  --color-surface: #FFFFFF;        /* 主内容容器、卡片 */
-  --color-surface-subtle: #FDFBF7; /* 次级微暖表面 */
-  --color-ink: #262421;            /* 标题、正文主要文字（深墨） */
-  --color-ink-light: #4A443E;      /* 次级阅读文本 */
-  --color-muted: #77736D;          /* 辅助说明、次级文本 */
-  --color-primary: #8F2928;        /* 主按钮、选中态、朱红方印 */
-  --color-primary-hover: #762120;  /* 主色悬停/按压态 */
-  --color-primary-light: #FDF5F3;  /* 主色浅背景 */
-  --color-primary-border: #E8CAC4; /* 主色浅边框 */
-  --color-border: #E6E0D7;         /* 边框、细分割线 */
-  --color-border-dark: #D3C9BC;    /* 强调边框 */
-  --color-gold: #A67C38;           /* 典籍编号、雅金色 */
-  --color-gold-bg: #FCF7EE;        /* 典籍徽章背景 */
-  --color-success: #47745B;        /* 已核验、成功状态（松针绿） */
-  --color-success-bg: #EDF5F0;     /* 成功浅背景 */
-  --color-warning: #9A6A2F;        /* 待审核、需确认（琥珀色） */
-  --color-warning-bg: #FCF5EA;     /* 警告浅背景 */
-  --color-danger: #9B3434;         /* 安全提示、危险错误（赤红） */
-  --color-danger-bg: #FDF2F2;      /* 危险浅背景 */
+  --color-bg: #F8F5EE;             /* 页面主背景：宣纸暖白，温润静心 */
+  --color-surface: #FFFFFF;        /* 主内容容器、卡片白底 */
+  --color-surface-subtle: #FDFBF8; /* 次级微暖表面 */
+  --color-surface-card: #FAF8F3;   /* 模块卡片底色 */
+  --color-ink: #221F1B;            /* 标题、主要阅读文字（深墨） */
+  --color-ink-light: #4D463E;      /* 次级正文 */
+  --color-muted: #7E7870;          /* 辅助文字、次级信息 */
+  --color-primary: #8E2927;        /* 主色：朱砂红 */
+  --color-primary-hover: #782120;  /* 悬停深红 */
+  --color-primary-light: #FBF4F2;  /* 朱砂浅背景 */
+  --color-primary-border: #E8CAC4; /* 朱砂浅边框 */
+  --color-border: #E8E2D6;         /* 细线、常规边框 */
+  --color-border-dark: #D4CBBD;    /* 强调边框 */
+  --color-gold: #9F7430;           /* 典籍编号、雅金色 */
+  --color-gold-bg: #FCF6EC;        /* 典籍金底色 */
+  --color-gold-border: #E9DABF;    /* 典籍金边框 */
+  --color-success: #3A6D4F;        /* 已核验、行动确认（松针绿） */
+  --color-success-bg: #EDF6F1;     /* 成功浅绿底 */
+  --color-success-border: #C8DFD1; /* 成功浅绿边 */
+  --color-warning: #996827;        /* 待审核、需确认（琥珀色） */
+  --color-warning-bg: #FCF5E8;     /* 警告浅底 */
+  --color-danger: #9B3131;         /* 安全提示、危险错误（赤红） */
+  --color-danger-bg: #FDF3F3;      /* 危险浅底 */
 
-  --font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, -apple-system, sans-serif;
-  --font-serif: "Songti SC", "SimSun", "Noto Serif SC", "STSong", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-serif: "Songti SC", "Source Han Serif SC", "Noto Serif SC", "SimSun", "STSong", serif;
 
-  --radius-card: 14px;
-  --radius-btn: 10px;
+  --radius-card: 16px;
+  --radius-btn: 24px;
   --radius-input: 12px;
-  --radius-tag: 10px;
-  --radius-badge: 4px;
+  --radius-tag: 12px;
+  --radius-badge: 6px;
 
-  --shadow-sm: 0 1px 3px rgba(38,36,33,0.04);
-  --shadow-md: 0 4px 18px rgba(38,36,33,0.05);
-  --shadow-lg: 0 12px 36px rgba(38,36,33,0.08);
+  --shadow-sm: 0 1px 3px rgba(34,31,27,0.03), 0 2px 6px rgba(34,31,27,0.02);
+  --shadow-md: 0 6px 24px rgba(34,31,27,0.04), 0 1px 4px rgba(34,31,27,0.02);
+  --shadow-lg: 0 16px 44px rgba(34,31,27,0.07), 0 2px 10px rgba(34,31,27,0.03);
 
-  --trans: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --trans: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; padding: 0; }
 body {
   background: var(--color-bg);
+  background-image: url('assets/ui/zen_paper_bg.png');
+  background-repeat: repeat;
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 15.5px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  position: relative;
+}
+
+/* 禅意背景角花装饰 (右上竹影 + 左下枯山水微澜) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 360px;
+  height: 360px;
+  background-image: url('assets/ui/bamboo_corner.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top right;
+  pointer-events: none;
+  opacity: 0.28;
+  z-index: 0;
+}
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 320px;
+  height: 320px;
+  background-image: url('assets/ui/zen_ripple_corner.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  pointer-events: none;
+  opacity: 0.22;
+  z-index: 0;
 }
 
 /* 典雅宋体 */
 .serif { font-family: var(--font-serif); }
 
-/* 页面容器 */
+/* 页面主容器 */
 .app-container {
-  max-width: 960px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 16px 20px 60px;
+  padding: 16px 22px 64px;
+  position: relative;
+  z-index: 1;
 }
 @media (max-width: 640px) {
-  .app-container { padding: 12px 14px 48px; }
+  .app-container { padding: 12px 16px 48px; }
 }
 
 /* ==========================================================================
@@ -79,7 +119,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 14px 0 20px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   border-bottom: 1px solid var(--color-border);
   flex-wrap: wrap;
   gap: 12px;
@@ -91,26 +131,30 @@ body {
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  transition: opacity var(--trans);
+}
+.brand-group:hover {
+  opacity: 0.9;
 }
 .seal-mark {
   width: 36px;
   height: 36px;
   flex: 0 0 36px;
-  background: var(--color-primary);
+  background: linear-gradient(145deg, #962E2D 0%, #7E201F 100%);
   color: #FAF6EF;
-  border-radius: 4px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
   font-size: 21px;
   font-weight: 700;
-  box-shadow: 0 2px 6px rgba(143,41,40,0.25);
-  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 2px 8px rgba(142,41,39,0.25);
+  border: 1px solid rgba(255,255,255,0.18);
 }
 .brand-text h1 {
   margin: 0;
-  font-size: 17px;
+  font-size: 17.5px;
   font-weight: 700;
   letter-spacing: 0.16em;
   color: var(--color-primary);
@@ -120,7 +164,7 @@ body {
   margin: 2px 0 0;
   font-size: 11.5px;
   color: var(--color-muted);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 
 .header-right {
@@ -132,44 +176,46 @@ body {
 /* 模式切换药丸 */
 .mode-nav {
   display: inline-flex;
-  background: rgba(230, 224, 215, 0.55);
+  background: #EBE5DB;
   padding: 3px;
-  border-radius: 24px;
-  border: 1px solid var(--color-border);
+  border-radius: 30px;
+  border: 1px solid #DFD8CC;
 }
 .mode-tab {
   border: none;
   background: transparent;
-  padding: 6px 14px;
+  padding: 6px 16px;
   font-size: 13.5px;
   font-weight: 600;
-  color: var(--color-muted);
-  border-radius: 20px;
+  color: #6D675F;
+  border-radius: 24px;
   cursor: pointer;
-  transition: var(--trans);
+  transition: all var(--trans);
   display: flex;
   align-items: center;
   gap: 6px;
 }
 .mode-tab.active {
-  background: var(--color-surface);
+  background: #FFFFFF;
   color: var(--color-primary);
-  box-shadow: 0 1px 4px rgba(38,36,33,0.08);
+  box-shadow: 0 2px 8px rgba(34,31,27,0.08);
 }
 
 .header-action-btn {
-  background: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 6px 12px;
-  font-size: 13px;
-  color: var(--color-ink-light);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #DFD8CC;
+  border-radius: 20px;
+  padding: 6px 13px;
+  font-size: 12.5px;
+  color: #5C564E;
   cursor: pointer;
-  transition: var(--trans);
+  transition: all var(--trans);
+  backdrop-filter: blur(4px);
 }
 .header-action-btn:hover {
-  background: var(--color-surface);
-  border-color: var(--color-border-dark);
+  background: #FFFFFF;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 /* ==========================================================================
@@ -180,11 +226,12 @@ body {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-md);
-  padding: 36px 36px 32px;
+  padding: 36px 38px 32px;
   position: relative;
+  transition: box-shadow var(--trans);
 }
 @media (max-width: 600px) {
-  .card { padding: 24px 18px 22px; border-radius: 12px; }
+  .card { padding: 24px 20px 22px; border-radius: 14px; }
 }
 
 .btn {
@@ -197,17 +244,18 @@ body {
   font-weight: 600;
   cursor: pointer;
   border-radius: var(--radius-btn);
-  padding: 12px 26px;
-  border: 1px solid var(--color-primary);
-  background: var(--color-primary);
+  padding: 11px 26px;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, #962E2D 0%, #7E201F 100%);
   color: #FAF6EF;
-  transition: var(--trans);
+  transition: all var(--trans);
   text-decoration: none;
+  box-shadow: 0 3px 12px rgba(142,41,39,0.2);
 }
 .btn:hover {
-  background: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
+  background: linear-gradient(135deg, #9E3534 0%, #872524 100%);
   transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(142,41,39,0.26);
 }
 .btn:active {
   transform: translateY(0);
@@ -217,47 +265,52 @@ body {
   cursor: not-allowed;
   transform: none !important;
   background: #A8A29A !important;
-  border-color: #A8A29A !important;
+  box-shadow: none !important;
 }
 .btn.ghost {
   background: transparent;
   color: var(--color-primary);
-  border-color: var(--color-border-dark);
+  border: 1px solid var(--color-border-dark);
+  box-shadow: none;
 }
 .btn.ghost:hover {
   background: var(--color-primary-light);
   border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(142,41,39,0.08);
 }
 .btn.secondary {
-  background: var(--color-bg);
+  background: #F4EFE6;
   color: var(--color-ink);
-  border-color: var(--color-border);
+  border: 1px solid var(--color-border);
+  box-shadow: none;
 }
 .btn.secondary:hover {
   background: #ECE5D8;
   border-color: var(--color-border-dark);
 }
 .btn.sm {
-  padding: 7px 15px;
-  font-size: 13.5px;
+  padding: 6px 15px;
+  font-size: 13px;
   font-weight: 500;
+  border-radius: 20px;
+  box-shadow: none;
 }
 .btn.lg {
-  padding: 14px 34px;
-  font-size: 16.5px;
-  letter-spacing: 0.05em;
+  padding: 13px 36px;
+  font-size: 16px;
+  letter-spacing: 0.04em;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 2px 8px;
+  padding: 3px 9px;
   border-radius: var(--radius-badge);
   font-size: 12px;
   font-weight: 500;
   line-height: 1.4;
 }
-.badge.ok { background: var(--color-success-bg); color: var(--color-success); border: 1px solid #C6DFD0; }
+.badge.ok { background: var(--color-success-bg); color: var(--color-success); border: 1px solid var(--color-success-border); }
 .badge.rev { background: var(--color-warning-bg); color: var(--color-warning); border: 1px solid #EEDBBE; }
 .badge.nf { background: var(--color-danger-bg); color: var(--color-danger); border: 1px solid #F0C4C4; }
 
@@ -267,23 +320,23 @@ body {
    U-01 提问首页 (Client Home)
    ========================================================================== */
 .client-hero {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 .client-hero h2 {
   font-family: var(--font-serif);
-  font-size: 29px;
-  line-height: 1.38;
+  font-size: 27px;
+  line-height: 1.42;
   color: var(--color-ink);
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   font-weight: 600;
   letter-spacing: 0.02em;
 }
 @media (max-width: 600px) {
-  .client-hero h2 { font-size: 23px; }
+  .client-hero h2 { font-size: 22px; }
 }
 .client-hero p {
   margin: 0;
-  font-size: 15.5px;
+  font-size: 15px;
   color: var(--color-ink-light);
 }
 
@@ -292,9 +345,10 @@ body {
   color: var(--color-muted);
   margin: 0 0 12px;
   font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
-/* 场景标签组 (ScenarioChip - PRD 6.1) */
+/* 场景标签组 */
 .scenario-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -306,12 +360,12 @@ body {
 }
 .scenario-chip {
   text-align: left;
-  background: var(--color-surface-subtle);
+  background: #FAF8F3;
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-tag);
-  padding: 13px 15px;
+  padding: 14px 16px;
   cursor: pointer;
-  transition: var(--trans);
+  transition: all var(--trans);
   color: inherit;
   font: inherit;
   position: relative;
@@ -319,22 +373,24 @@ body {
   flex-direction: column;
 }
 .scenario-chip:hover {
-  background: #FFFDF9;
+  background: #FFFFFF;
   border-color: var(--color-border-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(34,31,27,0.04);
 }
 .scenario-chip[aria-pressed="true"] {
   background: var(--color-primary-light);
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary), 0 3px 12px rgba(142,41,39,0.08);
 }
 .scenario-chip-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 .scenario-chip .chip-title {
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 600;
   color: var(--color-ink);
 }
@@ -342,10 +398,17 @@ body {
   color: var(--color-primary);
 }
 .scenario-chip .check-icon {
-  font-size: 14px;
-  color: var(--color-primary);
+  font-size: 11px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #FAF6EF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
-  transition: var(--trans);
+  transition: all var(--trans);
 }
 .scenario-chip[aria-pressed="true"] .check-icon {
   opacity: 1;
@@ -362,27 +425,29 @@ body {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   font-size: 12.5px;
   color: var(--color-muted);
 }
 .pill-inspirations .pill-label {
   white-space: nowrap;
+  font-weight: 500;
 }
 .inspo-pill {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 14px;
-  padding: 4px 11px;
+  background: #F4EFE6;
+  border: 1px solid #E2DCD1;
+  border-radius: 16px;
+  padding: 4px 12px;
   font-size: 12.5px;
-  color: var(--color-ink-light);
+  color: #554F47;
   cursor: pointer;
-  transition: var(--trans);
+  transition: all 0.15s ease;
 }
 .inspo-pill:hover {
   background: #ECE5D8;
-  border-color: var(--color-border-dark);
+  border-color: var(--color-primary);
   color: var(--color-primary);
+  transform: translateY(-1px);
 }
 
 /* 输入框 */
@@ -390,27 +455,117 @@ body {
   position: relative;
   margin-bottom: 12px;
 }
+.input-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: 24px;
+  right: 18px;
+  width: 72px;
+  height: 60px;
+  background-image: url('assets/ui/tea_bowl_vignette.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.16;
+}
+
+/* 首页禅茶意境横幅 */
+.zen-tea-banner {
+  position: relative;
+  width: 100%;
+  height: 155px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+.zen-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: saturate(0.92) brightness(0.96);
+  transition: transform 0.8s ease;
+}
+.zen-tea-banner:hover .zen-banner-img {
+  transform: scale(1.02);
+}
+.zen-banner-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 20px 10px;
+  background: linear-gradient(to top, rgba(34,31,27,0.72), transparent);
+  color: #FAF6EF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  letter-spacing: 0.05em;
+}
+.zen-banner-sub {
+  font-size: 12px;
+  opacity: 0.85;
+}
+@media (max-width: 600px) {
+  .zen-banner-sub { display: none; }
+  .zen-tea-banner { height: 120px; }
+}
+
+/* 煮茶静候动画 */
+.loading-zen-illustration {
+  position: relative;
+  width: 110px;
+  height: 95px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading-tea-img {
+  width: 90px;
+  height: 75px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+}
+.tea-steam-bubble {
+  position: absolute;
+  top: -2px;
+  right: 28px;
+  font-size: 18px;
+  animation: teaSteamFloat 2.2s infinite ease-in-out;
+}
+@keyframes teaSteamFloat {
+  0% { transform: translateY(0) scale(0.9); opacity: 0.5; }
+  50% { transform: translateY(-8px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-16px) scale(1.2); opacity: 0; }
+}
 .wutang-textarea {
   width: 100%;
-  min-height: 130px;
+  min-height: 135px;
   resize: vertical;
-  padding: 16px 18px 30px;
+  padding: 16px 18px 32px;
   font: inherit;
   font-size: 15.5px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--color-ink);
-  background: var(--color-surface);
-  border: 1.5px solid var(--color-border);
+  background: #FAF8F4;
+  border: 1.5px solid #E2DCD1;
   border-radius: var(--radius-input);
-  transition: var(--trans);
+  transition: all var(--trans);
 }
 .wutang-textarea:focus {
   outline: none;
+  background: #FFFFFF;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(143,41,40,0.08);
+  box-shadow: 0 0 0 3px rgba(142,41,39,0.07);
 }
 .wutang-textarea::placeholder {
-  color: #B8B0A5;
+  color: #AAA399;
 }
 .char-count {
   position: absolute;
@@ -446,17 +601,18 @@ body {
   flex-wrap: wrap;
 }
 .submit-note {
-  font-size: 12.5px;
-  color: var(--color-muted);
+  font-size: 12px;
+  color: #8C867E;
 }
 
 .boundary-footer {
-  margin-top: 30px;
-  padding-top: 20px;
+  margin-top: 28px;
+  padding-top: 16px;
   border-top: 1px dashed var(--color-border);
   font-size: 12px;
   color: var(--color-muted);
-  line-height: 1.75;
+  line-height: 1.65;
+  text-align: center;
 }
 
 /* ==========================================================================
@@ -464,13 +620,13 @@ body {
    ========================================================================== */
 .loading-box {
   text-align: center;
-  padding: 60px 20px;
+  padding: 56px 20px;
 }
 .loading-seal-anim {
   width: 58px;
   height: 58px;
   margin: 0 auto 24px;
-  background: var(--color-primary);
+  background: linear-gradient(145deg, #962E2D 0%, #7E201F 100%);
   color: #FAF6EF;
   border-radius: 8px;
   display: flex;
@@ -479,23 +635,23 @@ body {
   font-family: var(--font-serif);
   font-size: 30px;
   font-weight: 700;
-  box-shadow: 0 8px 24px rgba(143,41,40,0.22);
+  box-shadow: 0 8px 24px rgba(142,41,39,0.22);
   animation: pulseSeal 1.8s ease-in-out infinite alternate;
 }
 @keyframes pulseSeal {
-  0% { transform: scale(0.96); opacity: 0.88; }
+  0% { transform: scale(0.96); opacity: 0.9; }
   100% { transform: scale(1.04); opacity: 1; }
 }
 
 .loading-box h3 {
   font-family: var(--font-serif);
-  font-size: 22px;
-  margin: 0 0 12px;
+  font-size: 21px;
+  margin: 0 0 10px;
   color: var(--color-ink);
   font-weight: 600;
 }
 .loading-steps {
-  max-width: 360px;
+  max-width: 320px;
   margin: 24px auto 0;
   text-align: left;
 }
@@ -537,7 +693,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--color-border);
   flex-wrap: wrap;
@@ -547,21 +703,21 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--color-success);
   background: var(--color-success-bg);
-  padding: 4px 12px;
-  border-radius: 16px;
-  border: 1px solid #D2E7DA;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--color-success-border);
 }
 .result-theme-tag {
   font-size: 13px;
   color: var(--color-gold);
   background: var(--color-gold-bg);
-  padding: 4px 12px;
-  border-radius: 16px;
-  border: 1px solid #F1E2C9;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--color-gold-border);
   font-weight: 500;
 }
 
@@ -569,7 +725,7 @@ body {
   font-family: var(--font-serif);
   font-size: 20px;
   color: var(--color-primary);
-  margin: 0 0 28px;
+  margin: 0 0 24px;
   line-height: 1.6;
 }
 
@@ -577,14 +733,14 @@ body {
 .four-step-list {
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  margin-bottom: 30px;
+  gap: 18px;
+  margin-bottom: 28px;
 }
 .step-item {
   display: flex;
   gap: 16px;
-  background: var(--color-surface-subtle);
-  border: 1px solid var(--color-border);
+  background: #FAF8F4;
+  border: 1px solid #EAE3D7;
   border-radius: 12px;
   padding: 22px 24px;
   position: relative;
@@ -593,7 +749,7 @@ body {
   .step-item { padding: 18px 16px; gap: 12px; }
 }
 .step-num-col {
-  flex: 0 0 34px;
+  flex: 0 0 32px;
 }
 .step-num-badge {
   font-family: var(--font-serif);
@@ -607,7 +763,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 700;
 }
 .step-content-col {
   flex: 1;
@@ -615,7 +771,7 @@ body {
 }
 .step-title {
   font-family: var(--font-serif);
-  font-size: 18px;
+  font-size: 17.5px;
   font-weight: 600;
   margin: 0 0 10px;
   color: var(--color-ink);
@@ -640,7 +796,7 @@ body {
 .sage-avatar-mini {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 2px 6px rgba(43,39,36,0.08);
   border: 1px solid var(--color-border);
   flex-shrink: 0;
@@ -650,7 +806,7 @@ body {
 .sage-avatar-fallback {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--color-primary);
   color: #FFF;
   display: flex;
@@ -690,12 +846,15 @@ body {
   letter-spacing: 0.02em;
 }
 .classic-quote-box {
-  background: #FFF;
+  background: #FFFFFF;
   border-left: 3px solid var(--color-primary);
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 10px 10px 0;
   padding: 16px 20px;
   margin: 12px 0 14px;
   box-shadow: 0 1px 4px rgba(38,36,33,0.03);
+  border-top: 1px solid #EFEAE1;
+  border-right: 1px solid #EFEAE1;
+  border-bottom: 1px solid #EFEAE1;
 }
 .classic-quote-text {
   font-family: var(--font-serif);
@@ -755,18 +914,19 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #FFF;
-  border: 1px solid var(--color-border);
-  padding: 6px 14px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--color-success-border);
+  padding: 6px 16px;
   border-radius: 20px;
   font-size: 13px;
-  color: var(--color-ink-light);
+  color: var(--color-success);
   cursor: pointer;
-  transition: var(--trans);
+  transition: all var(--trans);
+  font-weight: 500;
 }
 .willing-btn:hover {
+  background: var(--color-success-bg);
   border-color: var(--color-success);
-  color: var(--color-success);
 }
 .willing-btn.checked {
   background: var(--color-success-bg);
@@ -781,19 +941,19 @@ body {
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-/* 反馈与授权 (U-06) */
+/* 反馈与授权 */
 .feedback-box {
   margin-top: 24px;
   padding: 20px;
-  background: var(--color-surface-subtle);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
+  background: #FAF8F4;
+  border: 1px solid #EAE3D7;
+  border-radius: 12px;
 }
 .feedback-title {
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
   color: var(--color-ink);
   margin-bottom: 12px;
@@ -805,14 +965,14 @@ body {
   flex-wrap: wrap;
 }
 .fb-btn {
-  background: #FFF;
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
-  border-radius: 6px;
-  padding: 7px 14px;
+  border-radius: 20px;
+  padding: 6px 15px;
   font-size: 13px;
   color: var(--color-ink-light);
   cursor: pointer;
-  transition: var(--trans);
+  transition: all var(--trans);
 }
 .fb-btn:hover {
   border-color: var(--color-border-dark);
@@ -826,12 +986,12 @@ body {
 .fb-input {
   flex: 1;
   min-width: 180px;
-  padding: 7px 12px;
+  padding: 6px 12px;
   border: 1px solid var(--color-border);
-  border-radius: 6px;
+  border-radius: 20px;
   font-size: 13px;
   font-family: inherit;
-  background: #FFF;
+  background: #FFFFFF;
 }
 .fb-input:focus {
   outline: none;
@@ -840,23 +1000,23 @@ body {
 
 /* 授权开关 (ConsentGate) */
 .consent-panel {
-  margin-top: 20px;
-  padding: 20px;
-  background: #FFF;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
+  margin-top: 18px;
+  padding: 18px 20px;
+  background: #FAF8F4;
+  border: 1px solid #EAE3D7;
+  border-radius: 12px;
 }
 .consent-panel h4 {
   margin: 0 0 6px;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--color-ink);
 }
 .consent-panel p {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   font-size: 13px;
   color: var(--color-muted);
-  line-height: 1.7;
+  line-height: 1.65;
 }
 .switch-label {
   display: flex;
@@ -869,14 +1029,14 @@ body {
 }
 .switch-input {
   appearance: none;
-  width: 42px;
+  width: 40px;
   height: 22px;
   border-radius: 11px;
-  background: #D8D0C4;
+  background: #D4CBBD;
   position: relative;
   cursor: pointer;
-  transition: var(--trans);
-  flex: 0 0 42px;
+  transition: all var(--trans);
+  flex: 0 0 40px;
   margin: 0;
 }
 .switch-input::after {
@@ -887,15 +1047,15 @@ body {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #FFF;
-  transition: var(--trans);
+  background: #FFFFFF;
+  transition: all var(--trans);
   box-shadow: 0 1px 3px rgba(0,0,0,0.18);
 }
 .switch-input:checked {
   background: var(--color-primary);
 }
 .switch-input:checked::after {
-  left: 22px;
+  left: 20px;
 }
 
 /* ==========================================================================
@@ -919,7 +1079,7 @@ body {
 .safety-hotlines {
   background: var(--color-danger-bg);
   border: 1px solid #F0C4C4;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 16px 18px;
   margin: 20px 0;
 }
@@ -943,41 +1103,44 @@ body {
   padding: 10px 0 30px;
 }
 .jian-card {
-  background: #FCF9F2;
-  border: 1.5px solid #D6CAB8;
-  border-radius: 6px;
-  padding: 44px 38px 36px;
+  background: #FCF9F3;
+  border: 1px solid rgba(212, 199, 180, 0.5);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 7 / 15;
+  min-height: 814px;
+  box-sizing: border-box;
+  padding: 0 26px 36px;
   position: relative;
-  max-width: 480px;
-  margin: 0 auto 26px;
-  box-shadow: 0 8px 32px rgba(38,36,33,0.08);
+  margin: 0 auto 24px;
+  box-shadow: 0 12px 38px rgba(34,31,27,0.08);
   text-align: center;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 .jian-card::before {
-  content: "";
-  position: absolute;
-  inset: 9px;
-  border: 1px solid #E6DCCD;
-  border-radius: 3px;
-  pointer-events: none;
+  display: none;
 }
 .jian-inner {
   position: relative;
   z-index: 1;
+  padding-top: clamp(145px, 42%, 165px);
 }
 .jian-seal-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  display: none !important;
 }
 .jian-small-seal {
   width: 22px;
   height: 22px;
   background: var(--color-primary);
   color: #FFF;
-  border-radius: 2px;
+  border-radius: 3px;
   font-family: var(--font-serif);
   font-size: 13px;
   display: flex;
@@ -991,16 +1154,7 @@ body {
   font-weight: 600;
 }
 .jian-theme-badge {
-  display: inline-block;
-  font-family: var(--font-serif);
-  font-size: 14px;
-  color: var(--color-gold);
-  letter-spacing: 0.15em;
-  margin-bottom: 22px;
-  background: var(--color-gold-bg);
-  padding: 3px 14px;
-  border-radius: 12px;
-  border: 1px solid #EADBBE;
+  display: none !important;
 }
 .jian-quote-display {
   font-family: var(--font-serif);
@@ -1030,12 +1184,12 @@ body {
   text-align: left;
 }
 .jian-action-box {
-  background: #FFF;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
+  background: #FFFFFF;
+  border: 1px solid #E6DFD4;
+  border-radius: 8px;
   padding: 14px 16px;
   text-align: left;
-  box-shadow: 0 1px 3px rgba(38,36,33,0.03);
+  box-shadow: 0 1px 3px rgba(34,31,27,0.03);
 }
 .jian-action-tag {
   font-size: 11.5px;
@@ -1051,14 +1205,11 @@ body {
   line-height: 1.65;
 }
 .jian-footer-quote {
-  margin-top: 24px;
-  font-size: 11.5px;
-  color: var(--color-muted);
-  letter-spacing: 0.08em;
+  display: none !important;
 }
 
 /* ==========================================================================
-   主理人端「悟堂内容工作室」 (Studio Workbench - PRD 5.0)
+   主理人端「悟堂内容工作室」 (Studio Workbench)
    ========================================================================== */
 .studio-layout {
   display: flex;
@@ -1078,13 +1229,13 @@ body {
 .studio-nav-btn {
   background: transparent;
   border: 1px solid transparent;
-  border-radius: 8px;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 600;
+  border-radius: 20px;
+  padding: 7px 16px;
+  font-size: 13.5px;
+  font-weight: 500;
   color: var(--color-muted);
   cursor: pointer;
-  transition: var(--trans);
+  transition: all var(--trans);
   white-space: nowrap;
 }
 .studio-nav-btn:hover {
@@ -1096,6 +1247,7 @@ body {
   color: var(--color-primary);
   border-color: var(--color-border);
   box-shadow: var(--shadow-sm);
+  font-weight: 600;
 }
 
 /* 指标统计行 */
@@ -1103,25 +1255,25 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 @media (max-width: 680px) {
   .metric-row { grid-template-columns: 1fr; gap: 10px; }
 }
 .metric-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: 18px 20px;
+  background: #FAF8F4;
+  border: 1px solid #EAE3D7;
+  border-radius: 12px;
+  padding: 18px 22px;
   box-shadow: var(--shadow-sm);
 }
 .metric-label {
   font-size: 13px;
   color: var(--color-muted);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .metric-value {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--color-ink);
   line-height: 1.2;
@@ -1133,8 +1285,8 @@ body {
 .table-wrap {
   width: 100%;
   overflow-x: auto;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border: 1px solid #EAE3D7;
+  border-radius: 12px;
   background: var(--color-surface);
 }
 .studio-table {
@@ -1144,16 +1296,16 @@ body {
   font-size: 13.5px;
 }
 .studio-table th {
-  background: var(--color-surface-subtle);
+  background: #FAF7F2;
   padding: 12px 14px;
   font-weight: 600;
   color: var(--color-muted);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid #EAE3D7;
   white-space: nowrap;
 }
 .studio-table td {
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--color-border);
+  padding: 13px 14px;
+  border-bottom: 1px solid #F0ECE4;
   color: var(--color-ink-light);
 }
 .studio-table tr:last-child td {
@@ -1178,21 +1330,21 @@ body {
   width: 100%;
   padding: 10px 14px;
   border: 1.5px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 14.5px;
   font-family: inherit;
-  background: #FFF;
+  background: #FFFFFF;
 }
 .form-input:focus, .form-select:focus {
   outline: none;
   border-color: var(--color-primary);
 }
 
-/* 授权阻断警示栏 (PRD 5.2 铁律) */
+/* 授权阻断警示栏 */
 .consent-block-alert {
   background: var(--color-danger-bg);
   border: 1.5px solid #F0C4C4;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 14px 18px;
   margin: 16px 0;
   display: flex;
@@ -1215,7 +1367,7 @@ body {
   line-height: 1.6;
 }
 
-/* 工作流步骤详情 (Pipeline Steps) */
+/* 工作流步骤详情 */
 .pipeline-step-list {
   display: flex;
   flex-direction: column;
@@ -1225,8 +1377,8 @@ body {
 .pipeline-step-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 14px 18px;
+  border-radius: 10px;
+  padding: 16px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1260,7 +1412,7 @@ body {
   color: var(--color-muted);
 }
 
-/* 内容审核分栏 (A-04 Review) */
+/* 内容审核分栏 */
 .review-grid {
   display: grid;
   grid-template-columns: 1.25fr 1fr;
@@ -1270,9 +1422,9 @@ body {
   .review-grid { grid-template-columns: 1fr; }
 }
 .article-preview-pane {
-  background: #FFF;
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 24px;
   font-size: 14.5px;
   line-height: 1.8;
@@ -1294,9 +1446,9 @@ body {
 }
 
 .checklist-pane {
-  background: var(--color-surface-subtle);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
+  background: #FAF8F4;
+  border: 1px solid #EAE3D7;
+  border-radius: 12px;
   padding: 20px;
 }
 .checklist-pane h4 {
@@ -1329,7 +1481,7 @@ body {
   cursor: pointer;
 }
 
-/* 经典资料库 (A-05 Classics) */
+/* 经典资料库 */
 .classics-search-row {
   display: flex;
   gap: 12px;
@@ -1337,12 +1489,12 @@ body {
   flex-wrap: wrap;
 }
 .classics-item-card {
-  background: #FFF;
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 16px 18px;
   margin-bottom: 12px;
-  transition: var(--trans);
+  transition: all var(--trans);
 }
 .classics-item-card:hover {
   border-color: var(--color-border-dark);
@@ -1355,8 +1507,8 @@ body {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(38, 36, 33, 0.45);
-  backdrop-filter: blur(3px);
+  background: rgba(34, 31, 27, 0.45);
+  backdrop-filter: blur(4px);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -1372,14 +1524,14 @@ body {
 }
 .modal-dialog {
   background: var(--color-surface);
-  border-radius: 14px;
+  border-radius: 16px;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-lg);
   max-width: 580px;
   width: 100%;
   max-height: 85vh;
   overflow-y: auto;
-  padding: 30px;
+  padding: 32px;
   position: relative;
   transform: translateY(14px);
   transition: transform 0.22s ease;
@@ -1408,12 +1560,12 @@ body {
   background: #201E1B;
   color: #FAF6EF;
   padding: 10px 22px;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 20px;
+  font-size: 13.5px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
   opacity: 0;
   pointer-events: none;
-  transition: var(--trans);
+  transition: all var(--trans);
   z-index: 9999;
 }
 .toast-notice.show {
@@ -1422,29 +1574,28 @@ body {
 }
 
 /* ==========================================================================
-   PRD 2.0 卡牌融合版新增样式 (Entry Tabs, Awareness Card Flip, 3-Cards Deck)
+   卡牌与翻转交互样式 (Entry Tabs, Awareness Card Flip, 3-Cards Deck)
    ========================================================================== */
-/* 双入口切换药丸 */
 .entry-switch-bar {
   display: flex;
-  background: rgba(230, 224, 215, 0.45);
+  background: #EDE7DC;
   padding: 4px;
-  border-radius: 28px;
-  border: 1px solid var(--color-border);
-  margin-bottom: 22px;
+  border-radius: 30px;
+  border: 1px solid #DFD8CC;
+  margin-bottom: 24px;
   gap: 4px;
 }
 .entry-pill {
   flex: 1;
   border: none;
   background: transparent;
-  padding: 10px 16px;
+  padding: 10px 18px;
   font-size: 14.5px;
   font-weight: 600;
-  color: var(--color-ink-light);
-  border-radius: 24px;
+  color: #6D675F;
+  border-radius: 26px;
   cursor: pointer;
-  transition: var(--trans);
+  transition: all var(--trans);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1456,25 +1607,35 @@ body {
 .entry-pill.active {
   background: var(--color-surface);
   color: var(--color-primary);
-  box-shadow: 0 2px 6px rgba(38,36,33,0.06);
+  box-shadow: 0 2px 8px rgba(34,31,27,0.06);
 }
 
-/* 今日觉察牌 3D 翻转卡片容器 (F-02) */
+/* 今日觉察牌 3D 翻转卡片容器 */
 .awareness-stage {
   perspective: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 18px 0 24px;
+  width: 100%;
 }
 .awareness-card-container {
-  width: 100%;
-  max-width: 400px;
-  min-height: 440px;
+  width: 320px;
+  height: 480px;
+  aspect-ratio: 2 / 3;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.26s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(34, 31, 27, 0.12);
+}
+@media (max-width: 360px) {
+  .awareness-card-container {
+    width: 280px;
+    height: 420px;
+  }
 }
 .awareness-card-container.is-flipped {
   transform: rotateY(180deg);
@@ -1482,34 +1643,38 @@ body {
 .awareness-card-face {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: var(--radius-card);
-  border: 1.5px solid var(--color-border);
-  box-shadow: var(--shadow-md);
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  border-radius: 16px;
+  overflow: hidden;
   box-sizing: border-box;
 }
 .awareness-card-back {
-  background: linear-gradient(145deg, #FAF7F0, #F3EBDD);
-  border-color: #D6CAB8;
+  background: linear-gradient(145deg, #FAF6EE, #F1E7D5);
+  border-color: #D8CDBE;
   align-items: center;
   text-align: center;
 }
 .awareness-card-front {
   background: #FFFFFF;
   transform: rotateY(180deg);
-  text-align: left;
+  text-align: center;
+  padding: 68px 24px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 .awareness-card-back .card-back-pattern {
   width: 100%;
   height: 100%;
-  border: 1px dashed #D3C9BC;
-  border-radius: 10px;
-  padding: 24px 20px;
+  border: 1px dashed #C9BEAD;
+  border-radius: 12px;
+  padding: 28px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1517,18 +1682,18 @@ body {
   box-sizing: border-box;
 }
 .card-back-seal {
-  width: 60px;
-  height: 60px;
-  background: var(--color-primary);
+  width: 58px;
+  height: 58px;
+  background: linear-gradient(145deg, #962E2D, #7E201F);
   color: #FAF6EF;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(143,41,40,0.25);
+  box-shadow: 0 4px 14px rgba(142,41,39,0.25);
   margin-bottom: 16px;
 }
 .card-back-title {
@@ -1546,86 +1711,127 @@ body {
   margin-bottom: 24px;
 }
 .card-back-flip-btn {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border-dark);
-  padding: 8px 18px;
-  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid #D2C7B6;
+  padding: 9px 24px;
+  border-radius: 24px;
   font-size: 13.5px;
   font-weight: 600;
   color: var(--color-primary);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(34,31,27,0.04);
+  transition: all var(--trans);
+}
+.card-back-flip-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34,31,27,0.08);
 }
 
-/* 觉察牌正面排版 */
-.card-type-tag {
-  display: inline-flex;
+/* 觉察牌正面排版 (净空安全区，不遮挡卡面边框与印签) */
+.awareness-card-content {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  font-size: 12.5px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 4px;
-  background: var(--color-primary-light);
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary-border);
-  align-self: flex-start;
+  justify-content: center;
+  flex: 1;
 }
 .card-front-title {
-  font-size: 16px;
+  font-family: var(--font-serif);
+  font-size: 17px;
   font-weight: 600;
-  color: var(--color-ink-light);
-  margin-top: 8px;
+  color: var(--color-ink);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  position: relative;
+  display: inline-block;
+}
+.card-front-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 20%;
+  right: 20%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #C4A47C, transparent);
 }
 .card-front-question {
   font-family: var(--font-serif);
-  font-size: 22px;
+  font-size: 19.5px;
   font-weight: 600;
   color: var(--color-ink);
-  line-height: 1.6;
-  letter-spacing: 0.02em;
+  line-height: 1.7;
+  letter-spacing: 0.03em;
   margin: 12px 0 16px;
+  padding: 0 4px;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.85);
 }
 .card-front-desc {
-  font-size: 13px;
-  color: var(--color-muted);
-  line-height: 1.65;
-  background: var(--color-surface-subtle);
-  padding: 10px 12px;
+  font-size: 12.5px;
+  color: #726A5E;
+  line-height: 1.6;
+  background: rgba(247, 243, 235, 0.78);
+  backdrop-filter: blur(4px);
+  padding: 8px 12px;
   border-radius: 8px;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(210, 199, 182, 0.45);
+  max-width: 90%;
+}
+.card-front-flip-tip {
+  font-size: 11px;
+  color: #9E9689;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  user-select: none;
+}
+
+/* 觉察交互底栏 (位于卡牌正下方，操作清晰且不压挤卡牌) */
+.awareness-controls-dock {
+  width: 100%;
+  max-width: 360px;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .awareness-actions-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
+}
+.awareness-actions-grid .btn {
+  flex: 1 1 42%;
+  min-width: 110px;
+  text-align: center;
+  justify-content: center;
 }
 .awareness-followup-box {
   margin-top: 14px;
   padding: 12px 14px;
   background: var(--color-gold-bg);
-  border: 1px solid #EADBBE;
+  border: 1px solid var(--color-gold-border);
   border-radius: 8px;
   font-size: 13.5px;
   color: var(--color-ink);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* 三张解忧牌结果卡牌组 (PRD 2.0 F-04) */
+/* 三张解忧牌结果卡牌组 */
 .relief-cards-group {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 28px;
+  gap: 18px;
+  margin-bottom: 26px;
 }
 .relief-card-item {
   background: var(--color-surface);
   border: 1.5px solid var(--color-border);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 24px;
   position: relative;
   box-shadow: var(--shadow-sm);
-  transition: var(--trans);
+  transition: all var(--trans);
 }
 .relief-card-item:hover {
   box-shadow: var(--shadow-md);
@@ -1644,10 +1850,51 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
   gap: 8px;
 }
+.relief-card-tag {
+  font-size: 12.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.card-mindset .relief-card-tag { color: var(--color-primary); }
+.card-wisdom .relief-card-tag { color: var(--color-gold); }
+.card-action .relief-card-tag { color: var(--color-success); }
+
+.relief-card-title {
+  font-size: 17.5px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+}
+.relief-card-quote {
+  font-family: var(--font-serif);
+  font-size: 18.5px;
+  color: var(--color-ink);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.relief-card-sub {
+  font-size: 13.5px;
+  color: var(--color-ink-light);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+.relief-card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--color-muted);
+  padding-top: 10px;
+  border-top: 1px dashed var(--color-border);
+}
+
 .card-num-badge {
   font-family: var(--font-serif);
   font-size: 13.5px;
@@ -1656,28 +1903,19 @@ body {
   align-items: center;
   gap: 6px;
 }
-.relief-card-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px dashed var(--color-border);
-  flex-wrap: wrap;
-}
 .btn-card-op {
-  background: transparent;
+  background: #FAF7F2;
   border: 1px solid var(--color-border);
-  border-radius: 6px;
-  padding: 5px 12px;
-  font-size: 12.5px;
-  color: var(--color-ink-light);
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: #5C564E;
   cursor: pointer;
-  transition: var(--trans);
+  transition: all var(--trans);
 }
 .btn-card-op:hover {
-  background: var(--color-surface-subtle);
-  border-color: var(--color-border-dark);
+  background: #FFFFFF;
+  border-color: var(--color-primary);
   color: var(--color-primary);
 }
 
@@ -1698,7 +1936,7 @@ body {
   font-weight: 600;
   color: var(--color-ink-light);
   cursor: pointer;
-  transition: var(--trans);
+  transition: all var(--trans);
 }
 .toggle-version-btn.active {
   background: var(--color-primary);
@@ -1706,47 +1944,810 @@ body {
   border-color: var(--color-primary);
 }
 
-/* 主理人端卡牌库卡片 (PRD 2.0 Studio) */
+/* 主理人端卡牌库卡片 */
 .studio-card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
   margin-top: 16px;
 }
-.studio-card-box {
-  background: var(--color-surface-subtle);
+.studio-card-box, .studio-card-cell {
+  background: #FAF8F4;
   border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: 16px;
+  border-radius: 12px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all var(--trans);
 }
+.studio-card-cell:hover {
+  background: #FFFFFF;
+  border-color: var(--color-border-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 禅意卡牌与书笺典藏系统 */
+.bookmark-selector-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.bm-select-label {
+  font-size: 13px;
+  color: var(--color-muted);
+  font-family: var(--font-serif);
+}
+.bm-pills-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.bm-pill {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 4px 14px;
+  font-size: 12.5px;
+  color: var(--color-ink-light);
+  cursor: pointer;
+  transition: all var(--trans);
+}
+.bm-pill:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+.bm-pill.active {
+  background: var(--color-gold-bg);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+/* 典藏弹窗与画廊网格 */
+.gallery-modal-dialog {
+  max-width: 960px !important;
+  max-height: 88vh;
+  overflow-y: auto;
+}
+.gallery-filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
+.gallery-tab-btn {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: var(--color-ink-light);
+  cursor: pointer;
+  transition: all var(--trans);
+}
+.gallery-tab-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.gallery-tab-btn.active {
+  background: var(--color-primary);
+  color: #FFF;
+  border-color: var(--color-primary);
+  font-weight: 600;
+}
+
+.gallery-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+  padding: 10px 0;
+}
+.gallery-card-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all var(--trans);
+  box-shadow: var(--shadow-sm);
+}
+.gallery-card-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-dark);
+}
+.gallery-card-3d-wrap {
+  width: 200px;
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.gallery-card-3d-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.gallery-card-3d-wrap.flipped .gallery-card-3d-inner {
+  transform: rotateY(180deg);
+}
+.gallery-card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid var(--color-border);
+}
+.gallery-card-face.face-back {
+  transform: rotateY(180deg);
+}
+.gallery-flip-hint {
+  font-size: 11.5px;
+  color: var(--color-muted);
+  margin-bottom: 6px;
+}
+.gallery-card-info h4 {
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  margin: 0 0 4px;
+  color: var(--color-ink);
+}
+.gallery-card-info p {
+  font-size: 12px;
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+.gallery-card-actions {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  justify-content: center;
+}
+
+.gallery-bm-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.gallery-bm-img {
+  width: 135px;
+  height: 290px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+  border: 1px solid var(--color-border);
+}
+
+/* ==========================================================================
+   极简三入口与模式切换扩展
+   ========================================================================== */
+.mode-tab.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   3D 觉察翻牌阵列样式 (Celestial 3D Flip Card Deck)
+   ========================================================================== */
+.cards-spread-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0 28px;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+.card-3d-flipper {
+  perspective: 1200px;
+  width: 100%;
+  height: 440px;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .cards-spread-grid {
+    grid-template-columns: repeat(3, minmax(210px, 1fr));
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .card-3d-flipper {
+    height: 430px;
+    scroll-snap-align: start;
+  }
+}
+.card-3d-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.85s cubic-bezier(0.34, 1.4, 0.64, 1);
+  transform-style: preserve-3d;
+}
+.card-3d-flipper.is-flipped .card-3d-inner {
+  transform: rotateY(180deg);
+}
+.card-3d-face {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+/* 卡背：神秘深空与金色天体罗盘 (参考萍生解忧 CardDeck) */
+.card-3d-back {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0c0924 0%, #170d3a 50%, #050212 100%);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 12px;
+  color: #eeddbb;
+  box-sizing: border-box;
+}
+.card-3d-back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.card-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(245, 197, 66, 0.7);
+  pointer-events: none;
+}
+.card-corner.tl { top: 7px; left: 7px; border-top: 1.5px solid; border-left: 1.5px solid; }
+.card-corner.tr { top: 7px; right: 7px; border-top: 1.5px solid; border-right: 1.5px solid; }
+.card-corner.bl { bottom: 7px; left: 7px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+.card-corner.br { bottom: 7px; right: 7px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
+
+.card-back-header {
+  font-family: monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.35em;
+  color: rgba(245, 197, 66, 0.75);
+  text-transform: uppercase;
+  z-index: 2;
+  text-align: center;
+}
+.card-back-center {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 130px;
+  z-index: 2;
+}
+.card-orbit-ring {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 1px dashed rgba(245, 197, 66, 0.3);
+  animation: spinOrbit 45s linear infinite;
+}
+.card-orbit-ring-inner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px double rgba(245, 197, 66, 0.4);
+  animation: spinOrbitRev 25s linear infinite;
+}
+.card-starburst {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-starburst-ray {
+  position: absolute;
+  background: linear-gradient(to bottom, transparent, rgba(255, 215, 0, 0.85), transparent);
+}
+.card-starburst-ray.v { width: 1.5px; height: 50px; }
+.card-starburst-ray.h { height: 1.5px; width: 50px; }
+.card-starburst-ray.d1 { width: 1px; height: 38px; transform: rotate(45deg); opacity: 0.6; }
+.card-starburst-ray.d2 { width: 1px; height: 38px; transform: rotate(-45deg); opacity: 0.6; }
+.card-core-gem {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff0c2 0%, #f59e0b 60%, #8e2927 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.8);
+  font-size: 14px;
+  color: #120a32;
+  font-weight: bold;
+}
+.card-back-footer {
+  font-family: var(--font-serif);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: rgba(245, 197, 66, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  z-index: 2;
+  text-align: center;
+}
+.card-back-footer .tap-hint {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.1em;
+  animation: pulseAura 2.5s infinite ease-in-out;
+}
+
+@keyframes spinOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes spinOrbitRev {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+@keyframes pulseAura {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* 卡面正面：素雅宣纸与结构化智慧 */
+.card-3d-front {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #FCFAF6;
+  border: 1.5px solid #E5DFD5;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 14px;
+  text-align: left;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.card-front-sub {
+  font-size: 12px;
+  color: var(--color-ink-light);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+.card-front-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(229, 223, 213, 0.8);
+  border-radius: 10px;
+  padding: 12px 10px;
+  background: #FCFAF6;
+}
+.card-front-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+.card-front-tag.mindset { background: #FEF3C7; color: #92400E; }
+.card-front-tag.wisdom { background: #EDE9FE; color: #5B21B6; }
+.card-front-tag.action { background: #D1FAE5; color: #065F46; }
+
+.card-front-artwork {
+  height: 90px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 8px;
+  background-size: cover;
+  background-position: center;
+}
+.card-front-artwork.mindset-art { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); }
+.card-front-artwork.wisdom-art { background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%); }
+.card-front-artwork.action-art { background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); }
+.card-front-symbol {
+  font-size: 34px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+}
+
+.card-front-title {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: bold;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+.card-front-quote {
+  font-size: 12px;
+  color: var(--color-ink);
+  line-height: 1.55;
+  margin-bottom: 6px;
+  font-style: normal;
+  font-weight: 500;
+}
+.card-front-meta {
+  font-size: 10.5px;
+  color: var(--color-muted);
+  border-top: 1px dashed #E5DFD5;
+  padding-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ==========================================================================
+   AI 解析过程中的莲花动效 (Lotus Bloom 3D Canvas Stage)
+   ========================================================================== */
+.lotus-loading-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px 40px;
+  text-align: center;
+  position: relative;
+  background: radial-gradient(circle at center, rgba(14, 10, 30, 0.98) 0%, #06040c 100%);
+  border-radius: 16px;
+  color: #F8F5EE;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), 0 10px 30px rgba(0,0,0,0.2);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.lotus-loading-stage::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.16) 0%, transparent 70%);
+  filter: blur(35px);
+  pointer-events: none;
+  animation: pulseLotusGlow 5s ease-in-out infinite alternate;
+}
+@keyframes pulseLotusGlow {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.2); opacity: 0.9; }
+}
+.lotus-canvas-wrap {
+  position: relative;
+  width: 360px;
+  height: 320px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#lotusCanvas {
+  width: 360px;
+  height: 320px;
+  max-width: 100%;
+  display: block;
+}
+.lotus-interpreting-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  border-radius: 20px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #FDE68A;
+  font-size: 12.5px;
+  letter-spacing: 0.15em;
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+.lotus-interpreting-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F59E0B;
+  box-shadow: 0 0 8px #F59E0B;
+  animation: pulseDot 1.6s infinite ease-in-out;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+.loading-meditation-quote {
+  max-width: 500px;
+  min-height: 52px;
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  color: rgba(254, 243, 199, 0.92);
+  line-height: 1.7;
+  font-style: italic;
+  margin: 8px auto 16px;
+  padding: 0 20px;
+  transition: opacity 0.5s ease;
+}
+
+/* ==========================================================================
+   「我的」模块样式 (User Center, History Records, Privacy, Manager Access)
+   ========================================================================== */
+.mine-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.user-profile-banner {
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: 22px 24px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.profile-user-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.profile-avatar-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FBF4F2 0%, #F5ECE9 100%);
+  border: 2px solid var(--color-primary-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--color-primary);
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(142, 41, 39, 0.12);
+  transition: all var(--trans);
+}
+.profile-info h3 {
+  margin: 0 0 4px;
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.profile-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: normal;
+}
+.profile-badge.guest { background: #EFEBE5; color: #666; }
+.profile-badge.manager { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+.profile-info p {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--color-muted);
+}
+
+.history-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+.history-item-card {
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all var(--trans);
+  box-shadow: var(--shadow-sm);
+}
+.history-item-card:hover {
+  border-color: var(--color-primary-border);
+  box-shadow: var(--shadow-md);
+  background: #FFFFFF;
+}
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--color-muted);
+  margin-bottom: 8px;
+}
+.history-item-question {
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.history-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.history-tag {
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  color: var(--color-ink-light);
+}
+.history-tag.mindset { background: #FEF3C7; color: #92400E; border-color: #FDE68A; }
+.history-tag.wisdom { background: #EDE9FE; color: #5B21B6; border-color: #DDD6FE; }
+.history-tag.action { background: #D1FAE5; color: #065F46; border-color: #A7F3D0; }
+
+.history-item-quote {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--color-primary);
+  font-style: italic;
+  background: var(--color-primary-light);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border-left: 2px solid var(--color-primary);
+  margin-bottom: 12px;
+}
+.history-item-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.privacy-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+.privacy-rule-item {
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.privacy-rule-item .rule-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+.privacy-rule-item h4 {
+  margin: 0 0 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.privacy-rule-item p {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.four-step-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+.four-step-sum-col {
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 14px;
+}
+.four-step-sum-col .fs-num {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--color-primary);
+  opacity: 0.85;
+}
+.four-step-sum-col .fs-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 4px 0 6px;
+  color: var(--color-ink);
+}
+.four-step-sum-col .fs-desc {
+  font-size: 12px;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
 </style>
 </head>
 <body>
 
 <div class="app-container">
 
-  <!-- ======================== 全局顶栏 ======================== -->
+  <!-- ======================== 全局顶栏 (极简三入口) ======================== -->
   <header class="global-header">
-    <div class="brand-group" id="headerBrand">
+    <div class="brand-group" id="headerBrand" style="cursor:pointer;" title="返回解忧首页">
       <div class="seal-mark">悟</div>
       <div class="brand-text">
         <h1>悟堂 · 东方解忧处</h1>
-        <p>让古老智慧，用今天的人听得懂的方式活着</p>
+        <p>煮一盏清茶 · 让古老智慧温和接纳真实的你</p>
       </div>
     </div>
 
     <div class="header-right">
-      <!-- 模式切换药丸 -->
-      <nav class="mode-nav" aria-label="模式切换">
-        <button class="mode-tab active" id="tabClient">🌿 东方解忧处</button>
-        <button class="mode-tab" id="tabStudio">⛩️ 悟堂工作室</button>
+      <!-- 极简模式切换药丸：仅解忧、我的、主理人工作台（仅主理人登录时显示）三个入口 -->
+      <nav class="mode-nav" aria-label="核心导航">
+        <button class="mode-tab active" id="tabRelief" title="东方解忧咨询与抽牌">解忧</button>
+        <button class="mode-tab" id="tabMine" title="个人足迹、历史记录与隐私">我的</button>
+        <button class="mode-tab hidden" id="tabStudio" title="主理人工作台（主理人专享）" style="display:none;">
+          <span style="font-size:12px;margin-right:2px;">👑</span> 主理人工作台
+        </button>
       </nav>
 
-      <button class="header-action-btn" id="btnExplainModal" title="了解四步解忧方">四步方说明</button>
-      <button class="header-action-btn" id="btnPrivacyModal" title="隐私与使用边界">隐私说明</button>
+      <!-- 极简 AI 状态指示胶囊 -->
+      <button class="header-action-btn" id="btnAiStatus" title="AI 后台服务连接状态 (FastAPI · SSE)">AI: 检测中...</button>
     </div>
   </header>
 
@@ -1758,23 +2759,30 @@ body {
     <!-- U-01: 首页提问入口 (PRD 2.0 F-01 & F-02) -->
     <section id="userHome" class="card">
       <div class="client-hero">
+        <div class="zen-tea-banner">
+          <img src="assets/ui/tea_tranquility.jpg" alt="禅茶一味" class="zen-banner-img">
+          <div class="zen-banner-caption">
+            <span>煮一盏清茶 · 听心底回响</span>
+            <span class="zen-banner-sub">让古老智慧，温和接纳真实的你</span>
+          </div>
+        </div>
         <h2>今天，哪件事让你心里打了结？</h2>
         <p>不急着讲道理，先把心事整理清楚。</p>
       </div>
 
       <!-- PRD 2.0 双入口模式切换 -->
       <div class="entry-switch-bar">
-        <button class="entry-pill active" id="entryBtnDirect">我有件心事 ✍️</button>
-        <button class="entry-pill" id="entryBtnCard">抽一张今日觉察牌 🎴</button>
+        <button class="entry-pill active" id="entryBtnDirect">我有件心事</button>
+        <button class="entry-pill" id="entryBtnCard">抽一张今日觉察牌</button>
       </div>
 
-      <div class="section-label">你更接近哪一种情境？（可不选，也可以直接开始）</div>
+      <div class="section-label">此时心境（可选）</div>
       <div class="scenario-grid" id="scenarioGrid"></div>
 
       <!-- 入口 A：我有件心事 (直接输入模式) -->
       <div id="entryDirectArea">
         <div class="pill-inspirations">
-          <span class="pill-label">💡 试试这一句：</span>
+          <span class="pill-label">示例：</span>
           <button class="inspo-pill" data-inspo="领导当着大家的面批评了我，回家路上一直在想我是不是不适合这行。">职场被批评内耗</button>
           <button class="inspo-pill" data-inspo="总是不好意思拒绝别人的要求，答应了又后悔，觉得自己特别窝囊。">难拒绝别人</button>
           <button class="inspo-pill" data-inspo="躺在床上反复想白天说错的那句话，两点还醒着，脑子停不下来。">深夜反刍失眠</button>
@@ -1783,91 +2791,118 @@ body {
 
         <div class="input-wrap">
           <textarea id="userTextarea" class="wutang-textarea"
-            placeholder="用自己的话说说，最近什么事让你放不下？（Ctrl + Enter 可直接提交）"
+            placeholder="写下最近让你心绪难平或内耗的一件事…"
             maxlength="600"></textarea>
           <div class="char-count" id="charCount">0 / 600</div>
         </div>
 
         <div class="privacy-inline-note">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span>抽卡与输入用于自我反思，不预测未来。你的心事默认不公开。</span>
+          <span>私密输入 · 默认不公开</span>
         </div>
 
         <div class="submit-section">
           <button class="btn lg" id="btnSubmitClient" disabled>帮我理一理</button>
-          <div class="submit-note">无需注册或填写个人资料，点击即刻梳理</div>
+          <div class="submit-note">Ctrl + Enter 快捷梳理</div>
         </div>
       </div>
 
       <!-- 入口 B：抽一张今日觉察牌 (F-02) -->
       <div id="entryCardArea" class="hidden">
-        <p style="font-size:14px;color:var(--color-muted);margin:0 0 16px;text-align:center;">
-          先看一张反思卡，再决定是否继续；适合暂时不知道从哪里说起的人。
-        </p>
+        <p style="font-size:14px;color:var(--color-muted);margin:0 0 16px;text-align:center;">抽一张反思卡，照见当下的心境</p>
 
         <div class="awareness-stage">
           <div class="awareness-card-container" id="awarenessCardBox" title="点击翻转卡牌">
-            <!-- 卡背 -->
-            <div class="awareness-card-face awareness-card-back">
-              <div class="card-back-pattern">
-                <div class="card-back-seal">悟</div>
-                <div class="card-back-title">悟堂 · 今日觉察</div>
-                <div class="card-back-sub">抽一张卡，看见自己<br>先接住，再看清，最后走一步</div>
-                <div class="card-back-flip-btn">点击翻开这张牌 ↺</div>
+            <!-- 卡背 (3D 动态金色天体罗盘) -->
+            <div class="awareness-card-face awareness-card-back card-3d-back">
+              <div class="card-corner tl"></div>
+              <div class="card-corner tr"></div>
+              <div class="card-corner bl"></div>
+              <div class="card-corner br"></div>
+              <div class="card-back-header">SUBCONSCIOUS</div>
+              <div class="card-back-center" style="height:170px;">
+                <div class="card-orbit-ring" style="width:140px;height:140px;"></div>
+                <div class="card-orbit-ring-inner" style="width:105px;height:105px;"></div>
+                <div class="card-starburst">
+                  <div class="card-starburst-ray v" style="height:64px;"></div>
+                  <div class="card-starburst-ray h" style="width:64px;"></div>
+                  <div class="card-starburst-ray d1" style="height:48px;"></div>
+                  <div class="card-starburst-ray d2" style="height:48px;"></div>
+                  <div class="card-core-gem" style="width:34px;height:34px;font-size:16px;">悟</div>
+                </div>
+              </div>
+              <div class="card-back-footer">
+                <span style="font-size:14px;font-weight:600;color:#FDE68A;">悟堂 · 今日觉察牌</span>
+                <span class="tap-hint card-back-flip-btn" style="margin-top:6px;font-size:11px;">点击翻开这张牌 ↺</span>
               </div>
             </div>
 
-            <!-- 卡面 (正面) -->
+            <!-- 卡面 (正面：纯粹优雅，无冗余按钮遮挡，留出安全边距) -->
             <div class="awareness-card-face awareness-card-front">
-              <div>
-                <div class="card-type-tag">01 心境牌 · 看见自己</div>
+              <div class="awareness-card-content">
                 <div class="card-front-title" id="awFrontTitle">总想让所有人满意</div>
-                <div class="card-front-question serif" id="awFrontQuestion">我是不是很久没有认真问过自己，真正想要的是什么？</div>
+                <div class="card-front-question serif" id="awFrontQuestion">「我是不是很久没有认真问过自己，真正想要的是什么？」</div>
                 <div class="card-front-desc" id="awFrontDesc">这是一张用于自我反思的提示卡，不代表对你的判断。</div>
-                <div class="awareness-followup-box hidden" id="awFollowupBox">
-                  <div style="font-weight:600;margin-bottom:6px;color:var(--color-primary);" id="awFollowupTitle">深入觉察（选填）：</div>
-                  <div id="awFollowupText" style="margin-bottom:8px;font-size:13px;">最近有没有一件事，你其实不愿意做，却因为担心别人失望而答应了？</div>
-                  <input type="text" class="form-input" id="awFollowupInput" placeholder="写下一句话补充（可选，也可以直接继续）" style="font-size:13px;padding:6px 10px;">
-                </div>
               </div>
-              <div class="awareness-actions-grid">
-                <button class="btn sm" id="btnAwResonates">很像我 ✨</button>
-                <button class="btn sm ghost" id="btnAwPartly">有一点像</button>
-                <button class="btn sm secondary" id="btnAwChange">换一张 ↻</button>
-                <button class="btn sm secondary" id="btnAwCancel">先不继续</button>
-              </div>
+              <div class="card-front-flip-tip">轻触卡片可翻转 ↺</div>
             </div>
           </div>
-          <div style="margin-top:16px;" id="awProceedWrap" class="hidden">
-            <button class="btn lg" id="btnAwProceed">带上这张牌，进入解忧流程 →</button>
+
+          <!-- 觉察交互底栏 (独立于卡面正下方，视觉轻盈、不挡卡牌) -->
+          <div class="awareness-controls-dock">
+            <div class="awareness-actions-grid">
+              <button class="btn sm" id="btnAwResonates">很像我</button>
+              <button class="btn sm ghost" id="btnAwPartly">有一点像</button>
+              <button class="btn sm secondary" id="btnAwChange">换一张 ↻</button>
+              <button class="btn sm secondary" id="btnAwCancel">先不继续</button>
+            </div>
+            <div class="awareness-followup-box hidden" id="awFollowupBox">
+              <div style="font-weight:600;margin-bottom:6px;color:var(--color-primary);" id="awFollowupTitle">深入一笔（选填）：</div>
+              <div id="awFollowupText" style="margin-bottom:8px;font-size:13px;">最近有没有一件事，你其实不愿意做，却因为担心别人失望而答应了？</div>
+              <input type="text" class="form-input" id="awFollowupInput" placeholder="写下一两句延伸感受…" style="font-size:13px;padding:6px 10px;">
+            </div>
+            <div style="margin-top:14px;width:100%;" id="awProceedWrap" class="hidden">
+              <button class="btn lg" id="btnAwProceed" style="width:100%;">带上这张牌，进入解忧流程 →</button>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="boundary-footer">
-        <strong>使用边界说明：</strong> 本产品为日常情绪整理与东方智慧启发工具，不提供心理诊断、心理治疗、算命或未来预测。<br>
-        让古老智慧，用今天的人听得懂的方式活着。
+        <span>悟堂为日常情绪整理与东方智慧启发工具，非医疗与心理诊断。</span>
       </div>
     </section>
 
-    <!-- U-02: 提交中 / 整理中状态 (P0) -->
-    <section id="userLoading" class="card hidden">
-      <div class="loading-box">
-        <div class="loading-seal-anim">悟</div>
-        <h3>正在把你的心事理出一点头绪…</h3>
-        <p style="color:var(--color-muted);font-size:14px;margin:0;">不必着急，给自己留几秒钟呼吸的时间。</p>
-        <div class="loading-steps">
+    <!-- U-02: 提交中 / AI 莲花解析中状态 (AI解析过程中的莲花动效) -->
+    <section id="userLoading" class="card hidden" style="padding:0;overflow:hidden;border:none;background:transparent;box-shadow:none;">
+      <div class="lotus-loading-stage">
+        <!-- 3D 动态绽放莲花画布 (来自 lotus-particle-bloom / lotus-animation) -->
+        <div class="lotus-canvas-wrap">
+          <canvas id="lotusCanvas" width="360" height="320"></canvas>
+        </div>
+
+        <div class="lotus-interpreting-badge">
+          <span class="dot"></span>
+          <span id="lotusStatusText">正在感应潜意识投影并生成东方解忧方...</span>
+        </div>
+
+        <!-- 禅意冥想名言轮播 -->
+        <blockquote class="loading-meditation-quote" id="loadingQuoteBox">
+          “你听到的声音，其实一直存在于你的沉默里。” —— 鲁米
+        </blockquote>
+
+        <div class="loading-steps" style="max-width:440px;margin:8px auto 0;background:rgba(255,255,255,0.06);padding:10px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.12);">
           <div class="loading-step-item active" id="lStep1">
             <div class="loading-step-dot"></div>
-            <span>① 先理解你在面对什么</span>
+            <span style="color:#FDE68A;">① 倾听并梳理心绪</span>
           </div>
           <div class="loading-step-item" id="lStep2">
             <div class="loading-step-dot"></div>
-            <span>② 从资料中寻找可核验的经典视角</span>
+            <span style="color:#FDE68A;">② 寻觅契合的古人视角</span>
           </div>
           <div class="loading-step-item" id="lStep3">
             <div class="loading-step-dot"></div>
-            <span>③ 整理一个当下可以尝试的小行动</span>
+            <span style="color:#FDE68A;">③ 提炼今晚微行动</span>
           </div>
         </div>
       </div>
@@ -1877,21 +2912,21 @@ body {
     <section id="userResult" class="card hidden">
       <div class="result-header-bar">
         <div class="status-pill-ready">
-          <span>✓</span> 已整理好三张解忧牌与四步回应
+          <span>✓</span> 梳理完成
         </div>
         <div class="result-theme-tag" id="resultThemeBadge">情绪主题：—</div>
       </div>
 
-      <div class="pause-quote">这次，我们先从三个小问题开始。</div>
+      <div class="pause-quote">先接住情绪，再换个视角，最后走出一小步。</div>
 
-      <!-- F-04 核心三张解忧牌 -->
-      <div class="relief-cards-group" id="threeCardsDeck">
+      <!-- F-04 核心三张解忧牌 (3D 翻牌阵列) -->
+      <div class="cards-spread-grid" id="threeCardsDeck">
         <!-- 01 心境牌 -->
-        <div class="relief-card-item card-mindset" id="resCardMindset"></div>
+        <div class="card-3d-flipper is-flipped" id="resCardMindset" onclick="toggleCard3DFlip(this)" title="点击 3D 翻转卡牌"></div>
         <!-- 02 东方智慧牌 -->
-        <div class="relief-card-item card-wisdom" id="resCardWisdom"></div>
+        <div class="card-3d-flipper is-flipped" id="resCardWisdom" onclick="toggleCard3DFlip(this)" title="点击 3D 翻转卡牌"></div>
         <!-- 03 行动牌 -->
-        <div class="relief-card-item card-action" id="resCardAction"></div>
+        <div class="card-3d-flipper is-flipped" id="resCardAction" onclick="toggleCard3DFlip(this)" title="点击 3D 翻转卡牌"></div>
       </div>
 
       <!-- F-05 四步解忧方完整结构 -->
@@ -1914,8 +2949,8 @@ body {
       <div class="feedback-box no-print">
         <div class="feedback-title">这份回应对你有帮助吗？</div>
         <div class="feedback-options">
-          <button class="fb-btn" data-val="有帮助">👍 有帮助</button>
-          <button class="fb-btn" data-val="还没帮到我">💭 还没帮到我</button>
+          <button class="fb-btn" data-val="有帮助">有帮助</button>
+          <button class="fb-btn" data-val="还没帮到我">还没帮到我</button>
           <input class="fb-input" id="feedbackInput" placeholder="哪一点可以再做得好一些？（选填）">
           <button class="btn sm secondary" id="btnSendFeedback">提交反馈</button>
         </div>
@@ -1923,9 +2958,9 @@ body {
 
       <!-- 公开共读授权 (PRD 4.3 & 4.6 独立开关) -->
       <div class="consent-panel no-print">
-        <h4>公开共读授权（独立开关，默认关闭）</h4>
+        <h4>匿名共读授权</h4>
         <p>
-          若开启，这段共性困扰可能被主理人编入公开文章草稿：我们会严格抹去所有个人可识别信息，并经过多重人工审查，<strong>绝不会自动公开发布</strong>。不开启完全不影响你使用悟堂的任何功能。
+          开启后，该困扰可能经严格脱敏与人工核验后参与文章共读。默认关闭，绝不自动发布。
         </p>
         <label class="switch-label">
           <input type="checkbox" class="switch-input" id="consentToggle">
@@ -1973,8 +3008,24 @@ body {
       <div class="card-view-wrap">
         <!-- 公开分享版切换条 -->
         <div class="share-version-toggle-bar no-print">
-          <button class="toggle-version-btn active" id="btnVerPersonal">个人自存版 📜</button>
-          <button class="toggle-version-btn" id="btnVerPublic">公开分享版 🌿</button>
+          <button class="toggle-version-btn active" id="btnVerPersonal">个人自存版</button>
+          <button class="toggle-version-btn" id="btnVerPublic">公开分享版</button>
+        </div>
+
+        <!-- 东方解忧笺（书笺）花样切换选择器 -->
+        <div class="bookmark-selector-bar no-print">
+          <span class="bm-select-label">选择书笺纹样：</span>
+          <div class="bm-pills-row" id="bookmarkPillsRow">
+            <button class="bm-pill active" data-bmid="bm_gold_fleck">冷金碎雪</button>
+            <button class="bm-pill" data-bmid="bm_ink_mountain">澄心远岫</button>
+            <button class="bm-pill" data-bmid="bm_celadon_bamboo">青玉竹韵</button>
+            <button class="bm-pill" data-bmid="bm_cinnabar_seal">朱丝双阑</button>
+            <button class="bm-pill" data-bmid="bm_moonlit_pine">松风霁月</button>
+            <button class="bm-pill" data-bmid="bm_ochre_sunset">落霞泥金</button>
+            <button class="bm-pill" data-bmid="bm_tea_sanctuary">云林茶隐</button>
+            <button class="bm-pill" data-bmid="bm_bamboo_shadow">修竹清风</button>
+            <button class="bm-pill" data-bmid="bm_zen_stone">枯山静水</button>
+          </div>
         </div>
 
         <!-- 信笺预览卡片 -->
@@ -1996,7 +3047,6 @@ body {
               <span class="jian-action-tag" id="cardActionTag">今晚 5 分钟微行动</span>
               <span class="jian-action-text" id="cardAction">写下此刻最让你不舒服的事，分清哪些能改、哪些改不了。</span>
             </div>
-            <div class="jian-footer-quote">让古老智慧，用今天的人听得懂的方式活着</div>
           </div>
         </div>
 
@@ -2006,7 +3056,7 @@ body {
           <button class="btn secondary" id="btnReturnToResult">返回三张解忧牌</button>
         </div>
         <p class="submit-note no-print" style="margin-top:12px;">
-          * 卡片严格脱敏，不含你的原始心事。个人保存与分享卡片 ≠ 授权将故事用于公众号文章。
+          * 卡片已脱敏，不含个人信息与原始心事。
         </p>
       </div>
     </section>
@@ -2015,19 +3065,171 @@ body {
 
 
   <!-- ======================================================================
-       第二部分：主理人端「悟堂内容工作室」 (Studio Workbench - PRD 5.0)
+       第二部分：用户端「我的」（个人中心、历史足迹、隐私声明、主理人登录入口）
+       ====================================================================== -->
+  <main id="mineArea" class="hidden">
+    <div class="mine-layout">
+
+      <!-- 模块 1: 个人状态与主理人认证 -->
+      <section class="card user-profile-banner">
+        <div class="profile-user-left">
+          <div class="profile-avatar-circle" id="mineAvatar">悟</div>
+          <div class="profile-info">
+            <h3 id="mineUserName">
+              访客 · 心灵行者
+              <span class="profile-badge guest" id="mineUserBadge">访客模式</span>
+            </h3>
+            <p id="mineUserDesc">日常心事梳理与解忧记录已保存在此设备本地</p>
+          </div>
+        </div>
+
+        <div class="profile-actions" id="mineAuthBox">
+          <!-- 访客未登录状态：仅简洁显示「登录」按钮 -->
+          <div id="guestLoginRow" style="display:flex;gap:8px;align-items:center;">
+            <button class="btn sm" id="btnOpenAuthModal">登录</button>
+          </div>
+          <!-- 主理人已登录状态：自动展示主理人工作台入口与退出登录 -->
+          <div id="managerActiveRow" class="hidden" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <button class="btn sm" id="btnGoStudioFromMine">进入主理人工作台 →</button>
+            <button class="btn sm secondary" id="btnLogoutManager">退出登录</button>
+          </div>
+          <!-- 普通注册用户已登录状态：显示退出登录 -->
+          <div id="userActiveRow" class="hidden" style="display:flex;gap:8px;align-items:center;">
+            <button class="btn sm secondary" id="btnLogoutUser">退出登录</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 模块 2: 历史足迹 / 解忧记录 -->
+      <section class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px;">
+          <div>
+            <h3 style="font-family:var(--font-serif);margin:0 0 4px;font-size:18px;">历史足迹 · 解忧记录</h3>
+            <p style="margin:0;font-size:13px;color:var(--color-muted);" id="historyCountNotice">记录你在此处梳理过的每一次心绪</p>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input type="text" id="historySearchInput" class="form-input" placeholder="搜索历史心事或卡牌..." style="font-size:12px;padding:5px 10px;width:180px;">
+            <button class="btn sm secondary" id="btnClearHistoryBtn">清空记录</button>
+          </div>
+        </div>
+
+        <!-- 历史记录动态列表容器 -->
+        <div class="history-card-list" id="historyCardListContainer"></div>
+      </section>
+
+      <!-- 模块 3: 隐私声明与边界保障 -->
+      <section class="card">
+        <div class="privacy-statement-card">
+          <h3 style="font-family:var(--font-serif);font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px;">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="var(--color-primary)" stroke-width="2" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>隐私保障与服务边界说明</span>
+          </h3>
+          <div class="privacy-rules-grid">
+            <div class="privacy-rule-item">
+              <div class="rule-icon">🔒</div>
+              <div class="rule-body">
+                <h4>1. 私密不公开与本地存储</h4>
+                <p>悟堂采用严格的本地优先原则，您的倾诉与咨询记录默认仅存留在您的当前浏览器中，绝不进行商业画像或隐私变卖。</p>
+              </div>
+            </div>
+            <div class="privacy-rule-item">
+              <div class="rule-icon">🌿</div>
+              <div class="rule-body">
+                <h4>2. 三级脱敏与物理隔离</h4>
+                <p>个人自存解忧笺（L1）、公开分享卡（L2）、案例文章草稿（L3）严格物理隔离，公开内容绝不携带您的私人心事原文。</p>
+              </div>
+            </div>
+            <div class="privacy-rule-item">
+              <div class="rule-icon">🏥</div>
+              <div class="rule-body">
+                <h4>3. 医疗与心理诊断边界声明</h4>
+                <p>悟堂为日常情绪整理与东方智慧启发工具，不提供临床精神科诊断、处方或心理治疗。若遇重度抑郁或自伤危机，请及时前往专科就医。</p>
+              </div>
+            </div>
+            <div class="privacy-rule-item">
+              <div class="rule-icon">📞</div>
+              <div class="rule-body">
+                <h4>4. 全国免费心理危机援助渠道</h4>
+                <p>
+                  <strong>全国心理援助热线：</strong> 400-161-9995（24小时免费）<br>
+                  <strong>共青团青少年热线：</strong> 12355 ｜ <strong>全国妇联维权热线：</strong> 12338
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 模块 4: 四步解忧方体系与典藏工具 -->
+      <section class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+          <div>
+            <h3 style="font-family:var(--font-serif);font-size:18px;margin:0 0 4px;">东方解忧方体系 · 典藏工具</h3>
+            <p style="margin:0;font-size:13px;color:var(--color-muted);">不说教，先接住；借古人的智慧，走好眼前一步</p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn sm secondary" id="btnOpenGalleryFromMine">禅意卡牌与书笺典藏</button>
+            <a href="cards_preview.html" target="_blank" class="btn sm secondary" style="text-decoration:none;display:inline-flex;align-items:center;">全屏图鉴 ↗</a>
+            <a href="poster.html" target="_blank" class="btn sm secondary" style="text-decoration:none;display:inline-flex;align-items:center;">宣传海报 ↗</a>
+          </div>
+        </div>
+        <div class="four-step-summary-grid">
+          <div class="four-step-sum-col">
+            <div class="fs-num">01</div>
+            <div class="fs-name">听见了</div>
+            <div class="fs-desc">温和接纳真实的你，不急于讲大道理，先把心结整理出头绪。</div>
+          </div>
+          <div class="four-step-sum-col">
+            <div class="fs-num">02</div>
+            <div class="fs-name">古人有云</div>
+            <div class="fs-desc">锚定500条传世典籍权威考据，换位古人智者看当下困局。</div>
+          </div>
+          <div class="four-step-sum-col">
+            <div class="fs-num">03</div>
+            <div class="fs-name">试试这一招</div>
+            <div class="fs-desc">落地今晚5分钟低阻力微行动，哪怕只是一次深呼吸。</div>
+          </div>
+          <div class="four-step-sum-col">
+            <div class="fs-num">04</div>
+            <div class="fs-name">读这一段</div>
+            <div class="fs-desc">经部经典导读与出处核验，不编造、不生搬硬套。</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+  <!-- ======================================================================
+       第三部分：主理人端「悟堂内容工作室」 (Studio Workbench - PRD 5.0)
        ====================================================================== -->
   <main id="studioArea" class="hidden">
 
     <div class="studio-layout">
+      <!-- 主理人权限与状态横幅 -->
+      <div style="background:#FAF8F3;border:1px solid #E9DABF;border-radius:12px;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:6px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:20px;">👑</span>
+          <div>
+            <div style="font-weight:600;color:#9F7430;font-size:14px;">主理人工作台（已认证激活）</div>
+            <div style="font-size:12px;color:var(--color-muted);">当前登录：晓萍 · xush09@qq.com ｜ 悟堂内容工业化引擎已就绪</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn sm secondary" id="btnReturnToRelief">返回解忧端</button>
+          <button class="btn sm secondary" id="btnLogoutStudio">退出并锁定工作台</button>
+        </div>
+      </div>
+
       <!-- 头部子导航 -->
       <div class="studio-subnav">
-        <button class="studio-nav-btn active" data-view="studioOverview">📊 工作台总览 (A-01)</button>
-        <button class="studio-nav-btn" data-view="studioCards">🎴 解忧卡牌库 (PRD 2.0)</button>
-        <button class="studio-nav-btn" data-view="studioNewTask">➕ 新建解忧任务 (A-02)</button>
-        <button class="studio-nav-btn" data-view="studioPipeline">🔄 工作流进度监控 (A-03)</button>
-        <button class="studio-nav-btn" data-view="studioReview">📝 内容审核与合规清单 (A-04)</button>
-        <button class="studio-nav-btn" data-view="studioClassics">📚 经典考据资料库 (A-05)</button>
+        <button class="studio-nav-btn active" data-view="studioOverview">工作台总览</button>
+        <button class="studio-nav-btn" data-view="studioCards">解忧卡牌库</button>
+        <button class="studio-nav-btn" data-view="studioNewTask">新建任务</button>
+        <button class="studio-nav-btn" data-view="studioPipeline">工作流监控</button>
+        <button class="studio-nav-btn" data-view="studioReview">内容审核</button>
+        <button class="studio-nav-btn" data-view="studioClassics">经典资料库</button>
       </div>
 
       <!-- 视图 A-01: 工作台总览 -->
@@ -2036,7 +3238,7 @@ body {
           <div>
             <h2 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;">主理人工作台</h2>
             <p style="margin:0;font-size:14px;color:var(--color-muted);">
-              调度 WorkBuddy 专家团技能 · 严格脱敏 · 经典考据核验 · 文章草稿生产
+              工作流调度 · 典籍考据 · 智能脱敏与草稿生成
             </p>
           </div>
           <div>
@@ -2048,15 +3250,15 @@ body {
         <!-- 3 张核心指标卡 (PRD 5.1) -->
         <div class="metric-row">
           <div class="metric-card">
-            <div class="metric-label">待处理用户任务</div>
+            <div class="metric-label">待处理任务</div>
             <div class="metric-value" id="mPendingTasks">03</div>
           </div>
           <div class="metric-card alert">
-            <div class="metric-label">待人工审核草稿（已授权）</div>
+            <div class="metric-label">待审阅草稿</div>
             <div class="metric-value" id="mPendingDrafts">03</div>
           </div>
           <div class="metric-card success">
-            <div class="metric-label">已核验典籍条目 (Verified)</div>
+            <div class="metric-label">已核验典籍</div>
             <div class="metric-value" id="mVerifiedClassics">483</div>
             <div style="font-size:11px;color:var(--color-muted);margin-top:2px;" id="mVerifiedClassicsSub">资料库总计 500 条 · 含 10 条辨伪</div>
           </div>
@@ -2064,7 +3266,7 @@ body {
 
         <!-- 任务动态列表 -->
         <div style="margin-top:24px;">
-          <h3 style="font-size:16px;margin:0 0 12px;font-weight:600;">最近任务流水记录 (DEMO & 实际任务)</h3>
+          <h3 style="font-size:16px;margin:0 0 12px;font-weight:600;">最近任务记录</h3>
           <div class="table-wrap">
             <table class="studio-table">
               <thead>
@@ -2086,10 +3288,8 @@ body {
 
       <!-- 视图 A-02: 新建解忧任务 (PRD 5.2 带授权阻断护栏) -->
       <section id="studioNewTask" class="card hidden">
-        <h2 style="font-family:var(--font-serif);margin:0 0 8px;font-size:22px;">新建解忧工作流任务</h2>
-        <p style="margin:0 0 24px;font-size:14px;color:var(--color-muted);">
-          将用户输入或已授权测试素材引入 WorkBuddy 专家团流程。
-        </p>
+        <h2 style="font-family:var(--font-serif);margin:0 0 8px;font-size:22px;">新建工作流任务</h2>
+        <p style="margin:0 0 24px;font-size:14px;color:var(--color-muted);">将素材引入工作流，自动化完成考据与生成。</p>
 
         <div class="form-group">
           <label class="form-label">任务名称</label>
@@ -2099,14 +3299,14 @@ body {
         <div class="form-group">
           <label class="form-label">内容来源</label>
           <select class="form-select" id="taskSourceSelect">
-            <option value="preset_demo">合成测试案例库 (11条标准测试集)</option>
+            <option value="preset_demo">预置测试用例 (11条标准集)</option>
             <option value="custom_input">主理人单条输入测试</option>
             <option value="authorized_user">已授权用户真实素材</option>
           </select>
         </div>
 
         <div class="form-group" id="presetCaseGroup">
-          <label class="form-label">选择预置案例 (DEMO 标准用例)</label>
+          <label class="form-label">选择预置用例</label>
           <select class="form-select" id="presetCaseSelect"></select>
         </div>
 
@@ -2125,7 +3325,7 @@ body {
               <input type="radio" name="taskPurpose" value="card_only"> 生成东方解忧笺
             </label>
             <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
-              <input type="radio" name="taskPurpose" value="article_draft" checked> 生成公开公众号文章草稿 (需授权)
+              <input type="radio" name="taskPurpose" value="article_draft" checked> 公开文章草稿 (需授权)
             </label>
           </div>
         </div>
@@ -2134,13 +3334,13 @@ body {
         <div class="form-group" id="consentCheckGroup">
           <label class="switch-label" style="background:var(--color-surface-subtle);padding:14px 16px;border:1px solid var(--color-border);border-radius:8px;">
             <input type="checkbox" id="taskConsentCheck" checked style="width:18px;height:18px;">
-            <span style="font-weight:600;">已核实该内容已取得用户明确授权（具备合法时间戳）</span>
+            <span style="font-weight:600;">已核实该内容取得明确授权（含时间戳）</span>
           </label>
         </div>
 
         <!-- PRD 5.2 核心安全护栏：未授权阻断提示 -->
         <div class="consent-block-alert hidden" id="taskConsentAlert">
-          <div class="alert-icon">⚠️</div>
+          <div class="alert-icon">!</div>
           <div>
             <div class="alert-title">授权缺失阻断：禁止进入公开内容生成流程</div>
             <div class="alert-desc">
@@ -2168,7 +3368,7 @@ body {
         <div class="pipeline-step-list" id="pipelineStepList"></div>
 
         <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
-          <button class="btn" id="btnPipelineToReview">前往内容审核清单 (A-04)</button>
+          <button class="btn" id="btnPipelineToReview">前往内容审核</button>
           <button class="btn secondary" id="btnExportTaskReport">导出任务执行报告 (MD)</button>
           <button class="btn ghost" id="btnBackToOverview">返回总览</button>
         </div>
@@ -2178,9 +3378,9 @@ body {
       <section id="studioReview" class="card hidden">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px;">
           <div>
-            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">公众号草稿审核与合规清单 (A-04)</h2>
+            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">公众号草稿审核</h2>
             <div style="font-size:13px;color:var(--color-muted);">
-              严禁将 AI 自动生成误当已审核成品 · 八项合规逐条复核
+              遵循八项合规标准，逐条复核与确认
             </div>
           </div>
           <!-- 案例切换 -->
@@ -2202,7 +3402,7 @@ body {
 
           <!-- 右侧：审核清单与脱敏核验 -->
           <div class="checklist-pane">
-            <h4>合规审核核验清单（PRD 5.4）</h4>
+            <h4>合规审核清单</h4>
             <div style="font-size:12.5px;color:var(--color-muted);margin-bottom:14px;padding:8px 12px;background:#FFF;border-radius:6px;border:1px solid var(--color-border);" id="piiReviewBox">
               <strong>脱敏状态：</strong> 姓名、单位、城市等可识别要素已由 Skill 4 检查。
             </div>
@@ -2255,7 +3455,7 @@ body {
       <section id="studioClassics" class="card hidden">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
           <div>
-            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">国学经典与考据资料库</h2>
+            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">国学经典考据库</h2>
             <div style="font-size:13px;color:var(--color-muted);" id="classicsSubtitle">
               收录 500 条经过权威出版社版本考据的经典金句与辨伪条目（含 483 条完全考据台账，10 条网络伪作辨伪）
             </div>
@@ -2288,9 +3488,9 @@ body {
       <section id="studioCards" class="card hidden">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;flex-wrap:wrap;gap:12px;">
           <div>
-            <h2 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;">东方解忧卡牌库 (PRD 2.0)</h2>
+            <h2 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;">东方解忧卡牌库</h2>
             <p style="margin:0;font-size:14px;color:var(--color-muted);" id="studioCardsSubtitle">
-              收录 12 张 MVP 基础牌组及扩展牌：心境牌、东方智慧牌（严格核验）、行动牌。
+              收录心境牌、东方智慧牌（严格核验）与微行动牌体系。
             </p>
           </div>
           <div style="display:flex;gap:8px;">
@@ -2363,6 +3563,114 @@ body {
   </div>
 </div>
 
+<!-- 3. 禅意卡牌与书笺典藏弹窗 -->
+<div class="modal-overlay" id="modalCardGallery">
+  <div class="modal-dialog gallery-modal-dialog">
+    <button class="modal-close-btn" id="closeGalleryModal">&times;</button>
+    <div class="seal-mark" style="margin-bottom:12px;">悟</div>
+    <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;">悟堂 · 东方禅意卡牌与书笺典藏</h3>
+    <p style="color:var(--color-muted);font-size:13.5px;margin:0 0 16px;">
+      结合 PRD 2.0 规范与 500 条国学分类数据库批量生成 · 正反面禅意边框 · 纯正东方美学
+    </p>
+
+    <!-- 分类筛选药丸 -->
+    <div class="gallery-filter-tabs" id="galleryFilterTabs">
+      <button class="gallery-tab-btn active" data-filter="all">全部典藏 (20款)</button>
+      <button class="gallery-tab-btn" data-filter="core">核心三牌 (4套)</button>
+      <button class="gallery-tab-btn" data-filter="database">数据库6大门类 (6套)</button>
+      <button class="gallery-tab-btn" data-filter="scenario">4大解忧情境 (4套)</button>
+      <button class="gallery-tab-btn" data-filter="bookmark">6款解忧书笺 (6款)</button>
+    </div>
+
+    <div class="gallery-cards-grid" id="galleryContainer"></div>
+
+    <div style="text-align:right;margin-top:16px;">
+      <button class="btn sm secondary" id="btnCloseGalleryBottom">关闭典藏</button>
+    </div>
+  </div>
+</div>
+
+<!-- 历史记录详情弹窗 -->
+<div class="modal-overlay hidden" id="modalHistoryDetail">
+  <div class="modal-card" style="max-width:680px;max-height:88vh;overflow-y:auto;padding:24px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid var(--color-border);padding-bottom:10px;">
+      <h3 style="font-family:var(--font-serif);margin:0;font-size:18px;" id="histDetailTitle">解忧记录详情</h3>
+      <button class="modal-close-btn" id="btnCloseHistoryDetail">✕</button>
+    </div>
+    <div id="historyDetailBody"></div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;">
+      <button class="btn sm secondary" id="btnCloseHistoryDetailBottom">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 登录 / 注册 东方禅意卡牌弹窗 (Auth Card Modal) -->
+<div class="modal-overlay" id="modalAuth">
+  <div class="modal-dialog auth-card-dialog" style="max-width:390px;padding:28px 24px;border:1.5px solid #D4C7B4;background:#FCF9F3;box-shadow:0 18px 48px rgba(34,31,27,0.18);">
+    <button class="modal-close-btn" id="closeAuthModal">&times;</button>
+    
+    <div style="text-align:center;margin-bottom:18px;">
+      <div class="seal-mark" style="margin:0 auto 10px;width:34px;height:34px;font-size:18px;line-height:34px;">悟</div>
+      <h3 style="font-family:var(--font-serif);margin:0 0 4px;font-size:20px;letter-spacing:0.04em;" id="authModalHeaderTitle">悟堂 · 行者登录</h3>
+      <p style="margin:0;font-size:12.5px;color:var(--color-muted);" id="authModalHeaderSub">煮一盏清茶 · 开启东方智慧陪伴</p>
+    </div>
+
+    <!-- 登录 / 注册 切换标签 -->
+    <div style="display:flex;background:#EDE6DA;border-radius:6px;padding:3px;margin-bottom:18px;">
+      <button type="button" class="auth-tab-btn active" id="tabBtnLogin" style="flex:1;background:#FFF;border:none;border-radius:4px;padding:7px 0;font-size:13.5px;font-weight:600;color:var(--color-primary);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:all 0.2s;">登 录</button>
+      <button type="button" class="auth-tab-btn" id="tabBtnRegister" style="flex:1;background:transparent;border:none;border-radius:4px;padding:7px 0;font-size:13.5px;font-weight:500;color:var(--color-ink-light);cursor:pointer;transition:all 0.2s;">注 册</button>
+    </div>
+
+    <!-- 1. 登录表单 -->
+    <div id="authPanelLogin">
+      <div style="margin-bottom:12px;">
+        <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">账号 / 邮箱</label>
+        <input type="text" id="authInputAccount" class="form-input" placeholder="输入账号或邮箱（主理人可输入 xush09@qq.com）" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">登录密码 / 口令</label>
+        <input type="password" id="authInputPassword" class="form-input" placeholder="输入密码（主理人体验口令如 admin / 888）" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+      </div>
+      <button type="button" class="btn" id="btnSubmitLoginAction" style="width:100%;padding:10px;font-size:14.5px;letter-spacing:0.1em;">登 录</button>
+      
+      <div style="margin-top:14px;text-align:center;font-size:12.5px;color:var(--color-muted);">
+        <span>还没有账号？</span>
+        <a href="javascript:void(0)" id="linkSwitchToReg" style="color:var(--color-primary);font-weight:600;text-decoration:none;margin-left:4px;">立即注册 →</a>
+      </div>
+
+      <div style="margin-top:14px;padding-top:12px;border-top:1px dashed #E2D7C7;text-align:center;">
+        <button type="button" class="btn sm ghost" id="btnQuickDemoLoginAction" style="width:100%;font-size:12px;padding:6px 0;" title="快速以主理人身份体验工作台">⚡ 一键演示体验（主理人 xush09 身份）</button>
+      </div>
+    </div>
+
+    <!-- 2. 注册表单 -->
+    <div id="authPanelRegister" class="hidden">
+      <div style="margin-bottom:10px;">
+        <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">行者昵称</label>
+        <input type="text" id="regInputNickname" class="form-input" placeholder="如：竹林清风、云水行者" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+      </div>
+      <div style="margin-bottom:10px;">
+        <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">常用邮箱 / 账号</label>
+        <input type="text" id="regInputAccount" class="form-input" placeholder="输入常用邮箱或登录账号" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+      </div>
+      <div style="margin-bottom:10px;">
+        <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">设置密码</label>
+        <input type="password" id="regInputPassword" class="form-input" placeholder="设置6位以上密码" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">确认密码</label>
+        <input type="password" id="regInputConfirmPassword" class="form-input" placeholder="再次输入密码" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+      </div>
+      <button type="button" class="btn" id="btnSubmitRegisterAction" style="width:100%;padding:10px;font-size:14.5px;letter-spacing:0.1em;">注 册 并 登 录</button>
+
+      <div style="margin-top:14px;text-align:center;font-size:12.5px;color:var(--color-muted);">
+        <span>已有账号？</span>
+        <a href="javascript:void(0)" id="linkSwitchToLogin" style="color:var(--color-primary);font-weight:600;text-decoration:none;margin-left:4px;">直接登录 →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 全局轻提示 Toast (PRD 6.7) -->
 <div class="toast-notice" id="globalToast">已完成操作</div>
 
@@ -2391,6 +3699,24 @@ body {
   var CARDS_MINDSET = RAW_DATA.cardsMindset || [];
   var CARDS_WISDOM = RAW_DATA.cardsWisdom || [];
   var CARDS_ACTION = RAW_DATA.cardsAction || [];
+  var CARDS_MANIFEST = RAW_DATA.cardsManifest || { cards: [], bookmarks: [] };
+  var ZEN_ASSETS = RAW_DATA.zenAssets || { cards: {}, bookmarks: {} };
+
+  // 禅意卡牌与书笺静态/离线 Base64 资产解析器
+  function getCardAsset(cardId, face) {
+    var key = cardId + '_' + face;
+    if (ZEN_ASSETS.cards && ZEN_ASSETS.cards[key]) {
+      return ZEN_ASSETS.cards[key];
+    }
+    return 'assets/cards/' + face + '/' + cardId + '_' + face + '.png';
+  }
+
+  function getBookmarkAsset(bmId) {
+    if (ZEN_ASSETS.bookmarks && ZEN_ASSETS.bookmarks[bmId]) {
+      return ZEN_ASSETS.bookmarks[bmId];
+    }
+    return 'assets/bookmarks/' + bmId + '.png';
+  }
 
   // 先贤印章头像解析器
   function getSageInfo(author, book) {
@@ -2418,6 +3744,16 @@ body {
   // 状态中心 (PRD 2.0)
   var appState = {
     mode: 'client', // 'client' | 'studio'
+    mainTab: 'relief', // 'relief' | 'mine' | 'studio'
+    isManagerLoggedIn: (function() {
+      try { return localStorage.getItem('wutang_manager_active') === 'true'; } catch(e) { return false; }
+    })(),
+    currentUser: (function() {
+      try {
+        var u = localStorage.getItem('wutang_current_user');
+        return u ? JSON.parse(u) : null;
+      } catch(e) { return null; }
+    })(),
     clientView: 'userHome', // 'userHome' | 'userLoading' | 'userResult' | 'userSafety' | 'userCard'
     entryTab: 'direct', // 'direct' | 'card'
     awarenessIndex: 0,
@@ -2429,6 +3765,7 @@ body {
     currentResult: null,
     currentCards: { mindset: null, wisdom: null, action: null },
     cardPublicVersion: false,
+    selectedBookmark: 'bm_gold_fleck',
     userConsent: false,
     willingChecked: false,
     currentStudioTask: null,
@@ -2455,6 +3792,447 @@ body {
     t.classList.add('show');
     setTimeout(function() { t.classList.remove('show'); }, 2200);
   }
+
+  // ==========================================================================
+  // 3D Procedural Lotus Particle Bloom Engine (AI 解析过程中的莲花动效)
+  // 来自 D:\BaiduSyncdisk\04-WX\萍生解忧\lotus-animation.vue 及 lotus-particle-bloom
+  // ==========================================================================
+  var lotusEngine = {
+    canvas: null,
+    ctx: null,
+    animId: null,
+    isRunning: false,
+    width: 360,
+    height: 320,
+    dpr: 1,
+    time: 0,
+    lastTime: 0,
+    angleY: 0,
+    bloomFactor: 0.18,
+    targetBloom: 1.0,
+    freeParticles: [],
+    preset: {
+      background: '#06040c',
+      particles: ['#ffd700', '#ff8c00', '#ffe4b5', '#ffffff', '#ff4500']
+    },
+    settings: {
+      rotationSpeed: 1.15,
+      tiltX: 22,
+      tiltY: 0,
+      breathingActive: true,
+      showPetalCurves: true
+    },
+    layerConfigs: [
+      { count: 6, length: 50, width: 20, tiltBud: 4, tiltBloom: 40, baseRadius: 3, lift: 10 },
+      { count: 10, length: 78, width: 25, tiltBud: 12, tiltBloom: 70, baseRadius: 6, lift: 3 },
+      { count: 10, length: 78, width: 25, tiltBud: 30, tiltBloom: 80, baseRadius: 12, lift: -6 }
+    ],
+    quoteTimer: null,
+    quoteIndex: 0,
+    quotes: [
+      "“你听到的声音，其实一直存在于你的沉默里。” —— 鲁米",
+      "“每张卡片都不是偶然，它是你在潜意识深处对当下的投影与呼唤。”",
+      "“静观卡片，它会带给你早已熟知但长久被繁杂世界遮蔽的内心秘密。”",
+      "“当问题被清晰提出的那一刻，答案实际上已经在你的潜意识中悄然成型。”",
+      "“先接住情绪，再换个视角，最后走出一小步。”",
+      "“我们无需改变外界，只是擦亮明镜，看清内心原本丰饶强大的指路星标。”"
+    ],
+
+    init: function(canvasId) {
+      if (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.indexOf('jsdom') !== -1) {
+        return;
+      }
+      var c = document.getElementById(canvasId || 'lotusCanvas');
+      if (!c) return;
+      this.canvas = c;
+      if (!c.getContext) return;
+      try {
+        this.ctx = c.getContext('2d');
+      } catch (e) {
+        this.ctx = null;
+      }
+      this.resize();
+    },
+
+    resize: function() {
+      if (!this.canvas || !this.ctx) return;
+      this.dpr = Math.min(window.devicePixelRatio || 2, 2.5);
+      var rect = this.canvas.getBoundingClientRect();
+      this.width = (rect && rect.width > 50) ? rect.width : 360;
+      this.height = (rect && rect.height > 50) ? rect.height : 320;
+      this.canvas.width = this.width * this.dpr;
+      this.canvas.height = this.height * this.dpr;
+      this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+      this.ctx.scale(this.dpr, this.dpr);
+    },
+
+    start: function() {
+      if (!this.canvas) this.init('lotusCanvas');
+      if (!this.canvas || !this.ctx) return;
+      this.resize();
+      this.isRunning = true;
+      this.time = 0;
+      this.lastTime = Date.now();
+      this.angleY = 0;
+      this.bloomFactor = 0.2;
+      this.freeParticles = [];
+      var self = this;
+
+      this.quoteIndex = 0;
+      var qBox = document.getElementById('loadingQuoteBox');
+      if (qBox) qBox.textContent = this.quotes[0];
+      if (this.quoteTimer) clearInterval(this.quoteTimer);
+      this.quoteTimer = setInterval(function() {
+        self.quoteIndex = (self.quoteIndex + 1) % self.quotes.length;
+        if (qBox) {
+          qBox.style.opacity = '0';
+          setTimeout(function() {
+            qBox.textContent = self.quotes[self.quoteIndex];
+            qBox.style.opacity = '1';
+          }, 300);
+        }
+      }, 4200);
+
+      function loop() {
+        if (!self.isRunning) return;
+        var now = Date.now();
+        var delta = now - self.lastTime;
+        self.lastTime = now;
+        self.time += delta;
+
+        if (self.bloomFactor < self.targetBloom) {
+          self.bloomFactor += 0.003;
+          if (self.bloomFactor > self.targetBloom) self.bloomFactor = self.targetBloom;
+        }
+
+        self.render(delta);
+        self.animId = requestAnimationFrame(loop);
+      }
+      this.animId = requestAnimationFrame(loop);
+    },
+
+    stop: function() {
+      this.isRunning = false;
+      if (this.animId) {
+        cancelAnimationFrame(this.animId);
+        this.animId = null;
+      }
+      if (this.quoteTimer) {
+        clearInterval(this.quoteTimer);
+        this.quoteTimer = null;
+      }
+    },
+
+    getProjectedPoint: function(u, vVal, layer, layerIndex, petalOffsetAngle, bloom, breathScale, cameraYaw, pitchAngle, focalLength, cX, cY, isReflected) {
+      var length = layer.length;
+      var width = layer.width;
+      var tiltBud = layer.tiltBud;
+      var tiltBloom = layer.tiltBloom;
+      var baseRadius = layer.baseRadius;
+      var lift = layer.lift;
+
+      var tBudRad = tiltBud * (Math.PI / 180);
+      var tBloomRad = tiltBloom * (Math.PI / 180);
+      var tiltAngle = tBudRad + (tBloomRad - tBudRad) * bloom;
+      var rBase = baseRadius * (1.0 + bloom * 0.42);
+
+      var shapeFactor = Math.sin(Math.pow(u, 0.75) * Math.PI);
+      var sideSqueeze = 1.48;
+      var widthProfile = shapeFactor * (1.0 - u * 0.12) * sideSqueeze;
+      var yLocal = u * length * breathScale * 0.98;
+
+      var baseBend = 0, tipCurl = 0;
+      if (layerIndex === 0) {
+        baseBend = -20 * Math.sin(u * Math.PI);
+        tipCurl = -14 * Math.pow(u, 3.8) * (1.0 - bloom * 0.3);
+      } else if (layerIndex === 1) {
+        baseBend = -14 * Math.sin(u * Math.PI);
+        tipCurl = -5 * Math.pow(u, 3.8) * (1.0 - bloom * 0.3);
+      } else {
+        baseBend = -4 * Math.sin(u * Math.PI);
+        tipCurl = 14 * Math.pow(u, 2.8) * bloom;
+      }
+
+      var cupBend = -8 * Math.sin(Math.pow(u, 1.2) * Math.PI) * (1.0 - bloom * 0.4);
+      var cupDepth = -(6 + 3 * bloom) * (1.0 - Math.pow(vVal, 2)) * Math.sin(u * Math.PI);
+      var zLocal = baseBend + cupBend + tipCurl + cupDepth;
+
+      var xTilt = vVal * widthProfile * width * breathScale;
+      var yTilt = yLocal * Math.cos(tiltAngle) - zLocal * Math.sin(tiltAngle) + lift * bloom;
+      var zTilt = yLocal * Math.sin(tiltAngle) + zLocal * Math.cos(tiltAngle) + rBase;
+
+      var xFlower = xTilt * Math.cos(petalOffsetAngle) + zTilt * Math.sin(petalOffsetAngle);
+      var yFlower = yTilt;
+      var zFlower = -xTilt * Math.sin(petalOffsetAngle) + zTilt * Math.cos(petalOffsetAngle);
+
+      if (isReflected) {
+        var Y_ground = -12 * (1.0 + bloom * 0.5);
+        yFlower = 2 * Y_ground - yFlower;
+      }
+
+      var cyY = xFlower * Math.cos(cameraYaw) - zFlower * Math.sin(cameraYaw);
+      var czY = xFlower * Math.sin(cameraYaw) + zFlower * Math.cos(cameraYaw);
+
+      var cxP = cyY;
+      var cyP = yFlower * Math.cos(pitchAngle) - czY * Math.sin(pitchAngle);
+      var czP = yFlower * Math.sin(pitchAngle) + czY * Math.cos(pitchAngle);
+
+      var pScale = focalLength / (focalLength + czP);
+      return {
+        x: cX + cxP * pScale,
+        y: cY - cyP * pScale,
+        zDepth: czP,
+        scale: pScale
+      };
+    },
+
+    render: function(delta) {
+      var ctx = this.ctx;
+      if (!ctx) return;
+      var width = this.width;
+      var height = this.height;
+      var time = this.time;
+      var speedScale = Math.min(3, delta / 16.67);
+
+      ctx.clearRect(0, 0, width, height);
+
+      var bloom = this.bloomFactor;
+      this.angleY += this.settings.rotationSpeed * 0.016 * speedScale;
+      var baseRotationAngle = this.angleY;
+
+      var pitchAngle = this.settings.tiltX * (Math.PI / 180);
+      var cameraYaw = this.settings.tiltY * (Math.PI / 180);
+
+      var cX = width / 2;
+      var cY = height / 2 + 10;
+      var focalLength = 580;
+
+      var breathScale = 1.0;
+      var auraIntensity = 1.0;
+      if (this.settings.breathingActive) {
+        var breatheRate = time * 0.0011;
+        var breathCycleValue = (Math.sin(breatheRate) + 1) / 2;
+        breathScale = 1.0 + breathCycleValue * 0.16;
+        auraIntensity = 0.6 + breathCycleValue * 0.6;
+      }
+
+      var maxUSteps = 14;
+      var self = this;
+
+      // 1. Water reflection
+      this.layerConfigs.forEach(function(layer, layerIndex) {
+        var count = layer.count;
+        for (var pIdx = 0; pIdx < count; pIdx++) {
+          var petalOffsetAngle = (pIdx / count) * Math.PI * 2 + baseRotationAngle;
+          var refLeftPoints = [];
+          var refRightPoints = [];
+
+          for (var uIdx = 0; uIdx <= maxUSteps; uIdx++) {
+            var u = uIdx / maxUSteps;
+            refLeftPoints.push(self.getProjectedPoint(u, -1, layer, layerIndex, petalOffsetAngle, bloom, breathScale, cameraYaw, pitchAngle, focalLength, cX, cY, true));
+            refRightPoints.push(self.getProjectedPoint(u, 1, layer, layerIndex, petalOffsetAngle, bloom, breathScale, cameraYaw, pitchAngle, focalLength, cX, cY, true));
+          }
+
+          ctx.beginPath();
+          ctx.moveTo(refLeftPoints[0].x, refLeftPoints[0].y);
+          for (var i = 1; i <= maxUSteps; i++) ctx.lineTo(refLeftPoints[i].x, refLeftPoints[i].y);
+          for (var j = maxUSteps; j >= 0; j--) ctx.lineTo(refRightPoints[j].x, refRightPoints[j].y);
+          ctx.closePath();
+
+          var refFill = ctx.createLinearGradient(cX, cY - 20, cX, height);
+          refFill.addColorStop(0, 'rgba(220, 80, 20, ' + (0.04 * auraIntensity) + ')');
+          refFill.addColorStop(0.3, 'rgba(255, 160, 40, ' + (0.015 * auraIntensity) + ')');
+          refFill.addColorStop(0.6, 'rgba(0,0,0,0)');
+          ctx.fillStyle = refFill;
+          ctx.fill();
+        }
+      });
+
+      // 2. Depth sort petals and core
+      var renderItems = [];
+      this.layerConfigs.forEach(function(layer, layerIndex) {
+        var count = layer.count;
+        for (var pIdx = 0; pIdx < count; pIdx++) {
+          var petalOffsetAngle = (pIdx / count) * Math.PI * 2 + baseRotationAngle;
+          var centerPt = self.getProjectedPoint(0.5, 0, layer, layerIndex, petalOffsetAngle, bloom, breathScale, cameraYaw, pitchAngle, focalLength, cX, cY, false);
+          renderItems.push({
+            type: 'petal',
+            layerIndex: layerIndex,
+            pIdx: pIdx,
+            petalOffsetAngle: petalOffsetAngle,
+            layer: layer,
+            depth: centerPt.zDepth
+          });
+        }
+      });
+
+      var corePt = this.getProjectedPoint(0, 0, { length: 0, width: 0, tiltBud: 0, tiltBloom: 0, baseRadius: 0, lift: 0 }, 0, 0, bloom, breathScale, cameraYaw, pitchAngle, focalLength, cX, cY, false);
+      renderItems.push({
+        type: 'core',
+        x: corePt.x,
+        y: corePt.y,
+        depth: corePt.zDepth
+      });
+
+      renderItems.sort(function(a, b) { return b.depth - a.depth; });
+
+      // 3. Render items
+      renderItems.forEach(function(item) {
+        if (item.type === 'core') {
+          var scX = item.x, scY = item.y;
+          var glow = ctx.createRadialGradient(scX, scY, 0, scX, scY, 44 * auraIntensity);
+          glow.addColorStop(0, 'rgba(255, 190, 80, 0.45)');
+          glow.addColorStop(0.3, 'rgba(255, 110, 30, 0.2)');
+          glow.addColorStop(0.7, 'rgba(255, 70, 10, 0.05)');
+          glow.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = glow;
+          ctx.beginPath();
+          ctx.arc(scX, scY, 48 * auraIntensity, 0, Math.PI * 2);
+          ctx.fill();
+
+          var innerGlow = ctx.createRadialGradient(scX, scY, 0, scX, scY, 15);
+          innerGlow.addColorStop(0, '#ffffff');
+          innerGlow.addColorStop(0.3, 'rgba(255, 240, 180, 0.95)');
+          innerGlow.addColorStop(0.7, 'rgba(255, 180, 50, 0.3)');
+          innerGlow.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = innerGlow;
+          ctx.beginPath();
+          ctx.arc(scX, scY, 16, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (item.type === 'petal') {
+          var leftPoints = [];
+          var rightPoints = [];
+
+          for (var uIdx = 0; uIdx <= maxUSteps; uIdx++) {
+            var u = uIdx / maxUSteps;
+            leftPoints.push(self.getProjectedPoint(u, -1, item.layer, item.layerIndex, item.petalOffsetAngle, bloom, breathScale, cameraYaw, pitchAngle, focalLength, cX, cY, false));
+            rightPoints.push(self.getProjectedPoint(u, 1, item.layer, item.layerIndex, item.petalOffsetAngle, bloom, breathScale, cameraYaw, pitchAngle, focalLength, cX, cY, false));
+          }
+
+          ctx.beginPath();
+          ctx.moveTo(leftPoints[0].x, leftPoints[0].y);
+          for (var i = 1; i <= maxUSteps; i++) ctx.lineTo(leftPoints[i].x, leftPoints[i].y);
+          for (var j = maxUSteps; j >= 0; j--) ctx.lineTo(rightPoints[j].x, rightPoints[j].y);
+          ctx.closePath();
+
+          var basePt = leftPoints[0];
+          var tipPt = leftPoints[maxUSteps];
+
+          var fillGrad = ctx.createLinearGradient(basePt.x, basePt.y, tipPt.x, tipPt.y);
+          fillGrad.addColorStop(0, 'rgba(210, 80, 20, ' + (0.10 * auraIntensity) + ')');
+          fillGrad.addColorStop(0.35, 'rgba(255, 175, 45, ' + (0.18 * auraIntensity) + ')');
+          fillGrad.addColorStop(0.7, 'rgba(255, 240, 200, ' + (0.22 * auraIntensity) + ')');
+          fillGrad.addColorStop(1, 'rgba(255, 255, 255, ' + (0.32 * auraIntensity) + ')');
+          ctx.fillStyle = fillGrad;
+          ctx.fill();
+
+          if (self.settings.showPetalCurves) {
+            var strokeGrad = ctx.createLinearGradient(basePt.x, basePt.y, tipPt.x, tipPt.y);
+            strokeGrad.addColorStop(0, 'rgba(255, 110, 20, ' + (0.35 * auraIntensity) + ')');
+            strokeGrad.addColorStop(0.4, 'rgba(255, 200, 60, ' + (0.70 * auraIntensity) + ')');
+            strokeGrad.addColorStop(0.75, 'rgba(255, 245, 210, ' + (0.90 * auraIntensity) + ')');
+            strokeGrad.addColorStop(1, 'rgba(255, 255, 255, ' + (1.0 * auraIntensity) + ')');
+            ctx.strokeStyle = strokeGrad;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+
+          // Longitudinal veins
+          [-0.5, 0, 0.5].forEach(function(v) {
+            ctx.beginPath();
+            var pStart = self.getProjectedPoint(0.05, v, item.layer, item.layerIndex, item.petalOffsetAngle, bloom, breathScale, cameraYaw, pitchAngle, focalLength, cX, cY, false);
+            ctx.moveTo(pStart.x, pStart.y);
+            for (var uIdx = 1; uIdx <= maxUSteps; uIdx++) {
+              var u = uIdx / maxUSteps;
+              var pt = self.getProjectedPoint(u, v, item.layer, item.layerIndex, item.petalOffsetAngle, bloom, breathScale, cameraYaw, pitchAngle, focalLength, cX, cY, false);
+              ctx.lineTo(pt.x, pt.y);
+            }
+            var vGrad = ctx.createLinearGradient(pStart.x, pStart.y, tipPt.x, tipPt.y);
+            vGrad.addColorStop(0, 'rgba(255, 120, 30, 0)');
+            vGrad.addColorStop(0.3, 'rgba(255, 180, 50, ' + (0.16 * auraIntensity) + ')');
+            vGrad.addColorStop(0.75, 'rgba(255, 240, 190, ' + (0.32 * auraIntensity) + ')');
+            vGrad.addColorStop(1, 'rgba(255, 255, 255, ' + (0.42 * auraIntensity) + ')');
+            ctx.strokeStyle = vGrad;
+            ctx.lineWidth = 0.45;
+            ctx.stroke();
+          });
+
+          // Petal sparkles
+          for (var s = 0; s < 4; s++) {
+            var seed = (item.layerIndex * 313 + item.pIdx * 97 + s * 43) % 4000;
+            var prng = function(val) { var x = Math.sin(val) * 10000; return x - Math.floor(x); };
+            var uS = 0.25 + 0.6 * prng(seed + 1.1);
+            var vS = -0.6 + 1.2 * prng(seed + 0.5);
+            var ptS = self.getProjectedPoint(uS, vS, item.layer, item.layerIndex, item.petalOffsetAngle, bloom, breathScale, cameraYaw, pitchAngle, focalLength, cX, cY, false);
+            var blink = (Math.sin(time * 0.003 + seed) + 1) / 2;
+            var alpha = (0.2 + blink * 0.8) * auraIntensity;
+            if (alpha > 0.15) {
+              ctx.fillStyle = 'rgba(255, 245, 210, ' + alpha + ')';
+              ctx.beginPath();
+              ctx.arc(ptS.x, ptS.y, 0.8 + blink * 0.7, 0, Math.PI * 2);
+              ctx.fill();
+              if (blink > 0.8) {
+                ctx.strokeStyle = 'rgba(255, 255, 255, ' + ((blink - 0.8) * 5 * alpha) + ')';
+                ctx.lineWidth = 0.4;
+                ctx.beginPath();
+                ctx.moveTo(ptS.x - 3, ptS.y); ctx.lineTo(ptS.x + 3, ptS.y);
+                ctx.moveTo(ptS.x, ptS.y - 3); ctx.lineTo(ptS.x, ptS.y + 3);
+                ctx.stroke();
+              }
+            }
+          }
+        }
+      });
+
+      // 4. Floating Ember Particles
+      if (Math.random() < 0.25 && this.freeParticles.length < 80) {
+        this.freeParticles.push({
+          x: (Math.random() - 0.5) * 150,
+          y: 20 + (Math.random() - 0.5) * 50,
+          z: (Math.random() - 0.5) * 150,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: -0.4 - Math.random() * 0.4,
+          vz: (Math.random() - 0.5) * 0.3,
+          life: 0,
+          maxLife: 85 + Math.random() * 40,
+          color: this.preset.particles[Math.floor(Math.random() * this.preset.particles.length)]
+        });
+      }
+
+      var activeP = [];
+      this.freeParticles.forEach(function(p) {
+        p.life += 1;
+        if (p.life >= p.maxLife) return;
+        p.x += p.vx * speedScale;
+        p.y += p.vy * speedScale;
+        p.z += p.vz * speedScale;
+
+        var fYawX = p.x * Math.cos(cameraYaw) - p.z * Math.sin(cameraYaw);
+        var fYawZ = p.x * Math.sin(cameraYaw) + p.z * Math.cos(cameraYaw);
+        var fPitchY = p.y * Math.cos(pitchAngle) - fYawZ * Math.sin(pitchAngle);
+        var fPitchZ = p.y * Math.sin(pitchAngle) + fYawZ * Math.cos(pitchAngle);
+
+        var pScale = focalLength / (focalLength + fPitchZ);
+        var tx = cX + fYawX * pScale;
+        var ty = cY - fPitchY * pScale;
+
+        var ratio = p.life / p.maxLife;
+        var shimmer = (Math.sin(time * 0.015 + p.x) + 1) / 2;
+        var alpha = Math.sin(ratio * Math.PI) * (0.25 + shimmer * 0.65);
+
+        if (tx >= 0 && tx <= width && ty >= 0 && ty <= height) {
+          ctx.globalAlpha = alpha;
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.arc(tx, ty, 0.9 + shimmer * 0.8, 0, Math.PI * 2);
+          ctx.fill();
+          activeP.push(p);
+        }
+      });
+      ctx.globalAlpha = 1.0;
+      this.freeParticles = activeP;
+    }
+  };
 
   // ================= 风险评估与分流 (PRD 4.4 / F-02) =================
   function evaluateRisk(text) {
@@ -2715,19 +4493,49 @@ body {
     var m = cards.mindset;
     var w = cards.wisdom;
     var a = cards.action;
+    var mQuote = m.front_text || m.quote || '';
+    var mDesc = m.short_description || m.sample_prompt || m.subtitle || '';
 
     // 01 心境牌
     $('resCardMindset').innerHTML = ''
-      + '<div class="relief-card-header">'
-      + '  <span class="relief-card-tag">01 心境牌 · 看见自己</span>'
-      + '  <button class="btn-card-op" id="btnChangeMindset">换一张 ↻</button>'
-      + '</div>'
-      + '<div class="relief-card-title serif">' + esc(m.title) + '</div>'
-      + '<div class="relief-card-quote">「' + esc(m.quote) + '」</div>'
-      + '<div class="relief-card-sub">' + esc(m.sample_prompt || m.subtitle || '') + '</div>'
-      + '<div class="relief-card-meta">'
-      + '  <span>维度：' + esc(m.dimension || '认知反思') + '</span>'
-      + '  <span>编号：' + esc(m.id) + '</span>'
+      + '<div class="card-3d-inner">'
+      + '  <div class="card-3d-face card-3d-back">'
+      + '    <div class="card-corner tl"></div><div class="card-corner tr"></div>'
+      + '    <div class="card-corner bl"></div><div class="card-corner br"></div>'
+      + '    <div class="card-back-header">SUBCONSCIOUS</div>'
+      + '    <div class="card-back-center">'
+      + '      <div class="card-orbit-ring"></div>'
+      + '      <div class="card-orbit-ring-inner"></div>'
+      + '      <div class="card-starburst">'
+      + '        <div class="card-starburst-ray v"></div>'
+      + '        <div class="card-starburst-ray h"></div>'
+      + '        <div class="card-starburst-ray d1"></div>'
+      + '        <div class="card-starburst-ray d2"></div>'
+      + '        <div class="card-core-gem">悟</div>'
+      + '      </div>'
+      + '    </div>'
+      + '    <div class="card-back-footer">'
+      + '      <span>01 当下投影 · 心境牌</span>'
+      + '      <span class="tap-hint">点击翻开 ↺</span>'
+      + '    </div>'
+      + '  </div>'
+      + '  <div class="card-3d-face card-3d-front">'
+      + '    <div>'
+      + '      <div class="relief-card-header">'
+      + '        <span class="card-front-tag mindset">01 心境牌 · 当下投影</span>'
+      + '        <button class="btn-card-op" id="btnChangeMindset">换一张 ↻</button>'
+      + '      </div>'
+      + '      <div class="card-front-title serif">' + esc(m.title) + '</div>'
+      + (mQuote ? ('      <div class="card-front-quote">「' + esc(mQuote) + '」</div>') : '')
+      + (mDesc ? ('      <div class="card-front-sub">' + esc(mDesc) + '</div>') : '')
+      + '    </div>'
+      + '    <div>'
+      + '      <div class="card-front-meta">'
+      + '        <span>维度：' + esc(m.dimension || '认知反思') + '</span>'
+      + '        <span style="color:var(--color-gold);font-size:11px;">↺ 3D翻面</span>'
+      + '      </div>'
+      + '    </div>'
+      + '  </div>'
       + '</div>';
 
     // 02 智慧牌
@@ -2738,20 +4546,51 @@ body {
       : '';
 
     $('resCardWisdom').innerHTML = ''
-      + '<div class="relief-card-header">'
-      + '  <span class="relief-card-tag">02 东方智慧牌 · 换个视角</span>'
-      + '  <button class="btn-card-op" id="btnChangeWisdom">换一张 ↻</button>'
-      + '</div>'
-      + '<div class="relief-card-title serif" style="font-size:18px;">「' + esc(wSrc.quote || w.title) + '」</div>'
-      + '<div class="relief-card-sub" style="margin-top:6px;font-size:13px;color:var(--color-ink-light);line-height:1.6;">'
-      + '  <strong>视角：</strong>' + esc(w.modern_interpretation || '')
-      + '</div>'
-      + '<div class="relief-card-meta">'
-      + '  <div style="display:flex;align-items:center;gap:6px;">'
-      +      avatarMini
-      + '    <span>出处：《' + esc(wSrc.book || '经典') + '》' + (wSrc.chapter && wSrc.chapter !== '—' ? ' · ' + esc(wSrc.chapter) : '') + '</span>'
+      + '<div class="card-3d-inner">'
+      + '  <div class="card-3d-face card-3d-back">'
+      + '    <div class="card-corner tl"></div><div class="card-corner tr"></div>'
+      + '    <div class="card-corner bl"></div><div class="card-corner br"></div>'
+      + '    <div class="card-back-header">SUBCONSCIOUS</div>'
+      + '    <div class="card-back-center">'
+      + '      <div class="card-orbit-ring"></div>'
+      + '      <div class="card-orbit-ring-inner"></div>'
+      + '      <div class="card-starburst">'
+      + '        <div class="card-starburst-ray v"></div>'
+      + '        <div class="card-starburst-ray h"></div>'
+      + '        <div class="card-starburst-ray d1"></div>'
+      + '        <div class="card-starburst-ray d2"></div>'
+      + '        <div class="card-core-gem">悟</div>'
+      + '      </div>'
+      + '    </div>'
+      + '    <div class="card-back-footer">'
+      + '      <span>02 潜意盲区 · 智慧牌</span>'
+      + '      <span class="tap-hint">点击翻开 ↺</span>'
+      + '    </div>'
       + '  </div>'
-      + '  <span class="badge ok">出处已核验</span>'
+      + '  <div class="card-3d-face card-3d-front">'
+      + '    <div>'
+      + '      <div class="relief-card-header">'
+      + '        <span class="card-front-tag wisdom">02 东方智慧 · 潜意盲区</span>'
+      + '        <button class="btn-card-op" id="btnChangeWisdom">换一张 ↻</button>'
+      + '      </div>'
+      + '      <div class="card-front-title serif" style="font-size:15.5px;">「' + esc(wSrc.quote || w.title) + '」</div>'
+      + '      <div class="card-front-sub" style="margin-top:6px;font-size:12.5px;color:var(--color-ink-light);line-height:1.55;">'
+      + '        <strong>视角：</strong>' + esc(w.modern_interpretation || '')
+      + '      </div>'
+      + '    </div>'
+      + '    <div>'
+      + '      <div class="card-front-meta">'
+      + '        <div style="display:flex;align-items:center;gap:6px;">'
+      +            avatarMini
+      + '          <span style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">《' + esc(wSrc.book || '经典') + '》' + (wSrc.chapter && wSrc.chapter !== '—' ? ' · ' + esc(wSrc.chapter) : '') + '</span>'
+      + '        </div>'
+      + '        <span class="badge ok" style="font-size:10px;">已核验</span>'
+      + '      </div>'
+      + '      <div style="text-align:right;margin-top:4px;">'
+      + '        <span style="font-size:11px;color:var(--color-gold);">↺ 3D翻面</span>'
+      + '      </div>'
+      + '    </div>'
+      + '  </div>'
       + '</div>';
 
     // 03 行动牌
@@ -2763,41 +4602,74 @@ body {
       : '如果今天不想动：闭目做三次匀速深呼吸，允许自己停下来。';
 
     $('resCardAction').innerHTML = ''
-      + '<div class="relief-card-header">'
-      + '  <span class="relief-card-tag">03 行动牌 · 走出一步</span>'
-      + '  <button class="btn-card-op" id="btnChangeAction">换一个 ↻</button>'
-      + '</div>'
-      + '<div class="relief-card-title serif">' + esc(a.title) + '</div>'
-      + '<div class="relief-card-sub" style="font-size:13px;line-height:1.6;">' + stepsList + '</div>'
-      + '<div style="margin-top:6px;font-size:12px;color:var(--color-muted);background:var(--color-bg);padding:4px 8px;border-radius:4px;border:1px solid var(--color-border);">'
-      +    altText
-      + '</div>'
-      + '<div class="relief-card-meta">'
-      + '  <span>预估耗时：约 ' + esc(a.time_estimate_min || 5) + ' 分钟</span>'
-      + '  <span>阻力：' + esc(a.friction_level || '低') + '</span>'
-      + '</div>'
-      + '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">'
-      + '  <button class="btn sm' + (appState.willingChecked ? ' checked' : '') + '" id="btnWillingTryCard">'
-      + (appState.willingChecked ? '✓ 已记下，今晚试试 ✨' : '🌱 我愿意试一试')
-      + '  </button>'
-      + '  <button class="btn sm secondary" id="btnNotToday">今晚先不做</button>'
+      + '<div class="card-3d-inner">'
+      + '  <div class="card-3d-face card-3d-back">'
+      + '    <div class="card-corner tl"></div><div class="card-corner tr"></div>'
+      + '    <div class="card-corner bl"></div><div class="card-corner br"></div>'
+      + '    <div class="card-back-header">SUBCONSCIOUS</div>'
+      + '    <div class="card-back-center">'
+      + '      <div class="card-orbit-ring"></div>'
+      + '      <div class="card-orbit-ring-inner"></div>'
+      + '      <div class="card-starburst">'
+      + '        <div class="card-starburst-ray v"></div>'
+      + '        <div class="card-starburst-ray h"></div>'
+      + '        <div class="card-starburst-ray d1"></div>'
+      + '        <div class="card-starburst-ray d2"></div>'
+      + '        <div class="card-core-gem">悟</div>'
+      + '      </div>'
+      + '    </div>'
+      + '    <div class="card-back-footer">'
+      + '      <span>03 指引路径 · 行动牌</span>'
+      + '      <span class="tap-hint">点击翻开 ↺</span>'
+      + '    </div>'
+      + '  </div>'
+      + '  <div class="card-3d-face card-3d-front">'
+      + '    <div>'
+      + '      <div class="relief-card-header">'
+      + '        <span class="card-front-tag action">03 微行动 · 指引路径</span>'
+      + '        <button class="btn-card-op" id="btnChangeAction">换一个 ↻</button>'
+      + '      </div>'
+      + '      <div class="card-front-title serif">' + esc(a.title) + '</div>'
+      + '      <div class="card-front-sub" style="font-size:12.5px;line-height:1.55;">' + stepsList + '</div>'
+      + '      <div style="margin-top:6px;font-size:11.5px;color:var(--color-muted);background:var(--color-bg);padding:4px 6px;border-radius:4px;border:1px solid var(--color-border);line-height:1.4;">'
+      +          altText
+      + '      </div>'
+      + '    </div>'
+      + '    <div>'
+      + '      <div class="card-front-meta" style="margin-bottom:8px;">'
+      + '        <span>约 ' + esc(a.time_estimate_min || 5) + ' 分钟</span>'
+      + '        <span>阻力：' + esc(a.friction_level || '低') + '</span>'
+      + '      </div>'
+      + '      <div style="display:flex;gap:6px;flex-wrap:wrap;">'
+      + '        <button class="btn sm' + (appState.willingChecked ? ' checked' : '') + '" id="btnWillingTryCard" style="font-size:11.5px;padding:4px 10px;">'
+      + (appState.willingChecked ? '✓ 已记下' : '我愿意试试')
+      + '        </button>'
+      + '        <button class="btn sm secondary" id="btnNotToday" style="font-size:11.5px;padding:4px 8px;">今晚先不试</button>'
+      + '      </div>'
+      + '      <div style="text-align:right;margin-top:4px;">'
+      + '        <span style="font-size:11px;color:var(--color-gold);">↺ 3D翻面</span>'
+      + '      </div>'
+      + '    </div>'
+      + '  </div>'
       + '</div>';
 
-    // 绑定内部交互
-    $('btnChangeMindset').onclick = function() { changeSingleCard('mindset'); };
-    $('btnChangeWisdom').onclick = function() { changeSingleCard('wisdom'); };
-    $('btnChangeAction').onclick = function() { changeSingleCard('action'); };
+    // 绑定内部交互 (阻止冒泡翻牌)
+    $('btnChangeMindset').onclick = function(e) { e.stopPropagation(); changeSingleCard('mindset'); };
+    $('btnChangeWisdom').onclick = function(e) { e.stopPropagation(); changeSingleCard('wisdom'); };
+    $('btnChangeAction').onclick = function(e) { e.stopPropagation(); changeSingleCard('action'); };
 
-    $('btnWillingTryCard').onclick = function() {
+    $('btnWillingTryCard').onclick = function(e) {
+      e.stopPropagation();
       appState.willingChecked = !appState.willingChecked;
       renderReliefCards(appState.currentCards);
       renderFourStepList(appState.currentResult);
       if (appState.willingChecked) {
-        showToast('愿这一步，为你带去一点轻盈与力量 ✨');
+        showToast('愿这一步，为你带去一点轻盈与力量');
       }
     };
 
-    $('btnNotToday').onclick = function() {
+    $('btnNotToday').onclick = function(e) {
+      e.stopPropagation();
       showToast('好的，今晚先好好休息，不给自己任何负担也是一种智慧。');
     };
   }
@@ -2873,7 +4745,7 @@ body {
       further_reading: classicRef && classicRef.book && classicRef.verification_status === 'verified'
         ? '推荐阅读《' + classicRef.book + '》' + (classicRef.chapter && classicRef.chapter !== '—' ? '·' + classicRef.chapter : '') + '。' + (FURTHER_MAP[scenario] || '')
         : '暂无特定典籍章节推荐；以今晚微行动为主。',
-      safety_note: '如果这种低落或内耗持续很久、明显影响睡眠与进食，找身边信任的朋友或专业人士聊聊，会比独自承担更有力量。'
+      safety_note: '若这种低落或内耗持续并影响作息，向信任之人或专业人士倾诉，会比独自承受更有力量。'
     };
   }
 
@@ -2936,7 +4808,7 @@ body {
       + '  <div class="step-num-col"><div class="step-num-badge">01</div></div>'
       + '  <div class="step-content-col">'
       + '    <div class="step-title">听见了</div>'
-      + '    <div class="step-text">' + esc(r.empathy) + '</div>'
+      + '    <div class="step-text" id="stepText01">' + esc(r.empathy) + '</div>'
       + '  </div>'
       + '</div>'
 
@@ -2946,7 +4818,7 @@ body {
       + '  <div class="step-content-col">'
       + '    <div class="step-title">古人有云</div>'
       +      quoteHtml
-      + '    <div class="step-text"><strong>可以提供的现代视角：</strong>' + esc(r.modern_interp) + '</div>'
+      + '    <div class="step-text" id="stepText02"><strong>现代启发：</strong>' + esc(r.modern_interp) + '</div>'
       + '  </div>'
       + '</div>'
 
@@ -2955,10 +4827,10 @@ body {
       + '  <div class="step-num-col"><div class="step-num-badge">03</div></div>'
       + '  <div class="step-content-col">'
       + '    <div class="step-title">试试这一招</div>'
-      + '    <div class="action-headline">' + esc(r.micro_action.headline) + '</div>'
-      + '    <ol class="action-steps-ol">' + stepsHtml + '</ol>'
+      + '    <div class="action-headline" id="stepHeadline03">' + esc(r.micro_action.headline) + '</div>'
+      + '    <ol class="action-steps-ol" id="stepOl03">' + stepsHtml + '</ol>'
       + '    <button class="willing-btn' + (appState.willingChecked ? ' checked' : '') + '" id="btnWillingTry">'
-      + (appState.willingChecked ? '✓ 已记下，今晚先试这一小步 ✨' : '🌱 我愿意试一试（选填，不做强制打卡）')
+      + (appState.willingChecked ? '✓ 已记下，今晚先试这一小步' : '我愿意试一试')
       + '    </button>'
       + '  </div>'
       + '</div>'
@@ -2968,7 +4840,7 @@ body {
       + '  <div class="step-num-col"><div class="step-num-badge">04</div></div>'
       + '  <div class="step-content-col">'
       + '    <div class="step-title">读这一段</div>'
-      + '    <div class="step-text">' + esc(r.further_reading) + '</div>'
+      + '    <div class="step-text" id="stepText04">' + esc(r.further_reading) + '</div>'
       + '    <div style="font-size:12.5px;color:var(--color-muted);background:var(--color-bg);padding:8px 12px;border-radius:6px;border:1px solid var(--color-border);margin-top:8px;">'
       + esc(r.safety_note)
       + '    </div>'
@@ -3000,16 +4872,28 @@ body {
         renderReliefCards(appState.currentCards);
         renderFourStepList(appState.currentResult);
         if (appState.willingChecked) {
-          showToast('愿这一步，为你带去一点轻盈与力量 ✨');
+          showToast('愿这一步，为你带去一点轻盈与力量');
         }
       };
     }
   }
 
   function renderResultView(r) {
-    $('resultThemeBadge').textContent = '🏷️ 情绪主题：' + r.theme_title;
+    $('resultThemeBadge').textContent = '情绪主题：' + r.theme_title;
     renderReliefCards(appState.currentCards);
     renderFourStepList(r);
+
+    // 3D 翻牌展开动效 (Sequential Reveal)
+    var mCard = $('resCardMindset');
+    var wCard = $('resCardWisdom');
+    var aCard = $('resCardAction');
+    if (mCard) mCard.classList.remove('is-flipped');
+    if (wCard) wCard.classList.remove('is-flipped');
+    if (aCard) aCard.classList.remove('is-flipped');
+
+    setTimeout(function() { if (mCard) mCard.classList.add('is-flipped'); }, 200);
+    setTimeout(function() { if (wCard) wCard.classList.add('is-flipped'); }, 600);
+    setTimeout(function() { if (aCard) aCard.classList.add('is-flipped'); }, 1000);
   }
 
   // ================= 渲染安全支持页面 (U-04) =================
@@ -3038,6 +4922,23 @@ body {
   + '</p>';
 
   // ================= 东方解忧笺生成与超清 Canvas 绘制 (U-05 / PRD 2.0 F-06) =================
+  function applyBookmarkToDom(bmId) {
+    appState.selectedBookmark = bmId;
+    var jian = $('jianDom');
+    if (jian) {
+      jian.style.backgroundImage = 'url(' + getBookmarkAsset(bmId) + ')';
+      jian.style.backgroundSize = '100% 100%';
+      jian.style.backgroundRepeat = 'no-repeat';
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.bm-pill'), function(p) {
+      if (p.getAttribute('data-bmid') === bmId) {
+        p.classList.add('active');
+      } else {
+        p.classList.remove('active');
+      }
+    });
+  }
+
   function prepareCardData(r) {
     var isPub = appState.cardPublicVersion;
     var c = r.classic;
@@ -3045,7 +4946,7 @@ body {
     var src = c.book ? ('《' + c.book + '》' + (c.chapter && c.chapter !== '—' ? ' · ' + c.chapter : '')) : '悟堂解忧引言';
     var exp = r.modern_interp;
     var act = r.micro_action.headline.replace(/^今晚\s*5\s*分钟[：:]\s*/, '') + '。' + (r.micro_action.steps[0] || '');
-    var theme = isPub ? ('🌿 ' + r.theme_title + ' · 共读精选') : r.theme_title;
+    var theme = isPub ? (r.theme_title + ' · 共读精选') : r.theme_title;
 
     var sage = getSageInfo(r.classic_obj ? r.classic_obj.era_author : '', c.book);
     var avatarEl = $('cardSageAvatar');
@@ -3057,6 +4958,8 @@ body {
         avatarEl.style.display = 'none';
       }
     }
+
+    applyBookmarkToDom(appState.selectedBookmark || 'bm_gold_fleck');
 
     $('cardTheme').textContent = theme;
     $('cardQuote').textContent = '「' + q + '」';
@@ -3082,50 +4985,56 @@ body {
   }
 
   function drawRetinaCard(cd) {
-    // 2x 超清导出 (1520 x 2080 px)
-    var scale = 2;
-    var W = 760 * scale, H = 1040 * scale;
+    // 东方解忧笺 WYSIWYG 高清所见即所得导出 (1050 x 2250 px, 严格按 2.763 倍对齐屏幕 380x814 卡片字号与排版)
+    var W = 1050, H = 2250;
+    var k = W / 380; // 约 2.763 倍屏幕高清缩放系数
     var cv = document.createElement('canvas');
     cv.width = W; cv.height = H;
     var g = cv.getContext('2d');
 
-    // 背景宣纸质感暖白
+    // 1. 背景宣纸底色
     g.fillStyle = '#FCF9F2';
     g.fillRect(0, 0, W, H);
 
-    // 外双框
-    g.strokeStyle = '#D6CAB8';
-    g.lineWidth = 2 * scale;
-    g.strokeRect(20 * scale, 20 * scale, W - 40 * scale, H - 40 * scale);
+    // 2. 绘制书笺纹样底图
+    var bmKey = appState.selectedBookmark || 'bm_gold_fleck';
+    var bmSrc = getBookmarkAsset(bmKey);
+    var bgDrawn = false;
+    if (bmSrc) {
+      var bgImg = new Image();
+      bgImg.src = bmSrc;
+      if (bgImg.complete && bgImg.naturalWidth > 0) {
+        g.drawImage(bgImg, 0, 0, W, H);
+        bgDrawn = true;
+      }
+    }
 
-    g.strokeStyle = '#E6DCCD';
-    g.lineWidth = 1 * scale;
-    g.strokeRect(30 * scale, 30 * scale, W - 60 * scale, H - 60 * scale);
+    if (!bgDrawn) {
+      // 降级双框
+      g.strokeStyle = '#D6CAB8';
+      g.lineWidth = 4;
+      g.strokeRect(30, 30, W - 60, H - 60);
+      g.strokeStyle = '#E6DCCD';
+      g.lineWidth = 2;
+      g.strokeRect(45, 45, W - 90, H - 90);
 
-    var cx = W / 2, y = 92 * scale;
-    g.textAlign = 'center';
-    g.textBaseline = 'alphabetic';
+      // 降级印章与品牌名
+      var cxFall = W / 2, yFall = 180;
+      g.textAlign = 'center';
+      g.textBaseline = 'alphabetic';
+      g.fillStyle = '#8F2928';
+      g.fillRect(cxFall - 160, yFall - 36, 42, 42);
+      g.fillStyle = '#FFFFFF';
+      g.font = 'bold 24px "Songti SC", "SimSun", serif';
+      g.fillText('悟', cxFall - 139, yFall - 6);
+      g.fillStyle = '#8F2928';
+      g.font = '600 24px "PingFang SC", "Microsoft YaHei", sans-serif';
+      g.fillText('悟 堂 · 东 方 解 忧 笺', cxFall + 20, yFall - 6);
+    }
 
-    // 朱红小方印
-    var sealSize = 28 * scale;
-    g.fillStyle = '#8F2928';
-    g.fillRect(cx - 110 * scale, y - 22 * scale, sealSize, sealSize);
-    g.fillStyle = '#FFFFFF';
-    g.font = 'bold ' + (17 * scale) + 'px "Songti SC", "SimSun", serif';
-    g.fillText('悟', cx - 96 * scale, y - 2 * scale);
-
-    // 品牌名
-    g.fillStyle = '#8F2928';
-    g.font = '600 ' + (15 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
-    var brandTitle = cd.isPublic ? '悟 堂 · 东 方 解 忧 处 （共 读 分 享 版）' : '悟 堂 · 东 方 解 忧 处';
-    g.fillText(brandTitle, cx + 18 * scale, y - 3 * scale);
-    y += 56 * scale;
-
-    // 主题标签
-    g.fillStyle = '#A67C38';
-    g.font = '600 ' + (14 * scale) + 'px "Songti SC", "SimSun", serif';
-    g.fillText(cd.theme, cx, y);
-    y += 62 * scale;
+    var cx = W / 2;
+    var contentW = Math.round(328 * k); // 约 906px，与屏幕中两侧留白保持完全一致
+    var leftX = Math.round((W - contentW) / 2); // 约 72px
 
     // 折行工具函数
     function wrapLines(text, font, maxW) {
@@ -3145,70 +5054,129 @@ body {
       return lines;
     }
 
-    // 经典引言 (宋体大字)
-    var qLines = wrapLines(cd.quote, 'bold ' + (27 * scale) + 'px "Songti SC", "SimSun", serif', W - 140 * scale);
+    function roundRect(ctx, x, y, w, h, r) {
+      if (w < 2 * r) r = w / 2;
+      if (h < 2 * r) r = h / 2;
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    // 3. 经典引言（大字宋体，字号 22px * k ≈ 61px，居中对齐）
+    var quoteFontSize = Math.round(22 * k); // 61px
+    var quoteLineH = Math.round(39.6 * k);   // 109px
+    var quoteFont = '600 ' + quoteFontSize + 'px "Songti SC", "SimSun", "STSong", serif';
+    var qLines = wrapLines(cd.quote, quoteFont, contentW);
+
+    // 起笔位置严格对应屏幕上的 clamp(145px, 42%, 165px)
+    var y = Math.round(155 * k); // 约 428px
+    g.textAlign = 'center';
+    g.textBaseline = 'alphabetic';
     g.fillStyle = '#262421';
-    g.font = 'bold ' + (27 * scale) + 'px "Songti SC", "SimSun", serif';
+    g.font = quoteFont;
     qLines.forEach(function(l) {
       g.fillText(l, cx, y);
-      y += 44 * scale;
+      y += quoteLineH;
     });
 
-    // 出处
-    y += 4 * scale;
+    // 4. 出处来源（字号 13px * k ≈ 36px）
+    y += Math.round(14 * k);
+    var srcFontSize = Math.round(13 * k); // 36px
+    var srcFont = srcFontSize + 'px "Songti SC", "SimSun", "STSong", serif';
+    g.font = srcFont;
     g.fillStyle = '#77736D';
-    g.font = (13.5 * scale) + 'px "Songti SC", "SimSun", serif';
-    g.fillText(cd.src, cx, y);
-    y += 36 * scale;
 
-    // 中间细线
+    var sageImgDrawn = false;
+    var sageSize = Math.round(22 * k); // 60px
+    if (cd.sage && cd.sage.b64) {
+      var sImg = new Image();
+      sImg.src = cd.sage.b64;
+      if (sImg.complete && sImg.naturalWidth > 0) {
+        var srcTextW = g.measureText(cd.src).width;
+        var totalSrcW = sageSize + 12 + srcTextW;
+        var startX = cx - totalSrcW / 2;
+        g.drawImage(sImg, startX, y - sageSize + 6, sageSize, sageSize);
+        g.textAlign = 'left';
+        g.fillText(cd.src, startX + sageSize + 12, y);
+        sageImgDrawn = true;
+      }
+    }
+    if (!sageImgDrawn) {
+      g.textAlign = 'center';
+      g.fillText(cd.src, cx, y);
+    }
+
+    // 5. 分割细线
+    y += Math.round(20 * k);
+    var lineHalfW = Math.round(22 * k); // 61px
     g.strokeStyle = '#D6CAB8';
-    g.lineWidth = 1 * scale;
+    g.lineWidth = Math.round(1.2 * k);
     g.beginPath();
-    g.moveTo(cx - 30 * scale, y);
-    g.lineTo(cx + 30 * scale, y);
+    g.moveTo(cx - lineHalfW, y);
+    g.lineTo(cx + lineHalfW, y);
     g.stroke();
-    y += 44 * scale;
 
-    // 现代解义 (左对齐)
+    // 6. 现代温润解义（字号 14px * k ≈ 39px，行高 1.85 * 39 ≈ 72px，左对齐）
+    y += Math.round(26 * k);
+    var expFontSize = Math.round(14 * k); // 39px
+    var expLineH = Math.round(26 * k);    // 72px
+    var expFont = expFontSize + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+    var expLines = wrapLines(cd.exp, expFont, contentW);
     g.textAlign = 'left';
-    var expLines = wrapLines(cd.exp, (17 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif', W - 140 * scale);
     g.fillStyle = '#4A443E';
-    g.font = (17 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+    g.font = expFont;
     expLines.forEach(function(l) {
-      g.fillText(l, 70 * scale, y);
-      y += 30 * scale;
+      g.fillText(l, leftX, y);
+      y += expLineH;
     });
-    y += 28 * scale;
 
-    // 微行动白色信盒
-    var actLines = wrapLines(cd.act, (15.5 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif', W - 180 * scale);
-    var boxH = 54 * scale + actLines.length * (25 * scale);
+    // 7. 今晚 5 分钟微行动卡盒（字号与比例完全对齐屏幕）
+    y += Math.round(18 * k);
+    var boxPadX = Math.round(16 * k); // 44px
+    var boxPadY = Math.round(14 * k); // 39px
+    var actTagFontSize = Math.round(12 * k); // 33px
+    var actTextFontSize = Math.round(13.5 * k); // 37px
+    var actTextLineH = Math.round(23 * k); // 64px
+    var actTextFont = actTextFontSize + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+
+    var innerBoxW = contentW - boxPadX * 2;
+    var actLines = wrapLines(cd.act, actTextFont, innerBoxW);
+    var boxH = boxPadY * 2 + actTagFontSize + 14 + actLines.length * actTextLineH;
+
+    // 白色卡盒底色与轻柔边线
     g.fillStyle = '#FFFFFF';
-    g.fillRect(66 * scale, y, W - 132 * scale, boxH);
-    g.strokeStyle = '#E6E0D7';
-    g.strokeRect(66 * scale, y, W - 132 * scale, boxH);
+    roundRect(g, leftX, y, contentW, boxH, Math.round(8 * k));
+    g.fill();
+    g.strokeStyle = '#E6DFD4';
+    g.lineWidth = Math.round(1.2 * k);
+    g.stroke();
 
     // 行动标题
     g.fillStyle = '#8F2928';
-    g.font = 'bold ' + (12 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+    g.font = '600 ' + actTagFontSize + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
     var actBoxTitle = cd.isPublic ? '东 方 智 慧 微 行 动 （共 读 推 荐）' : '今 晚 5 分 钟 微 行 动';
-    g.fillText(actBoxTitle, 86 * scale, y + 26 * scale);
+    g.fillText(actBoxTitle, leftX + boxPadX, y + boxPadY + actTagFontSize - 2);
 
-    // 行动条目
+    // 行动正文
     g.fillStyle = '#262421';
-    g.font = (15.5 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
-    var actY = y + 50 * scale;
+    g.font = actTextFont;
+    var textStartY = y + boxPadY + actTagFontSize + 16 + actTextFontSize;
     actLines.forEach(function(l) {
-      g.fillText(l, 86 * scale, actY);
-      actY += 25 * scale;
+      g.fillText(l, leftX + boxPadX, textStartY);
+      textStartY += actTextLineH;
     });
 
-    // 页脚 Slogan
-    g.textAlign = 'center';
-    g.fillStyle = '#77736D';
-    g.font = (12.5 * scale) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
-    g.fillText(cd.slogan, cx, H - 46 * scale);
+    // 8. 页脚 Slogan（如果未绘制底图，或为公开分享版，才补充落款）
+    if (!bgDrawn || cd.isPublic) {
+      g.textAlign = 'center';
+      g.fillStyle = '#77736D';
+      g.font = Math.round(12.5 * k) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+      g.fillText(cd.slogan, cx, H - Math.round(36 * k));
+    }
 
     return cv.toDataURL('image/png');
   }
@@ -3223,25 +5191,431 @@ body {
         else node.classList.add('hidden');
       }
     });
+
+    if (viewId === 'userLoading') {
+      lotusEngine.start();
+    } else {
+      lotusEngine.stop();
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function switchMainMode(mode) {
-    appState.mode = mode;
-    if (mode === 'client') {
-      $('clientArea').classList.remove('hidden');
-      $('studioArea').classList.add('hidden');
-      $('tabClient').classList.add('active');
-      $('tabStudio').classList.remove('active');
-    } else {
-      $('clientArea').classList.add('hidden');
-      $('studioArea').classList.remove('hidden');
-      $('tabClient').classList.remove('active');
-      $('tabStudio').classList.add('active');
+  function switchMainTab(tab) {
+    appState.mainTab = tab;
+    var clientArea = $('clientArea');
+    var mineArea = $('mineArea');
+    var studioArea = $('studioArea');
+
+    var tabRelief = $('tabRelief');
+    var tabMine = $('tabMine');
+    var tabStudio = $('tabStudio');
+
+    if (tabRelief) tabRelief.classList.remove('active');
+    if (tabMine) tabMine.classList.remove('active');
+    if (tabStudio) tabStudio.classList.remove('active');
+
+    if (tab === 'relief') {
+      if (clientArea) clientArea.classList.remove('hidden');
+      if (mineArea) mineArea.classList.add('hidden');
+      if (studioArea) studioArea.classList.add('hidden');
+      if (tabRelief) tabRelief.classList.add('active');
+    } else if (tab === 'mine') {
+      if (clientArea) clientArea.classList.add('hidden');
+      if (mineArea) mineArea.classList.remove('hidden');
+      if (studioArea) studioArea.classList.add('hidden');
+      if (tabMine) tabMine.classList.add('active');
+      renderMineSection();
+    } else if (tab === 'studio') {
+      if (!appState.isManagerLoggedIn) {
+        showToast('主理人工作台仅供主理人登录后访问，请先在「我的」完成认证');
+        switchMainTab('mine');
+        return;
+      }
+      if (clientArea) clientArea.classList.add('hidden');
+      if (mineArea) mineArea.classList.add('hidden');
+      if (studioArea) studioArea.classList.remove('hidden');
+      if (tabStudio) tabStudio.classList.add('active');
       renderStudioOverview();
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  // 兼容别名
+  function switchMainMode(mode) {
+    switchMainTab(mode === 'studio' ? 'studio' : 'relief');
+  }
+
+  // ================= 历史足迹记录中心 (Local History Storage) =================
+  function getHistoryList() {
+    try {
+      var raw = localStorage.getItem('wutang_relief_history');
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return [];
+  }
+
+  function saveConsultationHistory(question, scenario, cards, res) {
+    try {
+      var list = getHistoryList();
+      var m = cards ? (cards.mindset || {}) : {};
+      var w = cards ? (cards.wisdom || {}) : {};
+      var a = cards ? (cards.action || {}) : {};
+      var now = new Date();
+      var record = {
+        id: 'REC-' + Date.now().toString().slice(-6),
+        timestamp: now.toISOString(),
+        dateStr: now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0') + ' ' + String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0'),
+        question: question || (m.title ? '抽牌心境探索：' + m.title : '日常心事觉察'),
+        scenario: scenario || 'general',
+        themeTitle: (res && res.theme_title) ? res.theme_title : '东方启发视角',
+        cards: {
+          mindset: { id: m.card_id || m.id, title: m.title || '心境牌', quote: m.quote || '' },
+          wisdom: { id: w.card_id || w.id, title: w.title || '东方智慧牌', quote: (w.classic_source ? w.classic_source.quote : '') || w.quote || '', book: (w.classic_source ? w.classic_source.book : '') || '' },
+          action: { id: a.card_id || a.id, title: a.title || '微行动牌', headline: (res && res.micro_action ? res.micro_action.headline : '') || (a.title || '') }
+        },
+        quote: (res && res.classic ? res.classic.quote : '') || (w.classic_source ? w.classic_source.quote : '') || '',
+        source: (res && res.classic && res.classic.book) ? ('《' + res.classic.book + '》') : '',
+        empathy: (res && res.empathy) ? res.empathy : '',
+        modernInterp: (res && res.modern_interp) ? res.modern_interp : '',
+        actionHeadline: (res && res.micro_action ? res.micro_action.headline : '') || '',
+        actionSteps: (res && res.micro_action ? res.micro_action.steps : []) || [],
+        furtherReading: (res && res.further_reading) ? res.further_reading : ''
+      };
+      list.unshift(record);
+      if (list.length > 60) list = list.slice(0, 60);
+      localStorage.setItem('wutang_relief_history', JSON.stringify(list));
+    } catch (e) {
+      console.warn('saveConsultationHistory error:', e);
+    }
+  }
+
+  function renderMineSection(filterKeyword) {
+    updateManagerUI();
+    var container = $('historyCardListContainer');
+    var notice = $('historyCountNotice');
+    if (!container) return;
+
+    var list = getHistoryList();
+    if (filterKeyword && filterKeyword.trim()) {
+      var kw = filterKeyword.trim().toLowerCase();
+      list = list.filter(function(item) {
+        return (item.question && item.question.toLowerCase().indexOf(kw) >= 0)
+          || (item.cards && item.cards.mindset && item.cards.mindset.title.toLowerCase().indexOf(kw) >= 0)
+          || (item.cards && item.cards.wisdom && item.cards.wisdom.title.toLowerCase().indexOf(kw) >= 0)
+          || (item.quote && item.quote.toLowerCase().indexOf(kw) >= 0);
+      });
+    }
+
+    if (notice) {
+      notice.textContent = '共已记录 ' + list.length + ' 次心境觉察与解忧探索';
+    }
+
+    if (list.length === 0) {
+      container.innerHTML = '<div style="padding:40px 20px;text-align:center;color:var(--color-muted);background:var(--color-surface-subtle);border-radius:12px;border:1px dashed var(--color-border);">'
+        + '<div style="font-size:32px;margin-bottom:8px;">🍃</div>'
+        + '<div style="font-size:14px;color:var(--color-ink-light);margin-bottom:4px;">暂无历史解忧足迹</div>'
+        + '<div style="font-size:12.5px;">愿你在心绪纷扰时，随时回来小坐，先把心结整理出头绪。</div>'
+        + '</div>';
+      return;
+    }
+
+    var html = list.map(function(item) {
+      var mTitle = item.cards && item.cards.mindset ? item.cards.mindset.title : '心境牌';
+      var wTitle = item.cards && item.cards.wisdom ? item.cards.wisdom.title : '智慧牌';
+      var aTitle = item.cards && item.cards.action ? item.cards.action.title : '行动牌';
+      var q = item.quote ? ('「' + esc(item.quote) + '」' + (item.source ? ' ' + esc(item.source) : '')) : '';
+
+      return '<div class="history-item-card" data-id="' + esc(item.id) + '">'
+        + '<div class="history-item-header">'
+        + '  <span style="font-weight:600;color:var(--color-primary);">' + esc(item.id) + ' · ' + esc(item.themeTitle || '东方解忧') + '</span>'
+        + '  <span>' + esc(item.dateStr) + '</span>'
+        + '</div>'
+        + '<div class="history-item-question">“' + esc(item.question) + '”</div>'
+        + '<div class="history-item-tags">'
+        + '  <span class="history-tag mindset">01 当下: ' + esc(mTitle) + '</span>'
+        + '  <span class="history-tag wisdom">02 智慧: ' + esc(wTitle) + '</span>'
+        + '  <span class="history-tag action">03 行动: ' + esc(aTitle) + '</span>'
+        + '</div>'
+        + (q ? '<div class="history-item-quote serif">' + q + '</div>' : '')
+        + '<div class="history-item-actions">'
+        + '  <button class="btn sm" onclick="viewHistoryDetail(\'' + esc(item.id) + '\')">查看四步解忧方</button>'
+        + '  <button class="btn sm secondary" onclick="reuseHistoryQuestion(\'' + esc(item.id) + '\')">以此心事重理</button>'
+        + '  <button class="btn sm ghost" onclick="deleteHistoryItem(\'' + esc(item.id) + '\')">删除</button>'
+        + '</div>'
+        + '</div>';
+    }).join('');
+
+    container.innerHTML = html;
+  }
+
+  window.viewHistoryDetail = function(id) {
+    var list = getHistoryList();
+    var item = list.find(function(x) { return x.id === id; });
+    if (!item) return;
+
+    var body = $('historyDetailBody');
+    if (!body) return;
+
+    var mTitle = item.cards && item.cards.mindset ? item.cards.mindset.title : '心境牌';
+    var wTitle = item.cards && item.cards.wisdom ? item.cards.wisdom.title : '智慧牌';
+    var aTitle = item.cards && item.cards.action ? item.cards.action.title : '行动牌';
+
+    var stepsHtml = (item.actionSteps || []).map(function(s) {
+      return '<li style="margin-bottom:4px;">' + esc(s) + '</li>';
+    }).join('');
+
+    body.innerHTML = ''
+      + '<div style="background:var(--color-surface-subtle);padding:14px;border-radius:10px;margin-bottom:16px;border:1px solid var(--color-border);">'
+      + '  <div style="font-size:12px;color:var(--color-muted);margin-bottom:4px;">咨询时间：' + esc(item.dateStr) + ' ｜ 编号：' + esc(item.id) + '</div>'
+      + '  <div style="font-size:15.5px;font-weight:600;color:var(--color-ink);line-height:1.5;">“' + esc(item.question) + '”</div>'
+      + '</div>'
+      + '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">'
+      + '  <span class="history-tag mindset" style="padding:4px 10px;font-size:12px;">01 当下投影: ' + esc(mTitle) + '</span>'
+      + '  <span class="history-tag wisdom" style="padding:4px 10px;font-size:12px;">02 潜意盲区: ' + esc(wTitle) + '</span>'
+      + '  <span class="history-tag action" style="padding:4px 10px;font-size:12px;">03 指引路径: ' + esc(aTitle) + '</span>'
+      + '</div>'
+      + '<div class="four-step-list">'
+      + '  <div class="step-item">'
+      + '    <div class="step-num-col"><div class="step-num-badge">01</div></div>'
+      + '    <div class="step-content-col">'
+      + '      <div class="step-title">听见了</div>'
+      + '      <div class="step-text">' + esc(item.empathy || '当时的情绪已被温柔接纳。') + '</div>'
+      + '    </div>'
+      + '  </div>'
+      + '  <div class="step-item">'
+      + '    <div class="step-num-col"><div class="step-num-badge">02</div></div>'
+      + '    <div class="step-content-col">'
+      + '      <div class="step-title">古人有云</div>'
+      + (item.quote ? '<div class="classic-quote-box"><div class="classic-quote-text serif">「' + esc(item.quote) + '」</div><div class="classic-meta-row"><span>出处：' + esc(item.source || '经典考据') + '</span></div></div>' : '')
+      + '      <div class="step-text"><strong>现代视角：</strong>' + esc(item.modernInterp || '换个角度，接纳自己的局限。') + '</div>'
+      + '    </div>'
+      + '  </div>'
+      + '  <div class="step-item">'
+      + '    <div class="step-num-col"><div class="step-num-badge">03</div></div>'
+      + '    <div class="step-content-col">'
+      + '      <div class="step-title">试试这一招</div>'
+      + '      <div class="action-headline">' + esc(item.actionHeadline || '今晚微行动') + '</div>'
+      + (stepsHtml ? '<ol class="action-steps-ol">' + stepsHtml + '</ol>' : '')
+      + '    </div>'
+      + '  </div>'
+      + '  <div class="step-item">'
+      + '    <div class="step-num-col"><div class="step-num-badge">04</div></div>'
+      + '    <div class="step-content-col">'
+      + '      <div class="step-title">读这一段</div>'
+      + '      <div class="step-text">' + esc(item.furtherReading || '经典导读记录。') + '</div>'
+      + '    </div>'
+      + '  </div>'
+      + '</div>';
+
+    $('modalHistoryDetail').classList.add('active');
+  };
+
+  window.reuseHistoryQuestion = function(id) {
+    var list = getHistoryList();
+    var item = list.find(function(x) { return x.id === id; });
+    if (!item) return;
+    $('userTextarea').value = item.question;
+    $('userTextarea').dispatchEvent(new Event('input'));
+    switchMainTab('relief');
+    switchClientView('userHome');
+    showToast('已填入该条历史心事，点击即可重新梳理');
+  };
+
+  window.deleteHistoryItem = function(id) {
+    var list = getHistoryList().filter(function(x) { return x.id !== id; });
+    localStorage.setItem('wutang_relief_history', JSON.stringify(list));
+    renderMineSection($('historySearchInput') ? $('historySearchInput').value : '');
+    showToast('已删除该条历史足迹');
+  };
+
+  window.clearAllHistory = function() {
+    if (confirm('确定要清空在此浏览器中保存的所有解忧历史记录吗？')) {
+      localStorage.removeItem('wutang_relief_history');
+      renderMineSection();
+      showToast('历史记录已清空');
+    }
+  };
+
+  // ================= 账号体系与主理人权限控制 =================
+  function authManager(passcodeOrEmail, password) {
+    var val = (passcodeOrEmail || '').trim().toLowerCase();
+    var pwd = (password || '').trim().toLowerCase();
+    var isManagerAccount = (
+      val === 'xush09@qq.com' ||
+      val === 'admin' ||
+      val.indexOf('xush09') !== -1 ||
+      val === 'wutang888' ||
+      val === 'demo' ||
+      val === 'xiaoping' ||
+      val === '主理人' ||
+      pwd === 'admin' ||
+      pwd === 'wutang888'
+    );
+
+    if (isManagerAccount) {
+      appState.isManagerLoggedIn = true;
+      appState.currentUser = null;
+      localStorage.setItem('wutang_manager_active', 'true');
+      localStorage.removeItem('wutang_current_user');
+      updateManagerUI();
+      if ($('modalAuth')) $('modalAuth').classList.remove('active');
+      showToast('主理人身份已认证！顶栏已自动解锁「主理人工作台」👑');
+    } else if (val) {
+      // 普通注册用户登录
+      appState.isManagerLoggedIn = false;
+      appState.currentUser = {
+        name: val.split('@')[0],
+        account: val,
+        role: 'user'
+      };
+      localStorage.removeItem('wutang_manager_active');
+      localStorage.setItem('wutang_current_user', JSON.stringify(appState.currentUser));
+      updateManagerUI();
+      if ($('modalAuth')) $('modalAuth').classList.remove('active');
+      showToast('登录成功，欢迎回来：' + appState.currentUser.name);
+    } else {
+      showToast('请输入账号或邮箱');
+    }
+  }
+
+  function registerUser(nickname, account, pwd, confirmPwd) {
+    var nick = (nickname || '').trim();
+    var acc = (account || '').trim();
+    var p = (pwd || '').trim();
+    var cp = (confirmPwd || '').trim();
+
+    if (!acc) {
+      showToast('请输入常用邮箱或登录账号');
+      return;
+    }
+    if (!p || p.length < 6) {
+      showToast('设置密码请至少输入 6 位字符');
+      return;
+    }
+    if (p !== cp) {
+      showToast('两次输入的密码不一致，请重新核对');
+      return;
+    }
+
+    if (acc.toLowerCase().indexOf('xush09') !== -1 || acc.toLowerCase() === 'admin') {
+      authManager(acc, p);
+      return;
+    }
+
+    appState.isManagerLoggedIn = false;
+    appState.currentUser = {
+      name: nick || acc.split('@')[0],
+      account: acc,
+      role: 'user'
+    };
+    localStorage.removeItem('wutang_manager_active');
+    localStorage.setItem('wutang_current_user', JSON.stringify(appState.currentUser));
+    updateManagerUI();
+    if ($('modalAuth')) $('modalAuth').classList.remove('active');
+    showToast('注册成功！已开启行者档案，欢迎：' + (nick || acc));
+  }
+
+  function logoutUser() {
+    appState.currentUser = null;
+    localStorage.removeItem('wutang_current_user');
+    updateManagerUI();
+    showToast('已退出登录，当前处于访客模式');
+  }
+
+  function logoutManager() {
+    appState.isManagerLoggedIn = false;
+    localStorage.removeItem('wutang_manager_active');
+    updateManagerUI();
+    if (appState.mainTab === 'studio') {
+      switchMainTab('relief');
+    }
+    showToast('已退出主理人身份，工作台已锁定隐藏');
+  }
+
+  function updateManagerUI() {
+    var tabStudio = $('tabStudio');
+    var guestLoginRow = $('guestLoginRow');
+    var managerActiveRow = $('managerActiveRow');
+    var userActiveRow = $('userActiveRow');
+    var mineAvatar = $('mineAvatar');
+    var mineUserName = $('mineUserName');
+    var mineUserDesc = $('mineUserDesc');
+
+    if (appState.isManagerLoggedIn) {
+      // 1. 主理人已登录状态：顶栏自动展示主理人工作台，页面展示主理人身份
+      if (tabStudio) {
+        tabStudio.classList.remove('hidden');
+        tabStudio.style.display = 'inline-flex';
+      }
+      if (guestLoginRow) guestLoginRow.classList.add('hidden');
+      if (userActiveRow) userActiveRow.classList.add('hidden');
+      if (managerActiveRow) managerActiveRow.classList.remove('hidden');
+
+      if (mineAvatar) {
+        mineAvatar.textContent = '晓';
+        mineAvatar.style.background = 'linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%)';
+        mineAvatar.style.color = '#B45309';
+        mineAvatar.style.borderColor = '#F59E0B';
+      }
+      if (mineUserName) {
+        mineUserName.innerHTML = '晓萍 · 悟堂主理人 <span class="profile-badge manager">👑 主理人已认证</span>';
+      }
+      if (mineUserDesc) {
+        mineUserDesc.textContent = '账号：xush09@qq.com ｜ 拥有全书典籍检索、来信审核与工业化内容大盘权限';
+      }
+    } else if (appState.currentUser) {
+      // 2. 普通注册用户登录状态
+      if (tabStudio) {
+        tabStudio.classList.add('hidden');
+        tabStudio.style.display = 'none';
+      }
+      if (guestLoginRow) guestLoginRow.classList.add('hidden');
+      if (managerActiveRow) managerActiveRow.classList.add('hidden');
+      if (userActiveRow) userActiveRow.classList.remove('hidden');
+
+      var firstChar = (appState.currentUser.name || '行').charAt(0);
+      if (mineAvatar) {
+        mineAvatar.textContent = firstChar;
+        mineAvatar.style.background = 'linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%)';
+        mineAvatar.style.color = '#0369A1';
+        mineAvatar.style.borderColor = '#38BDF8';
+      }
+      if (mineUserName) {
+        mineUserName.innerHTML = esc(appState.currentUser.name) + ' <span class="profile-badge guest" style="background:#E0F2FE;color:#0369A1;border-color:#BAE6FD;">注册行者</span>';
+      }
+      if (mineUserDesc) {
+        mineUserDesc.textContent = '账号：' + esc(appState.currentUser.account) + ' ｜ 解忧足迹与心事已在此设备安全绑定';
+      }
+    } else {
+      // 3. 访客未登录状态：顶栏隐藏主理人工作台，仅保留「登录」按钮
+      if (tabStudio) {
+        tabStudio.classList.add('hidden');
+        tabStudio.style.display = 'none';
+      }
+      if (guestLoginRow) guestLoginRow.classList.remove('hidden');
+      if (managerActiveRow) managerActiveRow.classList.add('hidden');
+      if (userActiveRow) userActiveRow.classList.add('hidden');
+
+      if (mineAvatar) {
+        mineAvatar.textContent = '悟';
+        mineAvatar.style.background = 'linear-gradient(135deg, #FBF4F2 0%, #F5ECE9 100%)';
+        mineAvatar.style.color = 'var(--color-primary)';
+        mineAvatar.style.borderColor = 'var(--color-primary-border)';
+      }
+      if (mineUserName) {
+        mineUserName.innerHTML = '访客 · 心灵行者 <span class="profile-badge guest">访客模式</span>';
+      }
+      if (mineUserDesc) {
+        mineUserDesc.textContent = '日常心事梳理与解忧记录已保存在此设备本地';
+      }
+    }
+  }
+
+  window.toggleCard3DFlip = function(cardElem) {
+    if (!cardElem) return;
+    cardElem.classList.toggle('is-flipped');
+  };
 
   function switchStudioTab(viewId) {
     appState.studioView = viewId;
@@ -3268,16 +5642,26 @@ body {
     if (!CARDS_MINDSET.length) return;
     var i = Math.abs(idx) % CARDS_MINDSET.length;
     var card = CARDS_MINDSET[i];
-    $('awFrontTitle').textContent = card.title;
-    $('awFrontQuestion').textContent = '「' + card.quote + '」';
-    $('awFrontDesc').textContent = '维度：' + card.dimension + ' ｜ ' + (card.sample_prompt || card.subtitle);
+    var qText = card.front_text || card.quote || '';
+    if ($('awFrontTitle')) $('awFrontTitle').textContent = card.title || '';
+    if ($('awFrontQuestion')) $('awFrontQuestion').textContent = qText ? ('「' + qText + '」') : '';
+    if ($('awFrontDesc')) $('awFrontDesc').textContent = card.short_description || card.sample_prompt || card.subtitle || '静观当下，自我关照';
     if ($('awFollowupText')) {
-      $('awFollowupText').textContent = card.sample_prompt || '最近有没有一件事，让你有类似的心情？写下一句话：';
+      $('awFollowupText').textContent = card.follow_up_question || card.sample_prompt || '最近有没有一件事，让你有类似的心情？写下一句话：';
     }
     var cardBox = $('awarenessCardBox');
-    if (cardBox) cardBox.classList.remove('flipped');
-    $('awFollowupBox').classList.add('hidden');
-    $('awProceedWrap').classList.add('hidden');
+    if (cardBox) {
+      cardBox.classList.remove('is-flipped');
+      var frontEl = cardBox.querySelector('.awareness-card-front');
+      if (frontEl) {
+        frontEl.style.backgroundImage = 'url(' + getCardAsset('card_mindset', 'front') + ')';
+        frontEl.style.backgroundSize = '100% 100%';
+        frontEl.style.backgroundRepeat = 'no-repeat';
+        frontEl.style.border = 'none';
+      }
+    }
+    if ($('awFollowupBox')) $('awFollowupBox').classList.add('hidden');
+    if ($('awProceedWrap')) $('awProceedWrap').classList.add('hidden');
     appState.awarenessFlipped = false;
   }
 
@@ -3293,11 +5677,11 @@ body {
         cards.push({
           type: 'mindset',
           typeLabel: '01 心境牌',
-          id: c.id,
+          id: c.card_id || c.id,
           title: c.title,
-          quote: '「' + c.quote + '」',
-          desc: c.sample_prompt || c.subtitle,
-          meta: '维度：' + c.dimension + ' ｜ 场景：' + (c.scenarios || []).join('、'),
+          quote: '「' + (c.front_text || c.quote || '') + '」',
+          desc: c.short_description || c.sample_prompt || c.subtitle,
+          meta: '标签：' + (c.theme_tags || c.scenarios || []).join('、'),
           statusBadge: '<span class="badge ok">MVP 基础牌</span>'
         });
       });
@@ -3333,8 +5717,8 @@ body {
     }
 
     if ($('studioCardsSubtitle')) {
-      $('studioCardsSubtitle').textContent = '收录 ' + (CARDS_MINDSET.length + CARDS_WISDOM.length + CARDS_ACTION.length)
-        + ' 张 MVP 卡牌（心境 ' + CARDS_MINDSET.length + '、智慧 ' + CARDS_WISDOM.length + '、行动 ' + CARDS_ACTION.length + '；当前筛选显示 ' + cards.length + ' 张）';
+      $('studioCardsSubtitle').textContent = '共 ' + (CARDS_MINDSET.length + CARDS_WISDOM.length + CARDS_ACTION.length)
+        + ' 张卡牌 · 心境 ' + CARDS_MINDSET.length + ' / 智慧 ' + CARDS_WISDOM.length + ' / 行动 ' + CARDS_ACTION.length + '（显示 ' + cards.length + ' 张）';
     }
 
     if (!cards.length) {
@@ -3356,6 +5740,83 @@ body {
         + '</div>'
         + '</div>';
     }).join('');
+  }
+
+  // ================= AI 后台与离线解忧联动 (PRD 2.0 AI 驱动) =================
+  function runOfflineRelief(caseId, sc, text, presetMindsetCard) {
+    var cards = matchReliefCards(sc, text, presetMindsetCard);
+    appState.currentCards = cards;
+    var res = assembleFourStep(caseId, sc, text, cards);
+    appState.currentResult = res;
+    renderResultView(res);
+    saveConsultationHistory(text, sc, cards, res);
+    switchClientView('userResult');
+  }
+
+  function updateStreamingFourStep(fullMarkdown) {
+    var lines = fullMarkdown.split('\n');
+    var sec01 = '', sec02 = '', sec03 = '', sec04 = '';
+    var current = null;
+    for (var i = 0; i < lines.length; i++) {
+      var l = lines[i];
+      if (l.indexOf('01 听见了') !== -1) { current = '01'; continue; }
+      if (l.indexOf('02 古人有云') !== -1) { current = '02'; continue; }
+      if (l.indexOf('03 试试这一招') !== -1) { current = '03'; continue; }
+      if (l.indexOf('04 读这一段') !== -1) { current = '04'; continue; }
+      if (current === '01') sec01 += (l + '\n');
+      else if (current === '02') sec02 += (l + '\n');
+      else if (current === '03') sec03 += (l + '\n');
+      else if (current === '04') sec04 += (l + '\n');
+    }
+    var el01 = $('stepText01');
+    if (el01 && sec01.trim()) {
+      el01.textContent = sec01.trim();
+      if (appState.currentResult) appState.currentResult.empathy = sec01.trim();
+    }
+    var el02 = $('stepText02');
+    if (el02 && sec02.trim()) {
+      el02.innerHTML = '<strong>现代启发：</strong>' + esc(sec02.trim());
+      if (appState.currentResult) appState.currentResult.modern_interp = sec02.trim();
+    }
+    var el04 = $('stepText04');
+    if (el04 && sec04.trim()) {
+      el04.textContent = sec04.trim();
+      if (appState.currentResult) appState.currentResult.further_reading = sec04.trim();
+    }
+  }
+
+  function checkAiBackendStatus() {
+    var btn = $('btnAiStatus');
+    if (!btn) return;
+    if (typeof window === 'undefined' || typeof window.fetch !== 'function') {
+      btn.textContent = '离线引擎模式';
+      return;
+    }
+    fetch('http://localhost:8000/api/health', { method: 'GET' })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.status === 'healthy') {
+          appState.aiConnected = true;
+          appState.aiModel = data.model;
+          var badgeText = data.llm_configured ? ('AI已就绪 (' + data.model + ')') : 'AI流式已就绪';
+          btn.textContent = badgeText;
+          btn.style.color = 'var(--color-primary)';
+          btn.style.borderColor = 'var(--color-primary)';
+        }
+      })
+      .catch(function() {
+        appState.aiConnected = false;
+        btn.textContent = '离线引擎模式';
+        btn.style.color = 'var(--color-muted)';
+      });
+
+    btn.onclick = function() {
+      if (appState.aiConnected) {
+        showToast('已连接悟堂 AI 后台服务 (' + (appState.aiModel || 'FastAPI') + ')，支持 SSE 流式解忧');
+      } else {
+        showToast('AI 后台服务未开启，当前运行在纯前端离线规则引擎模式。运行 python backend/app.py 即可启动');
+      }
+    };
   }
 
   // ================= 用户端业务流程触发 (Submit / PRD 2.0) =================
@@ -3395,25 +5856,121 @@ body {
     $('lStep2').className = 'loading-step-item';
     $('lStep3').className = 'loading-step-item';
 
-    setTimeout(function() {
-      $('lStep1').className = 'loading-step-item done';
-      $('lStep2').className = 'loading-step-item active';
-    }, 550);
+    var sc = detectScenario(text, appState.selectedScenario);
 
-    setTimeout(function() {
+    if (typeof window === 'undefined' || typeof window.fetch !== 'function') {
+      setTimeout(function() {
+        $('lStep1').className = 'loading-step-item done';
+        $('lStep2').className = 'loading-step-item active';
+      }, 550);
+      setTimeout(function() {
+        $('lStep2').className = 'loading-step-item done';
+        $('lStep3').className = 'loading-step-item active';
+      }, 1100);
+      setTimeout(function() {
+        runOfflineRelief(caseId, sc, text, presetMindsetCard);
+      }, 1600);
+      return;
+    }
+
+    var aiEndpoint = 'http://localhost:8000/api/relief/stream';
+    var abortCtrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function() { if (abortCtrl) abortCtrl.abort(); }, 2500);
+
+    fetch(aiEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text, scenario: sc, case_id: caseId }),
+      signal: abortCtrl ? abortCtrl.signal : undefined
+    }).then(function(resp) {
+      clearTimeout(timer);
+      if (!resp.ok || !resp.body) throw new Error('Backend HTTP ' + resp.status);
+
+      $('lStep1').className = 'loading-step-item done';
       $('lStep2').className = 'loading-step-item done';
       $('lStep3').className = 'loading-step-item active';
-    }, 1100);
 
-    setTimeout(function() {
-      var sc = detectScenario(text, appState.selectedScenario);
-      var cards = matchReliefCards(sc, text, presetMindsetCard);
-      appState.currentCards = cards;
-      var res = assembleFourStep(caseId, sc, text, cards);
-      appState.currentResult = res;
-      renderResultView(res);
-      switchClientView('userResult');
-    }, 1600);
+      var reader = resp.body.getReader();
+      var decoder = new TextDecoder('utf-8');
+      var buffer = '';
+      var accumulated = '';
+
+      function read() {
+        return reader.read().then(function(chunk) {
+          if (chunk.done) {
+            var ind = $('aiStreamIndicator');
+            if (ind) ind.innerHTML = '悟堂 AI · 东方智慧已倾注完毕';
+            return;
+          }
+          buffer += decoder.decode(chunk.value, { stream: true });
+          var parts = buffer.split('\n\n');
+          buffer = parts.pop();
+
+          for (var i = 0; i < parts.length; i++) {
+            var p = parts[i].trim();
+            if (p.startsWith('data: ')) {
+              try {
+                var evt = JSON.parse(p.slice(6));
+                if (evt.type === 'safety') {
+                  $('safetyMainTitle').textContent = '你写下的这句话，我看到了，也很在意。';
+                  $('safetyContentArea').innerHTML = '<div style="white-space:pre-wrap;line-height:1.7;">' + esc(evt.message) + '</div>';
+                  switchClientView('userSafety');
+                  return;
+                } else if (evt.type === 'meta') {
+                  appState.selectedScenario = evt.scenario;
+                  appState.currentCards = evt.cards;
+                  var initialRes = assembleFourStep(caseId, evt.scenario, text, evt.cards);
+                  appState.currentResult = initialRes;
+                  renderResultView(initialRes);
+                  saveConsultationHistory(text, evt.scenario, evt.cards, initialRes);
+                  switchClientView('userResult');
+
+                  var fList = $('fourStepList');
+                  if (fList && !$('aiStreamIndicator')) {
+                    var ind = document.createElement('div');
+                    ind.id = 'aiStreamIndicator';
+                    ind.style.cssText = 'display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:rgba(140,58,43,0.08);color:var(--color-primary);border-radius:20px;font-size:12px;font-weight:600;margin-bottom:12px;';
+                    ind.innerHTML = '悟堂 AI · 流式解忧倾注中…';
+                    fList.parentNode.insertBefore(ind, fList);
+                  }
+                } else if (evt.type === 'token') {
+                  accumulated += evt.content;
+                  updateStreamingFourStep(accumulated);
+                } else if (evt.type === 'done') {
+                  var ind = $('aiStreamIndicator');
+                  if (ind) ind.innerHTML = '悟堂 AI · 东方智慧已倾注完毕';
+                  try {
+                    var list = getHistoryList();
+                    if (list.length > 0 && appState.currentResult) {
+                      list[0].empathy = appState.currentResult.empathy || list[0].empathy;
+                      list[0].modernInterp = appState.currentResult.modern_interp || list[0].modernInterp;
+                      list[0].furtherReading = appState.currentResult.further_reading || list[0].furtherReading;
+                      localStorage.setItem('wutang_relief_history', JSON.stringify(list));
+                    }
+                  } catch (e) {}
+                }
+              } catch (err) {}
+            }
+          }
+          return read();
+        });
+      }
+      return read();
+
+    }).catch(function(e) {
+      clearTimeout(timer);
+      setTimeout(function() {
+        $('lStep1').className = 'loading-step-item done';
+        $('lStep2').className = 'loading-step-item active';
+      }, 550);
+      setTimeout(function() {
+        $('lStep2').className = 'loading-step-item done';
+        $('lStep3').className = 'loading-step-item active';
+      }, 1100);
+      setTimeout(function() {
+        runOfflineRelief(caseId, sc, text, presetMindsetCard);
+      }, 1600);
+    });
   }
 
   // ================= 初始化场景标签 =================
@@ -3422,7 +5979,7 @@ body {
     grid.innerHTML = SCENARIOS.map(function(s) {
       return '<button class="scenario-chip" data-key="' + s.key + '" aria-pressed="false">'
         + '<div class="scenario-chip-header">'
-        + '  <span class="chip-title">' + s.emoji + ' ' + esc(s.label) + '</span>'
+        + '  <span class="chip-title">' + esc(s.label) + '</span>'
         + '  <span class="check-icon">✓</span>'
         + '</div>'
         + '<span class="chip-sub">' + esc(s.sub) + '</span>'
@@ -3587,7 +6144,7 @@ body {
     // 显示 PII 去标识化详情
     var piiBox = $('piiReviewBox');
     if (draftKey === 'WUTANG-SYN-011') {
-      piiBox.innerHTML = '<span style="color:var(--color-warning);font-weight:600;">⚠️ 植入 PII 脱敏核查：</span>'
+      piiBox.innerHTML = '<span style="color:var(--color-warning);font-weight:600;">[提示] 植入 PII 脱敏核查：</span>'
         + '<br>原文中「李小雨（姓名）」、「杭州云图（单位/地点）」、「3月8号（具体时间）」已由守门人 Skill 成功剔除，'
         + '正文中已替换为泛化的「当事人」与「某地广告公司」，熟人无法借此反推。';
     } else {
@@ -3614,7 +6171,7 @@ body {
     var container = $('classicsListContainer');
     if ($('classicsSubtitle')) {
       var vCount = CLASSICS.filter(function(c) { return c.status === 'verified'; }).length;
-      $('classicsSubtitle').textContent = '收录 ' + CLASSICS.length + ' 条权威出版社版本考据语料（含 ' + vCount + ' 条完全核验，当前筛选显示 ' + filtered.length + ' 条）';
+      $('classicsSubtitle').textContent = '共 ' + CLASSICS.length + ' 条经典考据条目 · ' + vCount + ' 条已核验（显示 ' + filtered.length + ' 条）';
     }
     if (!filtered.length) {
       container.innerHTML = '<div style="padding:40px;text-align:center;color:var(--color-muted);">资料库暂无匹配条目。先导入或调整筛选关键词。</div>';
@@ -3652,19 +6209,178 @@ body {
 
   // ================= 页面初始化与事件绑定 =================
   function setupEvents() {
-    // 1. 顶栏模式切换
-    $('tabClient').onclick = function() { switchMainMode('client'); };
-    $('tabStudio').onclick = function() { switchMainMode('studio'); };
-    $('headerBrand').onclick = function() { switchMainMode('client'); switchClientView('userHome'); };
+    // 1. 顶栏极简三入口模式切换
+    if ($('tabRelief')) $('tabRelief').onclick = function() { switchMainTab('relief'); };
+    if ($('tabClient')) $('tabClient').onclick = function() { switchMainTab('relief'); };
+    if ($('tabMine')) $('tabMine').onclick = function() { switchMainTab('mine'); };
+    if ($('tabStudio')) $('tabStudio').onclick = function() { switchMainTab('studio'); };
+    if ($('headerBrand')) $('headerBrand').onclick = function() { switchMainTab('relief'); switchClientView('userHome'); };
 
-    // 2. 模态框打开与关闭
-    $('btnExplainModal').onclick = function() { $('modalExplain').classList.add('active'); };
-    $('closeExplainModal').onclick = function() { $('modalExplain').classList.remove('active'); };
-    $('btnIUnderstandExplain').onclick = function() { $('modalExplain').classList.remove('active'); };
+    // 2. 「我的」模块内部事件绑定 (登录/注册弹窗卡牌、主理人权限、退出登录等)
+    if ($('btnOpenAuthModal')) {
+      $('btnOpenAuthModal').onclick = function() {
+        if ($('modalAuth')) {
+          $('modalAuth').classList.add('active');
+          if ($('authInputAccount')) $('authInputAccount').focus();
+        }
+      };
+    }
+    if ($('closeAuthModal')) {
+      $('closeAuthModal').onclick = function() {
+        if ($('modalAuth')) $('modalAuth').classList.remove('active');
+      };
+    }
+    if ($('tabBtnLogin')) {
+      $('tabBtnLogin').onclick = function() {
+        if ($('authPanelLogin')) $('authPanelLogin').classList.remove('hidden');
+        if ($('authPanelRegister')) $('authPanelRegister').classList.add('hidden');
+        $('tabBtnLogin').classList.add('active');
+        $('tabBtnLogin').style.background = '#FFF';
+        $('tabBtnLogin').style.fontWeight = '600';
+        $('tabBtnLogin').style.color = 'var(--color-primary)';
+        if ($('tabBtnRegister')) {
+          $('tabBtnRegister').classList.remove('active');
+          $('tabBtnRegister').style.background = 'transparent';
+          $('tabBtnRegister').style.fontWeight = '500';
+          $('tabBtnRegister').style.color = 'var(--color-ink-light)';
+        }
+        if ($('authModalHeaderTitle')) $('authModalHeaderTitle').textContent = '悟堂 · 行者登录';
+      };
+    }
+    if ($('tabBtnRegister')) {
+      $('tabBtnRegister').onclick = function() {
+        if ($('authPanelRegister')) $('authPanelRegister').classList.remove('hidden');
+        if ($('authPanelLogin')) $('authPanelLogin').classList.add('hidden');
+        $('tabBtnRegister').classList.add('active');
+        $('tabBtnRegister').style.background = '#FFF';
+        $('tabBtnRegister').style.fontWeight = '600';
+        $('tabBtnRegister').style.color = 'var(--color-primary)';
+        if ($('tabBtnLogin')) {
+          $('tabBtnLogin').classList.remove('active');
+          $('tabBtnLogin').style.background = 'transparent';
+          $('tabBtnLogin').style.fontWeight = '500';
+          $('tabBtnLogin').style.color = 'var(--color-ink-light)';
+        }
+        if ($('authModalHeaderTitle')) $('authModalHeaderTitle').textContent = '新行者注册';
+      };
+    }
+    if ($('linkSwitchToReg')) {
+      $('linkSwitchToReg').onclick = function() {
+        if ($('tabBtnRegister')) $('tabBtnRegister').click();
+      };
+    }
+    if ($('linkSwitchToLogin')) {
+      $('linkSwitchToLogin').onclick = function() {
+        if ($('tabBtnLogin')) $('tabBtnLogin').click();
+      };
+    }
+    if ($('btnSubmitLoginAction')) {
+      $('btnSubmitLoginAction').onclick = function() {
+        var acc = $('authInputAccount') ? $('authInputAccount').value : '';
+        var pwd = $('authInputPassword') ? $('authInputPassword').value : '';
+        authManager(acc, pwd);
+      };
+    }
+    if ($('authInputPassword')) {
+      $('authInputPassword').onkeydown = function(e) {
+        if (e.key === 'Enter') {
+          var acc = $('authInputAccount') ? $('authInputAccount').value : '';
+          authManager(acc, this.value);
+        }
+      };
+    }
+    if ($('authInputAccount')) {
+      $('authInputAccount').onkeydown = function(e) {
+        if (e.key === 'Enter') {
+          if ($('authInputPassword')) $('authInputPassword').focus();
+        }
+      };
+    }
+    if ($('btnQuickDemoLoginAction')) {
+      $('btnQuickDemoLoginAction').onclick = function() {
+        if ($('authInputAccount')) $('authInputAccount').value = 'xush09@qq.com';
+        if ($('authInputPassword')) $('authInputPassword').value = 'admin';
+        authManager('xush09@qq.com', 'admin');
+      };
+    }
+    if ($('btnSubmitRegisterAction')) {
+      $('btnSubmitRegisterAction').onclick = function() {
+        var nick = $('regInputNickname') ? $('regInputNickname').value : '';
+        var acc = $('regInputAccount') ? $('regInputAccount').value : '';
+        var pwd = $('regInputPassword') ? $('regInputPassword').value : '';
+        var cpwd = $('regInputConfirmPassword') ? $('regInputConfirmPassword').value : '';
+        registerUser(nick, acc, pwd, cpwd);
+      };
+    }
+    if ($('regInputConfirmPassword')) {
+      $('regInputConfirmPassword').onkeydown = function(e) {
+        if (e.key === 'Enter') {
+          if ($('btnSubmitRegisterAction')) $('btnSubmitRegisterAction').click();
+        }
+      };
+    }
+    if ($('btnLogoutUser')) {
+      $('btnLogoutUser').onclick = function() {
+        logoutUser();
+      };
+    }
+    if ($('btnLogoutManager')) {
+      $('btnLogoutManager').onclick = function() {
+        logoutManager();
+      };
+    }
+    if ($('btnGoStudioFromMine')) {
+      $('btnGoStudioFromMine').onclick = function() {
+        switchMainTab('studio');
+      };
+    }
+    if ($('btnReturnToRelief')) {
+      $('btnReturnToRelief').onclick = function() {
+        switchMainTab('relief');
+      };
+    }
+    if ($('btnLogoutStudio')) {
+      $('btnLogoutStudio').onclick = function() {
+        logoutManager();
+      };
+    }
 
-    $('btnPrivacyModal').onclick = function() { $('modalPrivacy').classList.add('active'); };
-    $('closePrivacyModal').onclick = function() { $('modalPrivacy').classList.remove('active'); };
-    $('btnIUnderstandPrivacy').onclick = function() { $('modalPrivacy').classList.remove('active'); };
+    if ($('btnClearHistoryBtn')) {
+      $('btnClearHistoryBtn').onclick = function() {
+        clearAllHistory();
+      };
+    }
+    if ($('historySearchInput')) {
+      $('historySearchInput').oninput = function() {
+        renderMineSection(this.value);
+      };
+    }
+    if ($('btnCloseHistoryDetail')) {
+      $('btnCloseHistoryDetail').onclick = function() {
+        $('modalHistoryDetail').classList.remove('active');
+      };
+    }
+    if ($('btnCloseHistoryDetailBottom')) {
+      $('btnCloseHistoryDetailBottom').onclick = function() {
+        $('modalHistoryDetail').classList.remove('active');
+      };
+    }
+
+    if ($('btnOpenGalleryFromMine')) {
+      $('btnOpenGalleryFromMine').onclick = function() {
+        $('modalCardGallery').classList.add('active');
+        renderCardGallery('all');
+      };
+    }
+
+    // 3. 模态框打开与关闭 (兼容)
+    if ($('btnExplainModal')) $('btnExplainModal').onclick = function() { $('modalExplain').classList.add('active'); };
+    if ($('closeExplainModal')) $('closeExplainModal').onclick = function() { $('modalExplain').classList.remove('active'); };
+    if ($('btnIUnderstandExplain')) $('btnIUnderstandExplain').onclick = function() { $('modalExplain').classList.remove('active'); };
+
+    if ($('btnPrivacyModal')) $('btnPrivacyModal').onclick = function() { $('modalPrivacy').classList.add('active'); };
+    if ($('closePrivacyModal')) $('closePrivacyModal').onclick = function() { $('modalPrivacy').classList.remove('active'); };
+    if ($('btnIUnderstandPrivacy')) $('btnIUnderstandPrivacy').onclick = function() { $('modalPrivacy').classList.remove('active'); };
 
     // 3. 用户端双入口与交互 (PRD 2.0 F-01 & F-02)
     $('entryBtnDirect').onclick = function() {
@@ -3689,10 +6405,12 @@ body {
     var awarenessCardBox = $('awarenessCardBox');
     if (awarenessCardBox) {
       awarenessCardBox.onclick = function(e) {
-        if (e.target.closest('.awareness-actions-grid') || e.target.closest('#awFollowupBox')) return;
         if (!appState.awarenessFlipped) {
-          awarenessCardBox.classList.add('flipped');
+          awarenessCardBox.classList.add('is-flipped');
           appState.awarenessFlipped = true;
+        } else {
+          awarenessCardBox.classList.remove('is-flipped');
+          appState.awarenessFlipped = false;
         }
       };
     }
@@ -3724,16 +6442,14 @@ body {
     $('btnAwChange').onclick = function(e) {
       e.stopPropagation();
       var box = $('awarenessCardBox');
-      if (box) box.classList.remove('flipped');
+      if (box) box.classList.remove('is-flipped');
       appState.awarenessFlipped = false;
       setTimeout(function() {
         appState.awarenessIndex = (appState.awarenessIndex + 1) % CARDS_MINDSET.length;
         renderAwarenessCard(appState.awarenessIndex);
-        setTimeout(function() {
-          if (box) box.classList.add('flipped');
-          appState.awarenessFlipped = true;
-        }, 150);
-      }, 250);
+        if (box) box.classList.add('is-flipped');
+        appState.awarenessFlipped = true;
+      }, 180);
     };
 
     $('btnAwCancel').onclick = function(e) {
@@ -3748,7 +6464,8 @@ body {
     $('btnAwProceed').onclick = function() {
       var card = CARDS_MINDSET[appState.awarenessIndex % CARDS_MINDSET.length];
       var note = $('awFollowupInput').value.trim();
-      var text = card.title + '。' + (note || card.sample_prompt || card.quote);
+      var qText = card.front_text || card.quote || '';
+      var text = card.title + '。' + (note || card.follow_up_question || card.sample_prompt || qText);
       $('userTextarea').value = text;
       handleClientSubmit(card);
     };
@@ -4037,6 +6754,114 @@ body {
         renderStudioCards(cardTypeFilter.value);
       };
     }
+
+    // 东方解忧笺（书笺）花样切换
+    Array.prototype.forEach.call(document.querySelectorAll('.bm-pill'), function(pill) {
+      pill.onclick = function() {
+        applyBookmarkToDom(pill.getAttribute('data-bmid'));
+        showToast('已切换书笺风格：' + pill.textContent.trim());
+      };
+    });
+
+    // 禅意卡牌与书笺典藏弹窗交互
+    var galleryModal = $('modalCardGallery');
+    var btnOpenGallery = $('btnCardGalleryModal');
+    var btnCloseGallery = $('closeGalleryModal');
+    var btnCloseGalleryBottom = $('btnCloseGalleryBottom');
+
+    if (btnOpenGallery && galleryModal) {
+      btnOpenGallery.onclick = function() {
+        galleryModal.classList.add('active');
+        renderCardGallery('all');
+      };
+    }
+    if (btnCloseGallery && galleryModal) {
+      btnCloseGallery.onclick = function() {
+        galleryModal.classList.remove('active');
+      };
+    }
+    if (btnCloseGalleryBottom && galleryModal) {
+      btnCloseGalleryBottom.onclick = function() {
+        galleryModal.classList.remove('active');
+      };
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll('#galleryFilterTabs .gallery-tab-btn'), function(tab) {
+      tab.onclick = function() {
+        Array.prototype.forEach.call(document.querySelectorAll('#galleryFilterTabs .gallery-tab-btn'), function(t) {
+          t.classList.remove('active');
+        });
+        tab.classList.add('active');
+        renderCardGallery(tab.getAttribute('data-filter'));
+      };
+    });
+  }
+
+  // ================= 禅意卡牌与书笺画廊渲染 =================
+  function renderCardGallery(filter) {
+    filter = filter || 'all';
+    var container = $('galleryContainer');
+    if (!container) return;
+
+    var cards = CARDS_MANIFEST.cards || [];
+    var bookmarks = CARDS_MANIFEST.bookmarks || [];
+
+    var html = '';
+
+    // 卡牌过滤
+    var showCards = (filter !== 'bookmark');
+    var filteredCards = cards;
+    if (filter === 'core') {
+      filteredCards = cards.filter(function(c) { return c.id.indexOf('card_') === 0; });
+    } else if (filter === 'database') {
+      filteredCards = cards.filter(function(c) { return c.id.indexOf('cat_') === 0; });
+    } else if (filter === 'scenario') {
+      filteredCards = cards.filter(function(c) { return c.id.indexOf('scn_') === 0; });
+    }
+
+    if (showCards && filteredCards.length > 0) {
+      filteredCards.forEach(function(c) {
+        var fImg = getCardAsset(c.id, 'front');
+        var bImg = getCardAsset(c.id, 'back');
+        html += '<div class="gallery-card-item">'
+          + '  <div class="gallery-card-3d-wrap" onclick="this.classList.toggle(\'flipped\')" title="点击翻转正反面">'
+          + '    <div class="gallery-card-3d-inner">'
+          + '      <div class="gallery-card-face face-back" style="background-image:url(\'' + bImg + '\');"></div>'
+          + '      <div class="gallery-card-face face-front" style="background-image:url(\'' + fImg + '\');"></div>'
+          + '    </div>'
+          + '  </div>'
+          + '  <div class="gallery-flip-hint">↺ 点击卡面翻转 (正面/反面)</div>'
+          + '  <div class="gallery-card-info">'
+          + '    <h4>' + esc(c.name) + '</h4>'
+          + '    <p>' + esc(c.description) + '</p>'
+          + '  </div>'
+          + '  <div class="gallery-card-actions">'
+          + '    <a href="' + fImg + '" download="' + c.id + '_front.png" class="btn sm ghost" style="text-decoration:none;font-size:11px;padding:3px 8px;">下载正面</a>'
+          + '    <a href="' + bImg + '" download="' + c.id + '_back.png" class="btn sm secondary" style="text-decoration:none;font-size:11px;padding:3px 8px;">下载背面</a>'
+          + '  </div>'
+          + '</div>';
+      });
+    }
+
+    // 书笺过滤
+    var showBookmarks = (filter === 'all' || filter === 'bookmark');
+    if (showBookmarks && bookmarks.length > 0) {
+      bookmarks.forEach(function(b) {
+        var bmImg = getBookmarkAsset(b.id);
+        html += '<div class="gallery-bm-item">'
+          + '  <img src="' + bmImg + '" alt="' + esc(b.name) + '" class="gallery-bm-img">'
+          + '  <div class="gallery-card-info">'
+          + '    <h4>' + esc(b.name) + '</h4>'
+          + '    <p>' + esc(b.description) + '</p>'
+          + '  </div>'
+          + '  <div class="gallery-card-actions">'
+          + '    <a href="' + bmImg + '" download="' + b.id + '.png" class="btn sm" style="text-decoration:none;font-size:12px;padding:4px 14px;">下载书笺 PNG</a>'
+          + '  </div>'
+          + '</div>';
+      });
+    }
+
+    container.innerHTML = html || '<div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--color-muted);">暂无匹配项目</div>';
   }
 
   // 启动初始化
@@ -4046,6 +6871,9 @@ body {
     renderClassicsList();
     renderAwarenessCard(0);
     renderStudioCards('all');
+    lotusEngine.init('lotusCanvas');
+    updateManagerUI();
+    checkAiBackendStatus();
   }
 
   if (document.readyState === 'loading') {

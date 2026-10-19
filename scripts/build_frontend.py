@@ -50,6 +50,18 @@ def main():
         with open(sage_path, encoding="utf-8") as f:
             sage_avatars = json.load(f)
 
+    cards_manifest = {}
+    manifest_path = os.path.join(ROOT, "frontend", "assets", "cards_manifest.json")
+    if os.path.exists(manifest_path):
+        with open(manifest_path, encoding="utf-8") as f:
+            cards_manifest = json.load(f)
+
+    zen_assets = {}
+    zen_path = os.path.join(ROOT, "frontend", "assets", "zen_card_assets.json")
+    if os.path.exists(zen_path):
+        with open(zen_path, encoding="utf-8") as f:
+            zen_assets = json.load(f)
+
     payload = dict(
         classics=classics,
         scenarios=wd["scenarios"],
@@ -64,6 +76,8 @@ def main():
         cardsMindset=cards_mindset,
         cardsWisdom=cards_wisdom,
         cardsAction=cards_action,
+        cardsManifest=cards_manifest,
+        zenAssets=zen_assets,
     )
     # 内联时避免 </script> 破坏 HTML
     blob = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")

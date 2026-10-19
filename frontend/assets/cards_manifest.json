@@ -1,0 +1,205 @@
+{
+  "generated_at": "2026-10-18T20:45:00+08:00",
+  "cards_total": 14,
+  "bookmarks_total": 9,
+  "specs": {
+    "card_resolution": "480x720",
+    "bookmark_resolution": "420x900",
+    "aspect_ratio_card": "2:3",
+    "aspect_ratio_bookmark": "7:15",
+    "aesthetic_style": "现代东方极简编辑设计 · 宣纸冷金朱砂墨韵"
+  },
+  "cards": [
+    {
+      "id": "card_universal",
+      "name": "今日觉察·通用牌",
+      "type_title": "今日觉察",
+      "seal": "悟",
+      "front_image": "assets/cards/front/card_universal_front.png",
+      "back_image": "assets/cards/back/card_universal_back.png",
+      "description": "PRD 2.0 首页核心入口卡牌，支持翻转交互。"
+    },
+    {
+      "id": "card_mindset",
+      "name": "心境牌·看见自己",
+      "type_title": "心境识别",
+      "seal": "观",
+      "front_image": "assets/cards/front/card_mindset_front.png",
+      "back_image": "assets/cards/back/card_mindset_back.png",
+      "description": "温和开放的反思提示卡，帮助用户识别并表达情绪。"
+    },
+    {
+      "id": "card_wisdom",
+      "name": "智慧牌·换个视角",
+      "type_title": "东方智慧",
+      "seal": "慧",
+      "front_image": "assets/cards/front/card_wisdom_front.png",
+      "back_image": "assets/cards/back/card_wisdom_back.png",
+      "description": "经核验的国学经典出处、原文与现代白话解读。"
+    },
+    {
+      "id": "card_action",
+      "name": "行动牌·走出一步",
+      "type_title": "轻量微行动",
+      "seal": "行",
+      "front_image": "assets/cards/front/card_action_front.png",
+      "back_image": "assets/cards/back/card_action_back.png",
+      "description": "低门槛、可自主选择或跳过的 1-5 分钟微行动。"
+    },
+    {
+      "id": "cat_cultivation",
+      "name": "心性修养牌",
+      "type_title": "心性修养",
+      "seal": "修",
+      "front_image": "assets/cards/front/cat_cultivation_front.png",
+      "back_image": "assets/cards/back/cat_cultivation_back.png",
+      "description": "对应 500 条经典库之「心性修养」(120条)，讲求向内安顿与诚意正心。"
+    },
+    {
+      "id": "cat_emotion",
+      "name": "情绪调伏牌",
+      "type_title": "情绪调伏",
+      "seal": "定",
+      "front_image": "assets/cards/front/cat_emotion_front.png",
+      "back_image": "assets/cards/back/cat_emotion_back.png",
+      "description": "对应经典库之「情绪调伏」(85条)，化解焦虑内耗与意气难平。"
+    },
+    {
+      "id": "cat_conduct",
+      "name": "为人处世牌",
+      "type_title": "为人处世",
+      "seal": "和",
+      "front_image": "assets/cards/front/cat_conduct_front.png",
+      "back_image": "assets/cards/back/cat_conduct_back.png",
+      "description": "对应经典库之「为人处世」(80条)，讲求中庸通达、方圆从容。"
+    },
+    {
+      "id": "cat_relation",
+      "name": "关系边界牌",
+      "type_title": "关系与边界",
+      "seal": "己",
+      "front_image": "assets/cards/front/cat_relation_front.png",
+      "back_image": "assets/cards/back/cat_relation_back.png",
+      "description": "对应经典库之「关系与边界」(75条)，辨识讨好倾向、设立温和边界。"
+    },
+    {
+      "id": "cat_choice",
+      "name": "进退取舍牌",
+      "type_title": "进退取舍",
+      "seal": "止",
+      "front_image": "assets/cards/front/cat_choice_front.png",
+      "back_image": "assets/cards/back/cat_choice_back.png",
+      "description": "对应经典库之「进退取舍」(65条)，取舍得失之间明察分寸。"
+    },
+    {
+      "id": "cat_adversity",
+      "name": "逆境成长牌",
+      "type_title": "逆境与成长",
+      "seal": "韧",
+      "front_image": "assets/cards/front/cat_adversity_front.png",
+      "back_image": "assets/cards/back/cat_adversity_back.png",
+      "description": "对应经典库之「逆境与成长」(65条)，苦心励志、逆风破局。"
+    },
+    {
+      "id": "scn_work",
+      "name": "去班味牌",
+      "type_title": "去班味 · 职场",
+      "seal": "舒",
+      "front_image": "assets/cards/front/scn_work_front.png",
+      "back_image": "assets/cards/back/scn_work_back.png",
+      "description": "面向职场压力、被批评、过度内耗与方向迷茫。"
+    },
+    {
+      "id": "scn_relation",
+      "name": "松绑牌",
+      "type_title": "松绑 · 人际",
+      "seal": "宽",
+      "front_image": "assets/cards/front/scn_relation_front.png",
+      "back_image": "assets/cards/back/scn_relation_back.png",
+      "description": "面向人际边界、不敢拒绝、家庭与伴侣期望压力。"
+    },
+    {
+      "id": "scn_night",
+      "name": "安住牌",
+      "type_title": "安住 · 身心",
+      "seal": "安",
+      "front_image": "assets/cards/front/scn_night_front.png",
+      "back_image": "assets/cards/back/scn_night_back.png",
+      "description": "面向深夜反刍、思维停不下来、难以入眠焦虑。"
+    },
+    {
+      "id": "scn_growth",
+      "name": "破局牌",
+      "type_title": "破局 · 选择",
+      "seal": "破",
+      "front_image": "assets/cards/front/scn_growth_front.png",
+      "back_image": "assets/cards/back/scn_growth_back.png",
+      "description": "面向拖延停滞、完美主义恐惧与重大决策迟疑。"
+    }
+  ],
+  "bookmarks": [
+    {
+      "id": "bm_gold_fleck",
+      "name": "冷金碎雪笺",
+      "style": "gold_fleck",
+      "image": "assets/bookmarks/bm_gold_fleck.png",
+      "description": "宣纸底色缀有点点细碎金箔，古雅华贵，适于保存哲思与金句。"
+    },
+    {
+      "id": "bm_ink_mountain",
+      "name": "澄心远岫笺",
+      "style": "ink_mountain",
+      "image": "assets/bookmarks/bm_ink_mountain.png",
+      "description": "底部水墨烟雨远山淡影，空灵留白，诗情禅意。"
+    },
+    {
+      "id": "bm_celadon_bamboo",
+      "name": "青玉竹韵笺",
+      "style": "celadon_bamboo",
+      "image": "assets/bookmarks/bm_celadon_bamboo.png",
+      "description": "宋代影青瓷温润底色配虚心劲竹，清雅挺拔。"
+    },
+    {
+      "id": "bm_cinnabar_seal",
+      "name": "朱丝双阑笺",
+      "style": "cinnabar_seal",
+      "image": "assets/bookmarks/bm_cinnabar_seal.png",
+      "description": "仿明清木刻朱砂边栏与竖式信阑，正统文人书斋气息。"
+    },
+    {
+      "id": "bm_moonlit_pine",
+      "name": "松风霁月笺",
+      "style": "moonlit_pine",
+      "image": "assets/bookmarks/bm_moonlit_pine.png",
+      "description": "明月高悬于苍松之上，幽深宁静，适于深夜歇心。"
+    },
+    {
+      "id": "bm_ochre_sunset",
+      "name": "落霞泥金笺",
+      "style": "ochre_sunset",
+      "image": "assets/bookmarks/bm_ochre_sunset.png",
+      "description": "温厚暖赭泥金晕染渐变，时光沉淀感十足。"
+    },
+    {
+      "id": "bm_tea_sanctuary",
+      "name": "云林茶隐笺",
+      "style": "tea_sanctuary",
+      "image": "assets/bookmarks/bm_tea_sanctuary.png",
+      "description": "青瓷茶盏与轻烟缭绕，烹茶候心，温润回甘。"
+    },
+    {
+      "id": "bm_bamboo_shadow",
+      "name": "修竹清风笺",
+      "style": "bamboo_shadow",
+      "image": "assets/bookmarks/bm_bamboo_shadow.png",
+      "description": "窗纱修竹疏影摇曳，虚心劲节，清风自来。"
+    },
+    {
+      "id": "bm_zen_stone",
+      "name": "枯山静水笺",
+      "style": "zen_stone",
+      "image": "assets/bookmarks/bm_zen_stone.png",
+      "description": "枯山水同心微澜与圆融禅石，风定水澄，照见本心。"
+    }
+  ]
+}
