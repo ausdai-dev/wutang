@@ -9730,7 +9730,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
               <span class="badge" style="background:#8E2927;color:#FFF;">儒释道三学</span>
               <span class="badge ok">108 百八常道卡牌人生</span>
-              <span class="badge" id="managerCardLifeBadge" style="display:none;background:var(--color-gold-bg);color:var(--color-gold);border:1px solid var(--color-gold-border);font-weight:600;">👑 主理人特权 · 全量卡牌库</span>
+              <span class="badge" id="managerCardLifeBadge" style="display:none;background:var(--color-gold-bg);color:var(--color-gold);border:1px solid var(--color-gold-border);font-weight:600;">主理人特权 · 全量卡牌库</span>
             </div>
             <h2 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;color:var(--color-ink);" id="mineCardsLifeTitle">卡牌人生 · 我的收藏</h2>
             <p style="margin:0;font-size:13px;color:var(--color-muted);" id="mineCardsLifeSubtitle">
@@ -9740,10 +9740,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <!-- 主理人专属：卡牌库与收藏切换药丸（仅主理人登录后可见，普通用户完全隐藏） -->
           <div id="managerCardLifeTabs" class="hidden" style="display:none;gap:6px;align-items:center;flex-wrap:wrap;">
-            <button type="button" class="inspo-pill active" id="btnTabFavCards" onclick="switchCardLifeSubView('fav')">⭐ 我的收藏 (<span id="userFavCount">0</span>)</button>
-            <button type="button" class="inspo-pill" id="btnTabPantheon" onclick="switchCardLifeSubView('pantheon')">👑 百八常道库 (108)</button>
-            <button type="button" class="inspo-pill" id="btnTabZen96" onclick="switchCardLifeSubView('zen96')">🖼️ 觉察牌画廊 (96)</button>
-            <button type="button" class="inspo-pill" id="btnTabThemePacks" onclick="switchCardLifeSubView('theme')">📦 主题卡牌包 (6)</button>
+            <button type="button" class="inspo-pill active" id="btnTabFavCards" onclick="switchCardLifeSubView('fav')">我的收藏 (<span id="userFavCount">0</span>)</button>
+            <button type="button" class="inspo-pill" id="btnTabPantheon" onclick="switchCardLifeSubView('pantheon')">百八常道库 (108)</button>
+            <button type="button" class="inspo-pill" id="btnTabZen96" onclick="switchCardLifeSubView('zen96')">觉察牌画廊 (96)</button>
+            <button type="button" class="inspo-pill" id="btnTabThemePacks" onclick="switchCardLifeSubView('theme')">主题卡牌包 (6)</button>
           </div>
         </div>
 
@@ -9751,7 +9751,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         <div id="userFavoriteCardsView">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
             <span style="font-size:12.5px;color:var(--color-muted);" id="favCardsCountNotice">当前珍藏 0 张启发卡牌</span>
-            <button type="button" class="btn sm ghost" onclick="renderFavoriteCards()" style="font-size:11.5px;padding:2px 8px;">🔄 刷新珍藏</button>
+            <button type="button" class="btn sm ghost" onclick="renderFavoriteCards()" style="font-size:11.5px;padding:2px 8px;">刷新珍藏</button>
           </div>
           <div class="studio-card-grid" id="favCardsContainer"></div>
         </div>
@@ -14976,7 +14976,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         $('managerCardLifeTabs').classList.remove('hidden');
         $('managerCardLifeTabs').style.display = 'flex';
       }
-      if ($('mineCardsLifeTitle')) $('mineCardsLifeTitle').textContent = '卡牌人生 · 我的收藏与全量卡牌库 👑';
+      if ($('mineCardsLifeTitle')) $('mineCardsLifeTitle').textContent = '卡牌人生 · 我的收藏与全量卡牌库';
       if ($('mineCardsLifeSubtitle')) $('mineCardsLifeSubtitle').textContent = '主理人专享：可查看管理 108 百八常道图鉴、96 东方觉察画廊及 6 大主题卡牌包，支持 A4 拼版打印。';
       if (typeof renderPantheonSection === 'function') renderPantheonSection();
       if (typeof renderZen96CardsSection === 'function') renderZen96CardsSection();
@@ -19657,10 +19657,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     if (resolvedCards.length === 0) {
       container.innerHTML = '<div style="grid-column:1/-1;padding:36px 20px;text-align:center;background:var(--color-surface-subtle);border-radius:12px;border:1px dashed var(--color-border);">'
-        + '<div style="font-size:36px;margin-bottom:8px;">🎴</div>'
+        + '<div style="font-size:14px;color:var(--color-primary);font-weight:700;margin-bottom:8px;">【虚堂待悟】</div>'
         + '<h4 style="font-family:var(--font-serif);margin:0 0 6px;color:var(--color-ink);font-size:16px;">暂无珍藏卡牌</h4>'
         + '<p style="margin:0 0 16px;font-size:13px;color:var(--color-muted);">在解忧道席抽牌、或自省觉察时，点击「⭐ 收入珍藏」即可沉淀在你的卡牌人生中。</p>'
-        + '<button type="button" class="btn sm primary" onclick="switchMainTab(\'relief\')">前往解忧参悟抽牌 ✨</button>'
+        + '<button type="button" class="btn sm primary" onclick="switchMainTab(\'relief\')">前往解忧参悟抽牌</button>'
         + '</div>';
       return;
     }
@@ -19678,7 +19678,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           + '    <div>'
           + '      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">'
           + '        <span class="badge ok" style="font-size:11px;padding:1px 6px;">' + esc(c.series || '东方觉察') + (c.num ? (' · ' + esc(c.num)) : '') + '</span>'
-          + '        <button type="button" class="btn ghost sm" style="padding:2px 6px;font-size:11px;color:var(--color-danger);" onclick="toggleFavoriteCard(\'' + esc(cid) + '\')" title="移出珍藏">★ 移出</button>'
+          + '        <button type="button" class="btn ghost sm" style="padding:2px 6px;font-size:11px;color:var(--color-danger);" onclick="toggleFavoriteCard(\'' + esc(cid) + '\')" title="移出珍藏">移出</button>'
           + '      </div>'
           + '      <h4 style="font-family:var(--font-serif);margin:4px 0 6px;font-size:16px;font-weight:bold;">' + esc(c.name) + '</h4>'
           + '      <p style="margin:0 0 8px;font-size:12px;color:var(--color-primary);font-family:var(--font-serif);line-height:1.5;">“' + esc(c.core || '') + '”</p>'
@@ -19698,7 +19698,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           + '<div>'
           + '  <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--color-muted);margin-bottom:6px;">'
           + '    <span style="color:' + schColor + ';font-weight:700;">' + esc(schName) + '</span>'
-          + '    <button type="button" class="btn ghost sm" style="padding:1px 5px;font-size:11px;color:var(--color-danger);" onclick="toggleFavoriteCard(\'' + esc(cid) + '\')">★ 移出</button>'
+          + '    <button type="button" class="btn ghost sm" style="padding:1px 5px;font-size:11px;color:var(--color-danger);" onclick="toggleFavoriteCard(\'' + esc(cid) + '\')">移出</button>'
           + '  </div>'
           + '  <div style="font-family:var(--font-serif);font-size:18px;font-weight:700;color:' + schColor + ';margin-bottom:4px;">【 ' + esc(c.name) + ' 】</div>'
           + '  <div style="font-size:11.5px;color:var(--color-gold);font-family:var(--font-serif);margin-bottom:6px;">' + esc(c.master_motto || '') + '</div>'
