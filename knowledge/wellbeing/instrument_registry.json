@@ -1,0 +1,108 @@
+[
+  {
+    "instrument_id": "pss-10",
+    "name": "知觉心理压力量表 (PSS-10)",
+    "category": "stress",
+    "version": "1.0-zh",
+    "target_population": "18岁以上成年人",
+    "language": "zh-CN",
+    "license_status": "公开学术与公益测评授权 (Public Domain)",
+    "professional_review_status": "approved",
+    "launch_status": "active",
+    "reviewer": "悟堂心理健康专业顾问团队",
+    "review_date": "2026-10-19",
+    "short_description": "评估过去一个月内，您在日常生活中感受到的不可控、超负荷与主观压力程度。",
+    "disclaimer": "【特别说明】本自评仅用于自我觉察与日常压力状态了解，不属于临床精神疾病诊断或医学处方。如遇严重心理危机，请前往专科就医。",
+    "scale_options": [
+      { "value": 0, "label": "从不 (0分)" },
+      { "value": 1, "label": "很少 (1分)" },
+      { "value": 2, "label": "有时 (2分)" },
+      { "value": 3, "label": "经常 (3分)" },
+      { "value": 4, "label": "总是 (4分)" }
+    ],
+    "items": [
+      {
+        "id": 1,
+        "text": "在过去的一个月中，你是否因为某些意料之外的事情发生而感到心烦意乱？",
+        "is_reverse": false
+      },
+      {
+        "id": 2,
+        "text": "在过去的一个月中，你是否感到自己无法控制生活中的重要事情？",
+        "is_reverse": false
+      },
+      {
+        "id": 3,
+        "text": "在过去的一个月中，你是否感到神经过敏或感到压力很大？",
+        "is_reverse": false
+      },
+      {
+        "id": 4,
+        "text": "在过去的一个月中，你是否感到自己能充满信心地处理个人问题？",
+        "is_reverse": true
+      },
+      {
+        "id": 5,
+        "text": "在过去的一个月中，你是否感到事情正在按照你的意愿顺利发展？",
+        "is_reverse": true
+      },
+      {
+        "id": 6,
+        "text": "在过去的一个月中，你是否发现自己无法处理所有必须要做的事情？",
+        "is_reverse": false
+      },
+      {
+        "id": 7,
+        "text": "在过去的一个月中，你是否能够有效地控制生活中的烦恼与波动？",
+        "is_reverse": true
+      },
+      {
+        "id": 8,
+        "text": "在过去的一个月中，你是否感到自己一切都在掌握之中？",
+        "is_reverse": true
+      },
+      {
+        "id": 9,
+        "text": "在过去的一个月中，你是否因为某些无法掌控的事情而感到生气或愤怒？",
+        "is_reverse": false
+      },
+      {
+        "id": 10,
+        "text": "在过去的一个月中，你是否感到生活中的困难积聚太多，自己已经难以克服？",
+        "is_reverse": false
+      }
+    ]
+  },
+  {
+    "instrument_id": "gad-7",
+    "name": "广泛性焦虑自评量表 (GAD-7)",
+    "category": "anxiety",
+    "version": "1.0-preview",
+    "target_population": "成年人群 (18+)",
+    "language": "zh-CN",
+    "license_status": "Pfizer Inc. 临床公共量表授权核准中",
+    "professional_review_status": "pending_review",
+    "launch_status": "disabled_until_approved",
+    "reviewer": "待专业伦理与临床心理专家联合复核",
+    "review_date": "2026-10-19",
+    "short_description": "评估过去两周内情绪紧绷、担忧反刍及难以平静的频率。（当前处于专家复核中，暂不开放作答）",
+    "disclaimer": "根据 PRD 3.0 第 4.4 节铁律：未经专业临床审核与本地化常模标定的量表保持禁用状态，严禁伪造测试分数。",
+    "items": []
+  },
+  {
+    "instrument_id": "phq-9",
+    "name": "抑郁症状健康问卷 (PHQ-9)",
+    "category": "depression",
+    "version": "1.0-preview",
+    "target_population": "成年人群 (18+)",
+    "language": "zh-CN",
+    "license_status": "临床筛查公共版权确认中",
+    "professional_review_status": "pending_review",
+    "launch_status": "disabled_until_approved",
+    "reviewer": "待专业精神卫生机构伦理审核",
+    "review_date": "2026-10-19",
+    "short_description": "评估过去两周内日常动力、心境与精力的变化趋势。（当前处于专家复核中，暂不开放作答）",
+    "disclaimer": "根据 PRD 3.0 第 4.4 节铁律：涉及临床筛查的高敏感工具必须先通过专业审核，当前展示功能说明与等待名单。",
+    "items": []
+  }
+]

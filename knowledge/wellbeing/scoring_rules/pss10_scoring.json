@@ -1,0 +1,39 @@
+{
+  "instrument_id": "pss-10",
+  "rule_version": "1.0",
+  "scoring_type": "deterministic",
+  "min_score": 0,
+  "max_score": 40,
+  "reverse_items": [4, 5, 7, 8],
+  "direct_items": [1, 2, 3, 6, 9, 10],
+  "ranges": [
+    {
+      "min": 0,
+      "max": 13,
+      "level": "low",
+      "label": "轻度压力",
+      "summary": "你近期的知觉压力处于较低或平稳范围，能够较好地应对日常生活与工作节奏。"
+    },
+    {
+      "min": 14,
+      "max": 26,
+      "level": "moderate",
+      "label": "中度压力",
+      "summary": "你近期体验到了生活中的不可控感或挑战，情绪与精力有所消耗，建议有意识安排身心休息与微行动调适。"
+    },
+    {
+      "min": 27,
+      "max": 40,
+      "level": "high",
+      "label": "较高压力",
+      "summary": "你近期承受的主观负荷较重，可能感到多项琐事超出个人掌控。这不是你的软弱，建议暂缓次要事务，必要时与专业心理人士聊聊。"
+    }
+  ],
+  "safety_flag_rules": [
+    {
+      "condition": "item_10_score_ge_3_and_total_ge_28",
+      "action": "recommend_resource_navigation",
+      "message": "检测到你近期感到困难积聚且负荷沉重。建议参考下方全国心理援助热线或专业资源导航，给自己一份专业支持。"
+    }
+  ]
+}

@@ -3,104 +3,336 @@
     "card_id": "M-001",
     "card_type": "mindset",
     "title": "总想让所有人满意",
-    "theme_tags": ["relation", "boundaries", "people_pleasing"],
+    "theme_tags": [
+      "relation",
+      "boundaries",
+      "people_pleasing"
+    ],
     "front_text": "我是不是很久没有认真问过自己，真正想要的是什么？",
     "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
     "follow_up_question": "最近有没有一件事，你其实不愿意做，却因为担心别人失望而答应了？",
-    "related_card_ids": ["W-001", "A-002"],
+    "related_card_ids": [
+      "W-001",
+      "A-002"
+    ],
     "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
     "status": "active",
-    "version": "1.0"
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-001.png"
   },
   {
     "card_id": "M-002",
     "card_type": "mindset",
     "title": "停不下来的思考",
-    "theme_tags": ["night", "overthinking", "stress"],
+    "theme_tags": [
+      "night",
+      "overthinking",
+      "stress"
+    ],
     "front_text": "我是在寻找解决办法，还是在反复消耗自己？",
     "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
     "follow_up_question": "脑子里转着的这些念头，有哪些是现在能解决的，有哪些只是在折磨自己？",
-    "related_card_ids": ["W-002", "A-001"],
+    "related_card_ids": [
+      "W-002",
+      "A-001"
+    ],
     "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
     "status": "active",
-    "version": "1.0"
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-002.png"
   },
   {
     "card_id": "M-003",
     "card_type": "mindset",
     "title": "不敢开始",
-    "theme_tags": ["growth", "procrastination", "perfectionism"],
+    "theme_tags": [
+      "growth",
+      "procrastination",
+      "perfectionism"
+    ],
     "front_text": "我真正担心的是做不好，还是担心别人怎么看？",
     "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
     "follow_up_question": "如果这件事只有你一个人知道结果、没有人会评价你，你会愿意迈出第一步吗？",
-    "related_card_ids": ["W-003", "A-003"],
+    "related_card_ids": [
+      "W-003",
+      "A-003"
+    ],
     "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
     "status": "active",
-    "version": "1.0"
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-003.png"
   },
   {
     "card_id": "M-004",
     "card_type": "mindset",
     "title": "已经很累了",
-    "theme_tags": ["work", "burnout", "self_care"],
+    "theme_tags": [
+      "work",
+      "burnout",
+      "self_care"
+    ],
     "front_text": "如果今天不再多承担一点，会发生什么？",
     "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
     "follow_up_question": "此刻压在你心上的所有事情里，哪一件其实可以先放一放？",
-    "related_card_ids": ["W-004", "A-004"],
+    "related_card_ids": [
+      "W-004",
+      "A-004"
+    ],
     "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
     "status": "active",
-    "version": "1.0"
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-004.png"
   },
   {
     "card_id": "M-005",
     "card_type": "mindset",
     "title": "为什么总是我的错",
-    "theme_tags": ["work", "criticism", "self_blame"],
+    "theme_tags": [
+      "work",
+      "criticism",
+      "self_blame"
+    ],
     "front_text": "这件事里，有多少是客观事实，有多少是我强加给自己的自责？",
     "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
     "follow_up_question": "如果这件事发生在最好的朋友身上，你会用同样苛刻的话批评他吗？",
-    "related_card_ids": ["W-005", "A-005"],
+    "related_card_ids": [
+      "W-005",
+      "A-005"
+    ],
     "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
     "status": "active",
-    "version": "1.0"
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-005.png"
   },
   {
     "card_id": "M-006",
     "card_type": "mindset",
     "title": "害怕被拒绝",
-    "theme_tags": ["relation", "fear_of_rejection", "boundaries"],
+    "theme_tags": [
+      "relation",
+      "fear_of_rejection",
+      "boundaries"
+    ],
     "front_text": "如果我说出心里的真实边界，我最害怕失去的是什么？",
     "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
     "follow_up_question": "那个真正珍惜你的人，会因为你偶尔表达一次真实需要就离开吗？",
-    "related_card_ids": ["W-006", "A-006"],
+    "related_card_ids": [
+      "W-006",
+      "A-006"
+    ],
     "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
     "status": "active",
-    "version": "1.0"
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-006.png"
   },
   {
     "card_id": "M-007",
     "card_type": "mindset",
     "title": "担心明天失控",
-    "theme_tags": ["night", "future_anxiety", "control"],
+    "theme_tags": [
+      "night",
+      "future_anxiety",
+      "control"
+    ],
     "front_text": "此刻脑海里担心的那些未知，有哪一件是今晚就能改变的？",
     "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
     "follow_up_question": "如果把担忧写在纸上锁进抽屉，允许自己明天早上再去面对它，会怎样？",
-    "related_card_ids": ["W-007", "A-007"],
+    "related_card_ids": [
+      "W-007",
+      "A-007"
+    ],
     "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
     "status": "active",
-    "version": "1.0"
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-007.png"
   },
   {
     "card_id": "M-008",
     "card_type": "mindset",
     "title": "同辈追赶焦虑",
-    "theme_tags": ["growth", "peer_pressure", "comparison"],
+    "theme_tags": [
+      "growth",
+      "peer_pressure",
+      "comparison"
+    ],
     "front_text": "我是在按照自己的时钟生活，还是在追赶别人的时间表？",
     "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
     "follow_up_question": "剥离掉与他人的比较，你当下真正热爱的、让你感到踏实的一件小事是什么？",
-    "related_card_ids": ["W-008", "A-008"],
+    "related_card_ids": [
+      "W-008",
+      "A-008"
+    ],
     "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
     "status": "active",
-    "version": "1.0"
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-008.png"
+  },
+  {
+    "card_id": "M-009",
+    "card_type": "mindset",
+    "title": "不配得感",
+    "theme_tags": [
+      "self_worth",
+      "imposter",
+      "anxiety"
+    ],
+    "front_text": "遇到好事情的时候，我是在安心享受它，还是在提心吊胆地等待厄运？",
+    "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+    "follow_up_question": "你是否总觉得当下的收获纯属侥幸，迟早会被人看穿？",
+    "related_card_ids": [
+      "W-001",
+      "A-001"
+    ],
+    "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+    "status": "active",
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-009.png"
+  },
+  {
+    "card_id": "M-010",
+    "card_type": "mindset",
+    "title": "悬在半空的心",
+    "theme_tags": [
+      "grounding",
+      "uncertainty",
+      "safety"
+    ],
+    "front_text": "我是在应对眼前的具体事情，还是在恐惧某种未知的崩塌？",
+    "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+    "follow_up_question": "如果深呼吸回到脚踏实地的地面，此刻周围真正发生的危险是什么？",
+    "related_card_ids": [
+      "W-002",
+      "A-002"
+    ],
+    "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+    "status": "active",
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-010.png"
+  },
+  {
+    "card_id": "M-011",
+    "card_type": "mindset",
+    "title": "被评价绑架",
+    "theme_tags": [
+      "criticism",
+      "judgment",
+      "authenticity"
+    ],
+    "front_text": "别人对我的看法，真的必须成为我评价自己的唯一准绳吗？",
+    "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+    "follow_up_question": "如果可以完全不向任何人证明自己，你最想做的是什么？",
+    "related_card_ids": [
+      "W-003",
+      "A-003"
+    ],
+    "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+    "status": "active",
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-011.png"
+  },
+  {
+    "card_id": "M-012",
+    "card_type": "mindset",
+    "title": "假装情绪稳定",
+    "theme_tags": [
+      "suppression",
+      "vulnerability",
+      "emotional_health"
+    ],
+    "front_text": "我是在真正释怀，还是在硬撑着不让自己流露委屈？",
+    "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+    "follow_up_question": "如果卸下『懂事、成熟』的包袱，你最想对谁表达一句真实的委屈？",
+    "related_card_ids": [
+      "W-004",
+      "A-004"
+    ],
+    "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+    "status": "active",
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-012.png"
+  },
+  {
+    "card_id": "M-013",
+    "card_type": "mindset",
+    "title": "无法休息的内疚",
+    "theme_tags": [
+      "guilt",
+      "rest",
+      "burnout"
+    ],
+    "front_text": "休息本是生命的基础节律，我为什么会把它当成一种罪过？",
+    "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+    "follow_up_question": "你是不是一停下来，就会产生强烈的落后恐慌与自责？",
+    "related_card_ids": [
+      "W-005",
+      "A-005"
+    ],
+    "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+    "status": "active",
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-013.png"
+  },
+  {
+    "card_id": "M-014",
+    "card_type": "mindset",
+    "title": "难以说出需要",
+    "theme_tags": [
+      "boundaries",
+      "hyper_independent",
+      "relation"
+    ],
+    "front_text": "求助真的代表软弱无能吗，还是我不习惯被他人接住？",
+    "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+    "follow_up_question": "你习惯了照顾所有人的感受，那谁来照顾那个疲惫的你？",
+    "related_card_ids": [
+      "W-006",
+      "A-006"
+    ],
+    "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+    "status": "active",
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-014.png"
+  },
+  {
+    "card_id": "M-015",
+    "card_type": "mindset",
+    "title": "进退两难的摇摆",
+    "theme_tags": [
+      "decision",
+      "paralysis",
+      "regret"
+    ],
+    "front_text": "如果世上根本没有绝对完美的选项，我是在权衡利弊，还是在逃避遗憾？",
+    "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+    "follow_up_question": "两种选择都会有未知的遗憾，哪一种遗憾是属于你自己的人生？",
+    "related_card_ids": [
+      "W-007",
+      "A-007"
+    ],
+    "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+    "status": "active",
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-015.png"
+  },
+  {
+    "card_id": "M-016",
+    "card_type": "mindset",
+    "title": "不被理解的孤独",
+    "theme_tags": [
+      "isolation",
+      "connection",
+      "loneliness"
+    ],
+    "front_text": "我渴望被真正看见，还是早早给自己贴上了『没人懂我』的封条？",
+    "short_description": "这是一张用于自我反思的提示卡，不代表对你的判断。",
+    "follow_up_question": "在这座喧嚣的城市里，是否有一个时刻，你觉得自己像一座孤岛？",
+    "related_card_ids": [
+      "W-008",
+      "A-008"
+    ],
+    "safety_boundary": "不得推断用户存在特定心理疾病；用户可随时跳过。",
+    "status": "active",
+    "version": "1.0",
+    "image_png": "assets/cards/mindset/M-016.png"
   }
 ]

@@ -1,0 +1,770 @@
+[
+  {
+    "id": "01",
+    "series": "禅心之境",
+    "name": "静观",
+    "status": "COMPLETED",
+    "pinyin": "01_card",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Subject: 一位身着素色僧衣的中国僧人背影，静坐在山崖边的蒲团上，远处层峦被晨雾缓缓遮去，近处一株古松从岩缝伸出；人物只占画面较小比例，大片雾白留白，画面呈现安静观察而非苦修，松石绿与淡墨灰为主，极简、空灵、平和。. Inspired by Zen tranquility, vast negative space, monk robes, mountain mist, ancient pine, stone lantern, quiet contemplation.. Warm rice-paper tone, diluted ink grey, mineral pigments (pine green, ochre, celadon). Masterful composition, poetic atmosphere, refined texture. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "02",
+    "series": "禅心之境",
+    "name": "照见",
+    "status": "COMPLETED",
+    "pinyin": "02_card",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Subject: 一方古寺石池映着圆月与竹影，水面被一片落叶轻轻触动，倒影一半清晰、一半微微散开；池边有低矮石灯与几枝青竹，画面强调水中倒影和真实景物之间的关系，墨黑、月白、淡青灰，宁静而有思辨感。. Inspired by Zen tranquility, vast negative space, monk robes, mountain mist, ancient pine, stone lantern, quiet contemplation.. Warm rice-paper tone, diluted ink grey, mineral pigments (pine green, ochre, celadon). Masterful composition, poetic atmosphere, refined texture. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "03",
+    "series": "禅心之境",
+    "name": "留白",
+    "status": "COMPLETED",
+    "pinyin": "03_card",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Subject: 辽阔湖面与空濛远山，一只极小的木舟停在画面偏下位置，水天之间留出大面积宣纸白；远处两三笔淡墨山影，近处只有微弱涟漪，构图极简，有呼吸感与安定感。. Inspired by Zen tranquility, vast negative space, monk robes, mountain mist, ancient pine, stone lantern, quiet contemplation.. Warm rice-paper tone, diluted ink grey, mineral pigments (pine green, ochre, celadon). Masterful composition, poetic atmosphere, refined texture. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "04",
+    "series": "禅心之境",
+    "name": "当下",
+    "status": "COMPLETED",
+    "pinyin": "04_dang_xia",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Morning dewdrop suspended delicately on a fresh bamboo shoot along a misty stone path in a green bamboo grove. A subtle bare foot stepping gently on a mossy flagstone, soft dawn sunlight filtering through the bamboo leaves. Fine details, peaceful and clear. Palette of bamboo green, fresh tender green, warm rice paper white, misty grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "05",
+    "series": "禅心之境",
+    "name": "归息",
+    "status": "COMPLETED",
+    "pinyin": "05_gui_xi",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A peaceful Chinese scholar sitting naturally in a serene teahouse study on a woven rush mat. Outside the wooden lattice window, morning mist floats past bamboo stems. Inside, a low wooden table holds a single porcelain tea bowl. Warm, tranquil, low contrast. Palette of warm beige, chestnut brown, soft celadon, muted charcoal grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "06",
+    "series": "禅心之境",
+    "name": "不执",
+    "status": "COMPLETED",
+    "pinyin": "06_bu_zhi",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A gentle open hand gracefully letting go of a single autumn maple leaf, which drifts away on a soft breeze toward distant misty mountains. Minimalist strokes, vast negative space, peaceful acceptance of change. Palette of soft ochre red, pale celadon grey, antique paper warm white, light ink. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "07",
+    "series": "一盏茶事",
+    "name": "温盏",
+    "status": "COMPLETED",
+    "pinyin": "07_wen_zhan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Delicate steam gently rising from a small, warm celadon tea cup held carefully on a clean rustic wooden tea tray. A slender bamboo water ladle rests quietly beside a simple iron kettle. Intimate, unhurried, peaceful preparation. Palette of shadow celadon, warm wood brown, rice paper cream, soft tea mist grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "08",
+    "series": "一盏茶事",
+    "name": "候汤",
+    "status": "COMPLETED",
+    "pinyin": "08_song_tao",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. An antique cast-iron kettle simmering gently over faint glowing charcoal in a sunken hearth. Subtle spirals of steam curl softly into the quiet room. Outside the bamboo screen, gentle bamboo shadows sway. Palette of charcoal black, warm ember amber, antique paper beige, misty wash. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "09",
+    "series": "一盏茶事",
+    "name": "一味",
+    "status": "COMPLETED",
+    "pinyin": "09_yi_wei",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A single rustic ceramic tea cup sitting quietly on a natural rough flagstone. Pure clear tea liquor inside reflecting a sliver of soft morning light. A single camellia flower petal rests quietly nearby. Palette of warm amber tea brown, slate grey, off-white Xuan paper, subtle petal blush. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "10",
+    "series": "一盏茶事",
+    "name": "分茶",
+    "status": "COMPLETED",
+    "pinyin": "10_shu_zhan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A transparent or celadon bowl with fresh spring tea leaves slowly unfurling in clear hot water. Soft gentle water swirls, delicate leaf veins, quiet transformation and opening up. Palette of spring sprout green, pale jade, translucent water white, antique beige. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "11",
+    "series": "一盏茶事",
+    "name": "停盏",
+    "status": "COMPLETED",
+    "pinyin": "11_ting_zhan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A small stoneware tea cup placed gently on a weathered wooden table. A tea master's hand has just withdrawn, leaving a tranquil, still space between tea sips. Low afternoon light cast through paper window. Palette of tea brown, warm umber, rice paper white, soft shadow grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "12",
+    "series": "一盏茶事",
+    "name": "共饮",
+    "status": "COMPLETED",
+    "pinyin": "12_hui_gan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A quiet scholar sitting by an open courtyard veranda, holding a simple tea bowl and looking into a courtyard where rain has just stopped. Drops glistening on courtyard moss, lingering quiet sweetness. Palette of moss green, wet stone grey, pale warm paper, soft charcoal. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "13",
+    "series": "因缘相惜",
+    "name": "无常",
+    "status": "COMPLETED",
+    "pinyin": "13_wu_chang",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A fragile blossom petal drifting down onto a quiet stone bench where two teacups were shared. Faint ripples in a stone basin, soft wind moving through plum blossoms. Poetic beauty of passing time. Palette of faint blossom blush, weathered stone grey, warm paper cream, ink wash. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "14",
+    "series": "因缘相惜",
+    "name": "慈悲",
+    "status": "COMPLETED",
+    "pinyin": "14_que_han",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A cherished Song dynasty ceramic bowl with delicate golden repair lines (Kintsugi / Chinese gold lacquer repair), resting quietly on coarse linen. Honoring flaws and history as unique beauty. Palette of celadon green, antique gold lacquer line, unbleached linen beige, soft ink. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "15",
+    "series": "因缘相惜",
+    "name": "因缘",
+    "status": "COMPLETED",
+    "pinyin": "15_he_yuan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Two ancient scholar friends conversing quietly under a blooming crabapple tree in a tranquil courtyard, seated at a stone table with a Go board and tea cups. Natural harmony and deep mutual respect. Palette of pale crabapple pink, turquoise green, warm paper white, diluted ink. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "16",
+    "series": "因缘相惜",
+    "name": "放下",
+    "status": "COMPLETED",
+    "pinyin": "16_jing_yi",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Two hands respectfully presenting a small wrapped gift or a sprig of plum blossoms with both palms open and humble posture. Gentle bows in ancient robes, deeply earnest and dignified. Palette of low-saturation cinnabar, warm rice paper, soft ink grey, tea brown. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "17",
+    "series": "因缘相惜",
+    "name": "泥中莲",
+    "status": "COMPLETED",
+    "pinyin": "17_ci_xin",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. An elder scholar in flowing robes gently holding an umbrella over a young traveler under a soft spring drizzle by a river ferry. Tender, warm human compassion in an ink wash landscape. Palette of indigo blue, pale bamboo green, warm rain grey, antique paper. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "18",
+    "series": "因缘相惜",
+    "name": "相依",
+    "status": "COMPLETED",
+    "pinyin": "18_tong_ji",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Two scholars sitting apart on different benches along a misty mountain path, each gazing into the distant rolling clouds in companionable silence, neither disturbing the other's quiet peace. Palette of pine needle green, cloud mist white, pale charcoal, warm beige. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "19",
+    "series": "道法自然",
+    "name": "无为",
+    "status": "COMPLETED",
+    "pinyin": "wú wéi",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A clear mountain stream naturally parts around an ancient rounded boulder, the water gathering into gentle ripples behind the stone; grasses and trees along the bank grow in harmony with the water's flow. No human figures appear — the subject is the relationship between water and stone, expressing soft strength and yielding movement. Slate blue, limestone grey, moss green. Palette of ['slate blue', 'limestone grey', 'moss green']. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "20",
+    "series": "道法自然",
+    "name": "守柔",
+    "status": "COMPLETED",
+    "pinyin": "shǒu róu",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. After a heavy rainstorm, several stalks of green bamboo bend gently with the wind but do not break; distant mountains are softened by rain mist, and water droplets cling to the bamboo leaves. The visual momentum shifts from slanting wind to stillness — resilient yet never violent. Slate blue, pine green, misty white. Palette of ['slate blue', 'pine green', 'misty white']. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "21",
+    "series": "道法自然",
+    "name": "知止",
+    "status": "COMPLETED",
+    "pinyin": "zhī zhǐ",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A mountain stream arrives at a quiet deep pool, its surface shifting from flowing to still; stone steps end at the pool's edge, and a distant mountain path fades in and out of view. The contrast between motion and stillness expresses a sense of boundary; balanced composition. Blue-grey, deep green, pale ink. Palette of ['blue-grey', 'deep green', 'pale ink']. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "22",
+    "series": "道法自然",
+    "name": "虚静",
+    "status": "COMPLETED",
+    "pinyin": "xū jìng",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. An empty Song-dynasty scholar's studio, a half-open wooden window revealing faint distant bamboo shadows; a thin gauze curtain drifts gently. Inside there is only a low desk, plain white porcelain, and a single closed book. Light enters from the window — minimalist, translucent, with a quiet sense of air. Palette of ['soft white', 'pale wood', 'faint grey-green']. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "23",
+    "series": "道法自然",
+    "name": "阴阳相生",
+    "status": "COMPLETED",
+    "pinyin": "yīn yáng xiāng shēng",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A valley divided by morning light and tree shadows into bright and shaded sides; a stream flows from the cool shade into the sunlight, rocks and cloud mist forming natural contrasts. No taiji symbols or direct icons — light and shadow, motion and stillness embody mutual dependence. Slate blue, moon white, pale gold. Palette of ['slate blue', 'moon white', 'pale gold']. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "24",
+    "series": "道法自然",
+    "name": "顺势",
+    "status": "COMPLETED",
+    "pinyin": "shùn shì",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A traditional wooden sailboat glides forward with the river wind, its sail slightly billowing, water ripples unfurling from the hull; distant mountain ranges fade layer by layer. The boat does not struggle against a storm but advances steadily after understanding the water's flow. Low-saturation slate blue, rice white, pale wood tones. Palette of ['slate blue', 'rice white', 'pale wood']. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "25",
+    "series": "君子修身",
+    "name": "仁恕",
+    "status": "COMPLETED",
+    "pinyin": "25_ren_shu",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A quiet ancient street in the rain, where one figure gently tilts a paper umbrella toward a companion walking beside them, both in plain robes at a comfortable distance. Thin rain lines, wet bluestone paving, tiled eaves, and the umbrella form a simple, restrained composition. The mood is humane and warm without sentimentality. Palette of antique paper beige, misty grey, pine green, muted cinnabar. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "26",
+    "series": "君子修身",
+    "name": "慎独",
+    "status": "COMPLETED",
+    "pinyin": "26_shen_du",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Deep in the night, a scholar sits alone in a traditional study beneath a warm lamp, quietly arranging scrolls, with a brush, inkstone, and bamboo slips on the desk and a pale moon beyond the window. The figure does not face the viewer; the focus rests on the attentive hands and the warm glow of light. Palette of deep ink black, tea brown, moon white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "27",
+    "series": "君子修身",
+    "name": "诚意",
+    "status": "COMPLETED",
+    "pinyin": "27_cheng_yi",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In close view, a brush lays down a single clean, resolute ink stroke on xuan paper, with no characters on the page, only the rise, turn, and release of the ink mark. The inkstone and brush rest blur at the edges of the frame, emphasizing the stillness before the stroke and the clarity after it. Palette of ink black, warm white, faint ochre. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "28",
+    "series": "君子修身",
+    "name": "知礼",
+    "status": "COMPLETED",
+    "pinyin": "28_zhi_li",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Two ancient scholars bow to each other with cupped hands in a courtyard, their gesture natural and equal, their robes simple and elegant without exaggerated ritual hierarchy. Behind them are a moon gate, bamboo shadows, and stone steps in a balanced, gentle composition. Palette of grey green, rice white, pale ochre. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "29",
+    "series": "君子修身",
+    "name": "和而不同",
+    "status": "COMPLETED",
+    "pinyin": "29_he_er_bu_tong",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Pine, bamboo, and plum grow together in one courtyard, each in its own character: gnarled pine boughs, crisp bamboo leaves, and sparse plum blossoms, distinct in form yet harmonious within the frame. Traditional Chinese flower-and-tree painting meets modern negative space in a balanced, enduring composition. Palette of pine green, plum red, pale ink. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "30",
+    "series": "君子修身",
+    "name": "修身",
+    "status": "COMPLETED",
+    "pinyin": "30_xiu_shen",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. An ancient scholar climbs steadily up a mountain stone path, holding bamboo scrolls, the trail winding through a pine forest with only a corner of an academy roof visible in the distance. No grand victorious posture, only the sense of moving forward step by step, the composition carrying a clear sense of direction. Palette of ink green, earth brown, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "31",
+    "series": "山水人生",
+    "name": "行旅",
+    "status": "COMPLETED",
+    "pinyin": "31_xing_lv",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A traveler with a simple pack walks an old mountain road that winds from the foreground into the mist, passing pines, a stone bridge, and faint sunlight along the way. The figure is small but the path is clear, expressing exploration rather than isolation. Palette of blue green, pale ink, ochre. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "32",
+    "series": "山水人生",
+    "name": "渡口",
+    "status": "COMPLETED",
+    "pinyin": "32_du_kou",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. At an old river ferry landing in the early morning, a small wooden boat draws near the stone steps as the boatman reaches out to steady the gunwale, river mist slowly lifting while a small lamp on the bank still burns. The scene carries a sense of direction from this shore to the far shore, without a clear triumphant endpoint. Palette of moon white, grey blue, warm lamplight. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "33",
+    "series": "山水人生",
+    "name": "四时",
+    "status": "COMPLETED",
+    "pinyin": "33_si_shi",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A single ancient Chinese tree shows the turning of four seasons within one continuous circular or vertical composition: spring buds, summer shade, autumn leaves, winter branches, naturally linked by mist and rocks rather than a mechanical four-panel grid. A traditional four-seasons landscape mood, colors shifting from tender green through deep green and ochre gold to ink grey in unified elegance. Palette of tender green, deep green, ochre gold, ink grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "34",
+    "series": "山水人生",
+    "name": "明月",
+    "status": "COMPLETED",
+    "pinyin": "34_ming_yue",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A bright moon hangs quietly above a Chinese courtyard, lattice shadows falling across a plain wall and bluestone floor, a cup of clear tea on a table, bamboo leaves swaying gently in the distance. The scene is cool yet tender, without loneliness or eeriness, the space still and calm. Palette of moon white, ink blue, warm grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "35",
+    "series": "山水人生",
+    "name": "山高水长",
+    "status": "COMPLETED",
+    "pinyin": "35_shan_gao_shui_chang",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Layered mountains and a long winding river stretch together into the distance, the peaks steady and the water bright, with a small bridge and a few trees in the foreground and the far view dissolving into mist. The composition is open without grandeur or pressure, expressing patience, long journeys, and composure. Palette of blue green, stone grey, pale gold. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "36",
+    "series": "山水人生",
+    "name": "归途",
+    "status": "COMPLETED",
+    "pinyin": "36_gui_tu",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. At dusk, a stone path passes through a bamboo grove toward a small Chinese courtyard glowing with warm lamplight, a returning figure faint in the thin mist, a plain lantern hanging beneath the eaves. The scene is warm and safe, with no luxurious architecture. Palette of bamboo green, warm gold, tea brown, dusk grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "37",
+    "series": "禅心之境",
+    "name": "息念",
+    "status": "COMPLETED",
+    "pinyin": "37_xi_nian",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A Song-style courtyard veiled in thin mist, a still pond reflecting sparse bamboo and a pale moon, only a few faint ripples on the water. A plain rush mat rests on the bank, no figure present, the contrast of still water and slight ripples making the scene quiet yet awake. Palette of ink grey, moon white, pale blue. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "38",
+    "series": "禅心之境",
+    "name": "听风",
+    "status": "COMPLETED",
+    "pinyin": "38_ting_feng",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Deep in a bamboo grove at dawn, slender leaves lean gently in a light breeze, a few leaf shadows cast on the white wall of an old temple, a small bird resting on a branch. The direction of the wind is shown through leaves and shadows without exaggerated motion, airy and full of breath. Palette of pine green, grey blue, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "39",
+    "series": "禅心之境",
+    "name": "一念",
+    "status": "COMPLETED",
+    "pinyin": "39_yi_nian",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A single dewdrop hangs at the edge of a lotus leaf, about to fall, reflecting hazy daylight within it, against a pale ink pond and blurred distant mountains. The composition focuses on a tiny moment, the subject crisp with ample negative space, delicate and restrained. Palette of blue green, silver grey, warm rice white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "40",
+    "series": "禅心之境",
+    "name": "平常心",
+    "status": "COMPLETED",
+    "pinyin": "40_ping_chang_xin",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A quiet early morning in an ordinary Chinese courtyard: a few fallen leaves rest on stone steps, a wooden window stands half open, and on a low table sit a bowl of clear water and a plain white bowl. A cat curls peacefully at the edge of the sunlight. The composition is plain and warm rather than grand, rendered in tea brown, grey-green, and soft golden light on antique paper beige. Palette of antique paper beige, tea brown, grey-green, soft gold. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "41",
+    "series": "禅心之境",
+    "name": "知觉",
+    "status": "COMPLETED",
+    "pinyin": "41_zhi_jue",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A close-up of a single hand gently touching the rough bark of an old tree, with moss and tiny water droplets beside the fingertips. The background dissolves into blurred bamboo grove and soft daylight. The hand is natural and unexaggerated, emphasizing texture and tactile detail in a quiet fusion of Gongbi and ink wash. Palette of bark brown, moss green, warm white, misty grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "42",
+    "series": "禅心之境",
+    "name": "自在",
+    "status": "COMPLETED",
+    "pinyin": "42_zi_zai",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A plainly dressed wanderer walks slowly along a stone path beside a stream, the water flowing unhurried at his side as distant mist parts. His gait is natural and unhurried, the mountain path and water forming a gentle rhythm. The scene is light and open, in indigo, pine green, and rice white. Palette of indigo, pine green, rice white, misty grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "43",
+    "series": "一盏茶事",
+    "name": "洗尘",
+    "status": "COMPLETED",
+    "pinyin": "43_xi_chen",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A close view of a Chinese tea room where two hands place fresh tea leaves into a plain celadon gaiwan, with clear water, a bamboo tea scoop, and a linen cloth nearby. Beyond the window, rain-wet bamboo leaves drip softly in gentle light. The vessels are simple and true, evoking cleanliness and a fresh beginning. Palette of tea green, warm white, wood brown, soft grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "44",
+    "series": "一盏茶事",
+    "name": "清泉",
+    "status": "COMPLETED",
+    "pinyin": "44_qing_quan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A clear mountain spring wells up from a crevice in blue-grey stone and flows into a natural stone basin, its still surface reflecting bamboo shadows. Only water, stone, and a little moss appear, with delicate ripples. The palette is pale blue-green, grey-white, and moss green, rustic and translucent. Palette of pale blue-green, grey-white, moss green. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "45",
+    "series": "一盏茶事",
+    "name": "闻香",
+    "status": "COMPLETED",
+    "pinyin": "45_wen_xiang",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Beside a tea setting, a sprig of osmanthus leans close to a warm teacup, its tiny blossoms and rising steam forming soft layers of the image. Autumn light passes through a wooden lattice window. Scent is hinted at by faint flowing ink-wash lines, with no text or exaggerated aroma effects. Palette of osmanthus gold, tea brown, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "46",
+    "series": "一盏茶事",
+    "name": "回甘",
+    "status": "COMPLETED",
+    "pinyin": "46_hui_gan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A shallow remnant of tea rests in a cup, and beyond the window a courtyard glows after rain as a single new leaf turns translucent in the light. A teapot and folded tea cloth sit on the table with ample empty space. The mood gently expresses clarity after bitterness, without dramatizing hardship. Palette of tea brown, tender green, rice white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "47",
+    "series": "一盏茶事",
+    "name": "茶寂",
+    "status": "COMPLETED",
+    "pinyin": "47_cha_ji",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. An empty, still Chinese tea room where a low wooden table holds only a small teapot and a single cup. Beyond the half-open window lie distant mountains veiled in rain and mist, and a bamboo blind casts sparse shadows. The space is minimal yet warm, quiet without being cold. Palette of ink grey, tea brown, xuan paper white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "48",
+    "series": "一盏茶事",
+    "name": "一席",
+    "status": "COMPLETED",
+    "pinyin": "48_yi_xi",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Two friends sit facing each other across a small courtyard table, one slowly pouring tea while the other listens quietly, their faces natural and restrained. Only two cups of tea and a single flower rest on the table, with bamboo shadows and stone steps beyond. Their relationship is equal, the colors warm and restrained. Palette of warm grey, pine green, muted cinnabar, rice white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "49",
+    "series": "因缘相惜",
+    "name": "平等心",
+    "status": "COMPLETED",
+    "pinyin": "49_ping_deng_xin",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Outside an old mountain temple, several travelers of different ages take water in turn from a clear spring, their postures natural and no one placed higher than another. Plain temple walls and bamboo grove lie in the distance. The balanced composition emphasizes shared humanity and daily life, with no divine halos. Palette of grey-green, earth brown, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "50",
+    "series": "因缘相惜",
+    "name": "结善缘",
+    "status": "COMPLETED",
+    "pinyin": "50_jie_shan_yuan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. By an old stone bridge, a passerby steadies an elderly traveler across wet, slippery steps with a natural, unexaggerated gesture. Below the bridge a stream flows slowly, and distant mountain mist fades softly. The scene shows everyday mutual help and care. Palette of warm grey, pine green, faint ochre. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "51",
+    "series": "因缘相惜",
+    "name": "布施",
+    "status": "COMPLETED",
+    "pinyin": "51_bu_shi",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. At the gate of a courtyard in an ancient village, one person hands a basket of fresh vegetables and fruit to a neighbor, both calm and plainly dressed. Bamboo fences, stone-paved paths, and autumn tree shadows fill the background. The scene is ordinary and true, showing no hierarchy of charity. Palette of earth yellow, blue-grey, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "52",
+    "series": "因缘相惜",
+    "name": "悲悯",
+    "status": "COMPLETED",
+    "pinyin": "52_bei_min",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In a courtyard after rain, a monk gently holds a large leaf over a small bird caught in the rain, with mossy stones and a lotus leaf nearby. The image focuses on the tender gesture of care, with no miracles or exaggerated injuries, subtle and warm. Palette of grey-green, pale lotus pink, misty white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "53",
+    "series": "因缘相惜",
+    "name": "共情",
+    "status": "COMPLETED",
+    "pinyin": "53_gong_qing",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Two ancient scholars sit beneath a pine tree in conversation, one leaning slightly to listen while the other speaks calmly, their dress and postures different yet mutually respectful. A small teapot rests between them, with faint ink-wash mountains in the distance and restrained figure proportions. Palette of warm grey, pine green, pale ochre. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "54",
+    "series": "因缘相惜",
+    "name": "守护",
+    "status": "COMPLETED",
+    "pinyin": "54_shou_hu",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Beside an old tree, a low bamboo fence shelters a newly sprouted seedling without blocking the view, a distant path still open beyond. Morning light is gentle, and the old roots contrast with the new shoot, expressing protection with boundaries rather than isolation. Palette of moss green, wood brown, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "55",
+    "series": "道法自然",
+    "name": "抱朴",
+    "status": "COMPLETED",
+    "pinyin": "55_bao_pu",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A rustic mountain hut interior where a wooden table holds only a clay teapot, a coarse earthenware bowl, and a single sprig of wild grass. Through a half-open wooden window, a plain forested hillside is visible. The vessels retain the marks of handcraft, unpolished and unadorned, conveying quiet authenticity. Palette of raw wood brown, earthenware ochre, moss green, warm white, antique paper beige. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "56",
+    "series": "道法自然",
+    "name": "不争",
+    "status": "COMPLETED",
+    "pinyin": "56_bu_zheng",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A mountain stream winds between two facing boulders, flowing from a narrow passage into open water, with grasses and trees growing naturally along the banks. The composition centers on the water's gentle path, with no confrontation or violent spray, only calm and clarity. Palette of limestone grey, indigo blue, moss green, misty grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "57",
+    "series": "道法自然",
+    "name": "知足",
+    "status": "COMPLETED",
+    "pinyin": "57_zhi_zu",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A small courtyard in a mountain village at dawn, where a wooden table holds a bowl of rice, a dish of seasonal greens, and a coarse clay cup. Beyond the window, fields and distant mountains bathe in soft morning light. The scene is plain yet abundant, never suggesting poverty. Palette of rice white, rice-gold, grass green, earthenware brown, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "58",
+    "series": "道法自然",
+    "name": "复归",
+    "status": "COMPLETED",
+    "pinyin": "58_fu_gui",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A forest path curves past lush foliage toward a clear spring and a simple stone pavilion, the way opening from dense complexity into spacious clarity. No figures appear; the composition emphasizes a visual direction of returning to the source, with layered depth. Palette of ink green, pale limestone grey, xuan paper white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "59",
+    "series": "道法自然",
+    "name": "天人",
+    "status": "COMPLETED",
+    "pinyin": "59_tian_ren",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A traveler pauses in a valley, gazing upward as clouds drift slowly between layered peaks, wild grass swaying at his feet. The figure is in harmonious scale with nature, neither tiny nor despairing, as distant mountains and soft cloud breath evoke a calm accord between heaven and earth. Palette of pine green, misty grey, pale gold. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "60",
+    "series": "道法自然",
+    "name": "守中",
+    "status": "COMPLETED",
+    "pinyin": "60_shou_zhong",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. An old wooden bridge spans a gentle stream, trees of varied heights flanking both sides, the water's light and shadow evenly balanced. Distant mountains are dense on one side and faint on the other yet echo each other, forming a stable, subtly asymmetric composition of perfect balance. Palette of indigo blue, tea brown, rice white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "61",
+    "series": "君子修身",
+    "name": "立信",
+    "status": "COMPLETED",
+    "pinyin": "61_li_xin",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In an ancient courtyard two scholars make a solemn pledge, one handing a bamboo scroll to the other, both calm and sincere. Pines, stone steps, and a simple portico form the background; their postures are natural rather than stiffly ceremonial, conveying trust and steadiness. Palette of ink blue, warm white, pale ochre. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "62",
+    "series": "君子修身",
+    "name": "推己",
+    "status": "COMPLETED",
+    "pinyin": "62_tui_ji",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Two scholars sit on either side of a stone table in a courtyard, two cups of different shapes upon it, taking turns to listen as bamboo shadows interlace beyond the window. The composition stresses exchanged perspective and equal dialogue, gentle and restrained. Palette of rice white, bamboo green, tea brown. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "63",
+    "series": "君子修身",
+    "name": "好学",
+    "status": "COMPLETED",
+    "pinyin": "63_hao_xue",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In a traditional academy a young scholar opens an old book, reading closely by the window and marking it with a brush. An inkstone, scrolls, and a sprig of plum blossom rest on the desk; the pages show no legible text, and the figure's expression is focused and humble. Palette of ink black, rice white, wood brown. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "64",
+    "series": "君子修身",
+    "name": "有节",
+    "status": "COMPLETED",
+    "pinyin": "64_you_jie",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A single branch of plum blossom stretches sparsely before a white wall rich with negative space, its twigs reaching and pausing, while a window lattice beside it sets a quiet rhythm. The scene is uncrowded, the blossoms few and elegant, expressing restraint rather than confinement. Palette of pale cinnabar, ink brown, moon white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "65",
+    "series": "君子修身",
+    "name": "尽责",
+    "status": "COMPLETED",
+    "pinyin": "65_jin_ze",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. An ancient craftsman carefully shapes a wooden vessel in his workshop, planes and timber neatly arranged on the table, morning light falling across his hands from the window. The gesture is real and attentive, with no grand result displayed, emphasizing diligence and grounded care. Palette of wood brown, warm white, ink grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "66",
+    "series": "君子修身",
+    "name": "中和",
+    "status": "COMPLETED",
+    "pinyin": "66_zhong_he",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A waterside pavilion in a traditional garden, lotus leaves on the pond spaced with rhythm, a winding bridge linking courtyards on either side, pines, bamboo, and flowering trees each in their place in the distance. The scene is harmonious yet not perfectly symmetrical, an order in which many elements coexist. Palette of blue-green, warm white, pale ochre. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "67",
+    "series": "山水人生",
+    "name": "云开",
+    "status": "COMPLETED",
+    "pinyin": "67_yun_kai",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Layered mountain peaks veiled in morning mist, a soft shaft of sunlight falling through a gap in the clouds onto a distant ridge, pines and a stone path in the foreground. The mist is clearing without dramatic light beams, expressing a gradually brightening hope. Palette of indigo blue, misty grey, pale gold. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "68",
+    "series": "山水人生",
+    "name": "观潮",
+    "status": "COMPLETED",
+    "pinyin": "68_guan_chao",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. From a high riverbank a lone traveler quietly watches the tide surge in and recede, the water marked by finely layered ripples, distant sails and mountain lines extremely faint. The scene carries power without danger, full of rhythmic cadence. Palette of grey blue, limestone grey, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "69",
+    "series": "山水人生",
+    "name": "小满",
+    "status": "COMPLETED",
+    "pinyin": "69_xiao_man",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In early summer fields the wheat ears are not yet fully ripe, a farmer standing at the field's edge gently observing the crops, with irrigation channels, village houses, and soft sunlight in the distance. The scene is abundant but not over-golden, capturing a stage still growing and not yet complete. Palette of grass green, wheat green, pale gold. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "70",
+    "series": "山水人生",
+    "name": "远望",
+    "status": "COMPLETED",
+    "pinyin": "70_yuan_wang",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. An ancient traveler stands at a mountain pavilion gazing out over a broad river-and-mountain vista, a pine branch framing the foreground while river and fields unfold in the distance; the figure's back is small yet steady. The composition layers clearly from foreground pine to far vista, evoking vast openness without oppression. Palette of antique paper beige, misty grey, pine green, muted cinnabar. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "71",
+    "series": "山水人生",
+    "name": "山居",
+    "status": "COMPLETED",
+    "pinyin": "71_shan_ju",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A plain thatched cottage nestles on a mountainside among pines and bamboo, stone steps leading to its door where a simple lantern hangs beneath the eaves, a distant stream threading through the valley. No figure or only a tiny silhouette appears, conveying serenity that does not flee from reality. Palette of pine green, limestone grey, warm brown. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "72",
+    "series": "山水人生",
+    "name": "同舟",
+    "status": "COMPLETED",
+    "pinyin": "72_tong_zhou",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Two travelers share a small wooden boat crossing a calm river, one lightly holding the oar while the other watches the waterway ahead, their cooperation natural with no sense of rank. Distant mountains in pale ink and a low-hanging willow on the bank frame ample white space on the water, expressing mutual support. Palette of grey-blue, wood brown, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "73",
+    "series": "禅心之境",
+    "name": "观心",
+    "status": "COMPLETED",
+    "pinyin": "73_guan_xin",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In a quiet mountain-temple courtyard, an antique bronze mirror rests on a stone table, reflecting bamboo shadows and a sliver of sky light, a single leaf just fallen beside it; no clear human face appears. The focus is the subtle relation between observing and being observed, in a spare and still composition. Palette of ink blue, warm grey, moon white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "74",
+    "series": "禅心之境",
+    "name": "正念",
+    "status": "COMPLETED",
+    "pinyin": "74_zheng_nian",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. On morning stone steps a single crystalline dewdrop catches the eye, surrounded by moss, bamboo leaves, and soft dawn light, the distant courtyard gently blurred. The dewdrop and fine textures form the visual center, highlighting perceptible details of the present moment without exaggerated light effects. Palette of tender green, misty white, pale ink. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "75",
+    "series": "禅心之境",
+    "name": "无住",
+    "status": "COMPLETED",
+    "pinyin": "75_wu_zhu",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A calm pond mirrors drifting cloud shadows while a few petals slowly float away on a light breeze, distant mountain silhouettes faintly appearing and vanishing. The water is neither perfectly still nor stormy, its true subtle motion expressing coming and going without lingering, with ample white space. Palette of pale blue-grey, lotus pink, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "76",
+    "series": "禅心之境",
+    "name": "见微",
+    "status": "COMPLETED",
+    "pinyin": "76_jian_wei",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A tender sprout just unfurls from a crevice in the rock, its two new leaves beaded with morning dew, surrounded by dark moss and pale ink-wash stone. The tiny sprout is clearly discernible yet not exaggerated into a miracle, the sparse background setting new growth against ancient stone as a contrast of time. Palette of pine green, moss grey, xuan paper white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "77",
+    "series": "一盏茶事",
+    "name": "初沸",
+    "status": "COMPLETED",
+    "pinyin": "77_chu_fei",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In a Chinese tea room a plain iron kettle nears boiling, a thin wisp of steam rising from its spout, a celadon tea bowl and bamboo tea scoop beside it; bamboo shadows rest quietly beyond the window. The kettle and steam are the focal point, capturing a moment imminent yet unhurried. Palette of tea brown, ink grey, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "78",
+    "series": "一盏茶事",
+    "name": "茶烟",
+    "status": "COMPLETED",
+    "pinyin": "78_cha_yan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A warm yixing clay teapot sits on a wooden tea table, faint tea smoke unfurling toward a half-open window where thin mist meets distant mountains; the smoke is natural and gentle, forming no symbol or lettering. Foreground objects are crisp while the background holds generous white space. Palette of tea brown, misty grey, pale cyan. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "79",
+    "series": "一盏茶事",
+    "name": "余温",
+    "status": "COMPLETED",
+    "pinyin": "79_yu_wen",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A close still life after the tea gathering ends: two plain porcelain cups, one still faintly steaming, tea stains and a folded cloth on the wooden table, slanting sunlight through the lattice falling on a cup's rim. No figure appears, yet the scene feels warm rather than desolate, evoking lingering warmth, memory, and peace. Palette of warm tea brown, rice white, soft gold. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "80",
+    "series": "一盏茶事",
+    "name": "慢品",
+    "status": "COMPLETED",
+    "pinyin": "80_man_pin",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In a small celadon cup clear tea shows a soft amber hue, a single tea leaf and a natural stone beside it, the mountain view hazy beyond the window after rain. The composition is restrained, details concentrated on the tea liquor, porcelain, and light, with no clutter of vessels and no figure. Palette of celadon green, wood tone, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "81",
+    "series": "因缘相惜",
+    "name": "恕己",
+    "status": "COMPLETED",
+    "pinyin": "81_shu_ji",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In a courtyard after rain a plainly dressed person sits beneath the veranda, a clean cloth at hand, while beyond the window a rain-washed plum branch unfurls new leaves. The posture is relaxed and natural, showing no sorrow or self-pity, expressing gentle care for oneself. Palette of soft tea brown, grey-green, rice white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "82",
+    "series": "因缘相惜",
+    "name": "随喜",
+    "status": "COMPLETED",
+    "pinyin": "82_sui_xi",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. On a spring mountainside two walkers pause beside a flowering tree, one smiling and pointing to a newly opened blossom while the other quietly admires it; the figures are equal and natural, without comparison or rivalry. Flowering branches and distant mountains layer lightly, the mood sincere and restrained. Palette of plum pink, tender green, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "83",
+    "series": "因缘相惜",
+    "name": "惜缘",
+    "status": "COMPLETED",
+    "pinyin": "83_xi_yuan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Beside a stone bridge in the mountains two old friends part calmly, one walking on along the mountain path while the other stays by the bridge with a slight cupped-hand salute; no melodrama, the stream below flowing on, distant mountains softened by cloud and mist. It expresses cherishing without clinging. Palette of grey-blue, pale ochre, low-saturation cinnabar. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "84",
+    "series": "因缘相惜",
+    "name": "共生",
+    "status": "COMPLETED",
+    "pinyin": "84_gong_sheng",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. The branches of an old tree shelter a small bird from fine rain, while moss, a stream, and tiny flowers coexist naturally around its roots. The composition shows each form of life holding its own place, with no magical halos or anthropomorphic gestures, delicate and serene. Palette of pine green, earth brown, rain grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "85",
+    "series": "道法自然",
+    "name": "因时",
+    "status": "COMPLETED",
+    "pinyin": "85_yin_shi",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A narrow stream winds through a mountain valley where spring buds emerge beside patches of unmelted snow. Sunlight falls on one stretch of the water while the rest remains in cool shade, showing the turning of seasons without conflict. The scene is rendered in soft, layered ink wash with gentle transitions of pale green, snow grey, and light gold on antique paper beige. Palette of antique paper beige, pale green, snow grey, light gold. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "86",
+    "series": "道法自然",
+    "name": "曲则全",
+    "status": "COMPLETED",
+    "pinyin": "86_qu_ze_quan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. After rain, green bamboo bends gently with the wind, a few branches curving around a solid stone wall to continue growing upward as distant mist disperses. The composition balances flowing curves against the firm rock face, avoiding any violent storm. Bamboo green, stone grey, and mist white convey suppleness, wholeness, and quiet adaptability. Palette of bamboo green, stone grey, mist white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "87",
+    "series": "道法自然",
+    "name": "不盈",
+    "status": "COMPLETED",
+    "pinyin": "87_bu_ying",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A half-filled coarse clay water jar rests on a wooden table in a mountain dwelling, a single wild grass sprig beside it and a broad empty tabletop around it. Beyond the window, sparse bamboo shadows and distant mountains appear. The still life is precisely proportioned with generous negative space and no excess objects, in clay brown, moss green, and warm white. Palette of clay brown, moss green, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "88",
+    "series": "道法自然",
+    "name": "养根",
+    "status": "COMPLETED",
+    "pinyin": "88_yang_gen",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. A small tree takes root in the soil beside a rock, its roots and damp moss visible in the foreground, only a few new leaves on its branches, distant mountains fading softly behind. No miracle of overnight growth is shown; the weight of the image rests on the bond between root and earth. Earth brown, pine green, and misty grey. Palette of earth brown, pine green, misty grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "89",
+    "series": "君子修身",
+    "name": "择善",
+    "status": "COMPLETED",
+    "pinyin": "89_ze_shan",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Two ancient scholars in a academy courtyard study a well-pruned potted bonsai together, one pointing to the structure of its branches while the other listens attentively. Scrolls and the tree echo one another, with no hint of competition or hierarchy. Ink blue, wood brown, and warm white create a humble, open atmosphere. Palette of ink blue, wood brown, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "90",
+    "series": "君子修身",
+    "name": "有恒",
+    "status": "COMPLETED",
+    "pinyin": "90_you_heng",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In a traditional study, an open book, a brush resting beside an inkstone, and a lamp just lit at dawn form a simple still life. Beyond the window, branches shift through the turning seasons, and the tidy desk shows signs of use. Warm white, ink black, and pale ochre express quiet daily persistence. Palette of warm white, ink black, pale ochre. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "91",
+    "series": "君子修身",
+    "name": "宽厚",
+    "status": "COMPLETED",
+    "pinyin": "91_kuan_hou",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In an ancient courtyard, a scholar steps aside on the stone stairs to let a passerby through, the two nodding to each other naturally without excessive humility. Pines, bamboo, and a low courtyard wall behind them leave a comfortable distance. Grey green, pale brown, and warm white convey generosity with measure. Palette of grey green, pale brown, warm white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "92",
+    "series": "君子修身",
+    "name": "反求诸己",
+    "status": "COMPLETED",
+    "pinyin": "92_fan_qiu_zhu_ji",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In a study, a scholar pauses mid-brush in quiet thought, a blank sheet of paper and an inkstone before him as bamboo shadows fall across the desk from the window. Unfinished strokes and a still hand suggest reflection, with no readable text. Ink black, bamboo green, and rice white, lucid but not heavy. Palette of ink black, bamboo green, rice white. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "93",
+    "series": "山水人生",
+    "name": "破晓",
+    "status": "COMPLETED",
+    "pinyin": "93_po_xiao",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Among mountains at the edge of dawn, mist has not yet cleared as a single thread of morning light illuminates a short stretch of mountain path, an old pine and stone steps in the foreground. The light is soft, forming no exaggerated beams. Indigo, misty grey, and pale gold suggest possibilities gradually unfolding. Palette of indigo, misty grey, pale gold. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "94",
+    "series": "山水人生",
+    "name": "行云",
+    "status": "COMPLETED",
+    "pinyin": "94_xing_yun",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. Several wisps of cloud drift across layered peaks, mountain ridges and cloud shadows setting each other off, a small bird flying with the wind in the distance. The scene flows naturally without fantastical mist effects. Pale cyan, moon white, and light grey blue in a relaxed composition express composure amid change. Palette of pale cyan, moon white, light grey blue. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "95",
+    "series": "山水人生",
+    "name": "归田",
+    "status": "COMPLETED",
+    "pinyin": "95_gui_tian",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. At dusk in a traditional pastoral courtyard, a vegetable plot, clay jars, and a dirt path leading to the door sit beside a fence, distant fields sinking into twilight as a warm lamp is just lit. The scene is gentle and settled, romanticizing no escape from reality. Rice gold, grass green, tea brown, and dusk grey. Palette of rice gold, grass green, tea brown, dusk grey. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  },
+  {
+    "id": "96",
+    "series": "山水人生",
+    "name": "山海",
+    "status": "COMPLETED",
+    "pinyin": "96_shan_hai",
+    "prompt": "Chinese ink wash and Gongbi painting on antique Xuan paper, vertical 2:3 ratio. In the foreground a traveler in plain traditional robes stands on a cliff platform, distant mountains stretching toward a broad bay as thin mist drifts between sea and sky. The figure is small in scale, the vista open without oppression. Indigo, mist white, and pale gold convey awe and openness. Palette of indigo, mist white, pale gold. Clean composition, elegant negative space, masterwork quality, spiritual tranquility. No text, no words, no characters, no seals, no signatures, no watermark."
+  }
+]

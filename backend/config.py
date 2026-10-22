@@ -24,10 +24,10 @@ class Settings(BaseModel):
     PORT: int = int(os.getenv("WUTANG_PORT", "8000"))
     DEBUG: bool = os.getenv("WUTANG_DEBUG", "false").lower() == "true"
 
-    # 大模型 API 配置（OpenAI 兼容规范）
+    # 大模型 API 配置（OpenAI 兼容规范 - 官方 DeepSeek）
     LLM_API_KEY: str = os.getenv("LLM_API_KEY", "").strip()
-    LLM_BASE_URL: str = os.getenv("LLM_BASE_URL", "https://api.deepseek.com/v1").strip()
-    LLM_MODEL: str = os.getenv("LLM_MODEL", "deepseek-chat").strip()
+    LLM_BASE_URL: str = os.getenv("LLM_BASE_URL", "https://api.deepseek.com").strip()
+    LLM_MODEL: str = os.getenv("LLM_MODEL", "deepseek-v4-flash").strip()
     LLM_TIMEOUT: float = float(os.getenv("LLM_TIMEOUT", "30.0"))
     LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.7"))
     LLM_MAX_TOKENS: int = int(os.getenv("LLM_MAX_TOKENS", "1500"))

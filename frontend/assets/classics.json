@@ -14,7 +14,8 @@
     "edition": "中华书局《论语译注》杨伯峻",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。原素材出处一致。"
+    "note": "篇章确证。原素材出处一致。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-002",
@@ -31,7 +32,8 @@
     "edition": "中华书局《论语译注》杨伯峻",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。曾子论日省其身。"
+    "note": "篇章确证。曾子论日省其身。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-003",
@@ -48,7 +50,8 @@
     "edition": "中华书局《四书章句集注》朱熹",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。为「三纲领八条目」后紧接之句。"
+    "note": "篇章确证。为「三纲领八条目」后紧接之句。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-004",
@@ -65,7 +68,8 @@
     "edition": "福建人民出版社《弘一法师全集》",
     "verifier": "悟堂考据组",
     "status": "needs_review",
-    "note": "《格言别录》系弘一法师辑录《格言联璧》等书而成，本句原始篇章未定，建议标注为「弘一法师辑本」。"
+    "note": "《格言别录》系弘一法师辑录《格言联璧》等书而成，本句原始篇章未定，建议标注为「弘一法师辑本」。",
+    "school": "buddhism"
   },
   {
     "id": "CLASSIC-005",
@@ -82,7 +86,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名与类目确证。原素材未标注出处，已补足。"
+    "note": "书名与类目确证。原素材未标注出处，已补足。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-006",
@@ -99,7 +104,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证；类目按通行本归「存养类」。"
+    "note": "书名确证；类目按通行本归「存养类」。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-007",
@@ -116,7 +122,8 @@
     "edition": "中华书局《老子译注》楼宇烈",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。通行本第三十三章。"
+    "note": "篇章确证。通行本第三十三章。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-008",
@@ -133,7 +140,8 @@
     "edition": "中华书局《四书章句集注》朱熹",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。"
+    "note": "篇章确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-009",
@@ -150,7 +158,8 @@
     "edition": "中华书局《世说新语笺疏》余嘉锡",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇目确证。原文为桓温问殷浩「卿何如我」，殷浩答此句。"
+    "note": "篇目确证。原文为桓温问殷浩「卿何如我」，殷浩答此句。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-010",
@@ -167,7 +176,8 @@
     "edition": "中华书局《王阳明全集》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。王阳明征思恩、田州时与门人书信中语。"
+    "note": "篇章确证。王阳明征思恩、田州时与门人书信中语。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-011",
@@ -184,7 +194,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。原素材标弘一法师《格言别录》，实为《格言联璧》辑录。"
+    "note": "书名确证。原素材标弘一法师《格言别录》，实为《格言联璧》辑录。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-012",
@@ -201,7 +212,8 @@
     "edition": "岳麓书社《曾国藩全集》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "已交叉核对：为曾国藩座右铭，因梁启超家书引用而广传，非梁启超原创。"
+    "note": "已交叉核对：为曾国藩座右铭，因梁启超家书引用而广传，非梁启超原创。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-013",
@@ -218,7 +230,8 @@
     "edition": "中华书局《苏轼诗集》王文诰 辑注",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇名确证。嘉祐六年苏轼作于凤翔任所。"
+    "note": "篇名确证。嘉祐六年苏轼作于凤翔任所。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-014",
@@ -235,7 +248,8 @@
     "edition": "岳麓书社《曾国藩全集》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章与日期确证。"
+    "note": "篇章与日期确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-015",
@@ -252,7 +266,8 @@
     "edition": "中华书局《陶渊明集笺注》袁行霈",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇名确证。"
+    "note": "篇名确证。",
+    "school": "buddhism"
   },
   {
     "id": "CLASSIC-016",
@@ -269,7 +284,8 @@
     "edition": "中华书局《世说新语笺疏》余嘉锡",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇目确证。王子猷雪夜访戴逵典故。"
+    "note": "篇目确证。王子猷雪夜访戴逵典故。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-017",
@@ -286,7 +302,8 @@
     "edition": "中华书局《菜根谭导读》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇目确证。"
+    "note": "篇目确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-018",
@@ -303,7 +320,8 @@
     "edition": "中华书局《论语译注》杨伯峻",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。"
+    "note": "篇章确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-019",
@@ -320,7 +338,8 @@
     "edition": "中华书局《论语译注》杨伯峻",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。"
+    "note": "篇章确证。",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -337,7 +356,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-020"
+    "id": "CLASSIC-020",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -354,7 +374,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-021"
+    "id": "CLASSIC-021",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -371,7 +392,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-022"
+    "id": "CLASSIC-022",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -388,7 +410,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-023"
+    "id": "CLASSIC-023",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -405,7 +428,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-024"
+    "id": "CLASSIC-024",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -422,7 +446,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。子罕篇亦有同语。",
-    "id": "CLASSIC-025"
+    "id": "CLASSIC-025",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -439,7 +464,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-026"
+    "id": "CLASSIC-026",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -456,7 +482,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-027"
+    "id": "CLASSIC-027",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -473,7 +500,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-028"
+    "id": "CLASSIC-028",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -490,7 +518,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-029"
+    "id": "CLASSIC-029",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -507,7 +536,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-030"
+    "id": "CLASSIC-030",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -524,7 +554,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-031"
+    "id": "CLASSIC-031",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -541,7 +572,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-032"
+    "id": "CLASSIC-032",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -558,7 +590,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-033"
+    "id": "CLASSIC-033",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -575,7 +608,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-034"
+    "id": "CLASSIC-034",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -592,7 +626,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-035"
+    "id": "CLASSIC-035",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -609,7 +644,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-036"
+    "id": "CLASSIC-036",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -626,7 +662,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-037"
+    "id": "CLASSIC-037",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -643,7 +680,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-038"
+    "id": "CLASSIC-038",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -660,7 +698,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-039"
+    "id": "CLASSIC-039",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -677,7 +716,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-040"
+    "id": "CLASSIC-040",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -694,7 +734,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。孔子与颜回对话名句。",
-    "id": "CLASSIC-041"
+    "id": "CLASSIC-041",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -711,7 +752,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-042"
+    "id": "CLASSIC-042",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -728,7 +770,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-043"
+    "id": "CLASSIC-043",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -745,7 +788,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-044"
+    "id": "CLASSIC-044",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -762,7 +806,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "王阳明南安临终绝笔遗言。",
-    "id": "CLASSIC-045"
+    "id": "CLASSIC-045",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -779,7 +824,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-046"
+    "id": "CLASSIC-046",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -796,7 +842,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-047"
+    "id": "CLASSIC-047",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -813,7 +860,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-048"
+    "id": "CLASSIC-048",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -830,7 +878,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-049"
+    "id": "CLASSIC-049",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -847,7 +896,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-050"
+    "id": "CLASSIC-050",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -864,7 +914,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-051"
+    "id": "CLASSIC-051",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -881,7 +932,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-052"
+    "id": "CLASSIC-052",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -898,7 +950,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-053"
+    "id": "CLASSIC-053",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -915,7 +968,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-054"
+    "id": "CLASSIC-054",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -932,7 +986,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇类确证。",
-    "id": "CLASSIC-055"
+    "id": "CLASSIC-055",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -949,7 +1004,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇类确证。",
-    "id": "CLASSIC-056"
+    "id": "CLASSIC-056",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -966,7 +1022,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇类确证。",
-    "id": "CLASSIC-057"
+    "id": "CLASSIC-057",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -983,7 +1040,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-058"
+    "id": "CLASSIC-058",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1000,7 +1058,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-059"
+    "id": "CLASSIC-059",
+    "school": "general"
   },
   {
     "category": "心性修养",
@@ -1017,7 +1076,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "程颢秋日偶成诗名句。",
-    "id": "CLASSIC-060"
+    "id": "CLASSIC-060",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1034,7 +1094,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "宋代理学开山名篇。",
-    "id": "CLASSIC-061"
+    "id": "CLASSIC-061",
+    "school": "general"
   },
   {
     "category": "心性修养",
@@ -1051,7 +1112,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "朱熹观书有感诗名句。",
-    "id": "CLASSIC-062"
+    "id": "CLASSIC-062",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1068,7 +1130,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "惠能得法偈。",
-    "id": "CLASSIC-063"
+    "id": "CLASSIC-063",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1085,7 +1148,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "弘一法师手书辑录名格言。",
-    "id": "CLASSIC-064"
+    "id": "CLASSIC-064",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1102,7 +1166,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "纪晓岚亦有相类对联，格言集广泛收录。",
-    "id": "CLASSIC-065"
+    "id": "CLASSIC-065",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1119,7 +1184,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曾氏传家核心十六字箴言。",
-    "id": "CLASSIC-066"
+    "id": "CLASSIC-066",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1136,7 +1202,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曾氏勉励诸弟语。",
-    "id": "CLASSIC-067"
+    "id": "CLASSIC-067",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1153,7 +1220,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "与「庸人以惰字致败」对举。",
-    "id": "CLASSIC-068"
+    "id": "CLASSIC-068",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1170,7 +1238,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "乾卦大象辞。",
-    "id": "CLASSIC-069"
+    "id": "CLASSIC-069",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1187,7 +1256,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "坤卦大象辞。",
-    "id": "CLASSIC-070"
+    "id": "CLASSIC-070",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1204,7 +1274,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "知音篇名言。",
-    "id": "CLASSIC-071"
+    "id": "CLASSIC-071",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1221,7 +1292,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "葛洪论立志立品名句。",
-    "id": "CLASSIC-072"
+    "id": "CLASSIC-072",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1238,7 +1310,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孔子盛赞颜回之德。",
-    "id": "CLASSIC-073"
+    "id": "CLASSIC-073",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1255,7 +1328,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-074"
+    "id": "CLASSIC-074",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1272,7 +1346,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-075"
+    "id": "CLASSIC-075",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1289,7 +1364,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "中国最早教育学专论名句。",
-    "id": "CLASSIC-076"
+    "id": "CLASSIC-076",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1306,7 +1382,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-077"
+    "id": "CLASSIC-077",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1323,7 +1400,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-078"
+    "id": "CLASSIC-078",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1340,7 +1418,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-079"
+    "id": "CLASSIC-079",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1357,7 +1436,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-080"
+    "id": "CLASSIC-080",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1374,7 +1454,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-081"
+    "id": "CLASSIC-081",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1391,7 +1472,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "老子贵柔思想核心。",
-    "id": "CLASSIC-082"
+    "id": "CLASSIC-082",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1408,7 +1490,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "成语有则改之无则加勉出处。",
-    "id": "CLASSIC-083"
+    "id": "CLASSIC-083",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1425,7 +1508,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易系辞传名句。",
-    "id": "CLASSIC-084"
+    "id": "CLASSIC-084",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1442,7 +1526,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "谦卦六爻皆吉。",
-    "id": "CLASSIC-085"
+    "id": "CLASSIC-085",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1459,7 +1544,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "屈原卜居名言。",
-    "id": "CLASSIC-086"
+    "id": "CLASSIC-086",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1476,7 +1562,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "诸葛亮临终诫子家训名句。",
-    "id": "CLASSIC-087"
+    "id": "CLASSIC-087",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1493,7 +1580,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "诫子书开篇明训。",
-    "id": "CLASSIC-088"
+    "id": "CLASSIC-088",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1510,7 +1598,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "劝学篇核心论据。",
-    "id": "CLASSIC-089"
+    "id": "CLASSIC-089",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1527,7 +1616,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "史论格言。",
-    "id": "CLASSIC-090"
+    "id": "CLASSIC-090",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1544,7 +1634,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-091"
+    "id": "CLASSIC-091",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1561,7 +1652,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "道家著名哲学概括语。",
-    "id": "CLASSIC-092"
+    "id": "CLASSIC-092",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1578,7 +1670,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "魏征名篇名句。",
-    "id": "CLASSIC-093"
+    "id": "CLASSIC-093",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1595,7 +1688,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-094"
+    "id": "CLASSIC-094",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1612,7 +1706,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "李斯上秦王书名句。",
-    "id": "CLASSIC-095"
+    "id": "CLASSIC-095",
+    "school": "general"
   },
   {
     "category": "心性修养",
@@ -1629,7 +1724,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "兵家名言。",
-    "id": "CLASSIC-096"
+    "id": "CLASSIC-096",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1646,7 +1742,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "兵法经典名言。",
-    "id": "CLASSIC-097"
+    "id": "CLASSIC-097",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1663,7 +1760,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证，汉书董仲舒传亦引此语。",
-    "id": "CLASSIC-098"
+    "id": "CLASSIC-098",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1680,7 +1778,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "商汤沐浴盘铭刻词。",
-    "id": "CLASSIC-099"
+    "id": "CLASSIC-099",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1697,7 +1796,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "大学核心论旨。",
-    "id": "CLASSIC-100"
+    "id": "CLASSIC-100",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1714,7 +1814,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-101"
+    "id": "CLASSIC-101",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1731,7 +1832,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孟子论大丈夫传世名言。",
-    "id": "CLASSIC-102"
+    "id": "CLASSIC-102",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1748,7 +1850,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-103"
+    "id": "CLASSIC-103",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1765,7 +1868,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-104"
+    "id": "CLASSIC-104",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1782,7 +1886,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "西汉儒学名篇。",
-    "id": "CLASSIC-105"
+    "id": "CLASSIC-105",
+    "school": "general"
   },
   {
     "category": "心性修养",
@@ -1799,7 +1904,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "实事求是成语本源出处。",
-    "id": "CLASSIC-106"
+    "id": "CLASSIC-106",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1816,7 +1922,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "韩信与李左车对策名言。",
-    "id": "CLASSIC-107"
+    "id": "CLASSIC-107",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1833,7 +1940,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "赵襄子评张孟谈名句。",
-    "id": "CLASSIC-108"
+    "id": "CLASSIC-108",
+    "school": "general"
   },
   {
     "category": "心性修养",
@@ -1850,7 +1958,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易经典用人与修身格言。",
-    "id": "CLASSIC-109"
+    "id": "CLASSIC-109",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1867,7 +1976,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-110"
+    "id": "CLASSIC-110",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1884,7 +1994,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-111"
+    "id": "CLASSIC-111",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1901,7 +2012,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "唐太宗悼念魏征名言。",
-    "id": "CLASSIC-112"
+    "id": "CLASSIC-112",
+    "school": "general"
   },
   {
     "category": "心性修养",
@@ -1918,7 +2030,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-113"
+    "id": "CLASSIC-113",
+    "school": "buddhism"
   },
   {
     "category": "心性修养",
@@ -1935,7 +2048,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-114"
+    "id": "CLASSIC-114",
+    "school": "daoism"
   },
   {
     "category": "心性修养",
@@ -1952,7 +2066,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "朱熹论立志警策名句。",
-    "id": "CLASSIC-115"
+    "id": "CLASSIC-115",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1969,7 +2084,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "左传名句。",
-    "id": "CLASSIC-116"
+    "id": "CLASSIC-116",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -1986,7 +2102,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-117"
+    "id": "CLASSIC-117",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -2003,7 +2120,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-118"
+    "id": "CLASSIC-118",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -2020,7 +2138,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-119"
+    "id": "CLASSIC-119",
+    "school": "confucianism"
   },
   {
     "category": "心性修养",
@@ -2037,7 +2156,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏轼传世策论名句。",
-    "id": "CLASSIC-120"
+    "id": "CLASSIC-120",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-121",
@@ -2054,7 +2174,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。已订正原素材归属。"
+    "note": "书名确证。已订正原素材归属。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-122",
@@ -2071,7 +2192,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。"
+    "note": "书名确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-123",
@@ -2088,7 +2210,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。"
+    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-124",
@@ -2105,7 +2228,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。"
+    "note": "书名确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-125",
@@ -2122,7 +2246,8 @@
     "edition": "中华书局《老子译注》楼宇烈",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。"
+    "note": "篇章确证。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-126",
@@ -2139,7 +2264,8 @@
     "edition": "中华书局《菜根谭导读》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇目确证。"
+    "note": "篇目确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-127",
@@ -2156,7 +2282,8 @@
     "edition": "中华书局《庄子集释》郭庆藩",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。秦失吊老聃文。"
+    "note": "篇章确证。秦失吊老聃文。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-128",
@@ -2173,7 +2300,8 @@
     "edition": "中华书局《幽窗小记》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "出处确证。源自洪应明《菜根谭》，陈继儒辑录《幽窗小记》而名扬天下。"
+    "note": "出处确证。源自洪应明《菜根谭》，陈继儒辑录《幽窗小记》而名扬天下。",
+    "school": "buddhism"
   },
   {
     "id": "CLASSIC-129",
@@ -2190,7 +2318,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。"
+    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-130",
@@ -2207,7 +2336,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。"
+    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-131",
@@ -2224,7 +2354,8 @@
     "edition": "中华书局《菜根谭导读》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇目确证。"
+    "note": "篇目确证。",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2241,7 +2372,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-132"
+    "id": "CLASSIC-132",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2258,7 +2390,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-133"
+    "id": "CLASSIC-133",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2275,7 +2408,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-134"
+    "id": "CLASSIC-134",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2292,7 +2426,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。老子观复法门。",
-    "id": "CLASSIC-135"
+    "id": "CLASSIC-135",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2309,7 +2444,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。五十六章亦见。",
-    "id": "CLASSIC-136"
+    "id": "CLASSIC-136",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2326,7 +2462,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-137"
+    "id": "CLASSIC-137",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2343,7 +2480,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "庄子评宋荣子名句。",
-    "id": "CLASSIC-138"
+    "id": "CLASSIC-138",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2360,7 +2498,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-139"
+    "id": "CLASSIC-139",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2377,7 +2516,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "颜回向孔子陈述坐忘境地。",
-    "id": "CLASSIC-140"
+    "id": "CLASSIC-140",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2394,7 +2534,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "庄子生死齐一论传世名言。",
-    "id": "CLASSIC-141"
+    "id": "CLASSIC-141",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2411,7 +2552,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "庄子照之于天、以明之法。",
-    "id": "CLASSIC-142"
+    "id": "CLASSIC-142",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2428,7 +2570,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏轼黄州名作收尾名句。",
-    "id": "CLASSIC-143"
+    "id": "CLASSIC-143",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2445,7 +2588,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "元丰六年苏轼与张怀民夜游承天寺。",
-    "id": "CLASSIC-144"
+    "id": "CLASSIC-144",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2462,7 +2606,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏轼送别好友名句。",
-    "id": "CLASSIC-145"
+    "id": "CLASSIC-145",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2479,7 +2624,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏轼夜饮后归家有感。",
-    "id": "CLASSIC-146"
+    "id": "CLASSIC-146",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2496,7 +2642,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏轼哲理绝句。",
-    "id": "CLASSIC-147"
+    "id": "CLASSIC-147",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2513,7 +2660,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "黄州定慧院孤鸿名作。",
-    "id": "CLASSIC-148"
+    "id": "CLASSIC-148",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2530,7 +2678,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "陶渊明千古名作。",
-    "id": "CLASSIC-149"
+    "id": "CLASSIC-149",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2547,7 +2696,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-150"
+    "id": "CLASSIC-150",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2564,7 +2714,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "陶渊明辞官归隐宣言。",
-    "id": "CLASSIC-151"
+    "id": "CLASSIC-151",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2581,7 +2732,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "归去来兮辞收束名言。",
-    "id": "CLASSIC-152"
+    "id": "CLASSIC-152",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2598,7 +2750,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "陶渊明归田名篇。",
-    "id": "CLASSIC-153"
+    "id": "CLASSIC-153",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2615,7 +2768,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "王维辋川绝句代表作。",
-    "id": "CLASSIC-154"
+    "id": "CLASSIC-154",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2632,7 +2786,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "王维皇甫岳云溪杂题五首名篇。",
-    "id": "CLASSIC-155"
+    "id": "CLASSIC-155",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2649,7 +2804,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "山居秋暝结句名言。",
-    "id": "CLASSIC-156"
+    "id": "CLASSIC-156",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -2666,7 +2822,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "白居易传世通达名句。",
-    "id": "CLASSIC-157"
+    "id": "CLASSIC-157",
+    "school": "general"
   },
   {
     "category": "情绪调伏",
@@ -2683,7 +2840,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "白居易豁达出仕诗名句。",
-    "id": "CLASSIC-158"
+    "id": "CLASSIC-158",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2700,7 +2858,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "问刘十九传世短诗。",
-    "id": "CLASSIC-159"
+    "id": "CLASSIC-159",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2717,7 +2876,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-160"
+    "id": "CLASSIC-160",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -2734,7 +2894,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-161"
+    "id": "CLASSIC-161",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2751,7 +2912,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "文心雕龙养气篇核心宗旨。",
-    "id": "CLASSIC-162"
+    "id": "CLASSIC-162",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2768,7 +2930,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-163"
+    "id": "CLASSIC-163",
+    "school": "general"
   },
   {
     "category": "情绪调伏",
@@ -2785,7 +2948,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-164"
+    "id": "CLASSIC-164",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2802,7 +2966,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "存养类传世修心名言。",
-    "id": "CLASSIC-165"
+    "id": "CLASSIC-165",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -2819,7 +2984,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "寒山禅诗代表作。",
-    "id": "CLASSIC-166"
+    "id": "CLASSIC-166",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2836,7 +3002,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-167"
+    "id": "CLASSIC-167",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2853,7 +3020,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "六祖论心念开悟名言。",
-    "id": "CLASSIC-168"
+    "id": "CLASSIC-168",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2870,7 +3038,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-169"
+    "id": "CLASSIC-169",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2887,7 +3056,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-170"
+    "id": "CLASSIC-170",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -2904,7 +3074,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "民间广为引用的呻吟语名训。",
-    "id": "CLASSIC-171"
+    "id": "CLASSIC-171",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -2921,7 +3092,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "格言联璧经典处事法则。",
-    "id": "CLASSIC-172"
+    "id": "CLASSIC-172",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -2938,7 +3110,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "禅宗居士名偈。",
-    "id": "CLASSIC-173"
+    "id": "CLASSIC-173",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2955,7 +3128,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "心经楞严传世核心法门。",
-    "id": "CLASSIC-174"
+    "id": "CLASSIC-174",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -2972,7 +3146,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曾国藩修心十六字箴言。",
-    "id": "CLASSIC-175"
+    "id": "CLASSIC-175",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -2989,7 +3164,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "左传君子修德名句。",
-    "id": "CLASSIC-176"
+    "id": "CLASSIC-176",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -3006,7 +3182,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "魏晋养生经典开篇名言。",
-    "id": "CLASSIC-177"
+    "id": "CLASSIC-177",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -3023,7 +3200,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-178"
+    "id": "CLASSIC-178",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -3040,7 +3218,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "养生摄生经典格言。",
-    "id": "CLASSIC-179"
+    "id": "CLASSIC-179",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -3057,7 +3236,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "林则徐总督府名联，传世典范。",
-    "id": "CLASSIC-180"
+    "id": "CLASSIC-180",
+    "school": "general"
   },
   {
     "category": "情绪调伏",
@@ -3074,7 +3254,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "老子贵下思想之民间谚语升华。",
-    "id": "CLASSIC-181"
+    "id": "CLASSIC-181",
+    "school": "general"
   },
   {
     "category": "情绪调伏",
@@ -3091,7 +3272,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "经典格言诗句。",
-    "id": "CLASSIC-182"
+    "id": "CLASSIC-182",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -3108,7 +3290,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传世修身格言。",
-    "id": "CLASSIC-183"
+    "id": "CLASSIC-183",
+    "school": "general"
   },
   {
     "category": "情绪调伏",
@@ -3125,7 +3308,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "禅宗修心名训。",
-    "id": "CLASSIC-184"
+    "id": "CLASSIC-184",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -3142,7 +3326,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇类确证。",
-    "id": "CLASSIC-185"
+    "id": "CLASSIC-185",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -3159,7 +3344,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传世修心名格言。",
-    "id": "CLASSIC-186"
+    "id": "CLASSIC-186",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -3176,7 +3362,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏轼晚年流放实录名句。",
-    "id": "CLASSIC-187"
+    "id": "CLASSIC-187",
+    "school": "general"
   },
   {
     "category": "情绪调伏",
@@ -3193,7 +3380,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "明代养生专著名训。",
-    "id": "CLASSIC-188"
+    "id": "CLASSIC-188",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -3210,7 +3398,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "明清流传广远修身十六字诀。",
-    "id": "CLASSIC-189"
+    "id": "CLASSIC-189",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -3227,7 +3416,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "陈寿赞刘备之沉静城府。",
-    "id": "CLASSIC-190"
+    "id": "CLASSIC-190",
+    "school": "general"
   },
   {
     "category": "情绪调伏",
@@ -3244,7 +3434,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "中国传统大众处世第一熟谚。",
-    "id": "CLASSIC-191"
+    "id": "CLASSIC-191",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -3261,7 +3452,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "士季谏晋灵公名句。",
-    "id": "CLASSIC-192"
+    "id": "CLASSIC-192",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -3278,7 +3470,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "班固汉书东方朔传亦引之。",
-    "id": "CLASSIC-193"
+    "id": "CLASSIC-193",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -3295,7 +3488,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "先秦儒家情绪与决策节制名训。",
-    "id": "CLASSIC-194"
+    "id": "CLASSIC-194",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -3312,7 +3506,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-195"
+    "id": "CLASSIC-195",
+    "school": "confucianism"
   },
   {
     "category": "情绪调伏",
@@ -3329,7 +3524,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "唐代盛唐边塞送别名篇。",
-    "id": "CLASSIC-196"
+    "id": "CLASSIC-196",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -3346,7 +3542,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "刘禹锡酬赠白居易传世千古名联。",
-    "id": "CLASSIC-197"
+    "id": "CLASSIC-197",
+    "school": "general"
   },
   {
     "category": "情绪调伏",
@@ -3363,7 +3560,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-198"
+    "id": "CLASSIC-198",
+    "school": "general"
   },
   {
     "category": "情绪调伏",
@@ -3380,7 +3578,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "李白名篇核心警句。",
-    "id": "CLASSIC-199"
+    "id": "CLASSIC-199",
+    "school": "general"
   },
   {
     "category": "情绪调伏",
@@ -3397,7 +3596,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "李白自勉传世名言。",
-    "id": "CLASSIC-200"
+    "id": "CLASSIC-200",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -3414,7 +3614,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "行路难结句千古名句。",
-    "id": "CLASSIC-201"
+    "id": "CLASSIC-201",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -3431,7 +3632,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "李白流放夜郎遇赦东归名作。",
-    "id": "CLASSIC-202"
+    "id": "CLASSIC-202",
+    "school": "buddhism"
   },
   {
     "category": "情绪调伏",
@@ -3448,7 +3650,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-203"
+    "id": "CLASSIC-203",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -3465,7 +3668,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "庄子论人生苦短名句。已由史记引录。",
-    "id": "CLASSIC-204"
+    "id": "CLASSIC-204",
+    "school": "daoism"
   },
   {
     "category": "情绪调伏",
@@ -3482,7 +3686,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "菜根谭修省开悟名言。",
-    "id": "CLASSIC-205"
+    "id": "CLASSIC-205",
+    "school": "buddhism"
   },
   {
     "id": "CLASSIC-206",
@@ -3499,7 +3704,8 @@
     "edition": "中华书局《论语译注》杨伯峻",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。原文为孔子答仲弓问仁。"
+    "note": "篇章确证。原文为孔子答仲弓问仁。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-207",
@@ -3516,7 +3722,8 @@
     "edition": "中华书局《论语译注》杨伯峻",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。"
+    "note": "篇章确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-208",
@@ -3533,7 +3740,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。"
+    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-209",
@@ -3550,7 +3758,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。"
+    "note": "书名确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-210",
@@ -3567,7 +3776,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。"
+    "note": "书名确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-211",
@@ -3584,7 +3794,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。"
+    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-212",
@@ -3601,7 +3812,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。"
+    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-213",
@@ -3618,7 +3830,8 @@
     "edition": "中华书局《论语译注》杨伯峻",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。亦见于《宪问》。"
+    "note": "篇章确证。亦见于《宪问》。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-214",
@@ -3635,7 +3848,8 @@
     "edition": "中华书局《菜根谭导读》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇目确证。"
+    "note": "篇目确证。",
+    "school": "buddhism"
   },
   {
     "id": "CLASSIC-215",
@@ -3652,7 +3866,8 @@
     "edition": "中华书局《围炉夜话》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇目确证。"
+    "note": "篇目确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-216",
@@ -3669,7 +3884,8 @@
     "edition": "中华书局《庄子集释》郭庆藩",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。北海若语。"
+    "note": "篇章确证。北海若语。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-217",
@@ -3686,7 +3902,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "needs_review",
-    "note": "原素材标弘一法师《格言别录》自勉联语。经核属《格言联璧》系统，弘一法师曾书写传世。"
+    "note": "原素材标弘一法师《格言别录》自勉联语。经核属《格言联璧》系统，弘一法师曾书写传世。",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3703,7 +3920,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "菜根谭处世开篇第一格言。",
-    "id": "CLASSIC-218"
+    "id": "CLASSIC-218",
+    "school": "buddhism"
   },
   {
     "category": "为人处世",
@@ -3720,7 +3938,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-219"
+    "id": "CLASSIC-219",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3737,7 +3956,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-220"
+    "id": "CLASSIC-220",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3754,7 +3974,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-221"
+    "id": "CLASSIC-221",
+    "school": "daoism"
   },
   {
     "category": "为人处世",
@@ -3771,7 +3992,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-222"
+    "id": "CLASSIC-222",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3788,7 +4010,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "经典劝世名句。",
-    "id": "CLASSIC-223"
+    "id": "CLASSIC-223",
+    "school": "buddhism"
   },
   {
     "category": "为人处世",
@@ -3805,7 +4028,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。曾子论交友名句。",
-    "id": "CLASSIC-224"
+    "id": "CLASSIC-224",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3822,7 +4046,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-225"
+    "id": "CLASSIC-225",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3839,7 +4064,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "汉代修身警策名言。",
-    "id": "CLASSIC-226"
+    "id": "CLASSIC-226",
+    "school": "general"
   },
   {
     "category": "为人处世",
@@ -3856,7 +4082,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曾氏论做人做事传世名言。",
-    "id": "CLASSIC-227"
+    "id": "CLASSIC-227",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3873,7 +4100,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易系辞传名句。",
-    "id": "CLASSIC-228"
+    "id": "CLASSIC-228",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3890,7 +4118,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曾国藩传世管理两箴言。",
-    "id": "CLASSIC-229"
+    "id": "CLASSIC-229",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3907,7 +4136,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "乐毅名作千古传诵。",
-    "id": "CLASSIC-230"
+    "id": "CLASSIC-230",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3924,7 +4154,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传世善书核心格言。",
-    "id": "CLASSIC-231"
+    "id": "CLASSIC-231",
+    "school": "daoism"
   },
   {
     "category": "为人处世",
@@ -3941,7 +4172,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "民间传家格言。",
-    "id": "CLASSIC-232"
+    "id": "CLASSIC-232",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3958,7 +4190,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。民间俗语深厚渊源。",
-    "id": "CLASSIC-233"
+    "id": "CLASSIC-233",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -3975,7 +4208,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "北宋林逋修身经典。",
-    "id": "CLASSIC-234"
+    "id": "CLASSIC-234",
+    "school": "buddhism"
   },
   {
     "category": "为人处世",
@@ -3992,7 +4226,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-235"
+    "id": "CLASSIC-235",
+    "school": "buddhism"
   },
   {
     "category": "为人处世",
@@ -4009,7 +4244,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-236"
+    "id": "CLASSIC-236",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4026,7 +4262,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "民间广泛流传的处世警策。",
-    "id": "CLASSIC-237"
+    "id": "CLASSIC-237",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4043,7 +4280,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-238"
+    "id": "CLASSIC-238",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4060,7 +4298,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-239"
+    "id": "CLASSIC-239",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4077,7 +4316,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传统商贾与士人处世格言。",
-    "id": "CLASSIC-240"
+    "id": "CLASSIC-240",
+    "school": "general"
   },
   {
     "category": "为人处世",
@@ -4094,7 +4334,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "冯梦龙醒世恒言开篇格言。",
-    "id": "CLASSIC-241"
+    "id": "CLASSIC-241",
+    "school": "buddhism"
   },
   {
     "category": "为人处世",
@@ -4111,7 +4352,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "增广贤文世态炎凉写实第一名言。",
-    "id": "CLASSIC-242"
+    "id": "CLASSIC-242",
+    "school": "daoism"
   },
   {
     "category": "为人处世",
@@ -4128,7 +4370,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-243"
+    "id": "CLASSIC-243",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4145,7 +4388,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-244"
+    "id": "CLASSIC-244",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4162,7 +4406,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易系辞传名句。",
-    "id": "CLASSIC-245"
+    "id": "CLASSIC-245",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4179,7 +4424,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易名篇文言传名句。",
-    "id": "CLASSIC-246"
+    "id": "CLASSIC-246",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4196,7 +4442,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易经典进退哲理名言。",
-    "id": "CLASSIC-247"
+    "id": "CLASSIC-247",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4213,7 +4460,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孔子引古语名句。",
-    "id": "CLASSIC-248"
+    "id": "CLASSIC-248",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4230,7 +4478,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-249"
+    "id": "CLASSIC-249",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4247,7 +4496,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-250"
+    "id": "CLASSIC-250",
+    "school": "daoism"
   },
   {
     "category": "为人处世",
@@ -4264,7 +4514,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-251"
+    "id": "CLASSIC-251",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4281,7 +4532,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曲礼开篇传世名训。",
-    "id": "CLASSIC-252"
+    "id": "CLASSIC-252",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4298,7 +4550,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "道家名理，庄子亦有相近寓言。",
-    "id": "CLASSIC-253"
+    "id": "CLASSIC-253",
+    "school": "daoism"
   },
   {
     "category": "为人处世",
@@ -4315,7 +4568,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "赵良谏商鞅名言。",
-    "id": "CLASSIC-254"
+    "id": "CLASSIC-254",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4332,7 +4586,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孔子绝四德名训。",
-    "id": "CLASSIC-255"
+    "id": "CLASSIC-255",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4349,7 +4604,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-256"
+    "id": "CLASSIC-256",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4366,7 +4622,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-257"
+    "id": "CLASSIC-257",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4383,7 +4640,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "介子推不言禄千古名言。",
-    "id": "CLASSIC-258"
+    "id": "CLASSIC-258",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4400,7 +4658,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "齐王纳谏名篇。",
-    "id": "CLASSIC-259"
+    "id": "CLASSIC-259",
+    "school": "general"
   },
   {
     "category": "为人处世",
@@ -4417,7 +4676,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "司马光通鉴首卷论才德之辨。",
-    "id": "CLASSIC-260"
+    "id": "CLASSIC-260",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4434,7 +4694,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "魏征答太宗名句。",
-    "id": "CLASSIC-261"
+    "id": "CLASSIC-261",
+    "school": "general"
   },
   {
     "category": "为人处世",
@@ -4451,7 +4712,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-262"
+    "id": "CLASSIC-262",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4468,7 +4730,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-263"
+    "id": "CLASSIC-263",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4485,7 +4748,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇目确证。",
-    "id": "CLASSIC-264"
+    "id": "CLASSIC-264",
+    "school": "general"
   },
   {
     "category": "为人处世",
@@ -4502,7 +4766,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-265"
+    "id": "CLASSIC-265",
+    "school": "general"
   },
   {
     "category": "为人处世",
@@ -4519,7 +4784,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。围炉夜话亦演用此理。",
-    "id": "CLASSIC-266"
+    "id": "CLASSIC-266",
+    "school": "general"
   },
   {
     "category": "为人处世",
@@ -4536,7 +4802,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-267"
+    "id": "CLASSIC-267",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4553,7 +4820,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-268"
+    "id": "CLASSIC-268",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4570,7 +4838,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传世楹联名句。",
-    "id": "CLASSIC-269"
+    "id": "CLASSIC-269",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4587,7 +4856,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "格言联璧人际交往经典名训。",
-    "id": "CLASSIC-270"
+    "id": "CLASSIC-270",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4604,7 +4874,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇类确证。",
-    "id": "CLASSIC-271"
+    "id": "CLASSIC-271",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4621,7 +4892,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-272"
+    "id": "CLASSIC-272",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4638,7 +4910,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "明代吕坤传世四然铭。",
-    "id": "CLASSIC-273"
+    "id": "CLASSIC-273",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4655,7 +4928,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曾国藩戒争强名言。",
-    "id": "CLASSIC-274"
+    "id": "CLASSIC-274",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4672,7 +4946,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曾氏日记内省录。",
-    "id": "CLASSIC-275"
+    "id": "CLASSIC-275",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4689,7 +4964,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "了凡四训核心积善思想。",
-    "id": "CLASSIC-276"
+    "id": "CLASSIC-276",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4706,7 +4982,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "颜氏家训勉学名篇。",
-    "id": "CLASSIC-277"
+    "id": "CLASSIC-277",
+    "school": "general"
   },
   {
     "category": "为人处世",
@@ -4723,7 +5000,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "朱子家训经典治家格言。",
-    "id": "CLASSIC-278"
+    "id": "CLASSIC-278",
+    "school": "buddhism"
   },
   {
     "category": "为人处世",
@@ -4740,7 +5018,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-279"
+    "id": "CLASSIC-279",
+    "school": "general"
   },
   {
     "category": "为人处世",
@@ -4757,7 +5036,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孔子告诫子夏从政名言。",
-    "id": "CLASSIC-280"
+    "id": "CLASSIC-280",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4774,7 +5054,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-281"
+    "id": "CLASSIC-281",
+    "school": "daoism"
   },
   {
     "category": "为人处世",
@@ -4791,7 +5072,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "史记管晏列传引录。",
-    "id": "CLASSIC-282"
+    "id": "CLASSIC-282",
+    "school": "confucianism"
   },
   {
     "category": "为人处世",
@@ -4808,7 +5090,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "道德经压卷收官名言。",
-    "id": "CLASSIC-283"
+    "id": "CLASSIC-283",
+    "school": "daoism"
   },
   {
     "category": "为人处世",
@@ -4825,7 +5108,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "庄子论物我关系至理。",
-    "id": "CLASSIC-284"
+    "id": "CLASSIC-284",
+    "school": "daoism"
   },
   {
     "category": "为人处世",
@@ -4842,7 +5126,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易节卦核心卦辞。",
-    "id": "CLASSIC-285"
+    "id": "CLASSIC-285",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-286",
@@ -4859,7 +5144,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。"
+    "note": "书名确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-287",
@@ -4876,7 +5162,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "needs_review",
-    "note": "原素材注明为「刘直斋语」，金缨《格言联璧》收录。建议标注为「《格言联璧》录刘直斋语」。"
+    "note": "原素材注明为「刘直斋语」，金缨《格言联璧》收录。建议标注为「《格言联璧》录刘直斋语」。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-288",
@@ -4893,7 +5180,8 @@
     "edition": "中华书局《庄子集释》郭庆藩",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。"
+    "note": "篇章确证。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-289",
@@ -4910,7 +5198,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。"
+    "note": "书名确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-290",
@@ -4927,7 +5216,8 @@
     "edition": "中华书局《庄子集释》郭庆藩",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。亦见《天运》。"
+    "note": "篇章确证。亦见《天运》。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-291",
@@ -4944,7 +5234,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。"
+    "note": "书名确证。原素材标弘一法师《格言别录》，已订正。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-292",
@@ -4961,7 +5252,8 @@
     "edition": "中华书局《庄子集释》郭庆藩",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。"
+    "note": "篇章确证。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-293",
@@ -4978,7 +5270,8 @@
     "edition": "中华书局《苏轼词编年校注》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "词牌篇名确证。丙辰中秋欢饮达旦大醉作此篇兼怀子由。"
+    "note": "词牌篇名确证。丙辰中秋欢饮达旦大醉作此篇兼怀子由。",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -4995,7 +5288,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "子游论处世分寸名言。",
-    "id": "CLASSIC-294"
+    "id": "CLASSIC-294",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5012,7 +5306,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。孔子论友标准。",
-    "id": "CLASSIC-295"
+    "id": "CLASSIC-295",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5029,7 +5324,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-296"
+    "id": "CLASSIC-296",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5046,7 +5342,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孟子论家庭伦理智慧。",
-    "id": "CLASSIC-297"
+    "id": "CLASSIC-297",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5063,7 +5360,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "战国策名篇触龙说赵太后名言。",
-    "id": "CLASSIC-298"
+    "id": "CLASSIC-298",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -5080,7 +5378,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "战国策名句。",
-    "id": "CLASSIC-299"
+    "id": "CLASSIC-299",
+    "school": "general"
   },
   {
     "category": "关系与边界",
@@ -5097,7 +5396,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-300"
+    "id": "CLASSIC-300",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5114,7 +5414,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "管宁割席典故出处。",
-    "id": "CLASSIC-301"
+    "id": "CLASSIC-301",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5131,7 +5432,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "诗经名篇木瓜名句。",
-    "id": "CLASSIC-302"
+    "id": "CLASSIC-302",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5148,7 +5450,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "诗经描写家庭兄弟和谐名篇。",
-    "id": "CLASSIC-303"
+    "id": "CLASSIC-303",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5165,7 +5468,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "敦煌出土唐人离婚协议原本。",
-    "id": "CLASSIC-304"
+    "id": "CLASSIC-304",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -5182,7 +5486,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "民间传世相处俗谚。",
-    "id": "CLASSIC-305"
+    "id": "CLASSIC-305",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -5199,7 +5504,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "嵇康与吕安相交典故。",
-    "id": "CLASSIC-306"
+    "id": "CLASSIC-306",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5216,7 +5522,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "论语首卷名训。",
-    "id": "CLASSIC-307"
+    "id": "CLASSIC-307",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5233,7 +5540,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "张衡传世自勉名句。",
-    "id": "CLASSIC-308"
+    "id": "CLASSIC-308",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5250,7 +5558,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-309"
+    "id": "CLASSIC-309",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5267,7 +5576,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "格言联璧家庭社交经典名格言。",
-    "id": "CLASSIC-310"
+    "id": "CLASSIC-310",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5284,7 +5594,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孔子家语传世名喻。大戴礼记亦收录。",
-    "id": "CLASSIC-311"
+    "id": "CLASSIC-311",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5301,7 +5612,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-312"
+    "id": "CLASSIC-312",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5318,7 +5630,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传统蒙学与士人交友名句。",
-    "id": "CLASSIC-313"
+    "id": "CLASSIC-313",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -5335,7 +5648,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-314"
+    "id": "CLASSIC-314",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5352,7 +5666,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "千字文传世名句，本源淮南子原道训。",
-    "id": "CLASSIC-315"
+    "id": "CLASSIC-315",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5369,7 +5684,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "德不孤必有邻典故化用。",
-    "id": "CLASSIC-316"
+    "id": "CLASSIC-316",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5386,7 +5702,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-317"
+    "id": "CLASSIC-317",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5403,7 +5720,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇类确证。",
-    "id": "CLASSIC-318"
+    "id": "CLASSIC-318",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5420,7 +5738,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-319"
+    "id": "CLASSIC-319",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5437,7 +5756,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "史记乐毅列传收录此信。",
-    "id": "CLASSIC-320"
+    "id": "CLASSIC-320",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5454,7 +5774,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "魏晋家诫名言。",
-    "id": "CLASSIC-321"
+    "id": "CLASSIC-321",
+    "school": "daoism"
   },
   {
     "category": "关系与边界",
@@ -5471,7 +5792,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "隋代文中子王通传世名训。",
-    "id": "CLASSIC-322"
+    "id": "CLASSIC-322",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -5488,7 +5810,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-323"
+    "id": "CLASSIC-323",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5505,7 +5828,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "宋代理学家操守评述。",
-    "id": "CLASSIC-324"
+    "id": "CLASSIC-324",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5522,7 +5846,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏武答李陵千古名句。",
-    "id": "CLASSIC-325"
+    "id": "CLASSIC-325",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -5539,7 +5864,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "初唐四杰王勃送别绝唱。",
-    "id": "CLASSIC-326"
+    "id": "CLASSIC-326",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -5556,7 +5882,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "李白赠汪伦千古绝唱。",
-    "id": "CLASSIC-327"
+    "id": "CLASSIC-327",
+    "school": "daoism"
   },
   {
     "category": "关系与边界",
@@ -5573,7 +5900,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "王维盛唐少年行名作。",
-    "id": "CLASSIC-328"
+    "id": "CLASSIC-328",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -5590,7 +5918,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "莫逆于心成语本源典故。",
-    "id": "CLASSIC-329"
+    "id": "CLASSIC-329",
+    "school": "daoism"
   },
   {
     "category": "关系与边界",
@@ -5607,7 +5936,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "诗经千古伤逝名篇。",
-    "id": "CLASSIC-330"
+    "id": "CLASSIC-330",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5624,7 +5954,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "义结金兰成语典故出处。",
-    "id": "CLASSIC-331"
+    "id": "CLASSIC-331",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5641,7 +5972,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传统经典交友四原则。",
-    "id": "CLASSIC-332"
+    "id": "CLASSIC-332",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5658,7 +5990,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "宋代名臣宋庠治政名训。",
-    "id": "CLASSIC-333"
+    "id": "CLASSIC-333",
+    "school": "general"
   },
   {
     "category": "关系与边界",
@@ -5675,7 +6008,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-334"
+    "id": "CLASSIC-334",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5692,7 +6026,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "论语四君子德相融通。",
-    "id": "CLASSIC-335"
+    "id": "CLASSIC-335",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5709,7 +6044,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "大雅抑篇名句。",
-    "id": "CLASSIC-336"
+    "id": "CLASSIC-336",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5726,7 +6062,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇类确证。",
-    "id": "CLASSIC-337"
+    "id": "CLASSIC-337",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5743,7 +6080,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "先秦曾子学派名训。",
-    "id": "CLASSIC-338"
+    "id": "CLASSIC-338",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5760,7 +6098,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "明代理学名训。",
-    "id": "CLASSIC-339"
+    "id": "CLASSIC-339",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5777,7 +6116,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "民间传世情缘格言。",
-    "id": "CLASSIC-340"
+    "id": "CLASSIC-340",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -5794,7 +6134,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "庄子论交友至境全句。",
-    "id": "CLASSIC-341"
+    "id": "CLASSIC-341",
+    "school": "daoism"
   },
   {
     "category": "关系与边界",
@@ -5811,7 +6152,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-342"
+    "id": "CLASSIC-342",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5828,7 +6170,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。启发式教育本源。",
-    "id": "CLASSIC-343"
+    "id": "CLASSIC-343",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5845,7 +6188,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孟子警策名言。",
-    "id": "CLASSIC-344"
+    "id": "CLASSIC-344",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5862,7 +6206,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-345"
+    "id": "CLASSIC-345",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5879,7 +6224,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "东汉名臣崔骃立身名句。",
-    "id": "CLASSIC-346"
+    "id": "CLASSIC-346",
+    "school": "daoism"
   },
   {
     "category": "关系与边界",
@@ -5896,7 +6242,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "淝水之战谢安雅量传世千古典故。",
-    "id": "CLASSIC-347"
+    "id": "CLASSIC-347",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5913,7 +6260,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "支道林放鹤典故。",
-    "id": "CLASSIC-348"
+    "id": "CLASSIC-348",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5930,7 +6278,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "葛洪交际篇名句。",
-    "id": "CLASSIC-349"
+    "id": "CLASSIC-349",
+    "school": "daoism"
   },
   {
     "category": "关系与边界",
@@ -5947,7 +6296,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "接物类四大警策名言。",
-    "id": "CLASSIC-350"
+    "id": "CLASSIC-350",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5964,7 +6314,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曾氏处世第一心法耐烦。",
-    "id": "CLASSIC-351"
+    "id": "CLASSIC-351",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5981,7 +6332,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "诗经伐木名篇。",
-    "id": "CLASSIC-352"
+    "id": "CLASSIC-352",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -5998,7 +6350,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "醒世恒言劝善警世名句。",
-    "id": "CLASSIC-353"
+    "id": "CLASSIC-353",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -6015,7 +6368,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传统修性明意格言。",
-    "id": "CLASSIC-354"
+    "id": "CLASSIC-354",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -6032,7 +6386,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-355"
+    "id": "CLASSIC-355",
+    "school": "daoism"
   },
   {
     "category": "关系与边界",
@@ -6049,7 +6404,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "墨子兼爱核心主张名言。",
-    "id": "CLASSIC-356"
+    "id": "CLASSIC-356",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -6066,7 +6422,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-357"
+    "id": "CLASSIC-357",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -6083,7 +6440,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "论语礼度分寸核心名句。",
-    "id": "CLASSIC-358"
+    "id": "CLASSIC-358",
+    "school": "confucianism"
   },
   {
     "category": "关系与边界",
@@ -6100,7 +6458,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "经典交友名训。",
-    "id": "CLASSIC-359"
+    "id": "CLASSIC-359",
+    "school": "buddhism"
   },
   {
     "category": "关系与边界",
@@ -6117,7 +6476,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "断金之交成语出处。",
-    "id": "CLASSIC-360"
+    "id": "CLASSIC-360",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-361",
@@ -6134,7 +6494,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证（已交叉核对）；类目通行本作「惠吉类」，另有版本归「持躬类」。"
+    "note": "书名确证（已交叉核对）；类目通行本作「惠吉类」，另有版本归「持躬类」。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-362",
@@ -6151,7 +6512,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "已订正：原素材标弘一法师《格言别录》，经核实出清·金缨《格言联璧·持躬类》。"
+    "note": "已订正：原素材标弘一法师《格言别录》，经核实出清·金缨《格言联璧·持躬类》。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-363",
@@ -6168,7 +6530,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。"
+    "note": "书名确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-364",
@@ -6185,7 +6548,8 @@
     "edition": "中华书局《论语译注》杨伯峻",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。"
+    "note": "篇章确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-365",
@@ -6202,7 +6566,8 @@
     "edition": "中华书局《庄子集释》郭庆藩",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。许由答尧让天下语。"
+    "note": "篇章确证。许由答尧让天下语。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-366",
@@ -6219,7 +6584,8 @@
     "edition": "中华书局《围炉夜话》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇目确证。"
+    "note": "篇目确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-367",
@@ -6236,7 +6602,8 @@
     "edition": "中华书局《老子译注》楼宇烈",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。通行本作「功遂身退」亦作「功成名遂身退」。"
+    "note": "篇章确证。通行本作「功遂身退」亦作「功成名遂身退」。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-368",
@@ -6253,7 +6620,8 @@
     "edition": "中华书局《庄子集释》郭庆藩",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。仲尼答叶公子高问。"
+    "note": "篇章确证。仲尼答叶公子高问。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-369",
@@ -6270,7 +6638,8 @@
     "edition": "中华书局《陶渊明集笺注》袁行霈",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇名确证。陶渊明辞彭泽令赋。"
+    "note": "篇名确证。陶渊明辞彭泽令赋。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-370",
@@ -6287,7 +6656,8 @@
     "edition": "岳麓书社《曾国藩全集》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "语意确证。曾国藩求阙斋自省家训。"
+    "note": "语意确证。曾国藩求阙斋自省家训。",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6304,7 +6674,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孔子对颜渊赞誉名句。",
-    "id": "CLASSIC-371"
+    "id": "CLASSIC-371",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6321,7 +6692,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。中国传统士人核心进退准则。",
-    "id": "CLASSIC-372"
+    "id": "CLASSIC-372",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6338,7 +6710,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孟子舍生取义篇开篇名喻。",
-    "id": "CLASSIC-373"
+    "id": "CLASSIC-373",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6355,7 +6728,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "塞翁失马典故本源。",
-    "id": "CLASSIC-374"
+    "id": "CLASSIC-374",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6372,7 +6746,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-375"
+    "id": "CLASSIC-375",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6389,7 +6764,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-376"
+    "id": "CLASSIC-376",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6406,7 +6782,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-377"
+    "id": "CLASSIC-377",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6423,7 +6800,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "易经周期论核心名言。",
-    "id": "CLASSIC-378"
+    "id": "CLASSIC-378",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6440,7 +6818,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "见微知著成语本源。",
-    "id": "CLASSIC-379"
+    "id": "CLASSIC-379",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6457,7 +6836,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "乾卦上九爻辞发微。",
-    "id": "CLASSIC-380"
+    "id": "CLASSIC-380",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6474,7 +6854,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "乾卦初九名言。",
-    "id": "CLASSIC-381"
+    "id": "CLASSIC-381",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6491,7 +6872,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "汉代经典决策法则。",
-    "id": "CLASSIC-382"
+    "id": "CLASSIC-382",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6508,7 +6890,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传世名俗谚。",
-    "id": "CLASSIC-383"
+    "id": "CLASSIC-383",
+    "school": "buddhism"
   },
   {
     "category": "进退取舍",
@@ -6525,7 +6908,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "煮酒论英雄经典化用名言。",
-    "id": "CLASSIC-384"
+    "id": "CLASSIC-384",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6542,7 +6926,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "小窗幽记名诗句。",
-    "id": "CLASSIC-385"
+    "id": "CLASSIC-385",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6559,7 +6944,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易乾卦文言传收官名言。",
-    "id": "CLASSIC-386"
+    "id": "CLASSIC-386",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6576,7 +6962,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "中国传统士人处事核心纲领。",
-    "id": "CLASSIC-387"
+    "id": "CLASSIC-387",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6593,7 +6980,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "孟子核心方法论名言。",
-    "id": "CLASSIC-388"
+    "id": "CLASSIC-388",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6610,7 +6998,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "读书治学传世名训。",
-    "id": "CLASSIC-389"
+    "id": "CLASSIC-389",
+    "school": "general"
   },
   {
     "category": "进退取舍",
@@ -6627,7 +7016,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。家语鲁哀公篇同录。",
-    "id": "CLASSIC-390"
+    "id": "CLASSIC-390",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6644,7 +7034,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "鬼谷子心智运筹名篇。",
-    "id": "CLASSIC-391"
+    "id": "CLASSIC-391",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6661,7 +7052,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "理学君子品德总结。",
-    "id": "CLASSIC-392"
+    "id": "CLASSIC-392",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6678,7 +7070,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "荀子善假于物名篇。",
-    "id": "CLASSIC-393"
+    "id": "CLASSIC-393",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6695,7 +7088,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "劝学篇结句千古名训。",
-    "id": "CLASSIC-394"
+    "id": "CLASSIC-394",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6712,7 +7106,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "庄子无用之用核心寓言。",
-    "id": "CLASSIC-395"
+    "id": "CLASSIC-395",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6729,7 +7124,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "道德经相对论辩证名言。",
-    "id": "CLASSIC-396"
+    "id": "CLASSIC-396",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6746,7 +7142,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "道德经论进退至理名篇。",
-    "id": "CLASSIC-397"
+    "id": "CLASSIC-397",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6763,7 +7160,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "中国传统大众处世第一熟语。",
-    "id": "CLASSIC-398"
+    "id": "CLASSIC-398",
+    "school": "buddhism"
   },
   {
     "category": "进退取舍",
@@ -6780,7 +7178,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传统经典舍得法则。",
-    "id": "CLASSIC-399"
+    "id": "CLASSIC-399",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6797,7 +7196,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "菜根谭闲适名联。",
-    "id": "CLASSIC-400"
+    "id": "CLASSIC-400",
+    "school": "general"
   },
   {
     "category": "进退取舍",
@@ -6814,7 +7214,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传统修心处世六然铭。",
-    "id": "CLASSIC-401"
+    "id": "CLASSIC-401",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6831,7 +7232,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "清代大众通俗修身宝典。",
-    "id": "CLASSIC-402"
+    "id": "CLASSIC-402",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6848,7 +7250,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "尚书千古第一传世警策名训。",
-    "id": "CLASSIC-403"
+    "id": "CLASSIC-403",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6865,7 +7268,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-404"
+    "id": "CLASSIC-404",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6882,7 +7286,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-405"
+    "id": "CLASSIC-405",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6899,7 +7304,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易系辞核心至理。",
-    "id": "CLASSIC-406"
+    "id": "CLASSIC-406",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6916,7 +7322,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-407"
+    "id": "CLASSIC-407",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6933,7 +7340,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传统商业哲学名言。",
-    "id": "CLASSIC-408"
+    "id": "CLASSIC-408",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -6950,7 +7358,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易经济与管理哲学第一名篇。",
-    "id": "CLASSIC-409"
+    "id": "CLASSIC-409",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -6967,7 +7376,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏轼密州超然台记开篇名言。",
-    "id": "CLASSIC-410"
+    "id": "CLASSIC-410",
+    "school": "buddhism"
   },
   {
     "category": "进退取舍",
@@ -6984,7 +7394,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "宋慧开禅师传世名偈。",
-    "id": "CLASSIC-411"
+    "id": "CLASSIC-411",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -7001,7 +7412,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "宋代理学大儒邵雍传世名诗。",
-    "id": "CLASSIC-412"
+    "id": "CLASSIC-412",
+    "school": "buddhism"
   },
   {
     "category": "进退取舍",
@@ -7018,7 +7430,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "禅林清修名偈。",
-    "id": "CLASSIC-413"
+    "id": "CLASSIC-413",
+    "school": "buddhism"
   },
   {
     "category": "进退取舍",
@@ -7035,7 +7448,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传统士商修齐名言。",
-    "id": "CLASSIC-414"
+    "id": "CLASSIC-414",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -7052,7 +7466,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "纳兰性德传世千古决绝词名句。",
-    "id": "CLASSIC-415"
+    "id": "CLASSIC-415",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -7069,7 +7484,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "明代杨慎临江仙滚滚长江东逝水同一时期名作。",
-    "id": "CLASSIC-416"
+    "id": "CLASSIC-416",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -7086,7 +7502,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "儒家修身开篇核心心法。",
-    "id": "CLASSIC-417"
+    "id": "CLASSIC-417",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -7103,7 +7520,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "小国寡民理想生活隐喻。",
-    "id": "CLASSIC-418"
+    "id": "CLASSIC-418",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -7120,7 +7538,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "战国策名言警句。",
-    "id": "CLASSIC-419"
+    "id": "CLASSIC-419",
+    "school": "general"
   },
   {
     "category": "进退取舍",
@@ -7137,7 +7556,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-420"
+    "id": "CLASSIC-420",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -7154,7 +7574,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "先秦法家处世鉴诫。",
-    "id": "CLASSIC-421"
+    "id": "CLASSIC-421",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -7171,7 +7592,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-422"
+    "id": "CLASSIC-422",
+    "school": "daoism"
   },
   {
     "category": "进退取舍",
@@ -7188,7 +7610,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传统家训格言。",
-    "id": "CLASSIC-423"
+    "id": "CLASSIC-423",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -7205,7 +7628,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易洞察决断名句。",
-    "id": "CLASSIC-424"
+    "id": "CLASSIC-424",
+    "school": "confucianism"
   },
   {
     "category": "进退取舍",
@@ -7222,7 +7646,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "老子功成身退核心名言。",
-    "id": "CLASSIC-425"
+    "id": "CLASSIC-425",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-426",
@@ -7239,7 +7664,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "needs_review",
-    "note": "原素材标为弘一法师《格言别录》。本句前半为宋人成语，整句为格言类辑录，篇章归属待复核。"
+    "note": "原素材标为弘一法师《格言别录》。本句前半为宋人成语，整句为格言类辑录，篇章归属待复核。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-427",
@@ -7256,7 +7682,8 @@
     "edition": "中华书局《孟子译注》杨伯峻",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。通行本作「是人」；坊间常见「斯人」为异文，已标注。"
+    "note": "篇章确证。通行本作「是人」；坊间常见「斯人」为异文，已标注。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-428",
@@ -7273,7 +7700,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "书名确证。"
+    "note": "书名确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-429",
@@ -7290,7 +7718,8 @@
     "edition": "中华书局《格言联璧》",
     "verifier": "悟堂考据组",
     "status": "needs_review",
-    "note": "原素材标弘一法师《格言别录》，建议标注为「格言类辑本」。"
+    "note": "原素材标弘一法师《格言别录》，建议标注为「格言类辑本」。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-430",
@@ -7307,7 +7736,8 @@
     "edition": "《大正藏》本《黄檗断际禅师宛陵录》",
     "verifier": "悟堂考据组",
     "status": "needs_review",
-    "note": "广泛流传句，具体作者与版本在学界有异说，作为引语时标注辑录背景。"
+    "note": "广泛流传句，具体作者与版本在学界有异说，作为引语时标注辑录背景。",
+    "school": "general"
   },
   {
     "id": "CLASSIC-431",
@@ -7324,7 +7754,8 @@
     "edition": "中华书局《老子译注》楼宇烈",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。"
+    "note": "篇章确证。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-432",
@@ -7341,7 +7772,8 @@
     "edition": "中华书局《老子译注》楼宇烈",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。马王堆帛书本作「大器免成」，通行本作「大器晚成」，取通行义。"
+    "note": "篇章确证。马王堆帛书本作「大器免成」，通行本作「大器晚成」，取通行义。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-433",
@@ -7358,7 +7790,8 @@
     "edition": "中华书局《周易译注》李镜池",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇章确证。"
+    "note": "篇章确证。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-434",
@@ -7375,7 +7808,8 @@
     "edition": "中华书局《王阳明全集》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "语意见《传习录》下卷。坊间多作「人须在事上磨，方立得住；方能静亦定，动亦定」。"
+    "note": "语意见《传习录》下卷。坊间多作「人须在事上磨，方立得住；方能静亦定，动亦定」。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-435",
@@ -7392,7 +7826,8 @@
     "edition": "中华书局《苏轼词编年校注》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "词牌与篇名确证。苏轼赠柔奴词。"
+    "note": "词牌与篇名确证。苏轼赠柔奴词。",
+    "school": "buddhism"
   },
   {
     "id": "CLASSIC-436",
@@ -7409,7 +7844,8 @@
     "edition": "中华书局《苏轼词编年校注》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "词牌与篇名确证。黄州沙湖道中遇雨。"
+    "note": "词牌与篇名确证。黄州沙湖道中遇雨。",
+    "school": "general"
   },
   {
     "id": "CLASSIC-437",
@@ -7426,7 +7862,8 @@
     "edition": "岳麓书社《曾国藩全集》",
     "verifier": "悟堂考据组",
     "status": "needs_review",
-    "note": "语意见曾国藩家书，具体书信篇次考据中，作引语时标注家书辑要。"
+    "note": "语意见曾国藩家书，具体书信篇次考据中，作引语时标注家书辑要。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-438",
@@ -7443,7 +7880,8 @@
     "edition": "岳麓书社《曾国藩全集》",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "语意确证。曾国藩湘军战略核心理念。"
+    "note": "语意确证。曾国藩湘军战略核心理念。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-439",
@@ -7460,7 +7898,8 @@
     "edition": "中华书局《陶渊明集笺注》袁行霈",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇名确证。"
+    "note": "篇名确证。",
+    "school": "daoism"
   },
   {
     "id": "CLASSIC-440",
@@ -7477,7 +7916,8 @@
     "edition": "中华书局《王维集校注》陈铁民",
     "verifier": "悟堂考据组",
     "status": "verified",
-    "note": "篇名确证。常被误记为苏轼，已纠正为唐·王维。"
+    "note": "篇名确证。常被误记为苏轼，已纠正为唐·王维。",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -7494,7 +7934,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏轼黄州贬谪期间千古旷达名作。",
-    "id": "CLASSIC-441"
+    "id": "CLASSIC-441",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7511,7 +7952,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏轼词下阕千古名句。",
-    "id": "CLASSIC-442"
+    "id": "CLASSIC-442",
+    "school": "general"
   },
   {
     "category": "逆境与成长",
@@ -7528,7 +7970,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "苏东坡临终前绝笔名句。",
-    "id": "CLASSIC-443"
+    "id": "CLASSIC-443",
+    "school": "general"
   },
   {
     "category": "逆境与成长",
@@ -7545,7 +7988,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "千古励志磨砺第一篇。",
-    "id": "CLASSIC-444"
+    "id": "CLASSIC-444",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7562,7 +8006,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。",
-    "id": "CLASSIC-445"
+    "id": "CLASSIC-445",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7579,7 +8024,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "司马迁千古绝唱。",
-    "id": "CLASSIC-446"
+    "id": "CLASSIC-446",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7596,7 +8042,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "王阳明对司马迁语意的理学心学深化。",
-    "id": "CLASSIC-447"
+    "id": "CLASSIC-447",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7613,7 +8060,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曾国藩著名实干担当名言。",
-    "id": "CLASSIC-448"
+    "id": "CLASSIC-448",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7630,7 +8078,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "曾国藩著名刚毅名言。",
-    "id": "CLASSIC-449"
+    "id": "CLASSIC-449",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7647,7 +8096,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "周易六十四卦困卦君子爻义。",
-    "id": "CLASSIC-450"
+    "id": "CLASSIC-450",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7664,7 +8114,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "陆游传世名句，绝处逢生首选象征。",
-    "id": "CLASSIC-451"
+    "id": "CLASSIC-451",
+    "school": "general"
   },
   {
     "category": "逆境与成长",
@@ -7681,7 +8132,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "刘禹锡千古名句，破除年龄与迟暮焦虑。",
-    "id": "CLASSIC-452"
+    "id": "CLASSIC-452",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7698,7 +8150,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "篇章确证。老子关于极端状态不可持续的名论。",
-    "id": "CLASSIC-453"
+    "id": "CLASSIC-453",
+    "school": "daoism"
   },
   {
     "category": "逆境与成长",
@@ -7715,7 +8168,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "菜根谭立身处世名言。",
-    "id": "CLASSIC-454"
+    "id": "CLASSIC-454",
+    "school": "general"
   },
   {
     "category": "逆境与成长",
@@ -7732,7 +8186,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "菜根谭苦乐辩证观。",
-    "id": "CLASSIC-455"
+    "id": "CLASSIC-455",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7749,7 +8204,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "菜根谭警世箴言。",
-    "id": "CLASSIC-456"
+    "id": "CLASSIC-456",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -7766,7 +8222,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "经典励志力行名言。",
-    "id": "CLASSIC-457"
+    "id": "CLASSIC-457",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7783,7 +8240,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "千古传诵勤勉抗挫名联。",
-    "id": "CLASSIC-458"
+    "id": "CLASSIC-458",
+    "school": "daoism"
   },
   {
     "category": "逆境与成长",
@@ -7800,7 +8258,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "郑板桥题画竹千古绝唱。",
-    "id": "CLASSIC-459"
+    "id": "CLASSIC-459",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -7817,7 +8276,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "郑板桥题竹前两句。",
-    "id": "CLASSIC-460"
+    "id": "CLASSIC-460",
+    "school": "general"
   },
   {
     "category": "逆境与成长",
@@ -7834,7 +8294,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "李白行路难全景名句。",
-    "id": "CLASSIC-461"
+    "id": "CLASSIC-461",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -7851,7 +8312,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "清代围炉夜话逆顺辩证。",
-    "id": "CLASSIC-462"
+    "id": "CLASSIC-462",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7868,7 +8330,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "宋代理学名言，千古名喻。",
-    "id": "CLASSIC-463"
+    "id": "CLASSIC-463",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7885,7 +8348,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "顾炎武立身修养名言。",
-    "id": "CLASSIC-464"
+    "id": "CLASSIC-464",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -7902,7 +8366,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "定风波核心名句精要。",
-    "id": "CLASSIC-465"
+    "id": "CLASSIC-465",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -7919,7 +8384,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "近代坚毅风骨名诗。",
-    "id": "CLASSIC-466"
+    "id": "CLASSIC-466",
+    "school": "general"
   },
   {
     "category": "逆境与成长",
@@ -7936,7 +8402,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "王勃千古骈文名句。",
-    "id": "CLASSIC-467"
+    "id": "CLASSIC-467",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -7953,7 +8420,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "滕王阁序旷达名句。",
-    "id": "CLASSIC-468"
+    "id": "CLASSIC-468",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -7970,7 +8438,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "千古叹息与历史释怀名篇。",
-    "id": "CLASSIC-469"
+    "id": "CLASSIC-469",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -7987,7 +8456,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "滕王阁序最核心激昂名联。",
-    "id": "CLASSIC-470"
+    "id": "CLASSIC-470",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -8004,7 +8474,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "刘禹锡传世绝句哲理精义。",
-    "id": "CLASSIC-471"
+    "id": "CLASSIC-471",
+    "school": "daoism"
   },
   {
     "category": "逆境与成长",
@@ -8021,7 +8492,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "民间修身处世警句。",
-    "id": "CLASSIC-472"
+    "id": "CLASSIC-472",
+    "school": "general"
   },
   {
     "category": "逆境与成长",
@@ -8038,7 +8510,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "民间传世励志名句。",
-    "id": "CLASSIC-473"
+    "id": "CLASSIC-473",
+    "school": "general"
   },
   {
     "category": "逆境与成长",
@@ -8055,7 +8528,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传统经典警句。",
-    "id": "CLASSIC-474"
+    "id": "CLASSIC-474",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -8072,7 +8546,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "三国兵家策略名言。",
-    "id": "CLASSIC-475"
+    "id": "CLASSIC-475",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -8089,7 +8564,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "西汉刘向说苑格言。",
-    "id": "CLASSIC-476"
+    "id": "CLASSIC-476",
+    "school": "daoism"
   },
   {
     "category": "逆境与成长",
@@ -8106,7 +8582,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "先秦名理名句。",
-    "id": "CLASSIC-477"
+    "id": "CLASSIC-477",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -8123,7 +8600,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "经典左传名言，篇章确证。",
-    "id": "CLASSIC-478"
+    "id": "CLASSIC-478",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -8140,7 +8618,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "传世名联，释怀宽容第一名联。",
-    "id": "CLASSIC-479"
+    "id": "CLASSIC-479",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -8157,7 +8636,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "宋明禅宗公案化用俗谚。",
-    "id": "CLASSIC-480"
+    "id": "CLASSIC-480",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -8174,7 +8654,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "历史传记名言。",
-    "id": "CLASSIC-481"
+    "id": "CLASSIC-481",
+    "school": "general"
   },
   {
     "category": "逆境与成长",
@@ -8191,7 +8672,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "禅宗千古开悟名公案。",
-    "id": "CLASSIC-482"
+    "id": "CLASSIC-482",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -8208,7 +8690,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "庄子德充符名篇。",
-    "id": "CLASSIC-483"
+    "id": "CLASSIC-483",
+    "school": "daoism"
   },
   {
     "category": "逆境与成长",
@@ -8225,7 +8708,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "易经蹇卦化解困局之智慧。",
-    "id": "CLASSIC-484"
+    "id": "CLASSIC-484",
+    "school": "daoism"
   },
   {
     "category": "逆境与成长",
@@ -8242,7 +8726,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "易经蹇卦彖辞精论。",
-    "id": "CLASSIC-485"
+    "id": "CLASSIC-485",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -8259,7 +8744,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "明代于谦少年咏物言志千古绝唱。",
-    "id": "CLASSIC-486"
+    "id": "CLASSIC-486",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -8276,7 +8762,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "文天祥千古名篇收尾绝唱。",
-    "id": "CLASSIC-487"
+    "id": "CLASSIC-487",
+    "school": "confucianism"
   },
   {
     "category": "逆境与成长",
@@ -8293,7 +8780,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "杜甫青年时期豪气干云名作。",
-    "id": "CLASSIC-488"
+    "id": "CLASSIC-488",
+    "school": "general"
   },
   {
     "category": "逆境与成长",
@@ -8310,7 +8798,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "战国楚辞核心名句。",
-    "id": "CLASSIC-489"
+    "id": "CLASSIC-489",
+    "school": "buddhism"
   },
   {
     "category": "逆境与成长",
@@ -8327,7 +8816,8 @@
     "verifier": "悟堂考据组",
     "status": "verified",
     "note": "魏武帝曹操壮心绝唱。",
-    "id": "CLASSIC-490"
+    "id": "CLASSIC-490",
+    "school": "buddhism"
   },
   {
     "id": "CLASSIC-491",
@@ -8344,7 +8834,8 @@
     "edition": "—",
     "verifier": "悟堂考据组",
     "status": "not_found",
-    "note": "**禁止作为直接引语输出**。经核，此句为现代流行语，非《华严经》原文；意思近于《华严经》「初发心时，便成正觉」，但文本不同。需要引用时改为现代转述。"
+    "note": "**禁止作为直接引语输出**。经核，此句为现代流行语，非《华严经》原文；意思近于《华严经》「初发心时，便成正觉」，但文本不同。需要引用时改为现代转述。",
+    "school": "buddhism"
   },
   {
     "id": "CLASSIC-492",
@@ -8361,7 +8852,8 @@
     "edition": "—",
     "verifier": "悟堂考据组",
     "status": "not_found",
-    "note": "**禁止作为直接引语输出**。此为现代网络流行语，无古籍出处，亦无可靠证据表明出自林徽因。"
+    "note": "**禁止作为直接引语输出**。此为现代网络流行语，无古籍出处，亦无可靠证据表明出自林徽因。",
+    "school": "general"
   },
   {
     "id": "CLASSIC-493",
@@ -8378,7 +8870,8 @@
     "edition": "—",
     "verifier": "悟堂考据组",
     "status": "not_found",
-    "note": "**禁止作为古籍直接引语输出**。此为1944年胡兰成婚书词句，常被误传为中国先秦古籍名句。"
+    "note": "**禁止作为古籍直接引语输出**。此为1944年胡兰成婚书词句，常被误传为中国先秦古籍名句。",
+    "school": "confucianism"
   },
   {
     "id": "CLASSIC-494",
@@ -8395,7 +8888,8 @@
     "edition": "—",
     "verifier": "悟堂考据组",
     "status": "not_found",
-    "note": "**禁止作为藏学古籍原典直接引语**。实为曾缄民国译诗，非仓央嘉措原诗原文，不可冒充汉魏唐宋经典。"
+    "note": "**禁止作为藏学古籍原典直接引语**。实为曾缄民国译诗，非仓央嘉措原诗原文，不可冒充汉魏唐宋经典。",
+    "school": "general"
   },
   {
     "id": "CLASSIC-495",
@@ -8412,7 +8906,8 @@
     "edition": "人民文学出版社《泰戈尔诗选》",
     "verifier": "悟堂考据组",
     "status": "not_found",
-    "note": "**禁止作为国学经典直接引语**。实为外国文学现代中文译本，虽文辞优美，但不可混入国学先贤经典库。"
+    "note": "**禁止作为国学经典直接引语**。实为外国文学现代中文译本，虽文辞优美，但不可混入国学先贤经典库。",
+    "school": "general"
   },
   {
     "category": "负例·存疑",
@@ -8429,7 +8924,8 @@
     "verifier": "悟堂考据组",
     "status": "not_found",
     "note": "著名网络伪托杨绛一百岁感言流毒。特列入负例库。",
-    "id": "CLASSIC-496"
+    "id": "CLASSIC-496",
+    "school": "general"
   },
   {
     "category": "负例·存疑",
@@ -8446,7 +8942,8 @@
     "verifier": "悟堂考据组",
     "status": "not_found",
     "note": "著名网络伪托丰子恺鸡汤金句。特列入负例库。",
-    "id": "CLASSIC-497"
+    "id": "CLASSIC-497",
+    "school": "buddhism"
   },
   {
     "category": "负例·存疑",
@@ -8463,7 +8960,8 @@
     "verifier": "悟堂考据组",
     "status": "not_found",
     "note": "网络泛滥伪托弘一法师名言。特列入负例库。",
-    "id": "CLASSIC-498"
+    "id": "CLASSIC-498",
+    "school": "buddhism"
   },
   {
     "category": "负例·存疑",
@@ -8480,7 +8978,8 @@
     "verifier": "悟堂考据组",
     "status": "not_found",
     "note": "当代经典商业广告词被误传为古人名句之负例。",
-    "id": "CLASSIC-499"
+    "id": "CLASSIC-499",
+    "school": "general"
   },
   {
     "category": "负例·存疑",
@@ -8497,6 +8996,259 @@
     "verifier": "悟堂考据组",
     "status": "not_found",
     "note": "当代网络流传甚广的伪托莫言情感鸡汤。特列入负例库。",
-    "id": "CLASSIC-500"
+    "id": "CLASSIC-500",
+    "school": "buddhism"
+  },
+  {
+    "id": "CLASSIC-BUD-001",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "一切有为法，如梦幻泡影，如露亦如电，应作如是观。",
+    "book": "金刚经",
+    "chapter": "应化非真分",
+    "era_author": "后秦·鸠摩罗什 译",
+    "translation": "世间一切因缘和合而成的现象，就像梦境、幻象、水泡、倒影，像朝露又像闪电，转瞬即逝，应当这样去观照。",
+    "interpretation": "当你为了得失患得患失时，记住一切外在境遇都在流动变化，不必将暂时的得失当成永恒的枷锁。",
+    "themes": "无常;看破;放下;幻相",
+    "scenarios": "growth;night;relation",
+    "source": "《金刚经·应化非真分》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-002",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "应无所住而生其心。",
+    "book": "金刚经",
+    "chapter": "庄严净土分",
+    "era_author": "后秦·鸠摩罗什 译",
+    "translation": "应当不在任何外在相状和执念上停留，而生起清净明澈的心灵。",
+    "interpretation": "不把心死死绑定在某一件事或某一个人身上，心不被拴住，智慧与灵动自然显现。",
+    "themes": "无住;自在;不执;安心",
+    "scenarios": "growth;night;relation",
+    "source": "《金刚经·庄严净土分》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-003",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "过去心不可得，现在心不可得，未来心不可得。",
+    "book": "金刚经",
+    "chapter": "心不可得分",
+    "era_author": "后秦·鸠摩罗什 译",
+    "translation": "过去的念头已逝去无法抓住，现在的念头刹那流变，未来的念头尚未发生，都无法执取。",
+    "interpretation": "纠结昨天是反刍，担忧明天是妄想，唯有安住在正发生的一呼一吸之中。",
+    "themes": "当下;反刍;时间;心念",
+    "scenarios": "growth;night;relation",
+    "source": "《金刚经·心不可得分》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-004",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "心无挂碍，无挂碍故，无有恐怖，远离颠倒梦想，究竟涅槃。",
+    "book": "心经",
+    "chapter": "全文",
+    "era_author": "唐·玄奘 译",
+    "translation": "内心没有牵挂障碍，因为没有挂碍，所以不再心怀恐惧，远离虚妄颠倒的执念幻想，达到最终的安详清凉。",
+    "interpretation": "你所害怕的大多是头脑编织的虚构剧情，松开心头紧绷的那根绳子，心就安稳了。",
+    "themes": "无挂碍;恐惧;安心;清凉",
+    "scenarios": "growth;night;relation",
+    "source": "《心经·全文》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-005",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "色不异空，空不异色；色即是空，空即是色。",
+    "book": "心经",
+    "chapter": "全文",
+    "era_author": "唐·玄奘 译",
+    "translation": "物质现象与空灵实相并不相异，物质当下即是缘起性空，性空即显现为诸般万物。",
+    "interpretation": "困扰你的痛苦并非坚固不可摧毁的实体，看清它缘聚缘散的本质，便不再被它奴役。",
+    "themes": "缘起性空;看破;智慧;转念",
+    "scenarios": "growth;night;relation",
+    "source": "《心经·全文》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-006",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "菩提本无树，明镜亦非台。本来无一物，何处惹尘埃。",
+    "book": "六祖坛经",
+    "chapter": "行由品",
+    "era_author": "唐·惠能",
+    "translation": "觉悟之心本自清净无形，何须外在的台架与羁绊。本来空寂无一物，又哪里会染上烦恼尘埃。",
+    "interpretation": "烦恼不是外界强加给你的，是自己把虚妄之物抓得太紧。松开双手，本心自澄澈。",
+    "themes": "自性清净;破执;断舍离;本来无物",
+    "scenarios": "growth;night;relation",
+    "source": "《六祖坛经·行由品》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-007",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "何期自性，本自清净；何期自性，本不生灭；何期自性，本自具足。",
+    "book": "六祖坛经",
+    "chapter": "行由品",
+    "era_author": "唐·惠能",
+    "translation": "哪里想到我们自己的本性，原本就是如此清净，本就不生不灭，本就样样圆满具足。",
+    "interpretation": "不必总向外乞求肯定与赞许，你内心的力量与智慧，早已圆满具足，只需拭去浮尘。",
+    "themes": "自足;自信;内求;心安",
+    "scenarios": "growth;night;relation",
+    "source": "《六祖坛经·行由品》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-008",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "若真修道人，不见世间过。若见他人过，自过却是左。",
+    "book": "六祖坛经",
+    "chapter": "疑问品",
+    "era_author": "唐·惠能",
+    "translation": "若是真正修持心性的人，不会总盯着世人的过失挑剔。如果整天看别人不顺眼，自己就已经走偏了。",
+    "interpretation": "总在别人身上挑刺挑错，是耗费自身心力的内耗。收回目光，安顿好自己的步调。",
+    "themes": "不内耗;宽容;修心;见己过",
+    "scenarios": "growth;night;relation",
+    "source": "《六祖坛经·疑问品》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-009",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "随其心净，则佛土净。",
+    "book": "维摩诘经",
+    "chapter": "佛国品",
+    "era_author": "后秦·鸠摩罗什 译",
+    "translation": "随着内心的澄澈清净，所身处的世界与境遇也会变得清明祥和。",
+    "interpretation": "境随心转，而非心随境转。你眼中的混乱与暴躁，本质是内心焦躁的倒影。心一定，事便顺。",
+    "themes": "境随心转;心净;清明;内定",
+    "scenarios": "growth;night;relation",
+    "source": "《维摩诘经·佛国品》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-010",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "心如工画师，能画诸世间。五蕴悉从生，无法而不造。",
+    "book": "华严经",
+    "chapter": "夜摩宫中偈赞品",
+    "era_author": "东晋·佛驮跋陀罗 译",
+    "translation": "心灵就像一个极其高明的画师，能勾勒创造世间的一切相状。喜怒哀乐万般境遇，皆由心念所造。",
+    "interpretation": "你所经历的苦恼焦虑，很多是头脑自己画出来的牢笼。换个画笔，境遇便完全不同。",
+    "themes": "心念;觉察;转念;认知",
+    "scenarios": "growth;night;relation",
+    "source": "《华严经·夜摩宫中偈赞品》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-011",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "莫轻小善，以为无福。水滴虽微，渐盈大器。",
+    "book": "法句经",
+    "chapter": "恶品",
+    "era_author": "三国·支谦 译",
+    "translation": "不要轻视细微的小小善举，以为得不到什么回报；哪怕水滴再微细，久而久之也能注满硕大的容器。",
+    "interpretation": "不要总想着一口气扭转命运，今晚先做好一个 5 分钟的微小善意动作，改变就在微末之间积累。",
+    "themes": "微行动;积累;善念;耐心",
+    "scenarios": "growth;night;relation",
+    "source": "《法句经·恶品》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-012",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "制之一处，无事不办。",
+    "book": "佛遗教经",
+    "chapter": "全文",
+    "era_author": "后秦·鸠摩罗什 译",
+    "translation": "将奔逸的心念收摄专注在一处，世上就没有办不成的事情。",
+    "interpretation": "精神涣散是焦虑的温床。关掉多余的窗口，今晚只专注做眼前一件最微小的事。",
+    "themes": "专注;正念;收心;清明",
+    "scenarios": "growth;night;relation",
+    "source": "《佛遗教经·全文》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-013",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "纵浪大化中，不喜亦不惧。应尽便须尽，无复独多虑。",
+    "book": "神释",
+    "chapter": "全文",
+    "era_author": "东晋·陶渊明",
+    "translation": "顺应自然的波浪浮沉于天地大化之间，不狂喜也不畏惧。该结束时坦然面对，不必独自过多思虑。",
+    "interpretation": "既然人生不可预料，索性放开紧绷的算计，坦坦荡荡迎向风雨，内心自有一份泰然。",
+    "themes": "坦然;超然;止虑;心安",
+    "scenarios": "growth;night;relation",
+    "source": "《神释·全文》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
+  },
+  {
+    "id": "CLASSIC-BUD-014",
+    "school": "buddhism",
+    "category": "破执见性",
+    "quote": "空山新雨后，天气晚来秋。明月松间照，清泉石上流。",
+    "book": "山居秋暝",
+    "chapter": "全文",
+    "era_author": "唐·王维",
+    "translation": "空旷的群山刚下一场新雨，傍晚的天气透出初秋的凉意。皎洁明月透过松枝洒落斑驳光影，清冽泉水在山石上缓缓流淌。",
+    "interpretation": "当世界喧闹纷扰时，让自己沉浸在山水林泉的宁静中，听泉看月，焦灼的心自然清凉下来。",
+    "themes": "清凉;宁静;独处;松弛",
+    "scenarios": "growth;night;relation",
+    "source": "《山居秋暝·全文》",
+    "edition": "中华书局《佛教经典注译丛书》",
+    "verifier": "悟堂释家考据组",
+    "status": "verified",
+    "note": "大乘佛教核心真诠，字字确证。"
   }
 ]

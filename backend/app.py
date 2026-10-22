@@ -25,11 +25,14 @@ import uvicorn
 
 from backend.config import settings
 from backend.routers.relief import router as relief_router
+from backend.routers.wellbeing import router as wellbeing_router
+from backend.routers.growth import router as growth_router
+from backend.routers.card_export import router as card_export_router
 
 app = FastAPI(
     title="悟堂·东方解忧处 AI 引擎",
-    description="基于 RAG 权威考据典籍与品牌文风铁律的温和解忧生成服务",
-    version="2.0.0",
+    description="基于 RAG 权威考据典籍、官方 DeepSeek-v4-flash 与品牌文风铁律的解忧与个人成长支持服务 (PRD 3.0)",
+    version="3.0.0",
     docs_url="/docs",
     redoc_url="/redoc"
 )
@@ -53,6 +56,9 @@ if assets_dir.exists():
 
 # 挂载业务路由
 app.include_router(relief_router)
+app.include_router(wellbeing_router)
+app.include_router(growth_router)
+app.include_router(card_export_router)
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
@@ -81,15 +87,19 @@ async def status_dashboard():
     </head>
     <body>
         <div class="card">
-            <span class="tag">悟堂 PRD 2.0 AI 服务引擎</span>
+            <span class="tag">悟堂 PRD 3.0 AI 服务引擎 (东方解忧 + 个人成长 + 心境健康)</span>
             <h1>🌿 悟堂 · 东方解忧处 AI 后台运行中</h1>
-            <p style="color: #6B635B; font-size: 14px;">不说教，先接住；借古人的智慧，走好眼前一步。</p>
+            <p style="color: #6B635B; font-size: 14px;">不说教，不预测；先接住，再看清，最后走一步。</p>
             
-            <div class="status-item"><span>服务状态</span><strong style="color:#2E7D32;">● 正常运转中</strong></div>
-            <div class="status-item"><span>大模型配置</span><strong>{'已连接真实 API' if settings.is_llm_configured else '韧性高保真流式生成模式'}</strong></div>
+            <div class="status-item"><span>服务状态</span><strong style="color:#2E7D32;">● 正常运转中 (v3.0.0)</strong></div>
+            <div class="status-item"><span>官方大模型驱动</span><strong>{'已连接官方 DeepSeek API' if settings.is_llm_configured else '韧性高保真流式生成模式'}</strong></div>
             <div class="status-item"><span>模型名称</span><code>{settings.LLM_MODEL}</code></div>
             <div class="status-item"><span>接口地址</span><code>{settings.LLM_BASE_URL}</code></div>
-            <div class="status-item"><span>流式端点</span><code>POST /api/relief/stream</code></div>
+            <div class="status-item"><span>解忧流式端点</span><code>POST /api/relief/stream</code></div>
+            <div class="status-item"><span>心境健康自评</span><code>GET /api/wellbeing/instruments ｜ POST /api/wellbeing/score</code></div>
+            <div class="status-item"><span>专业资源导航</span><code>GET /api/resources</code></div>
+            <div class="status-item"><span>AI 日记提炼</span><code>POST /api/journal/organize</code></div>
+            <div class="status-item"><span>情境练习室</span><code>POST /api/practice/chat</code></div>
             <div class="status-item"><span>健康监测</span><a href="/api/health" target="_blank" style="color:#8C3A2B;">/api/health</a></div>
             
             <div style="margin-top:20px;">

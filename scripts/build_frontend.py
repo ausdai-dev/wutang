@@ -62,6 +62,57 @@ def main():
         with open(zen_path, encoding="utf-8") as f:
             zen_assets = json.load(f)
 
+    # 加载 96 张超清东方智慧觉察卡牌库 (848x1264)
+    cards_96 = []
+    c96_path = os.path.join(ROOT, "frontend", "assets", "cards_96_catalog.json")
+    if os.path.exists(c96_path):
+        with open(c96_path, encoding="utf-8") as f:
+            cards_96 = json.load(f)
+
+    # 加载 108 张儒释道百八常道卡牌谱系 (PRD 4.0)
+    cards_108 = []
+    c108_path = os.path.join(ROOT, "frontend", "assets", "cards_108_catalog.json")
+    if os.path.exists(c108_path):
+        with open(c108_path, encoding="utf-8") as f:
+            cards_108 = json.load(f)
+
+    # 加载 PRD 3.0 心境健康、专业资源、主题卡牌包与情境练习室
+    instruments = []
+    inst_path = os.path.join(ROOT, "knowledge", "wellbeing", "instrument_registry.json")
+    if os.path.exists(inst_path):
+        with open(inst_path, encoding="utf-8") as f:
+            instruments = json.load(f)
+
+    scoring_rules = {}
+    rules_path = os.path.join(ROOT, "knowledge", "wellbeing", "scoring_rules", "pss10_scoring.json")
+    if os.path.exists(rules_path):
+        with open(rules_path, encoding="utf-8") as f:
+            scoring_rules["pss-10"] = json.load(f)
+
+    interpretation_copy = {}
+    copy_path = os.path.join(ROOT, "knowledge", "wellbeing", "interpretation_copy", "pss10_copy.json")
+    if os.path.exists(copy_path):
+        with open(copy_path, encoding="utf-8") as f:
+            interpretation_copy["pss-10"] = json.load(f)
+
+    mental_resources = []
+    res_path = os.path.join(ROOT, "knowledge", "resources", "mental_health_resources.json")
+    if os.path.exists(res_path):
+        with open(res_path, encoding="utf-8") as f:
+            mental_resources = json.load(f)
+
+    theme_packs = []
+    tp_path = os.path.join(ROOT, "knowledge", "theme_packs.json")
+    if os.path.exists(tp_path):
+        with open(tp_path, encoding="utf-8") as f:
+            theme_packs = json.load(f)
+
+    practice_scenarios = []
+    sc_path = os.path.join(ROOT, "knowledge", "practice_scenarios.json")
+    if os.path.exists(sc_path):
+        with open(sc_path, encoding="utf-8") as f:
+            practice_scenarios = json.load(f)
+
     payload = dict(
         classics=classics,
         scenarios=wd["scenarios"],
@@ -78,6 +129,15 @@ def main():
         cardsAction=cards_action,
         cardsManifest=cards_manifest,
         zenAssets=zen_assets,
+        zenCards96=cards_96,
+        zenCards108=cards_108,
+        # PRD 3.0 新增
+        instruments=instruments,
+        scoringRules=scoring_rules,
+        interpretationCopy=interpretation_copy,
+        mentalResources=mental_resources,
+        themePacks=theme_packs,
+        practiceScenarios=practice_scenarios,
     )
     # 内联时避免 </script> 破坏 HTML
     blob = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")

@@ -1,0 +1,112 @@
+[
+  {
+    "resource_id": "RES-NAT-001",
+    "region": "全国",
+    "resource_name": "全国希望 24 小时心理危机援助热线",
+    "service_type": "hotline",
+    "contact_info": "400-161-9995",
+    "source_url": "中国心理卫生协会 / 全国危机干预中心官方发布",
+    "last_verified_at": "2026-10-19",
+    "availability_note": "7×24小时全天候免费接听 · 适合突发心理压力与危机倾诉",
+    "status": "verified"
+  },
+  {
+    "resource_id": "RES-NAT-002",
+    "region": "全国",
+    "resource_name": "共青团 12355 青少年身心健康服务台",
+    "service_type": "hotline",
+    "contact_info": "12355",
+    "source_url": "共青团中央权益部官方网站",
+    "last_verified_at": "2026-10-19",
+    "availability_note": "工作日及周末服务 · 心理咨询与青少年权益法律援助",
+    "status": "verified"
+  },
+  {
+    "resource_id": "RES-NAT-003",
+    "region": "全国",
+    "resource_name": "全国妇联妇女心理维权与家庭关爱热线",
+    "service_type": "hotline",
+    "contact_info": "12338",
+    "source_url": "中华全国妇女联合会官方平台",
+    "last_verified_at": "2026-10-19",
+    "availability_note": "女性身心关怀、家庭关系与情绪支持",
+    "status": "verified"
+  },
+  {
+    "resource_id": "RES-BJ-001",
+    "region": "北京",
+    "resource_name": "北京心理危机研究与干预中心",
+    "service_type": "hotline",
+    "contact_info": "010-82951332 / 800-810-1117",
+    "source_url": "北京回龙观医院官方网站",
+    "last_verified_at": "2026-10-19",
+    "availability_note": "24小时专业心理危机援助与情绪疏导热线",
+    "status": "verified"
+  },
+  {
+    "resource_id": "RES-BJ-002",
+    "region": "北京",
+    "resource_name": "北京大学第六医院（精神卫生研究所）",
+    "service_type": "medical",
+    "contact_info": "北京市海淀区花园北路51号 / 114挂号预约",
+    "source_url": "国家精神心理疾病临床医学研究中心官方网站",
+    "last_verified_at": "2026-10-19",
+    "availability_note": "国家精神专科三甲医院 · 门诊周一至周日开放",
+    "status": "verified"
+  },
+  {
+    "resource_id": "RES-SH-001",
+    "region": "上海",
+    "resource_name": "上海市心理援助热线 (上海市精神卫生中心)",
+    "service_type": "hotline",
+    "contact_info": "021-962525",
+    "source_url": "上海市卫生健康委员会官方公示",
+    "last_verified_at": "2026-10-19",
+    "availability_note": "7×24小时专业接听 · 知名宛平南路600号公立心理热线",
+    "status": "verified"
+  },
+  {
+    "resource_id": "RES-SH-002",
+    "region": "上海",
+    "resource_name": "上海市精神卫生中心临床心理科",
+    "service_type": "medical",
+    "contact_info": "上海市徐汇区宛平南路600号",
+    "source_url": "上海申康医院发展中心官方挂号平台",
+    "last_verified_at": "2026-10-19",
+    "availability_note": "情绪障碍、睡眠障碍与心理咨询专科门诊",
+    "status": "verified"
+  },
+  {
+    "resource_id": "RES-GD-001",
+    "region": "广东",
+    "resource_name": "广州市心理援助热线 (广州医科大学附属脑科医院)",
+    "service_type": "hotline",
+    "contact_info": "020-81899120 / 020-12320-5",
+    "source_url": "广州医科大学附属脑科医院官网",
+    "last_verified_at": "2026-10-19",
+    "availability_note": "24小时免费心理危机干预热线",
+    "status": "verified"
+  },
+  {
+    "resource_id": "RES-GD-002",
+    "region": "广东",
+    "resource_name": "深圳市康宁医院 (精神专科三甲)",
+    "service_type": "medical",
+    "contact_info": "深圳市罗湖区翠竹路1080号 / 0755-25629459",
+    "source_url": "深圳市卫生健康委官网",
+    "last_verified_at": "2026-10-19",
+    "availability_note": "专业心理咨询与临床身心评估门诊",
+    "status": "verified"
+  },
+  {
+    "resource_id": "RES-ZJ-001",
+    "region": "浙江",
+    "resource_name": "浙江省心理援助热线 (杭州市第七人民医院)",
+    "service_type": "hotline",
+    "contact_info": "0571-85029595",
+    "source_url": "浙江省卫健委官方热线名录",
+    "last_verified_at": "2026-10-19",
+    "availability_note": "24小时全省免费心理危机干预专线",
+    "status": "verified"
+  }
+]

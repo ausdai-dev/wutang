@@ -1,0 +1,56 @@
+[
+  {
+    "pack_id": "pack-rumination",
+    "name": "停止内耗",
+    "icon": "🌊",
+    "tagline": "在念头的大风暴里，找到内心的锚点",
+    "description": "专为思绪反复、深夜反刍、自我怀疑的时刻准备。不强行制止念头，而是看清它们只是过客。",
+    "card_ids": ["M-002", "W-002", "A-001"],
+    "theme_tag": "night"
+  },
+  {
+    "pack_id": "pack-boundaries",
+    "name": "关系边界",
+    "icon": "🎋",
+    "tagline": "守住自己的一寸清凉，也是对关系的善待",
+    "description": "面对讨好、难以开口拒绝、担心他人失望的困扰。温和划定界限，保留尊重彼此的空间。",
+    "card_ids": ["M-001", "W-001", "A-002"],
+    "theme_tag": "relation"
+  },
+  {
+    "pack_id": "pack-work",
+    "name": "职场成长",
+    "icon": "⛰️",
+    "tagline": "区分事实与评价，卸下不属于你的班味",
+    "description": "面对工作批评、任务过载、职场焦虑。拆解可控动作，把注意力从被动评判转回自我精进。",
+    "card_ids": ["M-003", "W-003", "A-003"],
+    "theme_tag": "work"
+  },
+  {
+    "pack_id": "pack-mindfulness",
+    "name": "安住当下",
+    "icon": "🍵",
+    "tagline": "风动幡动，不如这一刻先让心歇一歇",
+    "description": "在疲惫或不知所措的时刻，通过一次深呼吸、一杯清茶的专注，让神经系统重新恢复平静。",
+    "card_ids": ["M-004", "W-004", "A-004"],
+    "theme_tag": "night"
+  },
+  {
+    "pack_id": "pack-choice",
+    "name": "人生选择",
+    "icon": "🧭",
+    "tagline": "看清当下的得失心，走踏实微小的一步",
+    "description": "面对十字路口、转行抉择、瞻前顾后的迷茫。不求一步看透未来，只在当下做力所能及的尝试。",
+    "card_ids": ["M-003", "W-002", "A-003"],
+    "theme_tag": "growth"
+  },
+  {
+    "pack_id": "pack-selfcare",
+    "name": "自我关怀",
+    "icon": "🕯️",
+    "tagline": "允许自己疲惫，是真正坚韧的开始",
+    "description": "当精力透支、过度自责时，像对待最好的朋友一样，温柔接纳自己的脆弱与局限。",
+    "card_ids": ["M-004", "W-001", "A-004"],
+    "theme_tag": "growth"
+  }
+]

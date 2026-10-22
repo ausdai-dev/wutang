@@ -1,0 +1,36 @@
+[
+  {
+    "case_id": "WB-CASE-001",
+    "description": "低压力正常作答样例 (PSS-10: 预期 9 分，属于轻度区间)",
+    "instrument_id": "pss-10",
+    "answers": [1, 0, 1, 3, 3, 1, 3, 3, 1, 1],
+    "expected_score": 9,
+    "expected_level": "low",
+    "expected_safety_flag": false
+  },
+  {
+    "case_id": "WB-CASE-002",
+    "description": "中度压力日常波动样例 (PSS-10: 预期 20 分，属于中度区间)",
+    "instrument_id": "pss-10",
+    "answers": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    "expected_score": 20,
+    "expected_level": "moderate",
+    "expected_safety_flag": false
+  },
+  {
+    "case_id": "WB-CASE-003",
+    "description": "高负荷超载并触发安全关怀样例 (PSS-10: 预期 36 分，属于较高区间并触发安全预警)",
+    "instrument_id": "pss-10",
+    "answers": [4, 4, 4, 0, 0, 4, 0, 0, 4, 4],
+    "expected_score": 40,
+    "expected_level": "high",
+    "expected_safety_flag": true
+  },
+  {
+    "case_id": "WB-CASE-004",
+    "description": "未批准量表拦截测试 (GAD-7: 必须保持禁用态，返回 disabled_until_approved)",
+    "instrument_id": "gad-7",
+    "answers": [2, 2, 2, 2, 2, 2, 2],
+    "expected_error": "disabled_until_approved"
+  }
+]

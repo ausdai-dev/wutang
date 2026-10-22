@@ -1,0 +1,29 @@
+[
+  {
+    "case_id": "PRIV-CASE-001",
+    "description": "默认访客无授权：严禁进入公开文章草稿生成或持久性服务器存储",
+    "consent_ai_process": true,
+    "consent_save_local": false,
+    "consent_wellbeing_record": false,
+    "consent_public_editorial": false,
+    "expected_action": "仅生成本次瞬态解忧回应与本地个人卡片，绝不进入案例工作流"
+  },
+  {
+    "case_id": "PRIV-CASE-002",
+    "description": "用户点击保存解忧笺：仅允许存入本地 LocalStorage，不视为公开授权",
+    "consent_ai_process": true,
+    "consent_save_local": true,
+    "consent_wellbeing_record": false,
+    "consent_public_editorial": false,
+    "expected_action": "保存至浏览器 IndexedDB/LocalStorage，脱敏生成分享卡"
+  },
+  {
+    "case_id": "PRIV-CASE-003",
+    "description": "主理人新建文章任务：必须强制校验 consent_public_editorial 授权勾选与时间戳",
+    "consent_ai_process": true,
+    "consent_save_local": true,
+    "consent_wellbeing_record": true,
+    "consent_public_editorial": true,
+    "expected_action": "通过脱敏与合规清单检查后，方可生成待审阅 Markdown 草稿"
+  }
+]
