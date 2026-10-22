@@ -7967,6 +7967,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 }
 
 @media (max-width: 640px) {
+  html, body { overflow-x: hidden; }
+  .app-container { padding: 12px 14px 48px; }
+  .card { padding: 22px 16px; }
+
   .practice-scenario-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
@@ -7981,6 +7985,72 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     grid-template-columns: 1fr;
     gap: 12px;
   }
+
+  /* 卡牌收藏 / 卡牌库网格：避免 280px 最小列宽撑破容器 */
+  .studio-card-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* 主题卡牌包：避免 260px 最小列宽撑破容器 */
+  .theme-pack-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .theme-pack-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* 主理人子导航改为换行，避免横向滚动截断 */
+  .studio-subnav {
+    flex-wrap: wrap;
+    row-gap: 6px;
+    overflow-x: visible;
+  }
+
+  /* 顶栏：音乐按钮独立置于右上角，不再与 Tab 同排 */
+  .global-header {
+    position: relative;
+  }
+  .brand-group {
+    padding-right: 52px;
+  }
+  .header-right {
+    width: 100%;
+  }
+  .bgm-control-wrap {
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+  .bgm-panel {
+    width: min(310px, calc(100vw - 36px));
+  }
+
+  /* 下拉框、输入框不超出容器 */
+  .form-select, .form-input, input, select, textarea, img, canvas, video {
+    max-width: 100%;
+  }
+
+  /* 专属解脱之道 3D 卡牌：改用真实高度，内容不再溢出卡框 */
+  .liberation-card-3d {
+    display: grid;
+    aspect-ratio: auto;
+  }
+  .liberation-face {
+    position: relative;
+    grid-area: 1 / 1;
+    padding: 18px;
+  }
+  .card-main-title {
+    font-size: 34px;
+    letter-spacing: 3px;
+  }
+  .card-master-tag { font-size: 12px; margin-bottom: 8px; }
+  .card-top-id { font-size: 10px; }
+  .card-aphorism { font-size: 15px; padding: 10px 12px; }
+  .card-english-motto { font-size: 10.5px; }
 }
 
 </style>
