@@ -1,0 +1,37 @@
+"color:var(--color-primary);font-weight:600;">▶ 播放</button>
+
+            <button class="bgm-ctrl-btn" id="btnBgmNext" title="下一曲">下一曲 ⏭</button>
+
+          </div>
+
+
+
+          <div class="bgm-volume-row">
+
+            <span id="bgmVolIcon" style="cursor:pointer;user-select:none;font-size:12px;" title="静音切换">音量</span>
+
+            <input type="range" id="bgmVolumeSlider" class="bgm-volume-slider" min="0" max="100" value="35" title="音量调节">
+
+            <span id="bgmVolVal" style="min-width:32px;text-align:right;">35%</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </header>
+
+
+
+  <!-- ======================================================================
+
+       第一部分：用户端「东方解忧处」
+
+       ====================================================================== -->
+
+  <main 
