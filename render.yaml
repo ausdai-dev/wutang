@@ -1,13 +1,14 @@
 # Render 一键部署蓝图 (Render Blueprint)
-# 悟堂 · 方案 1 架构：FastAPI 后端 Web Service + Managed PostgreSQL 数据库
+# 悟堂 · FastAPI 后端独立 Web Service 零配置即开即用
 services:
   - type: web
     name: wutang-backend
     env: python
     region: singapore # 新加坡节点，亚洲与国内访问延迟最低
     plan: free # 可选 free 或 starter ($7/月，7x24小时不休眠)
-    buildCommand: "pip install -r backend/requirements.txt"
+    buildCommand: "pip install -r requirements.txt"
     startCommand: "python -m uvicorn backend.app:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /api/health
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.8
@@ -16,15 +17,6 @@ services:
       - key: LLM_MODEL
         value: deepseek-v4-flash
       - key: LLM_API_KEY
-        sync: false # 在 Render 控制台安全填入您的 DeepSeek API Key
-      - key: DATABASE_URL
-        fromDatabase:
-          name: wutang-postgres
-          property: connectionString
-
-databases:
-  - name: wutang-postgres
-    region: singapore
-    plan: free # Render 托管 PostgreSQL 免费层
-    databaseName: wutang_db
-    user: wutang_user
+        sync: false # 请在 Render 控制台 Environment 处填入您的 DeepSeek API Key (sk-xxxx)
+      - key: ENABLE_FALLBACK_STREAM
+        value: "true"
