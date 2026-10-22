@@ -1226,7 +1226,7 @@ body::after {
 
   display: grid;
 
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 
   gap: 12px;
 
@@ -1236,7 +1236,7 @@ body::after {
 
 @media (max-width: 600px) {
 
-  .scenario-grid { grid-template-columns: 1fr; gap: 9px; }
+  .scenario-grid { grid-template-columns: repeat(2, 1fr); gap: 9px; }
 
 }
 
@@ -3888,40 +3888,69 @@ body::after {
 
 
 
-.compass-mini-ring {
-
+/* 迷你莲花 · 双层旋转动画 */
+.lotus-mini {
+  position: relative;
   width: 58px;
-
   height: 58px;
-
-  border-radius: 50%;
-
-  border: 1.5px dashed #C9BEAD;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
   margin-bottom: 16px;
-
-  animation: compassSpin 20s linear infinite;
-
-  box-shadow: 0 0 16px rgba(196, 164, 124, 0.2);
-
+  filter: drop-shadow(0 0 8px rgba(196, 164, 124, 0.28));
+  animation: lotusBreath 4.5s ease-in-out infinite;
 }
 
+@keyframes lotusBreath {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(196, 164, 124, 0.28)); }
+  50% { transform: scale(1.4); filter: drop-shadow(0 0 14px rgba(196, 164, 124, 0.5)); }
+}
 
+.lotus-ring {
+  position: absolute;
+  inset: 0;
+}
 
-.compass-mini-star {
+.lotus-ring i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 13px;
+  height: 25px;
+  margin: -25px 0 0 -6.5px;
+  transform-origin: 50% 100%;
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  background: linear-gradient(to top, rgba(159, 116, 48, 0.1), rgba(159, 116, 48, 0.78));
+}
 
-  font-size: 20px;
+.lotus-ring i:nth-child(1) { transform: rotate(0deg); }
+.lotus-ring i:nth-child(2) { transform: rotate(45deg); }
+.lotus-ring i:nth-child(3) { transform: rotate(90deg); }
+.lotus-ring i:nth-child(4) { transform: rotate(135deg); }
+.lotus-ring i:nth-child(5) { transform: rotate(180deg); }
+.lotus-ring i:nth-child(6) { transform: rotate(225deg); }
+.lotus-ring i:nth-child(7) { transform: rotate(270deg); }
+.lotus-ring i:nth-child(8) { transform: rotate(315deg); }
 
-  color: var(--color-gold);
+.lotus-ring-outer {
+  animation: compassSpin 22s linear infinite;
+}
 
-  line-height: 1;
+.lotus-ring-inner {
+  animation: lotusSpinInner 30s linear infinite;
+}
 
+.lotus-ring-inner i {
+  background: linear-gradient(to top, rgba(159, 116, 48, 0.06), rgba(159, 116, 48, 0.45));
+}
+
+.lotus-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 10px rgba(159, 116, 48, 0.45);
 }
 
 
@@ -4109,6 +4138,14 @@ body::after {
   0% { transform: rotate(0deg); }
 
   100% { transform: rotate(360deg); }
+
+}
+
+@keyframes lotusSpinInner {
+
+  0% { transform: scale(0.58) rotate(22.5deg); }
+
+  100% { transform: scale(0.58) rotate(-337.5deg); }
 
 }
 
@@ -5574,64 +5611,29 @@ body::after {
 
 }
 
-.card-starburst {
-
+/* 印章 · 悟 */
+.card-seal {
   position: relative;
-
-  width: 50px;
-
-  height: 50px;
-
+  width: 44px;
+  height: 44px;
+  background: var(--color-primary);
+  border-radius: 6px;
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: #FDF6EC;
+  box-shadow: 0 0 10px rgba(142, 41, 39, 0.35);
 }
 
-.card-starburst-ray {
-
+.card-seal::before {
+  content: '';
   position: absolute;
-
-  background: linear-gradient(to bottom, transparent, rgba(255, 215, 0, 0.85), transparent);
-
-}
-
-.card-starburst-ray.v { width: 1.5px; height: 50px; }
-
-.card-starburst-ray.h { height: 1.5px; width: 50px; }
-
-.card-starburst-ray.d1 { width: 1px; height: 38px; transform: rotate(45deg); opacity: 0.6; }
-
-.card-starburst-ray.d2 { width: 1px; height: 38px; transform: rotate(-45deg); opacity: 0.6; }
-
-.card-core-gem {
-
-  position: relative;
-
-  width: 28px;
-
-  height: 28px;
-
-  border-radius: 50%;
-
-  background: radial-gradient(circle, #fff0c2 0%, #f59e0b 60%, #8e2927 100%);
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.8);
-
-  font-size: 14px;
-
-  color: #120a32;
-
-  font-weight: bold;
-
+  inset: 3px;
+  border: 1.5px solid rgba(253, 246, 236, 0.5);
+  border-radius: 3px;
 }
 
 .card-back-footer {
@@ -5784,13 +5786,11 @@ body::after {
 
   letter-spacing: 0.05em;
 
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+
 }
-
-.card-front-tag.mindset { background: #FEF3C7; color: #92400E; }
-
-.card-front-tag.wisdom { background: #EDE9FE; color: #5B21B6; }
-
-.card-front-tag.action { background: #D1FAE5; color: #065F46; }
 
 
 
@@ -7736,11 +7736,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <button class="mode-tab active" id="tabRelief" title="东方解忧咨询与抽牌">解忧</button>
 
-        <button class="mode-tab" id="tabGrowth" title="每日心境、AI心事日记与微行动复盘">成长记录</button>
+        <button class="mode-tab" id="tabGrowth" title="每日心境、AI心事日记与微行动复盘">成长</button>
 
-        <button class="mode-tab" id="tabWellbeing" title="心境健康自评与专业资源导航">心境健康</button>
+        <button class="mode-tab" id="tabWellbeing" title="心境健康自评与专业资源导航">心境</button>
 
-        <button class="mode-tab" id="tabPractice" title="情境练习室与沟通助手">情境练习</button>
+        <button class="mode-tab" id="tabPractice" title="情境练习室与沟通助手">情境</button>
 
         <button class="mode-tab hidden" id="tabCards" title="儒释道卡牌人生与百八常道图鉴" style="display:none !important;" aria-hidden="true">卡牌人生</button>
 
@@ -7872,8 +7872,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <h2>今天，哪件事让你心里打了结？</h2>
 
-        <p>不急着讲道理，先把心事整理清楚。</p>
-
       </div>
 
 
@@ -7884,26 +7882,26 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       <!-- PRD 4.0 儒释道三学赛道与代表导师选择器 -->
       <div class="school-track-selector" id="schoolTrackSelector">
         <div class="school-track-header">
-          <div class="school-track-title">选定国学修道赛道与答疑先圣</div>
+          <div class="school-track-title">答疑先圣</div>
           <div class="school-motto-badge" id="currentMasterMotto">先师孔子 ｜ 君子求诸己 · 仁者爱人</div>
         </div>
         <div class="school-track-pills" id="schoolTrackPills">
           <button type="button" class="school-pill active" data-track="confucianism" data-master="confucius" data-color="rgb(140, 58, 43)" data-motto="先师孔子 ｜ 君子求诸己 · 仁者爱人" data-hint="有何立身处世、责任何在、人伦日用之惑，请与夫子倾诉...">
             <span class="pill-seal">儒</span>
             <span class="pill-info">
-              <span class="pill-name">儒学 · 孔子</span>
+              <span class="pill-name">孔子</span>
             </span>
           </button>
           <button type="button" class="school-pill" data-track="daoism" data-master="laozi" data-color="rgb(43, 76, 95)" data-motto="道家宗师 ｜ 道法自然 · 致虚守静" data-hint="有何用力过猛、身心劳形、进退难安之念，且听老君道来...">
             <span class="pill-seal">道</span>
             <span class="pill-info">
-              <span class="pill-name">道学 · 老子</span>
+              <span class="pill-name">老子</span>
             </span>
           </button>
           <button type="button" class="school-pill" data-track="buddhism" data-master="shakyamuni" data-color="rgb(181, 137, 0)" data-motto="释家觉者 ｜ 明心见性 · 应无所住" data-hint="有何爱恨执念、沉没成本舍不得、无常失落之苦，请与佛陀对谈...">
             <span class="pill-seal">释</span>
             <span class="pill-info">
-              <span class="pill-name">释学 · 佛陀</span>
+              <span class="pill-name">佛陀</span>
             </span>
           </button>
           <button type="button" class="school-pill" data-track="symposium" data-master="all" data-color="rgb(118, 55, 98)" data-motto="东方三圣 ｜ 以儒立身 · 以道养生 · 以释修心" data-hint="人生重大抉择与多重迷茫，请三圣圆桌并案会诊...">
@@ -7925,9 +7923,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-      <div class="section-label">此时心境（可选）</div>
+      <div id="scenarioSection">
 
-      <div class="scenario-grid" id="scenarioGrid"></div>
+        <div class="section-label">此时心境（可选）</div>
+
+        <div class="scenario-grid" id="scenarioGrid"></div>
+
+      </div>
 
 
 
@@ -7935,7 +7937,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       <div id="entryDirectArea">
 
-        <div class="pill-inspirations">
+        <div class="pill-inspirations" id="inspoPills">
 
           <span class="pill-label">示例：</span>
 
@@ -7979,8 +7981,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <button class="btn lg" id="btnSubmitClient" disabled>帮我理一理</button>
 
-          <div class="submit-note">Ctrl + Enter 快捷梳理</div>
-
         </div>
 
       </div>
@@ -7990,10 +7990,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       <!-- 入口 B：抽一张今日觉察牌 (F-02) -->
 
       <div id="entryCardArea" class="hidden">
-
-        <p style="font-size:14px;color:var(--color-muted);margin:0 0 16px;text-align:center;">抽一张反思卡，照见当下的心境</p>
-
-
 
         <div class="awareness-stage awareness-split-stage">
 
@@ -8023,19 +8019,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
                   <div class="card-orbit-ring-inner" style="width:105px;height:105px;"></div>
 
-                  <div class="card-starburst">
-
-                    <div class="card-starburst-ray v" style="height:64px;"></div>
-
-                    <div class="card-starburst-ray h" style="width:64px;"></div>
-
-                    <div class="card-starburst-ray d1" style="height:48px;"></div>
-
-                    <div class="card-starburst-ray d2" style="height:48px;"></div>
-
-                    <div class="card-core-gem" style="width:34px;height:34px;font-size:16px;">悟</div>
-
-                  </div>
+                  <div class="card-seal">悟</div>
 
                 </div>
 
@@ -8052,8 +8036,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
               <!-- 卡面 (正面：纯粹水彩画卷，无任何文字遮挡) -->
 
               <div class="awareness-card-face awareness-card-front">
-
-                <div class="card-front-flip-tip">轻触卡片可翻转 ↺</div>
 
               </div>
 
@@ -8073,9 +8055,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
               <div class="awareness-word-card-unrevealed" id="awUnrevealedCover" onclick="var b=$('awarenessCardBox');if(b)b.click();" title="点击翻开卡牌">
 
-                <div class="compass-mini-ring">
+                <div class="lotus-mini" aria-hidden="true">
 
-                  <div class="compass-mini-star"></div>
+                  <div class="lotus-ring lotus-ring-outer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+                  <div class="lotus-ring lotus-ring-inner"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+                  <div class="lotus-core"></div>
 
                 </div>
 
@@ -8098,8 +8084,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
                 <div class="awareness-word-card-badge">
 
                   <span class="badge-label">01 觉察字卡 · 照见内心</span>
-
-                  <span class="tap-hint" style="font-size:11px;cursor:pointer;" onclick="var b=$('awarenessCardBox');if(b)b.click();">↺ 翻转图卡</span>
 
                 </div>
 
@@ -8275,10 +8259,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-      <div class="pause-quote">先接住情绪，再换个视角，最后走出一小步。</div>
-
-
-
       <!-- F-04 核心三张解忧牌 (3D 翻牌阵列) -->
 
       <div class="cards-spread-grid" id="threeCardsDeck">
@@ -8305,10 +8285,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
           <h3 style="font-family:var(--font-serif);font-size:18px;margin:0;color:var(--color-ink);display:flex;align-items:center;gap:6px;">
             <span>借境观心 · 契合心象画卷</span>
-            <span style="font-size:12px;font-weight:700;color:#FFF;background:linear-gradient(135deg, #8E2927, #B83A38);padding:2px 9px;border-radius:12px;box-shadow:0 2px 6px rgba(142,41,39,0.25);letter-spacing:1px;">本页主卡</span>
-            <span style="font-size:12.5px;font-weight:normal;color:var(--color-muted);">先圣映照的当下第一心象</span>
           </h3>
-          <span style="font-size:11px;background:#EBF3ED;color:#2B6E3F;padding:2px 8px;border-radius:10px;border:1px solid rgba(43,110,63,0.2);">96 典藏画廊 · 心象共振</span>
         </div>
 
         <div class="resonant-card-card">
@@ -8323,7 +8300,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
             <div class="resonant-card-header">
               <div>
                 <span class="resonant-card-series" id="rcSeries">禅心之境</span>
-                <span class="resonant-card-no" id="rcNum">WUTANG-CARD-03 · 03</span>
               </div>
               <h4 class="resonant-card-title" id="rcName">留白</h4>
             </div>
@@ -8342,7 +8318,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
             <!-- 契合之由 -->
             <div class="resonant-card-reason-box" id="rcReasonBox">
-              <div class="rc-label">【为何契合】</div>
+              <div class="rc-label">【心象映照】</div>
               <div class="rc-reason-text" id="rcReason">此幅水墨山水留白极多，正映照你此刻心绪繁杂，宜暂停抓取，给心神留一分吐纳之地。</div>
             </div>
 
@@ -8354,9 +8330,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
               <button type="button" class="btn-rc-action" id="btnCollectResonantCard" onclick="handleCollectResonantCard()">
                 <span id="btnCollectResonantCardText">⭐ 收入珍藏</span>
               </button>
-              <button type="button" class="btn-rc-action" id="btnViewInGallery" onclick="handleViewInGallery()">
-                <span>在 96 画廊中研读</span>
-              </button>
             </div>
           </div>
         </div>
@@ -8366,9 +8339,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
           <h3 style="font-family:var(--font-serif);font-size:18px;margin:0;color:var(--color-ink);display:flex;align-items:center;gap:6px;">
             <span>专属解脱之道卡牌</span>
-            <span style="font-size:12px;font-weight:normal;color:var(--color-muted);">（点击卡面 3D 翻转）</span>
           </h3>
-          <span id="liberationCardBadge" style="font-size:11px;background:var(--color-gold-bg);color:var(--color-gold);padding:2px 8px;border-radius:10px;border:1px solid var(--color-gold-border);">300 DPI 打印级母版已就绪</span>
         </div>
 
         <div class="liberation-hero-card">
@@ -8378,7 +8349,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
               <div class="card-inner-frame"></div>
               <div class="card-top-id">
                 <span id="lcSchoolTag">【悟堂 · 儒释道解脱之道】</span>
-                <span id="lcSerialNo">WU-RU-2026-A89F</span>
               </div>
               <div style="margin:auto 0;text-align:center;">
                 <div class="card-main-title" id="lcCardName">【 克 己 】</div>
@@ -8427,9 +8397,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         <div class="card-ops-toolbar">
           <button type="button" class="btn-card-action" onclick="toggleLiberation3DFlip()">
             <span>翻转卡面</span>
-          </button>
-          <button type="button" class="btn-card-action primary" id="btnExportPrintPack" onclick="exportCurrentPrintPack()">
-            <span>导出 300DPI 实体打印包 (送印级)</span>
           </button>
           <button type="button" class="btn-card-action" id="btnSaveWallpaper" onclick="downloadCardWallpaper()">
             <span>保存手机高清壁纸</span>
@@ -9191,11 +9158,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <div style="display:flex;align-items:flex-start;gap:12px;">
 
-          <span class="badge" style="background:var(--color-gold-bg);color:var(--color-gold);border:1px solid var(--color-gold-border);font-size:12px;">专业门禁</span>
-
           <div>
-
-            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:20px;">悟堂心境健康中心 · 专业审核门禁</h2>
 
             <p style="margin:0;font-size:13.5px;color:var(--color-ink-light);line-height:1.65;">
 
@@ -9225,7 +9188,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:14px;">
+        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;">
 
           <!-- 1. PSS-10 -->
 
@@ -9443,17 +9406,21 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <div>
 
-            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">经核验的专业心理健康与危机资源导航</h2>
-
-            <p style="margin:0;font-size:13px;color:var(--color-muted);">
-
-              严谨核验地区、服务类型、官方联系方式及最后核验日期（2026-10-19）。
-
-            </p>
+            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">心理健康资源导航</h2>
 
           </div>
 
           <div style="display:flex;gap:8px;">
+
+            <button type="button" class="inspo-pill" id="btnToggleResources">展开资源导航 ▾</button>
+
+          </div>
+
+        </div>
+
+        <div id="resourcePanel" class="hidden">
+
+          <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
 
             <select class="form-select" id="resourceRegionFilter" style="width:auto;padding:6px 12px;font-size:13px;">
 
@@ -9473,75 +9440,14 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           </div>
 
-        </div>
-
-
-
-        <div class="resource-grid" id="resourceListGrid"></div>
-
-      </section>
-
-
-
-      <!-- 模块 3: 授权转介沟通摘要 (F-17 / 18.11) -->
-
-      <section class="card">
-
-        <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">生成面询沟通清单（授权转介摘要）</h2>
-
-        <p style="margin:0 0 16px;font-size:13.5px;color:var(--color-muted);">
-
-          前往专科医院心理门诊或预约心理咨询师前，将主诉与自评梳理成条理清晰的沟通清单，避免因紧张而遗漏重点。
-
-        </p>
-
-
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:12px;">
-
-          <div>
-
-            <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;">主要困扰概括：</label>
-
-            <input type="text" id="referralComplaintInput" class="form-input" placeholder="如：工作过度消耗、入睡困难与情绪反刍" style="width:100%;box-sizing:border-box;font-size:13.5px;padding:8px 12px;">
-
-          </div>
-
-          <div>
-
-            <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;">困扰持续时间：</label>
-
-            <input type="text" id="referralDurationInput" class="form-input" placeholder="如：近 3 周 / 2 个月" style="width:100%;box-sizing:border-box;font-size:13.5px;padding:8px 12px;">
-
-          </div>
-
-        </div>
-
-
-
-        <div style="margin-top:14px;">
-
-          <button class="btn" id="btnGenerateReferral">一键生成就医/面询沟通清单</button>
-
-        </div>
-
-
-
-        <div id="referralSummaryBox" class="hidden" style="margin-top:16px;background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
-
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-
-            <h4 style="margin:0;font-family:var(--font-serif);font-size:16px;" id="refSumTitle">日常压力沟通清单</h4>
-
-            <button class="btn sm secondary" id="btnCopyReferralSummary">复制清单文本</button>
-
-          </div>
-
-          <div id="refSumBody" style="font-size:13.5px;line-height:1.7;color:var(--color-ink-light);"></div>
+          <div class="resource-grid" id="resourceListGrid"></div>
 
         </div>
 
       </section>
+
+
+
 
 
 
@@ -12952,19 +12858,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       + '      <div class="card-orbit-ring-inner"></div>'
 
-      + '      <div class="card-starburst">'
-
-      + '        <div class="card-starburst-ray v"></div>'
-
-      + '        <div class="card-starburst-ray h"></div>'
-
-      + '        <div class="card-starburst-ray d1"></div>'
-
-      + '        <div class="card-starburst-ray d2"></div>'
-
-      + '        <div class="card-core-gem">悟</div>'
-
-      + '      </div>'
+      + '      <div class="card-seal">悟</div>'
 
       + '    </div>'
 
@@ -13048,19 +12942,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       + '      <div class="card-orbit-ring-inner"></div>'
 
-      + '      <div class="card-starburst">'
-
-      + '        <div class="card-starburst-ray v"></div>'
-
-      + '        <div class="card-starburst-ray h"></div>'
-
-      + '        <div class="card-starburst-ray d1"></div>'
-
-      + '        <div class="card-starburst-ray d2"></div>'
-
-      + '        <div class="card-core-gem">悟</div>'
-
-      + '      </div>'
+      + '      <div class="card-seal">悟</div>'
 
       + '    </div>'
 
@@ -13160,19 +13042,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       + '      <div class="card-orbit-ring-inner"></div>'
 
-      + '      <div class="card-starburst">'
-
-      + '        <div class="card-starburst-ray v"></div>'
-
-      + '        <div class="card-starburst-ray h"></div>'
-
-      + '        <div class="card-starburst-ray d1"></div>'
-
-      + '        <div class="card-starburst-ray d2"></div>'
-
-      + '        <div class="card-core-gem">悟</div>'
-
-      + '      </div>'
+      + '      <div class="card-seal">悟</div>'
 
       + '    </div>'
 
@@ -14880,6 +14750,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       appState.currentUser = user;
       appState.userNickname = user.daohao_nickname || user.username || '同修';
       if ($('userNicknameInput')) $('userNicknameInput').value = appState.userNickname;
+      if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname;
 
       localStorage.setItem('wutang_auth_token', data.access_token);
       localStorage.setItem('wutang_current_user', JSON.stringify(user));
@@ -14901,6 +14772,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       if (val === 'admin' && pwd === 'admin') {
         appState.isManagerLoggedIn = true;
         appState.userNickname = '悟堂主理人';
+        if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname;
         localStorage.setItem('wutang_manager_active', 'true');
         updateManagerUI();
         if ($('modalAuth')) $('modalAuth').classList.remove('active');
@@ -14954,6 +14826,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       appState.currentUser = user;
       appState.userNickname = user.daohao_nickname || '同修';
       if ($('userNicknameInput')) $('userNicknameInput').value = appState.userNickname;
+      if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname;
 
       localStorage.setItem('wutang_auth_token', data.access_token);
       localStorage.setItem('wutang_current_user', JSON.stringify(user));
@@ -16117,6 +15990,62 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
   // ================= 初始化场景标签 =================
 
+  // 场景示例药丸数据（随心境标签联动切换）
+  var INSPO_EXAMPLES = {
+    default: [
+      { label: '职场被批评内耗', text: '领导当着大家的面批评了我，回家路上一直在想我是不是不适合这行。' },
+      { label: '难拒绝别人', text: '总是不好意思拒绝别人的要求，答应了又后悔，觉得自己特别窝囊。' },
+      { label: '深夜反刍失眠', text: '躺在床上反复想白天说错的那句话，两点还醒着，脑子停不下来。' },
+      { label: '想开始却拖延', text: '计划做副业建了七八个文档，每次想动手就怕做不好，拖了半年没动。' }
+    ],
+    work: [
+      { label: '被批评内耗', text: '领导当着大家的面批评了我，回家路上一直在想我是不是不适合这行。' },
+      { label: '绩效压力大', text: '这个季度指标压得喘不过气，越焦虑越做不动，天天失眠。' },
+      { label: '职业选择迷茫', text: '干了五年发现不喜欢这行，想转又怕从头再来，天天纠结。' },
+      { label: '边界被侵蚀', text: '同事总把活儿推给我，不好意思拒绝，怕他说我不合群。' }
+    ],
+    relation: [
+      { label: '讨好型疲惫', text: '下意识照顾所有人的情绪，谁都没得罪，却把自己累垮了。' },
+      { label: '不会拒绝', text: '总是不好意思拒绝别人的要求，答应了又后悔，觉得自己特别窝囊。' },
+      { label: '家庭催促', text: '家里一直催婚，每次通话都不欢而散，又愧疚又想逃。' },
+      { label: '伴侣沟通难', text: '和另一半一说话就吵，明明想好好沟通，开口却句句带刺。' }
+    ],
+    night: [
+      { label: '睡前停不下来', text: '明明很困了，脑子却像放电影一样停不下来，越想睡越睡不着。' },
+      { label: '反复回想白天', text: '躺在床上反复想白天说错的那句话，两点还醒着，脑子停不下来。' },
+      { label: '担忧未来', text: '一闭眼就开始担心以后怎么办，越想越清醒，天亮才迷糊过去。' },
+      { label: '失眠焦虑', text: '试了各种助眠方法还是睡不着，一想到明天没精神就更焦虑。' }
+    ],
+    growth: [
+      { label: '想开始却拖延', text: '计划做副业建了七八个文档，每次想动手就怕做不好，拖了半年没动。' },
+      { label: '完美主义卡住', text: '总觉得准备还不够充分，方案改了十几版还是不敢发出去。' },
+      { label: '方向感缺失', text: '别人好像都知道自己要什么，只有我随波逐流，越想越慌。' },
+      { label: '自我否定', text: '一件事没做好就全盘否定自己，觉得自己什么都不行。' }
+    ]
+  };
+
+  function renderInspoPills(key) {
+    var wrap = $('inspoPills');
+    if (!wrap) return;
+    var set = INSPO_EXAMPLES[key] || INSPO_EXAMPLES.default;
+    var html = '<span class="pill-label">示例：</span>';
+    set.forEach(function(item) {
+      html += '<button class="inspo-pill" data-inspo="' + esc(item.text) + '">' + esc(item.label) + '</button>';
+    });
+    wrap.innerHTML = html;
+    Array.prototype.forEach.call(wrap.querySelectorAll('.inspo-pill'), function(pill) {
+      pill.onclick = function() {
+        var ta = $('userTextarea');
+        if (ta) {
+          ta.value = pill.getAttribute('data-inspo');
+          ta.dispatchEvent(new Event('input'));
+          ta.focus();
+        }
+        showToast('已填入体验案例，点击「帮我理一理」即可梳理');
+      };
+    });
+  }
+
   function initScenarioChips() {
 
     var grid = $('scenarioGrid');
@@ -16165,15 +16094,21 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         appState.selectedScenario = null;
 
+        renderInspoPills(null);
+
       } else {
 
         btn.setAttribute('aria-pressed', 'true');
 
         appState.selectedScenario = k;
 
+        renderInspoPills(k);
+
       }
 
     });
+
+    renderInspoPills(null);
 
   }
 
@@ -16971,6 +16906,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       $('entryCardArea').classList.add('hidden');
 
+      if ($('scenarioSection')) $('scenarioSection').classList.remove('hidden');
+
     };
 
 
@@ -16986,6 +16923,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       $('entryDirectArea').classList.add('hidden');
 
       $('entryCardArea').classList.remove('hidden');
+
+      if ($('scenarioSection')) $('scenarioSection').classList.add('hidden');
 
       if (!appState.awarenessFlipped) {
 
@@ -17083,6 +17022,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       $('entryCardArea').classList.add('hidden');
 
+      if ($('scenarioSection')) $('scenarioSection').classList.remove('hidden');
+
       $('userTextarea').value = '关于「' + cardTitle + '」，我想说的是：';
 
       $('userTextarea').dispatchEvent(new Event('input'));
@@ -17136,6 +17077,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       $('entryDirectArea').classList.remove('hidden');
 
       $('entryCardArea').classList.add('hidden');
+
+      if ($('scenarioSection')) $('scenarioSection').classList.remove('hidden');
 
     };
 
@@ -17278,6 +17221,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         c.setAttribute('aria-pressed', 'false');
 
       });
+
+      renderInspoPills(null);
 
       switchClientView('userHome');
 
@@ -18585,6 +18530,17 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
+    // 资源导航折叠面板（默认折叠）
+    var btnToggleRes = $('btnToggleResources');
+    var resPanel = $('resourcePanel');
+    if (btnToggleRes && resPanel) {
+      btnToggleRes.onclick = function() {
+        var willShow = resPanel.classList.contains('hidden');
+        resPanel.classList.toggle('hidden');
+        btnToggleRes.textContent = willShow ? '收起 ▴' : '展开资源导航 ▾';
+      };
+    }
+
     // 资源导航地区过滤
 
     var regSelect = $('resourceRegionFilter');
@@ -18600,114 +18556,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     }
 
 
-
-    // 生成转介沟通清单
-
-    if ($('btnGenerateReferral')) {
-
-      $('btnGenerateReferral').onclick = function() {
-
-        var complaint = $('referralComplaintInput') ? $('referralComplaintInput').value.trim() : '';
-
-        var duration = $('referralDurationInput') ? $('referralDurationInput').value.trim() : '约2-4周';
-
-        if (!complaint) {
-
-          showToast('请先简述你的主要困扰');
-
-          return;
-
-        }
-
-
-
-        var btn = $('btnGenerateReferral');
-
-        btn.disabled = true;
-
-        btn.textContent = '正在为你整理沟通清单…';
-
-
-
-        fetch('http://localhost:8000/api/referral/summary', {
-
-          method: 'POST',
-
-          headers: { 'Content-Type': 'application/json' },
-
-          body: JSON.stringify({
-
-            main_complaint: complaint,
-
-            duration: duration,
-
-            assessment_score: $('pss10ScoreVal') ? parseInt($('pss10ScoreVal').textContent) : null
-
-          })
-
-        }).then(function(r) { return r.json(); })
-
-          .then(function(data) {
-
-            btn.disabled = false;
-
-            btn.textContent = '一键生成就医/面询沟通清单';
-
-            if (data && data.summary) renderReferralSummary(data.summary);
-
-          })
-
-          .catch(function() {
-
-            btn.disabled = false;
-
-            btn.textContent = '一键生成就医/面询沟通清单';
-
-            renderReferralSummary({
-
-              summary_title: '日常压力与身心负荷沟通参考清单',
-
-              key_symptoms: [complaint, '持续时间：' + duration, '近期感到注意力分散与身心疲惫'],
-
-              impact_on_daily_life: '日常睡眠节律偶有波动，对多项并行的事务感到压力过载。',
-
-              questions_for_specialist: [
-
-                '针对我目前的压力状态，有哪些适合日常练习的身体放松或认知调整方法？',
-
-                '是否建议进行更系统的心理咨询或进一步临床评估？'
-
-              ]
-
-            });
-
-          });
-
-      };
-
-    }
-
-
-
-    if ($('btnCopyReferralSummary')) {
-
-      $('btnCopyReferralSummary').onclick = function() {
-
-        var text = $('refSumBody') ? $('refSumBody').innerText : '';
-
-        if (navigator.clipboard) {
-
-          navigator.clipboard.writeText(text).then(function() { showToast('面询清单已复制到剪贴板'); });
-
-        } else {
-
-          showToast('复制成功');
-
-        }
-
-      };
-
-    }
 
   }
 
@@ -18944,56 +18792,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         + '</div>';
 
     }).join('');
-
-  }
-
-
-
-  function renderReferralSummary(sum) {
-
-    var box = $('referralSummaryBox');
-
-    if (!box) return;
-
-    box.classList.remove('hidden');
-
-
-
-    if ($('refSumTitle')) $('refSumTitle').textContent = sum.summary_title || '日常压力沟通参考清单';
-
-
-
-    var html = '';
-
-    html += '<div style="margin-bottom:8px;"><strong>一、核心主诉梳理：</strong></div>';
-
-    html += '<ul style="margin:0 0 10px;padding-left:20px;">' + (sum.key_symptoms || []).map(function(s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>';
-
-
-
-    if (sum.impact_on_daily_life) {
-
-      html += '<div style="margin-bottom:4px;"><strong>二、日常身心影响：</strong></div>';
-
-      html += '<p style="margin:0 0 10px;">' + esc(sum.impact_on_daily_life) + '</p>';
-
-    }
-
-
-
-    if (sum.questions_for_specialist && sum.questions_for_specialist.length) {
-
-      html += '<div style="margin-bottom:4px;"><strong>三、期望向医生/咨询师咨询的问题：</strong></div>';
-
-      html += '<ol style="margin:0;padding-left:20px;">' + sum.questions_for_specialist.map(function(q) { return '<li>' + esc(q) + '</li>'; }).join('') + '</ol>';
-
-    }
-
-
-
-    if ($('refSumBody')) $('refSumBody').innerHTML = html;
-
-    box.scrollIntoView({ behavior: 'smooth' });
 
   }
 
@@ -21240,7 +21038,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   // ==========================================================================
   appState.selectedTrack = 'confucianism';
   appState.selectedMaster = 'confucius';
-  appState.userNickname = '同修';
+  appState.userNickname = (appState.currentUser && (appState.currentUser.daohao_nickname || appState.currentUser.username)) || '同修';
+  if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname;
   appState.currentCardSignature = null;
   var currentResonantZenCard = null;
 
