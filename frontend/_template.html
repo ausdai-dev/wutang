@@ -1512,36 +1512,6 @@ body::after {
 
 }
 
-.zen-banner-caption {
-
-  position: absolute;
-
-  bottom: 0;
-
-  left: 0;
-
-  right: 0;
-
-  padding: 24px 20px 10px;
-
-  background: linear-gradient(to top, rgba(34,31,27,0.72), transparent);
-
-  color: #FAF6EF;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  font-family: var(--font-serif);
-
-  font-size: 13.5px;
-
-  letter-spacing: 0.05em;
-
-}
-
 .zen-banner-sub {
 
   font-size: 12px;
@@ -8209,21 +8179,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <div class="zen-tea-banner">
 
-          <img src="assets/ui/tea_tranquility.jpg" alt="禅茶一味" class="zen-banner-img">
-
-          <div class="zen-banner-caption">
-
-            <div style="margin-top:8px;">
-
-              <button class="btn sm" id="btnDrawZenWisdom" onclick="drawRandomZen96Card()" style="background:rgba(217,119,6,0.3);border:1px solid rgba(253,230,138,0.6);color:#FDE68A;backdrop-filter:blur(6px);font-size:12px;padding:4px 14px;border-radius:20px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all 0.2s ease;">
-
-                <span>遇事不决？抽取今日东方锦囊/禅签 →</span>
-
-              </button>
-
-            </div>
-
-          </div>
+          <img src="assets/ui/tea_tranquility.jpg" alt="禅茶一味" class="zen-banner-img" onclick="drawRandomZen96Card()" style="cursor:pointer;" title="点击抽取今日东方锦囊/禅签">
 
         </div>
 
