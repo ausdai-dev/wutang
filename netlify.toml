@@ -10,7 +10,7 @@
 # 部署至 Render 后，将下方 URL 替换为您在 Render 上的真实后端地址即可 (如 https://wutang-service.onrender.com/api/:splat)
 [[redirects]]
   from = "/api/*"
-  to = "https://wutang-service.onrender.com/api/:splat"
+  to = "https://wutang-backend.onrender.com/api/:splat"
   status = 200
   force = true
 
