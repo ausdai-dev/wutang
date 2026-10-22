@@ -5593,9 +5593,9 @@ body::after {
 
   border-radius: 50%;
 
-  border: 1px dashed rgba(245, 197, 66, 0.3);
+  border: 1px dashed rgba(245, 197, 66, 0.4);
 
-  animation: spinOrbit 45s linear infinite;
+  animation: orbitBreath 8s ease-in-out infinite;
 
 }
 
@@ -5677,6 +5677,40 @@ body::after {
 }
 
 
+
+@keyframes orbitBreath {
+
+  0% {
+    transform: rotate(0deg) scale(0.92);
+    opacity: 0.35;
+    box-shadow: 0 0 6px rgba(245, 197, 66, 0.1);
+  }
+
+  25% {
+    transform: rotate(90deg) scale(1.08);
+    opacity: 0.85;
+    box-shadow: 0 0 18px rgba(245, 197, 66, 0.4);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(0.92);
+    opacity: 0.35;
+    box-shadow: 0 0 6px rgba(245, 197, 66, 0.1);
+  }
+
+  75% {
+    transform: rotate(270deg) scale(1.08);
+    opacity: 0.85;
+    box-shadow: 0 0 18px rgba(245, 197, 66, 0.4);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(0.92);
+    opacity: 0.35;
+    box-shadow: 0 0 6px rgba(245, 197, 66, 0.1);
+  }
+
+}
 
 @keyframes spinOrbit {
 
@@ -7301,7 +7335,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 }
 .school-track-pills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
 }
 .school-pill {
@@ -7309,13 +7343,15 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   overflow: hidden;
   z-index: 1;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  min-height: 52px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 12px 14px;
+  aspect-ratio: 1 / 1;
   background: var(--color-surface-subtle);
   border: 1.5px solid var(--color-border);
-  border-radius: 12px;
+  border-radius: 6px;
   cursor: pointer;
   text-align: left;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -7703,24 +7739,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 }
 .resonant-card-image-box:hover .resonant-card-img {
   transform: scale(1.02);
-}
-.resonant-card-img-hint {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(36, 32, 28, 0.85);
-  color: #FFF;
-  font-size: 11.5px;
-  font-weight: 500;
-  padding: 4px 14px;
-  border-radius: 14px;
-  backdrop-filter: blur(6px);
-  white-space: nowrap;
-  pointer-events: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  letter-spacing: 0.5px;
 }
 .resonant-card-body {
   flex: 1;
@@ -8529,7 +8547,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <!-- 左侧：纵向水墨高清大图 (主卡核心视觉，支持点击弹窗放大 848x1264 原画) -->
           <div class="resonant-card-image-box" id="rcImageBox" onclick="handleViewInGallery()" title="点击弹窗放大欣赏 848x1264 高清水墨画卷" style="cursor:zoom-in;">
             <img id="rcImage" src="" alt="" class="resonant-card-img" style="cursor:zoom-in;" />
-            <div class="resonant-card-img-hint">🔍 点击弹窗放大 848x1264 原画 / 3D 翻转</div>
           </div>
 
           <!-- 右侧：卡牌意境与深度叩问 -->
@@ -8655,13 +8672,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <h3 style="font-family:var(--font-serif);font-size:18px;margin:0 0 12px;display:flex;align-items:center;justify-content:space-between;">
 
-          <span>四步解忧方详述</span>
+          <span>四步解忧方</span>
 
-          <button class="btn-card-op" id="btnToggleFourStepDetail">查看完整文字版</button>
+          <button class="btn-card-op" id="btnToggleFourStepDetail">收起文字版</button>
 
         </h3>
 
-        <div class="four-step-list hidden" id="fourStepList"></div>
+        <div class="four-step-list" id="fourStepList"></div>
 
       </div>
 
@@ -10382,8 +10399,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <button class="studio-nav-btn active" data-view="studioOverview">工作台总览</button>
 
-        <button class="studio-nav-btn" data-view="studioCards">解忧卡牌库</button>
-
         <button class="studio-nav-btn" data-view="studioNewTask">新建任务</button>
 
         <button class="studio-nav-btn" data-view="studioPipeline">工作流监控</button>
@@ -10391,6 +10406,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         <button class="studio-nav-btn" data-view="studioReview">内容审核</button>
 
         <button class="studio-nav-btn" data-view="studioClassics">经典资料库</button>
+
+        <button class="studio-nav-btn" data-view="studioCards">解忧卡牌库</button>
 
       </div>
 
@@ -13857,6 +13874,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     renderFourStepList(r);
 
+    var fList = $('fourStepList');
+    var toggleBtn = $('btnToggleFourStepDetail');
+    if (fList) fList.classList.remove('hidden');
+    if (toggleBtn) toggleBtn.textContent = '收起文字版';
+
 
 
     // 3D 翻牌展开动效 (Sequential Reveal)
@@ -15025,7 +15047,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     }).then(function(data) {
       var user = data.user || {};
       appState.currentUser = user;
-      appState.userNickname = user.daohao_nickname || user.username || '同修';
+      appState.userNickname = user.daohao_nickname || user.name || user.username || '同修';
       if ($('userNicknameInput')) $('userNicknameInput').value = appState.userNickname;
       if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname;
 
@@ -15101,7 +15123,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     }).then(function(data) {
       var user = data.user || {};
       appState.currentUser = user;
-      appState.userNickname = user.daohao_nickname || '同修';
+      appState.userNickname = user.daohao_nickname || user.name || user.username || '同修';
       if ($('userNicknameInput')) $('userNicknameInput').value = appState.userNickname;
       if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname;
 
@@ -15924,8 +15946,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     var accumulated = '';
 
-    var isStreamingDone = false;
-
     var minTimeTimer = null;
 
 
@@ -15977,22 +15997,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       }
 
 
-
-      var fList = $('fourStepList');
-
-      if (fList && !$('aiStreamIndicator')) {
-
-        var ind = document.createElement('div');
-
-        ind.id = 'aiStreamIndicator';
-
-        ind.style.cssText = 'display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:rgba(140,58,43,0.08);color:var(--color-primary);border-radius:20px;font-size:12px;font-weight:600;margin-bottom:12px;';
-
-        ind.innerHTML = isStreamingDone ? '悟堂 AI · 东方智慧已倾注完毕' : '悟堂 AI · 流式解忧倾注中…';
-
-        fList.parentNode.insertBefore(ind, fList);
-
-      }
 
       if (accumulated) {
 
@@ -16147,12 +16151,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           if (chunk.done) {
 
-            isStreamingDone = true;
-
-            var ind = $('aiStreamIndicator');
-
-            if (ind) ind.innerHTML = '悟堂 AI · 东方智慧已倾注完毕';
-
             return;
 
           }
@@ -16212,12 +16210,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
                   }
 
                 } else if (evt.type === 'done') {
-
-                  isStreamingDone = true;
-
-                  var ind = $('aiStreamIndicator');
-
-                  if (ind) ind.innerHTML = '悟堂 AI · 东方智慧已倾注完毕';
 
                   try {
 
@@ -17498,6 +17490,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       });
 
       renderInspoPills(null);
+
+      var fList = $('fourStepList');
+      var toggleBtn = $('btnToggleFourStepDetail');
+      if (fList) fList.classList.remove('hidden');
+      if (toggleBtn) toggleBtn.textContent = '收起文字版';
 
       switchClientView('userHome');
 
@@ -20540,7 +20537,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     currentZen96ModalCard = card;
 
-    if ($('zen96ModalSeriesBadge')) $('zen96ModalSeriesBadge').textContent = (card.series || '东方意象') + ' · ' + (card.num || '01');
     if ($('zen96ModalTitle')) $('zen96ModalTitle').textContent = card.name || '心象画卷';
     if ($('zen96ModalCore')) $('zen96ModalCore').textContent = '“' + (card.core || '') + '”';
     
@@ -20554,15 +20550,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     if ($('zen96ModalBackNum')) $('zen96ModalBackNum').textContent = '【' + (card.series || '东方觉察') + ' · 编号 ' + (card.num || '01') + '】';
     if ($('zen96ModalBackScene')) $('zen96ModalBackScene').textContent = card.scene || card.core || '宋画留白设色，映照当下心念。';
     if ($('zen96ModalBackQuestion')) $('zen96ModalBackQuestion').textContent = card.question || '静观当下，细细觉察此刻的真实发生。';
-
-    var idx = -1;
-    for (var i = 0; i < ZEN_CARDS_96.length; i++) {
-      if (ZEN_CARDS_96[i].name === card.name || ZEN_CARDS_96[i].card_id === card.card_id) {
-        idx = i;
-        break;
-      }
-    }
-    if ($('zen96ModalCounter')) $('zen96ModalCounter').textContent = (idx >= 0 ? (idx + 1) : 1) + ' / ' + ZEN_CARDS_96.length;
 
     var favList = getStorageJson('wutang_favorite_cards', []);
     var isFav = favList.some(function(f) {
@@ -20594,14 +20581,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   window.handleLightboxBackdropClick = function(event) {
     if (event.target && event.target.id === 'zen96Modal') {
       closeZen96Modal();
-    }
-  };
-
-  window.viewRawCardImage = function() {
-    if (!currentZen96ModalCard) return;
-    var src = currentZen96ModalCard.image_png || currentZen96ModalCard.image_jpg || ('assets/cards/images/' + currentZen96ModalCard.num + '_' + currentZen96ModalCard.name + '.png');
-    if (src) {
-      window.open(src, '_blank');
     }
   };
 
@@ -21756,7 +21735,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   // ==========================================================================
   appState.selectedTrack = 'confucianism';
   appState.selectedMaster = 'confucius';
-  appState.userNickname = (appState.currentUser && (appState.currentUser.daohao_nickname || appState.currentUser.username)) || '同修';
+  appState.userNickname = (appState.currentUser && (appState.currentUser.daohao_nickname || appState.currentUser.name || appState.currentUser.username)) || '同修';
   if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname;
   appState.currentCardSignature = null;
   var currentResonantZenCard = null;
@@ -22204,7 +22183,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       <!-- 顶部卡牌头部信息 -->
       <div style="text-align:center;margin-bottom:14px;padding:0 24px;">
-        <span class="badge ok" id="zen96ModalSeriesBadge" style="margin-bottom:6px;font-size:11.5px;letter-spacing:1px;">因缘相惜 · 13</span>
         <h3 id="zen96ModalTitle" style="font-family:var(--font-serif);margin:4px 0 6px;font-size:24px;color:var(--color-ink);letter-spacing:2px;">无常</h3>
         <p id="zen96ModalCore" style="margin:0;font-size:14px;color:var(--color-primary);font-family:var(--font-serif);line-height:1.6;">“变化是生命的一部分，不等于一切都失去意义。”</p>
       </div>
@@ -22216,9 +22194,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <!-- 正面：848x1264 超清工笔水墨大图原画 -->
           <div style="position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;overflow:hidden;border:1.5px solid #C4A47C;background:#EAE4D8;">
             <img id="zen96ModalImg" src="" alt="东方觉察原画" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-            <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(30,26,22,0.76);color:#FFF;font-size:11.5px;padding:3px 12px;border-radius:14px;backdrop-filter:blur(6px);white-space:nowrap;letter-spacing:0.5px;box-shadow:0 2px 8px rgba(0,0,0,0.3);pointer-events:none;">
-              ✨ 轻触卡面 3D 翻转自省笺 ↻
-            </div>
           </div>
 
           <!-- 反面：宋代宣纸解忧自省笺 -->
@@ -22248,15 +22223,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       <!-- 底部操作与联动 -->
       <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
         <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
-          <button type="button" class="btn sm primary" id="btnZen96JournalAction" onclick="handleJournalWithModalCard()" style="font-size:12.5px;padding:6px 14px;">✍️ 以此牌写觉察日记</button>
+          <button type="button" class="btn sm primary" id="btnZen96JournalAction" onclick="handleJournalWithModalCard()" style="font-size:12.5px;padding:6px 14px;">以此牌写觉察日记</button>
           <button type="button" class="btn sm secondary" id="btnZen96FavToggle" onclick="toggleZen96ModalFav()" style="font-size:12.5px;padding:6px 14px;">珍藏此卡</button>
-          <button type="button" class="btn sm ghost" onclick="viewRawCardImage()" title="在新标签页查看原始 848x1264 超清图" style="font-size:12px;padding:6px 10px;">🔍 原始高清原图 ↗</button>
-        </div>
-
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:0 6px;margin-top:2px;">
-          <button type="button" class="btn ghost sm" onclick="prevZen96Card()" style="font-size:12px;padding:4px 10px;">← 上一张</button>
-          <span style="font-size:12px;color:var(--color-muted);font-weight:600;" id="zen96ModalCounter">13 / 96</span>
-          <button type="button" class="btn ghost sm" onclick="nextZen96Card()" style="font-size:12px;padding:4px 10px;">下一张 →</button>
         </div>
       </div>
 
