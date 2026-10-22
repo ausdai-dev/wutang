@@ -7756,9 +7756,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-      <!-- 极简 AI 状态指示胶囊 -->
 
-      <button class="header-action-btn" id="btnAiStatus" title="AI 后台服务连接状态 (FastAPI · SSE)">AI: 检测中...</button>
 
 
 
@@ -7766,7 +7764,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       <div class="bgm-control-wrap" id="bgmControlWrap">
 
-        <button class="bgm-btn" id="btnBgmToggle" title="悟堂禅意背景音乐（点击播放/暂停，点击右侧箭头展开曲目与音量）" aria-label="背景音乐">
+        <button class="bgm-btn" id="btnBgmToggle" title="禅意背景音乐（左键播放/暂停 · 右键曲目与音量）" aria-label="背景音乐">
 
           <span class="bgm-icon-wave">
 
@@ -7774,9 +7772,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           </span>
 
-          <span id="bgmStatusText">静心音乐: 关</span>
 
-          <span class="bgm-menu-arrow" id="btnBgmMenuArrow" title="曲目与音量设置" style="font-size:10px;opacity:0.6;margin-left:3px;cursor:pointer;">▾</span>
 
         </button>
 
@@ -7860,10 +7856,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <div class="zen-banner-caption">
 
-            <span>煮一盏清茶 · 听心底回响</span>
-
-            <span class="zen-banner-sub">让古老智慧，温和接纳真实的你</span>
-
             <div style="margin-top:8px;">
 
               <button class="btn sm" id="btnDrawZenWisdom" onclick="drawRandomZen96Card()" style="background:rgba(217,119,6,0.3);border:1px solid rgba(253,230,138,0.6);color:#FDE68A;backdrop-filter:blur(6px);font-size:12px;padding:4px 14px;border-radius:20px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all 0.2s ease;">
@@ -7900,37 +7892,26 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
             <span class="pill-seal">儒</span>
             <span class="pill-info">
               <span class="pill-name">儒学 · 孔子</span>
-              <span class="pill-desc">入世修身 · 勇毅担当</span>
             </span>
           </button>
           <button type="button" class="school-pill" data-track="daoism" data-master="laozi" data-color="rgb(43, 76, 95)" data-motto="道家宗师 ｜ 道法自然 · 致虚守静" data-hint="有何用力过猛、身心劳形、进退难安之念，且听老君道来...">
             <span class="pill-seal">道</span>
             <span class="pill-info">
               <span class="pill-name">道学 · 老子</span>
-              <span class="pill-desc">顺应自然 · 无为逍遥</span>
             </span>
           </button>
           <button type="button" class="school-pill" data-track="buddhism" data-master="shakyamuni" data-color="rgb(181, 137, 0)" data-motto="释家觉者 ｜ 明心见性 · 应无所住" data-hint="有何爱恨执念、沉没成本舍不得、无常失落之苦，请与佛陀对谈...">
             <span class="pill-seal">释</span>
             <span class="pill-info">
               <span class="pill-name">释学 · 佛陀</span>
-              <span class="pill-desc">破执见性 · 慈悲解脱</span>
             </span>
           </button>
           <button type="button" class="school-pill" data-track="symposium" data-master="all" data-color="rgb(118, 55, 98)" data-motto="东方三圣 ｜ 以儒立身 · 以道养生 · 以释修心" data-hint="人生重大抉择与多重迷茫，请三圣圆桌并案会诊...">
             <span class="pill-seal">合</span>
             <span class="pill-info">
               <span class="pill-name">三圣圆桌</span>
-              <span class="pill-desc">三教合参 · 圆融参悟</span>
             </span>
           </button>
-        </div>
-        <div class="nickname-bar">
-          <span>问道者道号/称谓：</span>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="text" id="userNicknameInput" class="nickname-input" placeholder="自拟道号" value="同修" maxlength="8">
-            <span style="font-size:11px;color:var(--color-muted);">（将印刻在专属解脱卡牌上）</span>
-          </div>
         </div>
       </div>
 
@@ -8062,8 +8043,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
                   <span style="font-size:14px;font-weight:600;color:#FDE68A;">悟堂 · 今日觉察牌</span>
 
-                  <span class="tap-hint card-back-flip-btn" style="margin-top:6px;font-size:11px;">点击翻开这张牌 ↺</span>
-
                 </div>
 
               </div>
@@ -8107,12 +8086,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
                   万般心事，皆有来处。<br>轻触左侧卡牌，翻开今日心境照见。
 
                 </p>
-
-                <div class="unrevealed-btn-hint">
-
-                  <span>点击翻开卡牌 ↺</span>
-
-                </div>
 
               </div>
 
@@ -8684,7 +8657,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
             </div>
 
-            <div class="jian-theme-badge" id="cardTheme">去班味 · 职场</div>
+            <div class="jian-theme-badge" id="cardTheme">职场</div>
 
             <div class="jian-quote-display" id="cardQuote">「君子求诸己，小人求诸人。」</div>
 
@@ -12653,13 +12626,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
   var THEME_MAP = {
 
-    work: '去班味 · 职场与评价',
+    work: '职场与评价',
 
-    relation: '松绑 · 关系与边界',
+    relation: '关系与边界',
 
-    night: '安住 · 深夜思绪',
+    night: '深夜思绪',
 
-    growth: '破局 · 行动与自我'
+    growth: '行动与自我'
 
   };
 
@@ -16218,7 +16191,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       text: '同事总把活儿推给我，不好意思拒绝，怕他说不合群…',
 
-      scenario: '松绑 · 关系与边界',
+      scenario: '关系与边界',
 
       consent: '已授权 (2026-10-16 09:00)',
 
@@ -16236,7 +16209,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       text: '计划了半年的副业建了七八个文档，每次想动手就怕做不好…',
 
-      scenario: '破局 · 行动与自律',
+      scenario: '行动与自律',
 
       consent: '已授权 (2026-10-16 09:30)',
 
@@ -16254,7 +16227,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       text: '我叫李小雨，在杭州一家叫云图的广告公司做设计…',
 
-      scenario: '松绑 · 关系与边界',
+      scenario: '关系与边界',
 
       consent: '已授权 (2026-10-16 09:45)',
 
@@ -16272,7 +16245,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       text: '领导当着全组的面说我方案不行，回家一直在内耗…',
 
-      scenario: '去班味 · 职场评价',
+      scenario: '职场评价',
 
       consent: '未授权',
 
@@ -20907,8 +20880,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       var toggleBtn = $('btnBgmToggle');
 
-      var statusText = $('bgmStatusText');
-
       var playPauseBtn = $('btnBgmPlayPause');
 
       var floatingPill = $('bgmFloatingPill');
@@ -20938,14 +20909,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           toggleBtn.title = '背景音乐已暂停 · 点击播放 ' + curTrack.name;
 
         }
-
-      }
-
-
-
-      if (statusText) {
-
-        statusText.textContent = isPlaying ? ('正在播放: ' + curTrack.name) : '静心音乐: 关';
 
       }
 
@@ -21053,8 +21016,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       var btnToggle = $('btnBgmToggle');
 
-      var btnMenuArrow = $('btnBgmMenuArrow');
-
       var btnPlayPause = $('btnBgmPlayPause');
 
       var btnPrev = $('btnBgmPrev');
@@ -21077,33 +21038,27 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       if (btnToggle) {
 
-        btnToggle.addEventListener('click', function(e) {
-
-          if (e.target && e.target.id === 'btnBgmMenuArrow') {
-
-            togglePanel(e);
-
-            return;
-
-          }
+        btnToggle.addEventListener('click', function() {
 
           togglePlay();
 
         });
 
-      }
 
 
+        btnToggle.addEventListener('contextmenu', function(e) {
 
-      if (btnMenuArrow) {
-
-        btnMenuArrow.addEventListener('click', function(e) {
+          e.preventDefault();
 
           togglePanel(e);
 
         });
 
       }
+
+
+
+
 
 
 
