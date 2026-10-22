@@ -11063,7 +11063,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">账号 / 邮箱</label>
 
-        <input type="text" id="authInputAccount" class="form-input" placeholder="输入常用邮箱 或 默认主理人: admin" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+        <input type="text" id="authInputAccount" class="form-input" placeholder="输入常用邮箱" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
 
       </div>
 
@@ -11071,7 +11071,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">登录密码 / 口令</label>
 
-        <input type="password" id="authInputPassword" class="form-input" placeholder="输入密码（默认主理人密码: admin）" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+        <input type="password" id="authInputPassword" class="form-input" placeholder="输入密码" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
 
       </div>
 
@@ -11084,14 +11084,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         <span>还没有账号？</span>
 
         <a href="javascript:void(0)" id="linkSwitchToReg" style="color:var(--color-primary);font-weight:600;text-decoration:none;margin-left:4px;">立即注册 →</a>
-
-      </div>
-
-
-
-      <div style="margin-top:14px;padding-top:12px;border-top:1px dashed #E2D7C7;text-align:center;">
-
-        <button type="button" class="btn sm ghost" id="btnQuickDemoLoginAction" style="width:100%;font-size:12px;padding:6px 0;" title="快速以主理人身份体验工作台">一键填入默认主理人账号 (admin / admin)</button>
 
       </div>
 
@@ -16699,18 +16691,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           if ($('authInputPassword')) $('authInputPassword').focus();
 
         }
-
-      };
-
-    }
-
-    if ($('btnQuickDemoLoginAction')) {
-
-      $('btnQuickDemoLoginAction').onclick = function() {
-
-        if ($('authInputAccount')) $('authInputAccount').value = 'admin';
-        if ($('authInputPassword')) $('authInputPassword').value = 'admin';
-        authManager('admin', 'admin');
 
       };
 
