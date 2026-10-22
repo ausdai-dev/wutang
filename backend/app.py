@@ -90,7 +90,7 @@ async def status_dashboard():
     <body>
         <div class="card">
             <span class="tag">悟堂 PRD 3.0 AI 服务引擎 (东方解忧 + 个人成长 + 心境健康)</span>
-            <h1>🌿 悟堂 · 东方解忧处 AI 后台运行中</h1>
+            <h1>悟堂 · 东方解忧处 AI 后台运行中</h1>
             <p style="color: #6B635B; font-size: 14px;">不说教，不预测；先接住，再看清，最后走一步。</p>
             
             <div class="status-item"><span>服务状态</span><strong style="color:#2E7D32;">● 正常运转中 (v3.0.0)</strong></div>
@@ -115,7 +115,7 @@ async def status_dashboard():
 
 def run_server():
     print(f"\n=======================================================")
-    print(f"🌿 悟堂·东方解忧处 AI 驱动后台启动中...")
+    print(f"悟堂·东方解忧处 AI 驱动后台启动中...")
     print(f"   地址: http://localhost:{settings.PORT}")
     print(f"   接口文档: http://localhost:{settings.PORT}/docs")
     print(f"   大模型状态: {'[真实 API 已激活]' if settings.is_llm_configured else '[韧性高保真流式模式]'}")

@@ -82,6 +82,15 @@ async def relief_stream(req: ReliefRequest):
         cards = rag_service.match_cards(sc, text, school=school_key)
         classics = rag_service.retrieve_classics(text, sc, top_k=3, school=school_key)
 
+        # 提前在后端计算最契合的 96 东方智慧觉察卡，随 meta 一并下发，保证首屏与结束 100% 绝对一致，杜绝图文突变
+        wisdom = cards.get("wisdom") or {}
+        card_name = wisdom.get("name") or ("若水" if school_key == "daoism" else ("无住" if school_key == "buddhism" else "克己"))
+        pre_matched_zen_card = rag_service.match_zen96_card(
+            user_text=text,
+            track=school_key,
+            card_name=card_name
+        )
+
         # 生成全球专属卡号与节令
         sch_prefix = "RU" if school_key == "confucianism" else ("DAO" if school_key == "daoism" else ("BUD" if school_key == "buddhism" else "SYM"))
         card_number = f"WU-{sch_prefix}-{time.strftime('%Y%m%d')}-{uuid.uuid4().hex[:4].upper()}"
@@ -99,14 +108,16 @@ async def relief_stream(req: ReliefRequest):
             "card_number": card_number,
             "lunar_date": "丙午年 · 霜降",
             "cards": cards,
-            "classics": classics[:3]
+            "classics": classics[:3],
+            "matched_zen_card": pre_matched_zen_card
         }
         yield f"data: {json.dumps(meta_payload, ensure_ascii=False)}\n\n"
 
-        # 4. 流式调用 LLM 生成个性化三圣四维解惑与解脱卡印
+        # 4. 流式调用 LLM 生成个性化三圣四维解惑与解脱卡印 (带入同一张契合卡牌，杜绝分歧)
         async for chunk in llm_service.stream_relief(
             text, sc, cards, classics,
-            track=school_key, master=req.master, user_nickname=req.user_nickname
+            track=school_key, master=req.master, user_nickname=req.user_nickname,
+            pre_matched_zen_card=pre_matched_zen_card
         ):
             yield chunk
 

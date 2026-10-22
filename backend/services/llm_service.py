@@ -52,6 +52,7 @@ class LLMService:
         track: Optional[str] = "confucianism",
         master: Optional[str] = None,
         user_nickname: Optional[str] = "同修",
+        pre_matched_zen_card: Optional[Dict[str, Any]] = None
     ) -> AsyncGenerator[str, None]:
         """
         生成四步/四维解惑核心流式生成器
@@ -88,7 +89,7 @@ class LLMService:
                     raise RuntimeError("LLM 流式返回内容为空，启用高保真兜底生成")
 
                 # 提取卡印并发送
-                sig_data = self._extract_or_synthesize_signature(accumulated_text, matched_cards, retrieved_classics, track, master, user_nickname)
+                sig_data = self._extract_or_synthesize_signature(accumulated_text, matched_cards, retrieved_classics, track, master, user_nickname, pre_matched_zen_card=pre_matched_zen_card)
                 yield f"data: {json.dumps({'type': 'card_signature', 'data': sig_data}, ensure_ascii=False)}\n\n"
 
                 # 发送完成事件
@@ -102,7 +103,8 @@ class LLMService:
         if settings.ENABLE_FALLBACK_STREAM:
             async for chunk in self._fallback_stream_generator(
                 user_text, scenario, matched_cards, retrieved_classics,
-                track=track, master=master, user_nickname=user_nickname
+                track=track, master=master, user_nickname=user_nickname,
+                pre_matched_zen_card=pre_matched_zen_card
             ):
                 yield chunk
         else:
@@ -118,6 +120,7 @@ class LLMService:
         track: Optional[str] = "confucianism",
         master: Optional[str] = None,
         user_nickname: Optional[str] = "同修",
+        pre_matched_zen_card: Optional[Dict[str, Any]] = None
     ) -> AsyncGenerator[str, None]:
         """高质量本地韧性宗师解惑生成器（保证 100% 离线也具备丝滑流式体验）"""
         school_key = get_school_key(track)
@@ -168,12 +171,15 @@ class LLMService:
             card_name = "克己" if len(wisdom.get("name", "")) < 2 else wisdom.get("name", "修己")[:2]
             eng_motto = "Self-restraint and right action bring true dignity."
 
-        # 匹配 96 张东方智慧常道画廊中最契合的心象牌
-        matched_zen_card = rag_service.match_zen96_card(
-            user_text=user_text,
-            track=track,
-            card_name=card_name
-        )
+        # 匹配 96 张东方智慧常道画廊中最契合的心象牌 (优先锁定预匹配结果，保证前后绝对一致)
+        if pre_matched_zen_card and pre_matched_zen_card.get("card_id"):
+            matched_zen_card = dict(pre_matched_zen_card)
+        else:
+            matched_zen_card = rag_service.match_zen96_card(
+                user_text=user_text,
+                track=track,
+                card_name=card_name
+            )
 
         full_text = (
             f"## 【闻心 · 先圣洞幽】\n{empathy_text}\n\n"
@@ -222,7 +228,8 @@ class LLMService:
         retrieved_classics: List[Dict[str, Any]],
         track: Optional[str],
         master: Optional[str],
-        user_nickname: Optional[str]
+        user_nickname: Optional[str],
+        pre_matched_zen_card: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """从生成文本中提取或合成卡牌签名元数据"""
         school_key = get_school_key(track)
@@ -260,20 +267,23 @@ class LLMService:
         author = ws.get("author", persona["master_name"])
         interpretation = ws.get("translation") or wisdom.get("modern_interpretation", "知止定静安虑得。")
 
-        # 匹配 96 张东方智慧常道画廊中最契合的心象牌
-        specified_card_id = None
-        card_id_match = re.search(r"-\s*契合觉察牌[：:]\s*(WUTANG-CARD-\d+|\d+)", full_text)
-        if card_id_match:
-            specified_card_id = card_id_match.group(1).strip()
-            if not specified_card_id.startswith("WUTANG-CARD-") and specified_card_id.isdigit():
-                specified_card_id = f"WUTANG-CARD-{int(specified_card_id):02d}"
+        # 匹配 96 张东方智慧常道画廊中最契合的心象牌 (优先锁定预匹配结果，保证前后绝对一致)
+        if pre_matched_zen_card and pre_matched_zen_card.get("card_id"):
+            matched_zen_card = dict(pre_matched_zen_card)
+        else:
+            specified_card_id = None
+            card_id_match = re.search(r"-\s*契合觉察牌[：:]\s*(WUTANG-CARD-\d+|\d+)", full_text)
+            if card_id_match:
+                specified_card_id = card_id_match.group(1).strip()
+                if not specified_card_id.startswith("WUTANG-CARD-") and specified_card_id.isdigit():
+                    specified_card_id = f"WUTANG-CARD-{int(specified_card_id):02d}"
 
-        matched_zen_card = rag_service.match_zen96_card(
-            user_text=full_text[:300],
-            track=track,
-            card_name=card_name,
-            specified_card_id=specified_card_id
-        )
+            matched_zen_card = rag_service.match_zen96_card(
+                user_text=full_text[:300],
+                track=track,
+                card_name=card_name,
+                specified_card_id=specified_card_id
+            )
 
         reason_match = re.search(r"-\s*契合之由[：:]\s*([^\n\r]+)", full_text)
         if reason_match and matched_zen_card:
