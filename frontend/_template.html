@@ -6725,6 +6725,35 @@ body::after {
   align-items: center;
   gap: 4px;
 }
+.card-lib-pill {
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: var(--color-ink-light);
+  cursor: pointer;
+  transition: all var(--trans);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  outline: none;
+}
+.card-lib-pill:hover {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+.card-lib-pill.active {
+  background: var(--color-gold-bg) !important;
+  border-color: var(--color-gold) !important;
+  color: var(--color-gold) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(159, 116, 48, 0.16) !important;
+}
+
 .view-toggle-btn.active {
   background: var(--color-surface) !important;
   color: var(--color-ink) !important;
@@ -10913,10 +10942,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <!-- 四大平级卡牌库导航选项卡 -->
         <div class="pill-inspirations" id="managerCardLifeTabs" style="margin:0 0 18px;display:flex;gap:8px;flex-wrap:wrap;">
-          <button type="button" class="inspo-pill active" id="btnTabBase32" onclick="switchStudioCardLibrary('base32')">基础解忧牌 (32)</button>
-          <button type="button" class="inspo-pill" id="btnTabPantheon" onclick="switchStudioCardLibrary('pantheon')">百八常道库 (108)</button>
-          <button type="button" class="inspo-pill" id="btnTabZen96" onclick="switchStudioCardLibrary('zen96')">觉察牌画廊 (96)</button>
-          <button type="button" class="inspo-pill" id="btnTabThemePacks" onclick="switchStudioCardLibrary('theme')">主题卡牌包 (6)</button>
+          <button type="button" class="card-lib-pill active" id="btnTabBase32" onclick="switchStudioCardLibrary('base32')">基础解忧牌 (32)</button>
+          <button type="button" class="card-lib-pill" id="btnTabPantheon" onclick="switchStudioCardLibrary('pantheon')">百八常道库 (108)</button>
+          <button type="button" class="card-lib-pill" id="btnTabZen96" onclick="switchStudioCardLibrary('zen96')">觉察牌画廊 (96)</button>
+          <button type="button" class="card-lib-pill" id="btnTabThemePacks" onclick="switchStudioCardLibrary('theme')">主题卡牌包 (6)</button>
         </div>
 
 
@@ -17390,23 +17419,33 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-    // 快捷推荐灵感药丸
+    // 快捷推荐灵感药丸（严格限定 inspoPills 灵感药丸容器内）
 
-    Array.prototype.forEach.call(document.querySelectorAll('.inspo-pill'), function(pill) {
+    var inspoWrap = $('inspoPills');
 
-      pill.onclick = function() {
+    if (inspoWrap) {
 
-        textarea.value = pill.getAttribute('data-inspo');
+      Array.prototype.forEach.call(inspoWrap.querySelectorAll('.inspo-pill, [data-inspo]'), function(pill) {
 
-        textarea.dispatchEvent(new Event('input'));
+        pill.onclick = function() {
 
-        textarea.focus();
+          var textToFill = pill.getAttribute('data-inspo');
 
-        showToast('已填入体验案例，点击「帮我理一理」即可梳理');
+          if (!textToFill) return;
 
-      };
+          textarea.value = textToFill;
 
-    });
+          textarea.dispatchEvent(new Event('input'));
+
+          textarea.focus();
+
+          showToast('已填入体验案例，点击「帮我理一理」即可梳理');
+
+        };
+
+      });
+
+    }
 
 
 
@@ -20063,7 +20102,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     libKey = libKey || 'base32';
 
     var tabsWrap = $('managerCardLifeTabs');
-    var pills = tabsWrap ? tabsWrap.querySelectorAll('.inspo-pill') : [];
+    var pills = tabsWrap ? tabsWrap.querySelectorAll('.card-lib-pill') : [];
     Array.prototype.forEach.call(pills, function(p) { p.classList.remove('active'); });
 
     var btnMap = {
