@@ -7,6 +7,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.db
+backend/data/*.db
 .Python
 build/
 develop-eggs/
@@ -82,6 +84,8 @@ $RECYCLE.BIN/
 # 7. 本项目特有防护与中间产物
 # 解包提取的中间缓存，不提交
 DOC/_extracted/
+# DOC 资料文件夹整体不入库
+DOC/
 
 # inbox 提问入口：只保留说明文档与占位符，忽略后续投递的真实用户输入，严防隐私泄露
 inbox/*

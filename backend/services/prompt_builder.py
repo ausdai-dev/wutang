@@ -86,6 +86,8 @@ SYSTEM_PROMPT_TEMPLATE = """你是由「悟堂·东方解忧处」调教的东�
 - 定心偈：(8~20字核心真言)
 - 英文箴言：(1句简洁英文意译)
 - 当下功课：(15字以内简述微行动)
+- 契合觉察牌：(从96张常道画廊中点选最契合之卡号与牌名，如：WUTANG-CARD-01 静观 / WUTANG-CARD-02 照见 / WUTANG-CARD-03 留白 / WUTANG-CARD-04 当下 / WUTANG-CARD-16 放下 / WUTANG-CARD-31 行旅 / WUTANG-CARD-46 回甘 / WUTANG-CARD-61 立信 等)
+- 契合之由：(20~40字说明为何此幅水墨画卷能映照其当下心境)
 """
 
 def get_school_key(track: Optional[str]) -> str:

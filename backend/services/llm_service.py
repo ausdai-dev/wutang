@@ -19,6 +19,7 @@ from backend.services.prompt_builder import (
     get_school_key,
     MASTER_PERSONAS
 )
+from backend.services.rag_service import rag_service
 
 class LLMService:
     def __init__(self):
@@ -82,6 +83,9 @@ class LLMService:
                     if delta:
                         accumulated_text += delta
                         yield f"data: {json.dumps({'type': 'token', 'content': delta}, ensure_ascii=False)}\n\n"
+
+                if not accumulated_text.strip():
+                    raise RuntimeError("LLM 流式返回内容为空，启用高保真兜底生成")
 
                 # 提取卡印并发送
                 sig_data = self._extract_or_synthesize_signature(accumulated_text, matched_cards, retrieved_classics, track, master, user_nickname)
@@ -164,6 +168,13 @@ class LLMService:
             card_name = "克己" if len(wisdom.get("name", "")) < 2 else wisdom.get("name", "修己")[:2]
             eng_motto = "Self-restraint and right action bring true dignity."
 
+        # 匹配 96 张东方智慧常道画廊中最契合的心象牌
+        matched_zen_card = rag_service.match_zen96_card(
+            user_text=user_text,
+            track=track,
+            card_name=card_name
+        )
+
         full_text = (
             f"## 【闻心 · 先圣洞幽】\n{empathy_text}\n\n"
             f"## 【示道 · 宗师真诠】\n{wisdom_text}\n\n"
@@ -175,6 +186,8 @@ class LLMService:
             f"- 定心偈：{mantra_text}\n"
             f"- 英文箴言：{eng_motto}\n"
             f"- 当下功课：{action_title}\n"
+            f"- 契合觉察牌：{matched_zen_card.get('card_id', 'WUTANG-CARD-01')} {matched_zen_card.get('name', '静观')}\n"
+            f"- 契合之由：{matched_zen_card.get('match_reason', '以此水墨画卷映照当下心象。')}\n"
         )
 
         # 模拟打字机流式输出 (按段/标点自然节奏分割)
@@ -196,7 +209,8 @@ class LLMService:
             "interpretation": interpretation,
             "school": school_key,
             "master": persona["master_name"],
-            "user_nickname": user_nickname
+            "user_nickname": user_nickname,
+            "matched_zen_card": matched_zen_card
         }
         yield f"data: {json.dumps({'type': 'card_signature', 'data': sig_data}, ensure_ascii=False)}\n\n"
         yield f"data: {json.dumps({'type': 'done'}, ensure_ascii=False)}\n\n"
@@ -246,6 +260,25 @@ class LLMService:
         author = ws.get("author", persona["master_name"])
         interpretation = ws.get("translation") or wisdom.get("modern_interpretation", "知止定静安虑得。")
 
+        # 匹配 96 张东方智慧常道画廊中最契合的心象牌
+        specified_card_id = None
+        card_id_match = re.search(r"-\s*契合觉察牌[：:]\s*(WUTANG-CARD-\d+|\d+)", full_text)
+        if card_id_match:
+            specified_card_id = card_id_match.group(1).strip()
+            if not specified_card_id.startswith("WUTANG-CARD-") and specified_card_id.isdigit():
+                specified_card_id = f"WUTANG-CARD-{int(specified_card_id):02d}"
+
+        matched_zen_card = rag_service.match_zen96_card(
+            user_text=full_text[:300],
+            track=track,
+            card_name=card_name,
+            specified_card_id=specified_card_id
+        )
+
+        reason_match = re.search(r"-\s*契合之由[：:]\s*([^\n\r]+)", full_text)
+        if reason_match and matched_zen_card:
+            matched_zen_card["match_reason"] = reason_match.group(1).strip()
+
         return {
             "card_name": card_name,
             "aphorism": aphorism,
@@ -257,7 +290,8 @@ class LLMService:
             "interpretation": interpretation,
             "school": school_key,
             "master": persona["master_name"],
-            "user_nickname": user_nickname or "同修"
+            "user_nickname": user_nickname or "同修",
+            "matched_zen_card": matched_zen_card
         }
 
     def parse_markdown_four_step(self, text: str) -> Dict[str, Any]:
@@ -273,23 +307,36 @@ class LLMService:
         lines = text.split("\n")
         for line in lines:
             line_str = line.strip()
-            if "01 听见了" in line_str or "闻心" in line_str:
-                current_sec = "empathy"
+            if not line_str:
                 continue
-            elif "02 古人有云" in line_str or "示道" in line_str:
-                current_sec = "wisdom"
-                continue
-            elif "03 试试这一招" in line_str or "笃行" in line_str:
-                current_sec = "micro_action"
-                continue
-            elif "04 读这一段" in line_str or "法印" in line_str:
-                current_sec = "further_reading"
-                continue
-            elif line_str.startswith("---") or "【解脱卡印】" in line_str:
+
+            if line_str.startswith("---") or "【解脱卡印】" in line_str:
                 current_sec = None
                 continue
-            
-            if current_sec and line_str:
+
+            # 仅当行为标题行时（以 #、*、数字标号或【 开头）才判定为小节切换
+            is_heading_line = (
+                line_str.startswith("#") or
+                line_str.startswith("【") or
+                line_str.startswith("**【") or
+                bool(re.match(r"^0[1-4]\b", line_str))
+            )
+
+            if is_heading_line:
+                if any(k in line_str for k in ["01", "听见了", "闻心", "洞幽"]):
+                    current_sec = "empathy"
+                    continue
+                elif any(k in line_str for k in ["02", "古人有云", "示道", "真诠"]):
+                    current_sec = "wisdom"
+                    continue
+                elif any(k in line_str for k in ["03", "试试这一招", "笃行", "当下功课", "功课", "微行动"]):
+                    current_sec = "micro_action"
+                    continue
+                elif any(k in line_str for k in ["04", "读这一段", "法印", "定心偈", "定心"]):
+                    current_sec = "further_reading"
+                    continue
+
+            if current_sec:
                 parts[current_sec] += (line + "\n")
 
         for k in parts:

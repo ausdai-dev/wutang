@@ -125,9 +125,11 @@ def run_prd4_checks():
     check("自动生成专属解脱卡号", str(b_data.get("card_number", "")).startswith("WU-BUD-"))
     
     four_step = b_data.get("four_step_parsed", {})
-    check("四维解惑结构完整 (闻心/示道/笃行/法印)", bool(four_step.get("empathy") and four_step.get("wisdom") and four_step.get("micro_action")))
+    check("四维解惑结构完整 (闻心/示道/笃行/法印)", bool(four_step.get("empathy") and four_step.get("wisdom") and four_step.get("micro_action")), f"emp:{bool(four_step.get('empathy'))}, wis:{bool(four_step.get('wisdom'))}, act:{bool(four_step.get('micro_action'))}, raw:{b_data.get('raw_markdown', '')[:100]}")
     sig = b_data.get("card_signature", {})
     check("解脱卡印签名元数据完整", bool(sig.get("card_name") and sig.get("aphorism") and sig.get("english_mantra")), f"卡名: {sig.get('card_name')}, 金句: {sig.get('aphorism')[:16]}...")
+    check("卡印包含 96 东方智慧契合觉察牌", bool(sig.get("matched_zen_card")), f"契合卡: {sig.get('matched_zen_card', {}).get('name')}")
+    check("契合觉察牌包含核心觉察与叩问心门", bool(sig.get("matched_zen_card", {}).get("core") and sig.get("matched_zen_card", {}).get("question")))
 
     # ---------------- 5. 300 DPI 工业实体打印卡包导出 ----------------
     print("\n--- 5. 300 DPI 实体卡牌印刷级导出与 ZIP 打包 ---")
@@ -183,6 +185,9 @@ def run_prd4_checks():
         check("包含 108 百八常道卡牌人生展区 (pantheon108Section)", "id=\"pantheon108Section\"" in html)
         check("包含 A4 9宫格拼版打印模态预览 (modalA4Print)", "id=\"modalA4Print\"" in html)
         check("顶栏导航标签升级为「卡牌人生」", "儒释道卡牌人生与百八常道图鉴" in html and "卡牌人生" in html)
+        check("包含 96 张东方智慧觉察牌联动舞台 (resonantZenCardContainer)", "id=\"resonantZenCardContainer\"" in html)
+        check("包含「以此牌写觉察日记」动作按钮", "id=\"btnJournalWithResonantCard\"" in html)
+        check("包含「收入珍藏」与「在 96 画廊中研读」按钮", "id=\"btnCollectResonantCard\"" in html and "id=\"btnViewInGallery\"" in html)
 
     # ---------------- 汇总 ----------------
     total = len(results)

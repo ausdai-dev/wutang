@@ -18,6 +18,7 @@ class RAGService:
         self.cards_wisdom: List[Dict[str, Any]] = []
         self.cards_action: List[Dict[str, Any]] = []
         self.cards_108: List[Dict[str, Any]] = []
+        self.cards_96: List[Dict[str, Any]] = []
         self.scenarios: List[Dict[str, Any]] = []
         self.micro_actions: Dict[str, List[Dict[str, Any]]] = {}
         self._load_corpus()
@@ -54,6 +55,14 @@ class RAGService:
         if c108_path.exists():
             with open(c108_path, "r", encoding="utf-8") as f:
                 self.cards_108 = json.load(f)
+
+        # 3.2 加载 96 张东方智慧觉察牌
+        c96_path = assets_dir / "cards_96_catalog.json"
+        if not c96_path.exists():
+            c96_path = knowledge_dir / "cards_96_catalog.json"
+        if c96_path.exists():
+            with open(c96_path, "r", encoding="utf-8") as f:
+                self.cards_96 = json.load(f)
 
         # 4. 加载场景与微行动配置
         wd_path = assets_dir / "wutang-data.json"
@@ -240,5 +249,84 @@ class RAGService:
                 score += 5
 
         return score
+
+    def match_zen96_card(
+        self,
+        user_text: str,
+        track: Optional[str] = None,
+        card_name: Optional[str] = None,
+        specified_card_id: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """为当次解忧开示匹配出 96 张东方智慧画廊中最契合的一张心象牌"""
+        if not self.cards_96:
+            return {}
+
+        # 1. 若明确给定了卡号，直接精准匹配
+        if specified_card_id:
+            for c in self.cards_96:
+                if c.get("card_id") == specified_card_id or c.get("num") == specified_card_id:
+                    res = dict(c)
+                    res["match_reason"] = f"先圣直指当下心结，特以《{c.get('name')}》之意境为你点化心源。"
+                    return res
+
+        # 2. 若给定了卡名（如“留白”、“照见”），优先按牌名同名或包含匹配
+        if card_name:
+            cname = card_name.strip()
+            for c in self.cards_96:
+                if c.get("name") == cname or (len(cname) >= 2 and cname in c.get("name", "")):
+                    res = dict(c)
+                    res["match_reason"] = f"先圣以「{c.get('name')}」为法印，此幅水墨画作恰好映照出此等静心气象。"
+                    return res
+
+        # 3. 语义多维共振打分
+        best_card = None
+        highest_score = -1.0
+        track_str = (track or "").lower()
+
+        # 场景系列加权偏好
+        target_series = "君子修身"
+        if "dao" in track_str or "道" in track_str:
+            target_series = "道法自然"
+        elif "bud" in track_str or "释" in track_str or "佛" in track_str:
+            target_series = "禅心之境"
+        elif "sym" in track_str or "圆桌" in track_str:
+            target_series = "禅心之境"
+
+        for c in self.cards_96:
+            score = 0.0
+            c_series = c.get("series", "")
+            c_name = c.get("name", "")
+            c_core = c.get("core", "")
+            c_q = c.get("question", "")
+
+            # 流派系列匹配加权
+            if c_series == target_series:
+                score += 4.0
+
+            # 情绪场景匹配
+            if any(w in user_text for w in ["累", "忙", "慢", "歇", "烦", "节奏", "压力", "紧绷"]) and c_series == "一盏茶事":
+                score += 3.5
+            if any(w in user_text for w in ["关系", "朋友", "父母", "伴侣", "人际", "拒绝", "讨好", "边界"]) and c_series == "因缘相惜":
+                score += 3.5
+            if any(w in user_text for w in ["迷茫", "未来", "选择", "低谷", "远方", "方向", "困境"]) and c_series == "山水人生":
+                score += 3.5
+
+            # 关键词重合度加权
+            for char_pair in [c_name] + [c_core[i:i+2] for i in range(0, len(c_core)-1, 2)]:
+                if char_pair and char_pair in user_text:
+                    score += 2.0
+
+            if score > highest_score:
+                highest_score = score
+                best_card = c
+
+        if not best_card and self.cards_96:
+            best_card = self.cards_96[0]
+
+        res = dict(best_card)
+        c_name = res.get("name", "觉察")
+        c_core = res.get("core", "")
+        res["match_reason"] = f"你倾诉中心绪多有牵挂与紧绷，此幅《{c_name}》正契合当下心象，助你借境观心：{c_core}"
+        return res
 
 rag_service = RAGService()

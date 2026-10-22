@@ -7418,6 +7418,180 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   color: #FFF;
 }
 
+
+/* ==========================================================================
+   PRD 4.1 借境观心 · 契合心象画卷 (96张典藏觉察牌联动)
+   ========================================================================== */
+.resonant-card-section {
+  margin: 32px 0 24px;
+  animation: fadeIn 0.5s ease-out;
+}
+.resonant-card-card {
+  background: rgba(253, 251, 247, 0.96);
+  border: 1px solid #D9CEBD;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 28px rgba(44, 40, 37, 0.06);
+  display: flex;
+  gap: 22px;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+}
+.resonant-card-image-box {
+  width: 170px;
+  min-width: 170px;
+  aspect-ratio: 2 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: 1.5px solid #C4A47C;
+  box-shadow: 0 6px 18px rgba(44, 40, 37, 0.12);
+  cursor: pointer;
+  background: #EAE4D8;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.resonant-card-image-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(44, 40, 37, 0.2);
+}
+.resonant-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.resonant-card-img-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(42, 38, 35, 0.75);
+  color: #FFF;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.resonant-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+.resonant-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #E2DACB;
+  padding-bottom: 8px;
+}
+.resonant-card-series {
+  font-size: 11.5px;
+  background: #EBF3ED;
+  color: #2B6E3F;
+  border: 1px solid rgba(43, 110, 63, 0.2);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+.resonant-card-no {
+  font-size: 11.5px;
+  color: #7E7870;
+  font-family: monospace;
+}
+.resonant-card-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: #8E2927;
+  margin: 0;
+  letter-spacing: 2px;
+}
+.resonant-card-core-box,
+.resonant-card-question-box,
+.resonant-card-reason-box {
+  margin-bottom: 8px;
+  line-height: 1.55;
+}
+.rc-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #7A736C;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+.rc-core-text {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.rc-question-text {
+  font-size: 13.5px;
+  color: #2B6E3F;
+  background: rgba(235, 243, 237, 0.5);
+  border-left: 3px solid #2B6E3F;
+  padding: 5px 10px;
+  border-radius: 0 4px 4px 0;
+}
+.rc-reason-text {
+  font-size: 12.5px;
+  color: #6A635B;
+  font-style: italic;
+}
+.resonant-card-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #E2DACB;
+}
+.btn-rc-action {
+  background: #FFF;
+  border: 1px solid #D9CEBD;
+  color: #4A443E;
+  padding: 6px 12px;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+.btn-rc-action:hover {
+  border-color: #8E2927;
+  color: #8E2927;
+  background: #FAF5F5;
+  transform: translateY(-1px);
+}
+.btn-rc-action.primary {
+  background: #2B6E3F;
+  color: #FFF;
+  border-color: #2B6E3F;
+}
+.btn-rc-action.primary:hover {
+  background: #235B34;
+  color: #FFF;
+}
+@media (max-width: 640px) {
+  .resonant-card-card {
+    flex-direction: column;
+    align-items: center;
+  }
+  .resonant-card-image-box {
+    width: 200px;
+  }
+}
+
 </style>
 
 </head>
@@ -8127,6 +8301,68 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           </button>
         </div>
       </div>
+
+      <!-- PRD 4.1 借境观心 · 契合心象画卷 (96张典藏觉察牌联动) -->
+      <div id="resonantZenCardContainer" class="resonant-card-section hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <h3 style="font-family:var(--font-serif);font-size:18px;margin:0;color:var(--color-ink);display:flex;align-items:center;gap:6px;">
+            <span>🖼️ 借境观心 · 契合心象画卷</span>
+            <span style="font-size:12px;font-weight:normal;color:var(--color-muted);">先圣映照的当下意象</span>
+          </h3>
+          <span style="font-size:11px;background:#EBF3ED;color:#2B6E3F;padding:2px 8px;border-radius:10px;border:1px solid rgba(43,110,63,0.2);">96 典藏画廊 · 心象共振</span>
+        </div>
+
+        <div class="resonant-card-card">
+          <!-- 左侧：2:3 纵向水墨大图，可点击查看大图 -->
+          <div class="resonant-card-image-box" onclick="handleViewInGallery()" title="点击赏析大图">
+            <img id="rcImage" src="" alt="" class="resonant-card-img" />
+            <div class="resonant-card-img-hint">点击赏析大图</div>
+          </div>
+
+          <!-- 右侧：卡牌意境与深度叩问 -->
+          <div class="resonant-card-body">
+            <div class="resonant-card-header">
+              <div>
+                <span class="resonant-card-series" id="rcSeries">禅心之境</span>
+                <span class="resonant-card-no" id="rcNum">WUTANG-CARD-03 · 03</span>
+              </div>
+              <h4 class="resonant-card-title" id="rcName">留白</h4>
+            </div>
+
+            <!-- 核心觉察 -->
+            <div class="resonant-card-core-box">
+              <div class="rc-label">【核心觉察】</div>
+              <div class="rc-core-text" id="rcCore">不必把每一处空缺都立即填满。</div>
+            </div>
+
+            <!-- 叩问心门 -->
+            <div class="resonant-card-question-box">
+              <div class="rc-label">【叩问心门】</div>
+              <div class="rc-question-text" id="rcQuestion">你是否允许自己暂时不知道答案？</div>
+            </div>
+
+            <!-- 契合之由 -->
+            <div class="resonant-card-reason-box" id="rcReasonBox">
+              <div class="rc-label">【为何契合】</div>
+              <div class="rc-reason-text" id="rcReason">此幅水墨山水留白极多，正映照你此刻心绪繁杂，宜暂停抓取，给心神留一分吐纳之地。</div>
+            </div>
+
+            <!-- 动作按钮栏 -->
+            <div class="resonant-card-actions">
+              <button type="button" class="btn-rc-action primary" id="btnJournalWithResonantCard" onclick="handleJournalWithResonantCard()">
+                <span>✍️ 以此牌写觉察日记</span>
+              </button>
+              <button type="button" class="btn-rc-action" id="btnCollectResonantCard" onclick="handleCollectResonantCard()">
+                <span id="btnCollectResonantCardText">⭐ 收入珍藏</span>
+              </button>
+              <button type="button" class="btn-rc-action" id="btnViewInGallery" onclick="handleViewInGallery()">
+                <span>🔍 在 96 画廊中研读</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
 
       <!-- F-05 四步解忧方完整结构 -->
@@ -10832,7 +11068,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">账号 / 邮箱</label>
 
-        <input type="text" id="authInputAccount" class="form-input" placeholder="输入账号或邮箱（主理人可输入 xush09@qq.com）" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+        <input type="text" id="authInputAccount" class="form-input" placeholder="输入常用邮箱 或 默认主理人: admin" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
 
       </div>
 
@@ -10840,7 +11076,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">登录密码 / 口令</label>
 
-        <input type="password" id="authInputPassword" class="form-input" placeholder="输入密码（主理人体验口令如 admin / 888）" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+        <input type="password" id="authInputPassword" class="form-input" placeholder="输入密码（默认主理人密码: admin）" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
 
       </div>
 
@@ -10860,7 +11096,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       <div style="margin-top:14px;padding-top:12px;border-top:1px dashed #E2D7C7;text-align:center;">
 
-        <button type="button" class="btn sm ghost" id="btnQuickDemoLoginAction" style="width:100%;font-size:12px;padding:6px 0;" title="快速以主理人身份体验工作台">⚡ 一键演示体验（主理人 xush09 身份）</button>
+        <button type="button" class="btn sm ghost" id="btnQuickDemoLoginAction" style="width:100%;font-size:12px;padding:6px 0;" title="快速以主理人身份体验工作台">⚡ 一键填入默认主理人账号 (admin / admin)</button>
 
       </div>
 
@@ -10900,8 +11136,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <label style="display:block;font-size:12.5px;color:var(--color-ink-light);margin-bottom:4px;font-weight:500;">确认密码</label>
 
-        <input type="password" id="regInputConfirmPassword" class="form-input" placeholder="再次输入密码" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
-
+        <input type="password" id="regInputConfirmPassword" class="form-input" placeholder="再次输入密码 (两遍校验)" style="width:100%;box-sizing:border-box;font-size:13px;padding:8px 12px;">
+        <div id="regMismatchTip" style="display:none;color:#C0392B;font-size:11.5px;margin-top:3px;font-weight:500;">⚠️ 两次输入的密码不一致，请仔细核对</div>
       </div>
 
       <button type="button" class="btn" id="btnSubmitRegisterAction" style="width:100%;padding:10px;font-size:14.5px;letter-spacing:0.1em;">注 册 并 登 录</button>
@@ -14524,160 +14760,116 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   // ================= 账号体系与主理人权限控制 =================
 
   function authManager(passcodeOrEmail, password) {
+    var val = (passcodeOrEmail || '').trim();
+    var pwd = (password || '').trim();
 
-    var val = (passcodeOrEmail || '').trim().toLowerCase();
-
-    var pwd = (password || '').trim().toLowerCase();
-
-    var isManagerAccount = (
-
-      val === 'xush09@qq.com' ||
-
-      val === 'admin' ||
-
-      val.indexOf('xush09') !== -1 ||
-
-      val === 'wutang888' ||
-
-      val === 'demo' ||
-
-      val === 'xiaoping' ||
-
-      val === '主理人' ||
-
-      pwd === 'admin' ||
-
-      pwd === 'wutang888'
-
-    );
-
-
-
-    if (isManagerAccount) {
-
-      appState.isManagerLoggedIn = true;
-
-      appState.currentUser = null;
-
-      localStorage.setItem('wutang_manager_active', 'true');
-
-      localStorage.removeItem('wutang_current_user');
-
-      updateManagerUI();
-
-      if ($('modalAuth')) $('modalAuth').classList.remove('active');
-
-      showToast('主理人身份已认证！顶栏已自动解锁「主理人工作台」👑');
-
-    } else if (val) {
-
-      // 普通注册用户登录
-
-      appState.isManagerLoggedIn = false;
-
-      appState.currentUser = {
-
-        name: val.split('@')[0],
-
-        account: val,
-
-        role: 'user'
-
-      };
-
-      localStorage.removeItem('wutang_manager_active');
-
-      localStorage.setItem('wutang_current_user', JSON.stringify(appState.currentUser));
-
-      updateManagerUI();
-
-      if ($('modalAuth')) $('modalAuth').classList.remove('active');
-
-      showToast('登录成功，欢迎回来：' + appState.currentUser.name);
-
-    } else {
-
-      showToast('请输入账号或邮箱');
-
+    if (!val || !pwd) {
+      showToast('请输入账号与密码');
+      return;
     }
 
+    // 调用后台标准认证接口
+    fetch('http://localhost:8000/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ account: val, password: pwd })
+    }).then(function(res) {
+      if (!res.ok) {
+        return res.json().then(function(d) { throw new Error(d.detail || '账号或密码错误'); });
+      }
+      return res.json();
+    }).then(function(data) {
+      var user = data.user || {};
+      appState.currentUser = user;
+      appState.userNickname = user.daohao_nickname || user.username || '同修';
+      if ($('userNicknameInput')) $('userNicknameInput').value = appState.userNickname;
+
+      localStorage.setItem('wutang_auth_token', data.access_token);
+      localStorage.setItem('wutang_current_user', JSON.stringify(user));
+
+      if (user.role === 'admin') {
+        appState.isManagerLoggedIn = true;
+        localStorage.setItem('wutang_manager_active', 'true');
+        showToast('主理人身份已认证！顶栏已自动解锁「主理人工作台」👑');
+      } else {
+        appState.isManagerLoggedIn = false;
+        localStorage.removeItem('wutang_manager_active');
+        showToast('登录成功，欢迎归堂：' + (user.daohao_nickname || user.username));
+      }
+
+      updateManagerUI();
+      if ($('modalAuth')) $('modalAuth').classList.remove('active');
+    }).catch(function(err) {
+      // 离线兼容逻辑
+      if (val === 'admin' && pwd === 'admin') {
+        appState.isManagerLoggedIn = true;
+        appState.userNickname = '悟堂主理人';
+        localStorage.setItem('wutang_manager_active', 'true');
+        updateManagerUI();
+        if ($('modalAuth')) $('modalAuth').classList.remove('active');
+        showToast('主理人身份已认证 (本地兼容态)！👑');
+      } else {
+        showToast(err.message || '登录失败，请检查账号密码');
+      }
+    });
   }
-
-
 
   function registerUser(nickname, account, pwd, confirmPwd) {
-
     var nick = (nickname || '').trim();
-
     var acc = (account || '').trim();
-
     var p = (pwd || '').trim();
-
     var cp = (confirmPwd || '').trim();
 
-
-
     if (!acc) {
-
-      showToast('请输入常用邮箱或登录账号');
-
+      showToast('请输入常用注册邮箱');
       return;
-
     }
-
+    if (!acc.match(/^[\w\.-]+@[\w\.-]+\.\w+$/)) {
+      showToast('请输入格式合法的电子邮箱地址');
+      return;
+    }
     if (!p || p.length < 6) {
-
       showToast('设置密码请至少输入 6 位字符');
-
       return;
-
     }
-
     if (p !== cp) {
-
       showToast('两次输入的密码不一致，请重新核对');
-
+      if ($('regMismatchTip')) $('regMismatchTip').style.display = 'block';
       return;
-
     }
 
+    fetch('http://localhost:8000/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: acc,
+        password: p,
+        confirm_password: cp,
+        daohao_nickname: nick || null
+      })
+    }).then(function(res) {
+      if (!res.ok) {
+        return res.json().then(function(d) { throw new Error(d.detail || '注册失败'); });
+      }
+      return res.json();
+    }).then(function(data) {
+      var user = data.user || {};
+      appState.currentUser = user;
+      appState.userNickname = user.daohao_nickname || '同修';
+      if ($('userNicknameInput')) $('userNicknameInput').value = appState.userNickname;
 
+      localStorage.setItem('wutang_auth_token', data.access_token);
+      localStorage.setItem('wutang_current_user', JSON.stringify(user));
+      localStorage.removeItem('wutang_manager_active');
+      appState.isManagerLoggedIn = false;
 
-    if (acc.toLowerCase().indexOf('xush09') !== -1 || acc.toLowerCase() === 'admin') {
-
-      authManager(acc, p);
-
-      return;
-
-    }
-
-
-
-    appState.isManagerLoggedIn = false;
-
-    appState.currentUser = {
-
-      name: nick || acc.split('@')[0],
-
-      account: acc,
-
-      role: 'user'
-
-    };
-
-    localStorage.removeItem('wutang_manager_active');
-
-    localStorage.setItem('wutang_current_user', JSON.stringify(appState.currentUser));
-
-    updateManagerUI();
-
-    if ($('modalAuth')) $('modalAuth').classList.remove('active');
-
-    showToast('注册成功！已开启行者档案，欢迎：' + (nick || acc));
-
+      updateManagerUI();
+      if ($('modalAuth')) $('modalAuth').classList.remove('active');
+      showToast('注册成功！欢迎步入悟堂修道人生。');
+    }).catch(function(err) {
+      showToast(err.message || '注册失败，请稍后重试');
+    });
   }
-
-
 
   function logoutUser() {
 
@@ -15726,6 +15918,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
                   finishToResult();
 
+                } else if (evt.type === 'card_signature') {
+                  updateLiberationCardView(evt.data);
                 } else if (evt.type === 'token') {
 
                   accumulated += evt.content;
@@ -16448,11 +16642,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       $('btnQuickDemoLoginAction').onclick = function() {
 
-        if ($('authInputAccount')) $('authInputAccount').value = 'xush09@qq.com';
-
+        if ($('authInputAccount')) $('authInputAccount').value = 'admin';
         if ($('authInputPassword')) $('authInputPassword').value = 'admin';
-
-        authManager('xush09@qq.com', 'admin');
+        authManager('admin', 'admin');
 
       };
 
@@ -16474,6 +16666,24 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       };
 
+    }
+
+    
+    if ($('regInputConfirmPassword') && $('regInputPassword')) {
+      var checkMismatch = function() {
+        var p = $('regInputPassword').value;
+        var cp = $('regInputConfirmPassword').value;
+        var tip = $('regMismatchTip');
+        if (tip) {
+          if (cp && p !== cp) {
+            tip.style.display = 'block';
+          } else {
+            tip.style.display = 'none';
+          }
+        }
+      };
+      $('regInputConfirmPassword').oninput = checkMismatch;
+      $('regInputPassword').oninput = checkMismatch;
     }
 
     if ($('regInputConfirmPassword')) {
@@ -20716,6 +20926,353 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 // 启动初始化
 
+
+  // ==========================================================================
+  // PRD 4.0 & 4.1 儒释道三学赛道、专属解脱卡牌与 96 觉察牌心象共振引擎
+  // ==========================================================================
+  appState.selectedTrack = 'confucianism';
+  appState.selectedMaster = 'confucius';
+  appState.userNickname = '同修';
+  appState.currentCardSignature = null;
+  var currentResonantZenCard = null;
+
+  function initSchoolTrackSelector() {
+    var pills = document.querySelectorAll('#schoolTrackPills .school-pill');
+    var mottoEl = $('currentMasterMotto');
+    var textarea = $('userTextarea');
+    var nickInput = $('userNicknameInput');
+
+    if (nickInput) {
+      nickInput.oninput = function() {
+        appState.userNickname = nickInput.value.trim() || '同修';
+      };
+    }
+
+    pills.forEach(function(pill) {
+      pill.onclick = function() {
+        pills.forEach(function(p) { p.classList.remove('active'); });
+        pill.classList.add('active');
+        appState.selectedTrack = pill.getAttribute('data-track');
+        appState.selectedMaster = pill.getAttribute('data-master');
+
+        var motto = pill.getAttribute('data-motto');
+        var hint = pill.getAttribute('data-hint');
+        if (mottoEl && motto) mottoEl.textContent = motto;
+        if (textarea && hint) textarea.setAttribute('placeholder', hint);
+      };
+    });
+  }
+
+  function toggleLiberation3DFlip() {
+    var card = $('liberationCard3D');
+    if (card) {
+      card.classList.toggle('is-flipped');
+    }
+  }
+
+  function updateLiberationCardView(sig) {
+    if (!sig) return;
+    appState.currentCardSignature = sig;
+
+    if ($('lcCardName')) $('lcCardName').textContent = '【 ' + (sig.card_name || '明德') + ' 】';
+    if ($('lcMasterTag')) $('lcMasterTag').textContent = (sig.master || '先圣') + ' 垂示 ｜ ' + (sig.aphorism ? sig.aphorism.slice(0, 16) : '立足东方智慧');
+    if ($('lcAphorism')) $('lcAphorism').textContent = sig.aphorism || '君子求诸己，万般皆因行未至。';
+    if ($('lcEnglishMotto')) $('lcEnglishMotto').textContent = sig.english_mantra || 'Self-discipline brings enduring peace.';
+    if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname || '同修';
+    if ($('lcSerialNo')) {
+      var sch = (sig.school || 'RU').slice(0, 3).toUpperCase();
+      $('lcSerialNo').textContent = 'WU-' + sch + '-' + (new Date().getFullYear()) + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+    }
+
+    if ($('lcBackStatement')) {
+      var t = $('userTextarea') ? $('userTextarea').value.trim() : '';
+      $('lcBackStatement').textContent = t ? (t.length > 50 ? t.slice(0, 50) + '...' : t) : '心事多有内耗与纠结，求一份定心法门。';
+    }
+    if ($('lcBackClassicSource')) $('lcBackClassicSource').textContent = sig.classic_source || '《论语·卫灵公》（春秋·孔子）';
+    if ($('lcBackQuote')) $('lcBackQuote').textContent = '「' + (sig.quote || '君子求诸己，小人求诸人。') + '」';
+    if ($('lcBackInterp')) $('lcBackInterp').textContent = sig.interpretation || '把力气用在自己身上，是内耗的唯一解药。';
+    if ($('lcBackActionTitle')) $('lcBackActionTitle').textContent = '【' + (sig.action_title || '当下 5 分钟微功课') + '】';
+    if ($('lcBackActionSteps')) {
+      var steps = sig.action_steps || ['闭目静坐呼吸三次', '记录当下可控之事'];
+      $('lcBackActionSteps').textContent = steps.join('；');
+    }
+
+    // 联动 96 张画廊：寻找并呈现最契合的心象觉察牌
+    updateResonantZenCard(sig.matched_zen_card, sig);
+  }
+
+  function findClientResonantZenCard(userText, track, cardSig) {
+    var cardsList = (typeof ZEN_CARDS_96 !== 'undefined' && ZEN_CARDS_96 && ZEN_CARDS_96.length) ? ZEN_CARDS_96 : ((typeof RAW_DATA !== 'undefined' && RAW_DATA.zenCards96) ? RAW_DATA.zenCards96 : []);
+    if (!cardsList || !cardsList.length) return null;
+
+    if (cardSig && cardSig.matched_zen_card && cardSig.matched_zen_card.card_id) {
+      return cardSig.matched_zen_card;
+    }
+
+    var text = (userText || '') + ' ' + (cardSig ? (cardSig.card_name || '') + ' ' + (cardSig.aphorism || '') : '');
+    var trackKey = (track || appState.selectedTrack || 'confucianism').toLowerCase();
+
+    // 牌名同名优先匹配
+    var targetName = (cardSig && cardSig.card_name) ? cardSig.card_name.trim() : '';
+    if (targetName) {
+      for (var i = 0; i < cardsList.length; i++) {
+        var c = cardsList[i];
+        if (c.name === targetName || (targetName.length >= 2 && c.name.indexOf(targetName) !== -1)) {
+          var copy = Object.assign({}, c);
+          copy.match_reason = '先圣以「' + c.name + '」为法印，此幅水墨画卷恰好映照出此等静心气象。';
+          return copy;
+        }
+      }
+    }
+
+    // 语义多维共振打分
+    var targetSeries = '君子修身';
+    if (trackKey.indexOf('dao') !== -1 || trackKey.indexOf('道') !== -1) targetSeries = '道法自然';
+    else if (trackKey.indexOf('bud') !== -1 || trackKey.indexOf('释') !== -1 || trackKey.indexOf('佛') !== -1) targetSeries = '禅心之境';
+    else if (trackKey.indexOf('sym') !== -1 || trackKey.indexOf('圆桌') !== -1) targetSeries = '禅心之境';
+
+    var bestCard = null;
+    var maxScore = -1;
+
+    for (var j = 0; j < cardsList.length; j++) {
+      var card = cardsList[j];
+      var score = 0;
+
+      if (card.series === targetSeries) score += 4;
+      if (text.match(/[累忙慢歇烦急紧压力]/) && card.series === '一盏茶事') score += 3.5;
+      if (text.match(/[关系朋友父母伴侣拒绝讨好边界]/) && card.series === '因缘相惜') score += 3.5;
+      if (text.match(/[迷茫未来选择低谷远方方向]/) && card.series === '山水人生') score += 3.5;
+
+      if (text.indexOf(card.name) !== -1) score += 3;
+      if (card.core) {
+        var keywords = card.core.split(/[，。、\s]/);
+        for (var k = 0; k < keywords.length; k++) {
+          if (keywords[k].length >= 2 && text.indexOf(keywords[k]) !== -1) score += 2;
+        }
+      }
+
+      if (score > maxScore) {
+        maxScore = score;
+        bestCard = card;
+      }
+    }
+
+    if (!bestCard) bestCard = cardsList[0];
+    var matched = Object.assign({}, bestCard);
+    matched.match_reason = '你倾诉中心绪多有牵挂与紧绷，此幅《' + matched.name + '》正契合当下心象，助你借境观心：' + (matched.core || '');
+    return matched;
+  }
+
+  function updateResonantZenCard(matchedCard, sig) {
+    var card = matchedCard;
+    if (!card) {
+      var userText = $('userTextarea') ? $('userTextarea').value.trim() : '';
+      card = findClientResonantZenCard(userText, appState.selectedTrack, sig);
+    }
+    if (!card) return;
+
+    currentResonantZenCard = card;
+
+    var container = $('resonantZenCardContainer');
+    if (!container) return;
+
+    if ($('rcImage')) {
+      $('rcImage').src = card.image_png || card.image_jpg || ('assets/cards/images/' + card.num + '_' + card.name + '.png');
+      $('rcImage').alt = card.name || '心象画卷';
+    }
+    if ($('rcSeries')) $('rcSeries').textContent = card.series || '东方意象';
+    if ($('rcNum')) $('rcNum').textContent = (card.card_id || ('WUTANG-CARD-' + card.num)) + ' · ' + (card.num || '01');
+    if ($('rcName')) $('rcName').textContent = card.name || '静观';
+    if ($('rcCore')) $('rcCore').textContent = card.core || '暂停评判，先看见正在发生的事。';
+    if ($('rcQuestion')) $('rcQuestion').textContent = card.question || '如果先不急着评判，你此刻真正看见了什么？';
+    if ($('rcReason')) $('rcReason').textContent = card.match_reason || ('先圣洞幽：以此《' + (card.name || '') + '》山水意境映照当下，助你明心破执。');
+
+    // 检查是否已收藏
+    var favs = getStorageJson('wutang_favorite_cards', []);
+    var isFav = favs.some(function(f) { return f.card_id === card.card_id || f.name === card.name; });
+    var favBtnText = $('btnCollectResonantCardText');
+    if (favBtnText) {
+      favBtnText.textContent = isFav ? '✓ 已收入珍藏' : '⭐ 收入珍藏';
+    }
+
+    container.classList.remove('hidden');
+  }
+
+  function handleJournalWithResonantCard() {
+    if (!currentResonantZenCard) return;
+    var card = currentResonantZenCard;
+
+    if (typeof switchMainTab === 'function') {
+      switchMainTab('growth');
+    }
+
+    var journalInput = $('journalInputText');
+    if (journalInput) {
+      journalInput.value = '【借境观心 · ' + card.name + '】\n' +
+        '核心觉察：' + card.core + '\n' +
+        '叩问心门：' + (card.question || '') + '\n\n' +
+        '我的当下心声：\n';
+      journalInput.focus();
+      journalInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    showToast('已载入《' + card.name + '》觉察课题，请写下您的真实心声。');
+  }
+
+  function handleCollectResonantCard() {
+    if (!currentResonantZenCard) return;
+    var card = currentResonantZenCard;
+    var favs = getStorageJson('wutang_favorite_cards', []);
+    var idx = favs.findIndex(function(f) { return f.card_id === card.card_id || f.name === card.name; });
+
+    if (idx >= 0) {
+      favs.splice(idx, 1);
+      setStorageJson('wutang_favorite_cards', favs);
+      if ($('btnCollectResonantCardText')) $('btnCollectResonantCardText').textContent = '⭐ 收入珍藏';
+      showToast('已从珍藏中移出《' + card.name + '》');
+    } else {
+      favs.unshift({
+        card_id: card.card_id,
+        name: card.name,
+        series: card.series,
+        core: card.core,
+        question: card.question,
+        image_png: card.image_png,
+        saved_at: new Date().toISOString()
+      });
+      setStorageJson('wutang_favorite_cards', favs);
+      if ($('btnCollectResonantCardText')) $('btnCollectResonantCardText').textContent = '✓ 已收入珍藏';
+      showToast('已将《' + card.name + '》收入您的「儒释道卡牌人生」典藏画卷！');
+    }
+  }
+
+  function handleViewInGallery() {
+    if (!currentResonantZenCard) return;
+    if (typeof openZen96CardModal === 'function') {
+      openZen96CardModal(currentResonantZenCard.card_id);
+    }
+  }
+
+  function exportCurrentPrintPack() {
+    var sig = appState.currentCardSignature;
+    if (!sig) {
+      showToast('正在为您生成解脱卡印，请稍候...');
+      return;
+    }
+    showToast('正在打包 300 DPI 实体卡牌印刷文件...');
+    var payload = {
+      card_id: sig.card_name || '001',
+      school: sig.school || appState.selectedTrack || 'confucianism',
+      master: sig.master || '孔子',
+      name: sig.card_name || '明德',
+      aphorism: sig.aphorism || '君子求诸己，万般皆因行未至。',
+      english_mantra: sig.english_mantra || 'Self-discipline brings peace.',
+      user_statement: $('userTextarea') ? $('userTextarea').value.trim() : '',
+      user_nickname: appState.userNickname || '同修',
+      lunar_date: '丙午年 · 霜降',
+      classic_source: sig.classic_source || '',
+      quote: sig.quote || '',
+      interpretation: sig.interpretation || '',
+      action_title: sig.action_title || '静坐调息',
+      action_steps: sig.action_steps || ['深呼吸三次', '记录眼下可控之事']
+    };
+
+    fetch('http://localhost:8000/api/card/export-print-pack', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.blob();
+    }).then(function(blob) {
+      var url = window.URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = '悟堂解脱卡-' + (sig.card_name || '明德') + '-300DPI-印刷包.zip';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+      showToast('300 DPI 实体打印包下载已完成！可直接送数码快印店下料。');
+    }).catch(function(err) {
+      showToast('调用后台打包异常，降级通过本地生成打印版');
+      window.print();
+    });
+  }
+
+  function downloadCardWallpaper() {
+    showToast('正在导出手机壁纸...');
+    var sig = appState.currentCardSignature || {};
+    var canvas = document.createElement('canvas');
+    canvas.width = 1080;
+    canvas.height = 1920;
+    var ctx = canvas.getContext('2d');
+
+    // 背景暖宣白渐变
+    var grad = ctx.createLinearGradient(0, 0, 0, 1920);
+    grad.addColorStop(0, '#FAF7EF');
+    grad.addColorStop(1, '#F0EAE0');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 1080, 1920);
+
+    // 边框金线
+    ctx.strokeStyle = '#9F7430';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(60, 60, 960, 1800);
+    ctx.strokeStyle = '#D4CBBD';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(80, 80, 920, 1760);
+
+    // 标题
+    ctx.fillStyle = '#8E2927';
+    ctx.font = 'bold 84px serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('【 ' + (sig.card_name || '明德') + ' 】', 540, 520);
+
+    ctx.fillStyle = '#9F7430';
+    ctx.font = '36px serif';
+    ctx.fillText((sig.master || '先圣') + ' 垂示 ｜ 东方解脱之道', 540, 640);
+
+    // 定心偈
+    ctx.fillStyle = '#221F1B';
+    ctx.font = '46px serif';
+    var aph = sig.aphorism || '君子求诸己，万般皆因行未至。';
+    ctx.fillText(aph, 540, 900);
+
+    // 英文
+    ctx.fillStyle = '#7E7870';
+    ctx.font = '28px sans-serif';
+    ctx.fillText(sig.english_mantra || 'Self-discipline brings enduring peace.', 540, 980);
+
+    // 底栏
+    ctx.font = '30px serif';
+    ctx.fillStyle = '#4D463E';
+    ctx.fillText('求道者：' + (appState.userNickname || '同修') + '   丙午年·霜降', 540, 1680);
+    ctx.font = '24px sans-serif';
+    ctx.fillStyle = '#999';
+    ctx.fillText('悟堂 · 儒释道卡牌人生', 540, 1740);
+
+    var url = canvas.toDataURL('image/png');
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = '悟堂壁纸-' + (sig.card_name || '解脱之道') + '.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showToast('高清壁纸已保存至本地相册！');
+  }
+
+  // 暴露到 window
+  window.toggleLiberation3DFlip = toggleLiberation3DFlip;
+  window.updateLiberationCardView = updateLiberationCardView;
+  window.updateResonantZenCard = updateResonantZenCard;
+  window.handleJournalWithResonantCard = handleJournalWithResonantCard;
+  window.handleCollectResonantCard = handleCollectResonantCard;
+  window.handleViewInGallery = handleViewInGallery;
+  window.exportCurrentPrintPack = exportCurrentPrintPack;
+  window.downloadCardWallpaper = downloadCardWallpaper;
+
+
   function bootstrap() {
 
     initScenarioChips();
@@ -20739,6 +21296,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     checkAiBackendStatus();
 
     bgmEngine.init();
+    initSchoolTrackSelector();
 
     // PRD 3.0 新增模块初始化
 
