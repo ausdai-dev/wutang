@@ -8816,8 +8816,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <button class="btn" id="btnSubmitCheckin">留下今日心境印记</button>
 
-          <span style="font-size:12px;color:var(--color-muted);">* 悟堂遵循最小权限：未点保存不上传、不推断。</span>
-
         </div>
 
 
@@ -8862,15 +8860,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <div>
 
-            <span class="badge rev" style="margin-bottom:6px;">情绪外化 · 结构化整理</span>
-
             <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">AI 心事日记 · 把乱麻理出头绪</h2>
-
-            <p style="margin:0;font-size:13.5px;color:var(--color-muted);">
-
-              写下让你放不下的碎碎念，AI 助手将帮你整理为客观事实、当时想法、情绪体验、内在需要与下一步。
-
-            </p>
 
           </div>
 
@@ -8978,15 +8968,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <div>
 
-            <span class="badge rev" style="margin-bottom:6px;">行动闭环 · 非评判复盘</span>
-
             <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">今日微行动与行动复盘</h2>
-
-            <p style="margin:0;font-size:13.5px;color:var(--color-muted);">
-
-              行动永远是可自主选择的。不完成绝不代表意志力不足，系统绝不使用指责语言。
-
-            </p>
 
           </div>
 
@@ -9047,8 +9029,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <div>
 
             <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">心境日历与成长线索</h2>
-
-            <p style="margin:0;font-size:13px;color:var(--color-muted);">真实记录你的每一次驻足与自我觉察</p>
 
           </div>
 
@@ -9629,8 +9609,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
             </h3>
 
-            <p id="mineUserDesc">日常心事梳理与解忧记录已保存在此设备本地</p>
-
           </div>
 
         </div>
@@ -9678,15 +9656,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       <section class="card" id="mineCardsLifeSection" style="border:1.5px solid var(--color-gold-border);background:var(--color-surface);position:relative;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
           <div>
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-              <span class="badge" style="background:#8E2927;color:#FFF;">儒释道三学</span>
-              <span class="badge ok">108 百八常道卡牌人生</span>
-              <span class="badge" id="managerCardLifeBadge" style="display:none;background:var(--color-gold-bg);color:var(--color-gold);border:1px solid var(--color-gold-border);font-weight:600;">主理人特权 · 全量卡牌库</span>
-            </div>
             <h2 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;color:var(--color-ink);" id="mineCardsLifeTitle">卡牌人生 · 我的收藏</h2>
-            <p style="margin:0;font-size:13px;color:var(--color-muted);" id="mineCardsLifeSubtitle">
-              立足东方智慧照亮人生之路。回看你在解忧旅途中珍藏的心境、智慧与觉察卡牌。
-            </p>
           </div>
 
           <!-- 主理人专属：卡牌库与收藏切换药丸（仅主理人登录后可见，普通用户完全隐藏） -->
@@ -19487,8 +19457,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     if (resolvedCards.length === 0) {
       container.innerHTML = '<div style="grid-column:1/-1;padding:36px 20px;text-align:center;background:var(--color-surface-subtle);border-radius:12px;border:1px dashed var(--color-border);">'
         + '<div style="font-size:14px;color:var(--color-primary);font-weight:700;margin-bottom:8px;">【虚堂待悟】</div>'
-        + '<h4 style="font-family:var(--font-serif);margin:0 0 6px;color:var(--color-ink);font-size:16px;">暂无珍藏卡牌</h4>'
-        + '<p style="margin:0 0 16px;font-size:13px;color:var(--color-muted);">在解忧道席抽牌、或自省觉察时，点击「⭐ 收入珍藏」即可沉淀在你的卡牌人生中。</p>'
+        + '<h4 style="font-family:var(--font-serif);margin:0 0 16px;color:var(--color-ink);font-size:16px;">暂无珍藏卡牌</h4>'
         + '<button type="button" class="btn sm primary" onclick="switchMainTab(\'relief\')">前往解忧参悟抽牌</button>'
         + '</div>';
       return;
