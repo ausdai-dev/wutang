@@ -7276,13 +7276,17 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   gap: 10px;
 }
 .school-pill {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 12px;
+  padding: 10px 14px;
+  min-height: 52px;
   background: var(--color-surface-subtle);
   border: 1.5px solid var(--color-border);
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   text-align: left;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -7291,12 +7295,92 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 .school-pill:hover {
   border-color: var(--color-primary-border);
   background: #FFF;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(34, 31, 27, 0.06);
 }
 .school-pill.active {
   border-color: var(--color-primary);
   background: var(--color-primary-light);
-  box-shadow: 0 4px 14px rgba(142, 41, 39, 0.08);
+  box-shadow: 0 6px 20px rgba(142, 41, 39, 0.12);
+}
+.school-pill .pill-seal,
+.school-pill .pill-info {
+  position: relative;
+  z-index: 2;
+}
+
+/* 先圣头像卡片背景层：水墨渐隐与右侧肖像微澜呈现 */
+.school-pill::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background-position: right 25%;
+  background-repeat: no-repeat;
+  opacity: 0.38;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+  mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.12) 22%, rgba(0,0,0,0.85) 62%, rgba(0,0,0,1) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.12) 22%, rgba(0,0,0,0.85) 62%, rgba(0,0,0,1) 100%);
+}
+.school-pill:hover::before {
+  opacity: 0.58;
+  transform: scale(1.06);
+}
+.school-pill.active::before {
+  opacity: 0.52;
+}
+
+/* 四大先圣头像背景绑定 */
+.school-pill[data-track="confucianism"]::before {
+  background-image: url('assets/avatars/sages/confucius_bg.jpg');
+}
+.school-pill[data-track="daoism"]::before {
+  background-image: url('assets/avatars/sages/laozi_bg.jpg');
+}
+.school-pill[data-track="buddhism"]::before {
+  background-image: url('assets/avatars/sages/buddha_bg.jpg');
+}
+.school-pill[data-track="symposium"]::before {
+  background-image: url('assets/avatars/sages/three_sages_bg.jpg');
+}
+
+/* 激活状态的主题流派专属微调 */
+.school-pill.active[data-track="daoism"] {
+  border-color: rgb(43, 76, 95);
+  background: #F0F4F7;
+  box-shadow: 0 6px 20px rgba(43, 76, 95, 0.12);
+}
+.school-pill.active[data-track="daoism"] .pill-seal {
+  background: rgb(43, 76, 95);
+  border-color: rgb(43, 76, 95);
+  color: #FFF;
+}
+
+.school-pill.active[data-track="buddhism"] {
+  border-color: rgb(181, 137, 0);
+  background: #FCF8EB;
+  box-shadow: 0 6px 20px rgba(181, 137, 0, 0.12);
+}
+.school-pill.active[data-track="buddhism"] .pill-seal {
+  background: rgb(181, 137, 0);
+  border-color: rgb(181, 137, 0);
+  color: #FFF;
+}
+
+.school-pill.active[data-track="symposium"] {
+  border-color: rgb(118, 55, 98);
+  background: #FAF2F7;
+  box-shadow: 0 6px 20px rgba(118, 55, 98, 0.12);
+}
+.school-pill.active[data-track="symposium"] .pill-seal {
+  background: rgb(118, 55, 98);
+  border-color: rgb(118, 55, 98);
+  color: #FFF;
 }
 .pill-seal {
   width: 32px;
@@ -10791,21 +10875,23 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       <section id="studioCards" class="card hidden">
 
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;flex-wrap:wrap;gap:12px;">
+        <!-- 顶部标题与说明 -->
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;flex-wrap:wrap;gap:12px;">
 
           <div>
 
-            <h2 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;">东方解忧卡牌库</h2>
+            <h2 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;" id="studioCardsMainTitle">东方解忧卡牌库 · 基础牌 (32张)</h2>
 
             <p style="margin:0;font-size:14px;color:var(--color-muted);" id="studioCardsSubtitle">
 
-              收录心境牌、东方智慧牌（严格核验）与微行动牌体系。
+              收录心境牌 16、东方智慧牌 8（严格核验）与微行动牌 8 体系。
 
             </p>
 
           </div>
 
-          <div style="display:flex;gap:8px;">
+          <!-- 基础解忧卡牌类型下拉筛选器（仅在基础牌库激活时显示） -->
+          <div id="studioCardTypeFilterWrap" style="display:flex;gap:8px;">
 
             <select class="form-select" id="studioCardTypeFilter" style="width:auto;padding:6px 12px;font-size:13.5px;">
 
@@ -10825,15 +10911,25 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-        <div class="pill-inspirations" id="managerCardLifeTabs" style="margin:0 0 16px;display:flex;gap:8px;flex-wrap:wrap;">
-          <button type="button" class="inspo-pill" id="btnTabPantheon" onclick="switchCardLifeSubView('pantheon')">百八常道库 (108)</button>
-          <button type="button" class="inspo-pill" id="btnTabZen96" onclick="switchCardLifeSubView('zen96')">觉察牌画廊 (96)</button>
-          <button type="button" class="inspo-pill" id="btnTabThemePacks" onclick="switchCardLifeSubView('theme')">主题卡牌包 (6)</button>
+        <!-- 四大平级卡牌库导航选项卡 -->
+        <div class="pill-inspirations" id="managerCardLifeTabs" style="margin:0 0 18px;display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" class="inspo-pill active" id="btnTabBase32" onclick="switchStudioCardLibrary('base32')">基础解忧牌 (32)</button>
+          <button type="button" class="inspo-pill" id="btnTabPantheon" onclick="switchStudioCardLibrary('pantheon')">百八常道库 (108)</button>
+          <button type="button" class="inspo-pill" id="btnTabZen96" onclick="switchStudioCardLibrary('zen96')">觉察牌画廊 (96)</button>
+          <button type="button" class="inspo-pill" id="btnTabThemePacks" onclick="switchStudioCardLibrary('theme')">主题卡牌包 (6)</button>
         </div>
 
-        <div id="managerCardsLibraryWrap" class="hidden" style="display:none;margin-top:20px;border-top:1px dashed var(--color-gold-border);padding-top:20px;">
-          <!-- A) 百八常道 108 图鉴全谱系 -->
-          <div id="subViewPantheon108" class="card-library-subview">
+
+
+        <!-- 1. 基础解忧牌库 (32张) -->
+        <div id="subViewBase32" class="card-library-subview">
+          <div class="studio-card-grid" id="studioCardListContainer"></div>
+        </div>
+
+
+
+        <!-- 2. 百八常道 108 图鉴全谱系 (108张) -->
+        <div id="subViewPantheon108" class="card-library-subview" style="display:none;">
             <!-- PRD 4.0 儒释道卡牌人生 · 百八常道图鉴 (108张全谱系) -->
       <section class="card" id="pantheon108Section" style="border:1.5px solid var(--color-gold-border);background:var(--color-surface);">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
@@ -10867,8 +10963,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       </section>
           </div>
 
-          <!-- B) 东方智慧觉察牌 96 画廊 -->
-          <div id="subViewZen96" class="card-library-subview" style="display:none;">
+
+
+        <!-- 3. 东方智慧觉察牌 96 画廊 (96张) -->
+        <div id="subViewZen96" class="card-library-subview" style="display:none;">
             <!-- 悟堂 · 东方智慧觉察牌 (96张典藏) 专区 (PRD 3.0 / 848x1264) -->
 
       <section class="card" id="zen96CardsSection">
@@ -10930,8 +11028,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       </section>
           </div>
 
-          <!-- C) 6 大主题卡牌包与详情 -->
-          <div id="subViewThemePacks" class="card-library-subview" style="display:none;">
+
+
+        <!-- 4. 6 大主题卡牌包与详情 (6套) -->
+        <div id="subViewThemePacks" class="card-library-subview" style="display:none;">
             <!-- 6 大主题卡牌包 (PRD 3.0 Section 18.12) -->
 
       <section class="card">
@@ -10976,9 +11076,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       </section>
           </div>
-        </div>
-
-        <div class="studio-card-grid" id="studioCardListContainer"></div>
 
       </section>
 
@@ -19961,48 +20058,66 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-  // ================= 主理人卡牌库：工作台内三类卡牌库切换 =================
-  window.switchCardLifeSubView = function(subView) {
-    // 权限坚固锁：若非主理人尝试查看全量卡牌库，坚决拦截
-    if (!appState.isManagerLoggedIn) {
-      showToast('卡牌库仅主理人可见，请先完成主理人认证');
-      return;
-    }
-
-    var libWrap = $('managerCardsLibraryWrap');
-    if (!libWrap) return;
-    var subPantheon = $('subViewPantheon108');
-    var subZen96 = $('subViewZen96');
-    var subTheme = $('subViewThemePacks');
+  // ================= 主理人卡牌库：四大平级卡牌库切换 (32基础 / 108常道 / 96觉察 / 6主题包) =================
+  window.switchStudioCardLibrary = function(libKey) {
+    libKey = libKey || 'base32';
 
     var tabsWrap = $('managerCardLifeTabs');
     var pills = tabsWrap ? tabsWrap.querySelectorAll('.inspo-pill') : [];
-    var btn = { pantheon: $('btnTabPantheon'), zen96: $('btnTabZen96'), theme: $('btnTabThemePacks') }[subView];
-
-    // 再次点击已展开的入口 → 收起
-    var willOpen = !(btn && btn.classList.contains('active'));
     Array.prototype.forEach.call(pills, function(p) { p.classList.remove('active'); });
 
-    if (!willOpen) {
-      libWrap.classList.add('hidden');
-      libWrap.style.display = 'none';
-      if (subPantheon) subPantheon.style.display = 'none';
-      if (subZen96) subZen96.style.display = 'none';
-      if (subTheme) subTheme.style.display = 'none';
-      return;
+    var btnMap = {
+      base32: $('btnTabBase32'),
+      pantheon: $('btnTabPantheon'),
+      zen96: $('btnTabZen96'),
+      theme: $('btnTabThemePacks')
+    };
+    if (btnMap[libKey]) btnMap[libKey].classList.add('active');
+
+    var subBase = $('subViewBase32');
+    var subPantheon = $('subViewPantheon108');
+    var subZen96 = $('subViewZen96');
+    var subTheme = $('subViewThemePacks');
+    var filterWrap = $('studioCardTypeFilterWrap');
+
+    if (subBase) subBase.style.display = (libKey === 'base32') ? 'block' : 'none';
+    if (subPantheon) subPantheon.style.display = (libKey === 'pantheon') ? 'block' : 'none';
+    if (subZen96) subZen96.style.display = (libKey === 'zen96') ? 'block' : 'none';
+    if (subTheme) subTheme.style.display = (libKey === 'theme') ? 'block' : 'none';
+    if (filterWrap) filterWrap.style.display = (libKey === 'base32') ? 'flex' : 'none';
+
+    var mainTitle = $('studioCardsMainTitle');
+    var subTitle = $('studioCardsSubtitle');
+
+    if (libKey === 'base32') {
+      if (mainTitle) mainTitle.textContent = '东方解忧卡牌库 · 基础牌 (32张)';
+      if (subTitle) {
+        var cM = (typeof CARDS_MINDSET !== 'undefined' && CARDS_MINDSET) ? CARDS_MINDSET.length : 16;
+        var cW = (typeof CARDS_WISDOM !== 'undefined' && CARDS_WISDOM) ? CARDS_WISDOM.length : 8;
+        var cA = (typeof CARDS_ACTION !== 'undefined' && CARDS_ACTION) ? CARDS_ACTION.length : 8;
+        subTitle.textContent = '共 ' + (cM + cW + cA) + ' 张卡牌 · 心境 ' + cM + ' / 智慧 ' + cW + ' / 行动 ' + cA + '（收录心境牌、东方智慧牌与微行动牌体系）';
+      }
+      if (typeof renderStudioCards === 'function') {
+        renderStudioCards($('studioCardTypeFilter') ? $('studioCardTypeFilter').value : 'all');
+      }
+    } else if (libKey === 'pantheon') {
+      if (mainTitle) mainTitle.textContent = '儒释道卡牌人生 · 百八常道图鉴 (108张全谱系)';
+      if (subTitle) subTitle.textContent = '立足东方智慧照亮人生之路。涵盖儒家修己（36鉴）、道家逍遥（36鉴）、释家觉照（36鉴），支持一键导出 300DPI 实体打印卡与 A4 拼版打印。';
+      if (typeof renderPantheonSection === 'function') renderPantheonSection();
+    } else if (libKey === 'zen96') {
+      if (mainTitle) mainTitle.textContent = '悟堂 · 东方智慧觉察牌 (96张典藏画廊)';
+      if (subTitle) subTitle.textContent = '848×1264 超清母版 · 以宋画留白、工笔设色与传统宣纸肌理绘制。包含禅心之境、一盏茶事、因缘相惜等六大系列。';
+      if (typeof renderZen96CardsSection === 'function') renderZen96CardsSection();
+    } else if (libKey === 'theme') {
+      if (mainTitle) mainTitle.textContent = '东方解忧卡 · 主题卡牌包 (6大系列)';
+      if (subTitle) subTitle.textContent = '按日常高频心境主题分类精选，点击浏览每个主题包的启发卡牌。';
+      if (typeof renderThemePackGrid === 'function') renderThemePackGrid();
     }
+  };
 
-    libWrap.classList.remove('hidden');
-    libWrap.style.display = 'block';
-    if (btn) btn.classList.add('active');
-
-    if (subPantheon) subPantheon.style.display = (subView === 'pantheon') ? 'block' : 'none';
-    if (subZen96) subZen96.style.display = (subView === 'zen96') ? 'block' : 'none';
-    if (subTheme) subTheme.style.display = (subView === 'theme') ? 'block' : 'none';
-
-    if (subView === 'pantheon' && typeof renderPantheonSection === 'function') renderPantheonSection();
-    if (subView === 'zen96' && typeof renderZen96CardsSection === 'function') renderZen96CardsSection();
-    if (subView === 'theme' && typeof renderThemePackGrid === 'function') renderThemePackGrid();
+  // 兼容老函数名
+  window.switchCardLifeSubView = function(subView) {
+    window.switchStudioCardLibrary(subView);
   };
 
   window.writeJournalWithFavCard = function(name, core) {
