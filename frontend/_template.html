@@ -13421,7 +13421,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     if (cards && cards.mindset) {
 
-      empathyText += ' 当下你所体会的，可能正如这句觉察：「' + cards.mindset.quote + '」。';
+      var mindsetText = (cards.mindset.front_text || cards.mindset.quote || cards.mindset.short_description || '').trim();
+
+      if (mindsetText && mindsetText !== 'undefined') {
+
+        empathyText += ' 当下你所体会的，可能正如这句觉察：「' + mindsetText + '」。';
+
+      }
 
     }
 
@@ -15536,13 +15542,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       var l = lines[i];
 
-      if (l.indexOf('01 听见了') !== -1) { current = '01'; continue; }
+      if (l.indexOf('01 听见了') !== -1 || l.indexOf('闻心') !== -1) { current = '01'; continue; }
 
-      if (l.indexOf('02 古人有云') !== -1) { current = '02'; continue; }
+      if (l.indexOf('02 古人有云') !== -1 || l.indexOf('示道') !== -1) { current = '02'; continue; }
 
-      if (l.indexOf('03 试试这一招') !== -1) { current = '03'; continue; }
+      if (l.indexOf('03 试试这一招') !== -1 || l.indexOf('笃行') !== -1) { current = '03'; continue; }
 
-      if (l.indexOf('04 读这一段') !== -1) { current = '04'; continue; }
+      if (l.indexOf('04 读这一段') !== -1 || l.indexOf('法印') !== -1) { current = '04'; continue; }
 
       if (current === '01') sec01 += (l + '\n');
 
