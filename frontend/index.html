@@ -8200,6 +8200,87 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     border-color: rgb(118, 55, 98);
     box-shadow: 0 4px 14px rgba(118, 55, 98, 0.28);
   }
+
+  /* 96 张东方觉察牌大图光箱弹窗：手机端图像自适应等比缩放与屏幕完美居中 */
+  .zen-lightbox-modal {
+    padding: 12px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow-x: hidden !important;
+  }
+  .zen-lightbox-card {
+    width: min(92vw, 360px) !important;
+    max-height: 90vh !important;
+    padding: 16px 14px 14px !important;
+    margin: auto !important;
+    border-radius: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+  .zen-lightbox-close-btn {
+    top: 10px !important;
+    right: 12px !important;
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 14px !important;
+  }
+  .zen-modal-header-wrap {
+    margin-bottom: 10px !important;
+    padding: 0 16px !important;
+  }
+  #zen96ModalTitle {
+    font-size: 20px !important;
+    margin: 0 0 4px !important;
+  }
+  #zen96ModalCore {
+    font-size: 12.5px !important;
+    line-height: 1.45 !important;
+  }
+  /* 3D 卡牌舞台：宽度按视口缩小自适应，2:3 黄金比例完美缩放居中，杜绝滚动条 */
+  .zen-card-stage-3d {
+    width: min(220px, 60vw) !important;
+    max-width: 60vw !important;
+    max-height: 48vh !important;
+    aspect-ratio: 2 / 3 !important;
+    height: auto !important;
+    margin: 0 auto 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #zen96ModalFlipper {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  /* 反面文字卡在移动端缩放下的优雅保护 */
+  .zen-modal-back-face {
+    padding: 14px 12px !important;
+  }
+  .zen-modal-back-face h4 {
+    font-size: 18px !important;
+    margin: 0 0 6px !important;
+  }
+  .zen-modal-back-face p {
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
+    margin: 0 0 6px !important;
+  }
+  .zen-modal-back-face #zen96ModalBackQuestion {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    padding: 8px 10px !important;
+    margin-bottom: 8px !important;
+  }
+  #btnZen96JournalAction,
+  #btnZen96FavToggle {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+  }
 }
 
 </style>
@@ -22536,7 +22617,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       <button type="button" class="zen-lightbox-close-btn" onclick="closeZen96Modal()" title="关闭 (Esc)">✕</button>
 
       <!-- 顶部卡牌头部信息 -->
-      <div style="text-align:center;margin-bottom:14px;padding:0 24px;">
+      <div class="zen-modal-header-wrap" style="text-align:center;margin-bottom:14px;padding:0 24px;">
         <h3 id="zen96ModalTitle" style="font-family:var(--font-serif);margin:4px 0 6px;font-size:24px;color:var(--color-ink);letter-spacing:2px;">无常</h3>
         <p id="zen96ModalCore" style="margin:0;font-size:14px;color:var(--color-primary);font-family:var(--font-serif);line-height:1.6;">“变化是生命的一部分，不等于一切都失去意义。”</p>
       </div>
@@ -22551,7 +22632,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           </div>
 
           <!-- 反面：宋代宣纸解忧自省笺 -->
-          <div style="position:absolute;width:100%;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:rotateY(180deg) translateZ(1px);-webkit-transform:rotateY(180deg) translateZ(1px);background:linear-gradient(180deg, #FDFBF7 0%, #F5EFE3 100%);border-radius:12px;border:2px solid #C4A47C;padding:24px 20px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;box-sizing:border-box;">
+          <div class="zen-modal-back-face" style="position:absolute;width:100%;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:rotateY(180deg) translateZ(1px);-webkit-transform:rotateY(180deg) translateZ(1px);background:linear-gradient(180deg, #FDFBF7 0%, #F5EFE3 100%);border-radius:12px;border:2px solid #C4A47C;padding:24px 20px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;box-sizing:border-box;">
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
                 <span style="font-size:12px;color:#8E2927;font-weight:700;letter-spacing:1px;" id="zen96ModalBackNum">【因缘相惜 · 编号 13】</span>
