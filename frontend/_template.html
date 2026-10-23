@@ -384,11 +384,21 @@ body::after {
 
   transition: all var(--trans);
 
-  display: flex;
+  display: inline-flex;
 
   align-items: center;
 
+  justify-content: center;
+
+  text-align: center;
+
   gap: 6px;
+
+  flex: 1 1 0;
+
+  min-width: 66px;
+
+  box-sizing: border-box;
 
 }
 
@@ -506,59 +516,40 @@ body::after {
 
 }
 
-.bgm-icon-wave {
-
-  display: inline-flex;
-
-  align-items: flex-end;
-
-  gap: 2px;
-
-  height: 12px;
-
-  width: 12px;
-
-}
-
-.bgm-icon-wave span {
+.bgm-icon-note {
 
   display: inline-block;
 
-  width: 2px;
+  width: 14px;
 
-  background-color: currentColor;
+  height: 14px;
 
-  border-radius: 1px;
+  opacity: 0.75;
 
-  height: 4px;
-
-  transition: height 0.2s;
+  transition: opacity 0.2s;
 
 }
 
-.bgm-btn.is-playing .bgm-icon-wave span:nth-child(1) {
+.bgm-btn:hover .bgm-icon-note,
+.bgm-btn.is-playing .bgm-icon-note {
 
-  animation: bgmWave 1.1s ease-in-out infinite 0.1s;
-
-}
-
-.bgm-btn.is-playing .bgm-icon-wave span:nth-child(2) {
-
-  animation: bgmWave 1.1s ease-in-out infinite 0.35s;
+  opacity: 1;
 
 }
 
-.bgm-btn.is-playing .bgm-icon-wave span:nth-child(3) {
+.bgm-btn.is-playing .bgm-icon-note {
 
-  animation: bgmWave 1.1s ease-in-out infinite 0.2s;
+  animation: bgmNoteSway 1.6s ease-in-out infinite;
 
 }
 
-@keyframes bgmWave {
+@keyframes bgmNoteSway {
 
-  0%, 100% { height: 3px; }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
 
-  50% { height: 12px; }
+  25% { transform: translateY(-1px) rotate(-6deg); }
+
+  75% { transform: translateY(1px) rotate(5deg); }
 
 }
 
@@ -1466,66 +1457,177 @@ body::after {
 
 
 
-/* 首页禅茶意境横幅 */
-
-.zen-tea-banner {
-
+/* ================= 首页东方心境画卷轮播 Banner (Zen Carousel) ================= */
+.zen-carousel-container {
   position: relative;
-
   width: 100%;
-
-  height: 155px;
-
-  border-radius: 12px;
-
+  height: 168px;
+  border-radius: 14px;
   overflow: hidden;
-
   margin-bottom: 20px;
-
   border: 1px solid var(--color-border);
-
-  box-shadow: var(--shadow-sm);
-
-}
-
-.zen-banner-img {
-
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: cover;
-
-  object-position: center;
-
-  display: block;
-
-  filter: saturate(0.92) brightness(0.96);
-
-  transition: transform 0.8s ease;
-
-}
-
-.zen-tea-banner:hover .zen-banner-img {
-
-  transform: scale(1.02);
-
-}
-
-.zen-banner-sub {
-
-  font-size: 12px;
-
-  opacity: 0.85;
-
+  box-shadow: 0 4px 18px rgba(34, 31, 27, 0.05);
+  background: #F4EFE6;
+  user-select: none;
 }
 
 @media (max-width: 600px) {
+  .zen-carousel-container {
+    height: 125px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+}
 
-  .zen-banner-sub { display: none; }
+.zen-carousel-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
-  .zen-tea-banner { height: 120px; }
+.zen-carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.85s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: scale(1.02);
+  cursor: pointer;
+}
 
+.zen-carousel-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.zen-carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: saturate(0.94) brightness(0.97);
+}
+
+/* 左右轻巧翻页控制箭头 (悬停时显现) */
+.zen-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(253, 251, 248, 0.82);
+  border: 1px solid rgba(232, 226, 214, 0.9);
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0;
+  transition: all var(--trans);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.zen-carousel-container:hover .zen-carousel-arrow {
+  opacity: 0.88;
+}
+
+.zen-carousel-arrow:hover {
+  opacity: 1 !important;
+  background: #FFFFFF;
+  color: var(--color-primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.zen-carousel-arrow.prev { left: 10px; }
+.zen-carousel-arrow.next { right: 10px; }
+
+/* 底部胶囊指示点 */
+.zen-carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 5;
+  background: rgba(34, 31, 27, 0.28);
+  padding: 3px 8px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+
+.zen-carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.zen-carousel-dot.active {
+  width: 18px;
+  border-radius: 4px;
+  background: #FFFFFF;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+/* 诗意微标 (右上角) */
+.zen-carousel-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: rgba(253, 251, 248, 0.88);
+  border: 1px solid rgba(226, 220, 209, 0.85);
+  border-radius: 14px;
+  padding: 3px 10px;
+  font-size: 11.5px;
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 5;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(34, 31, 27, 0.06);
+  transition: opacity 0.3s ease;
+}
+
+.zen-carousel-badge .badge-title {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.zen-carousel-badge .badge-sub {
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  .zen-carousel-badge .badge-sub {
+    display: none;
+  }
+  .zen-carousel-badge .badge-divider {
+    display: none;
+  }
+}
+
+/* 兼容老样式名 */
+.zen-tea-banner {
+  display: none;
 }
 
 
@@ -3724,6 +3826,8 @@ body::after {
 
   perspective: 1200px;
 
+  -webkit-perspective: 1200px;
+
   display: flex;
 
   flex-direction: row;
@@ -3769,6 +3873,8 @@ body::after {
   position: relative;
 
   transform-style: preserve-3d;
+
+  -webkit-transform-style: preserve-3d;
 
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 
@@ -4275,6 +4381,10 @@ body::after {
 
   -webkit-backface-visibility: hidden;
 
+  transform: translateZ(1px);
+
+  -webkit-transform: translateZ(1px);
+
   border-radius: 16px;
 
   overflow: hidden;
@@ -4299,7 +4409,9 @@ body::after {
 
   background: #FAF7F2;
 
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
+
+  -webkit-transform: rotateY(180deg) translateZ(1px);
 
   text-align: center;
 
@@ -5163,6 +5275,8 @@ body::after {
 
   perspective: 1000px;
 
+  -webkit-perspective: 1000px;
+
   cursor: pointer;
 
   margin-bottom: 12px;
@@ -5182,6 +5296,8 @@ body::after {
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
   transform-style: preserve-3d;
+
+  -webkit-transform-style: preserve-3d;
 
 }
 
@@ -5203,6 +5319,10 @@ body::after {
 
   backface-visibility: hidden;
 
+  transform: translateZ(1px);
+
+  -webkit-transform: translateZ(1px);
+
   border-radius: 10px;
 
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
@@ -5219,7 +5339,9 @@ body::after {
 
 .gallery-card-face.face-back {
 
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
+
+  -webkit-transform: rotateY(180deg) translateZ(1px);
 
 }
 
@@ -5353,6 +5475,8 @@ body::after {
 
   perspective: 1200px;
 
+  -webkit-perspective: 1200px;
+
   width: 100%;
 
   height: 440px;
@@ -5409,6 +5533,8 @@ body::after {
 
   transform-style: preserve-3d;
 
+  -webkit-transform-style: preserve-3d;
+
 }
 
 .card-3d-flipper.is-flipped .card-3d-inner {
@@ -5434,6 +5560,10 @@ body::after {
   -webkit-backface-visibility: hidden;
 
   backface-visibility: hidden;
+
+  transform: translateZ(1px);
+
+  -webkit-transform: translateZ(1px);
 
   border-radius: 14px;
 
@@ -5728,7 +5858,9 @@ body::after {
 
   border: 1.5px solid #E5DFD5;
 
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
+
+  -webkit-transform: rotateY(180deg) translateZ(1px);
 
   display: flex;
 
@@ -7489,6 +7621,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 .liberation-hero-card {
   margin: 24px 0 28px;
   perspective: 1200px;
+  -webkit-perspective: 1200px;
 }
 .liberation-card-3d {
   width: 100%;
@@ -7497,6 +7630,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   aspect-ratio: 2.5 / 3.5;
   position: relative;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
   box-shadow: 0 16px 36px rgba(34,31,27,0.1), 0 2px 8px rgba(34,31,27,0.04);
@@ -7509,6 +7643,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(1px);
+  -webkit-transform: translateZ(1px);
   border-radius: 18px;
   padding: 24px;
   box-sizing: border-box;
@@ -7526,7 +7663,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 }
 .liberation-back {
   background: #FAF8F2;
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
+  -webkit-transform: rotateY(180deg) translateZ(1px);
   border-color: var(--color-primary-border);
 }
 .card-inner-frame {
@@ -7914,6 +8052,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 }
 .zen-card-stage-3d {
   perspective: 1200px;
+  -webkit-perspective: 1200px;
   width: 340px;
   max-width: 86vw;
   aspect-ratio: 2 / 3;
@@ -7979,7 +8118,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     overflow-x: visible;
   }
 
-  /* 顶栏：音乐按钮独立置于右上角，不再与 Tab 同排 */
+  /* 顶栏：音乐按钮独立置于右上角，Tab 居中于屏幕正中央，左右间距对称 */
   .global-header {
     position: relative;
   }
@@ -7988,6 +8127,31 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   }
   .header-right {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6px 0 0;
+  }
+  .mode-nav {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  .mode-tab {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 6px 2px;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 20px;
   }
   .bgm-control-wrap {
     position: absolute;
@@ -8021,6 +8185,58 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   .card-top-id { font-size: 10px; }
   .card-aphorism { font-size: 15px; padding: 10px 12px; }
   .card-english-motto { font-size: 10.5px; }
+
+  /* 东方先圣赛道卡片：手机版印章与文字均隐藏，只保留先圣肖像图 */
+  .school-pill .pill-seal,
+  .school-pill .pill-info {
+    display: none !important;
+  }
+  .school-track-pills {
+    gap: 8px;
+  }
+  .school-pill {
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background: #EAE6DF;
+    border: 2px solid var(--color-border);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s, box-shadow 0.25s;
+  }
+  .school-pill::before {
+    opacity: 0.72;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    background-position: center center;
+    background-size: cover;
+    transition: opacity 0.25s, transform 0.3s;
+  }
+  .school-pill:hover::before,
+  .school-pill.active::before {
+    opacity: 1 !important;
+  }
+  .school-pill.active {
+    border-width: 2.5px;
+    transform: scale(1.02);
+  }
+  .school-pill.active[data-track="confucianism"] {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 14px rgba(142, 41, 39, 0.28);
+  }
+  .school-pill.active[data-track="daoism"] {
+    border-color: rgb(43, 76, 95);
+    box-shadow: 0 4px 14px rgba(43, 76, 95, 0.28);
+  }
+  .school-pill.active[data-track="buddhism"] {
+    border-color: rgb(181, 137, 0);
+    box-shadow: 0 4px 14px rgba(181, 137, 0, 0.28);
+  }
+  .school-pill.active[data-track="symposium"] {
+    border-color: rgb(118, 55, 98);
+    box-shadow: 0 4px 14px rgba(118, 55, 98, 0.28);
+  }
 }
 
 </style>
@@ -8093,13 +8309,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <button class="bgm-btn" id="btnBgmToggle" title="禅意背景音乐（左键播放/暂停 · 右键曲目与音量）" aria-label="背景音乐">
 
-          <span class="bgm-icon-wave">
+          <svg class="bgm-icon-note" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
 
-            <span></span><span></span><span></span>
+            <path d="M20 3.5v10.2a3.7 3.7 0 1 1-1.8-3.18V5.4l-8.4 1.9v9.4a3.7 3.7 0 1 1-1.8-3.18V5.2a1 1 0 0 1 .78-.98l10.2-2.3A1 1 0 0 1 20 3.5z"/>
 
-          </span>
-
-
+          </svg>
 
         </button>
 
@@ -8177,10 +8391,32 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       <div class="client-hero">
 
-        <div class="zen-tea-banner">
+        <!-- 首页东方心境画卷轮播 Banner (5大意境画卷 · 平滑水墨渐隐) -->
+        <div class="zen-carousel-container" id="zenBannerCarousel" aria-label="悟堂东方心境画卷轮播">
+          <!-- 幻灯片容器 -->
+          <div class="zen-carousel-slides" id="zenCarouselSlides">
+            <div class="zen-carousel-slide active" data-idx="0" onclick="drawRandomZen96Card()" title="点击抽取今日觉察灵感/心签">
+              <img src="assets/ui/tea_tranquility.jpg" alt="禅茶一味" class="zen-carousel-img">
+            </div>
+          </div>
 
-          <img src="assets/ui/tea_tranquility.jpg" alt="禅茶一味" class="zen-banner-img" onclick="drawRandomZen96Card()" style="cursor:pointer;" title="点击抽取今日东方锦囊/禅签">
+          <!-- 诗意意境徽章 -->
+          <div class="zen-carousel-badge" id="zenCarouselBadge">
+            <span class="badge-title" id="zenCarouselTitle">禅茶一味</span>
+            <span class="badge-divider">·</span>
+            <span class="badge-sub" id="zenCarouselSubtitle">偷得浮生半日闲 · 煮一盏温热清茶</span>
+          </div>
 
+          <!-- 左右翻页轻巧控制箭头 -->
+          <button type="button" class="zen-carousel-arrow prev" id="zenCarouselPrev" aria-label="上一幅画卷" title="上一幅画卷">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button type="button" class="zen-carousel-arrow next" id="zenCarouselNext" aria-label="下一幅画卷" title="下一幅画卷">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+
+          <!-- 底部典籍金分页指示胶囊 -->
+          <div class="zen-carousel-dots" id="zenCarouselDots"></div>
         </div>
 
         <h2>今天，哪件事让你心里打了结？</h2>
@@ -8199,25 +8435,25 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <div class="school-motto-badge" id="currentMasterMotto">先师孔子 ｜ 君子求诸己 · 仁者爱人</div>
         </div>
         <div class="school-track-pills" id="schoolTrackPills">
-          <button type="button" class="school-pill active" data-track="confucianism" data-master="confucius" data-color="rgb(140, 58, 43)" data-motto="先师孔子 ｜ 君子求诸己 · 仁者爱人" data-hint="有何立身处世、责任何在、人伦日用之惑，请与夫子倾诉...">
+          <button type="button" class="school-pill active" data-track="confucianism" data-master="confucius" data-color="rgb(140, 58, 43)" data-motto="先师孔子 ｜ 君子求诸己 · 仁者爱人" data-hint="有何立身处世、责任何在、人伦日用之惑，请与夫子倾诉..." title="孔子" aria-label="孔子">
             <span class="pill-seal">儒</span>
             <span class="pill-info">
               <span class="pill-name">孔子</span>
             </span>
           </button>
-          <button type="button" class="school-pill" data-track="daoism" data-master="laozi" data-color="rgb(43, 76, 95)" data-motto="道家宗师 ｜ 道法自然 · 致虚守静" data-hint="有何用力过猛、身心劳形、进退难安之念，且听老君道来...">
+          <button type="button" class="school-pill" data-track="daoism" data-master="laozi" data-color="rgb(43, 76, 95)" data-motto="道家宗师 ｜ 道法自然 · 致虚守静" data-hint="有何用力过猛、身心劳形、进退难安之念，且听老君道来..." title="老子" aria-label="老子">
             <span class="pill-seal">道</span>
             <span class="pill-info">
               <span class="pill-name">老子</span>
             </span>
           </button>
-          <button type="button" class="school-pill" data-track="buddhism" data-master="shakyamuni" data-color="rgb(181, 137, 0)" data-motto="释家觉者 ｜ 明心见性 · 应无所住" data-hint="有何爱恨执念、沉没成本舍不得、无常失落之苦，请与佛陀对谈...">
+          <button type="button" class="school-pill" data-track="buddhism" data-master="shakyamuni" data-color="rgb(181, 137, 0)" data-motto="释家觉者 ｜ 明心见性 · 应无所住" data-hint="有何爱恨执念、沉没成本舍不得、无常失落之苦，请与佛陀对谈..." title="佛陀" aria-label="佛陀">
             <span class="pill-seal">释</span>
             <span class="pill-info">
               <span class="pill-name">佛陀</span>
             </span>
           </button>
-          <button type="button" class="school-pill" data-track="symposium" data-master="all" data-color="rgb(118, 55, 98)" data-motto="东方三圣 ｜ 以儒立身 · 以道养生 · 以释修心" data-hint="人生重大抉择与多重迷茫，请三圣圆桌并案会诊...">
+          <button type="button" class="school-pill" data-track="symposium" data-master="all" data-color="rgb(118, 55, 98)" data-motto="东方三圣 ｜ 以儒立身 · 以道养生 · 以释修心" data-hint="人生重大抉择与多重迷茫，请三圣圆桌并案会诊..." title="三圣圆桌" aria-label="三圣圆桌">
             <span class="pill-seal">合</span>
             <span class="pill-info">
               <span class="pill-name">三圣圆桌</span>
@@ -21734,6 +21970,166 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   appState.currentCardSignature = null;
   var currentResonantZenCard = null;
 
+  // ==========================================================================
+  // 首页东方心境画卷轮播引擎 (Zen Banner Carousel)
+  // ==========================================================================
+  var ZEN_BANNER_ITEMS = [
+    {
+      id: 'tea',
+      src: 'assets/ui/tea_tranquility.jpg',
+      title: '禅茶一味',
+      subtitle: '偷得浮生半日闲 · 煮一盏温热清茶',
+      tip: '点击抽取今日觉察灵感/心签'
+    },
+    {
+      id: 'bamboo',
+      src: 'assets/ui/bamboo_breeze.jpg',
+      title: '修竹清风',
+      subtitle: '虚心有节明心志 · 任尔东西南北风',
+      tip: '点击抽取今日觉察灵感/心签'
+    },
+    {
+      id: 'stones',
+      src: 'assets/ui/zen_stones_banner.jpg',
+      title: '枯山静水',
+      subtitle: '止水澄镜鉴尘心 · 静观万物皆自得',
+      tip: '点击抽取今日觉察灵感/心签'
+    },
+    {
+      id: 'pine',
+      src: 'assets/ui/pine_mountain.jpg',
+      title: '松风远岫',
+      subtitle: '苍松破雾立风骨 · 澄怀观道见青山',
+      tip: '点击抽取今日觉察灵感/心签'
+    },
+    {
+      id: 'lotus',
+      src: 'assets/ui/lotus_pond.jpg',
+      title: '碧潭青莲',
+      subtitle: '出水自洁不染尘 · 抚平千丝繁杂念',
+      tip: '点击抽取今日觉察灵感/心签'
+    }
+  ];
+
+  var currentBannerIndex = 0;
+  var bannerAutoplayTimer = null;
+
+  function initZenBannerCarousel() {
+    var container = $('zenBannerCarousel');
+    var slidesWrap = $('zenCarouselSlides');
+    var dotsWrap = $('zenCarouselDots');
+    if (!container || !slidesWrap) return;
+
+    // 渲染幻灯片列表
+    slidesWrap.innerHTML = ZEN_BANNER_ITEMS.map(function(item, idx) {
+      var activeCls = (idx === 0) ? ' active' : '';
+      return '<div class="zen-carousel-slide' + activeCls + '" data-idx="' + idx + '" onclick="drawRandomZen96Card()" title="' + esc(item.tip) + '">' +
+        '<img src="' + esc(item.src) + '" alt="' + esc(item.title) + '" class="zen-carousel-img">' +
+      '</div>';
+    }).join('');
+
+    // 渲染分页指示胶囊
+    if (dotsWrap) {
+      dotsWrap.innerHTML = ZEN_BANNER_ITEMS.map(function(item, idx) {
+        var activeCls = (idx === 0) ? ' active' : '';
+        return '<div class="zen-carousel-dot' + activeCls + '" data-idx="' + idx + '" title="' + esc(item.title) + '"></div>';
+      }).join('');
+
+      dotsWrap.onclick = function(e) {
+        var dot = e.target.closest('.zen-carousel-dot');
+        if (!dot) return;
+        var idx = parseInt(dot.getAttribute('data-idx'), 10);
+        goToZenBanner(idx);
+      };
+    }
+
+    // 左右按钮事件
+    var prevBtn = $('zenCarouselPrev');
+    var nextBtn = $('zenCarouselNext');
+    if (prevBtn) {
+      prevBtn.onclick = function(e) {
+        e.stopPropagation();
+        goToZenBanner((currentBannerIndex - 1 + ZEN_BANNER_ITEMS.length) % ZEN_BANNER_ITEMS.length);
+      };
+    }
+    if (nextBtn) {
+      nextBtn.onclick = function(e) {
+        e.stopPropagation();
+        goToZenBanner((currentBannerIndex + 1) % ZEN_BANNER_ITEMS.length);
+      };
+    }
+
+    // 悬停暂停自动轮播
+    container.onmouseenter = function() { stopBannerAutoplay(); };
+    container.onmouseleave = function() { startBannerAutoplay(); };
+
+    // 移动端手势轻扫滑动支持
+    var touchStartX = 0;
+    container.addEventListener('touchstart', function(e) {
+      if (e.touches && e.touches[0]) {
+        touchStartX = e.touches[0].clientX;
+        stopBannerAutoplay();
+      }
+    }, { passive: true });
+
+    container.addEventListener('touchend', function(e) {
+      if (e.changedTouches && e.changedTouches[0]) {
+        var touchEndX = e.changedTouches[0].clientX;
+        var diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 36) {
+          if (diff > 0) {
+            goToZenBanner((currentBannerIndex + 1) % ZEN_BANNER_ITEMS.length);
+          } else {
+            goToZenBanner((currentBannerIndex - 1 + ZEN_BANNER_ITEMS.length) % ZEN_BANNER_ITEMS.length);
+          }
+        }
+        startBannerAutoplay();
+      }
+    }, { passive: true });
+
+    updateZenBannerBadge(0);
+    startBannerAutoplay();
+  }
+
+  function goToZenBanner(idx) {
+    if (idx === currentBannerIndex) return;
+    var slides = document.querySelectorAll('#zenCarouselSlides .zen-carousel-slide');
+    var dots = document.querySelectorAll('#zenCarouselDots .zen-carousel-dot');
+
+    if (slides[currentBannerIndex]) slides[currentBannerIndex].classList.remove('active');
+    if (dots[currentBannerIndex]) dots[currentBannerIndex].classList.remove('active');
+
+    currentBannerIndex = idx;
+
+    if (slides[currentBannerIndex]) slides[currentBannerIndex].classList.add('active');
+    if (dots[currentBannerIndex]) dots[currentBannerIndex].classList.add('active');
+
+    updateZenBannerBadge(currentBannerIndex);
+  }
+
+  function updateZenBannerBadge(idx) {
+    var item = ZEN_BANNER_ITEMS[idx];
+    if (!item) return;
+    var titleEl = $('zenCarouselTitle');
+    var subEl = $('zenCarouselSubtitle');
+    if (titleEl) titleEl.textContent = item.title;
+    if (subEl) subEl.textContent = item.subtitle;
+  }
+
+  function startBannerAutoplay() {
+    stopBannerAutoplay();
+    bannerAutoplayTimer = setInterval(function() {
+      goToZenBanner((currentBannerIndex + 1) % ZEN_BANNER_ITEMS.length);
+    }, 4500);
+  }
+
+  function stopBannerAutoplay() {
+    if (bannerAutoplayTimer) {
+      clearInterval(bannerAutoplayTimer);
+      bannerAutoplayTimer = null;
+    }
+  }
+
   function initSchoolTrackSelector() {
     var pills = document.querySelectorAll('#schoolTrackPills .school-pill');
     var mottoEl = $('currentMasterMotto');
@@ -22132,6 +22528,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     bgmEngine.init();
     initSchoolTrackSelector();
+      initZenBannerCarousel();
 
     // PRD 3.0 新增模块初始化
 
@@ -22183,15 +22580,15 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       <!-- 3D 翻转放大大图卡牌舞台 (宽340px / 2:3 黄金比例，支持点击翻转) -->
       <div class="zen-card-stage-3d" onclick="toggleZen96ModalFlip()" title="点击翻转卡牌查看正反面 / 双面赏析">
-        <div id="zen96ModalFlipper" style="width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);border-radius:12px;box-shadow:0 16px 36px rgba(44,40,37,0.22);">
+        <div id="zen96ModalFlipper" style="width:100%;height:100%;position:relative;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);border-radius:12px;box-shadow:0 16px 36px rgba(44,40,37,0.22);">
           
           <!-- 正面：848x1264 超清工笔水墨大图原画 -->
-          <div style="position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;overflow:hidden;border:1.5px solid #C4A47C;background:#EAE4D8;">
+          <div style="position:absolute;width:100%;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(1px);-webkit-transform:translateZ(1px);border-radius:12px;overflow:hidden;border:1.5px solid #C4A47C;background:#EAE4D8;">
             <img id="zen96ModalImg" src="" alt="东方觉察原画" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
 
           <!-- 反面：宋代宣纸解忧自省笺 -->
-          <div style="position:absolute;width:100%;height:100%;backface-visibility:hidden;transform:rotateY(180deg);background:linear-gradient(180deg, #FDFBF7 0%, #F5EFE3 100%);border-radius:12px;border:2px solid #C4A47C;padding:24px 20px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;box-sizing:border-box;">
+          <div style="position:absolute;width:100%;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:rotateY(180deg) translateZ(1px);-webkit-transform:rotateY(180deg) translateZ(1px);background:linear-gradient(180deg, #FDFBF7 0%, #F5EFE3 100%);border-radius:12px;border:2px solid #C4A47C;padding:24px 20px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;box-sizing:border-box;">
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
                 <span style="font-size:12px;color:#8E2927;font-weight:700;letter-spacing:1px;" id="zen96ModalBackNum">【因缘相惜 · 编号 13】</span>
