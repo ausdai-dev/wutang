@@ -235,117 +235,88 @@ body::after {
 
    ========================================================================== */
 
-/* AI 后台状态徽标（冷启动可见性：唤醒中 → AI已就绪 / 离线引擎模式） */
-
-.ai-status-btn {
-
-  background: rgba(255, 255, 255, 0.7);
-
+/* ==========================================================================
+   顶栏控制纽扣统一设计规范 (AI状态 / 阅读字体 / 禅意背景音)
+   规范：桌面端统一 32px 胶囊（图标+文本），移动端统一 32px 正圆
+   ========================================================================== */
+.ai-status-btn,
+.font-btn,
+.bgm-btn {
+  height: 32px;
+  line-height: 1;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.72);
   border: 1px solid #DFD8CC;
-
-  border-radius: 20px;
-
-  padding: 6px 13px;
-
-  font-size: 12.5px;
-
-  color: #8A857D;
-
+  color: #5C564E;
   cursor: pointer;
-
   transition: all var(--trans);
-
-  backdrop-filter: blur(4px);
-
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: inline-flex;
-
   align-items: center;
-
+  justify-content: center;
   gap: 6px;
-
   white-space: nowrap;
+  user-select: none;
+}
 
+.ai-status-btn:hover,
+.font-btn:hover,
+.bgm-btn:hover {
+  background: #FFFFFF;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(142, 41, 39, 0.08);
+}
+
+/* AI 后台状态按钮微动效与指示点 */
+.ai-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #BFBAAF;
+  display: inline-block;
+  flex-shrink: 0;
+  transition: all var(--trans);
 }
 
 .ai-status-btn.is-ready {
-
   color: var(--color-primary);
-
-  border-color: var(--color-primary);
-
+  border-color: rgba(142, 41, 39, 0.35);
+  background: rgba(255, 255, 255, 0.85);
 }
 
-.ai-status-full {
+.ai-status-btn.is-ready .ai-status-dot {
+  background: #52C41A;
+  box-shadow: 0 0 6px rgba(82, 196, 26, 0.6);
+}
 
+.ai-status-label {
   display: inline;
-
 }
 
 .ai-status-short {
-
   display: none;
-
 }
 
 .font-control-wrap {
-
   position: relative;
-
   display: inline-flex;
-
   align-items: center;
-
-}
-
-.font-btn {
-
-  background: rgba(255, 255, 255, 0.7);
-
-  border: 1px solid #DFD8CC;
-
-  border-radius: 20px;
-
-  padding: 6px 13px;
-
-  font-size: 12.5px;
-
-  color: #5C564E;
-
-  cursor: pointer;
-
-  transition: all var(--trans);
-
-  backdrop-filter: blur(4px);
-
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 7px;
-
-  user-select: none;
-
-  max-width: 138px;
-
-}
-
-.font-btn:hover {
-
-  background: #FFFFFF;
-
-  border-color: var(--color-primary);
-
-  color: var(--color-primary);
-
 }
 
 .font-btn-glyph {
-
   font-family: var(--font-serif);
-
-  font-size: 14px;
-
+  font-size: 13.5px;
   font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  flex-shrink: 0;
+}
 
   color: var(--color-primary);
 
@@ -849,56 +820,16 @@ body::after {
 
 }
 
-.bgm-btn {
-
-  background: rgba(255, 255, 255, 0.7);
-
-  border: 1px solid #DFD8CC;
-
-  border-radius: 20px;
-
-  padding: 6px 14px;
-
-  font-size: 12.5px;
-
-  color: #5C564E;
-
-  cursor: pointer;
-
-  transition: all var(--trans);
-
-  backdrop-filter: blur(4px);
-
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 7px;
-
-  user-select: none;
-
-}
-
-.bgm-btn:hover {
-
-  background: #FFFFFF;
-
-  border-color: var(--color-primary);
-
-  color: var(--color-primary);
-
-}
-
 .bgm-btn.is-playing {
-
   background: #FFF9F7;
-
   border-color: var(--color-primary-border);
-
   color: var(--color-primary);
-
   box-shadow: 0 2px 10px rgba(142,41,39,0.1);
+}
 
+.bgm-btn-label {
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .bgm-icon-note {
@@ -1574,6 +1505,17 @@ body::after {
 
 }
 
+.zen-greeting-wrap {
+  margin: 16px 0 8px;
+}
+
+.zen-greeting-title {
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
 .client-hero h2 {
 
   font-family: var(--font-serif);
@@ -1584,7 +1526,7 @@ body::after {
 
   color: var(--color-ink);
 
-  margin: 0 0 8px;
+  margin: 0;
 
   font-weight: 600;
 
@@ -1594,7 +1536,9 @@ body::after {
 
 @media (max-width: 600px) {
 
-  .client-hero h2 { font-size: 22px; }
+  .client-hero h2 { font-size: 19px; }
+
+  .zen-greeting-wrap { margin: 12px 0 6px; }
 
 }
 
@@ -2186,19 +2130,21 @@ body::after {
 
 .boundary-footer {
 
-  margin-top: 28px;
+  margin-top: 24px;
 
-  padding-top: 16px;
+  padding-top: 14px;
 
   border-top: 1px dashed var(--color-border);
 
-  font-size: 12px;
+  font-size: 11px;
 
   color: var(--color-muted);
 
-  line-height: 1.65;
+  line-height: 1.6;
 
   text-align: center;
+
+  opacity: 0.85;
 
 }
 
@@ -8619,7 +8565,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     position: relative;
   }
   .brand-group {
-    padding-right: 172px;
+    padding-right: 122px;
   }
   .brand-text h1 {
     font-size: 16px;
@@ -8630,7 +8576,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: calc(100vw - 210px);
+    max-width: calc(100vw - 146px);
   }
   .header-right {
     width: 100%;
@@ -8660,38 +8606,58 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     white-space: nowrap;
     border-radius: 20px;
   }
+  /* 顶栏三大纽扣在手机端严格统一为 32px 正圆规格 */
   .bgm-control-wrap {
     position: absolute;
     top: 10px;
     right: 0;
+    z-index: 10;
   }
   .font-control-wrap {
     position: absolute;
     top: 10px;
-    right: 46px;
-  }
-  .font-btn {
-    padding: 6px 10px;
-    max-width: none;
-  }
-  .font-btn .font-btn-label {
-    display: none;
+    right: 38px;
+    z-index: 10;
   }
   .ai-status-btn {
     position: absolute;
     top: 10px;
-    right: 92px;
-    padding: 6px 10px;
-    font-size: 12px;
-    line-height: 1;
-    height: 30px;
+    right: 76px;
+    z-index: 10;
+  }
+  .ai-status-btn,
+  .font-btn,
+  .bgm-btn {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 16px;
+    padding: 0;
+    gap: 0;
+    justify-content: center;
     box-sizing: border-box;
   }
-  .ai-status-full {
-    display: none;
+  .ai-status-label,
+  .ai-status-dot,
+  .font-btn-label,
+  .bgm-btn-label {
+    display: none !important;
   }
   .ai-status-short {
-    display: inline;
+    display: inline-block !important;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+  .font-btn-glyph {
+    font-size: 13.5px;
+    margin: 0;
+  }
+  .bgm-icon-note {
+    width: 14px;
+    height: 14px;
+    margin: 0;
   }
   .bgm-panel {
     width: min(310px, calc(100vw - 36px));
@@ -8870,11 +8836,68 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 /* 微信式先贤对话：消息只存于当前页面内存，不写入本地存储。 */
 .chat-panel{margin:18px 0 22px;border:1px solid var(--color-border);border-radius:var(--radius-card);background:#f7f8fa;box-shadow:var(--shadow-sm);overflow:hidden}
-.chat-panel-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--color-surface);border-bottom:1px solid var(--color-border)}
-.chat-group-avatar{display:flex}.chat-group-avatar span{width:27px;height:27px;margin-left:-7px;border:2px solid #fff;border-radius:50%;display:grid;place-items:center;background:#ede4d8;color:var(--color-primary);font-size:11px;font-weight:700}.chat-group-avatar span:first-child{margin-left:0}.chat-title{flex:1;min-width:0}.chat-title strong,.chat-title small{display:block;line-height:1.35}.chat-title small{font-size:12px;color:var(--color-muted)}
-.chat-tool{border:0;background:transparent;color:var(--color-ink-light);padding:6px;cursor:pointer;font:inherit}.chat-more-sage{max-width:86px;border:1px solid var(--color-border);border-radius:6px;background:#fff;color:var(--color-ink-light);font:12px var(--font-sans);padding:4px}.chat-messages{min-height:330px;max-height:520px;overflow:auto;padding:14px;background:#f2f3f5}.chat-notice{margin:0 0 12px;text-align:center;font-size:12px;color:var(--color-muted)}.chat-row{display:flex;align-items:flex-start;gap:8px;margin:11px 0}.chat-row.mine{justify-content:flex-end}.chat-row.mine .chat-avatar{order:2;background:#dcebd6;color:#31583b}.chat-row.mine .chat-message{align-items:flex-end}.chat-row.mine .chat-bubble{background:#95ec69;border-radius:10px 2px 10px 10px}.chat-avatar{width:38px;height:38px;flex:0 0 38px;border-radius:6px;overflow:hidden;background:#e7ded0;display:grid;place-items:center;color:var(--color-primary);font-size:13px;font-weight:700}.chat-avatar img{width:100%;height:100%;object-fit:cover}.chat-message{display:flex;flex-direction:column;max-width:min(76%,540px)}.chat-name{margin:0 0 3px;font-size:12px;color:var(--color-muted)}.chat-bubble{padding:8px 11px;white-space:pre-wrap;word-break:break-word;line-height:1.65;background:#fff;border:1px solid rgba(0,0,0,.04);border-radius:2px 10px 10px 10px;color:var(--color-ink)}.chat-compose{padding:10px;background:var(--color-surface);border-top:1px solid var(--color-border)}.chat-mention-bar{display:flex;gap:6px;overflow:auto;margin:0 0 8px}.chat-mention{white-space:nowrap;border:1px solid var(--color-border);border-radius:13px;background:#fff;color:var(--color-ink-light);font:inherit;font-size:12px;padding:3px 9px;cursor:pointer}.chat-mention.active{color:var(--color-primary);border-color:var(--color-primary-border);background:var(--color-primary-light)}.chat-compose-row{display:flex;gap:8px;align-items:flex-end}.chat-input{flex:1;min-height:42px;max-height:110px;resize:vertical;border:1px solid var(--color-border);border-radius:8px;padding:8px;font:inherit;line-height:1.45}.chat-send{border:0;border-radius:7px;background:#07c160;color:#fff;padding:9px 14px;font:inherit;cursor:pointer}.chat-send:disabled{opacity:.5;cursor:not-allowed}.chat-status{margin:7px 0 0;font-size:12px;color:var(--color-muted)}.chat-actions{display:flex;gap:8px;margin:10px 0 0}.chat-actions .btn{flex:1}.chat-ai-label{font-size:11px;color:var(--color-muted)}
-.chat-context-tools{padding:10px 14px;background:var(--color-surface);border-bottom:1px solid var(--color-border);font-size:13px}.chat-context-tools details{padding:6px 0}.chat-context-tools summary{cursor:pointer;color:var(--color-primary)}.chat-context-note{font-size:12px;color:var(--color-muted);line-height:1.65;margin:7px 0}.chat-summary-text,.chat-memory-content{white-space:pre-wrap;overflow-wrap:anywhere}.chat-memory-item{padding:10px 0;border-bottom:1px solid var(--color-border)}.chat-memory-meta{font-size:12px;color:var(--color-muted);margin:5px 0}.chat-memory-optout{display:flex;align-items:flex-start;gap:7px;margin:10px 0;line-height:1.5}#chatMemoryForm{margin-top:12px}#chatMemoryInput{display:block;width:100%;box-sizing:border-box;margin-top:6px}#chatMemoryStatus{font-size:12px;line-height:1.6}#chatMemoryControls[aria-busy="true"]{opacity:.7}
-@media(max-width:600px){.chat-panel{margin-left:-2px;margin-right:-2px;border-radius:12px}.chat-messages{min-height:310px;max-height:52vh;padding:10px}.chat-message{max-width:78%}.chat-title strong{font-size:14px}.chat-actions .btn{font-size:12px;padding-left:8px;padding-right:8px}}
+.chat-panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;background:var(--color-surface);border-bottom:1px solid var(--color-border);position:relative}
+.chat-prompt-trigger{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;border:1px solid var(--color-border);background:rgba(255,255,255,0.75);color:var(--color-ink-light);font-size:12px;cursor:pointer;transition:all var(--trans);padding:0}
+.chat-prompt-trigger:hover{background:#fff;color:var(--color-primary);border-color:var(--color-primary-border)}
+.chat-prompt-trigger.active{background:#ede4d8;color:var(--color-primary);border-color:var(--color-primary-border);font-weight:600}
+.chat-prompt-trigger .prompt-icon{display:inline-grid;place-items:center;font-size:13px;line-height:1}
+.chat-prompt-trigger.active .prompt-icon{color:var(--color-primary)}
+.chat-head-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.chat-tool{border:1px solid var(--color-border);background:rgba(255,255,255,0.7);color:var(--color-ink-light);padding:4px 10px;border-radius:14px;font-size:12px;cursor:pointer;white-space:nowrap;transition:all var(--trans);display:inline-flex;align-items:center;line-height:1.2}
+.chat-tool:hover{background:#fff;color:var(--color-primary);border-color:var(--color-primary-border)}
+.chat-more-sage{border:1px solid var(--color-border);border-radius:14px;background:rgba(255,255,255,0.7);color:var(--color-ink-light);font:12px var(--font-sans);padding:4px 8px;cursor:pointer;outline:none}
+.chat-messages{min-height:220px;max-height:346px;overflow:auto;padding:14px;background:#f2f3f5}
+.chat-notice{margin:0 0 12px;text-align:center;font-size:12px;color:var(--color-muted)}
+.chat-row{display:flex;align-items:flex-start;gap:8px;margin:11px 0}
+.chat-row.mine{justify-content:flex-end}
+.chat-row.mine .chat-avatar{order:2;background:#dcebd6;color:#31583b}
+.chat-row.mine .chat-message{align-items:flex-end}
+.chat-row.mine .chat-bubble{background:#95ec69;border-radius:10px 2px 10px 10px}
+.chat-avatar{width:38px;height:38px;flex:0 0 38px;border-radius:6px;overflow:hidden;background:#e7ded0;display:grid;place-items:center;color:var(--color-primary);font-size:13px;font-weight:700}
+.chat-avatar img{width:100%;height:100%;object-fit:cover}
+.chat-message{display:flex;flex-direction:column;max-width:min(76%,540px)}
+.chat-name{margin:0 0 3px;font-size:12px;color:var(--color-muted)}
+.chat-bubble{padding:8px 11px;white-space:pre-wrap;word-break:break-word;line-height:1.65;background:#fff;border:1px solid rgba(0,0,0,.04);border-radius:2px 10px 10px 10px;color:var(--color-ink)}
+.chat-compose{padding:10px;background:var(--color-surface);border-top:1px solid var(--color-border)}
+.chat-compose-row{display:flex;gap:8px;align-items:flex-end}
+.chat-input{flex:1;min-height:42px;max-height:110px;resize:vertical;border:1px solid var(--color-border);border-radius:8px;padding:8px;font:inherit;line-height:1.45}
+.chat-send{border:0;border-radius:7px;background:#07c160;color:#fff;padding:9px 14px;font:inherit;cursor:pointer}
+.chat-send:disabled{opacity:.5;cursor:not-allowed}
+.chat-status{margin:7px 0 0;font-size:12px;color:var(--color-muted)}
+.chat-actions{display:flex;gap:8px;margin:10px 0 0}
+.chat-actions .btn{flex:1}
+.chat-ai-label{font-size:11px;color:var(--color-muted)}
+.chat-context-tools{background:#fafaf8;border-bottom:1px solid var(--color-border);font-size:13px;padding:0;transition:all var(--trans)}
+.chat-context-tools.hidden{display:none}
+.chat-context-tools-inner{padding:10px 14px 14px}
+.chat-context-header-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.chat-context-header-title{font-size:12px;font-weight:600;color:var(--color-ink-light)}
+.chat-context-close-btn{border:none;background:none;color:var(--color-muted);font-size:11.5px;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color var(--trans)}
+.chat-context-close-btn:hover{color:var(--color-ink);background:rgba(0,0,0,0.04)}
+.chat-context-tools details{padding:6px 0;border-top:1px dashed var(--color-border);margin-top:6px}
+.chat-context-tools summary{cursor:pointer;color:var(--color-primary);font-size:12.5px;font-weight:500}
+.chat-context-note{font-size:12px;color:var(--color-muted);line-height:1.65;margin:6px 0}
+.chat-summary-text,.chat-memory-content{white-space:pre-wrap;overflow-wrap:anywhere}
+.chat-memory-item{padding:10px 0;border-bottom:1px solid var(--color-border)}
+.chat-memory-meta{font-size:12px;color:var(--color-muted);margin:5px 0}
+.chat-memory-optout{display:flex;align-items:flex-start;gap:7px;margin:10px 0;line-height:1.5}
+#chatMemoryForm{margin-top:12px}
+#chatMemoryInput{display:block;width:100%;box-sizing:border-box;margin-top:6px}
+#chatMemoryStatus{font-size:12px;line-height:1.6}
+#chatMemoryControls[aria-busy="true"]{opacity:.7}
+@media(max-width:600px){
+  .chat-panel{margin-left:-2px;margin-right:-2px;border-radius:12px}
+  .chat-panel-head{padding:6px 10px}
+  .chat-prompt-trigger{width:22px;height:22px;font-size:11px}
+  .chat-prompt-trigger .prompt-icon{font-size:12px}
+  .chat-head-actions{gap:4px}
+  .chat-tool{padding:3px 8px;font-size:11px}
+  .chat-more-sage{padding:3px 6px;font-size:11px}
+  .chat-context-tools-inner{padding:8px 10px 12px}
+  .chat-messages{min-height:206px;max-height:35vh;padding:10px}
+  .chat-message{max-width:82%}
+  .chat-actions .btn{font-size:12px;padding-left:8px;padding-right:8px}
+}
 </style>
 
 </head>
@@ -8940,10 +8963,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
       <!-- AI 后台状态徽标（冷启动可见性） -->
-
-      <button class="ai-status-btn" id="btnAiStatus" title="AI 后台服务状态">
-        <span class="ai-status-full">唤醒中…</span>
-        <span class="ai-status-short">唤醒中</span>
+      <button class="ai-status-btn" id="btnAiStatus" title="AI 后台服务状态（点击查看详情）">
+        <span class="ai-status-dot" aria-hidden="true"></span>
+        <span class="ai-status-label">唤醒中</span>
+        <span class="ai-status-short">AI</span>
       </button>
 
 
@@ -8997,13 +9020,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       <div class="bgm-control-wrap" id="bgmControlWrap">
 
         <button class="bgm-btn" id="btnBgmToggle" title="禅意背景音乐（左键播放/暂停 · 右键曲目与音量）" aria-label="背景音乐">
-
           <svg class="bgm-icon-note" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-
             <path d="M20 3.5v10.2a3.7 3.7 0 1 1-1.8-3.18V5.4l-8.4 1.9v9.4a3.7 3.7 0 1 1-1.8-3.18V5.2a1 1 0 0 1 .78-.98l10.2-2.3A1 1 0 0 1 20 3.5z"/>
-
           </svg>
-
+          <span class="bgm-btn-label">禅乐</span>
         </button>
 
 
@@ -9021,6 +9041,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           </div>
 
 
+
+          <button type="button" class="btn sm secondary" id="bgmSleepEntry" onclick="openSleepGuide(event)" style="margin-bottom:12px;">今夜安歇 · 睡前放松</button>
 
           <div class="bgm-track-list" id="bgmTrackList">
 
@@ -9108,7 +9130,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <div class="zen-carousel-dots" id="zenCarouselDots"></div>
         </div>
 
-        <h2>今天，哪件事让你心里打了结？</h2>
+        <div class="zen-greeting-wrap">
+          <h2 class="zen-greeting-title" id="zenGreetingTitle" title="点击可换一句问候语">今天，哪件事让你心里打了结？</h2>
+        </div>
 
       </div>
 
@@ -9154,42 +9178,48 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       <!-- 默认入口：先贤聊天。消息仅保留在当前页面内存中。 -->
       <section class="chat-panel" id="sageChatPanel" aria-label="先贤聊天">
         <div class="chat-panel-head">
-          <div class="chat-group-avatar" aria-hidden="true"><span>孔</span><span>老</span><span>佛</span></div>
-          <div class="chat-title"><strong id="chatTitle">孔子 · 单聊</strong><small id="chatSubtitle">AI 角色演绎 · 正在检查服务状态</small></div>
-          <button type="button" class="chat-tool" id="btnChatNew" title="新对话">新对话</button>
-          <button type="button" class="chat-tool" id="btnChatMode" title="切换群聊或单聊">群聊</button>
-          <select class="chat-more-sage" id="chatMoreSage" aria-label="选择其他先贤"><option value="">更多先贤</option><option value="zhuangzi">庄子</option><option value="mencius">孟子</option><option value="xunzi">荀子</option><option value="sushi">苏轼</option><option value="wangyangming">王阳明</option><option value="zengguofan">曾国藩</option><option value="taoyuanming">陶渊明</option><option value="wangwei">王维</option><option value="simaqian">司马迁</option><option value="libai">李白</option><option value="dufu">杜甫</option></select>
+          <button type="button" class="chat-prompt-trigger" id="btnChatContextPrompt" aria-expanded="false" title="查看会话说明、摘要与记忆设置">
+            <span class="prompt-icon">ⓘ</span>
+          </button>
+          <div class="chat-head-actions">
+            <button type="button" class="chat-tool" id="btnChatNew" title="新对话">新对话</button>
+            <select class="chat-more-sage" id="chatMoreSage" aria-label="选择其他先贤"><option value="">换先贤</option><option value="zhuangzi">庄子</option><option value="mencius">孟子</option><option value="xunzi">荀子</option><option value="sushi">苏轼</option><option value="wangyangming">王阳明</option><option value="zengguofan">曾国藩</option><option value="taoyuanming">陶渊明</option><option value="wangwei">王维</option><option value="simaqian">司马迁</option><option value="libai">李白</option><option value="dufu">杜甫</option></select>
+          </div>
         </div>
-        <div class="chat-context-tools">
-          <details id="chatSummaryPanel"><summary>本次会话摘要</summary><p class="chat-context-note">长聊时用于接续前文，仅保留在当前页面；新对话会清空，不会默认存为长期记忆。</p><p id="chatSummaryText" class="chat-summary-text">暂无摘要，继续聊聊即可。</p></details>
-          <details id="chatMemoryPanel"><summary>长期记忆 · 由你决定</summary>
-            <p class="chat-context-note">只保存你明确确认的一句背景或偏好，不自动保存倾诉，也不为你推断性格标签。登录后保存在账号服务端，可随时修改或删除。</p>
-            <p id="chatMemoryStatus" role="status">登录后可启用长期记忆。</p>
-            <p id="chatMemoryRoundStatus" class="chat-memory-meta" role="status">本轮长期记忆：访客模式，未使用。</p>
-            <button type="button" class="btn sm secondary" id="btnChatMemoryLogin">登录启用</button>
-            <div id="chatMemoryControls" class="hidden">
-              <label class="chat-memory-optout"><input type="checkbox" id="chatSkipMemory">本次不使用长期记忆</label>
-              <div id="chatMemoryList"></div>
-              <form id="chatMemoryForm">
-                <label for="chatMemoryInput">我希望记住的一句背景或偏好</label>
-                <textarea id="chatMemoryInput" class="chat-input" maxlength="2000" rows="2" placeholder="例如：我更喜欢简短、具体的建议。"></textarea>
-                <label class="chat-memory-optout"><input type="checkbox" id="chatMemoryConfirm">我确认将上面这句话保存为账号长期记忆，供以后对话参考。</label>
-                <div class="chat-actions"><button type="submit" class="btn sm secondary" id="btnChatMemorySave">确认保存</button><button type="button" class="btn sm secondary" id="btnChatMemoryCancel" hidden>取消编辑</button><button type="button" class="btn sm secondary" id="btnChatMemoryRefresh">刷新列表</button><button type="button" class="btn sm secondary" id="btnChatMemoryClear">清空长期记忆</button></div>
-              </form>
+        <div class="chat-context-tools hidden" id="chatContextTools">
+          <div class="chat-context-tools-inner">
+            <div class="chat-context-header-bar">
+              <span class="chat-context-header-title">会话说明与设置</span>
+              <button type="button" class="chat-context-close-btn" id="btnChatContextClose" title="收起说明">收起 ✕</button>
             </div>
-          </details>
-          <p class="chat-context-note">三家分别从责任与关系、分寸与余地、觉察与放下切入；群聊可以补充或保留不同意见，不必每位都回应或同意。</p>
+            <details id="chatSummaryPanel"><summary>本次会话摘要</summary><p class="chat-context-note">长聊时用于接续前文，仅保留在当前页面；新对话会清空，不会默认存为长期记忆。</p><p id="chatSummaryText" class="chat-summary-text">暂无摘要，继续聊聊即可。</p></details>
+            <details id="chatMemoryPanel"><summary>长期记忆 · 由你决定</summary>
+              <p class="chat-context-note">只保存你明确确认的一句背景或偏好，不自动保存倾诉，也不为你推断性格标签。登录后保存在账号服务端，可随时修改或删除。</p>
+              <p id="chatMemoryStatus" role="status">登录后可启用长期记忆。</p>
+              <p id="chatMemoryRoundStatus" class="chat-memory-meta" role="status">本轮长期记忆：访客模式，未使用。</p>
+              <button type="button" class="btn sm secondary" id="btnChatMemoryLogin">登录启用</button>
+              <div id="chatMemoryControls" class="hidden">
+                <label class="chat-memory-optout"><input type="checkbox" id="chatSkipMemory">本次不使用长期记忆</label>
+                <div id="chatMemoryList"></div>
+                <form id="chatMemoryForm">
+                  <label for="chatMemoryInput">我希望记住的一句背景或偏好</label>
+                  <textarea id="chatMemoryInput" class="chat-input" maxlength="2000" rows="2" placeholder="例如：我更喜欢简短、具体的建议。"></textarea>
+                  <label class="chat-memory-optout"><input type="checkbox" id="chatMemoryConfirm">我确认将上面这句话保存为账号长期记忆，供以后对话参考。</label>
+                  <div class="chat-actions"><button type="submit" class="btn sm secondary" id="btnChatMemorySave">确认保存</button><button type="button" class="btn sm secondary" id="btnChatMemoryCancel" hidden>取消编辑</button><button type="button" class="btn sm secondary" id="btnChatMemoryRefresh">刷新列表</button><button type="button" class="btn sm secondary" id="btnChatMemoryClear">清空长期记忆</button></div>
+                </form>
+              </div>
+            </details>
+            <p class="chat-context-note">三家分别从责任与关系、分寸与余地、觉察与放下切入；群聊可以补充或保留不同意见，不必每位都回应或同意。</p>
+          </div>
         </div>
         <div class="chat-messages" id="chatMessages" aria-live="polite">
           <p class="chat-notice" id="chatNotice">AI 角色演绎，仅供情绪整理与经典启发参考；消息不会默认保存。</p>
         </div>
         <div class="chat-compose">
-          <div class="chat-mention-bar" id="chatMentionBar" aria-label="选择对话对象"></div>
           <div class="chat-compose-row">
-            <textarea class="chat-input" id="chatInput" maxlength="2000" placeholder="写下想说的事，Ctrl / ⌘ + Enter 发送"></textarea>
+            <textarea class="chat-input" id="chatInput" maxlength="2000" placeholder="写下想说的事"></textarea>
             <button type="button" class="chat-send" id="btnChatSend">发送</button>
           </div>
-          <div class="chat-status" id="chatStatus">服务状态检测中。离线时请使用下方「帮我理一理」生成本地解忧整理。</div>
           <div class="chat-actions"><button type="button" class="btn sm secondary" id="btnChatStop" disabled>停止回复</button><button type="button" class="btn sm secondary" id="btnChatOrganize" disabled>整理成解忧笺</button></div>
         </div>
       </section>
@@ -9355,6 +9385,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
                   万般心事，皆有来处。<br>轻触左侧卡牌，翻开今日心境照见。
 
                 </p>
+
+                <button type="button" class="card-back-flip-btn">点击翻开这张牌</button>
 
               </div>
 
@@ -9922,7 +9954,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <div class="result-actions no-print" style="justify-content:center;">
 
-        <button class="btn secondary" type="button" id="btnSleepFromResult" onclick="switchMainTab('wellbeing')">睡前放松</button>
+        <button class="btn secondary" type="button" id="btnSleepFromResult" onclick="openSleepGuide(event)">睡前放松</button>
 
           <button class="btn" id="btnDownloadCardPng">保存高清图片 (PNG)</button>
 
@@ -10480,6 +10512,32 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     <div style="display:flex;flex-direction:column;gap:18px;">
 
 
+
+      <section class="card sleep-home" id="sleepHomeSection" aria-labelledby="sleepHomeTitle">
+        <span class="badge ok" style="margin-bottom:7px;">现代放松引导 · 可随时停止</span>
+        <h2 id="sleepHomeTitle" tabindex="-1">今夜安歇</h2>
+        <p class="sleep-lead">不必努力让自己入睡。选一段短陪伴，也可以只听音乐；呼吸保持自然，不屏息、不规定次数。</p>
+        <div class="sleep-flow-grid" aria-label="选择睡前放松流程">
+          <button type="button" class="sleep-flow-card" data-sleep-flow="mind"><strong>脑中停不下来</strong><span>把注意轻轻带回此刻，不必赶走念头。</span></button>
+          <button type="button" class="sleep-flow-card" data-sleep-flow="body"><strong>身体紧绷</strong><span>温和感受身体，不用力、不追求完全放松。</span></button>
+          <button type="button" class="sleep-flow-card" data-sleep-flow="wake"><strong>夜醒安顿</strong><span>给醒来的自己一点空间，不急着判断。</span></button>
+        </div>
+        <div class="sleep-music-row" aria-label="睡前音乐设置">
+          <button type="button" class="btn sm secondary" id="sleepMusicToggle">播放音乐</button>
+          <button type="button" class="btn sm ghost" id="sleepMusicPanel">音乐面板</button>
+          <label for="sleepTrackSelect">曲目</label>
+          <select id="sleepTrackSelect"><option value="0">行云流水</option><option value="1">禅境冥想</option><option value="2">秋雨箏韻</option><option value="3">秋雨琴簫合奏</option></select>
+          <label for="sleepVolume">音量</label><input id="sleepVolume" type="range" min="0" max="100" value="25" aria-label="睡前音乐音量" style="width:80px;">
+          <label for="sleepTimer">定时关闭</label><select id="sleepTimer"><option value="0">关闭</option><option value="5">5 分钟</option><option value="10">10 分钟</option><option value="20">20 分钟</option><option value="30">30 分钟</option></select>
+          <label><input type="checkbox" id="sleepFade" checked> 渐弱</label>
+        </div>
+        <div class="sleep-session" id="sleepSession" aria-live="polite">
+          <div class="sleep-session-head"><div><div class="section-label" id="sleepStepNum"></div><h3 id="sleepFlowTitle" style="font-family:var(--font-serif);margin:3px 0 0;font-size:18px;"></h3></div><button type="button" class="btn sm ghost" id="sleepStop">停止并退出</button></div>
+          <div class="sleep-session-step" id="sleepStepText" tabindex="-1"></div>
+          <div class="sleep-session-actions"><button type="button" class="btn sm secondary" id="sleepSkip">跳过</button><button type="button" class="btn sm" id="sleepNext">继续</button></div>
+        </div>
+        <div class="sleep-support">如果睡眠困扰持续影响日常生活，可以考虑与医生或心理健康专业人员聊聊。这里的内容是一般放松练习，不替代专业帮助。</div>
+      </section>
 
       <!-- 顶部门禁与免责警示 -->
 
@@ -17120,7 +17178,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     if (!btn) return;
 
     function updateAiStatusBtn(fullText, shortText, isReady) {
-      btn.innerHTML = '<span class="ai-status-full">' + fullText + '</span><span class="ai-status-short">' + (shortText || fullText) + '</span>';
+      var displayText = shortText || (isReady ? 'AI就绪' : '离线');
+      btn.title = 'AI 后台服务状态：' + fullText + '（点击查看详情）';
+      btn.innerHTML = '<span class="ai-status-dot" aria-hidden="true"></span><span class="ai-status-label">' + displayText + '</span><span class="ai-status-short">AI</span>';
       if (isReady) {
         btn.classList.add('is-ready');
       } else {
@@ -18600,6 +18660,20 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         updateAwarenessFlipUI(!appState.awarenessFlipped);
 
       };
+
+      var flipPrompt = document.querySelector('.card-back-flip-btn');
+
+      if (flipPrompt) {
+
+        flipPrompt.onclick = function(e) {
+
+          e.stopPropagation();
+
+          updateAwarenessFlipUI(true);
+
+        };
+
+      }
 
     }
 
@@ -20805,7 +20879,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-  var sleepGuideState = { flow: null, step: 0, timer: null, fadeTimer: null, musicStartedHere: false };
+  var sleepGuideState = { flow: null, step: 0, timer: null, fadeTimer: null, musicStartedHere: false, priorMusic: null, restoreMetadataListener: null, restoreVersion: 0, returnFocus: null };
 
   var SLEEP_GUIDES = {
     mind: { title: '脑中停不下来', steps: ['先让身体找到一个此刻相对舒服的位置。眼睛可以轻合，也可以保持自然张开。', '不需要赶走念头。发现思绪又走远时，只在心里轻轻说一句：我注意到了。', '让呼吸照它原来的节奏进出，不必加深、变慢或数次数。', '把注意放在身体接触床面或椅面的地方，感受它们正在被承托。', '此刻不必解决所有事情。允许自己先暂停，之后再处理也可以。'] },
@@ -20826,24 +20900,47 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   function sleepClearTimer() {
     if (sleepGuideState.timer) window.clearTimeout(sleepGuideState.timer);
     if (sleepGuideState.fadeTimer) window.clearInterval(sleepGuideState.fadeTimer);
+    if (sleepGuideState.restoreMetadataListener) {
+      var audio = $('bgmAudio');
+      if (audio) audio.removeEventListener('loadedmetadata', sleepGuideState.restoreMetadataListener);
+      sleepGuideState.restoreMetadataListener = null;
+    }
     sleepGuideState.timer = null;
     sleepGuideState.fadeTimer = null;
   }
 
-  function sleepStopMusic() {
+  function sleepStopMusic(resumePrior) {
     if (!sleepGuideState.musicStartedHere || typeof bgmEngine === 'undefined') return;
+    if (resumePrior === undefined) resumePrior = true;
+    sleepClearTimer();
     bgmEngine.pause();
     var prior = sleepGuideState.priorMusic;
     var audio = $('bgmAudio');
-    if (prior && audio) {
-      bgmEngine.loadTrack(prior.index, false);
-      if (prior.currentTime > 0) audio.currentTime = prior.currentTime;
-      bgmEngine.setVolume(prior.volume);
-      if (prior.isPlaying) bgmEngine.play();
-    }
-    sleepGuideState.priorMusic = null;
     sleepGuideState.musicStartedHere = false;
-    if ($('sleepMusicToggle')) $('sleepMusicToggle').textContent = '播放音乐';
+    sleepGuideState.priorMusic = null;
+    var version = ++sleepGuideState.restoreVersion;
+    if (prior && audio && resumePrior) {
+      bgmEngine.loadTrack(prior.index, false);
+      bgmEngine.setVolume(prior.volume);
+      var expectedSource = audio.src;
+      var restorePositionAndPlayback = function() {
+        audio.removeEventListener('loadedmetadata', restorePositionAndPlayback);
+        if (sleepGuideState.restoreMetadataListener === restorePositionAndPlayback) sleepGuideState.restoreMetadataListener = null;
+        if (version !== sleepGuideState.restoreVersion || sleepGuideState.musicStartedHere || audio.src !== expectedSource) return;
+        if (prior.currentTime > 0) audio.currentTime = Math.min(prior.currentTime, Number.isFinite(audio.duration) ? audio.duration : prior.currentTime);
+        if (prior.isPlaying) bgmEngine.play();
+      };
+      if (prior.currentTime > 0) {
+        sleepGuideState.restoreMetadataListener = restorePositionAndPlayback;
+        audio.addEventListener('loadedmetadata', restorePositionAndPlayback);
+        audio.load();
+      } else if (prior.isPlaying) {
+        bgmEngine.play();
+      }
+    } else if (audio && !resumePrior) {
+      bgmEngine.setVolume(0);
+    }
+    if ($('sleepMusicToggle')) { $('sleepMusicToggle').textContent = '播放音乐'; $('sleepMusicToggle').setAttribute('aria-pressed', 'false'); }
   }
 
   function sleepExit() {
@@ -20852,42 +20949,46 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     sleepGuideState.flow = null;
     sleepGuideState.step = 0;
     if ($('sleepSession')) $('sleepSession').classList.remove('is-open');
+    if (sleepGuideState.returnFocus && sleepGuideState.returnFocus.isConnected) sleepGuideState.returnFocus.focus({ preventScroll: true });
   }
 
   function sleepScheduleTimer() {
+    if (!sleepGuideState.musicStartedHere) return;
     sleepClearTimer();
     var mins = parseInt($('sleepTimer').value, 10) || 0;
     if (!mins) return;
     sleepGuideState.timer = window.setTimeout(function() {
-      var shouldFade = $('sleepFade').checked && typeof bgmEngine !== 'undefined';
-      if (!sleepGuideState.musicStartedHere || !shouldFade) { sleepStopMusic(); return; }
+      sleepGuideState.timer = null;
+      if (!sleepGuideState.musicStartedHere) return;
+      if (!$('sleepFade').checked) { sleepStopMusic(false); return; }
       sleepGuideState.fadeTimer = window.setInterval(function() {
         var audio = $('bgmAudio');
-        if (!audio) return;
-        var nextVolume = Math.max(0, (audio.volume || 0) - 0.04);
+        if (!audio || !sleepGuideState.musicStartedHere) { sleepClearTimer(); return; }
+        var nextVolume = Math.max(0, audio.volume - 0.04);
         bgmEngine.setVolume(nextVolume);
-        if (nextVolume <= 0.001) { window.clearInterval(sleepGuideState.fadeTimer); sleepGuideState.fadeTimer = null; sleepStopMusic(); }
+        if (nextVolume <= 0.001) sleepStopMusic(false);
       }, 250);
     }, mins * 60 * 1000);
   }
 
   function sleepStartMusic() {
     if (typeof bgmEngine === 'undefined') return;
+    sleepClearTimer();
+    sleepGuideState.restoreVersion += 1;
     var idx = parseInt($('sleepTrackSelect').value, 10) || 0;
     if (!sleepGuideState.priorMusic) sleepGuideState.priorMusic = bgmEngine.getState();
     bgmEngine.setVolume((parseInt($('sleepVolume').value, 10) || 0) / 100);
-    bgmEngine.loadTrack(idx, true);
     sleepGuideState.musicStartedHere = true;
+    bgmEngine.loadTrack(idx, true);
     sleepScheduleTimer();
-    $('sleepMusicToggle').textContent = '暂停音乐';
+    $('sleepMusicToggle').textContent = '停止音乐';
+    $('sleepMusicToggle').setAttribute('aria-pressed', 'true');
   }
 
   function sleepToggleMusic() {
     if (typeof bgmEngine === 'undefined') return;
     if (sleepGuideState.musicStartedHere) {
-      bgmEngine.pause();
-      sleepGuideState.musicStartedHere = false;
-      $('sleepMusicToggle').textContent = '播放音乐';
+      sleepStopMusic();
       return;
     }
     sleepStartMusic();
@@ -20898,11 +20999,18 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     $('sleepHomeSection').dataset.ready = '1';
     document.querySelectorAll('[data-sleep-flow]').forEach(function(btn) {
       btn.addEventListener('click', function() {
+        sleepGuideState.returnFocus = btn;
         sleepGuideState.flow = SLEEP_GUIDES[btn.getAttribute('data-sleep-flow')];
         sleepGuideState.step = 0;
         $('sleepSession').classList.add('is-open');
         sleepRenderStep();
         $('sleepSession').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      });
+      btn.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          btn.click();
+        }
       });
     });
     $('sleepNext').addEventListener('click', function() {
@@ -20913,22 +21021,39 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     });
     $('sleepStop').addEventListener('click', sleepExit);
     $('sleepMusicToggle').addEventListener('click', sleepToggleMusic);
+    $('sleepMusicPanel').addEventListener('click', function(event) { bgmEngine.togglePanel(event); });
     $('sleepTrackSelect').addEventListener('change', function() {
       var wasPlaying = sleepGuideState.musicStartedHere;
-      if (wasPlaying) bgmEngine.pause();
-      sleepGuideState.musicStartedHere = false;
-      if (wasPlaying) sleepStartMusic();
+      if (wasPlaying) {
+        sleepGuideState.priorMusic = sleepGuideState.priorMusic || bgmEngine.getState();
+        bgmEngine.pause();
+        sleepGuideState.musicStartedHere = false;
+        sleepStartMusic();
+      }
     });
     $('sleepVolume').addEventListener('input', function() {
-      if (typeof bgmEngine !== 'undefined') bgmEngine.setVolume((parseInt(this.value, 10) || 0) / 100);
+      if (sleepGuideState.musicStartedHere && typeof bgmEngine !== 'undefined') bgmEngine.setVolume((parseInt(this.value, 10) || 0) / 100);
     });
     $('sleepTimer').addEventListener('change', sleepScheduleTimer);
+    $('sleepSession').addEventListener('keydown', function(event) { if (event.key === 'Escape') sleepExit(); });
+    window.addEventListener('pagehide', function() { sleepClearTimer(); sleepStopMusic(false); });
+  }
+
+  function openSleepGuide(event) {
+    if (event) event.stopPropagation();
+    bgmEngine.closePanel();
+    switchMainTab('wellbeing');
+    $('sleepHomeSection').scrollIntoView({ behavior: 'auto', block: 'start' });
+    $('sleepHomeTitle').focus({ preventScroll: true });
   }
 
   function renderWellbeingSection() {
     initSleepGuide();
     renderResourcesList('全部');
   }
+
+  window.sleepExit = sleepExit;
+  window.openSleepGuide = openSleepGuide;
 
 
 
@@ -22650,6 +22775,12 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
     function loadTrack(index, autoPlay) {
+      if (typeof sleepGuideState !== 'undefined' && sleepGuideState.restoreMetadataListener) {
+        var pendingRestore = sleepGuideState.restoreMetadataListener;
+        if (audio) audio.removeEventListener('loadedmetadata', pendingRestore);
+        sleepGuideState.restoreMetadataListener = null;
+        sleepGuideState.restoreVersion += 1;
+      }
       if (index < 0 || index >= TRACKS.length) index = 0;
       currentIndex = index;
       var track = TRACKS[currentIndex];
@@ -23387,6 +23518,55 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     }
   }
 
+  // 国学与正念问候语库
+  var ZEN_GREETINGS = [
+    "今天，哪件事让你心里打了结？",
+    "此刻心头，正起着怎样的波澜？",
+    "万事纷扰，今天因何困于其中？",
+    "步履匆匆，可愿在此宽坐片刻？",
+    "天地澄明，你在为何事劳神挂怀？",
+    "花开花落自有时，今朝何事挂心头？",
+    "心有千千结，且向智者道分明。",
+    "身已歇，念未平，愿与何人倾诉？",
+    "风过竹林不留声，何事在扰清净心？",
+    "何处生挂碍？不妨在此卸下重负。",
+    "事来则应，事去不留。今天在执着什么？",
+    "浮生劳攘，且将心事付于先贤。"
+  ];
+  var currentGreetingIndex = 0;
+
+  function initZenGreeting() {
+    var titleEl = $('zenGreetingTitle');
+    if (!titleEl) return;
+
+    // 问句初始化随机显示一条
+    if (ZEN_GREETINGS.length > 0) {
+      currentGreetingIndex = Math.floor(Math.random() * ZEN_GREETINGS.length);
+      titleEl.textContent = ZEN_GREETINGS[currentGreetingIndex];
+    }
+
+    function switchGreeting() {
+      var nextIdx;
+      if (ZEN_GREETINGS.length > 1) {
+        do {
+          nextIdx = Math.floor(Math.random() * ZEN_GREETINGS.length);
+        } while (nextIdx === currentGreetingIndex);
+      } else {
+        nextIdx = 0;
+      }
+      currentGreetingIndex = nextIdx;
+      titleEl.style.opacity = '0';
+      titleEl.style.transform = 'translateY(-3px)';
+      setTimeout(function() {
+        titleEl.textContent = ZEN_GREETINGS[currentGreetingIndex];
+        titleEl.style.opacity = '1';
+        titleEl.style.transform = 'translateY(0)';
+      }, 180);
+    }
+
+    titleEl.onclick = switchGreeting;
+  }
+
   function initSchoolTrackSelector() {
     var pills = document.querySelectorAll('#schoolTrackPills .school-pill');
     var mottoEl = $('currentMasterMotto');
@@ -24062,7 +24242,38 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   }
   function chatSetStatus(text) { var node = $('chatStatus'); if (node) node.textContent = text; }
   function chatAbort() { sageChat.requestId += 1; if (sageChat.controller) { sageChat.controller.abort(); sageChat.controller = null; } var stop = $('btnChatStop'); if (stop) stop.disabled = true; var send = $('btnChatSend'); if (send) send.disabled = false; }
-  function chatRenderHeader() { var group = sageChat.mode === 'group'; var info = chatSpeakerInfo(sageChat.master); if ($('chatTitle')) $('chatTitle').textContent = group ? '三家圆桌 · 群聊' : info.name + ' · 单聊'; if ($('btnChatMode')) $('btnChatMode').textContent = group ? '单聊' : '群聊'; if ($('chatSubtitle')) $('chatSubtitle').textContent = sageChat.offline ? '离线模式 · 不模拟 AI 回复' : 'AI 角色演绎 · 仅供情绪整理与经典启发参考'; var bar = $('chatMentionBar'); if (!bar) return; bar.textContent = ''; var choices = group ? [null, 'confucius', 'laozi', 'buddha'] : [chatMasterKey(sageChat.master)]; choices.forEach(function(key) { var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'chat-mention' + (sageChat.target === key ? ' active' : ''); btn.textContent = key ? '@' + chatSpeakerInfo(key).name : '@圆桌'; btn.onclick = function() { sageChat.target = key; chatRenderHeader(); var input = $('chatInput'); if (input) input.focus(); }; bar.appendChild(btn); }); }
+  function chatRenderHeader() {
+    var group = sageChat.mode === 'group';
+    var info = chatSpeakerInfo(sageChat.master);
+    if ($('chatTitle')) $('chatTitle').textContent = group ? '三家圆桌 · 群聊' : info.name + ' · 单聊';
+    if ($('btnChatMode')) $('btnChatMode').textContent = group ? '单聊' : '群聊';
+    if ($('chatSubtitle')) $('chatSubtitle').textContent = sageChat.offline ? '离线模式 · 不模拟 AI 回复' : 'AI 角色演绎 · 仅供情绪整理与经典启发参考';
+    var avatarWrap = $('chatHeaderAvatar');
+    if (avatarWrap) {
+      if (group) {
+        avatarWrap.innerHTML = '<span>孔</span><span>老</span><span>佛</span>';
+      } else {
+        avatarWrap.innerHTML = '<span>' + (info.name ? info.name.slice(0, 1) : '贤') + '</span>';
+      }
+    }
+    var bar = $('chatMentionBar');
+    if (!bar) return;
+    bar.textContent = '';
+    var choices = group ? [null, 'confucius', 'laozi', 'buddha'] : [chatMasterKey(sageChat.master)];
+    choices.forEach(function(key) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chat-mention' + (sageChat.target === key ? ' active' : '');
+      btn.textContent = key ? '@' + chatSpeakerInfo(key).name : '@圆桌';
+      btn.onclick = function() {
+        sageChat.target = key;
+        chatRenderHeader();
+        var input = $('chatInput');
+        if (input) input.focus();
+      };
+      bar.appendChild(btn);
+    });
+  }
   function chatNewConversation(notice) { chatAbort(); sageChat.messages = []; sageChat.summary = ''; chatRenderSummary(); sageChat.replies = {}; sageChat.lastUser = ''; if ($('chatSkipMemory')) $('chatSkipMemory').checked = false; if ($('chatMemoryRoundStatus')) $('chatMemoryRoundStatus').textContent = chatAuthToken() ? '本轮长期记忆：尚未开始对话。' : '本轮长期记忆：访客模式，未使用。'; var wrap = $('chatMessages'); if (wrap) wrap.textContent = ''; var note = document.createElement('p'); note.className = 'chat-notice'; note.textContent = notice || '新对话已开始。AI 角色演绎，消息不会默认保存。'; if (wrap) wrap.appendChild(note); if ($('btnChatOrganize')) $('btnChatOrganize').disabled = true; chatSetStatus(sageChat.offline ? '离线模式：无法生成聊天回复。可使用下方「帮我理一理」进行本地解忧整理。' : '可以开始说说这件事。'); }
   function chatSwitchTarget(master, track) { chatAbort(); sageChat.master = chatMasterKey(master); sageChat.mode = (track === 'symposium' || master === 'all') ? 'group' : 'solo'; sageChat.target = sageChat.mode === 'group' ? null : sageChat.master; chatRenderHeader(); chatNewConversation('已切换至' + (sageChat.mode === 'group' ? '三家圆桌群聊' : chatSpeakerInfo(sageChat.master).name + '单聊') + '。此处消息仅保留在当前页面。'); }
   function chatParseBlock(block, onEvent) { var lines = block.replace(/\r/g, '').split('\n'); var data = []; for (var i = 0; i < lines.length; i++) if (lines[i].indexOf('data:') === 0) data.push(lines[i].slice(5).replace(/^ /, '')); if (!data.length) return; try { onEvent(JSON.parse(data.join('\n'))); } catch (ignore) {} }
@@ -24237,7 +24448,45 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     window.addEventListener('storage', function(event) { if (event.key === 'wutang_auth_token' || event.key === 'wutang_current_user' || event.key === null) { appState.currentUser = getStorageJson('wutang_current_user', null); chatMemorySyncAuth(); } });
     chatMemorySyncAuth();
   }
-  function initSageChat() { initChatMemory(); chatRenderHeader(); chatNewConversation(); $('btnChatMode').onclick = function() { sageChat.mode = sageChat.mode === 'group' ? 'solo' : 'group'; sageChat.target = sageChat.mode === 'group' ? null : sageChat.master; chatRenderHeader(); chatNewConversation('已切换至' + (sageChat.mode === 'group' ? '三家圆桌群聊' : chatSpeakerInfo(sageChat.master).name + '单聊') + '，已开启新对话。'); }; $('btnChatNew').onclick = function() { chatNewConversation(); }; $('btnChatSend').onclick = chatSend; $('btnChatStop').onclick = function() { chatAbort(); chatSetStatus('已停止回复。'); }; $('chatInput').addEventListener('input', function() { if (sageChat.controller && $('chatInput').value.trim()) { chatAbort(); chatSetStatus('已停止上一轮回复，可发送新消息。'); } }); $('chatInput').addEventListener('keydown', function(e) { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); chatSend(); } }); $('btnChatOrganize').onclick = function() { if (!sageChat.lastUser) return; $('userTextarea').value = sageChat.lastUser; $('userTextarea').dispatchEvent(new Event('input')); showToast('已带入私密解忧整理流程；公开分享物料不会带入原始倾诉。'); handleClientSubmit(); }; var more = $('chatMoreSage'); if (more) more.onchange = function() { if (!more.value) return; appState.selectedMaster = more.value; sageChat.mode = 'solo'; sageChat.target = more.value; chatSwitchTarget(more.value, appState.selectedTrack); }; }
+  function initSageChat() {
+    initChatMemory();
+    chatRenderHeader();
+    chatNewConversation();
+    if ($('btnChatMode')) {
+      $('btnChatMode').onclick = function() {
+        sageChat.mode = sageChat.mode === 'group' ? 'solo' : 'group';
+        sageChat.target = sageChat.mode === 'group' ? null : sageChat.master;
+        chatRenderHeader();
+        chatNewConversation('已切换至' + (sageChat.mode === 'group' ? '三家圆桌群聊' : chatSpeakerInfo(sageChat.master).name + '单聊') + '，已开启新对话。');
+      };
+    }
+    var promptBtn = $('btnChatContextPrompt');
+    var toolsPanel = $('chatContextTools');
+    var closeBtn = $('btnChatContextClose');
+    if (promptBtn && toolsPanel) {
+      promptBtn.onclick = function() {
+        var isHidden = toolsPanel.classList.toggle('hidden');
+        var expanded = !isHidden;
+        promptBtn.classList.toggle('active', expanded);
+        promptBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      };
+    }
+    if (closeBtn && toolsPanel && promptBtn) {
+      closeBtn.onclick = function() {
+        toolsPanel.classList.add('hidden');
+        promptBtn.classList.remove('active');
+        promptBtn.setAttribute('aria-expanded', 'false');
+      };
+    }
+    $('btnChatNew').onclick = function() { chatNewConversation(); };
+    $('btnChatSend').onclick = chatSend;
+    $('btnChatStop').onclick = function() { chatAbort(); chatSetStatus('已停止回复。'); };
+    $('chatInput').addEventListener('input', function() { if (sageChat.controller && $('chatInput').value.trim()) { chatAbort(); chatSetStatus('已停止上一轮回复，可发送新消息。'); } });
+    $('chatInput').addEventListener('keydown', function(e) { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); chatSend(); } });
+    $('btnChatOrganize').onclick = function() { if (!sageChat.lastUser) return; $('userTextarea').value = sageChat.lastUser; $('userTextarea').dispatchEvent(new Event('input')); showToast('已带入私密解忧整理流程；公开分享物料不会带入原始倾诉。'); handleClientSubmit(); };
+    var more = $('chatMoreSage');
+    if (more) more.onchange = function() { if (!more.value) return; var val = more.value; more.value = ''; appState.selectedMaster = val; sageChat.mode = 'solo'; sageChat.target = val; chatSwitchTarget(val, appState.selectedTrack); };
+  }
 
   function mountGrowthEntry() {
     var mount = $('growthEntryMount');
@@ -24279,7 +24528,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     initSchoolTrackSelector();
     initSageChat();
-      initZenBannerCarousel();
+    initZenBannerCarousel();
+    initZenGreeting();
 
     // PRD 3.0 新增模块初始化
 
