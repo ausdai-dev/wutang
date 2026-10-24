@@ -20,7 +20,7 @@ checks = [
     ("BGM toggle button <button id='btnBgmToggle'> in header", 'id="btnBgmToggle"' in content),
     ("BGM dropdown panel <div id='bgmPanel'> present", 'id="bgmPanel"' in content),
     ("BGM track list container <div id='bgmTrackList'> present", 'id="bgmTrackList"' in content),
-    ("BGM floating pill <div id='bgmFloatingPill'> present", 'id="bgmFloatingPill"' in content),
+    ("BGM floating pill <div id='bgmFloatingPill'> removed (clean UI)", 'id="bgmFloatingPill"' not in content),
     ("Flowing Mind track referenced", "flowing_mind.m4a" in content),
     ("Zen Meditation track referenced", "zen_meditation.m4a" in content),
     ("bgmEngine initialized in bootstrap()", "bgmEngine.init()" in content),

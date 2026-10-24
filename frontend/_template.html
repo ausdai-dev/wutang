@@ -587,23 +587,14 @@ body::after {
    ========================================================================== */
 
 .global-header {
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
-  padding: 14px 0 20px;
-
-  margin-bottom: 20px;
-
+  padding: 12px 0 14px;
+  margin-bottom: 16px;
   border-bottom: 1px solid var(--color-border);
-
   flex-wrap: wrap;
-
-  gap: 12px;
-
+  gap: 10px;
 }
 
 .brand-group {
@@ -1144,104 +1135,6 @@ body::after {
 
 
 
-/* 屏幕右下角悬浮静心音乐气泡 */
-
-.bgm-floating-pill {
-
-  position: fixed;
-
-  bottom: 24px;
-
-  right: 24px;
-
-  z-index: 990;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  background: rgba(255, 255, 255, 0.92);
-
-  border: 1px solid #E2D9CC;
-
-  box-shadow: var(--shadow-md);
-
-  border-radius: 24px;
-
-  padding: 8px 14px;
-
-  font-size: 12.5px;
-
-  color: var(--color-ink);
-
-  cursor: pointer;
-
-  backdrop-filter: blur(8px);
-
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-
-  user-select: none;
-
-}
-
-.bgm-floating-pill:hover {
-
-  box-shadow: var(--shadow-lg);
-
-  border-color: var(--color-primary-border);
-
-  transform: translateY(-2px);
-
-}
-
-.bgm-floating-pill.is-playing {
-
-  border-color: var(--color-primary-border);
-
-  background: rgba(255, 250, 248, 0.96);
-
-  color: var(--color-primary);
-
-}
-
-.bgm-disc {
-
-  width: 18px;
-
-  height: 18px;
-
-  border-radius: 50%;
-
-  background: linear-gradient(135deg, #782120, #962E2D);
-
-  color: #FAF5EE;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-size: 10px;
-
-  flex-shrink: 0;
-
-}
-
-.bgm-floating-pill.is-playing .bgm-disc {
-
-  animation: bgmSpin 4s linear infinite;
-
-}
-
-@keyframes bgmSpin {
-
-  100% { transform: rotate(360deg); }
-
-}
-
 @media (max-width: 600px) {
 
   .bgm-panel {
@@ -1249,18 +1142,6 @@ body::after {
     right: -20px;
 
     width: 270px;
-
-  }
-
-  .bgm-floating-pill {
-
-    bottom: 16px;
-
-    right: 16px;
-
-    padding: 7px 12px;
-
-    font-size: 11.5px;
 
   }
 
@@ -1280,11 +1161,12 @@ body::after {
 .sleep-home { border-left: 4px solid #71836E; }
 .sleep-home h2 { font-family: var(--font-serif); margin: 0 0 6px; font-size: 26px; }
 .sleep-lead { margin: 0; color: var(--color-muted); font-size: 13.5px; line-height: 1.7; }
-.sleep-flow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
-.sleep-flow-card { text-align: left; background: #FBFAF6; border: 1px solid var(--color-border); border-radius: 8px; padding: 15px; color: var(--color-ink); cursor: pointer; min-height: 100px; }
-.sleep-flow-card:hover, .sleep-flow-card:focus-visible { border-color: #71836E; outline: 2px solid #71836E; outline-offset: 2px; }
-.sleep-flow-card strong { display: block; font-size: 15px; margin-bottom: 6px; }
-.sleep-flow-card span { display: block; color: var(--color-muted); font-size: 12.5px; line-height: 1.6; }
+.sleep-flow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.sleep-flow-card { display: inline-flex; align-items: center; justify-content: center; text-align: center; background: #FBFAF6; border: 1px solid var(--color-border); border-radius: var(--radius-btn); padding: 10px 8px; color: var(--color-ink); cursor: pointer; min-height: 42px; font-family: inherit; font-size: 14.5px; font-weight: 600; line-height: 1.4; transition: all var(--trans); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); user-select: none; }
+.sleep-flow-card:hover, .sleep-flow-card:focus-visible { background: #F0F4EF; border-color: #71836E; color: #2D402B; outline: 2px solid #71836E; outline-offset: 1px; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(113, 131, 110, 0.15); }
+.sleep-flow-card:active { transform: translateY(0); }
+.sleep-flow-card strong { display: inline-block; font-size: inherit; font-weight: inherit; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sleep-flow-card span, .sleep-flow-card .sleep-flow-desc { display: none; }
 .sleep-music-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--color-border); }
 .sleep-music-row label { color: var(--color-muted); font-size: 12px; }
 .sleep-music-row select { border: 1px solid var(--color-border); border-radius: 5px; background: var(--color-surface); padding: 6px 8px; color: var(--color-ink); }
@@ -1293,10 +1175,10 @@ body::after {
 .sleep-session-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
 .sleep-session-step { min-height: 82px; display: grid; place-items: center; max-width: 650px; margin: 24px auto 18px; text-align: center; font-family: var(--font-serif); font-size: 19px; line-height: 1.8; color: var(--color-ink); }
 .sleep-session-actions { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-.sleep-support { margin-top: 16px; padding: 11px 13px; border-left: 3px solid var(--color-gold); background: var(--color-surface-subtle); color: var(--color-muted); font-size: 12.5px; line-height: 1.65; }
 @media (max-width: 680px) {
-  .sleep-flow-grid { grid-template-columns: 1fr; }
-  .sleep-flow-card { min-height: auto; }
+  .sleep-flow-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+  .sleep-flow-card { padding: 9px 4px; min-height: 38px; font-size: 13px; }
+  .sleep-flow-card strong { font-size: 13px; }
   .sleep-session-step { min-height: 110px; font-size: 17px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -4158,6 +4040,37 @@ body::after {
 
   box-shadow: 0 2px 8px rgba(34,31,27,0.06);
 
+}
+
+@media (max-width: 600px) {
+  .entry-switch-bar {
+    padding: 3px;
+    gap: 3px;
+    margin-bottom: 18px;
+  }
+  .entry-pill {
+    padding: 8px 6px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}
+
+.wellbeing-switch-bar {
+  display: flex;
+  background: #EDE7DC;
+  padding: 4px;
+  border-radius: 30px;
+  border: 1px solid #DFD8CC;
+  margin-bottom: 20px;
+  gap: 4px;
+}
+
+@media (max-width: 600px) {
+  .wellbeing-switch-bar {
+    padding: 3px;
+    gap: 3px;
+    margin-bottom: 14px;
+  }
 }
 
 
@@ -8563,6 +8476,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   /* 顶栏：音乐、字体与 AI 状态按钮独立置于右上角，Tab 居中于屏幕正中央，左右间距对称 */
   .global-header {
     position: relative;
+    padding: 10px 0 12px;
+    margin-bottom: 12px;
+    gap: 6px;
   }
   .brand-group {
     padding-right: 122px;
@@ -8583,7 +8499,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 6px 0 0;
+    margin: 4px 0 0;
   }
   .mode-nav {
     width: 100%;
@@ -8915,7 +8831,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   <header class="global-header">
 
     <div class="brand-group" id="headerBrand" style="cursor:pointer;" title="返回解忧首页">
-
       <div class="seal-mark">悟</div>
 
       <div class="brand-text">
@@ -8928,8 +8843,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     </div>
 
-
-
     <div class="header-right">
 
       <!-- 极简模式切换药丸：仅解忧、我的、主理人工作台（仅主理人登录时显示）三个入口 -->
@@ -8940,7 +8853,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <button class="mode-tab" id="tabGrowth" title="每日心境、AI心事日记与微行动复盘">成长</button>
 
-        <button class="mode-tab" id="tabPractice" title="情境练习室与沟通助手">情境</button>
+        <button class="mode-tab hidden" id="tabPractice" title="情境练习室与沟通助手" style="display:none !important;" aria-hidden="true">情境</button>
 
         <button class="mode-tab" id="tabWellbeing" title="心境健康自评与专业资源导航">心境</button>
 
@@ -9223,238 +9136,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <div class="chat-actions"><button type="button" class="btn sm secondary" id="btnChatStop" disabled>停止回复</button><button type="button" class="btn sm secondary" id="btnChatOrganize" disabled>整理成解忧笺</button></div>
         </div>
       </section>
-
-      <div class="entry-switch-bar">
-
-        <button class="entry-pill active" id="entryBtnDirect">我有件心事</button>
-
-        <button class="entry-pill" id="entryBtnCard">抽一张今日觉察牌</button>
-
-      </div>
-
-
-
-      <div id="scenarioSection">
-
-        <div class="section-label">此时心境（可选）</div>
-
-        <div class="scenario-grid" id="scenarioGrid"></div>
-
-      </div>
-
-
-
-      <!-- 入口 A：我有件心事 (直接输入模式) -->
-
-      <div id="entryDirectArea">
-
-        <div class="pill-inspirations" id="inspoPills">
-
-          <span class="pill-label">示例：</span>
-
-          <button class="inspo-pill" data-inspo="最近心里像压着一件事，说不大却老是想起来，想找个安静的角落捋一捋。">试试一个例子</button>
-
-          <button class="inspo-pill" data-inspo="领导当着大家的面批评了我，回家路上一直在想我是不是不适合这行。">职场被批评内耗</button>
-
-          <button class="inspo-pill" data-inspo="总是不好意思拒绝别人的要求，答应了又后悔，觉得自己特别窝囊。">难拒绝别人</button>
-
-          <button class="inspo-pill" data-inspo="躺在床上反复想白天说错的那句话，两点还醒着，脑子停不下来。">深夜反刍失眠</button>
-
-          <button class="inspo-pill" data-inspo="计划做副业建了七八个文档，每次想动手就怕做不好，拖了半年没动。">想开始却拖延</button>
-
-        </div>
-
-
-
-        <div class="input-wrap">
-
-          <textarea id="userTextarea" class="wutang-textarea"
-
-            placeholder="写下最近让你心绪难平或内耗的一件事…"
-
-            maxlength="600"></textarea>
-
-          <div class="char-count" id="charCount">0 / 600</div>
-
-        </div>
-
-
-
-        <div class="privacy-inline-note">
-
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-
-          <span>私密输入 · 默认不公开</span>
-
-        </div>
-
-
-
-        <div class="submit-section">
-
-          <button class="btn lg" id="btnSubmitClient" disabled>帮我理一理</button>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- 入口 B：抽一张今日觉察牌 (F-02) -->
-
-      <div id="entryCardArea" class="hidden">
-
-        <div class="awareness-stage awareness-split-stage">
-
-          <!-- 左侧：图卡 (纯净水彩画卷，无文字遮挡) -->
-
-          <div class="awareness-card-column">
-
-            <div class="awareness-card-container" id="awarenessCardBox" title="点击翻转卡牌">
-
-              <!-- 卡背 (3D 动态金色天体罗盘) -->
-
-              <div class="awareness-card-face awareness-card-back card-3d-back">
-
-                <div class="card-corner tl"></div>
-
-                <div class="card-corner tr"></div>
-
-                <div class="card-corner bl"></div>
-
-                <div class="card-corner br"></div>
-
-                <div class="card-back-header">SUBCONSCIOUS</div>
-
-                <div class="card-back-center" style="height:170px;">
-
-                  <div class="card-orbit-ring" style="width:140px;height:140px;"></div>
-
-                  <div class="card-orbit-ring-inner" style="width:105px;height:105px;"></div>
-
-                  <div class="card-seal">悟</div>
-
-                </div>
-
-                <div class="card-back-footer">
-
-                  <span style="font-size:14px;font-weight:600;color:#FDE68A;">悟堂 · 今日觉察牌</span>
-
-                </div>
-
-              </div>
-
-
-
-              <!-- 卡面 (正面：纯粹水彩画卷，无任何文字遮挡) -->
-
-              <div class="awareness-card-face awareness-card-front">
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-
-          <!-- 右侧：文字卡片 (字卡 · 觉察反思与交互引导) -->
-
-          <div class="awareness-text-column">
-
-            <div class="awareness-word-card" id="awarenessWordCard">
-
-              <!-- 未翻开状态提示遮罩 (保持神秘感与期待感) -->
-
-              <div class="awareness-word-card-unrevealed" id="awUnrevealedCover" onclick="var b=$('awarenessCardBox');if(b)b.click();" title="点击翻开卡牌">
-
-                <div class="lotus-mini" aria-hidden="true">
-
-                  <div class="lotus-ring lotus-ring-outer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-
-                  <div class="lotus-ring lotus-ring-inner"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-
-                  <div class="lotus-core"></div>
-
-                </div>
-
-                <div class="unrevealed-title">凝神静气 · 照见内心</div>
-
-                <p class="unrevealed-desc">
-
-                  万般心事，皆有来处。<br>轻触左侧卡牌，翻开今日心境照见。
-
-                </p>
-
-                <button type="button" class="card-back-flip-btn">点击翻开这张牌</button>
-
-              </div>
-
-
-
-              <!-- 翻开后动态显现的觉察内容 -->
-
-              <div class="awareness-word-card-content">
-
-                <div class="awareness-word-card-badge">
-
-                  <span class="badge-label">01 觉察字卡 · 照见内心</span>
-
-                </div>
-
-                <div class="card-front-title" id="awFrontTitle">总想让所有人满意</div>
-
-                <div class="card-front-question serif" id="awFrontQuestion">「我是不是很久没有认真问过自己，真正想要的是什么？」</div>
-
-                <div class="card-front-desc" id="awFrontDesc">这是一张用于自我反思的提示卡，不代表对你的判断。</div>
-
-
-
-                <!-- 觉察交互底栏 (嵌入右侧字卡底部) -->
-
-                <div class="awareness-controls-dock" style="margin-top:auto;width:100%;max-width:none;">
-
-                  <div class="awareness-actions-grid">
-
-                    <button class="btn sm" id="btnAwResonates">很像我</button>
-
-                    <button class="btn sm ghost" id="btnAwPartly">有一点像</button>
-
-                    <button class="btn sm secondary" id="btnAwChange">换一张 ↻</button>
-
-                    <button class="btn sm secondary" id="btnAwCancel">先不继续</button>
-
-                  </div>
-
-                  <div class="awareness-followup-box hidden" id="awFollowupBox">
-
-                    <div style="font-weight:600;margin-bottom:6px;color:var(--color-primary);" id="awFollowupTitle">深入一笔（选填）：</div>
-
-                    <div id="awFollowupText" style="margin-bottom:8px;font-size:13px;">最近有没有一件事，你其实不愿意做，却因为担心别人失望而答应了？</div>
-
-                    <input type="text" class="form-input" id="awFollowupInput" placeholder="写下一两句延伸感受…" style="font-size:13px;padding:6px 10px;">
-
-                  </div>
-
-                  <div style="margin-top:14px;width:100%;" id="awProceedWrap" class="hidden">
-
-                    <button class="btn lg" id="btnAwProceed" style="width:100%;">带上这张牌，进入解忧流程 →</button>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
 
       <div class="boundary-footer">
 
@@ -9998,15 +9679,188 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
   <main id="growthArea" class="hidden">
 
-    <section class="card growth-entry-card" id="growthEntryArea" aria-label="心事与觉察入口">
-      <div class="growth-entry-heading">
-        <h2>给自己一点时间</h2>
-        <p>写下心事，或抽一张今日觉察牌，看看此刻的自己。</p>
-      </div>
-      <div id="growthEntryMount"></div>
-    </section>
-
     <div style="display:flex;flex-direction:column;gap:26px;">
+
+      <!-- 模块 0: 自我觉察与情境梳理 (三药丸: 1.今日觉察牌 / 2.我有件心事 / 3.情境练习) -->
+      <section class="card" id="growthEntryMount" style="margin-bottom:0;border:1.5px solid var(--color-border-dark);">
+        <div class="entry-switch-bar">
+          <button class="entry-pill active" id="entryBtnCard">抽一张今日觉察牌</button>
+          <button class="entry-pill" id="entryBtnDirect">我有件心事</button>
+          <button class="entry-pill" id="entryBtnPractice">情境练习</button>
+        </div>
+
+        <!-- 此时心境（可选） -->
+        <div id="scenarioSection" class="hidden">
+          <div class="section-label">此时心境（可选）</div>
+          <div class="scenario-grid" id="scenarioGrid"></div>
+        </div>
+
+        <!-- 药丸 1: 抽一张今日觉察牌 (成长第1功能，默认激活) -->
+        <div id="entryCardArea">
+          <div class="awareness-stage awareness-split-stage">
+            <!-- 左侧：图卡 (纯净水彩画卷，无文字遮挡) -->
+            <div class="awareness-card-column">
+              <div class="awareness-card-container" id="awarenessCardBox" title="点击翻转卡牌">
+                <!-- 卡背 (3D 动态金色天体罗盘) -->
+                <div class="awareness-card-face awareness-card-back card-3d-back">
+                  <div class="card-corner tl"></div>
+                  <div class="card-corner tr"></div>
+                  <div class="card-corner bl"></div>
+                  <div class="card-corner br"></div>
+                  <div class="card-back-header">SUBCONSCIOUS · 成长</div>
+                  <div class="card-back-center" style="height:170px;">
+                    <div class="card-orbit-ring" style="width:140px;height:140px;"></div>
+                    <div class="card-orbit-ring-inner" style="width:105px;height:105px;"></div>
+                    <div class="card-seal">悟</div>
+                  </div>
+                  <div class="card-back-footer">
+                    <span style="font-size:14px;font-weight:600;color:#FDE68A;">悟堂 · 今日觉察牌</span>
+                  </div>
+                </div>
+                <!-- 卡面 (正面：纯粹水彩画卷，无任何文字遮挡) -->
+                <div class="awareness-card-face awareness-card-front"></div>
+              </div>
+            </div>
+
+            <!-- 右侧：文字卡片 (字卡 · 觉察反思与交互引导) -->
+            <div class="awareness-text-column">
+              <div class="awareness-word-card" id="awarenessWordCard">
+                <!-- 未翻开状态提示遮罩 -->
+                <div class="awareness-word-card-unrevealed" id="awUnrevealedCover" onclick="var b=$('awarenessCardBox');if(b)b.click();" title="点击翻开卡牌">
+                  <div class="lotus-mini" aria-hidden="true">
+                    <div class="lotus-ring lotus-ring-outer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="lotus-ring lotus-ring-inner"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="lotus-core"></div>
+                  </div>
+                  <div class="unrevealed-title">凝神静气 · 照见内心</div>
+                  <p class="unrevealed-desc">
+                    万般心事，皆有来处。<br>轻触左侧卡牌，翻开今日心境照见。
+                  </p>
+                  <button type="button" class="card-back-flip-btn">点击翻开这张牌</button>
+                </div>
+
+                <!-- 翻开后动态显现的觉察内容 -->
+                <div class="awareness-word-card-content">
+                  <div class="awareness-word-card-badge">
+                    <span class="badge-label">今日觉察字卡 · 照见内心</span>
+                  </div>
+                  <div class="card-front-title" id="awFrontTitle">总想让所有人满意</div>
+                  <div class="card-front-question serif" id="awFrontQuestion">「我是不是很久没有认真问过自己，真正想要的是什么？」</div>
+                  <div class="card-front-desc" id="awFrontDesc">这是一张用于自我反思的提示卡，不代表对你的判断。</div>
+
+                  <!-- 觉察交互底栏 -->
+                  <div class="awareness-controls-dock" style="margin-top:auto;width:100%;max-width:none;">
+                    <div class="awareness-actions-grid">
+                      <button class="btn sm" id="btnAwResonates">很像我，记录心境</button>
+                      <button class="btn sm ghost" id="btnAwPartly">有一点像</button>
+                      <button class="btn sm secondary" id="btnAwChange">换一张 ↻</button>
+                      <button class="btn sm secondary" id="btnAwCancel">先不继续</button>
+                    </div>
+
+                    <div class="awareness-followup-box hidden" id="awFollowupBox">
+                      <div style="font-weight:600;margin-bottom:6px;color:var(--color-primary);" id="awFollowupTitle">深入一笔（选填）：</div>
+                      <div id="awFollowupText" style="margin-bottom:8px;font-size:13px;">最近有没有一件事，你其实不愿意做，却因为担心别人失望而答应了？</div>
+                      <input type="text" class="form-input" id="awFollowupInput" placeholder="写下一两句延伸感受…" style="font-size:13px;padding:6px 10px;">
+                    </div>
+
+                    <div style="margin-top:14px;width:100%;" id="awProceedWrap" class="hidden">
+                      <button class="btn lg" id="btnAwProceed" style="width:100%;">带上这张牌，进入解忧流程 →</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 药丸 2: 我有件心事 -->
+        <div id="entryDirectArea" class="hidden">
+          <div class="pill-inspirations" id="inspoPills">
+            <span class="pill-label">示例：</span>
+            <button class="inspo-pill" data-inspo="最近心里像压着一件事，说不大却老是想起来，想找个安静的角落捋一捋。">试试一个例子</button>
+            <button class="inspo-pill" data-inspo="领导当着大家的面批评了我，回家路上一直在想我是不是不适合这行。">职场被批评内耗</button>
+            <button class="inspo-pill" data-inspo="总是不好意思拒绝别人的要求，答应了又后悔，觉得自己特别窝囊。">难拒绝别人</button>
+            <button class="inspo-pill" data-inspo="躺在床上反复想白天说错的那句话，两点还醒着，脑子停不下来。">深夜反刍失眠</button>
+            <button class="inspo-pill" data-inspo="计划做副业建了七八个文档，每次想动手就怕做不好，拖了半年没动。">想开始却拖延</button>
+          </div>
+
+          <div class="input-wrap">
+            <textarea id="userTextarea" class="wutang-textarea"
+              placeholder="写下最近让你心绪难平或内耗的一件事…"
+              maxlength="600"></textarea>
+            <div class="char-count" id="charCount">0 / 600</div>
+          </div>
+
+          <div class="privacy-inline-note">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>私密输入 · 默认不公开</span>
+          </div>
+
+          <div class="submit-section">
+            <button class="btn lg" id="btnSubmitClient" disabled>帮我理一理</button>
+          </div>
+        </div>
+
+        <!-- 药丸 3: 情境练习 -->
+        <div id="entryPracticeArea" class="hidden" style="display:flex;flex-direction:column;gap:18px;">
+          <section class="card" style="margin-bottom:0;background:transparent;padding:0;box-shadow:none;border:none;">
+            <span class="badge ok" style="margin-bottom:6px;">情境演练 · 替代表达</span>
+            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">情境练习室 · 沟通助手</h2>
+            <p style="margin:0;font-size:13.5px;color:var(--color-muted);">
+              在安全的环境中，练习职场与人际边界沟通。AI 扮演对话对象，提供 4 维非评判反馈与高情商替代表达。
+            </p>
+
+            <!-- 场景切换卡片网格 -->
+            <div class="practice-scenario-grid" id="practiceScenarioCardsGrid"></div>
+          </section>
+
+          <!-- 交互演练对话室卡片 -->
+          <section class="card" id="practiceActiveRoom" style="border:1.5px solid var(--color-border-dark);">
+            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--color-border);padding-bottom:12px;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+              <div>
+                <h3 style="font-family:var(--font-serif);margin:0 0 2px;font-size:18px;" id="practiceRoomTitle">拒绝不合理请求</h3>
+                <div style="font-size:12.5px;color:var(--color-muted);" id="practiceRoomRoleDesc">扮演对象：同事小陈</div>
+              </div>
+              <button class="btn sm secondary" id="btnResetPracticeScenario">重新开始本场景</button>
+            </div>
+
+            <!-- 模拟对话气泡窗口 -->
+            <div class="chat-window" id="practiceChatWindow"></div>
+
+            <!-- 用户练习输入框 -->
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <input type="text" id="practiceDraftInput" class="form-input" placeholder="输入你想好的一句话，点击发送练习（例如：抱歉啊小陈，我手头时间排满了）" style="flex:1;min-width:200px;font-size:14px;padding:10px 14px;">
+              <button class="btn" id="btnSendPracticeMessage">发送练习</button>
+            </div>
+
+            <!-- 沟通反馈与替代表达呈现 -->
+            <div id="practiceFeedbackBox" class="hidden feedback-box">
+              <h4 style="margin:0 0 10px;font-family:var(--font-serif);font-size:16px;color:var(--color-primary);display:flex;align-items:center;gap:6px;">
+                悟堂沟通导师观察与反馈
+              </h4>
+
+              <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:10px;margin-bottom:12px;">
+                <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;">
+                  <strong style="font-size:12.5px;color:#8F2928;">边界清晰度：</strong>
+                  <div id="pfBoundaryText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;"></div>
+                </div>
+                <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;">
+                  <strong style="font-size:12.5px;color:#9F7430;">语气与体面：</strong>
+                  <div id="pfToneText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;"></div>
+                </div>
+              </div>
+
+              <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;margin-bottom:12px;">
+                <strong style="font-size:12.5px;color:#3A6D4F;">微调建议：</strong>
+                <div id="pfAdviceText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;"></div>
+              </div>
+
+              <h5 style="margin:12px 0 6px;font-size:13.5px;color:var(--color-ink);">推荐的替代表达范式（点击复制）：</h5>
+              <div id="pfAlternativesContainer"></div>
+            </div>
+          </section>
+        </div>
+      </section>
 
       <!-- 模块 1: 每日心境签到 (F-10 / 18.2) -->
 
@@ -10509,18 +10363,23 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
   <main id="wellbeingArea" class="hidden">
 
+    <!-- 心境专区三药丸导航栏 -->
+    <nav class="wellbeing-switch-bar" id="wellbeingSwitchBar" aria-label="心境功能导航">
+      <button type="button" class="entry-pill active" id="wbBtnSleep">今夜安歇</button>
+      <button type="button" class="entry-pill" id="wbBtnAssessment">心理自评</button>
+      <button type="button" class="entry-pill" id="wbBtnResources">资源导航</button>
+    </nav>
+
     <div style="display:flex;flex-direction:column;gap:18px;">
 
-
-
+      <!-- 1. 今夜安歇 -->
       <section class="card sleep-home" id="sleepHomeSection" aria-labelledby="sleepHomeTitle">
-        <span class="badge ok" style="margin-bottom:7px;">现代放松引导 · 可随时停止</span>
         <h2 id="sleepHomeTitle" tabindex="-1">今夜安歇</h2>
         <p class="sleep-lead">不必努力让自己入睡。选一段短陪伴，也可以只听音乐；呼吸保持自然，不屏息、不规定次数。</p>
         <div class="sleep-flow-grid" aria-label="选择睡前放松流程">
-          <button type="button" class="sleep-flow-card" data-sleep-flow="mind"><strong>脑中停不下来</strong><span>把注意轻轻带回此刻，不必赶走念头。</span></button>
-          <button type="button" class="sleep-flow-card" data-sleep-flow="body"><strong>身体紧绷</strong><span>温和感受身体，不用力、不追求完全放松。</span></button>
-          <button type="button" class="sleep-flow-card" data-sleep-flow="wake"><strong>夜醒安顿</strong><span>给醒来的自己一点空间，不急着判断。</span></button>
+          <button type="button" class="sleep-flow-card" data-sleep-flow="mind" title="把注意轻轻带回此刻，不必赶走念头。"><strong>脑中停不下来</strong><span class="sleep-flow-desc">把注意轻轻带回此刻，不必赶走念头。</span></button>
+          <button type="button" class="sleep-flow-card" data-sleep-flow="body" title="温和感受身体，不用力、不追求完全放松。"><strong>身体紧绷</strong><span class="sleep-flow-desc">温和感受身体，不用力、不追求完全放松。</span></button>
+          <button type="button" class="sleep-flow-card" data-sleep-flow="wake" title="给醒来的自己一点空间，不急着判断。"><strong>夜醒安顿</strong><span class="sleep-flow-desc">给醒来的自己一点空间，不急着判断。</span></button>
         </div>
         <div class="sleep-music-row" aria-label="睡前音乐设置">
           <button type="button" class="btn sm secondary" id="sleepMusicToggle">播放音乐</button>
@@ -10536,303 +10395,157 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <div class="sleep-session-step" id="sleepStepText" tabindex="-1"></div>
           <div class="sleep-session-actions"><button type="button" class="btn sm secondary" id="sleepSkip">跳过</button><button type="button" class="btn sm" id="sleepNext">继续</button></div>
         </div>
-        <div class="sleep-support">如果睡眠困扰持续影响日常生活，可以考虑与医生或心理健康专业人员聊聊。这里的内容是一般放松练习，不替代专业帮助。</div>
       </section>
 
-      <!-- 顶部门禁与免责警示 -->
+      <!-- 2. 心理自评专区 (含免责警示与自评量表) -->
+      <div id="wellbeingAssessmentSection" class="hidden" style="display:flex;flex-direction:column;gap:18px;">
+        <!-- 顶部门禁与免责警示 -->
+        <section class="card" style="border-left:4px solid var(--color-gold);">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div>
+              <p style="margin:0;font-size:13.5px;color:var(--color-ink-light);line-height:1.65;">
+                本中心提供经专业伦理与临床心理顾问核验的标准化心理自评工具及权威就医导航。
+                <strong>自评结果仅供自我觉察与就诊沟通参考，不属于精神科临床诊断或医疗处方。</strong>
+                计分均由确定性程序计算，严禁大模型擅自估算分数。
+              </p>
+            </div>
+          </div>
+        </section>
 
-      <section class="card" style="border-left:4px solid var(--color-gold);">
+        <!-- 量表展示卡片：PSS-10 (活跃) + GAD-7/PHQ-9 (禁用/预览态) -->
+        <section class="card">
+          <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">标准化心理自评量表</h2>
+          <p style="margin:0 0 16px;font-size:13.5px;color:var(--color-muted);">请选择获准开放的量表进行自我了解</p>
 
-        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div class="scale-cards-grid">
+            <!-- 1. PSS-10 -->
+            <div style="background:var(--color-surface);border:1.5px solid var(--color-primary);border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <span class="badge ok">已核准 · 可作答</span>
+                  <span style="font-size:11px;color:var(--color-muted);">10 题 · 约3分钟</span>
+                </div>
+                <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:var(--color-ink);">知觉心理压力量表 (PSS-10)</h3>
+                <p style="margin:0;font-size:12.5px;color:var(--color-ink-light);line-height:1.6;">
+                  评估过去一个月内，您在生活与工作中感受到的不可控、超负荷与主观压力程度。
+                </p>
+              </div>
+              <button class="btn sm" id="btnOpenPss10" style="margin-top:16px;">开始知觉压力自评 →</button>
+            </div>
 
-          <div>
+            <!-- 2. GAD-7 (禁用态) -->
+            <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:12px;padding:18px;opacity:0.85;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <span class="badge rev">专家审核中 · 暂缓开放</span>
+                </div>
+                <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:#6B645B;">广泛性焦虑量表 (GAD-7)</h3>
+                <p style="margin:0;font-size:12.5px;color:var(--color-muted);line-height:1.6;">
+                  临床症状筛查量表。坚守 PRD 3.0 门禁铁律：需完成本地医疗伦理终审后开放，禁止伪造测试分数。
+                </p>
+              </div>
+              <button class="btn sm secondary" disabled style="margin-top:16px;">待专家审核上线</button>
+            </div>
 
-            <p style="margin:0;font-size:13.5px;color:var(--color-ink-light);line-height:1.65;">
+            <!-- 3. PHQ-9 (禁用态) -->
+            <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:12px;padding:18px;opacity:0.85;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <span class="badge rev">专家审核中 · 暂缓开放</span>
+                </div>
+                <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:#6B645B;">抑郁症状问卷 (PHQ-9)</h3>
+                <p style="margin:0;font-size:12.5px;color:var(--color-muted);line-height:1.6;">
+                  涉及高敏感自伤题目，必须建立专科转介安全闭环。当前保持禁用状态。
+                </p>
+              </div>
+              <button class="btn sm secondary" disabled style="margin-top:16px;">待专家审核上线</button>
+            </div>
+          </div>
 
-              本中心提供经专业伦理与临床心理顾问核验的标准化心理自评工具及权威就医导航。
-
-              <strong>自评结果仅供自我觉察与就诊沟通参考，不属于精神科临床诊断或医疗处方。</strong>
-
-              计分均由确定性程序计算，严禁大模型擅自估算分数。
-
+          <!-- PSS-10 作答互动区 (默认隐藏，点击展开) -->
+          <div id="pss10QuizContainer" class="hidden" style="margin-top:24px;border-top:1px dashed var(--color-border);padding-top:20px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+              <h3 style="font-family:var(--font-serif);font-size:19px;margin:0;">知觉心理压力量表 (PSS-10) 测评题目</h3>
+              <button class="btn sm ghost" id="btnClosePss10">收起题目</button>
+            </div>
+            <p style="font-size:13px;color:var(--color-muted);margin:0 0 16px;">
+              请回顾【过去一个月】的实际生活体验，根据最贴近的真实发生频率作答：
             </p>
-
+            <div id="pss10QuestionsList"></div>
+            <div style="margin-top:20px;display:flex;gap:12px;align-items:center;">
+              <button class="btn lg" id="btnSubmitPss10">交卷并生成自评报告</button>
+              <span style="font-size:12px;color:var(--color-muted);">由确定性规则实时计分</span>
+            </div>
           </div>
 
-        </div>
-
-      </section>
-
-
-
-      <!-- 量表展示卡片：PSS-10 (活跃) + GAD-7/PHQ-9 (禁用/预览态) -->
-
-      <section class="card">
-
-        <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">标准化心理自评量表</h2>
-
-        <p style="margin:0 0 16px;font-size:13.5px;color:var(--color-muted);">请选择获准开放的量表进行自我了解</p>
-
-
-
-        <div class="scale-cards-grid">
-
-          <!-- 1. PSS-10 -->
-
-          <div style="background:var(--color-surface);border:1.5px solid var(--color-primary);border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;">
-
-            <div>
-
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-
-                <span class="badge ok">已核准 · 可作答</span>
-
-                <span style="font-size:11px;color:var(--color-muted);">10 题 · 约3分钟</span>
-
+          <!-- PSS-10 结果报告单呈现 -->
+          <div id="pss10ResultCard" class="hidden" style="margin-top:24px;background:#FCF9F3;border:1.5px solid #DFCDB7;border-radius:12px;padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #E8DCBF;padding-bottom:12px;margin-bottom:16px;">
+              <div>
+                <span class="badge ok" id="pss10LevelBadge">中度压力区间</span>
+                <h3 style="font-family:var(--font-serif);margin:6px 0 0;font-size:22px;color:var(--color-primary);">知觉心理压力自评报告</h3>
               </div>
-
-              <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:var(--color-ink);">知觉心理压力量表 (PSS-10)</h3>
-
-              <p style="margin:0;font-size:12.5px;color:var(--color-ink-light);line-height:1.6;">
-
-                评估过去一个月内，您在生活与工作中感受到的不可控、超负荷与主观压力程度。
-
-              </p>
-
-            </div>
-
-            <button class="btn sm" id="btnOpenPss10" style="margin-top:16px;">开始知觉压力自评 →</button>
-
-          </div>
-
-
-
-          <!-- 2. GAD-7 (禁用态) -->
-
-          <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:12px;padding:18px;opacity:0.85;display:flex;flex-direction:column;justify-content:space-between;">
-
-            <div>
-
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-
-                <span class="badge rev">专家审核中 · 暂缓开放</span>
-
+              <div style="text-align:right;">
+                <div style="font-size:32px;font-weight:700;color:var(--color-primary);line-height:1;" id="pss10ScoreVal">21</div>
+                <div style="font-size:11px;color:var(--color-muted);margin-top:2px;">满分 40 分</div>
               </div>
-
-              <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:#6B645B;">广泛性焦虑量表 (GAD-7)</h3>
-
-              <p style="margin:0;font-size:12.5px;color:var(--color-muted);line-height:1.6;">
-
-                临床症状筛查量表。坚守 PRD 3.0 门禁铁律：需完成本地医疗伦理终审后开放，禁止伪造测试分数。
-
-              </p>
-
             </div>
 
-            <button class="btn sm secondary" disabled style="margin-top:16px;">待专家审核上线</button>
+            <!-- 高危安全求助提示（若触发） -->
+            <div id="pss10SafetyAlert" class="hidden" style="background:#FDF2F2;border:1px solid #ECC4C4;border-radius:8px;padding:12px 14px;margin-bottom:16px;color:#9B3131;font-size:13px;line-height:1.6;">
+              <strong>安全关怀提示：</strong> <span id="pss10SafetyText"></span>
+            </div>
 
-          </div>
+            <div style="font-size:14px;color:var(--color-ink-light);line-height:1.75;margin-bottom:14px;" id="pss10SummaryText"></div>
 
+            <div class="journal-dim-box" style="border-left-color:var(--color-gold);background:#FAF6EE;">
+              <strong style="color:var(--color-gold);">东方先贤解法视界：</strong>
+              <p id="pss10WisdomText" style="margin:4px 0 0;color:var(--color-ink);"></p>
+            </div>
 
+            <div style="margin-top:14px;">
+              <strong style="font-size:13.5px;color:var(--color-ink);">推荐的温和调适建议：</strong>
+              <ul id="pss10NextStepsList" style="margin:6px 0 0;padding-left:20px;font-size:13px;color:var(--color-ink-light);line-height:1.7;"></ul>
+            </div>
 
-          <!-- 3. PHQ-9 (禁用态) -->
-
-          <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:12px;padding:18px;opacity:0.85;display:flex;flex-direction:column;justify-content:space-between;">
-
-            <div>
-
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-
-                <span class="badge rev">专家审核中 · 暂缓开放</span>
-
+            <div style="margin-top:20px;border-top:1px dashed #DFCDB7;padding-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+              <div style="font-size:12px;color:var(--color-muted);">* 自评不等于医学诊断。若感身心过载，建议向<a href="javascript:void(0);" id="pss10ToResourcesLink" style="color:var(--color-primary);text-decoration:underline;margin:0 4px;font-weight:600;cursor:pointer;">【资源导航】</a>中的专业机构求助。</div>
+              <div style="display:flex;gap:8px;">
+                <button class="btn sm" id="btnSavePss10History">保存自评记录</button>
+                <button class="btn sm secondary" id="btnRetakePss10">重新测验</button>
               </div>
-
-              <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:#6B645B;">抑郁症状问卷 (PHQ-9)</h3>
-
-              <p style="margin:0;font-size:12.5px;color:var(--color-muted);line-height:1.6;">
-
-                涉及高敏感自伤题目，必须建立专科转介安全闭环。当前保持禁用状态。
-
-              </p>
-
             </div>
-
-            <button class="btn sm secondary" disabled style="margin-top:16px;">待专家审核上线</button>
-
           </div>
+        </section>
+      </div>
 
-        </div>
-
-
-
-        <!-- PSS-10 作答互动区 (默认隐藏，点击展开) -->
-
-        <div id="pss10QuizContainer" class="hidden" style="margin-top:24px;border-top:1px dashed var(--color-border);padding-top:20px;">
-
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-
-            <h3 style="font-family:var(--font-serif);font-size:19px;margin:0;">知觉心理压力量表 (PSS-10) 测评题目</h3>
-
-            <button class="btn sm ghost" id="btnClosePss10">收起题目</button>
-
-          </div>
-
-          <p style="font-size:13px;color:var(--color-muted);margin:0 0 16px;">
-
-            请回顾【过去一个月】的实际生活体验，根据最贴近的真实发生频率作答：
-
-          </p>
-
-
-
-          <div id="pss10QuestionsList"></div>
-
-
-
-          <div style="margin-top:20px;display:flex;gap:12px;align-items:center;">
-
-            <button class="btn lg" id="btnSubmitPss10">交卷并生成自评报告</button>
-
-            <span style="font-size:12px;color:var(--color-muted);">由确定性规则实时计分</span>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- PSS-10 结果报告单呈现 -->
-
-        <div id="pss10ResultCard" class="hidden" style="margin-top:24px;background:#FCF9F3;border:1.5px solid #DFCDB7;border-radius:12px;padding:24px;">
-
-          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #E8DCBF;padding-bottom:12px;margin-bottom:16px;">
-
+      <!-- 3. 专业资源导航专区 -->
+      <div id="wellbeingResourcesSection" class="hidden" style="display:flex;flex-direction:column;gap:18px;">
+        <section class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
             <div>
-
-              <span class="badge ok" id="pss10LevelBadge">中度压力区间</span>
-
-              <h3 style="font-family:var(--font-serif);margin:6px 0 0;font-size:22px;color:var(--color-primary);">知觉心理压力自评报告</h3>
-
+              <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">心理健康资源导航</h2>
+              <p style="margin:0;font-size:13px;color:var(--color-muted);">全国免费心理援助热线与公立精神心理专科门诊，随时为你提供安全托底</p>
             </div>
-
-            <div style="text-align:right;">
-
-              <div style="font-size:32px;font-weight:700;color:var(--color-primary);line-height:1;" id="pss10ScoreVal">21</div>
-
-              <div style="font-size:11px;color:var(--color-muted);margin-top:2px;">满分 40 分</div>
-
-            </div>
-
-          </div>
-
-
-
-          <!-- 高危安全求助提示（若触发） -->
-
-          <div id="pss10SafetyAlert" class="hidden" style="background:#FDF2F2;border:1px solid #ECC4C4;border-radius:8px;padding:12px 14px;margin-bottom:16px;color:#9B3131;font-size:13px;line-height:1.6;">
-
-            <strong>安全关怀提示：</strong> <span id="pss10SafetyText"></span>
-
-          </div>
-
-
-
-          <div style="font-size:14px;color:var(--color-ink-light);line-height:1.75;margin-bottom:14px;" id="pss10SummaryText"></div>
-
-
-
-          <div class="journal-dim-box" style="border-left-color:var(--color-gold);background:#FAF6EE;">
-
-            <strong style="color:var(--color-gold);">东方先贤解法视界：</strong>
-
-            <p id="pss10WisdomText" style="margin:4px 0 0;color:var(--color-ink);"></p>
-
-          </div>
-
-
-
-          <div style="margin-top:14px;">
-
-            <strong style="font-size:13.5px;color:var(--color-ink);">推荐的温和调适建议：</strong>
-
-            <ul id="pss10NextStepsList" style="margin:6px 0 0;padding-left:20px;font-size:13px;color:var(--color-ink-light);line-height:1.7;"></ul>
-
-          </div>
-
-
-
-          <div style="margin-top:20px;border-top:1px dashed #DFCDB7;padding-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-
-            <div style="font-size:12px;color:var(--color-muted);">* 自评不等于医学诊断。若感身心过载，建议向下方专业机构求助。</div>
-
             <div style="display:flex;gap:8px;">
-
-              <button class="btn sm" id="btnSavePss10History">保存自评记录</button>
-
-              <button class="btn sm secondary" id="btnRetakePss10">重新测验</button>
-
+              <button type="button" class="inspo-pill" id="btnToggleResources">展开资源导航 ▾</button>
             </div>
-
           </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 模块 2: 专业资源导航 (F-17 / 18.11) -->
-
-      <section class="card">
-
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-
-          <div>
-
-            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">心理健康资源导航</h2>
-
+          <div id="resourcePanel" class="hidden">
+            <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+              <select class="form-select" id="resourceRegionFilter" style="width:auto;padding:6px 12px;font-size:13px;">
+                <option value="全部">全部地区</option>
+                <option value="全国">全国热线</option>
+                <option value="北京">北京</option>
+                <option value="上海">上海</option>
+                <option value="广东">广东</option>
+                <option value="浙江">浙江</option>
+              </select>
+            </div>
+            <div class="resource-grid" id="resourceListGrid"></div>
           </div>
-
-          <div style="display:flex;gap:8px;">
-
-            <button type="button" class="inspo-pill" id="btnToggleResources">展开资源导航 ▾</button>
-
-          </div>
-
-        </div>
-
-        <div id="resourcePanel" class="hidden">
-
-          <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
-
-            <select class="form-select" id="resourceRegionFilter" style="width:auto;padding:6px 12px;font-size:13px;">
-
-              <option value="全部">全部地区</option>
-
-              <option value="全国">全国热线</option>
-
-              <option value="北京">北京</option>
-
-              <option value="上海">上海</option>
-
-              <option value="广东">广东</option>
-
-              <option value="浙江">浙江</option>
-
-            </select>
-
-          </div>
-
-          <div class="resource-grid" id="resourceListGrid"></div>
-
-        </div>
-
-      </section>
-
-
-
-
-
+        </section>
+      </div>
 
     </div>
 
@@ -10848,129 +10561,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
        ====================================================================== -->
 
-  <main id="practiceArea" class="hidden">
-
-    <div style="display:flex;flex-direction:column;gap:18px;">
-
-
-
-      <section class="card">
-
-        <span class="badge ok" style="margin-bottom:6px;">情境演练 · 替代表达</span>
-
-        <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">情境练习室 · 沟通助手</h2>
-
-        <p style="margin:0;font-size:13.5px;color:var(--color-muted);">
-
-          在安全的环境中，练习职场与人际边界沟通。AI 扮演对话对象，提供 4 维非评判反馈与高情商替代表达。
-
-        </p>
-
-
-
-        <!-- 场景切换卡片网格 -->
-
-        <div class="practice-scenario-grid" id="practiceScenarioCardsGrid"></div>
-
-      </section>
-
-
-
-      <!-- 交互演练对话室卡片 -->
-
-      <section class="card" id="practiceActiveRoom" style="border:1.5px solid var(--color-border-dark);">
-
-        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--color-border);padding-bottom:12px;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
-
-          <div>
-
-            <h3 style="font-family:var(--font-serif);margin:0 0 2px;font-size:18px;" id="practiceRoomTitle">拒绝不合理请求</h3>
-
-            <div style="font-size:12.5px;color:var(--color-muted);" id="practiceRoomRoleDesc">扮演对象：同事小陈</div>
-
-          </div>
-
-          <button class="btn sm secondary" id="btnResetPracticeScenario">重新开始本场景</button>
-
-        </div>
-
-
-
-        <!-- 模拟对话气泡窗口 -->
-
-        <div class="chat-window" id="practiceChatWindow"></div>
-
-
-
-        <!-- 用户练习输入框 -->
-
-        <div style="display:flex;gap:10px;flex-wrap:wrap;">
-
-          <input type="text" id="practiceDraftInput" class="form-input" placeholder="输入你想好的一句话，点击发送练习（例如：抱歉啊小陈，我手头时间排满了）" style="flex:1;min-width:200px;font-size:14px;padding:10px 14px;">
-
-          <button class="btn" id="btnSendPracticeMessage">发送练习</button>
-
-        </div>
-
-
-
-        <!-- 沟通反馈与替代表达呈现 -->
-
-        <div id="practiceFeedbackBox" class="hidden feedback-box">
-
-          <h4 style="margin:0 0 10px;font-family:var(--font-serif);font-size:16px;color:var(--color-primary);display:flex;align-items:center;gap:6px;">
-
-            悟堂沟通导师观察与反馈
-
-          </h4>
-
-
-
-          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:10px;margin-bottom:12px;">
-
-            <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;">
-
-              <strong style="font-size:12.5px;color:#8F2928;">边界清晰度：</strong>
-
-              <div id="pfBoundaryText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;"></div>
-
-            </div>
-
-            <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;">
-
-              <strong style="font-size:12.5px;color:#9F7430;">语气与体面：</strong>
-
-              <div id="pfToneText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;"></div>
-
-            </div>
-
-          </div>
-
-
-
-          <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;margin-bottom:12px;">
-
-            <strong style="font-size:12.5px;color:#3A6D4F;">微调建议：</strong>
-
-            <div id="pfAdviceText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;"></div>
-
-          </div>
-
-
-
-          <h5 style="margin:12px 0 6px;font-size:13.5px;color:var(--color-ink);">推荐的替代表达范式（点击复制）：</h5>
-
-          <div id="pfAlternativesContainer"></div>
-
-        </div>
-
-      </section>
-
-
-
-    </div>
-
-  </main>
+  <main id="practiceArea" class="hidden" style="display:none !important;" aria-hidden="true"></main>
 
 
 
@@ -12535,17 +12126,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-<!-- 悟堂 · 禅意背景音乐音频与屏幕右下角悬浮切换气泡 -->
+<!-- 悟堂 · 禅意背景音乐音频 -->
 
 <audio id="bgmAudio" preload="none"></audio>
-
-<div class="bgm-floating-pill" id="bgmFloatingPill" title="点击开关背景音乐，右侧顶栏可选择曲目与音量">
-
-  <div class="bgm-disc" style="font-size:13px;font-weight:600;">乐</div>
-
-  <span id="bgmFloatingText">静心音乐: 关</span>
-
-</div>
 
 
 
@@ -12744,7 +12327,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     clientView: 'userHome', // 'userHome' | 'userLoading' | 'userResult' | 'userSafety' | 'userCard'
 
-    entryTab: 'direct', // 'direct' | 'card'
+    entryTab: 'card', // 'card' | 'direct' | 'practice'
+
+    wellbeingTab: 'sleep', // 'sleep' | 'assessment' | 'resources'
 
     awarenessIndex: 0,
 
@@ -16008,11 +15593,17 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     } else if (tab === 'practice') {
 
-      if (practiceArea) practiceArea.classList.remove('hidden');
+      if (growthArea) growthArea.classList.remove('hidden');
 
-      if ($('tabPractice')) $('tabPractice').classList.add('active');
+      if ($('tabGrowth')) $('tabGrowth').classList.add('active');
 
-      renderPracticeSection();
+      renderGrowthSection();
+
+      if (typeof switchEntryTab === 'function') {
+
+        switchEntryTab('practice');
+
+      }
 
     } else if (tab === 'cards') {
 
@@ -17307,6 +16898,12 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     }
 
+    if (typeof switchMainTab === 'function') {
+
+      switchMainTab('relief');
+
+    }
+
 
 
     var risk = evaluateRisk(text);
@@ -18575,51 +18172,43 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-    // 3. 用户端双入口与交互 (PRD 2.0 F-01 & F-02)
+    // 3. 用户端三入口与交互 (心事倾诉、觉察牌、情境练习)
+    function switchEntryTab(tab) {
+      appState.entryTab = tab;
+      var btnDirect = $('entryBtnDirect');
+      var btnCard = $('entryBtnCard');
+      var btnPractice = $('entryBtnPractice');
+      var directArea = $('entryDirectArea');
+      var cardArea = $('entryCardArea');
+      var practiceArea = $('entryPracticeArea');
+      var scenarioSec = $('scenarioSection');
 
-    $('entryBtnDirect').onclick = function() {
+      if (btnDirect) btnDirect.classList.toggle('active', tab === 'direct');
+      if (btnCard) btnCard.classList.toggle('active', tab === 'card');
+      if (btnPractice) btnPractice.classList.toggle('active', tab === 'practice');
 
-      appState.entryTab = 'direct';
+      if (directArea) directArea.classList.toggle('hidden', tab !== 'direct');
+      if (cardArea) cardArea.classList.toggle('hidden', tab !== 'card');
+      if (practiceArea) practiceArea.classList.toggle('hidden', tab !== 'practice');
+      if (scenarioSec) scenarioSec.classList.toggle('hidden', tab !== 'direct');
 
-      $('entryBtnDirect').classList.add('active');
-
-      $('entryBtnCard').classList.remove('active');
-
-      $('entryDirectArea').classList.remove('hidden');
-
-      $('entryCardArea').classList.add('hidden');
-
-      if ($('scenarioSection')) $('scenarioSection').classList.remove('hidden');
-
-    };
-
-
-
-    $('entryBtnCard').onclick = function() {
-
-      appState.entryTab = 'card';
-
-      $('entryBtnCard').classList.add('active');
-
-      $('entryBtnDirect').classList.remove('active');
-
-      $('entryDirectArea').classList.add('hidden');
-
-      $('entryCardArea').classList.remove('hidden');
-
-      if ($('scenarioSection')) $('scenarioSection').classList.add('hidden');
-
-      if (!appState.awarenessFlipped) {
-
-        var total = (CARDS_MINDSET && CARDS_MINDSET.length) ? CARDS_MINDSET.length : 16;
-
-        appState.awarenessIndex = Math.floor(Math.random() * total);
-
-        renderAwarenessCard(appState.awarenessIndex);
-
+      if (tab === 'card') {
+        if (!appState.awarenessFlipped) {
+          var total = (CARDS_MINDSET && CARDS_MINDSET.length) ? CARDS_MINDSET.length : 16;
+          appState.awarenessIndex = Math.floor(Math.random() * total);
+          renderAwarenessCard(appState.awarenessIndex);
+        }
+      } else if (tab === 'practice') {
+        if (typeof renderPracticeScenarioCards === 'function') {
+          renderPracticeScenarioCards();
+        }
       }
+    }
+    window.switchEntryTab = switchEntryTab;
 
-    };
+    if ($('entryBtnDirect')) $('entryBtnDirect').onclick = function() { switchEntryTab('direct'); };
+    if ($('entryBtnCard')) $('entryBtnCard').onclick = function() { switchEntryTab('card'); };
+    if ($('entryBtnPractice')) $('entryBtnPractice').onclick = function() { switchEntryTab('practice'); };
 
 
 
@@ -19967,6 +19556,12 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     var badge = $('checkinTodayDateBadge');
 
     if (badge) badge.textContent = '今日：' + new Date().toISOString().slice(0, 10);
+
+    if (typeof switchEntryTab === 'function') {
+
+      switchEntryTab(appState.entryTab || 'card');
+
+    }
 
   }
 
@@ -24488,16 +24083,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     if (more) more.onchange = function() { if (!more.value) return; var val = more.value; more.value = ''; appState.selectedMaster = val; sageChat.mode = 'solo'; sageChat.target = val; chatSwitchTarget(val, appState.selectedTrack); };
   }
 
-  function mountGrowthEntry() {
-    var mount = $('growthEntryMount');
-    var entrySwitch = document.querySelector('#clientArea .entry-switch-bar');
-    var scenarioSection = $('scenarioSection');
-    var directArea = $('entryDirectArea');
-    var cardArea = $('entryCardArea');
-    if (!mount || !entrySwitch || !scenarioSection || !directArea || !cardArea) return;
-    [entrySwitch, scenarioSection, directArea, cardArea].forEach(function(node) {
-      mount.appendChild(node);
-    });
+  function initGrowthAwarenessFeature() {
+    if (typeof switchEntryTab === 'function') {
+      switchEntryTab('card');
+    }
   }
 
   function bootstrap() {
@@ -24534,7 +24123,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     // PRD 3.0 新增模块初始化
 
     initGrowthModule();
-    mountGrowthEntry();
+    initGrowthAwarenessFeature();
 
     initWellbeingModule();
 

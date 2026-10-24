@@ -129,8 +129,8 @@ async function main() {
     fs.writeFileSync(path.join(OUT, 'sleep-feature-desktop.png'), Buffer.from(desktopShot.data, 'base64'));
     await cdp.send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
     await evaluate(`sleepHomeSection.scrollIntoView({behavior:'instant',block:'start'})`); await wait(200);
-    const mobileLayout = await evaluate(`({columns:getComputedStyle(document.querySelector('.sleep-flow-grid')).gridTemplateColumns,viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,flowWidths:[...document.querySelectorAll('[data-sleep-flow]')].map(b=>b.getBoundingClientRect().width)})`);
-    check('390px 移动端单列布局无页面横向溢出', mobileLayout.documentWidth <= mobileLayout.viewport && !mobileLayout.columns.includes(' '), mobileLayout);
+    const mobileLayout = await evaluate(`({columns:getComputedStyle(document.querySelector('.sleep-flow-grid')).gridTemplateColumns,viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,flowWidths:[...document.querySelectorAll('[data-sleep-flow]')].map(b=>b.getBoundingClientRect().width),flowTops:[...document.querySelectorAll('[data-sleep-flow]')].map(b=>Math.round(b.getBoundingClientRect().top))})`);
+    check('390px 移动端三按钮并列单排无横向溢出', mobileLayout.documentWidth <= mobileLayout.viewport && mobileLayout.columns.trim().split(/\s+/).length === 3 && Math.abs(mobileLayout.flowTops[0] - mobileLayout.flowTops[1]) <= 2 && Math.abs(mobileLayout.flowTops[0] - mobileLayout.flowTops[2]) <= 2, mobileLayout);
     const mobileShot = await cdp.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
     fs.writeFileSync(path.join(OUT, 'sleep-feature-mobile.png'), Buffer.from(mobileShot.data, 'base64'));
     await click('[data-sleep-flow="wake"]'); await click('#sleepSkip'); await click('#sleepStop');
