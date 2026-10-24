@@ -1175,6 +1175,10 @@ body::after {
 .sleep-session.is-open { display: block; }
 .sleep-session-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
 .sleep-session-step { min-height: 82px; display: grid; place-items: center; max-width: 650px; margin: 24px auto 18px; text-align: center; font-family: var(--font-serif); font-size: 19px; line-height: 1.8; color: var(--color-ink); }
+/* 打字机效果：可见文本逐字浮现，完整文本保留在无障碍隐藏层 */
+.sleep-tw-full { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.sleep-tw-live.is-typing::after { content: ''; display: inline-block; width: 1px; height: 0.95em; margin-left: 2px; vertical-align: -0.12em; background: currentColor; opacity: 0.5; animation: sleepCaretBlink 0.9s steps(1) infinite; }
+@keyframes sleepCaretBlink { 0%, 49% { opacity: 0.5; } 50%, 100% { opacity: 0; } }
 .sleep-session-actions { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 @media (max-width: 680px) {
   .sleep-flow-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
@@ -1184,6 +1188,7 @@ body::after {
 }
 @media (prefers-reduced-motion: reduce) {
   .sleep-session-step { transition: none !important; }
+  .sleep-tw-live.is-typing::after { animation: none; }
 }
 
 .card {
@@ -8482,7 +8487,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     gap: 6px;
   }
   .brand-group {
-    padding-right: 122px;
+    padding-right: 92px;
   }
   .brand-text h1 {
     font-size: 16px;
@@ -8493,7 +8498,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: calc(100vw - 146px);
+    max-width: calc(100vw - 110px);
+    margin-top: 3px;
   }
   .header-right {
     width: 100%;
@@ -8523,36 +8529,47 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     white-space: nowrap;
     border-radius: 20px;
   }
-  /* 顶栏三大纽扣在手机端严格统一为 32px 正圆规格 */
+  /* 顶栏三大纽扣在手机端优化为 26px 精致微钮，紧贴顶栏右上角，彻底杜绝遮挡副标题文字 */
   .bgm-control-wrap {
     position: absolute;
-    top: 10px;
+    top: 4px;
     right: 0;
     z-index: 10;
   }
   .font-control-wrap {
     position: absolute;
-    top: 10px;
-    right: 38px;
+    top: 4px;
+    right: 30px;
     z-index: 10;
   }
   .ai-status-btn {
     position: absolute;
-    top: 10px;
-    right: 76px;
+    top: 4px;
+    right: 60px;
     z-index: 10;
   }
   .ai-status-btn,
   .font-btn,
   .bgm-btn {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    border-radius: 16px;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    border-radius: 13px;
     padding: 0;
     gap: 0;
     justify-content: center;
     box-sizing: border-box;
+  }
+  /* 扩大触控热区，保证 26px 微型按钮依然具有顺畅的点按响应 */
+  .ai-status-btn::after,
+  .font-btn::after,
+  .bgm-btn::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    bottom: -6px;
+    left: -6px;
+    right: -6px;
   }
   .ai-status-label,
   .ai-status-dot,
@@ -8562,25 +8579,27 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   }
   .ai-status-short {
     display: inline-block !important;
-    font-size: 11px;
+    font-size: 9.5px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.5px;
   }
   .font-btn-glyph {
-    font-size: 13.5px;
+    font-size: 11.5px;
     margin: 0;
   }
   .bgm-icon-note {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     margin: 0;
   }
   .bgm-panel {
-    width: min(310px, calc(100vw - 36px));
+    width: min(310px, calc(100vw - 32px));
+    right: 0;
   }
   .font-panel {
-    width: min(300px, calc(100vw - 36px));
+    width: min(300px, calc(100vw - 32px));
+    right: -30px;
   }
 
   /* 下拉框、输入框不超出容器 */
@@ -9863,21 +9882,21 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         </div>
       </section>
 
-      <!-- 模块 1: 每日心境签到 (F-10 / 18.2) -->
+      <!-- 模块 1 & 2 合并: 每日心境签到与 AI 心事日记 (F-10 / F-12) -->
 
-      <section class="card">
+      <section class="card" id="checkinAndJournalCard">
 
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
 
           <div>
 
-            <span class="badge ok" style="margin-bottom:6px;">日常觉察 · 每日签到</span>
+            <span class="badge ok" style="margin-bottom:6px;">日常觉察 · 每日签到与心事日记</span>
 
             <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">今天的你，感觉怎么样？</h2>
 
             <p style="margin:0;font-size:13.5px;color:var(--color-muted);">
 
-              用 10-30 秒留下今天的主观心绪。支持跳过，不作疾病判断，仅保存在本地设备。
+              用 10-30 秒留下主观心绪，或写下心事由 AI 结构化梳理。仅保存在本地设备。
 
             </p>
 
@@ -9973,17 +9992,35 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-        <div style="margin-top:6px;">
-
-          <input type="text" id="checkinNoteInput" class="form-input" placeholder="留下一句属于今天的心语（选填，如：今天按时关掉了电脑）" style="width:100%;box-sizing:border-box;font-size:13.5px;padding:9px 14px;">
-
+        <!-- 合并后的心语与心事统一多行文本输入域 -->
+        <div style="margin-top:12px;">
+          <div class="section-label" style="font-size:13px;margin-bottom:6px;">留下一句心语，或写下想倾诉的心事（支持 AI 梳理）：</div>
+          <textarea id="journalInputText" class="form-textarea" placeholder="写下属于今天的一句心语，或倾诉一件心事……（例如：今天按时关掉了电脑；或今天和同事对方案，他当场否定了我，我特别难堪）" style="width:100%;box-sizing:border-box;min-height:96px;font-size:14px;padding:12px;line-height:1.6;border-radius:8px;"></textarea>
+          <!-- 兼容旧测试脚本与代码引用的隐藏 input -->
+          <input type="hidden" id="checkinNoteInput">
         </div>
 
 
 
-        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+        <!-- 合并后的操作按钮栏 -->
 
-          <button class="btn" id="btnSubmitCheckin">留下今日心境印记</button>
+        <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+
+            <button class="btn" id="btnSubmitCheckin">留下今日心境印记</button>
+
+            <button class="btn secondary" id="btnAiOrganizeJournal" style="border-color:var(--color-primary);color:var(--color-primary);">AI 结构化梳理心绪</button>
+
+          </div>
+
+          <div style="display:flex;gap:8px;align-items:center;">
+
+            <button class="btn ghost sm" id="btnFillJournalSample">示范倾诉</button>
+
+            <button class="btn secondary sm" id="btnClearJournalInput">清空</button>
+
+          </div>
 
         </div>
 
@@ -10014,44 +10051,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
             <button class="btn sm secondary" id="btnCheckinReset">重新签到</button>
 
           </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 模块 2: AI 心事日记 (F-12 / 18.3) -->
-
-      <section class="card">
-
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
-
-          <div>
-
-            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">AI 心事日记 · 把乱麻理出头绪</h2>
-
-          </div>
-
-        </div>
-
-
-
-        <div style="margin-top:16px;">
-
-          <textarea id="journalInputText" class="form-textarea" placeholder="写下今天的一件心事，或者想到什么写什么……（例如：今天和同事对方案，他当场否定了我，我特别难堪，总觉得别人都在看我笑话）" style="width:100%;box-sizing:border-box;min-height:90px;font-size:14px;padding:12px;line-height:1.6;"></textarea>
-
-        </div>
-
-
-
-        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
-
-          <button class="btn" id="btnAiOrganizeJournal">AI 结构化梳理心绪</button>
-
-          <button class="btn ghost sm" id="btnFillJournalSample">填入示范倾诉</button>
-
-          <button class="btn secondary sm" id="btnClearJournalInput">清空</button>
 
         </div>
 
@@ -10366,7 +10365,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     <!-- 心境专区三药丸导航栏 -->
     <nav class="wellbeing-switch-bar" id="wellbeingSwitchBar" aria-label="心境功能导航">
-      <button type="button" class="entry-pill active" id="wbBtnSleep">今夜安歇</button>
+      <button type="button" class="entry-pill active" id="wbBtnSleep">安歇助眠</button>
       <button type="button" class="entry-pill" id="wbBtnAssessment">心理自评</button>
       <button type="button" class="entry-pill" id="wbBtnResources">资源导航</button>
     </nav>
@@ -10375,7 +10374,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       <!-- 1. 今夜安歇 -->
       <section class="card sleep-home" id="sleepHomeSection" aria-labelledby="sleepHomeTitle">
-        <h2 id="sleepHomeTitle" tabindex="-1">今夜安歇</h2>
+        <h2 id="sleepHomeTitle" tabindex="-1">安歇助眠</h2>
         <p class="sleep-lead">不必努力让自己入睡。选一段短陪伴，也可以只听音乐；呼吸保持自然，不屏息、不规定次数。</p>
         <div class="sleep-flow-grid" aria-label="选择睡前放松流程">
           <button type="button" class="sleep-flow-card" data-sleep-flow="mind" title="把注意轻轻带回此刻，不必赶走念头。"><strong>脑中停不下来</strong><span class="sleep-flow-desc">把注意轻轻带回此刻，不必赶走念头。</span></button>
@@ -10392,8 +10391,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <label><input type="checkbox" id="sleepFade" checked> 渐弱</label>
         </div>
         <div class="sleep-session" id="sleepSession" aria-live="polite">
-          <div class="sleep-session-head"><div><div class="section-label" id="sleepStepNum"></div><h3 id="sleepFlowTitle" style="font-family:var(--font-serif);margin:3px 0 0;font-size:18px;"></h3></div><button type="button" class="btn sm ghost" id="sleepStop">停止并退出</button></div>
-          <div class="sleep-session-step" id="sleepStepText" tabindex="-1"></div>
+          <div class="sleep-session-head"><div><div class="section-label" id="sleepStepNum"></div><h3 id="sleepFlowTitle" style="font-family:var(--font-serif);margin:3px 0 0;font-size:18px;"><span class="sleep-tw-live" aria-hidden="true"></span><span class="sleep-tw-full"></span></h3></div><button type="button" class="btn sm ghost" id="sleepStop">停止并退出</button></div>
+          <div class="sleep-session-step" id="sleepStepText" tabindex="-1"><span class="sleep-tw-live" aria-hidden="true"></span><span class="sleep-tw-full"></span></div>
           <div class="sleep-session-actions"><button type="button" class="btn sm secondary" id="sleepSkip">跳过</button><button type="button" class="btn sm" id="sleepNext">继续</button></div>
         </div>
       </section>
@@ -19211,7 +19210,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       btnCheckin.onclick = function() {
 
-        var note = $('checkinNoteInput') ? $('checkinNoteInput').value.trim() : '';
+        var journalVal = $('journalInputText') ? $('journalInputText').value.trim() : '';
+        var noteVal = $('checkinNoteInput') ? $('checkinNoteInput').value.trim() : '';
+        var note = journalVal || noteVal || '';
+        if ($('checkinNoteInput')) $('checkinNoteInput').value = note;
 
         var todayStr = new Date().toISOString().slice(0, 10);
 
@@ -19292,17 +19294,23 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-    // --- AI 日记整理 ---
+    // --- AI 日记整理与心语输入协同 ---
+
+    var unifiedJournalInput = $('journalInputText');
+    var hiddenNoteInput = $('checkinNoteInput');
+    if (unifiedJournalInput && hiddenNoteInput) {
+      unifiedJournalInput.addEventListener('input', function() {
+        hiddenNoteInput.value = unifiedJournalInput.value;
+      });
+    }
 
     if ($('btnFillJournalSample')) {
 
       $('btnFillJournalSample').onclick = function() {
 
-        if ($('journalInputText')) {
-
-          $('journalInputText').value = '今天主管在例会上当众否定了我负责的模块，催促我重写。我当时非常难堪，整天脑子都停不下来，特别自责，甚至怀疑自己不适合这份工作。';
-
-        }
+        var sampleText = '今天主管在例会上当众否定了我负责的模块，催促我重写。我当时非常难堪，整天脑子都停不下来，特别自责，甚至怀疑自己不适合这份工作。';
+        if ($('journalInputText')) $('journalInputText').value = sampleText;
+        if ($('checkinNoteInput')) $('checkinNoteInput').value = sampleText;
 
       };
 
@@ -19313,6 +19321,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       $('btnClearJournalInput').onclick = function() {
 
         if ($('journalInputText')) $('journalInputText').value = '';
+        if ($('checkinNoteInput')) $('checkinNoteInput').value = '';
 
         if ($('journalStructuredResult')) $('journalStructuredResult').classList.add('hidden');
 
@@ -19324,11 +19333,12 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       $('btnAiOrganizeJournal').onclick = function() {
 
-        var raw = $('journalInputText') ? $('journalInputText').value.trim() : '';
+        var raw = ($('journalInputText') && $('journalInputText').value.trim()) ||
+                  ($('checkinNoteInput') && $('checkinNoteInput').value.trim()) || '';
 
         if (!raw) {
 
-          showToast('请先输入今天的日常倾诉');
+          showToast('请先输入心语或心事倾诉');
 
           return;
 
@@ -19431,6 +19441,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         if ($('journalStructuredResult')) $('journalStructuredResult').classList.add('hidden');
 
         if ($('journalInputText')) $('journalInputText').value = '';
+        if ($('checkinNoteInput')) $('checkinNoteInput').value = '';
 
         updateDataSummary();
 
@@ -20497,12 +20508,39 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     wake: { title: '夜醒安顿', steps: ['醒着并不代表你做错了什么。先给自己片刻，不急着判断接下来会怎样。', '感受身体被床面承托的部分，辨认一个让你觉得稍微安稳的接触点。', '让呼吸自然来去，不屏息、不控制，也不需要数数。', '如果念头出现，可以把它们当作暂时经过的想法，不必现在处理。', '你可以继续休息，也可以按自己的需要起身做安静、舒适的事。'] }
   };
 
+  function sleepStopTyping(el) {
+    if (!el || !el.__twTimer) return;
+    window.clearInterval(el.__twTimer);
+    el.__twTimer = null;
+    var live = el.querySelector('.sleep-tw-live');
+    if (live) live.classList.remove('is-typing');
+  }
+
+  function sleepTypeInto(el, text, speed) {
+    if (!el) return;
+    var live = el.querySelector('.sleep-tw-live');
+    var full = el.querySelector('.sleep-tw-full');
+    if (full) full.textContent = text;
+    if (!live) { el.textContent = text; return; }
+    sleepStopTyping(el);
+    live.textContent = '';
+    if (!text) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { live.textContent = text; return; }
+    var i = 0;
+    live.classList.add('is-typing');
+    el.__twTimer = window.setInterval(function() {
+      i += 1;
+      live.textContent = text.slice(0, i);
+      if (i >= text.length) sleepStopTyping(el);
+    }, speed || 28);
+  }
+
   function sleepRenderStep() {
     var guide = sleepGuideState.flow;
     if (!guide) return;
-    $('sleepFlowTitle').textContent = guide.title;
+    sleepTypeInto($('sleepFlowTitle'), guide.title, 42);
     $('sleepStepNum').textContent = '第 ' + (sleepGuideState.step + 1) + ' 步 / ' + guide.steps.length;
-    $('sleepStepText').textContent = guide.steps[sleepGuideState.step];
+    sleepTypeInto($('sleepStepText'), guide.steps[sleepGuideState.step], 26);
     $('sleepNext').textContent = sleepGuideState.step === guide.steps.length - 1 ? '完成' : '继续';
     $('sleepStepText').focus();
   }
@@ -20555,6 +20593,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
   function sleepExit() {
     sleepClearTimer();
+    sleepStopTyping($('sleepFlowTitle'));
+    sleepStopTyping($('sleepStepText'));
     sleepStopMusic();
     sleepGuideState.flow = null;
     sleepGuideState.step = 0;
@@ -21411,6 +21451,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       journalInput.value = '【借境观心 · ' + name + '】\n' +
         '核心觉察：' + core + '\n\n' +
         '我的当下心声与复盘：\n';
+      if ($('checkinNoteInput')) $('checkinNoteInput').value = journalInput.value;
       journalInput.focus();
       journalInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
@@ -23411,6 +23452,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         '核心觉察：' + card.core + '\n' +
         '叩问心门：' + (card.question || '') + '\n\n' +
         '我的当下心声：\n';
+      if ($('checkinNoteInput')) $('checkinNoteInput').value = journalInput.value;
       journalInput.focus();
       journalInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
