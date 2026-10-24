@@ -1168,9 +1168,7 @@ body::after {
 .sleep-flow-card:active { transform: translateY(0); }
 .sleep-flow-card strong { display: inline-block; font-size: inherit; font-weight: inherit; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sleep-flow-card span, .sleep-flow-card .sleep-flow-desc { display: none; }
-.sleep-music-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--color-border); }
-.sleep-music-row label { color: var(--color-muted); font-size: 12px; }
-.sleep-music-row select { border: 1px solid var(--color-border); border-radius: 5px; background: var(--color-surface); padding: 6px 8px; color: var(--color-ink); }
+.sleep-music-row { display: none; }
 
 /* 助眠音乐呼吸示波器 (Sleep Music Breathing Oscilloscope) */
 .sleep-scope-wrap {
@@ -1257,11 +1255,252 @@ body::after {
   height: 84px;
   vertical-align: middle;
 }
+
+/* 示波器内置音乐播放控制条 (纯音乐控件按钮效果，无冗余文字标签) */
+.sleep-scope-controls {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 8px 14px 8px;
+  background: rgba(13, 22, 18, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(113, 131, 110, 0.22);
+  cursor: default;
+}
+.sleep-ctrl-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.sleep-ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(113, 131, 110, 0.35);
+  background: rgba(22, 36, 29, 0.85);
+  color: #C8E6D3;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  outline: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+.sleep-ctrl-btn:hover {
+  border-color: rgba(133, 227, 179, 0.7);
+  color: #FFFFFF;
+  background: rgba(30, 50, 40, 0.95);
+  box-shadow: 0 0 10px rgba(133, 227, 179, 0.25);
+}
+.sleep-ctrl-btn:focus-visible {
+  outline: 2px solid #85E3B3;
+  outline-offset: 1px;
+}
+.sleep-ctrl-btn.sleep-btn-play {
+  width: 32px;
+  height: 32px;
+  background: rgba(113, 131, 110, 0.25);
+  border-color: rgba(133, 227, 179, 0.5);
+  color: #85E3B3;
+}
+.sleep-ctrl-btn.sleep-btn-play:hover {
+  background: rgba(133, 227, 179, 0.25);
+  border-color: #85E3B3;
+  color: #FFFFFF;
+}
+.sleep-ctrl-btn.sleep-btn-play.is-playing {
+  background: rgba(133, 227, 179, 0.28);
+  border-color: #85E3B3;
+  color: #85E3B3;
+  box-shadow: 0 0 12px rgba(133, 227, 179, 0.35);
+}
+.sleep-ctrl-btn.sleep-btn-play .sleep-icon-pause { display: none; }
+.sleep-ctrl-btn.sleep-btn-play .sleep-icon-play { display: block; margin-left: 1px; }
+.sleep-ctrl-btn.sleep-btn-play.is-playing .sleep-icon-pause { display: block; margin-left: 0; }
+.sleep-ctrl-btn.sleep-btn-play.is-playing .sleep-icon-play { display: none; }
+
+.sleep-ctrl-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+.sleep-ctrl-label-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(180, 205, 190, 0.7);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 2px;
+}
+.sleep-ctrl-label-icon:hover {
+  color: #85E3B3;
+}
+
+.sleep-scope-select {
+  border: 1px solid rgba(113, 131, 110, 0.35);
+  border-radius: 14px;
+  background: rgba(22, 36, 29, 0.85);
+  color: #DCEBE1;
+  font-size: 11.5px;
+  padding: 2px 8px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  height: 28px;
+  line-height: 22px;
+  box-sizing: border-box;
+}
+.sleep-scope-select:hover, .sleep-scope-select:focus {
+  border-color: rgba(133, 227, 179, 0.65);
+}
+.sleep-scope-select option {
+  background: #16241D;
+  color: #DCEBE1;
+}
+
+.sleep-scope-slider {
+  width: 68px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(113, 131, 110, 0.35);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.sleep-scope-slider:hover {
+  background: rgba(133, 227, 179, 0.45);
+}
+.sleep-scope-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #85E3B3;
+  box-shadow: 0 0 6px rgba(133, 227, 179, 0.7);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.sleep-scope-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+.sleep-scope-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: #85E3B3;
+  box-shadow: 0 0 6px rgba(133, 227, 179, 0.7);
+  cursor: pointer;
+}
+
+.sleep-fade-toggle {
+  cursor: pointer;
+  position: relative;
+  border-radius: 14px;
+  width: auto;
+  height: 28px;
+  padding: 0 8px;
+  gap: 4px;
+}
+.sleep-fade-toggle.is-active {
+  background: rgba(133, 227, 179, 0.2);
+  border-color: rgba(133, 227, 179, 0.65);
+  color: #85E3B3;
+  box-shadow: 0 0 8px rgba(133, 227, 179, 0.25);
+}
+.sleep-fade-toggle:not(.is-active) {
+  opacity: 0.55;
+  color: rgba(180, 205, 190, 0.6);
+}
+
+.sleep-color-picker-wrap {
+  position: relative;
+}
+.sleep-color-native-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.sleep-color-palette-pop {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  background: rgba(16, 28, 22, 0.96);
+  border: 1px solid rgba(133, 227, 179, 0.35);
+  border-radius: 8px;
+  padding: 6px 8px;
+  gap: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  z-index: 20;
+  backdrop-filter: blur(10px);
+}
+.sleep-color-palette-pop.is-open {
+  display: flex;
+  align-items: center;
+}
+.sleep-palette-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+.sleep-palette-dot:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 8px currentColor;
+}
+.sleep-palette-dot.is-active {
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 10px currentColor;
+}
+.sleep-palette-dot-custom {
+  background: conic-gradient(#F87171, #FBBF24, #34D399, #60A5FA, #A78BFA, #F472B6, #F87171);
+}
+.sleep-palette-dot-auto {
+  background: rgba(255, 255, 255, 0.12);
+  color: #DCEBE1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 600;
+}
+.sleep-palette-dot-auto:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+.sleep-palette-dot-auto.is-active {
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
 .sleep-scope-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3px 14px 7px;
+  padding: 4px 14px 6px;
   font-size: 10.5px;
   color: rgba(180, 205, 190, 0.55);
   pointer-events: none;
@@ -1276,6 +1515,9 @@ body::after {
   .sleep-scope-canvas { height: 74px; }
   .sleep-scope-head { padding: 6px 10px 2px; font-size: 11px; }
   .sleep-scope-foot { padding: 2px 10px 6px; font-size: 10px; }
+  .sleep-scope-controls { padding: 6px 10px 6px; gap: 6px; }
+  .sleep-scope-slider { width: 48px; }
+  .sleep-scope-select { font-size: 11px; padding: 2px 6px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .sleep-scope-led { animation: none !important; }
@@ -1284,8 +1526,8 @@ body::after {
 .sleep-session { display: none; margin-top: 18px; padding-top: 16px; border-top: 2px solid #71836E; }
 .sleep-session.is-open { display: block; }
 .sleep-session-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-.sleep-session-step { min-height: 82px; display: grid; place-items: center; max-width: 650px; margin: 24px auto 18px; text-align: center; font-family: var(--font-serif); font-size: 19px; line-height: 1.8; color: var(--color-ink); }
-/* 打字机效果：可见文本逐字浮现，完整文本保留在无障碍隐藏层 */
+.sleep-session-step { min-height: 82px; display: block; max-width: 620px; margin: 24px auto 18px; text-align: left; font-family: var(--font-serif); font-size: 19px; line-height: 1.85; color: var(--color-ink); letter-spacing: 0.02em; word-break: break-word; }
+/* 打字机效果：可见文本在原位逐字浮现，光标向右推进，完整文本保留在无障碍隐藏层 */
 .sleep-tw-full { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .sleep-tw-live.is-typing::after { content: ''; display: inline-block; width: 1px; height: 0.95em; margin-left: 2px; vertical-align: -0.12em; background: currentColor; opacity: 0.5; animation: sleepCaretBlink 0.9s steps(1) infinite; }
 @keyframes sleepCaretBlink { 0%, 49% { opacity: 0.5; } 50%, 100% { opacity: 0; } }
@@ -1294,7 +1536,7 @@ body::after {
   .sleep-flow-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
   .sleep-flow-card { padding: 9px 4px; min-height: 38px; font-size: 13px; }
   .sleep-flow-card strong { font-size: 13px; }
-  .sleep-session-step { min-height: 110px; font-size: 17px; }
+  .sleep-session-step { min-height: 110px; font-size: 17px; text-align: left; }
 }
 @media (prefers-reduced-motion: reduce) {
   .sleep-session-step { transition: none !important; }
@@ -10646,18 +10888,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <button type="button" class="sleep-flow-card" data-sleep-flow="body" title="温和感受身体，不用力、不追求完全放松。"><strong>身体紧绷</strong><span class="sleep-flow-desc">温和感受身体，不用力、不追求完全放松。</span></button>
           <button type="button" class="sleep-flow-card" data-sleep-flow="wake" title="给醒来的自己一点空间，不急着判断。"><strong>夜醒安顿</strong><span class="sleep-flow-desc">给醒来的自己一点空间，不急着判断。</span></button>
         </div>
-        <div class="sleep-music-row" aria-label="睡前音乐设置">
-          <button type="button" class="btn sm secondary" id="sleepMusicToggle">播放音乐</button>
-          <button type="button" class="btn sm ghost" id="sleepMusicPanel">音乐面板</button>
-          <label for="sleepTrackSelect">曲目</label>
-          <select id="sleepTrackSelect"><option value="0">行云流水</option><option value="1">禅境冥想</option><option value="2">秋雨箏韻</option><option value="3">秋雨琴簫合奏</option><option value="4">枕畔温煦</option><option value="5">空灵入梦</option><option value="6">夜幕归宁</option><option value="7">海潮摇篮</option><option value="8">眠琴微语</option></select>
-          <label for="sleepVolume">音量</label><input id="sleepVolume" type="range" min="0" max="100" value="25" aria-label="睡前音乐音量" style="width:80px;">
-          <label for="sleepTimer">定时关闭</label><select id="sleepTimer"><option value="0">关闭</option><option value="5">5 分钟</option><option value="10">10 分钟</option><option value="20">20 分钟</option><option value="30">30 分钟</option></select>
-          <label><input type="checkbox" id="sleepFade" checked> 渐弱</label>
-        </div>
-
         <!-- 助眠音乐呼吸示波器 (Sleep Music Breathing Oscilloscope) -->
-        <div class="sleep-scope-wrap" id="sleepScopeWrap" aria-label="助眠音乐呼吸示波器 · 点击切换播放" role="region" tabindex="0" title="点击播放 / 暂停助眠音乐">
+        <div class="sleep-scope-wrap" id="sleepScopeWrap" aria-label="助眠音乐呼吸示波器 · 点击切换播放" role="region" tabindex="0" title="点击波形播放 / 暂停助眠音乐">
           <div class="sleep-scope-head">
             <span class="sleep-scope-badge">
               <span class="sleep-scope-led" id="sleepScopeLed"></span>
@@ -10668,6 +10900,84 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
             </span>
           </div>
           <canvas class="sleep-scope-canvas" id="sleepScopeCanvas"></canvas>
+          
+          <!-- 示波器内置音乐播放控制条 (纯音乐控件按钮效果，无冗余文字标签) -->
+          <div class="sleep-scope-controls" id="sleepScopeControls" aria-label="助眠音乐控制条">
+            <div class="sleep-ctrl-group main-playback">
+              <button type="button" class="sleep-ctrl-btn" id="sleepTrackPrev" aria-label="上一曲" title="上一曲">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+              </button>
+              <button type="button" class="sleep-ctrl-btn sleep-btn-play" id="sleepMusicToggle" aria-label="播放音乐" title="播放 / 暂停助眠音乐" aria-pressed="false">
+                <svg class="sleep-icon-play" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><polygon points="7 4 19 12 7 20 7 4"></polygon></svg>
+                <svg class="sleep-icon-pause" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+              </button>
+              <button type="button" class="sleep-ctrl-btn" id="sleepTrackNext" aria-label="下一曲" title="下一曲">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+              </button>
+              <button type="button" class="sleep-ctrl-btn" id="sleepMusicPanel" aria-label="曲库面板" title="打开曲库面板">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+              </button>
+              <div class="sleep-ctrl-item" title="切换助眠曲目">
+                <select id="sleepTrackSelect" class="sleep-scope-select" aria-label="切换助眠曲目">
+                  <option value="0">行云流水</option>
+                  <option value="1">禅境冥想</option>
+                  <option value="2">秋雨箏韻</option>
+                  <option value="3">秋雨琴簫合奏</option>
+                  <option value="4">枕畔温煦</option>
+                  <option value="5">空灵入梦</option>
+                  <option value="6">夜幕归宁</option>
+                  <option value="7">海潮摇篮</option>
+                  <option value="8">眠琴微语</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="sleep-ctrl-group secondary-playback">
+              <div class="sleep-ctrl-item" title="音量调节">
+                <button type="button" class="sleep-ctrl-label-icon" id="sleepVolumeBtn" title="静音 / 恢复音量" aria-label="音量" style="background:none;border:none;cursor:pointer;">
+                  <svg id="sleepVolumeSvg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                </button>
+                <input id="sleepVolume" type="range" min="0" max="100" value="25" aria-label="睡前音乐音量" class="sleep-scope-slider">
+              </div>
+
+              <div class="sleep-ctrl-item" title="定时关闭">
+                <span class="sleep-ctrl-label-icon" title="定时关闭" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </span>
+                <select id="sleepTimer" class="sleep-scope-select" aria-label="定时关闭">
+                  <option value="0">∞</option>
+                  <option value="5">5′</option>
+                  <option value="10">10′</option>
+                  <option value="20">20′</option>
+                  <option value="30">30′</option>
+                </select>
+              </div>
+
+              <label class="sleep-ctrl-btn sleep-fade-toggle is-active" id="sleepFadeLabel" title="定时结束声音平滑渐弱" aria-label="定时渐弱">
+                <input type="checkbox" id="sleepFade" checked style="position:absolute;opacity:0;pointer-events:none;width:0;height:0;">
+                <svg class="sleep-fade-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 10v4"></path><path d="M6 7v10"></path><path d="M10 4v16"></path><path d="M14 6v12"></path><path d="M18 9v6"></path><path d="M22 11v2"></path></svg>
+              </label>
+
+              <!-- 波形配色切换 -->
+              <div class="sleep-ctrl-item sleep-color-picker-wrap">
+                <button type="button" class="sleep-ctrl-btn" id="sleepWaveColorBtn" aria-label="更改波形色彩" title="更改波形色彩">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>
+                </button>
+                <input type="color" id="sleepWaveColorPicker" value="#85E3B3" class="sleep-color-native-input" title="自定义波形色彩" aria-label="自定义波形色彩">
+                <div class="sleep-color-palette-pop" id="sleepColorPalettePop">
+                  <button type="button" class="sleep-palette-dot is-active" data-color="#85E3B3" title="翡翠碧水 (默认)" style="background:#85E3B3;color:#85E3B3;"></button>
+                  <button type="button" class="sleep-palette-dot" data-color="#E0C07A" title="琥珀暖金" style="background:#E0C07A;color:#E0C07A;"></button>
+                  <button type="button" class="sleep-palette-dot" data-color="#B39DDB" title="紫藤夜梦" style="background:#B39DDB;color:#B39DDB;"></button>
+                  <button type="button" class="sleep-palette-dot" data-color="#4DD0E1" title="沧海澄澜" style="background:#4DD0E1;color:#4DD0E1;"></button>
+                  <button type="button" class="sleep-palette-dot" data-color="#F4A261" title="晚霞温煦" style="background:#F4A261;color:#F4A261;"></button>
+                  <button type="button" class="sleep-palette-dot" data-color="#E8D7B8" title="水墨月白" style="background:#E8D7B8;color:#E8D7B8;"></button>
+                  <button type="button" class="sleep-palette-dot sleep-palette-dot-custom" id="sleepCustomColorTrigger" title="自定义颜色" style="color:#FFF;"></button>
+                  <button type="button" class="sleep-palette-dot sleep-palette-dot-auto" id="sleepAutoColorBtn" title="跟随曲目自动色彩" aria-label="跟随曲目自动色彩"><span style="font-size:10px;line-height:1;display:block;">律</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="sleep-scope-foot">
             <span id="sleepScopeStatus">微澜初起 · 呼吸保持自然，不屏息、不规定次数</span>
             <span class="sleep-scope-hint">点击波形切换播放</span>
@@ -20888,7 +21198,20 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     } else if (audio && !resumePrior) {
       bgmEngine.setVolume(0);
     }
-    if ($('sleepMusicToggle')) { $('sleepMusicToggle').textContent = '播放音乐'; $('sleepMusicToggle').setAttribute('aria-pressed', 'false'); }
+    updateSleepMusicToggleBtn(false);
+  }
+
+  function updateSleepMusicToggleBtn(isPlaying) {
+    var btn = $('sleepMusicToggle');
+    if (!btn) return;
+    btn.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+    btn.setAttribute('aria-label', isPlaying ? '停止音乐' : '播放音乐');
+    btn.setAttribute('title', isPlaying ? '暂停助眠音乐' : '播放助眠音乐');
+    if (isPlaying) {
+      btn.classList.add('is-playing');
+    } else {
+      btn.classList.remove('is-playing');
+    }
   }
 
   function sleepExit() {
@@ -20931,8 +21254,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     sleepGuideState.musicStartedHere = true;
     bgmEngine.loadTrack(idx, true);
     sleepScheduleTimer();
-    $('sleepMusicToggle').textContent = '停止音乐';
-    $('sleepMusicToggle').setAttribute('aria-pressed', 'true');
+    updateSleepMusicToggleBtn(true);
   }
 
   function sleepToggleMusic() {
@@ -20972,6 +21294,51 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     $('sleepStop').addEventListener('click', sleepExit);
     $('sleepMusicToggle').addEventListener('click', sleepToggleMusic);
     $('sleepMusicPanel').addEventListener('click', function(event) { bgmEngine.togglePanel(event); });
+
+    // Prev / Next 切歌控制
+    var prevBtn = $('sleepTrackPrev');
+    var nextBtn = $('sleepTrackNext');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        var sel = $('sleepTrackSelect');
+        if (!sel) return;
+        var idx = (parseInt(sel.value, 10) || 0) - 1;
+        if (idx < 0) idx = sel.options.length - 1;
+        sel.value = String(idx);
+        sel.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        var sel = $('sleepTrackSelect');
+        if (!sel) return;
+        var idx = (parseInt(sel.value, 10) || 0) + 1;
+        if (idx >= sel.options.length) idx = 0;
+        sel.value = String(idx);
+        sel.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    }
+
+    // 音量静音与恢复控制
+    var volBtn = $('sleepVolumeBtn');
+    if (volBtn) {
+      volBtn.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        var volSlider = $('sleepVolume');
+        if (!volSlider) return;
+        var cur = parseInt(volSlider.value, 10) || 0;
+        if (cur > 0) {
+          volSlider.dataset.prevVol = String(cur);
+          volSlider.value = '0';
+        } else {
+          volSlider.value = volSlider.dataset.prevVol || '25';
+        }
+        volSlider.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+    }
+
     $('sleepTrackSelect').addEventListener('change', function() {
       var wasPlaying = sleepGuideState.musicStartedHere;
       if (wasPlaying) {
@@ -20985,9 +21352,34 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       if (sleepGuideState.musicStartedHere && typeof bgmEngine !== 'undefined') bgmEngine.setVolume((parseInt(this.value, 10) || 0) / 100);
     });
     $('sleepTimer').addEventListener('change', sleepScheduleTimer);
+    
+    // 示波器控制条防冒泡
+    var ctrls = $('sleepScopeControls');
+    if (ctrls) {
+      ctrls.addEventListener('click', function(event) {
+        event.stopPropagation();
+      });
+      ctrls.addEventListener('keydown', function(event) {
+        event.stopPropagation();
+      });
+    }
+
+    // 渐弱复选框状态联动
+    var fadeCheck = $('sleepFade');
+    var fadeLabel = $('sleepFadeLabel');
+    if (fadeCheck && fadeLabel) {
+      fadeCheck.addEventListener('change', function() {
+        if (fadeCheck.checked) {
+          fadeLabel.classList.add('is-active');
+        } else {
+          fadeLabel.classList.remove('is-active');
+        }
+      });
+    }
+
     $('sleepSession').addEventListener('keydown', function(event) { if (event.key === 'Escape') sleepExit(); });
     window.addEventListener('pagehide', function() { sleepClearTimer(); sleepStopMusic(false); });
-  sleepOscilloscope.init();
+    sleepOscilloscope.init();
   }
 
   
@@ -21001,6 +21393,103 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     var currentAmp = 3.2;
     var phase1 = 0, phase2 = 0, phase3 = 0;
     var isInitialized = false;
+    var userColor = null;
+    var activeStroke = null;
+    var activeSecondary = null;
+    var activeAura = null;
+
+    function hexToRgb(hex) {
+      if (!hex) return null;
+      var clean = hex.replace('#', '').trim();
+      if (clean.length === 3) {
+        clean = clean[0] + clean[0] + clean[1] + clean[1] + clean[2] + clean[2];
+      }
+      var m = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(clean);
+      return m ? {
+        r: parseInt(m[1], 16),
+        g: parseInt(m[2], 16),
+        b: parseInt(m[3], 16)
+      } : null;
+    }
+
+    function syncPaletteDots(selectedHex) {
+      var dots = document.querySelectorAll('.sleep-palette-dot[data-color]');
+      var matched = false;
+      dots.forEach(function(dot) {
+        var c = dot.getAttribute('data-color');
+        if (c && selectedHex && c.toLowerCase() === selectedHex.toLowerCase()) {
+          dot.classList.add('is-active');
+          matched = true;
+        } else {
+          dot.classList.remove('is-active');
+        }
+      });
+      var autoBtn = $('sleepAutoColorBtn');
+      if (autoBtn) {
+        if (!selectedHex) {
+          autoBtn.classList.add('is-active');
+        } else {
+          autoBtn.classList.remove('is-active');
+        }
+      }
+      var customTrigger = $('sleepCustomColorTrigger');
+      if (customTrigger) {
+        if (!matched && selectedHex) {
+          customTrigger.classList.add('is-active');
+          customTrigger.style.background = selectedHex;
+        } else {
+          customTrigger.classList.remove('is-active');
+          customTrigger.style.background = '';
+        }
+      }
+    }
+
+    function applyWaveColor(hex) {
+      if (!hex) {
+        userColor = null;
+        activeStroke = null;
+        activeSecondary = null;
+        activeAura = null;
+        if (ledEl) {
+          ledEl.style.backgroundColor = '';
+          ledEl.style.boxShadow = '';
+        }
+        if (wrap) {
+          var trackIdx = 0;
+          if ($('sleepTrackSelect')) trackIdx = parseInt($('sleepTrackSelect').value, 10) || 0;
+          var curTheme = SCOPE_TRACKS[trackIdx] || SCOPE_TRACKS[0];
+          wrap.style.setProperty('--scope-accent', curTheme.stroke);
+          wrap.style.setProperty('--scope-accent-glow', curTheme.aura + '0.45)');
+        }
+        return;
+      }
+      var rgb = hexToRgb(hex);
+      if (!rgb) return;
+      userColor = hex;
+      activeStroke = hex;
+      activeSecondary = 'rgba(' + Math.round(rgb.r * 0.72) + ', ' + Math.round(rgb.g * 0.72) + ', ' + Math.round(rgb.b * 0.72) + ', 0.85)';
+      activeAura = 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', ';
+      if (ledEl) {
+        ledEl.style.backgroundColor = hex;
+        ledEl.style.boxShadow = '0 0 8px ' + hex + ', 0 0 16px ' + activeAura + '0.8)';
+      }
+      if (wrap) {
+        wrap.style.setProperty('--scope-accent', hex);
+        wrap.style.setProperty('--scope-accent-glow', activeAura + '0.45)');
+      }
+    }
+
+    function chooseColor(hex) {
+      applyWaveColor(hex);
+      syncPaletteDots(hex);
+      try {
+        if (hex) {
+          localStorage.setItem('wt_sleep_wave_color', hex);
+        } else {
+          localStorage.removeItem('wt_sleep_wave_color');
+        }
+      } catch (e) {}
+    }
 
     var SCOPE_TRACKS = [
       {
@@ -21134,6 +21623,15 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       if (trackIdx < 0 || trackIdx >= SCOPE_TRACKS.length) trackIdx = 0;
       var theme = SCOPE_TRACKS[trackIdx];
 
+      var waveStroke = activeStroke || theme.stroke;
+      var waveSec = activeSecondary || theme.secondary;
+      var waveAura = activeAura || theme.aura;
+
+      if (wrap) {
+        wrap.style.setProperty('--scope-accent', waveStroke);
+        wrap.style.setProperty('--scope-accent-glow', waveAura + '0.45)');
+      }
+
       // 呼吸节律：5.6s 完整自然呼吸周期
       var breathCycle = 5600;
       var breathPhase = ((now % breathCycle) / breathCycle) * (2 * Math.PI);
@@ -21179,11 +21677,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       if (breathTextEl) {
         if (isPlaying) {
           if (breathSine > 0.08) {
-            breathTextEl.innerHTML = '<span style="color:#85E3B3">▲</span> 吸气 · 身心充盈';
+            breathTextEl.innerHTML = '<span style="color:' + waveStroke + '">▲</span> 吸气 · 身心充盈';
           } else if (breathSine < -0.08) {
             breathTextEl.innerHTML = '<span style="color:#71836E">▼</span> 呼气 · 缓缓释压';
           } else {
-            breathTextEl.innerHTML = '<span style="color:#A8E6CF">●</span> 随息 · 安然流转';
+            breathTextEl.innerHTML = '<span style="color:' + waveStroke + '">●</span> 随息 · 安然流转';
           }
         } else {
           breathTextEl.innerHTML = '<span style="opacity:0.6">○</span> 静息态 · 待播放';
@@ -21201,8 +21699,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       // 2. 呼吸柔光晕 (Breathing Radial Aura)
       var auraAlpha = (isPlaying ? 0.25 : 0.08) * (0.6 + 0.4 * breathVal);
       var radGrad = ctx.createRadialGradient(midX, midY, 6 * dpr, midX, midY, w * 0.52);
-      radGrad.addColorStop(0, theme.aura + auraAlpha + ')');
-      radGrad.addColorStop(0.55, theme.aura + (auraAlpha * 0.35) + ')');
+      radGrad.addColorStop(0, waveAura + auraAlpha + ')');
+      radGrad.addColorStop(0.55, waveAura + (auraAlpha * 0.35) + ')');
       radGrad.addColorStop(1, 'rgba(13, 22, 18, 0)');
       ctx.fillStyle = radGrad;
       ctx.fillRect(0, 0, w, h);
@@ -21274,8 +21772,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       ctx.lineTo(points[points.length - 1].x, midY);
       ctx.closePath();
       var washGrad = ctx.createLinearGradient(0, midY - currentAmp, 0, midY + currentAmp);
-      washGrad.addColorStop(0, theme.aura + (isPlaying ? (0.16 * breathVal) : 0.04) + ')');
-      washGrad.addColorStop(0.5, theme.aura + (isPlaying ? (0.08 * breathVal) : 0.02) + ')');
+      washGrad.addColorStop(0, waveAura + (isPlaying ? (0.16 * breathVal) : 0.04) + ')');
+      washGrad.addColorStop(0.5, waveAura + (isPlaying ? (0.08 * breathVal) : 0.02) + ')');
       washGrad.addColorStop(1, 'rgba(13, 22, 18, 0)');
       ctx.fillStyle = washGrad;
       ctx.fill();
@@ -21288,9 +21786,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         if (j === 0) ctx.moveTo(pointsSec[j].x, pointsSec[j].y);
         else ctx.lineTo(pointsSec[j].x, pointsSec[j].y);
       }
-      ctx.strokeStyle = theme.secondary;
+      ctx.strokeStyle = waveSec;
       ctx.lineWidth = 1.2 * dpr;
-      ctx.shadowColor = theme.secondary;
+      ctx.shadowColor = waveSec;
       ctx.shadowBlur = 6 * dpr;
       ctx.globalAlpha = isPlaying ? 0.6 : 0.25;
       ctx.stroke();
@@ -21303,9 +21801,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         if (k === 0) ctx.moveTo(points[k].x, points[k].y);
         else ctx.lineTo(points[k].x, points[k].y);
       }
-      ctx.strokeStyle = theme.stroke;
+      ctx.strokeStyle = waveStroke;
       ctx.lineWidth = (isPlaying ? 2.4 : 1.5) * dpr;
-      ctx.shadowColor = theme.stroke;
+      ctx.shadowColor = waveStroke;
       ctx.shadowBlur = (isPlaying ? (12 + 6 * breathVal) : 5) * dpr;
       ctx.globalAlpha = isPlaying ? 0.95 : 0.65;
       ctx.stroke();
@@ -21320,7 +21818,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         ctx.beginPath();
         ctx.arc(pt.x, pt.y, (3.0 + 1.2 * breathVal) * dpr, 0, Math.PI * 2);
         ctx.fillStyle = '#FFFFFF';
-        ctx.shadowColor = theme.stroke;
+        ctx.shadowColor = waveStroke;
         ctx.shadowBlur = 14 * dpr;
         ctx.fill();
         ctx.restore();
@@ -21342,8 +21840,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         ctx.beginPath();
         ctx.arc(px, py, pItem.size * dpr, 0, Math.PI * 2);
-        ctx.fillStyle = theme.stroke;
-        ctx.shadowColor = theme.stroke;
+        ctx.fillStyle = waveStroke;
+        ctx.shadowColor = waveStroke;
         ctx.shadowBlur = 5 * dpr;
         ctx.globalAlpha = pItem.alpha * (0.4 + 0.6 * breathVal) * (isPlaying ? 0.85 : 0.35);
         ctx.fill();
@@ -21379,8 +21877,84 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       breathTextEl = $('sleepScopeBreathText');
       statusEl = $('sleepScopeStatus');
 
-      // 点击示波器切换播放
+      // 色彩选择与切换
+      var colorBtn = $('sleepWaveColorBtn');
+      var colorPop = $('sleepColorPalettePop');
+      var nativePicker = $('sleepWaveColorPicker');
+      var customTrigger = $('sleepCustomColorTrigger');
+      var autoColorBtn = $('sleepAutoColorBtn');
+
+      var savedColor = null;
+      try {
+        savedColor = localStorage.getItem('wt_sleep_wave_color');
+      } catch (e) {}
+      if (savedColor) {
+        applyWaveColor(savedColor);
+        if (nativePicker) nativePicker.value = savedColor;
+        syncPaletteDots(savedColor);
+      } else {
+        syncPaletteDots(null);
+      }
+
+      if (colorBtn && colorPop) {
+        colorBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          colorPop.classList.toggle('is-open');
+        });
+
+        document.querySelectorAll('.sleep-palette-dot[data-color]').forEach(function(dot) {
+          dot.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var c = this.getAttribute('data-color');
+            if (c) {
+              chooseColor(c);
+              if (nativePicker) nativePicker.value = c;
+            }
+            colorPop.classList.remove('is-open');
+          });
+        });
+
+        if (autoColorBtn) {
+          autoColorBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            chooseColor(null);
+            colorPop.classList.remove('is-open');
+          });
+        }
+
+        if (customTrigger && nativePicker) {
+          customTrigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            nativePicker.click();
+          });
+        }
+
+        if (nativePicker) {
+          nativePicker.addEventListener('input', function(e) {
+            chooseColor(this.value);
+          });
+          nativePicker.addEventListener('change', function(e) {
+            chooseColor(this.value);
+            colorPop.classList.remove('is-open');
+          });
+        }
+
+        document.addEventListener('click', function(e) {
+          if (colorPop.classList.contains('is-open') && !colorPop.contains(e.target) && e.target !== colorBtn && !colorBtn.contains(e.target)) {
+            colorPop.classList.remove('is-open');
+          }
+        });
+      }
+
+      // 点击示波器切换播放 (排除控件栏与色彩弹窗)
       wrap.addEventListener('click', function(e) {
+        if (e.target.closest('#sleepScopeControls, .sleep-color-palette-pop')) {
+          return;
+        }
         e.preventDefault();
         sleepToggleMusic();
       });
@@ -21409,7 +21983,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     return {
       init: init,
       start: startLoop,
-      stop: stopLoop
+      stop: stopLoop,
+      setColor: chooseColor,
+      getColor: function() { return userColor; }
     };
   })();
 
