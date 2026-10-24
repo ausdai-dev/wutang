@@ -19,7 +19,7 @@
     "change_target": null,
     "current_cards": {},
     "expected_scenario": "relation",
-    "expected_mindset_in": ["M-001", "M-006"],
+    "expected_mindset_in": ["M-001", "M-006", "M-014"],
     "expected_wisdom_in": ["W-001", "W-006"],
     "expected_action_in": ["A-002", "A-006"],
     "verify_status_must_be": "verified",

@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>宣传海报 · 悟堂·东方解忧处</title>
+<style>
+/* ==========================================================================
+   悟堂 · 东方解忧处 —— 宣传海报视觉系统 (Poster Design System)
+   ========================================================================== */
+:root {
+  --color-bg: #F2ECE1;             /* 展厅底色：雅致灰暖 */
+  --color-paper: #FAF6EF;          /* 宣纸暖白 */
+  --color-paper-subtle: #F5EFE4;   /* 次级宣纸白 */
+  --color-ink: #221F1B;            /* 纯正徽墨 */
+  --color-ink-light: #4A443E;      /* 松烟浅墨 */
+  --color-muted: #7E7870;          /* 辅助字灰 */
+  --color-primary: #8E2927;        /* 朱砂红印 */
+  --color-primary-dark: #731F1E;   /* 浓朱砂 */
+  --color-gold: #9F7430;           /* 典籍雅金 */
+  --color-gold-light: #FCF6EC;     /* 雅金底色 */
+  --color-gold-border: #E8D9BD;    /* 雅金边框 */
+  --color-success: #3A6D4F;        /* 松针墨绿 */
+  --color-border: #D8CEBE;         /* 宣纸线界 */
+  --color-border-light: #EBE4D8;   /* 浅格线 */
+
+  --font-serif: "Songti SC", "Source Han Serif SC", "Noto Serif SC", "SimSun", "STSong", "Songti", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+  --shadow-poster: 0 20px 60px rgba(34,31,27,0.18), 0 4px 16px rgba(34,31,27,0.08);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  background-image: radial-gradient(#DDD4C3 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 控制台顶栏 */
+.top-bar {
+  background: rgba(250, 246, 239, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.brand-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+.seal-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(142,41,39,0.3);
+}
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+}
+.brand-sub {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* 操作药丸组 */
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  color: var(--color-ink);
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-pill:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: #FDFBF7;
+}
+.btn-pill.primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFF;
+  box-shadow: 0 3px 10px rgba(142,41,39,0.25);
+}
+.btn-pill.primary:hover {
+  background: var(--color-primary-dark);
+}
+
+/* 主内容舞台 */
+.stage {
+  flex: 1;
+  padding: 36px 16px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* 视图切换器 */
+.view-tabs {
+  background: #E6DED0;
+  padding: 4px;
+  border-radius: 30px;
+  display: inline-flex;
+  gap: 4px;
+  border: 1px solid var(--color-border);
+}
+.view-tab {
+  border: none;
+  background: transparent;
+  padding: 8px 22px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B6256;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.view-tab.active {
+  background: #FFF;
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ==========================================================================
+   海报画芯公共框 (Poster Container)
+   ========================================================================== */
+.poster-viewport {
+  width: 100%;
+  max-width: 620px;
+  perspective: 1200px;
+}
+
+.poster-canvas {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-poster);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+/* 宣纸内回纹边框线 */
+.poster-inner-frame {
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(160, 145, 125, 0.45);
+  pointer-events: none;
+  z-index: 10;
+}
+.poster-inner-frame::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(160, 145, 125, 0.25);
+}
+
+/* ==========================================================================
+   版式一：【禅意画卷版】(Hero Photographic Zen Edition)
+   ========================================================================== */
+#posterZen {
+  background-image: url('wutang_poster_sanctuary.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+#posterZen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 246, 239, 0.94) 0%,
+    rgba(250, 246, 239, 0.82) 36%,
+    rgba(250, 246, 239, 0.25) 58%,
+    rgba(240, 232, 218, 0.92) 90%,
+    rgba(235, 224, 206, 0.98) 100%
+  );
+  z-index: 1;
+}
+.zen-content {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 36px 36px 28px;
+}
+.zen-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.zen-brand-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: var(--font-serif);
+  letter-spacing: 0.3em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.zen-brand-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.zen-brand-dot {
+  font-size: 16px;
+  color: var(--color-primary);
+}
+.zen-brand-sub {
+  font-size: 14px;
+  letter-spacing: 0.25em;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.zen-seal-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.yin-seal {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.1;
+  background: rgba(142, 41, 39, 0.05);
+  box-shadow: inset 0 0 4px rgba(142, 41, 39, 0.2);
+}
+.yin-seal-filled {
+  background: var(--color-primary);
+  color: #FAF6EF;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.zen-middle-slogan {
+  margin-top: 20px;
+}
+.zen-hook {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  margin: 0 0 8px;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+}
+.zen-core-belief {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  letter-spacing: 0.05em;
+}
+
+.zen-bottom-deck {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.feature-triad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.triad-col {
+  text-align: center;
+  border-right: 1px solid var(--color-border-light);
+  padding: 0 6px;
+}
+.triad-col:last-child {
+  border-right: none;
+}
+.triad-badge {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  color: var(--color-gold);
+  background: var(--color-gold-light);
+  border: 1px solid var(--color-gold-border);
+  padding: 1px 8px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+.triad-name {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 2px;
+}
+.triad-desc {
+  font-size: 11px;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+.zen-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border-light);
+}
+.zen-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.zen-tag {
+  font-size: 11px;
+  color: var(--color-ink-light);
+  background: #F3ECE1;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.zen-qr-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.zen-qr-tip {
+  text-align: right;
+  font-size: 10.5px;
+  color: var(--color-muted);
+  line-height: 1.35;
+}
+.qr-code-svg {
+  width: 44px;
+  height: 44px;
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+/* ==========================================================================
+   版式二：【宋韵卡牌版】(Editorial Typography & 3-Card Flow)
+   ========================================================================== */
+#posterCards {
+  background: #FAF6EF;
+  background-image: 
+    radial-gradient(#E2D7C5 0.75px, transparent 0.75px),
+    linear-gradient(180deg, #FBF8F2 0%, #F5EFE4 100%);
+  background-size: 20px 20px, 100% 100%;
+  padding: 34px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cards-head {
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+.cards-top-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 2px 12px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+  background: rgba(142,41,39,0.03);
+}
+.cards-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-ink);
+  margin: 0 0 6px;
+}
+.cards-subtitle {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px auto;
+  color: var(--color-border);
+}
+.divider-ornament span {
+  width: 40px;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* 三张卡牌并列展示 */
+.cards-triad-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  position: relative;
+  z-index: 5;
+  margin: 16px 0;
+}
+.card-miniature {
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 14px 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.card-miniature::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(216, 206, 190, 0.4);
+  border-radius: 6px;
+  pointer-events: none;
+}
+.mini-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+.mini-type-badge {
+  font-family: var(--font-serif);
+  font-size: 10.5px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.type-mindset { background: #F6F1EA; color: #7A6953; }
+.type-wisdom { background: #FCF5EB; color: #9E7432; }
+.type-action { background: #EEF5F1; color: #3A6D4F; }
+
+.mini-title {
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.mini-body {
+  font-size: 11px;
+  color: var(--color-ink-light);
+  line-height: 1.5;
+  flex: 1;
+}
+.mini-quote {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.mini-source {
+  font-size: 9.5px;
+  color: var(--color-muted);
+}
+.mini-footer {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--color-border-light);
+  font-size: 10px;
+  color: var(--color-muted);
+  text-align: right;
+}
+
+/* 典籍考据承诺条 */
+.authority-banner {
+  background: #FCF8F0;
+  border: 1px solid var(--color-gold-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 5;
+}
+.gold-badge-square {
+  background: var(--color-gold);
+  color: #FFF;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 8px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.authority-text h4 {
+  margin: 0 0 2px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+.authority-text p {
+  margin: 0;
+  font-size: 11px;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+/* 底部底纹与版权 */
+.cards-bottom {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ==========================================================================
+   版式三：【长图小红书/朋友圈版】 (Social Long Poster 9:16)
+   ========================================================================== */
+#posterSocial {
+  aspect-ratio: 9 / 16;
+  max-width: 480px;
+  background: #FAF6EF;
+  background-image: linear-gradient(180deg, #FDFBF8 0%, #FAF5ED 50%, #F5EFE4 100%);
+  padding: 38px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.social-header {
+  text-align: center;
+}
+.social-tagline {
+  font-size: 11.5px;
+  letter-spacing: 0.25em;
+  color: var(--color-gold);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.social-main-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-ink);
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  margin: 0 0 6px;
+}
+.social-sub {
+  font-size: 13px;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+.social-jian-card {
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 22px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  position: relative;
+}
+.social-jian-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(216, 206, 190, 0.5);
+  border-radius: 4px;
+  pointer-events: none;
+}
+.social-quote {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--color-ink);
+  text-align: center;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+.social-quote-src {
+  text-align: center;
+  font-size: 11px;
+  color: var(--color-muted);
+  margin-bottom: 14px;
+}
+.social-exp {
+  font-size: 12.5px;
+  color: var(--color-ink-light);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.social-act-box {
+  background: #FDF9F3;
+  border: 1px solid var(--color-gold-border);
+  border-radius: 6px;
+  padding: 12px 14px;
+}
+.social-act-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+.social-act-content {
+  font-size: 12px;
+  color: var(--color-ink);
+  line-height: 1.5;
+}
+
+.social-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+.social-feat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--color-ink-light);
+}
+.social-feat-icon {
+  width: 20px;
+  height: 20px;
+  background: var(--color-gold-light);
+  border: 1px solid var(--color-gold-border);
+  color: var(--color-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.social-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+  padding-top: 14px;
+}
+
+/* ==========================================================================
+   宣发文案抽屉 / 快捷复制区
+   ========================================================================== */
+.copy-section {
+  width: 100%;
+  max-width: 620px;
+  background: #FAF6EF;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+}
+.copy-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.copy-box {
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 13px;
+  color: var(--color-ink-light);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  position: relative;
+  font-family: var(--font-sans);
+}
+.btn-copy-inline {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #F4EFE6;
+  border: 1px solid var(--color-border);
+  font-size: 11.5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--color-ink);
+  transition: all 0.2s;
+}
+.btn-copy-inline:hover {
+  background: var(--color-primary);
+  color: #FFF;
+  border-color: var(--color-primary);
+}
+
+/* 提示Toast */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(34, 31, 27, 0.92);
+  color: #FAF6EF;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* 打印样式适配 */
+@media print {
+  .top-bar, .view-tabs, .toolbar-group, .copy-section {
+    display: none !important;
+  }
+  body, .stage {
+    background: #FFF !important;
+    padding: 0 !important;
+  }
+  .poster-viewport {
+    max-width: 100% !important;
+  }
+  .poster-canvas {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- 顶栏导航 -->
+<header class="top-bar">
+  <a href="../index.html" class="brand-nav" title="返回悟堂应用主界面">
+    <div class="seal-icon">悟</div>
+    <div>
+      <div class="brand-title">悟堂 · 东方解忧处</div>
+      <div class="brand-sub">宣传海报工坊 · 宣发物料中心</div>
+    </div>
+  </a>
+
+  <div class="toolbar-group">
+    <button class="btn-pill" id="btnDownloadImg" onclick="downloadPoster()">
+      下载海报原图
+    </button>
+    <button class="btn-pill" onclick="window.print()">
+      打印 / 存为PDF
+    </button>
+    <a href="../index.html" class="btn-pill primary">
+      进入悟堂应用
+    </a>
+  </div>
+</header>
+
+<main class="stage">
+  <!-- 切换海报版式 -->
+  <div class="view-tabs" role="tablist">
+    <button class="view-tab active" onclick="switchPoster('zen', this)">禅意画境版 (3:4)</button>
+    <button class="view-tab" onclick="switchPoster('cards', this)">宋韵典藏版 (3:4)</button>
+    <button class="view-tab" onclick="switchPoster('social', this)">朋友圈长图版 (9:16)</button>
+  </div>
+
+  <!-- 海报展示区 -->
+  <div class="poster-viewport">
+
+    <!-- ==================== 版式一：禅意画境版 ==================== -->
+    <div class="poster-canvas" id="posterZen">
+      <div class="poster-inner-frame"></div>
+      
+      <div class="zen-content">
+        <!-- 顶栏：垂直品牌与朱砂印章 -->
+        <div class="zen-top">
+          <div class="zen-brand-vertical">
+            <span class="zen-brand-title">悟堂<span class="zen-brand-dot">·</span>东方解忧处</span>
+            <span class="zen-brand-sub">现代东方情绪整理与心灵安放</span>
+          </div>
+
+          <div class="zen-seal-col">
+            <div class="yin-seal">
+              <span>先接</span>
+              <span>不说</span>
+            </div>
+            <div class="yin-seal-filled">
+              <span>悟堂</span>
+              <span>解忧</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 中部核心主张 -->
+        <div class="zen-middle-slogan">
+          <h2 class="zen-hook">
+            今天，哪件事<br>让你心里打了结？
+          </h2>
+          <div class="zen-core-belief">
+            <span>不说教，先接住</span>
+            <span style="opacity:0.4">｜</span>
+            <span>借古人的智慧，走好眼前一步</span>
+          </div>
+        </div>
+
+        <!-- 底部核心三牌与二维码引导 -->
+        <div class="zen-bottom-deck">
+          <div class="feature-triad">
+            <div class="triad-col">
+              <span class="triad-badge">01 心境牌</span>
+              <div class="triad-name">看见自己</div>
+              <div class="triad-desc">接纳此刻波动<br>不给内心贴标签</div>
+            </div>
+            <div class="triad-col">
+              <span class="triad-badge">02 东方智慧</span>
+              <div class="triad-name">换个视角</div>
+              <div class="triad-desc">500条先贤典籍<br>版本严谨无伪作</div>
+            </div>
+            <div class="triad-col">
+              <span class="triad-badge">03 微行动牌</span>
+              <div class="triad-name">走出一步</div>
+              <div class="triad-desc">今晚5分钟微步<br>低阻力自主选择</div>
+            </div>
+          </div>
+
+          <div class="zen-footer-row">
+            <div class="zen-tags">
+              <span class="zen-tag">纯本地离线保护</span>
+              <span class="zen-tag">严守隐私边界</span>
+              <span class="zen-tag">东方解忧笺导出</span>
+            </div>
+
+            <div class="zen-qr-box">
+              <div class="zen-qr-tip">
+                <strong>扫码即启</strong><br>
+                <span>解开心中结</span>
+              </div>
+              <svg class="qr-code-svg" viewBox="0 0 100 100" fill="#221F1B">
+                <!-- 雅致古典二维码模拟点阵 -->
+                <rect x="0" y="0" width="100" height="100" fill="#FAF6EF"/>
+                <!-- 定位点左上 -->
+                <rect x="10" y="10" width="22" height="22" fill="#8E2927"/>
+                <rect x="14" y="14" width="14" height="14" fill="#FAF6EF"/>
+                <rect x="17" y="17" width="8" height="8" fill="#8E2927"/>
+                <!-- 定位点右上 -->
+                <rect x="68" y="10" width="22" height="22" fill="#8E2927"/>
+                <rect x="72" y="14" width="14" height="14" fill="#FAF6EF"/>
+                <rect x="75" y="17" width="8" height="8" fill="#8E2927"/>
+                <!-- 定位点左下 -->
+                <rect x="10" y="68" width="22" height="22" fill="#8E2927"/>
+                <rect x="14" y="72" width="14" height="14" fill="#FAF6EF"/>
+                <rect x="17" y="75" width="8" height="8" fill="#8E2927"/>
+                <!-- 内部随机阵点 -->
+                <rect x="36" y="12" width="6" height="6"/>
+                <rect x="46" y="12" width="6" height="6"/>
+                <rect x="36" y="24" width="6" height="6"/>
+                <rect x="54" y="20" width="6" height="6"/>
+                <rect x="46" y="32" width="6" height="6"/>
+                <rect x="12" y="44" width="6" height="6"/>
+                <rect x="24" y="40" width="6" height="6"/>
+                <rect x="36" y="44" width="8" height="8" fill="#9F7430"/>
+                <rect x="48" y="48" width="6" height="6"/>
+                <rect x="62" y="42" width="6" height="6"/>
+                <rect x="78" y="42" width="6" height="6"/>
+                <rect x="88" y="48" width="6" height="6"/>
+                <rect x="38" y="60" width="6" height="6"/>
+                <rect x="48" y="64" width="6" height="6"/>
+                <rect x="60" y="60" width="6" height="6"/>
+                <rect x="72" y="68" width="6" height="6"/>
+                <rect x="84" y="68" width="6" height="6"/>
+                <rect x="40" y="76" width="6" height="6"/>
+                <rect x="60" y="78" width="6" height="6"/>
+                <rect x="76" y="82" width="6" height="6"/>
+                <rect x="86" y="82" width="6" height="6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 版式二：宋韵典藏版 ==================== -->
+    <div class="poster-canvas" id="posterCards" style="display:none;">
+      <div class="poster-inner-frame"></div>
+
+      <div class="cards-head">
+        <div class="cards-top-seal">✦ 东方智慧 · 结构化解忧 ✦</div>
+        <h1 class="cards-title">悟堂 · 东方解忧处</h1>
+        <p class="cards-subtitle">借古人的智慧，走好眼前一步</p>
+        <div class="divider-ornament">
+          <span></span>
+          <div style="font-size:12px;color:var(--color-primary)">❖</div>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- 三张核心解忧卡牌 -->
+      <div class="cards-triad-showcase">
+        <!-- 01 心境牌 -->
+        <div class="card-miniature">
+          <div class="mini-header">
+            <span class="mini-type-badge type-mindset">01 心境牌</span>
+            <span style="color:var(--color-muted);font-size:10px">看见自己</span>
+          </div>
+          <div class="mini-title">停不下来的思考</div>
+          <div class="mini-body">
+            我是在寻找解决办法，还是在反复消耗自己？
+          </div>
+          <div class="mini-footer">反思内观 · 不评判</div>
+        </div>
+
+        <!-- 02 智慧牌 -->
+        <div class="card-miniature" style="border-color:var(--color-gold-border);">
+          <div class="mini-header">
+            <span class="mini-type-badge type-wisdom">02 东方智慧</span>
+            <span style="color:var(--color-gold);font-size:10px">换个视角</span>
+          </div>
+          <div class="mini-quote">「知止而后有定，定而后能静」</div>
+          <div class="mini-source">《大学》· 朱熹章句集注</div>
+          <div class="mini-body" style="margin-top:4px;">
+            知道停留在哪里，心才能定下来。给思维按暂停键。
+          </div>
+          <div class="mini-footer">500条考据 · 严谨核验</div>
+        </div>
+
+        <!-- 03 行动牌 -->
+        <div class="card-miniature">
+          <div class="mini-header">
+            <span class="mini-type-badge type-action">03 微行动牌</span>
+            <span style="color:var(--color-success);font-size:10px">走出一小步</span>
+          </div>
+          <div class="mini-title">写在纸上合上本子</div>
+          <div class="mini-body">
+            花3分钟，把脑中打转的事情写在纸上，写完立刻合上本子。
+          </div>
+          <div class="mini-footer">5分钟低阻力 · 今晚可做</div>
+        </div>
+      </div>
+
+      <!-- 权威考据与四步解忧承诺条 -->
+      <div class="authority-banner">
+        <div class="gold-badge-square">
+          权威<br>考据
+        </div>
+        <div class="authority-text">
+          <h4>500 条传世经典语料台账 · 杜绝假名言</h4>
+          <p>《论语》《道德经》《庄子》《大学》通行善本核验，标明朝代版本，不说教、不玄学。</p>
+        </div>
+      </div>
+
+      <!-- 底部品牌结语与二维码 -->
+      <div class="cards-bottom">
+        <div>
+          <div style="font-family:var(--font-serif);font-size:14px;font-weight:700;color:var(--color-ink);margin-bottom:2px;">
+            让古老智慧，用今天的人听得懂的方式活着。
+          </div>
+          <div style="font-size:11px;color:var(--color-muted);">
+            双入口直达 · 心境看见 · 智慧转念 · 微步践行 · 东方解忧笺
+          </div>
+        </div>
+
+        <div class="zen-qr-box">
+          <div class="zen-qr-tip">
+            <strong>纯本地运行</strong><br>
+            <span>安心自存分享</span>
+          </div>
+          <svg class="qr-code-svg" viewBox="0 0 100 100" fill="#221F1B">
+            <rect x="0" y="0" width="100" height="100" fill="#FAF6EF"/>
+            <rect x="10" y="10" width="22" height="22" fill="#8E2927"/>
+            <rect x="14" y="14" width="14" height="14" fill="#FAF6EF"/>
+            <rect x="17" y="17" width="8" height="8" fill="#8E2927"/>
+            <rect x="68" y="10" width="22" height="22" fill="#8E2927"/>
+            <rect x="72" y="14" width="14" height="14" fill="#FAF6EF"/>
+            <rect x="75" y="17" width="8" height="8" fill="#8E2927"/>
+            <rect x="10" y="68" width="22" height="22" fill="#8E2927"/>
+            <rect x="14" y="72" width="14" height="14" fill="#FAF6EF"/>
+            <rect x="17" y="75" width="8" height="8" fill="#8E2927"/>
+            <rect x="36" y="14" width="8" height="8"/>
+            <rect x="48" y="16" width="6" height="6"/>
+            <rect x="42" y="32" width="8" height="8"/>
+            <rect x="22" y="44" width="8" height="8"/>
+            <rect x="36" y="46" width="6" height="6" fill="#9F7430"/>
+            <rect x="48" y="44" width="8" height="8"/>
+            <rect x="64" y="40" width="6" height="6"/>
+            <rect x="80" y="44" width="6" height="6"/>
+            <rect x="40" y="66" width="6" height="6"/>
+            <rect x="62" y="62" width="6" height="6"/>
+            <rect x="76" y="70" width="8" height="8"/>
+            <rect x="52" y="80" width="6" height="6"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 版式三：朋友圈/小红书长图版 ==================== -->
+    <div class="poster-canvas" id="posterSocial" style="display:none;">
+      <div class="poster-inner-frame"></div>
+
+      <div class="social-header">
+        <div class="social-tagline">ORIENTAL RELIEF · 现代东方解忧</div>
+        <h2 class="social-main-title">深夜翻来覆去睡不着？<br>今晚，把心事交给悟堂。</h2>
+        <div class="social-sub">不说教，先接住 ｜ 东方智慧陪伴</div>
+      </div>
+
+      <!-- 精选东方解忧笺预览 -->
+      <div class="social-jian-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span style="font-size:11px;color:var(--color-primary);letter-spacing:0.15em;font-weight:700;">东方解忧笺</span>
+          <span style="font-size:10px;background:#EDF6F1;color:#3A6D4F;padding:1px 6px;border-radius:4px;">已核验善本</span>
+        </div>
+        <p class="social-quote">「知止而后有定，定而后能静」</p>
+        <div class="social-quote-src">《大学》· 朱熹《四书章句集注》</div>
+        <div class="social-exp">
+          很多内耗，不是因为事情难，而是我们没有给思维按下「暂停键」，把明天甚至更远的事硬拉到当下消耗。先知止，让心在此刻安歇。
+        </div>
+        <div class="social-act-box">
+          <div class="social-act-title">今晚 5 分钟微行动</div>
+          <div class="social-act-content">
+            找一张空白草稿纸，把脑中打转的一件事写下来，写完合上本子，关灯安歇。
+          </div>
+        </div>
+      </div>
+
+      <!-- 四大核心特性 -->
+      <div class="social-features-list">
+        <div class="social-feat-item">
+          <div class="social-feat-icon">1</div>
+          <div><strong>双入口旅程</strong>：直接倾诉或3D抽卡觉察，随时按需启动</div>
+        </div>
+        <div class="social-feat-item">
+          <div class="social-feat-icon">2</div>
+          <div><strong>三张解忧牌</strong>：看见自己 → 换个视角 → 走出一小步</div>
+        </div>
+        <div class="social-feat-item">
+          <div class="social-feat-icon">3</div>
+          <div><strong>500条严谨考据</strong>：正统通行版本，绝不编造虚假古人语</div>
+        </div>
+        <div class="social-feat-item">
+          <div class="social-feat-icon">4</div>
+          <div><strong>纯本地离线隐私</strong>：三级安全隔离，私人心事绝不外泄</div>
+        </div>
+      </div>
+
+      <!-- 底部引导 -->
+      <div class="social-footer">
+        <div>
+          <div style="font-family:var(--font-serif);font-size:14px;font-weight:700;color:var(--color-ink);">
+            悟堂 · 东方解忧处
+          </div>
+          <div style="font-size:11px;color:var(--color-muted);">
+            不急着讲道理，先把心事整理清楚
+          </div>
+        </div>
+
+        <div class="zen-qr-box">
+          <div class="zen-qr-tip">
+            <strong>长按扫码</strong><br>
+            <span>开启解忧</span>
+          </div>
+          <svg class="qr-code-svg" viewBox="0 0 100 100" fill="#221F1B">
+            <rect x="0" y="0" width="100" height="100" fill="#FAF6EF"/>
+            <rect x="10" y="10" width="22" height="22" fill="#8E2927"/>
+            <rect x="14" y="14" width="14" height="14" fill="#FAF6EF"/>
+            <rect x="17" y="17" width="8" height="8" fill="#8E2927"/>
+            <rect x="68" y="10" width="22" height="22" fill="#8E2927"/>
+            <rect x="72" y="14" width="14" height="14" fill="#FAF6EF"/>
+            <rect x="75" y="17" width="8" height="8" fill="#8E2927"/>
+            <rect x="10" y="68" width="22" height="22" fill="#8E2927"/>
+            <rect x="14" y="72" width="14" height="14" fill="#FAF6EF"/>
+            <rect x="17" y="75" width="8" height="8" fill="#8E2927"/>
+            <rect x="42" y="22" width="8" height="8"/>
+            <rect x="36" y="42" width="8" height="8" fill="#9F7430"/>
+            <rect x="52" y="46" width="8" height="8"/>
+            <rect x="64" y="58" width="6" height="6"/>
+            <rect x="42" y="72" width="6" height="6"/>
+            <rect x="76" y="78" width="8" height="8"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 宣发文案抽屉 -->
+  <section class="copy-section">
+    <div class="copy-title">
+      <span>配套宣发推文文案（一键复制）</span>
+      <span style="font-size:12px;font-weight:normal;color:var(--color-muted);">契合品牌调性 · 拒绝鸡汤与说教</span>
+    </div>
+
+    <!-- 文案 1: 朋友圈 / 个人动态 -->
+    <div style="margin-bottom:16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--color-primary);margin-bottom:6px;">① 朋友圈 / 动态文案（温和共鸣）</div>
+      <div class="copy-box" id="copyMoments">今天哪件事让你心里打了结？
+
+许多时候，成年人的内耗不是想得太少，而是千头万绪不知从何说起。
+我们做了这个安静的小工具 ——「悟堂 · 东方解忧处」。
+
+它不说教，也不急着讲大道理，而是先接住你的情绪。
+抽取三张解忧牌（看见自己的心境牌 → 换个视角的先贤智慧牌 → 5分钟低阻力微行动牌），再送你一张温润的东方解忧笺。
+
+纯本地运行，守住你的每一份心事。
+若今晚思绪繁杂，不妨来抽一张属于你的今日觉察牌<button class="btn-copy-inline" onclick="copyText('copyMoments')">复制</button></div>
+    </div>
+
+    <!-- 文案 2: 小红书 / 视觉笔记 -->
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--color-gold);margin-bottom:6px;">② 小红书 / 社区种草文案（干货美学）</div>
+      <div class="copy-box" id="copyRedBook">深夜内耗停不下来？给思维按个暂停键
+
+每次焦虑内耗时，最怕别人高高在上地讲「你要学会放下」。
+其实哪有那么容易放下？
+
+最近上线的「悟堂·东方解忧处」狠狠击中了我的审美与心绪：
+新中式宋风极简美学，温润如宣纸，抚平焦躁
+3D觉察翻牌互动：心境 → 智慧 → 微行动
+500条严谨典籍考据（论语/道德经/庄子等正统通行本），坚决不编假古人名言
+5分钟超低阻力微步：不打鸡血，只陪你走好眼前一步
+
+把千头万绪交还给自己，借古人的智慧，换个角度看世界。
+#现代东方美学 #情绪整理 #内耗自救指南 #新中式生活 #禅意生活<button class="btn-copy-inline" onclick="copyText('copyRedBook')">复制</button></div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toastBox">文案已复制到剪贴板</div>
+
+<script>
+let currentView = 'zen';
+
+function switchPoster(view, btn) {
+  currentView = view;
+  document.querySelectorAll('.view-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const zenEl = document.getElementById('posterZen');
+  const cardsEl = document.getElementById('posterCards');
+  const socialEl = document.getElementById('posterSocial');
+
+  zenEl.style.display = 'none';
+  cardsEl.style.display = 'none';
+  socialEl.style.display = 'none';
+
+  if (view === 'zen') {
+    zenEl.style.display = 'flex';
+  } else if (view === 'cards') {
+    cardsEl.style.display = 'flex';
+  } else if (view === 'social') {
+    socialEl.style.display = 'flex';
+  }
+}
+
+function copyText(elementId) {
+  const el = document.getElementById(elementId);
+  // 排除按钮文本
+  const clone = el.cloneNode(true);
+  const btn = clone.querySelector('button');
+  if (btn) btn.remove();
+  const text = clone.innerText.trim();
+
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('文案已成功复制到剪贴板');
+  }).catch(() => {
+    showToast('复制失败，请手动长按复制');
+  });
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toastBox');
+  toast.innerText = msg;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2200);
+}
+
+function downloadPoster() {
+  if (currentView === 'zen') {
+    // 禅意版直接触发原图下载链接
+    const a = document.createElement('a');
+    a.href = 'wutang_poster_sanctuary.jpg';
+    a.download = '悟堂_东方解忧处_宣传海报_禅意画境版.jpg';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showToast('正在下载高清海报原图 (JPEG)...');
+  } else {
+    // 调用浏览器打印并存为图片/PDF
+    showToast('已唤起保存/打印面板，可直接选择「另存为 PDF」或截图保存');
+    setTimeout(() => {
+      window.print();
+    }, 400);
+  }
+}
+</script>
+</body>
+</html>
