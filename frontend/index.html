@@ -1262,19 +1262,19 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px 20px;
   flex-wrap: wrap;
-  padding: 8px 14px 8px;
-  background: rgba(13, 22, 18, 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  padding: 10px 18px;
+  background: rgba(13, 22, 18, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-top: 1px solid rgba(113, 131, 110, 0.22);
   cursor: default;
 }
 .sleep-ctrl-group {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 .sleep-ctrl-btn {
@@ -1331,7 +1331,7 @@ body::after {
 .sleep-ctrl-item {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   position: relative;
 }
 .sleep-ctrl-label-icon {
@@ -1349,16 +1349,16 @@ body::after {
 
 .sleep-scope-select {
   border: 1px solid rgba(113, 131, 110, 0.35);
-  border-radius: 14px;
+  border-radius: 15px;
   background: rgba(22, 36, 29, 0.85);
   color: #DCEBE1;
-  font-size: 11.5px;
-  padding: 2px 8px;
+  font-size: 12px;
+  padding: 0 10px;
   outline: none;
   cursor: pointer;
   transition: border-color 0.2s ease;
-  height: 28px;
-  line-height: 22px;
+  height: 30px;
+  line-height: 28px;
   box-sizing: border-box;
 }
 .sleep-scope-select:hover, .sleep-scope-select:focus {
@@ -1410,11 +1410,15 @@ body::after {
 .sleep-fade-toggle {
   cursor: pointer;
   position: relative;
-  border-radius: 14px;
-  width: auto;
-  height: 28px;
-  padding: 0 8px;
-  gap: 4px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 .sleep-fade-toggle.is-active {
   background: rgba(133, 227, 179, 0.2);
@@ -1514,9 +1518,10 @@ body::after {
   .sleep-scope-canvas { height: 74px; }
   .sleep-scope-head { padding: 6px 10px 2px; font-size: 11px; }
   .sleep-scope-foot { padding: 2px 10px 6px; font-size: 10px; }
-  .sleep-scope-controls { padding: 6px 10px 6px; gap: 6px; }
-  .sleep-scope-slider { width: 48px; }
-  .sleep-scope-select { font-size: 11px; padding: 2px 6px; }
+  .sleep-scope-controls { padding: 8px 10px; gap: 8px 12px; justify-content: center; }
+  .sleep-ctrl-group { gap: 8px; justify-content: center; }
+  .sleep-scope-slider { width: 52px; }
+  .sleep-scope-select { font-size: 11px; padding: 0 8px; height: 28px; line-height: 26px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .sleep-scope-led { animation: none !important; }
@@ -8924,12 +8929,97 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   user-select: none;
 }
 
-/* 情境练习室卡片网格 */
+/* 情境练习室 4列x2行 按钮网格 */
 .practice-scenario-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 18px;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.practice-scenario-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn, 8px);
+  cursor: pointer;
+  transition: all var(--trans);
+  color: var(--color-ink);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: left;
+  user-select: none;
+  box-sizing: border-box;
+  min-height: 48px;
+  position: relative;
+}
+
+.practice-scenario-btn:hover {
+  background: var(--color-surface-subtle);
+  border-color: var(--color-primary-border);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.practice-scenario-btn:active {
+  transform: translateY(0);
+}
+
+.practice-scenario-btn.active {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.practice-scenario-btn .practice-scenario-name {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.35;
+  color: inherit;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.practice-scenario-btn .practice-card-info {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  line-height: 1;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 11px;
+  font-family: var(--font-serif);
+  cursor: pointer;
+  transition: all var(--trans);
+}
+
+.practice-scenario-btn:hover .practice-card-info,
+.practice-scenario-btn.active .practice-card-info {
+  border-color: var(--color-primary-border);
+  color: var(--color-primary);
+}
+
+.practice-scenario-btn .practice-card-info:hover {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
 }
 
 /* 标准化心理自评量表卡片网格 */
@@ -8941,12 +9031,20 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 @media (max-width: 640px) {
   html, body { overflow-x: hidden; }
-  .app-container { padding: 12px 14px 48px; }
+  .app-container { padding: 12px 14px calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .toast-notice { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
   .card { padding: 22px 16px; }
 
   .practice-scenario-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 8px;
+  }
+  .practice-scenario-btn {
+    padding: 8px 10px;
+    min-height: 44px;
+  }
+  .practice-scenario-btn .practice-scenario-name {
+    font-size: 12.5px;
   }
   .practice-scenario-grid .theme-pack-card {
     padding: 14px;
@@ -9005,32 +9103,56 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     margin-top: 3px;
   }
   .header-right {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 4px 0 0;
+    width: auto;
+    margin: 0;
   }
   .mode-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 6px 12px calc(6px + env(safe-area-inset-bottom, 0px));
+    background: rgba(246, 241, 233, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(210, 200, 185, 0.75);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: 6px;
+    box-shadow: 0 -3px 16px rgba(34, 31, 27, 0.08);
+    z-index: 850;
     box-sizing: border-box;
+    overflow: visible;
   }
   .mode-tab {
     flex: 1 1 0;
     min-width: 0;
-    padding: 6px 2px;
-    font-size: 13px;
+    min-height: 40px;
+    padding: 8px 4px;
+    font-size: 13.5px;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     white-space: nowrap;
-    border-radius: 20px;
+    border-radius: 12px;
+    color: var(--color-ink-light, #6D675F);
+    transition: all 0.2s ease;
+  }
+  .mode-tab.active {
+    background: #FFFFFF;
+    color: var(--color-primary, #2A4836);
+    box-shadow: 0 2px 8px rgba(34, 31, 27, 0.1);
+    font-weight: 700;
   }
   /* 顶栏三大纽扣在手机端优化为 26px 精致微钮，紧贴顶栏右上角，彻底杜绝遮挡副标题文字 */
   .bgm-control-wrap {
@@ -9291,6 +9413,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 .chat-row.mine{justify-content:flex-end}
 .chat-row.mine .chat-avatar{order:2;background:#dcebd6;color:#31583b}
 .chat-row.mine .chat-message{align-items:flex-end}
+.chat-row.mine .chat-name{display:none}
 .chat-row.mine .chat-bubble{background:#95ec69;border-radius:10px 2px 10px 10px}
 .chat-avatar{width:38px;height:38px;flex:0 0 38px;border-radius:6px;overflow:hidden;background:#e7ded0;display:grid;place-items:center;color:var(--color-primary);font-size:13px;font-weight:700}
 .chat-avatar img{width:100%;height:100%;object-fit:cover}
@@ -9619,7 +9742,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           </button>
           <div class="chat-head-actions">
             <button type="button" class="chat-tool" id="btnChatNew" title="新对话">新对话</button>
-            <select class="chat-more-sage" id="chatMoreSage" aria-label="选择其他先贤"><option value="">换先贤</option><option value="zhuangzi">庄子</option><option value="mencius">孟子</option><option value="xunzi">荀子</option><option value="sushi">苏轼</option><option value="wangyangming">王阳明</option><option value="zengguofan">曾国藩</option><option value="taoyuanming">陶渊明</option><option value="wangwei">王维</option><option value="simaqian">司马迁</option><option value="libai">李白</option><option value="dufu">杜甫</option></select>
+            <select class="chat-more-sage" id="chatMoreSage" aria-label="选择其他先贤"><option value="">其他先贤</option><option value="zhuangzi">庄子</option><option value="mencius">孟子</option><option value="xunzi">荀子</option><option value="sushi">苏轼</option><option value="wangyangming">王阳明</option><option value="zengguofan">曾国藩</option><option value="taoyuanming">陶渊明</option><option value="wangwei">王维</option><option value="simaqian">司马迁</option><option value="libai">李白</option><option value="dufu">杜甫</option></select>
           </div>
         </div>
         <div class="chat-context-tools hidden" id="chatContextTools">
@@ -10922,7 +11045,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
             <div class="sleep-ctrl-group secondary-playback">
               <div class="sleep-ctrl-item" title="音量调节">
-                <button type="button" class="sleep-ctrl-label-icon" id="sleepVolumeBtn" title="静音 / 恢复音量" aria-label="音量" style="background:none;border:none;cursor:pointer;">
+                <button type="button" class="sleep-ctrl-btn" id="sleepVolumeBtn" title="静音 / 恢复音量" aria-label="音量">
                   <svg id="sleepVolumeSvg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
                 </button>
                 <input id="sleepVolume" type="range" min="0" max="100" value="25" aria-label="睡前音乐音量" class="sleep-scope-slider">
@@ -10981,19 +11104,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       <!-- 2. 心理自评专区 (含免责警示与自评量表) -->
       <div id="wellbeingAssessmentSection" class="hidden" style="display:flex;flex-direction:column;gap:18px;">
-        <!-- 顶部门禁与免责警示 -->
-        <section class="card" style="border-left:4px solid var(--color-gold);">
-          <div style="display:flex;align-items:flex-start;gap:12px;">
-            <div>
-              <p style="margin:0;font-size:13.5px;color:var(--color-ink-light);line-height:1.65;">
-                本中心提供经专业伦理与临床心理顾问核验的标准化心理自评工具及权威就医导航。
-                <strong>自评结果仅供自我觉察与就诊沟通参考，不属于精神科临床诊断或医疗处方。</strong>
-                计分均由确定性程序计算，严禁大模型擅自估算分数。
-              </p>
-            </div>
-          </div>
-        </section>
-
         <!-- 量表展示卡片：PSS-10 (活跃) + GAD-7/PHQ-9 (禁用/预览态) -->
         <section class="card">
           <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">标准化心理自评量表</h2>
@@ -11096,6 +11206,19 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
                 <button class="btn sm" id="btnSavePss10History">保存自评记录</button>
                 <button class="btn sm secondary" id="btnRetakePss10">重新测验</button>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 底部门禁与免责警示 -->
+        <section class="card" style="border-left:4px solid var(--color-gold);">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div>
+              <p style="margin:0;font-size:13.5px;color:var(--color-ink-light);line-height:1.65;">
+                本中心提供经专业伦理与临床心理顾问核验的标准化心理自评工具及权威就医导航。
+                <strong>自评结果仅供自我觉察与就诊沟通参考，不属于精神科临床诊断或医疗处方。</strong>
+                计分均由确定性程序计算，严禁大模型擅自估算分数。
+              </p>
             </div>
           </div>
         </section>
@@ -21130,15 +21253,15 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       i += 1;
       live.textContent = text.slice(0, i);
       if (i >= text.length) sleepStopTyping(el);
-    }, speed || 28);
+    }, speed || 80);
   }
 
   function sleepRenderStep() {
     var guide = sleepGuideState.flow;
     if (!guide) return;
-    sleepTypeInto($('sleepFlowTitle'), guide.title, 42);
+    sleepTypeInto($('sleepFlowTitle'), guide.title, 110);
     $('sleepStepNum').textContent = '第 ' + (sleepGuideState.step + 1) + ' 步 / ' + guide.steps.length;
-    sleepTypeInto($('sleepStepText'), guide.steps[sleepGuideState.step], 26);
+    sleepTypeInto($('sleepStepText'), guide.steps[sleepGuideState.step], 80);
     $('sleepNext').textContent = sleepGuideState.step === guide.steps.length - 1 ? '完成' : '继续';
     $('sleepStepText').focus();
   }
@@ -22146,17 +22269,19 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     var list = PRACTICE_SCENARIOS || [];
 
-
+    var activeId = currentPracticeScenario ? currentPracticeScenario.scenario_id : (list[0] ? list[0].scenario_id : '');
 
     grid.innerHTML = list.map(function(sc, idx) {
 
-      return '<div class="theme-pack-card" data-scid="' + sc.scenario_id + '">'
+      var isAct = sc.scenario_id === activeId;
 
-        + '  <button type="button" class="practice-card-info" data-scid="' + sc.scenario_id + '" title="查看情境说明" style="position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;line-height:1;border-radius:50%;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-muted);font-size:12px;font-family:var(--font-serif);cursor:pointer;">i</button>'
+      return '<button type="button" class="practice-scenario-btn' + (isAct ? ' active' : '') + '" data-scid="' + sc.scenario_id + '" title="' + esc(sc.title) + '">'
 
-        + '  <h4 style="margin:0 0 4px;font-size:16px;color:var(--color-ink);">' + esc(sc.title) + '</h4>'
+        + '  <span class="practice-scenario-name">' + esc(sc.title) + '</span>'
 
-        + '</div>';
+        + '  <span class="practice-card-info" data-scid="' + sc.scenario_id + '" title="查看情境说明">i</span>'
+
+        + '</button>';
 
     }).join('');
 
@@ -22170,13 +22295,15 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         e.stopPropagation();
 
+        e.preventDefault();
+
         showPracticeScenarioInfo(infoBtn.getAttribute('data-scid'));
 
         return;
 
       }
 
-      var card = e.target.closest('.theme-pack-card');
+      var card = e.target.closest('.practice-scenario-btn, .theme-pack-card');
 
       if (!card) return;
 
@@ -22206,7 +22333,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     practiceChatHistory = [];
 
-
+    var grid = $('practiceScenarioCardsGrid');
+    if (grid) {
+      var btns = grid.querySelectorAll('.practice-scenario-btn, .theme-pack-card');
+      btns.forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-scid') === sc.scenario_id);
+      });
+    }
 
     if ($('practiceRoomTitle')) $('practiceRoomTitle').textContent = sc.title;
 
@@ -25256,10 +25389,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     if (info.b64) { var image = document.createElement('img'); image.src = info.b64; image.alt = info.name + '头像'; avatar.appendChild(image); }
     else avatar.textContent = role === 'user' ? '我' : info.name.slice(0, 1);
     var message = document.createElement('div'); message.className = 'chat-message';
-    var name = document.createElement('div'); name.className = 'chat-name';
-    name.textContent = source === 'offline' ? info.name + ' · 离线引导模板 · 非模型生成' : info.name;
+    if (role !== 'user') {
+      var name = document.createElement('div'); name.className = 'chat-name';
+      name.textContent = source === 'offline' ? info.name + ' · 离线引导模板 · 非模型生成' : info.name;
+      message.appendChild(name);
+    }
     var bubble = document.createElement('div'); bubble.className = 'chat-bubble'; bubble.textContent = content || '';
-    message.appendChild(name); message.appendChild(bubble); row.appendChild(avatar); row.appendChild(message); wrap.appendChild(row);
+    message.appendChild(bubble); row.appendChild(avatar); row.appendChild(message); wrap.appendChild(row);
     wrap.scrollTop = wrap.scrollHeight;
     return bubble;
   }
