@@ -11922,6 +11922,17 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
+  // 0. API 基础地址：本地开发走 localhost:8000；部署环境（Netlify / WorkBuddy 等）走 Render 后端
+  //    覆盖方式：页面加载前注入 window.WUTANG_API_BASE 即可切换后端地址
+  var API_BASE = (function () {
+    if (window.WUTANG_API_BASE) return window.WUTANG_API_BASE;
+    var host = location.hostname;
+    if (location.protocol === 'file:' || host === 'localhost' || host === '127.0.0.1' || host === '') {
+      return 'http://localhost:8000';
+    }
+    return 'https://wutang-backend.onrender.com';
+  })();
+
   // 1. 加载内联数据
 
   var RAW_DATA = JSON.parse(document.getElementById('wutang-data').textContent);
@@ -15466,7 +15477,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     }
 
     // 调用后台标准认证接口
-    fetch('http://localhost:8000/api/auth/login', {
+    fetch(API_BASE + '/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ account: val, password: pwd })
@@ -15537,7 +15548,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       return;
     }
 
-    fetch('http://localhost:8000/api/auth/register', {
+    fetch(API_BASE + '/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -16184,7 +16195,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     }
 
-    fetch('http://localhost:8000/api/health', { method: 'GET' })
+    fetch(API_BASE + '/api/health', { method: 'GET' })
 
       .then(function(r) { return r.json(); })
 
@@ -16487,11 +16498,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-    var aiEndpoint = 'http://localhost:8000/api/relief/stream';
+    var aiEndpoint = API_BASE + '/api/relief/stream';
 
     var abortCtrl = window.AbortController ? new AbortController() : null;
 
-    var timer = setTimeout(function() { if (abortCtrl) abortCtrl.abort(); }, 30000);
+    var timer = setTimeout(function() { if (abortCtrl) abortCtrl.abort(); }, 60000);
 
 
 
@@ -18709,7 +18720,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-        fetch('http://localhost:8000/api/journal/organize', {
+        fetch(API_BASE + '/api/journal/organize', {
 
           method: 'POST',
 
@@ -19433,7 +19444,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         // 调用确定性计分接口
 
-        fetch('http://localhost:8000/api/wellbeing/score', {
+        fetch(API_BASE + '/api/wellbeing/score', {
 
           method: 'POST',
 
@@ -20100,7 +20111,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-    fetch('http://localhost:8000/api/practice/chat', {
+    fetch(API_BASE + '/api/practice/chat', {
 
       method: 'POST',
 
@@ -22571,7 +22582,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       action_steps: sig.action_steps || ['深呼吸三次', '记录眼下可控之事']
     };
 
-    fetch('http://localhost:8000/api/card/export-print-pack', {
+    fetch(API_BASE + '/api/card/export-print-pack', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
