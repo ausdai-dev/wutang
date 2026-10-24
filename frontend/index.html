@@ -4055,6 +4055,24 @@ body::after {
   }
 }
 
+.wellbeing-switch-bar {
+  display: flex;
+  background: #EDE7DC;
+  padding: 4px;
+  border-radius: 30px;
+  border: 1px solid #DFD8CC;
+  margin-bottom: 20px;
+  gap: 4px;
+}
+
+@media (max-width: 600px) {
+  .wellbeing-switch-bar {
+    padding: 3px;
+    gap: 3px;
+    margin-bottom: 14px;
+  }
+}
+
 
 
 /* 今日觉察牌 3D 翻转卡片容器 */
@@ -10345,10 +10363,16 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
   <main id="wellbeingArea" class="hidden">
 
+    <!-- 心境专区三药丸导航栏 -->
+    <nav class="wellbeing-switch-bar" id="wellbeingSwitchBar" aria-label="心境功能导航">
+      <button type="button" class="entry-pill active" id="wbBtnSleep">今夜安歇</button>
+      <button type="button" class="entry-pill" id="wbBtnAssessment">心理自评</button>
+      <button type="button" class="entry-pill" id="wbBtnResources">资源导航</button>
+    </nav>
+
     <div style="display:flex;flex-direction:column;gap:18px;">
 
-
-
+      <!-- 1. 今夜安歇 -->
       <section class="card sleep-home" id="sleepHomeSection" aria-labelledby="sleepHomeTitle">
         <h2 id="sleepHomeTitle" tabindex="-1">今夜安歇</h2>
         <p class="sleep-lead">不必努力让自己入睡。选一段短陪伴，也可以只听音乐；呼吸保持自然，不屏息、不规定次数。</p>
@@ -10373,300 +10397,155 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         </div>
       </section>
 
-      <!-- 顶部门禁与免责警示 -->
+      <!-- 2. 心理自评专区 (含免责警示与自评量表) -->
+      <div id="wellbeingAssessmentSection" class="hidden" style="display:flex;flex-direction:column;gap:18px;">
+        <!-- 顶部门禁与免责警示 -->
+        <section class="card" style="border-left:4px solid var(--color-gold);">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div>
+              <p style="margin:0;font-size:13.5px;color:var(--color-ink-light);line-height:1.65;">
+                本中心提供经专业伦理与临床心理顾问核验的标准化心理自评工具及权威就医导航。
+                <strong>自评结果仅供自我觉察与就诊沟通参考，不属于精神科临床诊断或医疗处方。</strong>
+                计分均由确定性程序计算，严禁大模型擅自估算分数。
+              </p>
+            </div>
+          </div>
+        </section>
 
-      <section class="card" style="border-left:4px solid var(--color-gold);">
+        <!-- 量表展示卡片：PSS-10 (活跃) + GAD-7/PHQ-9 (禁用/预览态) -->
+        <section class="card">
+          <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">标准化心理自评量表</h2>
+          <p style="margin:0 0 16px;font-size:13.5px;color:var(--color-muted);">请选择获准开放的量表进行自我了解</p>
 
-        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div class="scale-cards-grid">
+            <!-- 1. PSS-10 -->
+            <div style="background:var(--color-surface);border:1.5px solid var(--color-primary);border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <span class="badge ok">已核准 · 可作答</span>
+                  <span style="font-size:11px;color:var(--color-muted);">10 题 · 约3分钟</span>
+                </div>
+                <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:var(--color-ink);">知觉心理压力量表 (PSS-10)</h3>
+                <p style="margin:0;font-size:12.5px;color:var(--color-ink-light);line-height:1.6;">
+                  评估过去一个月内，您在生活与工作中感受到的不可控、超负荷与主观压力程度。
+                </p>
+              </div>
+              <button class="btn sm" id="btnOpenPss10" style="margin-top:16px;">开始知觉压力自评 →</button>
+            </div>
 
-          <div>
+            <!-- 2. GAD-7 (禁用态) -->
+            <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:12px;padding:18px;opacity:0.85;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <span class="badge rev">专家审核中 · 暂缓开放</span>
+                </div>
+                <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:#6B645B;">广泛性焦虑量表 (GAD-7)</h3>
+                <p style="margin:0;font-size:12.5px;color:var(--color-muted);line-height:1.6;">
+                  临床症状筛查量表。坚守 PRD 3.0 门禁铁律：需完成本地医疗伦理终审后开放，禁止伪造测试分数。
+                </p>
+              </div>
+              <button class="btn sm secondary" disabled style="margin-top:16px;">待专家审核上线</button>
+            </div>
 
-            <p style="margin:0;font-size:13.5px;color:var(--color-ink-light);line-height:1.65;">
+            <!-- 3. PHQ-9 (禁用态) -->
+            <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:12px;padding:18px;opacity:0.85;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <span class="badge rev">专家审核中 · 暂缓开放</span>
+                </div>
+                <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:#6B645B;">抑郁症状问卷 (PHQ-9)</h3>
+                <p style="margin:0;font-size:12.5px;color:var(--color-muted);line-height:1.6;">
+                  涉及高敏感自伤题目，必须建立专科转介安全闭环。当前保持禁用状态。
+                </p>
+              </div>
+              <button class="btn sm secondary" disabled style="margin-top:16px;">待专家审核上线</button>
+            </div>
+          </div>
 
-              本中心提供经专业伦理与临床心理顾问核验的标准化心理自评工具及权威就医导航。
-
-              <strong>自评结果仅供自我觉察与就诊沟通参考，不属于精神科临床诊断或医疗处方。</strong>
-
-              计分均由确定性程序计算，严禁大模型擅自估算分数。
-
+          <!-- PSS-10 作答互动区 (默认隐藏，点击展开) -->
+          <div id="pss10QuizContainer" class="hidden" style="margin-top:24px;border-top:1px dashed var(--color-border);padding-top:20px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+              <h3 style="font-family:var(--font-serif);font-size:19px;margin:0;">知觉心理压力量表 (PSS-10) 测评题目</h3>
+              <button class="btn sm ghost" id="btnClosePss10">收起题目</button>
+            </div>
+            <p style="font-size:13px;color:var(--color-muted);margin:0 0 16px;">
+              请回顾【过去一个月】的实际生活体验，根据最贴近的真实发生频率作答：
             </p>
-
+            <div id="pss10QuestionsList"></div>
+            <div style="margin-top:20px;display:flex;gap:12px;align-items:center;">
+              <button class="btn lg" id="btnSubmitPss10">交卷并生成自评报告</button>
+              <span style="font-size:12px;color:var(--color-muted);">由确定性规则实时计分</span>
+            </div>
           </div>
 
-        </div>
-
-      </section>
-
-
-
-      <!-- 量表展示卡片：PSS-10 (活跃) + GAD-7/PHQ-9 (禁用/预览态) -->
-
-      <section class="card">
-
-        <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">标准化心理自评量表</h2>
-
-        <p style="margin:0 0 16px;font-size:13.5px;color:var(--color-muted);">请选择获准开放的量表进行自我了解</p>
-
-
-
-        <div class="scale-cards-grid">
-
-          <!-- 1. PSS-10 -->
-
-          <div style="background:var(--color-surface);border:1.5px solid var(--color-primary);border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;">
-
-            <div>
-
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-
-                <span class="badge ok">已核准 · 可作答</span>
-
-                <span style="font-size:11px;color:var(--color-muted);">10 题 · 约3分钟</span>
-
+          <!-- PSS-10 结果报告单呈现 -->
+          <div id="pss10ResultCard" class="hidden" style="margin-top:24px;background:#FCF9F3;border:1.5px solid #DFCDB7;border-radius:12px;padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #E8DCBF;padding-bottom:12px;margin-bottom:16px;">
+              <div>
+                <span class="badge ok" id="pss10LevelBadge">中度压力区间</span>
+                <h3 style="font-family:var(--font-serif);margin:6px 0 0;font-size:22px;color:var(--color-primary);">知觉心理压力自评报告</h3>
               </div>
-
-              <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:var(--color-ink);">知觉心理压力量表 (PSS-10)</h3>
-
-              <p style="margin:0;font-size:12.5px;color:var(--color-ink-light);line-height:1.6;">
-
-                评估过去一个月内，您在生活与工作中感受到的不可控、超负荷与主观压力程度。
-
-              </p>
-
-            </div>
-
-            <button class="btn sm" id="btnOpenPss10" style="margin-top:16px;">开始知觉压力自评 →</button>
-
-          </div>
-
-
-
-          <!-- 2. GAD-7 (禁用态) -->
-
-          <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:12px;padding:18px;opacity:0.85;display:flex;flex-direction:column;justify-content:space-between;">
-
-            <div>
-
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-
-                <span class="badge rev">专家审核中 · 暂缓开放</span>
-
+              <div style="text-align:right;">
+                <div style="font-size:32px;font-weight:700;color:var(--color-primary);line-height:1;" id="pss10ScoreVal">21</div>
+                <div style="font-size:11px;color:var(--color-muted);margin-top:2px;">满分 40 分</div>
               </div>
-
-              <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:#6B645B;">广泛性焦虑量表 (GAD-7)</h3>
-
-              <p style="margin:0;font-size:12.5px;color:var(--color-muted);line-height:1.6;">
-
-                临床症状筛查量表。坚守 PRD 3.0 门禁铁律：需完成本地医疗伦理终审后开放，禁止伪造测试分数。
-
-              </p>
-
             </div>
 
-            <button class="btn sm secondary" disabled style="margin-top:16px;">待专家审核上线</button>
+            <!-- 高危安全求助提示（若触发） -->
+            <div id="pss10SafetyAlert" class="hidden" style="background:#FDF2F2;border:1px solid #ECC4C4;border-radius:8px;padding:12px 14px;margin-bottom:16px;color:#9B3131;font-size:13px;line-height:1.6;">
+              <strong>安全关怀提示：</strong> <span id="pss10SafetyText"></span>
+            </div>
 
-          </div>
+            <div style="font-size:14px;color:var(--color-ink-light);line-height:1.75;margin-bottom:14px;" id="pss10SummaryText"></div>
 
+            <div class="journal-dim-box" style="border-left-color:var(--color-gold);background:#FAF6EE;">
+              <strong style="color:var(--color-gold);">东方先贤解法视界：</strong>
+              <p id="pss10WisdomText" style="margin:4px 0 0;color:var(--color-ink);"></p>
+            </div>
 
+            <div style="margin-top:14px;">
+              <strong style="font-size:13.5px;color:var(--color-ink);">推荐的温和调适建议：</strong>
+              <ul id="pss10NextStepsList" style="margin:6px 0 0;padding-left:20px;font-size:13px;color:var(--color-ink-light);line-height:1.7;"></ul>
+            </div>
 
-          <!-- 3. PHQ-9 (禁用态) -->
-
-          <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:12px;padding:18px;opacity:0.85;display:flex;flex-direction:column;justify-content:space-between;">
-
-            <div>
-
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-
-                <span class="badge rev">专家审核中 · 暂缓开放</span>
-
+            <div style="margin-top:20px;border-top:1px dashed #DFCDB7;padding-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+              <div style="font-size:12px;color:var(--color-muted);">* 自评不等于医学诊断。若感身心过载，建议向<a href="javascript:void(0);" id="pss10ToResourcesLink" style="color:var(--color-primary);text-decoration:underline;margin:0 4px;font-weight:600;cursor:pointer;">【资源导航】</a>中的专业机构求助。</div>
+              <div style="display:flex;gap:8px;">
+                <button class="btn sm" id="btnSavePss10History">保存自评记录</button>
+                <button class="btn sm secondary" id="btnRetakePss10">重新测验</button>
               </div>
-
-              <h3 style="font-family:var(--font-serif);margin:0 0 6px;font-size:18px;color:#6B645B;">抑郁症状问卷 (PHQ-9)</h3>
-
-              <p style="margin:0;font-size:12.5px;color:var(--color-muted);line-height:1.6;">
-
-                涉及高敏感自伤题目，必须建立专科转介安全闭环。当前保持禁用状态。
-
-              </p>
-
             </div>
-
-            <button class="btn sm secondary" disabled style="margin-top:16px;">待专家审核上线</button>
-
           </div>
+        </section>
+      </div>
 
-        </div>
-
-
-
-        <!-- PSS-10 作答互动区 (默认隐藏，点击展开) -->
-
-        <div id="pss10QuizContainer" class="hidden" style="margin-top:24px;border-top:1px dashed var(--color-border);padding-top:20px;">
-
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-
-            <h3 style="font-family:var(--font-serif);font-size:19px;margin:0;">知觉心理压力量表 (PSS-10) 测评题目</h3>
-
-            <button class="btn sm ghost" id="btnClosePss10">收起题目</button>
-
-          </div>
-
-          <p style="font-size:13px;color:var(--color-muted);margin:0 0 16px;">
-
-            请回顾【过去一个月】的实际生活体验，根据最贴近的真实发生频率作答：
-
-          </p>
-
-
-
-          <div id="pss10QuestionsList"></div>
-
-
-
-          <div style="margin-top:20px;display:flex;gap:12px;align-items:center;">
-
-            <button class="btn lg" id="btnSubmitPss10">交卷并生成自评报告</button>
-
-            <span style="font-size:12px;color:var(--color-muted);">由确定性规则实时计分</span>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- PSS-10 结果报告单呈现 -->
-
-        <div id="pss10ResultCard" class="hidden" style="margin-top:24px;background:#FCF9F3;border:1.5px solid #DFCDB7;border-radius:12px;padding:24px;">
-
-          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #E8DCBF;padding-bottom:12px;margin-bottom:16px;">
-
+      <!-- 3. 专业资源导航专区 -->
+      <div id="wellbeingResourcesSection" class="hidden" style="display:flex;flex-direction:column;gap:18px;">
+        <section class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
             <div>
-
-              <span class="badge ok" id="pss10LevelBadge">中度压力区间</span>
-
-              <h3 style="font-family:var(--font-serif);margin:6px 0 0;font-size:22px;color:var(--color-primary);">知觉心理压力自评报告</h3>
-
+              <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">心理健康资源导航</h2>
+              <p style="margin:0;font-size:13px;color:var(--color-muted);">全国免费心理援助热线与公立精神心理专科门诊，随时为你提供安全托底</p>
             </div>
-
-            <div style="text-align:right;">
-
-              <div style="font-size:32px;font-weight:700;color:var(--color-primary);line-height:1;" id="pss10ScoreVal">21</div>
-
-              <div style="font-size:11px;color:var(--color-muted);margin-top:2px;">满分 40 分</div>
-
-            </div>
-
-          </div>
-
-
-
-          <!-- 高危安全求助提示（若触发） -->
-
-          <div id="pss10SafetyAlert" class="hidden" style="background:#FDF2F2;border:1px solid #ECC4C4;border-radius:8px;padding:12px 14px;margin-bottom:16px;color:#9B3131;font-size:13px;line-height:1.6;">
-
-            <strong>安全关怀提示：</strong> <span id="pss10SafetyText"></span>
-
-          </div>
-
-
-
-          <div style="font-size:14px;color:var(--color-ink-light);line-height:1.75;margin-bottom:14px;" id="pss10SummaryText"></div>
-
-
-
-          <div class="journal-dim-box" style="border-left-color:var(--color-gold);background:#FAF6EE;">
-
-            <strong style="color:var(--color-gold);">东方先贤解法视界：</strong>
-
-            <p id="pss10WisdomText" style="margin:4px 0 0;color:var(--color-ink);"></p>
-
-          </div>
-
-
-
-          <div style="margin-top:14px;">
-
-            <strong style="font-size:13.5px;color:var(--color-ink);">推荐的温和调适建议：</strong>
-
-            <ul id="pss10NextStepsList" style="margin:6px 0 0;padding-left:20px;font-size:13px;color:var(--color-ink-light);line-height:1.7;"></ul>
-
-          </div>
-
-
-
-          <div style="margin-top:20px;border-top:1px dashed #DFCDB7;padding-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-
-            <div style="font-size:12px;color:var(--color-muted);">* 自评不等于医学诊断。若感身心过载，建议向下方专业机构求助。</div>
-
             <div style="display:flex;gap:8px;">
-
-              <button class="btn sm" id="btnSavePss10History">保存自评记录</button>
-
-              <button class="btn sm secondary" id="btnRetakePss10">重新测验</button>
-
+              <button type="button" class="inspo-pill" id="btnToggleResources">展开资源导航 ▾</button>
             </div>
-
           </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 模块 2: 专业资源导航 (F-17 / 18.11) -->
-
-      <section class="card">
-
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-
-          <div>
-
-            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">心理健康资源导航</h2>
-
+          <div id="resourcePanel" class="hidden">
+            <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+              <select class="form-select" id="resourceRegionFilter" style="width:auto;padding:6px 12px;font-size:13px;">
+                <option value="全部">全部地区</option>
+                <option value="全国">全国热线</option>
+                <option value="北京">北京</option>
+                <option value="上海">上海</option>
+                <option value="广东">广东</option>
+                <option value="浙江">浙江</option>
+              </select>
+            </div>
+            <div class="resource-grid" id="resourceListGrid"></div>
           </div>
-
-          <div style="display:flex;gap:8px;">
-
-            <button type="button" class="inspo-pill" id="btnToggleResources">展开资源导航 ▾</button>
-
-          </div>
-
-        </div>
-
-        <div id="resourcePanel" class="hidden">
-
-          <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
-
-            <select class="form-select" id="resourceRegionFilter" style="width:auto;padding:6px 12px;font-size:13px;">
-
-              <option value="全部">全部地区</option>
-
-              <option value="全国">全国热线</option>
-
-              <option value="北京">北京</option>
-
-              <option value="上海">上海</option>
-
-              <option value="广东">广东</option>
-
-              <option value="浙江">浙江</option>
-
-            </select>
-
-          </div>
-
-          <div class="resource-grid" id="resourceListGrid"></div>
-
-        </div>
-
-      </section>
-
-
-
-
-
+        </section>
+      </div>
 
     </div>
 
@@ -12449,6 +12328,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     clientView: 'userHome', // 'userHome' | 'userLoading' | 'userResult' | 'userSafety' | 'userCard'
 
     entryTab: 'card', // 'card' | 'direct' | 'practice'
+
+    wellbeingTab: 'sleep', // 'sleep' | 'assessment' | 'resources'
 
     awarenessIndex: 0,
 
@@ -20326,6 +20207,20 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
+    // 药丸导航按钮绑定 (今夜安歇 / 心理自评 / 资源导航)
+    if ($('wbBtnSleep')) {
+      $('wbBtnSleep').onclick = function() { switchWellbeingTab('sleep'); };
+    }
+    if ($('wbBtnAssessment')) {
+      $('wbBtnAssessment').onclick = function() { switchWellbeingTab('assessment'); };
+    }
+    if ($('wbBtnResources')) {
+      $('wbBtnResources').onclick = function() { switchWellbeingTab('resources'); };
+    }
+    if ($('pss10ToResourcesLink')) {
+      $('pss10ToResourcesLink').onclick = function() { switchWellbeingTab('resources'); };
+    }
+
     // 资源导航折叠面板（默认折叠）
     var btnToggleRes = $('btnToggleResources');
     var resPanel = $('resourcePanel');
@@ -20753,21 +20648,61 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     window.addEventListener('pagehide', function() { sleepClearTimer(); sleepStopMusic(false); });
   }
 
+  function switchWellbeingTab(tab) {
+    appState.wellbeingTab = tab || 'sleep';
+    var btnSleep = $('wbBtnSleep');
+    var btnAssessment = $('wbBtnAssessment');
+    var btnResources = $('wbBtnResources');
+
+    var sleepSec = $('sleepHomeSection');
+    var assessmentSec = $('wellbeingAssessmentSection');
+    var resourcesSec = $('wellbeingResourcesSection');
+
+    [btnSleep, btnAssessment, btnResources].forEach(function(btn) {
+      if (btn) btn.classList.remove('active');
+    });
+
+    if (sleepSec) sleepSec.classList.add('hidden');
+    if (assessmentSec) assessmentSec.classList.add('hidden');
+    if (resourcesSec) resourcesSec.classList.add('hidden');
+
+    if (tab === 'assessment') {
+      if (btnAssessment) btnAssessment.classList.add('active');
+      if (assessmentSec) assessmentSec.classList.remove('hidden');
+    } else if (tab === 'resources') {
+      if (btnResources) btnResources.classList.add('active');
+      if (resourcesSec) resourcesSec.classList.remove('hidden');
+      var resPanel = $('resourcePanel');
+      var btnToggleRes = $('btnToggleResources');
+      if (resPanel && resPanel.classList.contains('hidden')) {
+        resPanel.classList.remove('hidden');
+        if (btnToggleRes) btnToggleRes.textContent = '收起 ▴';
+      }
+      renderResourcesList($('resourceRegionFilter') ? $('resourceRegionFilter').value : '全部');
+    } else {
+      if (btnSleep) btnSleep.classList.add('active');
+      if (sleepSec) sleepSec.classList.remove('hidden');
+      initSleepGuide();
+    }
+  }
+
   function openSleepGuide(event) {
     if (event) event.stopPropagation();
     bgmEngine.closePanel();
     switchMainTab('wellbeing');
+    switchWellbeingTab('sleep');
     $('sleepHomeSection').scrollIntoView({ behavior: 'auto', block: 'start' });
     $('sleepHomeTitle').focus({ preventScroll: true });
   }
 
   function renderWellbeingSection() {
     initSleepGuide();
-    renderResourcesList('全部');
+    switchWellbeingTab(appState.wellbeingTab || 'sleep');
   }
 
   window.sleepExit = sleepExit;
   window.openSleepGuide = openSleepGuide;
+  window.switchWellbeingTab = switchWellbeingTab;
 
 
 

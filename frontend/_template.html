@@ -20207,6 +20207,20 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
+    // 药丸导航按钮绑定 (今夜安歇 / 心理自评 / 资源导航)
+    if ($('wbBtnSleep')) {
+      $('wbBtnSleep').onclick = function() { switchWellbeingTab('sleep'); };
+    }
+    if ($('wbBtnAssessment')) {
+      $('wbBtnAssessment').onclick = function() { switchWellbeingTab('assessment'); };
+    }
+    if ($('wbBtnResources')) {
+      $('wbBtnResources').onclick = function() { switchWellbeingTab('resources'); };
+    }
+    if ($('pss10ToResourcesLink')) {
+      $('pss10ToResourcesLink').onclick = function() { switchWellbeingTab('resources'); };
+    }
+
     // 资源导航折叠面板（默认折叠）
     var btnToggleRes = $('btnToggleResources');
     var resPanel = $('resourcePanel');
@@ -20634,21 +20648,61 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     window.addEventListener('pagehide', function() { sleepClearTimer(); sleepStopMusic(false); });
   }
 
+  function switchWellbeingTab(tab) {
+    appState.wellbeingTab = tab || 'sleep';
+    var btnSleep = $('wbBtnSleep');
+    var btnAssessment = $('wbBtnAssessment');
+    var btnResources = $('wbBtnResources');
+
+    var sleepSec = $('sleepHomeSection');
+    var assessmentSec = $('wellbeingAssessmentSection');
+    var resourcesSec = $('wellbeingResourcesSection');
+
+    [btnSleep, btnAssessment, btnResources].forEach(function(btn) {
+      if (btn) btn.classList.remove('active');
+    });
+
+    if (sleepSec) sleepSec.classList.add('hidden');
+    if (assessmentSec) assessmentSec.classList.add('hidden');
+    if (resourcesSec) resourcesSec.classList.add('hidden');
+
+    if (tab === 'assessment') {
+      if (btnAssessment) btnAssessment.classList.add('active');
+      if (assessmentSec) assessmentSec.classList.remove('hidden');
+    } else if (tab === 'resources') {
+      if (btnResources) btnResources.classList.add('active');
+      if (resourcesSec) resourcesSec.classList.remove('hidden');
+      var resPanel = $('resourcePanel');
+      var btnToggleRes = $('btnToggleResources');
+      if (resPanel && resPanel.classList.contains('hidden')) {
+        resPanel.classList.remove('hidden');
+        if (btnToggleRes) btnToggleRes.textContent = '收起 ▴';
+      }
+      renderResourcesList($('resourceRegionFilter') ? $('resourceRegionFilter').value : '全部');
+    } else {
+      if (btnSleep) btnSleep.classList.add('active');
+      if (sleepSec) sleepSec.classList.remove('hidden');
+      initSleepGuide();
+    }
+  }
+
   function openSleepGuide(event) {
     if (event) event.stopPropagation();
     bgmEngine.closePanel();
     switchMainTab('wellbeing');
+    switchWellbeingTab('sleep');
     $('sleepHomeSection').scrollIntoView({ behavior: 'auto', block: 'start' });
     $('sleepHomeTitle').focus({ preventScroll: true });
   }
 
   function renderWellbeingSection() {
     initSleepGuide();
-    renderResourcesList('全部');
+    switchWellbeingTab(appState.wellbeingTab || 'sleep');
   }
 
   window.sleepExit = sleepExit;
   window.openSleepGuide = openSleepGuide;
+  window.switchWellbeingTab = switchWellbeingTab;
 
 
 

@@ -298,6 +298,45 @@ setTimeout(() => {
           !window.getComputedStyle(htmlEl).getPropertyValue('--font-songke').includes('Noto Serif'));
         dom2.window.close();
 
+        // ---------------- E. 心境专区三药丸导航 ----------------
+        console.log('\n=== E. 心境专区三药丸导航 ===');
+        const tabWellbeing = doc.getElementById('tabWellbeing');
+        if (tabWellbeing) tabWellbeing.click();
+        const wellbeingArea = doc.getElementById('wellbeingArea');
+        check('点击心境页签显示心境专区', wellbeingArea && !wellbeingArea.classList.contains('hidden'));
+
+        const wbBtnSleep = doc.getElementById('wbBtnSleep');
+        const wbBtnAssessment = doc.getElementById('wbBtnAssessment');
+        const wbBtnResources = doc.getElementById('wbBtnResources');
+        check('心境药丸导航三个按钮均存在', !!wbBtnSleep && !!wbBtnAssessment && !!wbBtnResources);
+
+        const sleepSec = doc.getElementById('sleepHomeSection');
+        const assessSec = doc.getElementById('wellbeingAssessmentSection');
+        const resSec = doc.getElementById('wellbeingResourcesSection');
+        check('心境三大并列功能容器均存在', !!sleepSec && !!assessSec && !!resSec);
+
+        check('默认激活今夜安歇药丸', wbBtnSleep.classList.contains('active') && !sleepSec.classList.contains('hidden'));
+        check('自评与资源容器默认隐藏', assessSec.classList.contains('hidden') && resSec.classList.contains('hidden'));
+
+        wbBtnAssessment.click();
+        check('点击切换到心理自评药丸', wbBtnAssessment.classList.contains('active') && !wbBtnSleep.classList.contains('active'));
+        check('心理自评容器显示且安歇/资源隐藏', !assessSec.classList.contains('hidden') && sleepSec.classList.contains('hidden') && resSec.classList.contains('hidden'));
+
+        wbBtnResources.click();
+        check('点击切换到资源导航药丸', wbBtnResources.classList.contains('active') && !wbBtnAssessment.classList.contains('active'));
+        check('资源导航容器显示且安歇/自评隐藏', !resSec.classList.contains('hidden') && sleepSec.classList.contains('hidden') && assessSec.classList.contains('hidden'));
+        const resPanel = doc.getElementById('resourcePanel');
+        check('切换到资源导航自动展开资源面板', resPanel && !resPanel.classList.contains('hidden'));
+
+        wbBtnAssessment.click();
+        const toResLink = doc.getElementById('pss10ToResourcesLink');
+        check('自评报告中资源导航跳转链接存在', !!toResLink);
+        if (toResLink) toResLink.click();
+        check('点击报告内转介链接跳转至资源导航药丸', wbBtnResources.classList.contains('active') && !resSec.classList.contains('hidden') && assessSec.classList.contains('hidden'));
+
+        wbBtnSleep.click();
+        check('点击切回今夜安歇药丸', wbBtnSleep.classList.contains('active') && !sleepSec.classList.contains('hidden') && resSec.classList.contains('hidden'));
+
         console.log('\n=== 汇总 ===');
         const failed = results.filter((r) => !r.pass);
         console.log(`  ${results.length - failed.length}/${results.length} 通过`);
