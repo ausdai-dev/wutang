@@ -90,7 +90,7 @@
         "src": "assets/audio/autumn_rain_zheng.m4a",
         "paused": false,
         "volume": 0.13,
-        "currentTime": 0.014597,
+        "currentTime": 0.001295,
         "readyState": 4,
         "error": null
       }
@@ -102,7 +102,7 @@
         "src": "assets/audio/flowing_mind.m4a",
         "paused": false,
         "volume": 0.42,
-        "currentTime": 12,
+        "currentTime": 12.239718,
         "readyState": 4,
         "error": null
       }
@@ -114,7 +114,7 @@
         "src": "assets/audio/flowing_mind.m4a",
         "paused": false,
         "volume": 0.42,
-        "currentTime": 12.001923,
+        "currentTime": 12.263327,
         "readyState": 4,
         "error": null
       }
@@ -126,7 +126,7 @@
         "src": "assets/audio/autumn_rain_zheng.m4a",
         "paused": true,
         "volume": 0,
-        "currentTime": 0.040155,
+        "currentTime": 0.020146,
         "readyState": 4,
         "error": null
       }
@@ -138,7 +138,7 @@
         "src": "assets/audio/autumn_rain_zheng.m4a",
         "paused": true,
         "volume": 0,
-        "currentTime": 0.012753,
+        "currentTime": 0.017829,
         "readyState": 4,
         "error": null
       }

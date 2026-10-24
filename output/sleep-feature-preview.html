@@ -10972,7 +10972,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
                   <button type="button" class="sleep-palette-dot" data-color="#F4A261" title="晚霞温煦" style="background:#F4A261;color:#F4A261;"></button>
                   <button type="button" class="sleep-palette-dot" data-color="#E8D7B8" title="水墨月白" style="background:#E8D7B8;color:#E8D7B8;"></button>
                   <button type="button" class="sleep-palette-dot sleep-palette-dot-custom" id="sleepCustomColorTrigger" title="自定义颜色" style="color:#FFF;"></button>
-                  <button type="button" class="sleep-palette-dot sleep-palette-dot-auto" id="sleepAutoColorBtn" title="跟随曲目自动色彩" aria-label="跟随曲目自动色彩"><span style="font-size:10px;line-height:1;display:block;">律</span></button>
+                  <button type="button" class="sleep-palette-dot sleep-palette-dot-auto" id="sleepAutoColorBtn" title="跟随曲目自动色彩" aria-label="跟随曲目自动色彩"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21.5 2v6h-6"></path><path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg></button>
                 </div>
               </div>
             </div>
@@ -21988,6 +21988,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       getColor: function() { return userColor; }
     };
   })();
+  window.sleepOscilloscope = sleepOscilloscope;
 
   function switchWellbeingTab(tab) {
     appState.wellbeingTab = tab || 'sleep';
