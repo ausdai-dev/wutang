@@ -92,6 +92,9 @@ inbox/*
 !inbox/README.md
 !inbox/.gitkeep
 
+# 编辑过程备份文件（.bak-日期后缀）：保留本地磁盘、不入库
+*.bak-*
+
 # 8. 海报与打包产物（脚本/导出生成，不提交）
 output/*.zip
 output/poster/

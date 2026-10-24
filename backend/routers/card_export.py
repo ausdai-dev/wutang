@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-悟堂 · 东方解脱之道卡牌导出与打印服务路由
+悟堂 · 东方解忧卡牌导出与打印服务路由
 提供 300 DPI 实体卡牌正反面渲染与工业打印压缩包导出
 """
 import io
@@ -22,14 +22,15 @@ class CardExportRequest(BaseModel):
     aphorism: Optional[str] = Field("君子求诸己，万般皆因行未至。", description="核心定心偈金句")
     core: Optional[str] = Field(None, description="核心释义")
     english_mantra: Optional[str] = Field(None, description="英文定心真言")
-    user_statement: Optional[str] = Field(None, description="当事人困扰脱敏描述")
-    user_nickname: Optional[str] = Field("同修", description="求道者道号/昵称")
+    user_statement: Optional[str] = Field(None, description="当事人心事（默认不渲染；仅 include_personal_note=True 显式开启时进入卡背）")
+    user_nickname: Optional[str] = Field("朋友", description="卡片署名昵称（印刷链路不携带账户真实名）")
+    include_personal_note: bool = Field(False, description="是否在卡背渲染个人心事（默认关闭；个人留念版需显式勾选+不可撤回警示+PII扫描，暂未开放）")
     lunar_date: Optional[str] = Field("丙午年 · 霜降", description="干支历法节令")
     classic_source: Optional[str] = Field(None, description="典籍出处，如《论语·卫灵公》（春秋·孔子）")
     quote: Optional[str] = Field(None, description="典籍原文引语")
     interpretation: Optional[str] = Field(None, description="白话真解")
-    action_title: Optional[str] = Field(None, description="当下 5 分钟微功课标题")
-    action_steps: Optional[List[str]] = Field(None, description="微功课具体步骤列表")
+    action_title: Optional[str] = Field(None, description="5 分钟微行动标题")
+    action_steps: Optional[List[str]] = Field(None, description="微行动具体步骤列表")
     scene: Optional[str] = Field(None, description="水墨意境描述")
 
 @router.post("/render-front")
@@ -64,7 +65,7 @@ async def export_print_pack(req: CardExportRequest):
         zip_bytes = card_render_service.create_print_pack(data)
         import urllib.parse
         ascii_filename = f"WUTANG-CARD-{int(time.time())}.zip"
-        encoded_filename = urllib.parse.quote(f"悟堂解脱卡-{data.get('name', 'CARD')}-{int(time.time())}.zip")
+        encoded_filename = urllib.parse.quote(f"悟堂解忧卡-{data.get('name', 'CARD')}-{int(time.time())}.zip")
         return Response(
             content=zip_bytes,
             media_type="application/zip",

@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html lang="zh-CN" data-font="songke">
 
 <head>
 
 <meta charset="UTF-8">
+<script>
+(function() {
+  var id = 'songke';
+  try { var saved = localStorage.getItem('wutang_font_pref'); if (['song', 'songke', 'kai', 'hei'].indexOf(saved) >= 0) id = saved; } catch (e) {}
+  document.documentElement.setAttribute('data-font', id);
+})();
+</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
@@ -68,9 +75,21 @@
 
 
 
+  /* 阅读字体预设（字体切换器）：开源网络字体 + 本机字体回退链 */
+
+  --font-song: "Noto Serif SC Variable", "Noto Serif SC", "Songti SC", "Source Han Serif SC", "SimSun", "STSong", serif;
+
+  --font-songke: "KingHwa_OldSong", "Songti SC", "SimSun", "STSong", serif;
+
+  --font-kai: "LXGW WenKai", "Kaiti SC", "STKaiti", "KaiTi", serif;
+
+  --font-hei: "Noto Sans SC Variable", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+
+
   --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
 
-  --font-serif: "Songti SC", "Source Han Serif SC", "Noto Serif SC", "SimSun", "STSong", serif;
+  --font-serif: var(--font-song);
 
 
 
@@ -97,6 +116,16 @@
   --trans: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 
 }
+
+
+
+/* 阅读字体切换预设（宋刻本 / 文楷 / 黑体）：同步覆写正文与衬线两套字体 */
+
+html[data-font="songke"] { --font-serif: var(--font-songke); --font-sans: var(--font-songke); }
+
+html[data-font="kai"]    { --font-serif: var(--font-kai);    --font-sans: var(--font-kai); }
+
+html[data-font="hei"]    { --font-serif: var(--font-hei);    --font-sans: var(--font-hei); }
 
 
 
@@ -197,6 +226,362 @@ body::after {
 /* 典雅宋体 */
 
 .serif { font-family: var(--font-serif); }
+
+
+
+/* ==========================================================================
+
+   阅读字体切换器 (Font Switcher) —— 宋刻本 / 霞鹜文楷 / 思源黑体
+
+   ========================================================================== */
+
+/* AI 后台状态徽标（冷启动可见性：唤醒中 → AI已就绪 / 离线引擎模式） */
+
+.ai-status-btn {
+
+  background: rgba(255, 255, 255, 0.7);
+
+  border: 1px solid #DFD8CC;
+
+  border-radius: 20px;
+
+  padding: 6px 13px;
+
+  font-size: 12.5px;
+
+  color: #8A857D;
+
+  cursor: pointer;
+
+  transition: all var(--trans);
+
+  backdrop-filter: blur(4px);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  white-space: nowrap;
+
+}
+
+.ai-status-btn.is-ready {
+
+  color: var(--color-primary);
+
+  border-color: var(--color-primary);
+
+}
+
+.ai-status-full {
+
+  display: inline;
+
+}
+
+.ai-status-short {
+
+  display: none;
+
+}
+
+.font-control-wrap {
+
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+}
+
+.font-btn {
+
+  background: rgba(255, 255, 255, 0.7);
+
+  border: 1px solid #DFD8CC;
+
+  border-radius: 20px;
+
+  padding: 6px 13px;
+
+  font-size: 12.5px;
+
+  color: #5C564E;
+
+  cursor: pointer;
+
+  transition: all var(--trans);
+
+  backdrop-filter: blur(4px);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  user-select: none;
+
+  max-width: 138px;
+
+}
+
+.font-btn:hover {
+
+  background: #FFFFFF;
+
+  border-color: var(--color-primary);
+
+  color: var(--color-primary);
+
+}
+
+.font-btn-glyph {
+
+  font-family: var(--font-serif);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: var(--color-primary);
+
+  line-height: 1;
+
+}
+
+.font-btn-label {
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+}
+
+
+
+/* 字体选择下拉卡片 */
+
+.font-panel {
+
+  position: absolute;
+
+  top: calc(100% + 8px);
+
+  right: 0;
+
+  width: 300px;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 14px;
+
+  box-shadow: var(--shadow-lg);
+
+  padding: 16px 18px;
+
+  z-index: 1000;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: translateY(-6px);
+
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  pointer-events: none;
+
+}
+
+.font-panel.show {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+
+  pointer-events: auto;
+
+}
+
+.font-panel-header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+
+  padding-bottom: 8px;
+
+  border-bottom: 1px dashed var(--color-border);
+
+}
+
+.font-panel-title {
+
+  font-size: 13.5px;
+
+  font-weight: 600;
+
+  color: var(--color-ink);
+
+}
+
+.font-panel-close {
+
+  cursor: pointer;
+
+  color: var(--color-muted);
+
+  font-size: 16px;
+
+  line-height: 1;
+
+}
+
+.font-panel-close:hover { color: var(--color-primary); }
+
+.font-option-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+}
+
+.font-option {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-surface-subtle);
+
+  border-radius: 10px;
+
+  padding: 9px 12px;
+
+  cursor: pointer;
+
+  transition: all var(--trans);
+
+  text-align: left;
+
+}
+
+.font-option:hover {
+
+  border-color: var(--color-primary-border);
+
+  background: var(--color-primary-light);
+
+}
+
+.font-option.active {
+
+  border-color: var(--color-primary);
+
+  background: var(--color-primary-light);
+
+  box-shadow: 0 2px 8px rgba(142, 41, 39, 0.08);
+
+}
+
+.font-option-preview {
+
+  font-size: 18px;
+
+  color: var(--color-ink);
+
+  min-width: 78px;
+
+  white-space: nowrap;
+
+  line-height: 1.35;
+
+  flex: 0 0 auto;
+
+}
+
+.font-option-info {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1px;
+
+  min-width: 0;
+
+}
+
+.font-option-name {
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: var(--color-ink);
+
+}
+
+.font-option-desc {
+
+  font-size: 11px;
+
+  color: var(--color-muted);
+
+}
+
+.font-option-check {
+
+  margin-left: auto;
+
+  color: var(--color-primary);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  visibility: hidden;
+
+  flex: 0 0 auto;
+
+}
+
+.font-option.active .font-option-check { visibility: visible; }
+
+.font-panel-note {
+
+  margin: 10px 0 0;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+
+  color: var(--color-muted);
+
+}
 
 
 
@@ -959,6 +1344,33 @@ body::after {
    通用卡片与按钮组件
 
    ========================================================================== */
+
+/* 睡前放松 · 今夜安歇 */
+.sleep-home { border-left: 4px solid #71836E; }
+.sleep-home h2 { font-family: var(--font-serif); margin: 0 0 6px; font-size: 26px; }
+.sleep-lead { margin: 0; color: var(--color-muted); font-size: 13.5px; line-height: 1.7; }
+.sleep-flow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+.sleep-flow-card { text-align: left; background: #FBFAF6; border: 1px solid var(--color-border); border-radius: 8px; padding: 15px; color: var(--color-ink); cursor: pointer; min-height: 100px; }
+.sleep-flow-card:hover, .sleep-flow-card:focus-visible { border-color: #71836E; outline: 2px solid #71836E; outline-offset: 2px; }
+.sleep-flow-card strong { display: block; font-size: 15px; margin-bottom: 6px; }
+.sleep-flow-card span { display: block; color: var(--color-muted); font-size: 12.5px; line-height: 1.6; }
+.sleep-music-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--color-border); }
+.sleep-music-row label { color: var(--color-muted); font-size: 12px; }
+.sleep-music-row select { border: 1px solid var(--color-border); border-radius: 5px; background: var(--color-surface); padding: 6px 8px; color: var(--color-ink); }
+.sleep-session { display: none; margin-top: 18px; padding-top: 16px; border-top: 2px solid #71836E; }
+.sleep-session.is-open { display: block; }
+.sleep-session-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.sleep-session-step { min-height: 82px; display: grid; place-items: center; max-width: 650px; margin: 24px auto 18px; text-align: center; font-family: var(--font-serif); font-size: 19px; line-height: 1.8; color: var(--color-ink); }
+.sleep-session-actions { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.sleep-support { margin-top: 16px; padding: 11px 13px; border-left: 3px solid var(--color-gold); background: var(--color-surface-subtle); color: var(--color-muted); font-size: 12.5px; line-height: 1.65; }
+@media (max-width: 680px) {
+  .sleep-flow-grid { grid-template-columns: 1fr; }
+  .sleep-flow-card { min-height: auto; }
+  .sleep-session-step { min-height: 110px; font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sleep-session-step { transition: none !important; }
+}
 
 .card {
 
@@ -3713,6 +4125,28 @@ body::after {
    卡牌与翻转交互样式 (Entry Tabs, Awareness Card Flip, 3-Cards Deck)
 
    ========================================================================== */
+
+.growth-entry-card {
+  margin-bottom: 26px;
+}
+
+.growth-entry-heading {
+  margin-bottom: 18px;
+}
+
+.growth-entry-heading h2 {
+  margin: 0 0 4px;
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  font-size: 21px;
+}
+
+.growth-entry-heading p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
 
 .entry-switch-bar {
 
@@ -7353,7 +7787,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 /* ==========================================================================
-   PRD 4.0 儒释道三学赛道、专属解脱之道 3D 卡牌与卡牌人生样式
+   PRD 4.0 东方三学赛道、专属解忧卡牌 3D 卡牌与卡牌人生样式
    ========================================================================== */
 .school-track-selector {
   margin: 14px 0 18px;
@@ -7438,7 +7872,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   z-index: 2;
 }
 
-/* 先圣头像卡片背景层：水墨渐隐与右侧肖像微澜呈现 */
+/* 先贤头像卡片背景层：水墨渐隐与右侧肖像微澜呈现 */
 .school-pill::before {
   content: "";
   position: absolute;
@@ -7464,7 +7898,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   opacity: 0.52;
 }
 
-/* 四大先圣头像背景绑定 */
+/* 四大先贤头像背景绑定 */
 .school-pill[data-track="confucianism"]::before {
   background-image: url('assets/avatars/sages/confucius_bg.jpg');
 }
@@ -7579,7 +8013,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   outline: none;
 }
 
-/* 专属解脱之道卡牌 3D 舞台 */
+/* 专属解忧卡牌 3D 舞台 */
 .liberation-hero-card {
   margin: 24px 0 28px;
   perspective: 1200px;
@@ -8180,12 +8614,23 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     overflow-x: visible;
   }
 
-  /* 顶栏：音乐按钮独立置于右上角，Tab 居中于屏幕正中央，左右间距对称 */
+  /* 顶栏：音乐、字体与 AI 状态按钮独立置于右上角，Tab 居中于屏幕正中央，左右间距对称 */
   .global-header {
     position: relative;
   }
   .brand-group {
-    padding-right: 52px;
+    padding-right: 172px;
+  }
+  .brand-text h1 {
+    font-size: 16px;
+    letter-spacing: 0.1em;
+  }
+  .brand-text p {
+    font-size: 10.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100vw - 210px);
   }
   .header-right {
     width: 100%;
@@ -8220,8 +8665,39 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     top: 10px;
     right: 0;
   }
+  .font-control-wrap {
+    position: absolute;
+    top: 10px;
+    right: 46px;
+  }
+  .font-btn {
+    padding: 6px 10px;
+    max-width: none;
+  }
+  .font-btn .font-btn-label {
+    display: none;
+  }
+  .ai-status-btn {
+    position: absolute;
+    top: 10px;
+    right: 92px;
+    padding: 6px 10px;
+    font-size: 12px;
+    line-height: 1;
+    height: 30px;
+    box-sizing: border-box;
+  }
+  .ai-status-full {
+    display: none;
+  }
+  .ai-status-short {
+    display: inline;
+  }
   .bgm-panel {
     width: min(310px, calc(100vw - 36px));
+  }
+  .font-panel {
+    width: min(300px, calc(100vw - 36px));
   }
 
   /* 下拉框、输入框不超出容器 */
@@ -8229,7 +8705,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     max-width: 100%;
   }
 
-  /* 专属解脱之道 3D 卡牌：改用真实高度，内容不再溢出卡框 */
+  /* 专属解忧卡牌 3D 卡牌：改用真实高度，内容不再溢出卡框 */
   .liberation-card-3d {
     display: grid;
     aspect-ratio: auto;
@@ -8248,7 +8724,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   .card-aphorism { font-size: 15px; padding: 10px 12px; }
   .card-english-motto { font-size: 10.5px; }
 
-  /* 东方先圣赛道卡片：手机版印章与文字均隐藏，只保留先圣肖像图 */
+  /* 东方先贤赛道卡片：手机版印章与文字均隐藏，只保留先贤肖像图 */
   .school-pill .pill-seal,
   .school-pill .pill-info {
     display: none !important;
@@ -8392,6 +8868,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   }
 }
 
+/* 微信式先贤对话：消息只存于当前页面内存，不写入本地存储。 */
+.chat-panel{margin:18px 0 22px;border:1px solid var(--color-border);border-radius:var(--radius-card);background:#f7f8fa;box-shadow:var(--shadow-sm);overflow:hidden}
+.chat-panel-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--color-surface);border-bottom:1px solid var(--color-border)}
+.chat-group-avatar{display:flex}.chat-group-avatar span{width:27px;height:27px;margin-left:-7px;border:2px solid #fff;border-radius:50%;display:grid;place-items:center;background:#ede4d8;color:var(--color-primary);font-size:11px;font-weight:700}.chat-group-avatar span:first-child{margin-left:0}.chat-title{flex:1;min-width:0}.chat-title strong,.chat-title small{display:block;line-height:1.35}.chat-title small{font-size:12px;color:var(--color-muted)}
+.chat-tool{border:0;background:transparent;color:var(--color-ink-light);padding:6px;cursor:pointer;font:inherit}.chat-more-sage{max-width:86px;border:1px solid var(--color-border);border-radius:6px;background:#fff;color:var(--color-ink-light);font:12px var(--font-sans);padding:4px}.chat-messages{min-height:330px;max-height:520px;overflow:auto;padding:14px;background:#f2f3f5}.chat-notice{margin:0 0 12px;text-align:center;font-size:12px;color:var(--color-muted)}.chat-row{display:flex;align-items:flex-start;gap:8px;margin:11px 0}.chat-row.mine{justify-content:flex-end}.chat-row.mine .chat-avatar{order:2;background:#dcebd6;color:#31583b}.chat-row.mine .chat-message{align-items:flex-end}.chat-row.mine .chat-bubble{background:#95ec69;border-radius:10px 2px 10px 10px}.chat-avatar{width:38px;height:38px;flex:0 0 38px;border-radius:6px;overflow:hidden;background:#e7ded0;display:grid;place-items:center;color:var(--color-primary);font-size:13px;font-weight:700}.chat-avatar img{width:100%;height:100%;object-fit:cover}.chat-message{display:flex;flex-direction:column;max-width:min(76%,540px)}.chat-name{margin:0 0 3px;font-size:12px;color:var(--color-muted)}.chat-bubble{padding:8px 11px;white-space:pre-wrap;word-break:break-word;line-height:1.65;background:#fff;border:1px solid rgba(0,0,0,.04);border-radius:2px 10px 10px 10px;color:var(--color-ink)}.chat-compose{padding:10px;background:var(--color-surface);border-top:1px solid var(--color-border)}.chat-mention-bar{display:flex;gap:6px;overflow:auto;margin:0 0 8px}.chat-mention{white-space:nowrap;border:1px solid var(--color-border);border-radius:13px;background:#fff;color:var(--color-ink-light);font:inherit;font-size:12px;padding:3px 9px;cursor:pointer}.chat-mention.active{color:var(--color-primary);border-color:var(--color-primary-border);background:var(--color-primary-light)}.chat-compose-row{display:flex;gap:8px;align-items:flex-end}.chat-input{flex:1;min-height:42px;max-height:110px;resize:vertical;border:1px solid var(--color-border);border-radius:8px;padding:8px;font:inherit;line-height:1.45}.chat-send{border:0;border-radius:7px;background:#07c160;color:#fff;padding:9px 14px;font:inherit;cursor:pointer}.chat-send:disabled{opacity:.5;cursor:not-allowed}.chat-status{margin:7px 0 0;font-size:12px;color:var(--color-muted)}.chat-actions{display:flex;gap:8px;margin:10px 0 0}.chat-actions .btn{flex:1}.chat-ai-label{font-size:11px;color:var(--color-muted)}
+.chat-context-tools{padding:10px 14px;background:var(--color-surface);border-bottom:1px solid var(--color-border);font-size:13px}.chat-context-tools details{padding:6px 0}.chat-context-tools summary{cursor:pointer;color:var(--color-primary)}.chat-context-note{font-size:12px;color:var(--color-muted);line-height:1.65;margin:7px 0}.chat-summary-text,.chat-memory-content{white-space:pre-wrap;overflow-wrap:anywhere}.chat-memory-item{padding:10px 0;border-bottom:1px solid var(--color-border)}.chat-memory-meta{font-size:12px;color:var(--color-muted);margin:5px 0}.chat-memory-optout{display:flex;align-items:flex-start;gap:7px;margin:10px 0;line-height:1.5}#chatMemoryForm{margin-top:12px}#chatMemoryInput{display:block;width:100%;box-sizing:border-box;margin-top:6px}#chatMemoryStatus{font-size:12px;line-height:1.6}#chatMemoryControls[aria-busy="true"]{opacity:.7}
+@media(max-width:600px){.chat-panel{margin-left:-2px;margin-right:-2px;border-radius:12px}.chat-messages{min-height:310px;max-height:52vh;padding:10px}.chat-message{max-width:78%}.chat-title strong{font-size:14px}.chat-actions .btn{font-size:12px;padding-left:8px;padding-right:8px}}
 </style>
 
 </head>
@@ -8453,6 +8936,59 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
+
+
+
+      <!-- AI 后台状态徽标（冷启动可见性） -->
+
+      <button class="ai-status-btn" id="btnAiStatus" title="AI 后台服务状态">
+        <span class="ai-status-full">唤醒中…</span>
+        <span class="ai-status-short">唤醒中</span>
+      </button>
+
+
+
+      <!-- 悟堂 · 阅读字体切换（宋刻本 / 霞鹜文楷 / 思源黑体） -->
+
+      <div class="font-control-wrap" id="fontControlWrap">
+
+        <button class="font-btn" id="btnFontToggle" title="切换阅读字体" aria-label="阅读字体切换">
+
+          <span class="font-btn-glyph">字</span>
+
+          <span class="font-btn-label" id="fontCurrentLabel">宋刻本</span>
+
+        </button>
+
+
+
+        <!-- 悬浮字体选择面板 -->
+
+        <div class="font-panel" id="fontPanel">
+
+          <div class="font-panel-header">
+
+            <span class="font-panel-title">悟堂 · 阅读字体</span>
+
+            <span class="font-panel-close" id="fontClosePanel" title="收起面板">×</span>
+
+          </div>
+
+
+
+          <div class="font-option-list" id="fontOptionList">
+
+            <!-- 动态渲染字体选项（含字体预览） -->
+
+          </div>
+
+
+
+          <p class="font-panel-note">联网时按需加载对应开源网络字体；离线或加载失败时自动回退本机字体，不影响使用。</p>
+
+        </div>
+
+      </div>
 
 
 
@@ -8584,36 +9120,79 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       <!-- PRD 4.0 儒释道三学赛道与代表导师选择器 -->
       <div class="school-track-selector" id="schoolTrackSelector">
         <div class="school-track-header">
-          <div class="school-track-title">答疑先圣</div>
-          <div class="school-motto-badge" id="currentMasterMotto">先师孔子 ｜ 君子求诸己 · 仁者爱人</div>
+          <div class="school-track-title">请教先贤</div>
+          <div class="school-motto-badge" id="currentMasterMotto">孔子 ｜ 君子求诸己 · 仁者爱人</div>
         </div>
         <div class="school-track-pills" id="schoolTrackPills">
-          <button type="button" class="school-pill active" data-track="confucianism" data-master="confucius" data-color="rgb(140, 58, 43)" data-motto="先师孔子 ｜ 君子求诸己 · 仁者爱人" data-hint="有何立身处世、责任何在、人伦日用之惑，请与夫子倾诉..." title="孔子" aria-label="孔子">
+          <button type="button" class="school-pill active" data-track="confucianism" data-master="confucius" data-color="rgb(140, 58, 43)" data-motto="孔子 ｜ 君子求诸己 · 仁者爱人" data-hint="有何立身处世、责任何在、人伦日用之惑，请与夫子倾诉..." title="孔子" aria-label="孔子">
             <span class="pill-seal">儒</span>
             <span class="pill-info">
               <span class="pill-name">孔子</span>
             </span>
           </button>
-          <button type="button" class="school-pill" data-track="daoism" data-master="laozi" data-color="rgb(43, 76, 95)" data-motto="道祖老子 ｜ 道法自然 · 致虚守静" data-hint="有何用力过猛、身心劳形、进退难安之念，且听老君道来..." title="老子" aria-label="老子">
+          <button type="button" class="school-pill" data-track="daoism" data-master="laozi" data-color="rgb(43, 76, 95)" data-motto="老子 ｜ 道法自然 · 致虚守静" data-hint="有何用力过猛、身心劳形、进退难安之念，且听老子道来..." title="老子" aria-label="老子">
             <span class="pill-seal">道</span>
             <span class="pill-info">
               <span class="pill-name">老子</span>
             </span>
           </button>
-          <button type="button" class="school-pill" data-track="buddhism" data-master="shakyamuni" data-color="rgb(181, 137, 0)" data-motto="释家佛陀 ｜ 明心见性 · 应无所住" data-hint="有何爱恨执念、沉没成本舍不得、无常失落之苦，请与佛陀对谈..." title="佛陀" aria-label="佛陀">
+          <button type="button" class="school-pill" data-track="buddhism" data-master="shakyamuni" data-color="rgb(181, 137, 0)" data-motto="佛陀 ｜ 明心见性 · 应无所住" data-hint="有何爱恨执念、沉没成本舍不得、无常失落之苦，请与佛陀对谈..." title="佛陀" aria-label="佛陀">
             <span class="pill-seal">释</span>
             <span class="pill-info">
               <span class="pill-name">佛陀</span>
             </span>
           </button>
-          <button type="button" class="school-pill" data-track="symposium" data-master="all" data-color="rgb(118, 55, 98)" data-motto="东方三圣 ｜ 以儒立身 · 以道养生 · 以释修心" data-hint="人生重大抉择与多重迷茫，请三圣圆桌并案会诊..." title="三圣圆桌" aria-label="三圣圆桌">
+          <button type="button" class="school-pill" data-track="symposium" data-master="all" data-color="rgb(118, 55, 98)" data-motto="三家圆桌 ｜ 以儒立身 · 以道养生 · 以释安心" data-hint="人生重大抉择与多重迷茫，请三家圆桌一同参详..." title="三家圆桌" aria-label="三家圆桌">
             <span class="pill-seal">合</span>
             <span class="pill-info">
-              <span class="pill-name">三圣圆桌</span>
+              <span class="pill-name">三家圆桌</span>
             </span>
           </button>
         </div>
       </div>
+
+      <!-- 默认入口：先贤聊天。消息仅保留在当前页面内存中。 -->
+      <section class="chat-panel" id="sageChatPanel" aria-label="先贤聊天">
+        <div class="chat-panel-head">
+          <div class="chat-group-avatar" aria-hidden="true"><span>孔</span><span>老</span><span>佛</span></div>
+          <div class="chat-title"><strong id="chatTitle">孔子 · 单聊</strong><small id="chatSubtitle">AI 角色演绎 · 正在检查服务状态</small></div>
+          <button type="button" class="chat-tool" id="btnChatNew" title="新对话">新对话</button>
+          <button type="button" class="chat-tool" id="btnChatMode" title="切换群聊或单聊">群聊</button>
+          <select class="chat-more-sage" id="chatMoreSage" aria-label="选择其他先贤"><option value="">更多先贤</option><option value="zhuangzi">庄子</option><option value="mencius">孟子</option><option value="xunzi">荀子</option><option value="sushi">苏轼</option><option value="wangyangming">王阳明</option><option value="zengguofan">曾国藩</option><option value="taoyuanming">陶渊明</option><option value="wangwei">王维</option><option value="simaqian">司马迁</option><option value="libai">李白</option><option value="dufu">杜甫</option></select>
+        </div>
+        <div class="chat-context-tools">
+          <details id="chatSummaryPanel"><summary>本次会话摘要</summary><p class="chat-context-note">长聊时用于接续前文，仅保留在当前页面；新对话会清空，不会默认存为长期记忆。</p><p id="chatSummaryText" class="chat-summary-text">暂无摘要，继续聊聊即可。</p></details>
+          <details id="chatMemoryPanel"><summary>长期记忆 · 由你决定</summary>
+            <p class="chat-context-note">只保存你明确确认的一句背景或偏好，不自动保存倾诉，也不为你推断性格标签。登录后保存在账号服务端，可随时修改或删除。</p>
+            <p id="chatMemoryStatus" role="status">登录后可启用长期记忆。</p>
+            <p id="chatMemoryRoundStatus" class="chat-memory-meta" role="status">本轮长期记忆：访客模式，未使用。</p>
+            <button type="button" class="btn sm secondary" id="btnChatMemoryLogin">登录启用</button>
+            <div id="chatMemoryControls" class="hidden">
+              <label class="chat-memory-optout"><input type="checkbox" id="chatSkipMemory">本次不使用长期记忆</label>
+              <div id="chatMemoryList"></div>
+              <form id="chatMemoryForm">
+                <label for="chatMemoryInput">我希望记住的一句背景或偏好</label>
+                <textarea id="chatMemoryInput" class="chat-input" maxlength="2000" rows="2" placeholder="例如：我更喜欢简短、具体的建议。"></textarea>
+                <label class="chat-memory-optout"><input type="checkbox" id="chatMemoryConfirm">我确认将上面这句话保存为账号长期记忆，供以后对话参考。</label>
+                <div class="chat-actions"><button type="submit" class="btn sm secondary" id="btnChatMemorySave">确认保存</button><button type="button" class="btn sm secondary" id="btnChatMemoryCancel" hidden>取消编辑</button><button type="button" class="btn sm secondary" id="btnChatMemoryRefresh">刷新列表</button><button type="button" class="btn sm secondary" id="btnChatMemoryClear">清空长期记忆</button></div>
+              </form>
+            </div>
+          </details>
+          <p class="chat-context-note">三家分别从责任与关系、分寸与余地、觉察与放下切入；群聊可以补充或保留不同意见，不必每位都回应或同意。</p>
+        </div>
+        <div class="chat-messages" id="chatMessages" aria-live="polite">
+          <p class="chat-notice" id="chatNotice">AI 角色演绎，仅供情绪整理与经典启发参考；消息不会默认保存。</p>
+        </div>
+        <div class="chat-compose">
+          <div class="chat-mention-bar" id="chatMentionBar" aria-label="选择对话对象"></div>
+          <div class="chat-compose-row">
+            <textarea class="chat-input" id="chatInput" maxlength="2000" placeholder="写下想说的事，Ctrl / ⌘ + Enter 发送"></textarea>
+            <button type="button" class="chat-send" id="btnChatSend">发送</button>
+          </div>
+          <div class="chat-status" id="chatStatus">服务状态检测中。离线时请使用下方「帮我理一理」生成本地解忧整理。</div>
+          <div class="chat-actions"><button type="button" class="btn sm secondary" id="btnChatStop" disabled>停止回复</button><button type="button" class="btn sm secondary" id="btnChatOrganize" disabled>整理成解忧笺</button></div>
+        </div>
+      </section>
 
       <div class="entry-switch-bar">
 
@@ -8642,6 +9221,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         <div class="pill-inspirations" id="inspoPills">
 
           <span class="pill-label">示例：</span>
+
+          <button class="inspo-pill" data-inspo="最近心里像压着一件事，说不大却老是想起来，想找个安静的角落捋一捋。">试试一个例子</button>
 
           <button class="inspo-pill" data-inspo="领导当着大家的面批评了我，回家路上一直在想我是不是不适合这行。">职场被批评内耗</button>
 
@@ -8984,7 +9565,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <div class="resonant-card-body">
             <div class="resonant-card-header">
               <div>
-                <span class="resonant-card-series" id="rcSeries">禅心之境</span>
+                <span class="resonant-card-series" id="rcSeries">静心之境</span>
               </div>
               <h4 class="resonant-card-title" id="rcName">留白</h4>
             </div>
@@ -9019,11 +9600,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           </div>
         </div>
 
-      <!-- PRD 4.0 专属解脱之道 3D 卡牌舞台 -->
+      <!-- PRD 4.0 专属解忧卡牌 3D 卡牌舞台 -->
       <div id="liberationHeroContainer" style="margin:24px 0 20px;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
           <h3 style="font-family:var(--font-serif);font-size:18px;margin:0;color:var(--color-ink);display:flex;align-items:center;gap:6px;">
-            <span>专属解脱之道卡牌</span>
+            <span>专属解忧卡牌</span>
           </h3>
         </div>
 
@@ -9033,20 +9614,20 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
             <div class="liberation-face liberation-front" id="libCardFront">
               <div class="card-inner-frame"></div>
               <div class="card-top-id">
-                <span id="lcSchoolTag">【悟堂 · 儒释道解脱之道】</span>
+                <span id="lcSchoolTag">【悟堂 · 东方智慧】</span>
               </div>
               <div style="margin:auto 0;text-align:center;">
                 <div class="card-main-title" id="lcCardName">【 克 己 】</div>
-                <div class="card-master-tag" id="lcMasterTag">先师孔子 垂示 ｜ 仁者爱人 · 求诸于己</div>
+                <div class="card-master-tag" id="lcMasterTag">孔子 · 寄语 ｜ 仁者爱人 · 求诸于己</div>
                 <div class="card-aphorism" id="lcAphorism">君子求诸己，万般皆因行未至。立志而笃行，当下即安泰。</div>
                 <div class="card-english-motto" id="lcEnglishMotto">Self-discipline brings enduring peace and true dignity.</div>
               </div>
               <div class="card-bottom-bar">
                 <div class="card-meta-user">
                   <div id="lcLunarDate" style="color:var(--color-muted);">节令：丙午年 · 霜降</div>
-                  <div style="font-weight:600;margin-top:2px;">求道者：<span id="lcNickname" style="color:var(--color-primary);">同修</span></div>
+                  <div style="font-weight:600;margin-top:2px;"><span id="lcNickname" style="color:var(--color-primary);">朋友</span></div>
                 </div>
-                <div class="card-stamp-mark" id="lcStampMark">解脱<br>真诠</div>
+                <div class="card-stamp-mark" id="lcStampMark">解忧<br>心安</div>
               </div>
             </div>
 
@@ -9054,12 +9635,12 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
             <div class="liberation-face liberation-back" id="libCardBack">
               <div class="card-inner-frame"></div>
               <div class="card-top-id">
-                <span style="color:var(--color-primary);font-weight:700;">【解脱秘旨 · 行履功课】</span>
+                <span style="color:var(--color-primary);font-weight:700;">【解忧笺 · 今日小事】</span>
                 <span style="color:var(--color-muted);">300 DPI 印刷规格</span>
               </div>
               <div style="margin:10px 0;font-size:12px;color:var(--color-ink-light);background:rgba(255,255,255,0.8);padding:8px 10px;border-radius:6px;border:1px solid var(--color-border);">
                 <div style="font-weight:600;color:var(--color-muted);margin-bottom:2px;">【心事洞幽】</div>
-                <div id="lcBackStatement" style="font-size:12px;line-height:1.4;">心事多有内耗与纠结，求一份定心法门。</div>
+                <div id="lcBackStatement" style="font-size:12px;line-height:1.4;">把心事交给一句古人的话，先松一口气。</div>
               </div>
               <div style="margin:8px 0;font-size:12px;background:rgba(255,255,255,0.9);padding:10px;border-radius:8px;border:1px solid var(--color-gold-border);">
                 <div style="font-weight:700;color:var(--color-gold);margin-bottom:3px;" id="lcBackClassicSource">《论语·卫灵公》（春秋·孔子）</div>
@@ -9067,11 +9648,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
                 <div style="font-size:11.5px;color:var(--color-muted);line-height:1.4;" id="lcBackInterp">遇到不顺先看自己能做什么，把力气收回到自己身上，是瓦解内耗的唯一解药。</div>
               </div>
               <div style="margin-top:auto;font-size:12px;background:rgba(240,246,242,0.9);padding:8px 10px;border-radius:8px;border:1px solid rgba(58,109,79,0.2);">
-                <div style="font-weight:700;color:#2B6E3F;margin-bottom:3px;" id="lcBackActionTitle">【今晚 5 分钟微功课】</div>
+                <div style="font-weight:700;color:#2B6E3F;margin-bottom:3px;" id="lcBackActionTitle">【今晚 5 分钟微行动】</div>
                 <div style="font-size:11.5px;color:var(--color-ink-light);line-height:1.4;" id="lcBackActionSteps">闭目静坐深呼吸三次，在便签写下1件眼前可控之事并立刻动手完成。</div>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:6px;border-top:1px dashed var(--color-border);font-size:10.5px;color:var(--color-muted);">
-                <span>悟堂·儒释道卡牌人生</span>
+                <span>悟堂 · 东方解忧</span>
                 <span>TCG Standard 63x88mm</span>
               </div>
             </div>
@@ -9086,7 +9667,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <button type="button" class="btn-card-action" id="btnSaveWallpaper" onclick="downloadCardWallpaper()">
             <span>保存手机高清壁纸</span>
           </button>
-          <button type="button" class="btn-card-action" onclick="showToast('已收入您的「儒释道卡牌人生」典藏图鉴！')">
+          <button type="button" class="btn-card-action" onclick="showToast('已收入您的「东方解忧」典藏图鉴！')">
             <span>珍藏入册</span>
           </button>
         </div>
@@ -9341,6 +9922,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <div class="result-actions no-print" style="justify-content:center;">
 
+        <button class="btn secondary" type="button" id="btnSleepFromResult" onclick="switchMainTab('wellbeing')">睡前放松</button>
+
           <button class="btn" id="btnDownloadCardPng">保存高清图片 (PNG)</button>
 
           <button class="btn ghost" id="btnCopyCardText">复制笺文内容</button>
@@ -9351,7 +9934,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         <p class="submit-note no-print" style="margin-top:12px;">
 
-          * 卡片已脱敏，不含个人信息与原始心事。
+          * 这张卡片不含任何私人倾诉。
 
         </p>
 
@@ -9382,6 +9965,14 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
        ====================================================================== -->
 
   <main id="growthArea" class="hidden">
+
+    <section class="card growth-entry-card" id="growthEntryArea" aria-label="心事与觉察入口">
+      <div class="growth-entry-heading">
+        <h2>给自己一点时间</h2>
+        <p>写下心事，或抽一张今日觉察牌，看看此刻的自己。</p>
+      </div>
+      <div id="growthEntryMount"></div>
+    </section>
 
     <div style="display:flex;flex-direction:column;gap:26px;">
 
@@ -9525,7 +10116,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <p style="margin:0 0 10px;font-size:13.5px;color:var(--color-ink-light);" id="checkinFeedbackDesc">
 
-            听见了你今天的感受。不管经历了什么，这一刻能停下来观照自己，就是了不起的修行。
+            听见了你今天的感受。不管经历了什么，这一刻能停下来观照自己，就是很了不起的停顿。
 
           </p>
 
@@ -9671,7 +10262,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
 
-            <span class="badge" style="background:var(--color-primary-light);color:var(--color-primary);font-size:11.5px;">微功课</span>
+            <span class="badge" style="background:var(--color-primary-light);color:var(--color-primary);font-size:11.5px;">微行动</span>
 
             <strong style="font-size:15px;color:var(--color-ink);" id="currentMicroActionTitle">今晚 5 分钟：把「事实」与「评价」分栏写下</strong>
 
@@ -11458,7 +12049,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
             <p style="margin:0;font-size:13.5px;color:var(--color-muted);">
 
-              以宋画留白、工笔设色与传统宣纸肌理独立绘制。包含禅心之境、一盏茶事、因缘相惜、道法自然、君子修身、山水人生六大系列。
+              以宋画留白、工笔设色与传统宣纸肌理独立绘制。包含静心之境、一盏茶事、因缘相惜、道法自然、君子修身、山水人生六大系列。
 
             </p>
 
@@ -11482,7 +12073,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <button class="inspo-pill active" onclick="filterZen96Cards('全部', this)">全部 (96)</button>
 
-          <button class="inspo-pill" onclick="filterZen96Cards('禅心之境', this)">禅心之境 (16)</button>
+          <button class="inspo-pill" onclick="filterZen96Cards('静心之境', this)">静心之境 (16)</button>
 
           <button class="inspo-pill" onclick="filterZen96Cards('一盏茶事', this)">一盏茶事 (16)</button>
 
@@ -11927,6 +12518,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   var API_BASE = (function () {
     if (window.WUTANG_API_BASE) return window.WUTANG_API_BASE;
     var host = location.hostname;
+    if ((host === 'localhost' || host === '127.0.0.1') && location.port === '8011') {
+      return location.origin;
+    }
     if (location.protocol === 'file:' || host === 'localhost' || host === '127.0.0.1' || host === '') {
       return 'http://localhost:8000';
     }
@@ -14064,6 +14658,24 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
+  // 卡面专用标识组配置（卡面是脱离语境的独立传播物，必须自带内容归属，故比网页从严）
+
+  var VERIFY_LABEL_CARD = {
+
+    verified: '本句出处经考据核验 · 悟堂考据组',
+
+    needs_review: '本句出处待复核 · 辑录',
+
+    not_found: '现代转述 · 非古籍原文'
+
+  };
+
+  var AI_LABEL = 'AI 生成 · 经典引文经人工考据核验';
+
+  var FIXED_STATEMENT = '这张卡片不含任何私人倾诉';
+
+
+
   function renderFourStepList(r) {
 
     if (!r) return;
@@ -14133,6 +14745,14 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
                 : '出处核验详单')
 
         + '</div>'
+
+        // not_found 负例：考据 note 与典籍名+引文同屏显示，避免单看典籍名与引文误读为真原文
+
+        + (c.verification_status === 'not_found' && cObj && cObj.note
+
+          ? '<div style="font-size:12.5px;color:var(--color-muted);background:var(--color-bg);padding:6px 10px;border-radius:4px;border:1px solid var(--color-border);margin-top:6px;"><strong>考据说明：</strong>' + esc(cObj.note) + '</div>'
+
+          : '')
 
         + '</div>';
 
@@ -14443,6 +15063,14 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     var q = c.quote || '先把心放慢半拍，眼前的结自会松开。';
 
+    var verifyStatus = c.verification_status || 'verified';
+
+    var themeTag = appState.selectedScenario || r.scenario || 'work';
+
+    // not_found 态引文不加「」括号、正文直排——从形式上杜绝冒充古籍引语
+
+    var quoteText = (verifyStatus === 'not_found') ? q : ('「' + q + '」');
+
     var src = c.book ? ('《' + c.book + '》' + (c.chapter && c.chapter !== '—' ? ' · ' + c.chapter : '')) : '悟堂解忧引言';
 
     var exp = r.modern_interp;
@@ -14481,7 +15109,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     $('cardTheme').textContent = theme;
 
-    $('cardQuote').textContent = '「' + q + '」';
+    $('cardQuote').textContent = quoteText;
 
     $('cardSource').textContent = src;
 
@@ -14501,7 +15129,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       theme: theme,
 
-      quote: '「' + q + '」',
+      quote: quoteText,
 
       src: src,
 
@@ -14513,6 +15141,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       isPublic: isPub,
 
+      verify: verifyStatus,
+
+      themeTag: themeTag,
+
       slogan: isPub
 
         ? '让古老智慧，用今天的人听得懂的方式活着 ｜ 严格脱敏 · 东方共读'
@@ -14520,6 +15152,278 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         : '让古老智慧，用今天的人听得懂的方式活着'
 
     };
+
+  }
+
+
+
+  // ================= PNG AIGC 元数据双写（iTXt/XMP 主 + eXif 兜底）=================
+  // 《人工智能生成合成内容标识办法》：画面显式标识之外，导出图片元数据须写入生成合成属性。
+  // 双轨并存：元数据不得替代画面显式标识；导出时必须写全，不得恶意删除、篡改、伪造、隐匿。
+
+  var PNG_CRC_TABLE = (function() {
+
+    var t = [], n, c, kk;
+
+    for (n = 0; n < 256; n++) {
+
+      c = n;
+
+      for (kk = 0; kk < 8; kk++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+
+      t.push(c >>> 0);
+
+    }
+
+    return t;
+
+  })();
+
+
+
+  function pngCrc32(bytes) {
+
+    var c = 0xFFFFFFFF, i;
+
+    for (i = 0; i < bytes.length; i++) c = PNG_CRC_TABLE[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8);
+
+    return (c ^ 0xFFFFFFFF) >>> 0;
+
+  }
+
+
+
+  function pngU32be(n) { return [(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255]; }
+
+  function pngU32le(n) { return [n & 255, (n >>> 8) & 255, (n >>> 16) & 255, (n >>> 24) & 255]; }
+
+  function pngU16le(n) { return [n & 255, (n >>> 8) & 255]; }
+
+
+
+  function pngStrBytes(s) {
+
+    var out = [], i, code;
+
+    for (i = 0; i < s.length; i++) {
+
+      code = s.charCodeAt(i);
+
+      if (code < 0x80) out.push(code);
+
+      else if (code < 0x800) out.push(0xC0 | (code >> 6), 0x80 | (code & 0x3F));
+
+      else out.push(0xE0 | (code >> 12), 0x80 | ((code >> 6) & 0x3F), 0x80 | (code & 0x3F));
+
+    }
+
+    return out;
+
+  }
+
+
+
+  function pngConcat(arrs) {
+
+    var total = 0, i;
+
+    for (i = 0; i < arrs.length; i++) total += arrs[i].length;
+
+    var out = new Uint8Array(total), off = 0;
+
+    for (i = 0; i < arrs.length; i++) { out.set(arrs[i], off); off += arrs[i].length; }
+
+    return out;
+
+  }
+
+
+
+  function pngChunkBytes(typeStr, dataBytes) {
+
+    var body = pngConcat([pngStrBytes(typeStr), dataBytes]);
+
+    return pngConcat([pngU32be(dataBytes.length), body, pngU32be(pngCrc32(body))]);
+
+  }
+
+
+
+  function buildXmpPacket(meta) {
+
+    var xml = '<?xpacket begin="\uFEFF" id="WUTANG-AIGC"?>'
+
+      + '<x:xmpmeta xmlns:x="adobe:ns:meta/">'
+
+      + '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">'
+
+      + '<rdf:Description rdf:about=""'
+
+      + ' xmlns:wutang="https://wutang.app/ns/aigc/"'
+
+      + ' xmlns:xmp="http://ns.adobe.com/xap/1.0/"'
+
+      + ' xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/">'
+
+      + '<wutang:AIGC>true</wutang:AIGC>'
+
+      + '<wutang:ContentID>' + meta.contentId + '</wutang:ContentID>'
+
+      + '<wutang:Provider>' + meta.provider + '</wutang:Provider>'
+
+      + '<xmp:CreateDate>' + meta.createdAt + '</xmp:CreateDate>'
+
+      + '<Iptc4xmpExt:DigitalSourceType>http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>'
+
+      + '</rdf:Description></rdf:RDF></x:xmpmeta><?xpacket end="w"?>';
+
+    return pngStrBytes(xml);
+
+  }
+
+
+
+  function buildITxtChunk(xmpBytes) {
+
+    // keyword\0 + 压缩标志(0) + 压缩方法(0) + 语言\0 + 转译关键字\0 + 文本
+
+    return pngChunkBytes('iTXt', pngConcat([
+
+      pngStrBytes('XML:com.adobe.xmp'), [0], [0], [0], [0], [0], xmpBytes
+
+    ]));
+
+  }
+
+
+
+  function buildExifChunk(meta) {
+
+    var desc = pngStrBytes('AI 生成 · 悟堂 · 东方解忧处 ｜ 内容编号 ' + meta.contentId + ' ｜ 生成时间 ' + meta.createdAt);
+
+    var comment = pngStrBytes(JSON.stringify({ AIGC: true, ContentID: meta.contentId, Provider: meta.provider, CreateDate: meta.createdAt }));
+
+    var ifdLen = 2 + 12 * 2 + 4;
+
+    var descOff = 8 + ifdLen;
+
+    var commentOff = descOff + desc.length + 1;
+
+    var ifd = [].concat(
+
+      pngU16le(2),
+
+      pngU16le(0x010e), pngU16le(2), pngU32le(desc.length + 1), pngU32le(descOff),
+
+      pngU16le(0x9286), pngU16le(2), pngU32le(comment.length + 1), pngU32le(commentOff),
+
+      pngU32le(0)
+
+    );
+
+    return pngChunkBytes('eXif', pngConcat([[0x49, 0x49], pngU16le(42), pngU32le(8), ifd, desc, [0], comment, [0]]));
+
+  }
+
+
+
+  function buildCardAigcMeta(themeTag) {
+
+    var d = new Date();
+
+    var pad = function(n) { return (n < 10 ? '0' : '') + n; };
+
+    return {
+
+      contentId: 'WT-' + (themeTag || 'work') + '-' + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + '-' + Math.random().toString(36).substring(2, 6).toUpperCase(),
+
+      provider: '悟堂 · 东方解忧处',
+
+      createdAt: d.toISOString()
+
+    };
+
+  }
+
+
+
+  function injectPngAigcMeta(blob, meta) {
+
+    return blob.arrayBuffer().then(function(buf) {
+
+      var src = new Uint8Array(buf), i;
+
+      var sig = [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A];
+
+      for (i = 0; i < 8; i++) if (src[i] !== sig[i]) return Promise.reject(new Error('非 PNG 文件'));
+
+      var iendStart = src.length - 12;
+
+      var out = pngConcat([src.subarray(0, iendStart), buildITxtChunk(buildXmpPacket(meta)), buildExifChunk(meta), src.subarray(iendStart)]);
+
+      return new Blob([out], { type: 'image/png' });
+
+    });
+
+  }
+
+
+
+  function downloadPngWithAigcMeta(dataUrl, fileName, themeTag, toastText) {
+
+    fetch(dataUrl).then(function(r) { return r.blob(); })
+
+      .then(function(blob) { return injectPngAigcMeta(blob, buildCardAigcMeta(themeTag)); })
+
+      .then(function(blob) {
+
+        var url = window.URL.createObjectURL(blob);
+
+        var a = document.createElement('a');
+
+        a.href = url;
+
+        a.download = fileName;
+
+        document.body.appendChild(a);
+
+        a.click();
+
+        a.remove();
+
+        window.URL.revokeObjectURL(url);
+
+        showToast(toastText);
+
+      })
+
+      .catch(function() {
+
+        // 注入失败时降级交付原图：画面显式标识已满足法定显式轨，元数据为叠加通道
+        // 内部日志：只记 case_id + 事件类型，不记用户内容（合 safety_rules §2）——防静默降级不可观测
+        try {
+          console.warn('[AIGC-META] inject_failed', JSON.stringify({
+            event: 'png_aigc_meta_inject_failed',
+            case_id: (window.appState && appState.currentResult && appState.currentResult.case_id) || 'unknown',
+            theme_tag: themeTag || 'unknown'
+          }));
+        } catch (e) {}
+
+        var a = document.createElement('a');
+
+        a.href = dataUrl;
+
+        a.download = fileName;
+
+        document.body.appendChild(a);
+
+        a.click();
+
+        a.remove();
+
+        showToast(toastText);
+
+      });
 
   }
 
@@ -14897,21 +15801,42 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-    // 8. 页脚 Slogan（如果未绘制底图，或为公开分享版，才补充落款）
+    // 8. 页脚标识组四层（L1 出处三态 / L2 AI 法定标识 / L3 固定声明 / L4 品牌 slogan+回流短链）
+    //    墨色口径：L1/L2 为法定显式行，用正文深墨（清晰可辨，不刻意缩小或模糊）；L3 中灰；L4 淡灰
+    var microFont = Math.round(10.5 * k) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+    var l4Base = H - Math.round(36 * k);
+    var boxBottom = y + boxH;
+    var pitch = Math.round(21 * k);
+    // 碰撞保护：行动盒与微字层相撞时按序压缩行距（21k→18k→16k），不动字号与墨色
+    if (l4Base - boxBottom < 3 * Math.round(21 * k) + Math.round(10.5 * k) + Math.round(14 * k)) pitch = Math.round(18 * k);
+    if (l4Base - boxBottom < 3 * Math.round(18 * k) + Math.round(10.5 * k) + Math.round(14 * k)) pitch = Math.round(16 * k);
+    var l3Base = l4Base - pitch;
+    var l2Base = l3Base - pitch;
+    var l1Base = l2Base - pitch;
 
+    g.textAlign = 'center';
+
+    // L1 出处标识（三态，卡面从严配置）
+    g.fillStyle = '#262421';
+    g.font = microFont;
+    g.fillText(VERIFY_LABEL_CARD[cd.verify] || VERIFY_LABEL_CARD.verified, cx, l1Base);
+
+    // L2 AI 生成标识（法定显式，深墨）
+    g.fillText(AI_LABEL, cx, l2Base);
+
+    // L3 固定声明
+    g.fillStyle = '#6B655D';
+    g.fillText(FIXED_STATEMENT, cx, l3Base);
+
+    // L4 品牌 slogan（维持原条件：未绘底图或公开分享版才补充落款；公开版附回流短链）
     if (!bgDrawn || cd.isPublic) {
-
-      g.textAlign = 'center';
-
       g.fillStyle = '#77736D';
-
-      g.font = Math.round(12.5 * k) + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
-
-      g.fillText(cd.slogan, cx, H - Math.round(36 * k));
-
+      var l4FontSize = cd.isPublic ? Math.round(11 * k) : Math.round(12.5 * k);
+      g.font = l4FontSize + 'px "PingFang SC", "Microsoft YaHei", sans-serif';
+      var l4Text = cd.slogan;
+      if (cd.isPublic) l4Text += ' ｜ wutang.app/c/' + (cd.themeTag || 'work');
+      g.fillText(l4Text, cx, l4Base);
     }
-
-
 
     return cv.toDataURL('image/png');
 
@@ -14960,6 +15885,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
   function switchMainTab(tab) {
+
+    if (appState.mainTab === 'wellbeing' && tab !== 'wellbeing' && typeof sleepExit === 'function') sleepExit();
 
     appState.mainTab = tab;
 
@@ -15489,7 +16416,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     }).then(function(data) {
       var user = data.user || {};
       appState.currentUser = user;
-      appState.userNickname = user.daohao_nickname || user.name || user.username || '同修';
+      appState.userNickname = user.daohao_nickname || user.name || user.username || '朋友';
       if ($('userNicknameInput')) $('userNicknameInput').value = appState.userNickname;
       if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname;
 
@@ -15565,7 +16492,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     }).then(function(data) {
       var user = data.user || {};
       appState.currentUser = user;
-      appState.userNickname = user.daohao_nickname || user.name || user.username || '同修';
+      appState.userNickname = user.daohao_nickname || user.name || user.username || '朋友';
       if ($('userNicknameInput')) $('userNicknameInput').value = appState.userNickname;
       if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname;
 
@@ -15587,6 +16514,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     appState.currentUser = null;
 
     localStorage.removeItem('wutang_current_user');
+    localStorage.removeItem('wutang_auth_token');
 
     updateManagerUI();
 
@@ -15597,6 +16525,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
   function logoutManager() {
+    appState.currentUser = null;
+    localStorage.removeItem('wutang_current_user');
+    localStorage.removeItem('wutang_auth_token');
 
     appState.isManagerLoggedIn = false;
 
@@ -15617,6 +16548,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
   function updateManagerUI() {
+    if (typeof chatMemorySyncAuth === 'function') chatMemorySyncAuth();
 
     var tabStudio = $('tabStudio');
 
@@ -16187,13 +17119,34 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     if (!btn) return;
 
+    function updateAiStatusBtn(fullText, shortText, isReady) {
+      btn.innerHTML = '<span class="ai-status-full">' + fullText + '</span><span class="ai-status-short">' + (shortText || fullText) + '</span>';
+      if (isReady) {
+        btn.classList.add('is-ready');
+      } else {
+        btn.classList.remove('is-ready');
+      }
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }
+
     if (typeof window === 'undefined' || typeof window.fetch !== 'function') {
 
-      btn.textContent = '离线引擎模式';
+      updateAiStatusBtn('离线引擎模式', '离线', false);
 
       return;
 
     }
+
+
+
+    // 冷启动可见性：健康检查等待期间先给明确状态
+
+    appState.aiBooting = true;
+
+    updateAiStatusBtn('唤醒中…', '唤醒中', false);
+
+
 
     fetch(API_BASE + '/api/health', { method: 'GET' })
 
@@ -16201,19 +17154,28 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       .then(function(data) {
 
+        appState.aiBooting = false;
+
         if (data.status === 'healthy') {
 
           appState.aiConnected = true;
 
+          if (typeof sageChat !== 'undefined') { sageChat.offline = false; chatRenderHeader(); chatSetStatus('AI 服务已就绪，可以开始聊天。'); }
+
           appState.aiModel = data.model;
 
           var badgeText = data.llm_configured ? ('AI已就绪 (' + data.model + ')') : 'AI流式已就绪';
+          var shortBadge = data.llm_configured ? 'AI就绪' : 'AI流式';
 
-          btn.textContent = badgeText;
+          updateAiStatusBtn(badgeText, shortBadge, true);
 
-          btn.style.color = 'var(--color-primary)';
+        } else {
 
-          btn.style.borderColor = 'var(--color-primary)';
+          appState.aiConnected = false;
+
+          if (typeof sageChat !== 'undefined') { sageChat.offline = true; chatRenderHeader(); chatSetStatus('离线模式：服务未配置 AI，不模拟聊天回复。可使用下方「帮我理一理」进行本地整理。'); }
+
+          updateAiStatusBtn('离线引擎模式', '离线', false);
 
         }
 
@@ -16221,17 +17183,27 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       .catch(function() {
 
+        appState.aiBooting = false;
+
         appState.aiConnected = false;
 
-        btn.textContent = '离线引擎模式';
+        if (typeof sageChat !== 'undefined') { sageChat.offline = true; chatRenderHeader(); chatSetStatus('离线模式：聊天服务不可用，不模拟 AI 回复。可使用下方「帮我理一理」进行本地整理。'); }
 
-        btn.style.color = 'var(--color-muted)';
+        updateAiStatusBtn('离线引擎模式', '离线', false);
 
       });
 
 
 
     btn.onclick = function() {
+
+      if (appState.aiBooting) {
+
+        showToast('正在唤醒 AI 后台服务，请稍候…');
+
+        return;
+
+      }
 
       if (appState.aiConnected) {
 
@@ -16416,7 +17388,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       switchClientView('userResult');
 
-      // 立即填充专属解脱之道卡牌与最契合的 96 觉察心象画卷（避免等待 SSE 结束时才显示或白屏）
+      // 立即填充专属解忧卡牌与最契合的 96 觉察心象画卷（避免等待 SSE 结束时才显示或白屏）
       var w = (pendingMeta.cards && pendingMeta.cards.wisdom) ? pendingMeta.cards.wisdom : {};
       var ws = w.classic_source || {};
       var curTrack = pendingMeta.track || appState.selectedTrack || 'confucianism';
@@ -16518,7 +17490,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         case_id: caseId,
         track: appState.selectedTrack || 'confucianism',
         master: appState.selectedMaster || 'confucius',
-        user_nickname: appState.userNickname || '同修'
+        user_nickname: appState.userNickname || '朋友'
       }),
 
       signal: abortCtrl ? abortCtrl.signal : undefined
@@ -17952,21 +18924,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
         var pngUrl = drawRetinaCard(cd);
 
-        var a = document.createElement('a');
-
         var dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
 
-        a.href = pngUrl;
-
-        a.download = 'wutang-card-' + dateStr + '-' + appState.currentResult.case_id + '.png';
-
-        document.body.appendChild(a);
-
-        a.click();
-
-        a.remove();
-
-        showToast('已保存高清东方解忧笺图片');
+        downloadPngWithAigcMeta(pngUrl, 'wutang-card-' + dateStr + '-' + appState.currentResult.case_id + '.png', cd.themeTag, '已保存高清东方解忧笺图片');
 
       };
 
@@ -19845,10 +20805,129 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
+  var sleepGuideState = { flow: null, step: 0, timer: null, fadeTimer: null, musicStartedHere: false };
+
+  var SLEEP_GUIDES = {
+    mind: { title: '脑中停不下来', steps: ['先让身体找到一个此刻相对舒服的位置。眼睛可以轻合，也可以保持自然张开。', '不需要赶走念头。发现思绪又走远时，只在心里轻轻说一句：我注意到了。', '让呼吸照它原来的节奏进出，不必加深、变慢或数次数。', '把注意放在身体接触床面或椅面的地方，感受它们正在被承托。', '此刻不必解决所有事情。允许自己先暂停，之后再处理也可以。'] },
+    body: { title: '身体紧绷', steps: ['先找到一个不费力的姿势。任何动作都可以不做，保持舒服最重要。', '留意下颌和肩膀。如果愿意，让它们松开一点点；不需要做到完全放松。', '感受双手与手臂的重量，让它们自然地被支撑。', '注意双腿与脚和床面的接触。只观察，不用改变身体感觉。', '如果某处不舒服，就把注意移开，回到更舒适的地方。'] },
+    wake: { title: '夜醒安顿', steps: ['醒着并不代表你做错了什么。先给自己片刻，不急着判断接下来会怎样。', '感受身体被床面承托的部分，辨认一个让你觉得稍微安稳的接触点。', '让呼吸自然来去，不屏息、不控制，也不需要数数。', '如果念头出现，可以把它们当作暂时经过的想法，不必现在处理。', '你可以继续休息，也可以按自己的需要起身做安静、舒适的事。'] }
+  };
+
+  function sleepRenderStep() {
+    var guide = sleepGuideState.flow;
+    if (!guide) return;
+    $('sleepFlowTitle').textContent = guide.title;
+    $('sleepStepNum').textContent = '第 ' + (sleepGuideState.step + 1) + ' 步 / ' + guide.steps.length;
+    $('sleepStepText').textContent = guide.steps[sleepGuideState.step];
+    $('sleepNext').textContent = sleepGuideState.step === guide.steps.length - 1 ? '完成' : '继续';
+    $('sleepStepText').focus();
+  }
+
+  function sleepClearTimer() {
+    if (sleepGuideState.timer) window.clearTimeout(sleepGuideState.timer);
+    if (sleepGuideState.fadeTimer) window.clearInterval(sleepGuideState.fadeTimer);
+    sleepGuideState.timer = null;
+    sleepGuideState.fadeTimer = null;
+  }
+
+  function sleepStopMusic() {
+    if (!sleepGuideState.musicStartedHere || typeof bgmEngine === 'undefined') return;
+    bgmEngine.pause();
+    var prior = sleepGuideState.priorMusic;
+    var audio = $('bgmAudio');
+    if (prior && audio) {
+      bgmEngine.loadTrack(prior.index, false);
+      if (prior.currentTime > 0) audio.currentTime = prior.currentTime;
+      bgmEngine.setVolume(prior.volume);
+      if (prior.isPlaying) bgmEngine.play();
+    }
+    sleepGuideState.priorMusic = null;
+    sleepGuideState.musicStartedHere = false;
+    if ($('sleepMusicToggle')) $('sleepMusicToggle').textContent = '播放音乐';
+  }
+
+  function sleepExit() {
+    sleepClearTimer();
+    sleepStopMusic();
+    sleepGuideState.flow = null;
+    sleepGuideState.step = 0;
+    if ($('sleepSession')) $('sleepSession').classList.remove('is-open');
+  }
+
+  function sleepScheduleTimer() {
+    sleepClearTimer();
+    var mins = parseInt($('sleepTimer').value, 10) || 0;
+    if (!mins) return;
+    sleepGuideState.timer = window.setTimeout(function() {
+      var shouldFade = $('sleepFade').checked && typeof bgmEngine !== 'undefined';
+      if (!sleepGuideState.musicStartedHere || !shouldFade) { sleepStopMusic(); return; }
+      sleepGuideState.fadeTimer = window.setInterval(function() {
+        var audio = $('bgmAudio');
+        if (!audio) return;
+        var nextVolume = Math.max(0, (audio.volume || 0) - 0.04);
+        bgmEngine.setVolume(nextVolume);
+        if (nextVolume <= 0.001) { window.clearInterval(sleepGuideState.fadeTimer); sleepGuideState.fadeTimer = null; sleepStopMusic(); }
+      }, 250);
+    }, mins * 60 * 1000);
+  }
+
+  function sleepStartMusic() {
+    if (typeof bgmEngine === 'undefined') return;
+    var idx = parseInt($('sleepTrackSelect').value, 10) || 0;
+    if (!sleepGuideState.priorMusic) sleepGuideState.priorMusic = bgmEngine.getState();
+    bgmEngine.setVolume((parseInt($('sleepVolume').value, 10) || 0) / 100);
+    bgmEngine.loadTrack(idx, true);
+    sleepGuideState.musicStartedHere = true;
+    sleepScheduleTimer();
+    $('sleepMusicToggle').textContent = '暂停音乐';
+  }
+
+  function sleepToggleMusic() {
+    if (typeof bgmEngine === 'undefined') return;
+    if (sleepGuideState.musicStartedHere) {
+      bgmEngine.pause();
+      sleepGuideState.musicStartedHere = false;
+      $('sleepMusicToggle').textContent = '播放音乐';
+      return;
+    }
+    sleepStartMusic();
+  }
+
+  function initSleepGuide() {
+    if (!$('sleepHomeSection') || $('sleepHomeSection').dataset.ready) return;
+    $('sleepHomeSection').dataset.ready = '1';
+    document.querySelectorAll('[data-sleep-flow]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        sleepGuideState.flow = SLEEP_GUIDES[btn.getAttribute('data-sleep-flow')];
+        sleepGuideState.step = 0;
+        $('sleepSession').classList.add('is-open');
+        sleepRenderStep();
+        $('sleepSession').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      });
+    });
+    $('sleepNext').addEventListener('click', function() {
+      if (sleepGuideState.step < sleepGuideState.flow.steps.length - 1) { sleepGuideState.step += 1; sleepRenderStep(); } else sleepExit();
+    });
+    $('sleepSkip').addEventListener('click', function() {
+      if (sleepGuideState.step < sleepGuideState.flow.steps.length - 1) { sleepGuideState.step += 1; sleepRenderStep(); } else sleepExit();
+    });
+    $('sleepStop').addEventListener('click', sleepExit);
+    $('sleepMusicToggle').addEventListener('click', sleepToggleMusic);
+    $('sleepTrackSelect').addEventListener('change', function() {
+      var wasPlaying = sleepGuideState.musicStartedHere;
+      if (wasPlaying) bgmEngine.pause();
+      sleepGuideState.musicStartedHere = false;
+      if (wasPlaying) sleepStartMusic();
+    });
+    $('sleepVolume').addEventListener('input', function() {
+      if (typeof bgmEngine !== 'undefined') bgmEngine.setVolume((parseInt(this.value, 10) || 0) / 100);
+    });
+    $('sleepTimer').addEventListener('change', sleepScheduleTimer);
+  }
+
   function renderWellbeingSection() {
-
+    initSleepGuide();
     renderResourcesList('全部');
-
   }
 
 
@@ -20536,7 +21615,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       if (typeof renderPantheonSection === 'function') renderPantheonSection();
     } else if (libKey === 'zen96') {
       if (mainTitle) mainTitle.textContent = '悟堂 · 东方智慧觉察牌 (96张典藏画廊)';
-      if (subTitle) subTitle.textContent = '848×1264 超清母版 · 以宋画留白、工笔设色与传统宣纸肌理绘制。包含禅心之境、一盏茶事、因缘相惜等六大系列。';
+      if (subTitle) subTitle.textContent = '848×1264 超清母版 · 以宋画留白、工笔设色与传统宣纸肌理绘制。包含静心之境、一盏茶事、因缘相惜等六大系列。';
       if (typeof renderZen96CardsSection === 'function') renderZen96CardsSection();
     } else if (libKey === 'theme') {
       if (mainTitle) mainTitle.textContent = '东方解忧卡 · 主题卡牌包 (6大系列)';
@@ -20758,7 +21837,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
   function selectPantheonCardToConsult(cardName, school) {
     if ($('userTextarea')) {
-      $('userTextarea').value = '先圣在上，弟子在【' + cardName + '】一关偶有困惑，求宗师指点迷津...';
+      $('userTextarea').value = '最近有件事放在心上——「' + cardName + '」。想听听古人会怎么说。';
       $('userTextarea').dispatchEvent(new Event('input'));
     }
     // 切换到对应流派
@@ -22119,6 +23198,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       prevTrack: prevTrack,
 
+      loadTrack: loadTrack,
+
+      getState: function() { return { index: currentIndex, volume: volume, isPlaying: isPlaying, currentTime: audio ? audio.currentTime : 0 }; },
+
       setVolume: setVolume,
 
       togglePanel: togglePanel,
@@ -22135,11 +23218,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
   // ==========================================================================
-  // PRD 4.0 & 4.1 儒释道三学赛道、专属解脱卡牌与 96 觉察牌心象共振引擎
+  // PRD 4.0 & 4.1 东方三学赛道、专属解忧卡牌与 96 觉察牌心象共振引擎
   // ==========================================================================
   appState.selectedTrack = 'confucianism';
   appState.selectedMaster = 'confucius';
-  appState.userNickname = (appState.currentUser && (appState.currentUser.daohao_nickname || appState.currentUser.name || appState.currentUser.username)) || '同修';
+  appState.userNickname = (appState.currentUser && (appState.currentUser.daohao_nickname || appState.currentUser.name || appState.currentUser.username)) || '朋友';
   if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname;
   appState.currentCardSignature = null;
   var currentResonantZenCard = null;
@@ -22312,7 +23395,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     if (nickInput) {
       nickInput.oninput = function() {
-        appState.userNickname = nickInput.value.trim() || '同修';
+        appState.userNickname = nickInput.value.trim() || '朋友';
       };
     }
 
@@ -22327,6 +23410,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         var hint = pill.getAttribute('data-hint');
         if (mottoEl && motto) mottoEl.textContent = motto;
         if (textarea && hint) textarea.setAttribute('placeholder', hint);
+        if (typeof chatSwitchTarget === 'function') chatSwitchTarget(appState.selectedMaster, appState.selectedTrack);
       };
     });
   }
@@ -22343,23 +23427,24 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     appState.currentCardSignature = sig;
 
     if ($('lcCardName')) $('lcCardName').textContent = '【 ' + (sig.card_name || '明德') + ' 】';
-    if ($('lcMasterTag')) $('lcMasterTag').textContent = (sig.master || '先圣') + ' 垂示 ｜ ' + (sig.aphorism ? sig.aphorism.slice(0, 16) : '立足东方智慧');
+    if ($('lcMasterTag')) $('lcMasterTag').textContent = (sig.master || '先贤') + ' · 寄语 ｜ ' + (sig.aphorism ? sig.aphorism.slice(0, 16) : '立足东方智慧');
     if ($('lcAphorism')) $('lcAphorism').textContent = sig.aphorism || '君子求诸己，万般皆因行未至。';
     if ($('lcEnglishMotto')) $('lcEnglishMotto').textContent = sig.english_mantra || 'Self-discipline brings enduring peace.';
-    if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname || '同修';
+    if ($('lcNickname')) $('lcNickname').textContent = appState.userNickname || '朋友';
     if ($('lcSerialNo')) {
       var sch = (sig.school || 'RU').slice(0, 3).toUpperCase();
       $('lcSerialNo').textContent = 'WU-' + sch + '-' + (new Date().getFullYear()) + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
     }
 
     if ($('lcBackStatement')) {
-      var t = $('userTextarea') ? $('userTextarea').value.trim() : '';
-      $('lcBackStatement').textContent = t ? (t.length > 50 ? t.slice(0, 50) + '...' : t) : '心事多有内耗与纠结，求一份定心法门。';
+      var awCard = (typeof getAwarenessCardObj === 'function') ? getAwarenessCardObj() : null;
+      var reflectText = awCard ? (awCard.front_text || awCard.question || awCard.quote || '') : '';
+      $('lcBackStatement').textContent = reflectText || '把心事交给一句古人的话，先松一口气。';
     }
     if ($('lcBackClassicSource')) $('lcBackClassicSource').textContent = sig.classic_source || '《论语·卫灵公》（春秋·孔子）';
     if ($('lcBackQuote')) $('lcBackQuote').textContent = '「' + (sig.quote || '君子求诸己，小人求诸人。') + '」';
     if ($('lcBackInterp')) $('lcBackInterp').textContent = sig.interpretation || '把力气用在自己身上，是内耗的唯一解药。';
-    if ($('lcBackActionTitle')) $('lcBackActionTitle').textContent = '【' + (sig.action_title || '当下 5 分钟微功课') + '】';
+    if ($('lcBackActionTitle')) $('lcBackActionTitle').textContent = '【' + (sig.action_title || '当下 5 分钟微行动') + '】';
     if ($('lcBackActionSteps')) {
       var steps = sig.action_steps || ['闭目静坐呼吸三次', '记录当下可控之事'];
       $('lcBackActionSteps').textContent = steps.join('；');
@@ -22387,7 +23472,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         var c = cardsList[i];
         if (c.name === targetName || (targetName.length >= 2 && c.name.indexOf(targetName) !== -1)) {
           var copy = Object.assign({}, c);
-          copy.match_reason = '先圣以「' + c.name + '」为法印，此幅水墨画卷恰好映照出此等静心气象。';
+          copy.match_reason = '先贤以「' + c.name + '」为题，此幅水墨画卷恰好映照出此等静心气象。';
           return copy;
         }
       }
@@ -22396,8 +23481,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     // 语义多维共振打分
     var targetSeries = '君子修身';
     if (trackKey.indexOf('dao') !== -1 || trackKey.indexOf('道') !== -1) targetSeries = '道法自然';
-    else if (trackKey.indexOf('bud') !== -1 || trackKey.indexOf('释') !== -1 || trackKey.indexOf('佛') !== -1) targetSeries = '禅心之境';
-    else if (trackKey.indexOf('sym') !== -1 || trackKey.indexOf('圆桌') !== -1) targetSeries = '禅心之境';
+    else if (trackKey.indexOf('bud') !== -1 || trackKey.indexOf('释') !== -1 || trackKey.indexOf('佛') !== -1) targetSeries = '静心之境';
+    else if (trackKey.indexOf('sym') !== -1 || trackKey.indexOf('圆桌') !== -1) targetSeries = '静心之境';
 
     var bestCard = null;
     var maxScore = -1;
@@ -22469,7 +23554,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     if ($('rcName')) $('rcName').textContent = card.name || '静观';
     if ($('rcCore')) $('rcCore').textContent = card.core || '暂停评判，先看见正在发生的事。';
     if ($('rcQuestion')) $('rcQuestion').textContent = card.question || '如果先不急着评判，你此刻真正看见了什么？';
-    if ($('rcReason')) $('rcReason').textContent = card.match_reason || ('先圣洞幽：以此《' + (card.name || '') + '》山水意境映照当下，助你明心破执。');
+    if ($('rcReason')) $('rcReason').textContent = card.match_reason || ('先贤有言：以此《' + (card.name || '') + '》山水意境映照当下，陪你静一静。');
 
     // 检查是否已收藏
     var favs = getStorageJson('wutang_favorite_cards', []);
@@ -22526,7 +23611,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       });
       setStorageJson('wutang_favorite_cards', favs);
       if ($('btnCollectResonantCardText')) $('btnCollectResonantCardText').textContent = '已收入珍藏';
-      showToast('已将《' + card.name + '》收入您的「儒释道卡牌人生」典藏画卷！');
+      showToast('已将《' + card.name + '》收入您的「东方解忧」典藏画卷！');
     }
   }
 
@@ -22561,7 +23646,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   function exportCurrentPrintPack() {
     var sig = appState.currentCardSignature;
     if (!sig) {
-      showToast('正在为您生成解脱卡印，请稍候...');
+      showToast('正在为您生成解忧卡印，请稍候...');
       return;
     }
     showToast('正在打包 300 DPI 实体卡牌印刷文件...');
@@ -22572,8 +23657,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       name: sig.card_name || '明德',
       aphorism: sig.aphorism || '君子求诸己，万般皆因行未至。',
       english_mantra: sig.english_mantra || 'Self-discipline brings peace.',
-      user_statement: $('userTextarea') ? $('userTextarea').value.trim() : '',
-      user_nickname: appState.userNickname || '同修',
+      user_nickname: '朋友',
       lunar_date: '丙午年 · 霜降',
       classic_source: sig.classic_source || '',
       quote: sig.quote || '',
@@ -22593,7 +23677,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       var url = window.URL.createObjectURL(blob);
       var a = document.createElement('a');
       a.href = url;
-      a.download = '悟堂解脱卡-' + (sig.card_name || '明德') + '-300DPI-印刷包.zip';
+      a.download = '悟堂解忧卡-' + (sig.card_name || '明德') + '-300DPI-印刷包.zip';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -22636,7 +23720,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     ctx.fillStyle = '#9F7430';
     ctx.font = '36px serif';
-    ctx.fillText((sig.master || '先圣') + ' 垂示 ｜ 东方解脱之道', 540, 640);
+    ctx.fillText((sig.master || '先贤') + ' · 寄语 ｜ 东方解忧之道', 540, 640);
 
     // 定心偈
     ctx.fillStyle = '#221F1B';
@@ -22652,19 +23736,15 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     // 底栏
     ctx.font = '30px serif';
     ctx.fillStyle = '#4D463E';
-    ctx.fillText('求道者：' + (appState.userNickname || '同修') + '   丙午年·霜降', 540, 1680);
+    ctx.fillText('使用者：' + (appState.userNickname || '朋友') + '   丙午年·霜降', 540, 1680);
     ctx.font = '24px sans-serif';
     ctx.fillStyle = '#999';
-    ctx.fillText('悟堂 · 儒释道卡牌人生', 540, 1740);
+    ctx.fillText('悟堂 · 东方解忧', 540, 1740);
 
     var url = canvas.toDataURL('image/png');
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = '悟堂壁纸-' + (sig.card_name || '解脱之道') + '.png';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    showToast('高清壁纸已保存至本地相册！');
+
+    downloadPngWithAigcMeta(url, '悟堂壁纸-' + (sig.card_name || '解忧之道') + '.png', appState.selectedScenario, '高清壁纸已保存至本地相册！');
+
   }
 
   // 暴露到 window
@@ -22677,6 +23757,499 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   window.exportCurrentPrintPack = exportCurrentPrintPack;
   window.downloadCardWallpaper = downloadCardWallpaper;
 
+
+  /* ======================================================================
+
+     阅读字体切换器（思源宋体 / 宋刻本 / 霞鹜文楷 / 思源黑体）
+
+     - 开源网络字体 CSS 按需懒加载（jsDelivr CDN），失败自动回退本机字体
+
+     - 选择记忆于 localStorage: wutang_font_pref
+
+     ====================================================================== */
+
+  var FONT_PRESETS = [
+
+    {
+
+      id: 'song', name: '思源宋体', desc: '印刷级宋体',
+
+      family: "'Noto Serif SC Variable', 'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', 'SimSun', 'STSong', serif",
+
+      css: ['https://cdn.jsdelivr.net/npm/@fontsource-variable/noto-serif-sc@5.3.1/index.css']
+
+    },
+
+    {
+
+      id: 'songke', name: '宋刻本', desc: '默认 · 京華老宋體 · 老宋刻风味',
+
+      family: "'KingHwa_OldSong', 'Songti SC', 'SimSun', serif",
+
+      css: ['https://cdn.jsdelivr.net/npm/@chinese-fonts/jhlst@3.0.0/dist/%E4%BA%AC%E8%8F%AF%E8%80%81%E5%AE%8B%E4%BD%93v2_002/result.css']
+
+    },
+
+    {
+
+      id: 'kai', name: '霞鹜文楷', desc: '楷体 · 温润书卷气',
+
+      family: "'LXGW WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', serif",
+
+      css: ['https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css']
+
+    },
+
+    {
+
+      id: 'hei', name: '思源黑体', desc: '现代黑体 · 清朗屏显',
+
+      family: "'Noto Sans SC Variable', 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif",
+
+      css: ['https://cdn.jsdelivr.net/npm/@fontsource-variable/noto-sans-sc@5.3.1/index.css']
+
+    }
+
+  ];
+
+  var FONT_STORAGE_KEY = 'wutang_font_pref';
+
+  var fontCssLoaded = {};
+
+  var fontPanelOpen = false;
+  var fontSwitcherInitialized = false;
+
+
+
+  function getFontPreset(id) {
+
+    for (var i = 0; i < FONT_PRESETS.length; i++) {
+
+      if (FONT_PRESETS[i].id === id) return FONT_PRESETS[i];
+
+    }
+
+    return FONT_PRESETS[1];
+
+  }
+
+
+
+  function ensureFontCss(preset) {
+
+    if (!preset || !preset.css) return;
+
+    for (var i = 0; i < preset.css.length; i++) {
+
+      (function(url) {
+
+        if (fontCssLoaded[url]) return;
+
+        fontCssLoaded[url] = true;
+
+        var link = document.createElement('link');
+
+        link.rel = 'stylesheet';
+
+        link.href = url;
+
+        // 加载失败时静默回退本机字体（font-family 链已含本机回退）
+
+        link.onerror = function() {};
+
+        document.head.appendChild(link);
+
+      })(preset.css[i]);
+
+    }
+
+  }
+
+
+
+  function renderFontOptions() {
+
+    var list = $('fontOptionList');
+
+    if (!list) return;
+
+    var current = document.documentElement.getAttribute('data-font') || 'songke';
+
+    list.innerHTML = '';
+
+    FONT_PRESETS.forEach(function(preset) {
+
+      var btn = document.createElement('button');
+
+      btn.type = 'button';
+
+      btn.className = 'font-option' + (preset.id === current ? ' active' : '');
+
+      btn.setAttribute('data-font-id', preset.id);
+
+      btn.title = '使用' + preset.name + '阅读';
+
+      btn.innerHTML =
+
+        '<span class="font-option-preview" style="font-family:' + preset.family + '">悟堂解忧</span>' +
+
+        '<span class="font-option-info">' +
+
+        '<span class="font-option-name">' + preset.name + '</span>' +
+
+        '<span class="font-option-desc">' + preset.desc + '</span>' +
+
+        '</span>' +
+
+        '<span class="font-option-check">✓</span>';
+
+      btn.addEventListener('click', function() { applyFontPreset(preset.id); });
+
+      list.appendChild(btn);
+
+    });
+
+  }
+
+
+
+  function applyFontPreset(id) {
+
+    var preset = getFontPreset(id);
+
+    document.documentElement.setAttribute('data-font', preset.id);
+
+    ensureFontCss(preset);
+
+    try { localStorage.setItem(FONT_STORAGE_KEY, preset.id); } catch (e) {}
+
+    var label = $('fontCurrentLabel');
+
+    if (label) label.textContent = preset.name;
+
+    var btn = $('btnFontToggle');
+
+    if (btn) btn.title = '切换阅读字体（当前：' + preset.name + '）';
+
+    renderFontOptions();
+
+    closeFontPanel();
+
+  }
+
+
+
+  function toggleFontPanel(e) {
+
+    if (e) e.stopPropagation();
+
+    fontPanelOpen = !fontPanelOpen;
+
+    var panel = $('fontPanel');
+
+    if (!panel) return;
+
+    if (fontPanelOpen) {
+
+      renderFontOptions();
+
+      panel.classList.add('show');
+
+    } else {
+
+      panel.classList.remove('show');
+
+    }
+
+  }
+
+
+
+  function closeFontPanel() {
+
+    fontPanelOpen = false;
+
+    var panel = $('fontPanel');
+
+    if (panel) panel.classList.remove('show');
+
+  }
+
+
+
+  function initFontSwitcher() {
+    if (fontSwitcherInitialized) return;
+    fontSwitcherInitialized = true;
+
+    var saved = null;
+
+    try { saved = localStorage.getItem(FONT_STORAGE_KEY); } catch (e) {}
+
+    var preset = getFontPreset(saved || document.documentElement.getAttribute('data-font'));
+
+    document.documentElement.setAttribute('data-font', preset.id);
+
+    ensureFontCss(preset);
+
+    var label = $('fontCurrentLabel');
+
+    if (label) label.textContent = preset.name;
+
+    var btn = $('btnFontToggle');
+
+    if (btn) {
+
+      btn.title = '切换阅读字体（当前：' + preset.name + '）';
+
+      btn.addEventListener('click', toggleFontPanel);
+
+    }
+
+    var closeBtn = $('fontClosePanel');
+
+    if (closeBtn) {
+
+      closeBtn.addEventListener('click', function(e) {
+
+        if (e) e.stopPropagation();
+
+        closeFontPanel();
+
+      });
+
+    }
+
+    document.addEventListener('click', function(e) {
+
+      if (!fontPanelOpen) return;
+
+      var wrap = $('fontControlWrap');
+
+      if (wrap && !wrap.contains(e.target)) closeFontPanel();
+
+    });
+
+    renderFontOptions();
+
+  }
+
+
+
+  // 先贤聊天：页面会话只存在内存，不写入 localStorage。
+  var sageChat = { mode: 'solo', master: 'confucius', target: 'confucius', messages: [], summary: '', controller: null, requestId: 0, replies: {}, offline: false, lastUser: '' };
+  var chatMemory = { token: '', epoch: 0, items: [], editing: null, busy: false, loaded: false };
+  function chatAuthToken() { return appState.currentUser ? (localStorage.getItem('wutang_auth_token') || '') : ''; }
+  function chatRenderSummary() { if ($('chatSummaryText')) $('chatSummaryText').textContent = sageChat.summary || '暂无摘要，继续聊聊即可。'; }
+  var CHAT_SPEAKERS = { confucius: { name: '孔子', avatar: 'confucius' }, laozi: { name: '老子', avatar: 'laozi' }, buddha: { name: '佛陀', avatar: 'shakyamuni' } };
+  function chatMasterKey(master) { return master === 'shakyamuni' ? 'buddha' : (master === 'all' ? 'confucius' : (master || 'confucius')); }
+  function chatSpeakerInfo(speaker) { var key = chatMasterKey(speaker); var base = CHAT_SPEAKERS[key] || { name: String(speaker || '先贤'), avatar: key }; var asset = SAGE_AVATARS[base.avatar] || SAGE_AVATARS[key] || {}; return { key: key, name: asset.name || base.name, b64: asset.b64 || '' }; }
+  function chatAddMessage(role, content, speaker, source) {
+    var wrap = $('chatMessages');
+    if (!wrap) return null;
+    var info = role === 'user' ? { name: appState.userNickname || '我', b64: '' } : chatSpeakerInfo(speaker);
+    var row = document.createElement('div');
+    row.className = 'chat-row' + (role === 'user' ? ' mine' : '');
+    var avatar = document.createElement('div'); avatar.className = 'chat-avatar';
+    if (info.b64) { var image = document.createElement('img'); image.src = info.b64; image.alt = info.name + '头像'; avatar.appendChild(image); }
+    else avatar.textContent = role === 'user' ? '我' : info.name.slice(0, 1);
+    var message = document.createElement('div'); message.className = 'chat-message';
+    var name = document.createElement('div'); name.className = 'chat-name';
+    name.textContent = source === 'offline' ? info.name + ' · 离线引导模板 · 非模型生成' : info.name;
+    var bubble = document.createElement('div'); bubble.className = 'chat-bubble'; bubble.textContent = content || '';
+    message.appendChild(name); message.appendChild(bubble); row.appendChild(avatar); row.appendChild(message); wrap.appendChild(row);
+    wrap.scrollTop = wrap.scrollHeight;
+    return bubble;
+  }
+  function chatSetStatus(text) { var node = $('chatStatus'); if (node) node.textContent = text; }
+  function chatAbort() { sageChat.requestId += 1; if (sageChat.controller) { sageChat.controller.abort(); sageChat.controller = null; } var stop = $('btnChatStop'); if (stop) stop.disabled = true; var send = $('btnChatSend'); if (send) send.disabled = false; }
+  function chatRenderHeader() { var group = sageChat.mode === 'group'; var info = chatSpeakerInfo(sageChat.master); if ($('chatTitle')) $('chatTitle').textContent = group ? '三家圆桌 · 群聊' : info.name + ' · 单聊'; if ($('btnChatMode')) $('btnChatMode').textContent = group ? '单聊' : '群聊'; if ($('chatSubtitle')) $('chatSubtitle').textContent = sageChat.offline ? '离线模式 · 不模拟 AI 回复' : 'AI 角色演绎 · 仅供情绪整理与经典启发参考'; var bar = $('chatMentionBar'); if (!bar) return; bar.textContent = ''; var choices = group ? [null, 'confucius', 'laozi', 'buddha'] : [chatMasterKey(sageChat.master)]; choices.forEach(function(key) { var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'chat-mention' + (sageChat.target === key ? ' active' : ''); btn.textContent = key ? '@' + chatSpeakerInfo(key).name : '@圆桌'; btn.onclick = function() { sageChat.target = key; chatRenderHeader(); var input = $('chatInput'); if (input) input.focus(); }; bar.appendChild(btn); }); }
+  function chatNewConversation(notice) { chatAbort(); sageChat.messages = []; sageChat.summary = ''; chatRenderSummary(); sageChat.replies = {}; sageChat.lastUser = ''; if ($('chatSkipMemory')) $('chatSkipMemory').checked = false; if ($('chatMemoryRoundStatus')) $('chatMemoryRoundStatus').textContent = chatAuthToken() ? '本轮长期记忆：尚未开始对话。' : '本轮长期记忆：访客模式，未使用。'; var wrap = $('chatMessages'); if (wrap) wrap.textContent = ''; var note = document.createElement('p'); note.className = 'chat-notice'; note.textContent = notice || '新对话已开始。AI 角色演绎，消息不会默认保存。'; if (wrap) wrap.appendChild(note); if ($('btnChatOrganize')) $('btnChatOrganize').disabled = true; chatSetStatus(sageChat.offline ? '离线模式：无法生成聊天回复。可使用下方「帮我理一理」进行本地解忧整理。' : '可以开始说说这件事。'); }
+  function chatSwitchTarget(master, track) { chatAbort(); sageChat.master = chatMasterKey(master); sageChat.mode = (track === 'symposium' || master === 'all') ? 'group' : 'solo'; sageChat.target = sageChat.mode === 'group' ? null : sageChat.master; chatRenderHeader(); chatNewConversation('已切换至' + (sageChat.mode === 'group' ? '三家圆桌群聊' : chatSpeakerInfo(sageChat.master).name + '单聊') + '。此处消息仅保留在当前页面。'); }
+  function chatParseBlock(block, onEvent) { var lines = block.replace(/\r/g, '').split('\n'); var data = []; for (var i = 0; i < lines.length; i++) if (lines[i].indexOf('data:') === 0) data.push(lines[i].slice(5).replace(/^ /, '')); if (!data.length) return; try { onEvent(JSON.parse(data.join('\n'))); } catch (ignore) {} }
+  function chatHistoryForRequest() { var selected = []; var total = 0; for (var i = sageChat.messages.length - 1; i >= 0 && selected.length < 40; i--) { var message = sageChat.messages[i]; var size = (message.content || '').length; if (total + size > 16000) break; selected.unshift(message); total += size; } while (selected.length && selected[selected.length - 1].role !== 'user') selected.pop(); return selected; }
+  function chatShowSafety(message, level) {
+    sageChat.replies = {}; sageChat.lastUser = '';
+    if ($('btnChatOrganize')) $('btnChatOrganize').disabled = true;
+    var wrap = $('chatMessages'); if (!wrap) return;
+    var note = document.createElement('p'); note.className = 'chat-notice';
+    note.textContent = (level === 'high_risk' ? '安全提示：' : '温和提醒：') + (message || '此刻请优先联系身边可信的人或专业支持。');
+    wrap.appendChild(note); wrap.scrollTop = wrap.scrollHeight;
+    chatSetStatus('已显示安全引导，本轮不继续角色讨论。');
+  }
+  function chatConsumeSse(response, requestId) {
+    if (response.status === 401) { var authError = new Error('登录已失效，请重新登录，或退出账号后继续访客聊天。'); authError.unauthorized = true; throw authError; }
+    if (!response.ok || !response.body) throw new Error('服务暂不可用（HTTP ' + response.status + '）');
+    var reader = response.body.getReader(), decoder = new TextDecoder('utf-8'), buffer = '', safetyHandled = false, source = 'online';
+    function dispatch(evt) {
+      if (requestId !== sageChat.requestId || !evt) return;
+      if (evt.type === 'safety') { safetyHandled = true; chatAbort(); chatShowSafety(evt.message, evt.level); return; }
+      if (evt.type === 'mode') {
+        source = evt.mode === 'offline' ? 'offline' : 'online'; sageChat.offline = source === 'offline'; chatRenderHeader();
+        chatSetStatus(source === 'offline' ? '离线模式：以下为离线引导模板，不是模型生成。' : 'AI 服务已就绪。'); return;
+      }
+      if (evt.type === 'start') { chatSetStatus('正在听取你的话…'); return; }
+      if (evt.type === 'memory_status') {
+        var memoryStates = { loaded: '本轮长期记忆：已读取你确认保存的背景或偏好。', unavailable: '本轮长期记忆：服务暂不可用，未使用长期记忆；仍可继续聊天。', disabled: '本轮长期记忆：已按你的选择停用。', anonymous: '本轮长期记忆：访客模式，未使用。' };
+        if (memoryStates[evt.status]) $('chatMemoryRoundStatus').textContent = evt.status === 'loaded' && Number.isInteger(evt.count) ? '本轮长期记忆：已读取 ' + evt.count + ' 条已确认背景或偏好。' : memoryStates[evt.status];
+        return;
+      }
+      if (evt.type === 'summary') {
+        if (typeof evt.summary === 'string') {
+          sageChat.summary = evt.summary; chatRenderSummary();
+          if (sageChat.summary && Array.isArray(evt.retained_messages) && evt.retained_messages.length && evt.retained_messages.every(function(message) { return message && (message.role === 'user' || message.role === 'assistant') && typeof message.content === 'string'; })) sageChat.messages = evt.retained_messages.map(function(message) { var kept = { role: message.role, content: message.content }; if (message.role === 'assistant' && message.speaker) kept.speaker = message.speaker; return kept; });
+        }
+        return;
+      }
+      if (evt.type === 'speaker_skip') { delete sageChat.replies[chatMasterKey(evt.speaker)]; return; }
+      if (evt.type === 'speaker_start') {
+        var key = chatMasterKey(evt.speaker);
+        if (Object.keys(sageChat.replies).length >= 3 && !sageChat.replies[key]) return;
+        sageChat.replies[key] = { content: '', source: source, bubble: null }; return;
+      }
+      if (evt.type === 'token') {
+        var tokenKey = chatMasterKey(evt.speaker), reply = sageChat.replies[tokenKey];
+        if (!reply && Object.keys(sageChat.replies).length < 3) reply = sageChat.replies[tokenKey] = { content: '', source: source, bubble: null };
+        if (reply && evt.content) { reply.content += evt.content; if (!reply.bubble) reply.bubble = chatAddMessage('assistant', '', tokenKey, reply.source); reply.bubble.textContent = reply.content; $('chatMessages').scrollTop = $('chatMessages').scrollHeight; } return;
+      }
+      if (evt.type === 'error') { chatSetStatus(evt.message || '聊天服务出现问题。可改用解忧整理。'); return; }
+      if (evt.type === 'done') {
+        if (safetyHandled) return;
+        if (source !== 'offline') chatSetStatus('本轮对话结束。需要时可整理成解忧笺。');
+        Object.keys(sageChat.replies).forEach(function(key) { var reply = sageChat.replies[key]; if (reply.content) sageChat.messages.push({ role: 'assistant', content: reply.content, speaker: key }); });
+        sageChat.controller = null; if ($('btnChatStop')) $('btnChatStop').disabled = true; if ($('btnChatSend')) $('btnChatSend').disabled = false; if ($('btnChatOrganize')) $('btnChatOrganize').disabled = !sageChat.lastUser;
+      }
+    }
+    function drain() { return reader.read().then(function(part) { if (requestId !== sageChat.requestId) return; if (part.done) { buffer += decoder.decode(); if (buffer.trim()) chatParseBlock(buffer, dispatch); return; } buffer += decoder.decode(part.value, { stream: true }); var chunks = buffer.split(/\n\r?\n/); buffer = chunks.pop(); chunks.forEach(function(chunk) { chatParseBlock(chunk, dispatch); }); return drain(); }); }
+    return drain();
+  }
+  function chatSend() {
+    var input = $('chatInput'), text = input ? input.value.trim() : '';
+    if (!text) return;
+    chatAbort();
+    var requestId = sageChat.requestId; sageChat.replies = {}; sageChat.lastUser = text;
+    chatAddMessage('user', text); sageChat.messages.push({ role: 'user', content: text }); input.value = '';
+    var requestMessages = chatHistoryForRequest();
+    if (!requestMessages.length || requestMessages[requestMessages.length - 1].role !== 'user') return;
+    if ($('btnChatSend')) $('btnChatSend').disabled = true;
+    if ($('btnChatStop')) $('btnChatStop').disabled = false;
+    chatSetStatus('正在回复，可继续输入新消息以停止并开始新一轮。');
+    $('chatMemoryRoundStatus').textContent = chatAuthToken() ? '本轮长期记忆：等待服务端确认。' : '本轮长期记忆：访客模式，未使用。';
+    sageChat.controller = window.AbortController ? new AbortController() : null;
+    var chatTrack = appState.selectedTrack === 'symposium' ? null : (appState.selectedTrack || 'confucianism');
+    var chatToken = chatAuthToken(), chatHeaders = { 'Content-Type': 'application/json' };
+    if (chatToken) chatHeaders.Authorization = 'Bearer ' + chatToken;
+    fetch(API_BASE + '/api/chat/stream', {
+      method: 'POST', headers: chatHeaders,
+      body: JSON.stringify({ messages: requestMessages, summary: sageChat.summary, use_memory: !!chatToken && !$('chatSkipMemory').checked, mode: sageChat.mode, track: chatTrack, master: sageChat.mode === 'group' ? null : (appState.selectedMaster || sageChat.master), target: sageChat.mode === 'group' ? sageChat.target : null, round_limit: 2 }),
+      signal: sageChat.controller ? sageChat.controller.signal : undefined
+    }).then(function(response) { return chatConsumeSse(response, requestId); }).catch(function(error) {
+      if (requestId !== sageChat.requestId || (error && error.name === 'AbortError')) return;
+      if (error && error.unauthorized) { localStorage.removeItem('wutang_auth_token'); localStorage.removeItem('wutang_current_user'); appState.currentUser = null; chatMemorySyncAuth(); chatSetStatus(error.message); updateManagerUI(); }
+      else chatSetStatus('聊天服务不可用。请稍后重试或使用下方「帮我理一理」进行本地整理。');
+    }).finally(function() {
+      if (requestId === sageChat.requestId) { sageChat.controller = null; if ($('btnChatStop')) $('btnChatStop').disabled = true; if ($('btnChatSend')) $('btnChatSend').disabled = false; if ($('btnChatOrganize')) $('btnChatOrganize').disabled = !sageChat.lastUser; }
+    });
+  }
+  function chatMemoryResetEditor() {
+    chatMemory.editing = null;
+    $('chatMemoryInput').value = ''; $('chatMemoryConfirm').checked = false;
+    $('btnChatMemorySave').textContent = '确认保存'; $('btnChatMemoryCancel').hidden = true;
+  }
+  function chatMemoryStatus(text) { $('chatMemoryStatus').textContent = text; }
+  function chatMemoryHandleError(error, epoch) {
+    if (epoch !== chatMemory.epoch) return;
+    if (error.unauthorized) {
+      localStorage.removeItem('wutang_auth_token'); localStorage.removeItem('wutang_current_user'); appState.currentUser = null;
+      chatMemorySyncAuth(); updateManagerUI();
+    }
+    chatMemoryStatus(error.message);
+  }
+  function chatMemoryRender() {
+    var list = $('chatMemoryList'); list.textContent = '';
+    if (!chatMemory.items.length) { var empty = document.createElement('p'); empty.textContent = '尚未保存长期记忆。'; list.appendChild(empty); }
+    chatMemory.items.forEach(function(item) {
+      var row = document.createElement('div'); row.className = 'chat-memory-item';
+      var content = document.createElement('div'); content.className = 'chat-memory-content'; content.textContent = item.content;
+      var meta = document.createElement('p'); meta.className = 'chat-memory-meta';
+      meta.textContent = '来源：' + (item.source_type === 'suggestion' ? '用户确认的建议' : '用户明确确认') + ' · 日期：' + String(item.updated_at || item.created_at || '未提供').replace('T', ' ').slice(0, 19);
+      var actions = document.createElement('div'); actions.className = 'chat-actions';
+      var edit = document.createElement('button'); edit.type = 'button'; edit.className = 'btn sm secondary'; edit.textContent = '编辑'; edit.disabled = chatMemory.busy;
+      edit.onclick = function() { chatMemory.editing = item.id; $('chatMemoryInput').value = item.content; $('chatMemoryConfirm').checked = false; $('btnChatMemorySave').textContent = '确认修改'; $('btnChatMemoryCancel').hidden = false; $('chatMemoryInput').focus(); };
+      var remove = document.createElement('button'); remove.type = 'button'; remove.className = 'btn sm secondary'; remove.textContent = '删除'; remove.disabled = chatMemory.busy;
+      remove.onclick = function() { if (confirm('删除这条长期记忆？删除后将不再供新对话参考。')) chatMemoryMutate('/' + encodeURIComponent(item.id), 'DELETE', { confirmed: true }); };
+      actions.appendChild(edit); actions.appendChild(remove); row.appendChild(content); row.appendChild(meta); row.appendChild(actions); list.appendChild(row);
+    });
+  }
+  function chatMemorySetBusy(value) {
+    chatMemory.busy = value; $('chatMemoryInput').disabled = value; $('chatMemoryConfirm').disabled = value; $('chatMemoryControls').setAttribute('aria-busy', String(value));
+    ['btnChatMemorySave', 'btnChatMemoryCancel', 'btnChatMemoryRefresh', 'btnChatMemoryClear'].forEach(function(id) { $(id).disabled = value; });
+    chatMemoryRender();
+  }
+  function chatMemorySyncAuth() {
+    if (!$('chatMemoryControls') || !chatMemory) return;
+    var token = chatAuthToken();
+    if (token !== chatMemory.token) {
+      chatMemory.epoch += 1; chatMemory.token = token; chatMemory.items = []; chatMemory.loaded = false;
+      chatMemoryResetEditor(); chatMemorySetBusy(false); if ($('chatSkipMemory')) $('chatSkipMemory').checked = false; if ($('chatInput')) $('chatInput').value = '';
+      if (sageChat) chatNewConversation('账号状态已更新，已开启新对话。');
+    }
+    $('chatMemoryControls').classList.toggle('hidden', !token); $('btnChatMemoryLogin').classList.toggle('hidden', !!token);
+    if (!token) chatMemoryStatus('登录后可启用账号长期记忆；访客聊天不会读取或保存长期记忆。');
+    else if (!chatMemory.loaded && !chatMemory.busy) chatMemoryLoad();
+  }
+  function chatMemoryApi(suffix, method, body, token) {
+    var options = { method: method, headers: { Authorization: 'Bearer ' + token } };
+    if (body) { options.headers['Content-Type'] = 'application/json'; options.body = JSON.stringify(body); }
+    return fetch(API_BASE + '/api/memory' + suffix, options).then(function(response) {
+      if (!response.ok) {
+        if (response.status === 401) { var error = new Error('登录已失效，请重新登录以管理长期记忆。'); error.unauthorized = true; throw error; }
+        throw new Error('长期记忆服务暂不可用，请稍后重试。');
+      }
+      return response.status === 204 ? {} : response.json();
+    });
+  }
+  function chatMemoryLoad() {
+    var token = chatAuthToken(); if (!token || chatMemory.busy) return;
+    var epoch = chatMemory.epoch; chatMemorySetBusy(true); chatMemoryStatus('正在读取账号长期记忆…');
+    return chatMemoryApi('', 'GET', null, token).then(function(data) {
+      if (epoch !== chatMemory.epoch || token !== chatAuthToken()) return;
+      chatMemory.items = data.memories || []; chatMemory.loaded = true; chatMemoryStatus('仅使用你确认保存的背景或偏好；可勾选「本次不使用长期记忆」。');
+    }).catch(function(error) { chatMemoryHandleError(error, epoch); }).finally(function() { if (epoch === chatMemory.epoch) chatMemorySetBusy(false); });
+  }
+  function chatMemoryMutate(suffix, method, body) {
+    var token = chatAuthToken(); if (!token || chatMemory.busy) return;
+    var epoch = chatMemory.epoch; chatMemorySetBusy(true); chatMemoryStatus('正在同步账号长期记忆…');
+    return chatMemoryApi(suffix, method, body, token).then(function() {
+      if (epoch !== chatMemory.epoch || token !== chatAuthToken()) return;
+      chatMemoryResetEditor(); chatMemorySetBusy(false); return chatMemoryLoad();
+    }).catch(function(error) { chatMemoryHandleError(error, epoch); }).finally(function() { if (epoch === chatMemory.epoch && chatMemory.busy) chatMemorySetBusy(false); });
+  }
+  function initChatMemory() {
+    $('btnChatMemoryLogin').onclick = function() { $('modalAuth').classList.add('active'); $('authInputAccount').focus(); };
+    $('btnChatMemoryRefresh').onclick = chatMemoryLoad; $('btnChatMemoryCancel').onclick = chatMemoryResetEditor;
+    $('btnChatMemoryClear').onclick = function() { if (confirm('清空账号中所有长期记忆？此操作无法撤回。当前会话摘要仍可通过「新对话」清空。')) chatMemoryMutate('', 'DELETE', { confirmed: true }); };
+    $('chatMemoryForm').onsubmit = function(event) {
+      event.preventDefault(); var content = $('chatMemoryInput').value.trim();
+      if (!content) { chatMemoryStatus('请先写下一句希望保存的背景或偏好。'); return; }
+      if (!$('chatMemoryConfirm').checked) { chatMemoryStatus('请明确勾选确认后，再保存这句话。'); return; }
+      chatMemoryMutate(chatMemory.editing === null ? '' : '/' + encodeURIComponent(chatMemory.editing), chatMemory.editing === null ? 'POST' : 'PATCH', { content: content, confirmed: true, source_type: 'manual' });
+    };
+    window.addEventListener('storage', function(event) { if (event.key === 'wutang_auth_token' || event.key === 'wutang_current_user' || event.key === null) { appState.currentUser = getStorageJson('wutang_current_user', null); chatMemorySyncAuth(); } });
+    chatMemorySyncAuth();
+  }
+  function initSageChat() { initChatMemory(); chatRenderHeader(); chatNewConversation(); $('btnChatMode').onclick = function() { sageChat.mode = sageChat.mode === 'group' ? 'solo' : 'group'; sageChat.target = sageChat.mode === 'group' ? null : sageChat.master; chatRenderHeader(); chatNewConversation('已切换至' + (sageChat.mode === 'group' ? '三家圆桌群聊' : chatSpeakerInfo(sageChat.master).name + '单聊') + '，已开启新对话。'); }; $('btnChatNew').onclick = function() { chatNewConversation(); }; $('btnChatSend').onclick = chatSend; $('btnChatStop').onclick = function() { chatAbort(); chatSetStatus('已停止回复。'); }; $('chatInput').addEventListener('input', function() { if (sageChat.controller && $('chatInput').value.trim()) { chatAbort(); chatSetStatus('已停止上一轮回复，可发送新消息。'); } }); $('chatInput').addEventListener('keydown', function(e) { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); chatSend(); } }); $('btnChatOrganize').onclick = function() { if (!sageChat.lastUser) return; $('userTextarea').value = sageChat.lastUser; $('userTextarea').dispatchEvent(new Event('input')); showToast('已带入私密解忧整理流程；公开分享物料不会带入原始倾诉。'); handleClientSubmit(); }; var more = $('chatMoreSage'); if (more) more.onchange = function() { if (!more.value) return; appState.selectedMaster = more.value; sageChat.mode = 'solo'; sageChat.target = more.value; chatSwitchTarget(more.value, appState.selectedTrack); }; }
+
+  function mountGrowthEntry() {
+    var mount = $('growthEntryMount');
+    var entrySwitch = document.querySelector('#clientArea .entry-switch-bar');
+    var scenarioSection = $('scenarioSection');
+    var directArea = $('entryDirectArea');
+    var cardArea = $('entryCardArea');
+    if (!mount || !entrySwitch || !scenarioSection || !directArea || !cardArea) return;
+    [entrySwitch, scenarioSection, directArea, cardArea].forEach(function(node) {
+      mount.appendChild(node);
+    });
+  }
 
   function bootstrap() {
 
@@ -22701,12 +24274,17 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     checkAiBackendStatus();
 
     bgmEngine.init();
+
+    initFontSwitcher();
+
     initSchoolTrackSelector();
+    initSageChat();
       initZenBannerCarousel();
 
     // PRD 3.0 新增模块初始化
 
     initGrowthModule();
+    mountGrowthEntry();
 
     initWellbeingModule();
 

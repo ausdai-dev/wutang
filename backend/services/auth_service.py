@@ -11,12 +11,39 @@ import hmac
 import json
 import secrets
 import time
+import os
+import re
+from pathlib import Path
 from typing import Optional, Tuple, Dict, Any
 from fastapi import HTTPException, Header, Depends
 from backend.database import db_manager
 
-# 签名密钥 (生产环境建议从环境变量 AUTH_SECRET_KEY 读取)
-JWT_SECRET_KEY = "wutang-eastern-wisdom-secret-key-2026-auth"
+def _load_secret_key() -> str:
+    configured = os.getenv("AUTH_SECRET_KEY")
+    if configured is not None:
+        secret = configured.strip()
+    else:
+        # 本地密钥文件受 *.key 忽略规则保护；无可用存储时拒绝启动。
+        secret_path = Path(__file__).resolve().parent.parent / "data" / "auth-secret.key"
+        try:
+            fd = os.open(secret_path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        except FileExistsError:
+            secret = secret_path.read_text(encoding="utf-8").strip()
+        else:
+            secret = secrets.token_hex(48)
+            with os.fdopen(fd, "w", encoding="utf-8") as secret_file:
+                secret_file.write(secret)
+        if os.name != "nt":
+            secret_path.chmod(0o600)
+    retired_key_hash = "d8906d066c1c705981d4d563c68590c9f7a5e5dd6c40e9886cda195e3bb86e9a"
+    if hashlib.sha256(secret.encode("utf-8")).hexdigest() == retired_key_hash:
+        raise RuntimeError("AUTH_SECRET_KEY 必须更换为未公开的随机密钥")
+    if len(secret.encode("utf-8")) < 32:
+        raise RuntimeError("AUTH_SECRET_KEY 必须至少包含 32 字节随机密钥")
+    return secret
+
+
+JWT_SECRET_KEY = _load_secret_key()
 JWT_EXPIRATION_SECONDS = 7 * 24 * 3600  # 7 天有效
 
 def hash_password(password: str, salt: Optional[str] = None) -> Tuple[str, str]:
@@ -41,10 +68,9 @@ def _b64_url_encode(data: bytes) -> str:
     return base64.urlsafe_b64encode(data).decode("utf-8").rstrip("=")
 
 def _b64_url_decode(data: str) -> bytes:
-    padding = 4 - (len(data) % 4)
-    if padding and padding != 4:
-        data += "=" * padding
-    return base64.urlsafe_b64decode(data)
+    if not re.fullmatch(r"[A-Za-z0-9_-]+", data):
+        raise ValueError("凭据无效")
+    return base64.b64decode(data + "=" * (-len(data) % 4), altchars=b"-_", validate=True)
 
 def create_access_token(user: Dict[str, Any], expires_in: int = JWT_EXPIRATION_SECONDS) -> str:
     """生成标准 RFC 7519 HS256 JWT Token"""
@@ -76,6 +102,9 @@ def verify_access_token(token: str) -> Dict[str, Any]:
             raise ValueError("Token 格式不合法")
 
         header_b64, payload_b64, sig_b64 = parts
+        header = json.loads(_b64_url_decode(header_b64))
+        if not isinstance(header, dict) or header.get("alg") != "HS256" or header.get("typ") != "JWT":
+            raise ValueError("凭据无效")
         signing_input = f"{header_b64}.{payload_b64}".encode("utf-8")
         expected_sig = hmac.new(JWT_SECRET_KEY.encode("utf-8"), signing_input, hashlib.sha256).digest()
         actual_sig = _b64_url_decode(sig_b64)
@@ -86,13 +115,15 @@ def verify_access_token(token: str) -> Dict[str, Any]:
         payload_bytes = _b64_url_decode(payload_b64)
         payload = json.loads(payload_bytes.decode("utf-8"))
 
-        # 检查过期时间
-        if payload.get("exp") and int(time.time()) > int(payload["exp"]):
-            raise ValueError("Token 已过期，请重新登录")
-
+        if not isinstance(payload, dict):
+            raise ValueError("凭据无效")
+        if type(payload.get("exp")) is not int or payload["exp"] <= int(time.time()):
+            raise ValueError("凭据无效")
+        if not isinstance(payload.get("sub"), str) or not payload["sub"].strip() or len(payload["sub"]) > 128:
+            raise ValueError("凭据无效")
         return payload
-    except Exception as e:
-        raise HTTPException(status_code=401, detail=f"身份鉴权失败: {str(e)}")
+    except Exception:
+        raise HTTPException(status_code=401, detail="身份凭据无效或已过期，请重新登录") from None
 
 def get_current_user(authorization: Optional[str] = Header(None)) -> Dict[str, Any]:
     """FastAPI 依赖注入：提取并验证当前登录用户"""

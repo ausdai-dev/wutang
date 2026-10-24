@@ -68,8 +68,34 @@ setTimeout(() => {
   }
   check('页面初始化无 JS 错误', errors.length === 0);
 
-  // ---------------- A. 今日觉察牌：翻转交互 ----------------
-  console.log('\n=== A. 今日觉察牌翻转 ===');
+  // ---------------- A. 成长页签中的心事与觉察入口 ----------------
+  console.log('\n=== A. 成长页签入口迁移 ===');
+  const growthTab = doc.getElementById('tabGrowth');
+  const growthArea = doc.getElementById('growthArea');
+  const growthMount = doc.getElementById('growthEntryMount');
+  const entrySwitchBar = doc.querySelector('.entry-switch-bar');
+  const scenarioSection = doc.getElementById('scenarioSection');
+  const directArea = doc.getElementById('entryDirectArea');
+  const cardArea = doc.getElementById('entryCardArea');
+  check('心事与觉察入口已挂载在成长页签',
+    !!growthMount && [entrySwitchBar, scenarioSection, directArea, cardArea].every((node) => node && node.parentElement === growthMount));
+  check('解忧页签不再承载双入口内容',
+    !doc.querySelector('#clientArea .entry-switch-bar') && !doc.querySelector('#clientArea #entryDirectArea') && !doc.querySelector('#clientArea #entryCardArea'));
+  if (growthTab) growthTab.click();
+  check('点击成长页签显示入口', growthArea && !growthArea.classList.contains('hidden') && !growthMount.classList.contains('hidden'));
+  const growthEntryBtnDirect = doc.getElementById('entryBtnDirect');
+  const growthEntryBtnCard = doc.getElementById('entryBtnCard');
+  check('心事与觉察两个按钮仍存在', !!growthEntryBtnDirect && !!growthEntryBtnCard);
+  if (growthEntryBtnCard) growthEntryBtnCard.click();
+  check('成长页签可切换到觉察牌', !cardArea.classList.contains('hidden') && directArea.classList.contains('hidden'));
+  if (growthEntryBtnDirect) growthEntryBtnDirect.click();
+  check('成长页签可切回写心事', !directArea.classList.contains('hidden') && cardArea.classList.contains('hidden'));
+  const tabRelief = doc.getElementById('tabRelief');
+  if (tabRelief) tabRelief.click();
+  check('切回解忧页签时成长入口隐藏', growthArea.classList.contains('hidden'));
+
+  // ---------------- B. 今日觉察牌：翻转交互 ----------------
+  console.log('\n=== B. 今日觉察牌翻转 ===');
   const entryBtnCard = doc.getElementById('entryBtnCard');
   const box = doc.getElementById('awarenessCardBox');
   const flipBtn = doc.querySelector('.card-back-flip-btn');
@@ -136,16 +162,153 @@ setTimeout(() => {
         check('卡片引用非空', cq && (cq.textContent || '').trim().length > 0);
       }
 
-      console.log('\n=== 汇总 ===');
-      const failed = results.filter((r) => !r.pass);
-      console.log(`  ${results.length - failed.length}/${results.length} 通过`);
-      if (failed.length) {
-        failed.forEach((f) => console.log('  失败: ' + f.name));
-        console.log('\n存在失败项');
-        process.exit(1);
-      }
-      console.log('\n全部通过');
-      process.exit(0);
+      // ---------------- C. 阅读字体切换（宋刻本 / 文楷 / 黑体） ----------------
+      console.log('\n=== C. 阅读字体切换 ===');
+      const htmlEl = doc.documentElement;
+      const fontBtn = doc.getElementById('btnFontToggle');
+      const fontPanel = doc.getElementById('fontPanel');
+      const fontList = doc.getElementById('fontOptionList');
+      check('字体切换按钮与面板存在', !!fontBtn && !!fontPanel && !!fontList);
+      check('默认字体为宋刻本(songke)', htmlEl.getAttribute('data-font') === 'songke',
+        htmlEl.getAttribute('data-font'));
+      check('字体面板默认隐藏', fontPanel && !fontPanel.classList.contains('show'));
+      check('渲染 4 个字体选项', fontList && fontList.querySelectorAll('.font-option').length === 4,
+        fontList ? fontList.querySelectorAll('.font-option').length + ' 个' : '无');
+
+      if (fontBtn) fontBtn.click();
+      check('点击按钮后面板展开', fontPanel && fontPanel.classList.contains('show'));
+
+      const songkeOpt = doc.querySelector('.font-option[data-font-id="songke"]');
+      check('宋刻本选项存在', !!songkeOpt);
+      if (songkeOpt) songkeOpt.click();
+      check('选择宋刻本后 data-font=songke', htmlEl.getAttribute('data-font') === 'songke');
+      // jsdom 不解析 var() 间接引用：--font-serif 为 var(--font-songke)，需再查预设变量本身
+      check('CSS 变量 --font-serif 指向宋刻本预设',
+        window.getComputedStyle(htmlEl).getPropertyValue('--font-serif').indexOf('var(--font-songke)') > -1,
+        window.getComputedStyle(htmlEl).getPropertyValue('--font-serif'));
+      check('宋刻本预设变量含 KingHwa_OldSong',
+        window.getComputedStyle(htmlEl).getPropertyValue('--font-songke').indexOf('KingHwa_OldSong') > -1,
+        window.getComputedStyle(htmlEl).getPropertyValue('--font-songke'));
+      const fontLabel = doc.getElementById('fontCurrentLabel');
+      check('按钮标签更新为宋刻本', fontLabel && fontLabel.textContent === '宋刻本');
+      check('选择后面板自动收起', fontPanel && !fontPanel.classList.contains('show'));
+      check('宋刻本选项高亮',
+        !!doc.querySelector('.font-option[data-font-id="songke"].active'));
+      // 预览字形 style 属性须完整（防 family 引号截断属性这类 bug）
+      const previewStyle = (doc.querySelector('.font-option[data-font-id="songke"] .font-option-preview') || {}).style;
+      check('宋刻本预览字形内联样式完整',
+        !!previewStyle && previewStyle.fontFamily.indexOf('KingHwa_OldSong') > -1,
+        previewStyle ? previewStyle.fontFamily : '无');
+
+      // 面板开关：再展开 -> 点击页面其他处收起
+      if (fontBtn) fontBtn.click();
+      check('再次点击可重新展开面板', fontPanel && fontPanel.classList.contains('show'));
+      doc.body.click();
+      check('点击页面其他后面板收起', fontPanel && !fontPanel.classList.contains('show'));
+
+      // 切换其余预设并回到默认
+      const pickFont = (id) => {
+        const el = doc.querySelector('.font-option[data-font-id="' + id + '"]');
+        if (el) el.click();
+      };
+      pickFont('kai');
+      check('可切换到霞鹜文楷(kai)', htmlEl.getAttribute('data-font') === 'kai');
+      check('文楷预设覆写 --font-serif',
+        window.getComputedStyle(htmlEl).getPropertyValue('--font-serif').indexOf('var(--font-kai)') > -1);
+      check('文楷预设变量含 LXGW WenKai',
+        window.getComputedStyle(htmlEl).getPropertyValue('--font-kai').indexOf('LXGW WenKai') > -1);
+      pickFont('hei');
+      check('可切换到思源黑体(hei)', htmlEl.getAttribute('data-font') === 'hei');
+      check('黑体预设覆写 --font-sans',
+        window.getComputedStyle(htmlEl).getPropertyValue('--font-sans').indexOf('var(--font-hei)') > -1);
+      check('黑体预设变量含 Noto Sans SC',
+        window.getComputedStyle(htmlEl).getPropertyValue('--font-hei').indexOf('Noto Sans SC') > -1);
+      pickFont('song');
+      check('可切回思源宋体(song)', htmlEl.getAttribute('data-font') === 'song');
+
+      // ---------------- D. 字体偏好持久化恢复 ----------------
+      // 主 DOM 为 opaque origin（localStorage 不可用，应用已 try/catch 兜底）；
+      // 此处用带 localStorage 垫片的第二个 DOM 实例验证「刷新后恢复上次字体」链路。
+      console.log('\n=== D. 字体偏好持久化恢复 ===');
+      const fontStore = { wutang_font_pref: 'songke' };
+      const dom2 = new JSDOM(html, {
+        runScripts: 'dangerously',
+        pretendToBeVisual: true,
+        beforeParse(w2) {
+          Object.defineProperty(w2, 'localStorage', {
+            configurable: true,
+            value: {
+              getItem: (k) => (k in fontStore ? fontStore[k] : null),
+              setItem: (k, v) => { fontStore[k] = String(v); },
+              removeItem: (k) => { delete fontStore[k]; },
+              clear: () => { Object.keys(fontStore).forEach((k) => delete fontStore[k]); }
+            }
+          });
+        }
+      });
+      setTimeout(async () => {
+        const doc2 = dom2.window.document;
+        check('刷新后恢复上次字体偏好(songke)',
+          doc2.documentElement.getAttribute('data-font') === 'songke',
+          doc2.documentElement.getAttribute('data-font'));
+        const label2 = doc2.getElementById('fontCurrentLabel');
+        check('恢复后按钮标签为宋刻本', label2 && label2.textContent === '宋刻本');
+        check('恢复后宋刻本选项高亮',
+          !!doc2.querySelector('.font-option[data-font-id="songke"].active'));
+
+        // 使用真实 origin 覆盖无偏好、无效偏好和所有合法偏好的刷新恢复。
+        await Promise.all([null, 'invalid-font', 'songke', 'song', 'kai', 'hei'].map(async (saved) => {
+          const makeDom = (value) => new JSDOM(html, {
+            url: 'https://font-test.invalid/',
+            runScripts: 'dangerously',
+            pretendToBeVisual: true,
+            virtualConsole: new VirtualConsole(),
+            beforeParse(w) {
+              if (value !== null) w.localStorage.setItem('wutang_font_pref', value);
+            }
+          });
+          const instance = makeDom(saved);
+          const w = instance.window;
+          const expected = ['songke', 'song', 'kai', 'hei'].includes(saved) ? saved : 'songke';
+          check('首屏立即恢复字体(' + saved + ')',
+            w.document.documentElement.getAttribute('data-font') === expected);
+          await new Promise((resolve) => w.addEventListener('load', resolve, { once: true }));
+          check('初始化后保持字体(' + saved + ')',
+            w.document.documentElement.getAttribute('data-font') === expected);
+          const target = expected === 'hei' ? 'kai' : 'hei';
+          w.document.querySelector('.font-option[data-font-id="' + target + '"]').click();
+          check('手动选择写入持久化(' + saved + ')',
+            w.localStorage.getItem('wutang_font_pref') === target);
+          // 模拟字体样式异步加载完成或失败，不应覆盖用户后续选择。
+          w.document.querySelectorAll('link[rel="stylesheet"]').forEach((link) => {
+            link.dispatchEvent(new w.Event('load'));
+            link.dispatchEvent(new w.Event('error'));
+          });
+          await new Promise((resolve) => w.setTimeout(resolve, 100));
+          check('异步字体事件后保持选择(' + saved + ')',
+            w.document.documentElement.getAttribute('data-font') === target);
+          const refreshed = makeDom(w.localStorage.getItem('wutang_font_pref'));
+          await new Promise((resolve) => refreshed.window.addEventListener('load', resolve, { once: true }));
+          check('刷新保持手动选择(' + saved + ')',
+            refreshed.window.document.documentElement.getAttribute('data-font') === target);
+          refreshed.window.close();
+          w.close();
+        }));
+        check('宋刻本回退链不含思源宋体',
+          !window.getComputedStyle(htmlEl).getPropertyValue('--font-songke').includes('Noto Serif'));
+        dom2.window.close();
+
+        console.log('\n=== 汇总 ===');
+        const failed = results.filter((r) => !r.pass);
+        console.log(`  ${results.length - failed.length}/${results.length} 通过`);
+        if (failed.length) {
+          failed.forEach((f) => console.log('  失败: ' + f.name));
+          console.log('\n存在失败项');
+          process.exit(1);
+        }
+        console.log('\n全部通过');
+        process.exit(0);
+      }, 1500);
     }, 2200);
   }, 500);
 }, 600);

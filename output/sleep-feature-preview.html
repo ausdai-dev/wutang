@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>今夜安歇 · 悟堂睡前放松</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#282923;background:#f5f3ec;font-synthesis:none}*{box-sizing:border-box}body{margin:0;min-height:100vh}button,select,input{font:inherit}button{cursor:pointer}.shell{max-width:900px;margin:auto;padding:24px 22px 72px}.top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #d8d6cd;padding-bottom:14px}.brand{font-size:14px;color:#586456}.quiet{font-size:12px;color:#76796f}h1{font-family:Georgia,"Noto Serif SC",serif;font-size:34px;font-weight:500;margin:34px 0 8px}p{line-height:1.75}.intro{color:#64675f;margin:0 0 24px}.journeys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.journey{background:#fff;border:1px solid #dddcd4;border-radius:6px;text-align:left;padding:18px;color:#292b27;min-height:112px}.journey:hover,.journey:focus-visible{border-color:#71836e;outline:2px solid #71836e;outline-offset:2px}.journey strong{display:block;font-size:17px;margin-bottom:7px}.journey span{font-size:13px;color:#73756d}.musicline{margin-top:16px;padding:16px 0;border-top:1px solid #d8d6cd;border-bottom:1px solid #d8d6cd;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.musicline button,.action{border:1px solid #53674f;background:#53674f;color:white;border-radius:4px;padding:9px 14px}.musicline .plain,.action.secondary{background:transparent;color:#364333}.musicline label{font-size:13px;color:#5e6259}.musicline select{max-width:220px;padding:7px;border:1px solid #ccc;border-radius:4px;background:white}.session{display:none;margin-top:26px;border-top:2px solid #71836e;padding-top:18px}.session.on{display:block}.session-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.session h2{font-size:21px;font-weight:550;margin:0}.step{font-family:Georgia,"Noto Serif SC",serif;font-size:21px;line-height:1.9;max-width:680px;min-height:120px;margin:30px auto;text-align:center;display:grid;place-items:center}.stepnum{font-size:12px;color:#73776d;text-align:center}.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.support{border-left:3px solid #b8aa84;background:#eeece4;padding:12px 15px;margin-top:24px;color:#595b54;font-size:13px}.foot{color:#77796f;font-size:12px;margin-top:28px}.timer{display:flex;align-items:center;gap:8px}.timer select{padding:6px;border:1px solid #ccc;border-radius:4px;background:white}input[type=range]{width:95px;accent-color:#53674f}@media(max-width:620px){.shell{padding:18px 16px 60px}.journeys{grid-template-columns:1fr}.journey{min-height:auto;padding:15px}h1{font-size:29px;margin-top:26px}.session-head{align-items:flex-start}.musicline{align-items:flex-start}.step{font-size:19px;min-height:150px;padding:0 8px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top"><div class="brand">悟堂 · 今夜安歇</div><div class="quiet">现代放松引导 · 不作诊断</div></header>
+<main>
+<h1>今夜安歇</h1><p class="intro">不必努力让自己入睡。选一段简短陪伴，也可以只听音乐，或随时结束。</p>
+<div class="journeys" aria-label="选择放松引导">
+<button class="journey" data-flow="mind"><strong>脑中停不下来</strong><span>把注意轻轻带回此刻</span></button>
+<button class="journey" data-flow="body"><strong>身体紧绷</strong><span>温和感受身体，不必用力</span></button>
+<button class="journey" data-flow="wake"><strong>夜醒安顿</strong><span>给醒来的自己一点空间</span></button>
+</div>
+<div class="musicline"><button id="musicToggle" type="button">播放音乐</button><label for="track">曲目</label><select id="track"><option value="flowing_mind">行云流水</option><option value="zen_meditation">禅境冥想</option><option value="autumn_rain_zheng">秋雨箏韻</option><option value="autumn_rain_qin">秋雨琴簫合奏</option></select><label for="volume">音量</label><input id="volume" type="range" min="0" max="100" value="25" aria-label="音乐音量"><div class="timer"><label for="timer">定时关闭</label><select id="timer"><option value="0">关闭</option><option value="5">5 分钟</option><option value="10">10 分钟</option><option value="20">20 分钟</option><option value="30">30 分钟</option></select></div><label><input type="checkbox" id="fade" checked> 渐弱</label></div>
+<section class="session" id="session" aria-live="polite"><div class="session-head"><div><div class="stepnum" id="stepnum"></div><h2 id="flowtitle"></h2></div><button class="action secondary" id="stop" type="button">停止并退出</button></div><div class="step" id="steptext" tabindex="-1"></div><div class="controls"><button class="action secondary" id="skip" type="button">跳过</button><button class="action" id="next" type="button">继续</button></div></section>
+<div class="support">如果睡眠困扰持续影响日常生活，可以考虑与医生或心理健康专业人员聊聊。这里的内容是一般放松练习，不替代专业帮助。</div>
+<p class="foot">引导为现代原创文字。呼吸保持自然，不屏息、不规定次数；任何时候都可以跳过或停止。本页不会保存输入或引导状态。</p>
+</main>
+</div>
+<audio id="bgmAudio" preload="none" loop></audio>
+<script>
+(function(){
+'use strict';
+var tracks={flowing_mind:['行云流水','../frontend/assets/audio/flowing_mind.m4a'],zen_meditation:['禅境冥想','../frontend/assets/audio/zen_meditation.m4a'],autumn_rain_zheng:['秋雨箏韻','../frontend/assets/audio/autumn_rain_zheng.m4a'],autumn_rain_qin:['秋雨琴簫合奏','../frontend/assets/audio/autumn_rain_qinxiao.m4a']};
+var flows={mind:{title:'脑中停不下来',steps:['先让身体找到一个此刻相对舒服的位置。眼睛可以轻合，也可以保持自然张开。','不需要赶走念头。发现思绪又走远时，只在心里轻轻说一句：我注意到了。','让呼吸照它原来的节奏进出，不必加深、变慢或数次数。','把注意放在身体接触床面或椅面的地方，感受它们正在被承托。','此刻不必解决所有事情。允许自己先暂停，之后再处理也可以。']},body:{title:'身体紧绷',steps:['先找到一个不费力的姿势。任何动作都可以不做，保持舒服最重要。','留意下颌和肩膀。如果愿意，让它们松开一点点；不需要做到完全放松。','感受双手与手臂的重量，让它们自然地被支撑。','注意双腿与脚和床面的接触。只观察，不用改变身体感觉。','如果某处不舒服，就把注意移开，回到更舒适的地方。']},wake:{title:'夜醒安顿',steps:['醒着并不代表你做错了什么。先给自己片刻，不急着判断接下来会怎样。','感受身体被床面承托的部分，辨认一个让你觉得稍微安稳的接触点。','让呼吸自然来去，不屏息、不控制，也不需要数数。','如果念头出现，可以把它们当作暂时经过的想法，不必现在处理。','你可以继续休息，也可以按自己的需要起身做安静、舒适的事。']}};
+var session=document.getElementById('session'), flow, index=0, timerId=null, fadeId=null, stopAt=null, audio=document.getElementById('bgmAudio'), playing=false;
+function setTrack(){var t=tracks[document.getElementById('track').value];audio.src=t[1];}
+function clearTimer(){if(timerId)clearTimeout(timerId);if(fadeId)clearInterval(fadeId);timerId=fadeId=null;stopAt=null;}
+function scheduleTimer(){clearTimer();var mins=Number(document.getElementById('timer').value);if(!mins)return;stopAt=Date.now()+mins*60000;timerId=setTimeout(function(){if(document.getElementById('fade').checked&&playing){fadeId=setInterval(function(){audio.volume=Math.max(0,audio.volume-.04);if(audio.volume<=.001){audio.pause();audio.currentTime=0;playing=false;document.getElementById('musicToggle').textContent='播放音乐';clearTimer();}},250);}else{audio.pause();audio.currentTime=0;playing=false;document.getElementById('musicToggle').textContent='播放音乐';clearTimer();}},mins*60000);}
+function render(){document.getElementById('flowtitle').textContent=flow.title;document.getElementById('stepnum').textContent='第 '+(index+1)+' 步 / '+flow.steps.length;document.getElementById('steptext').textContent=flow.steps[index];document.getElementById('next').textContent=index===flow.steps.length-1?'完成':'继续';document.getElementById('steptext').focus();}
+function end(){session.classList.remove('on');flow=null;index=0;clearTimer();}
+document.querySelectorAll('[data-flow]').forEach(function(b){b.addEventListener('click',function(){flow=flows[b.dataset.flow];index=0;session.classList.add('on');render();session.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});});});
+document.getElementById('next').addEventListener('click',function(){if(index<flow.steps.length-1){index++;render();}else end();});
+document.getElementById('skip').addEventListener('click',function(){if(index<flow.steps.length-1){index++;render();}else end();});document.getElementById('stop').addEventListener('click',end);
+document.getElementById('musicToggle').addEventListener('click',function(){if(!audio.src)setTrack();if(playing){audio.pause();playing=false;this.textContent='播放音乐';}else{audio.volume=Number(document.getElementById('volume').value)/100;audio.play().then(function(){playing=true;document.getElementById('musicToggle').textContent='暂停音乐';}).catch(function(){document.getElementById('musicToggle').textContent='无法播放，请检查音频文件';});}});
+document.getElementById('track').addEventListener('change',function(){var resume=playing;audio.pause();playing=false;setTrack();if(resume)document.getElementById('musicToggle').click();});document.getElementById('volume').addEventListener('input',function(){audio.volume=Number(this.value)/100;});document.getElementById('timer').addEventListener('change',scheduleTimer);
+window.addEventListener('pagehide',function(){end();audio.pause();clearTimer();});
+})();
+</script>
+</body>
+</html>

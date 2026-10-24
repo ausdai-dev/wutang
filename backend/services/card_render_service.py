@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-悟堂 · 东方解脱之道卡牌渲染与打印导出服务
+悟堂 · 东方解忧卡牌渲染与打印导出服务
 工业级印刷标准：
 - 尺寸：标准 TCG 对战卡尺寸 63mm x 88mm + 2mm 出血线 = 67mm x 92mm
 - 分辨率：300 DPI (791 x 1087 像素)
-- 元素：正面（道相/定心偈/专属印鉴/角标裁切线）、背面（行履/典籍开示/当下微功课）、专色烫金遮罩层 (Foil Mask)
+- 元素：正面（意境/定心偈/专属印鉴/角标裁切线）、背面（经典出处/今日小事）、专色烫金遮罩层 (Foil Mask)
 """
 import io
 import os
@@ -60,7 +60,7 @@ class CardRenderService:
             "secondary": (159, 116, 48),   # 雅金 #9F7430
             "bg": (248, 244, 235),         # 宣纸暖白 #F8F4EB
             "inner_bg": (253, 251, 247),
-            "seal_text": "儒圣真传",
+            "seal_text": "心安",
         },
         "daoism": {
             "name": "道学·顺应自然",
@@ -72,13 +72,13 @@ class CardRenderService:
             "seal_text": "道法自然",
         },
         "buddhism": {
-            "name": "释学·破执解脱",
+            "name": "释学·观照自在",
             "master": "释迦牟尼",
             "primary": (181, 137, 0),      # 佛辉澄金 #B58900
             "secondary": (150, 60, 45),    # 赭石红
             "bg": (250, 247, 240),         # 佛金暖白
             "inner_bg": (255, 253, 249),
-            "seal_text": "明心见性",
+            "seal_text": "自在",
         },
         "symposium": {
             "name": "三圣圆桌·圆融会诊",
@@ -87,7 +87,7 @@ class CardRenderService:
             "secondary": (159, 116, 48),
             "bg": (248, 245, 242),
             "inner_bg": (253, 251, 249),
-            "seal_text": "三教通融",
+            "seal_text": "会心",
         }
     }
 
@@ -140,7 +140,7 @@ class CardRenderService:
             draw.text((x + 7, y + 28), t2, fill=(255, 245, 235), font=font)
 
     def render_card_front(self, data: Dict[str, Any]) -> Image.Image:
-        """渲染 300 DPI 打印级卡牌正面（道相·意境与定心）"""
+        """渲染 300 DPI 打印级卡牌正面（意境与定心）"""
         school_key = data.get("school", "confucianism")
         theme = self.SCHOOL_THEMES.get(school_key, self.SCHOOL_THEMES["confucianism"])
 
@@ -151,7 +151,7 @@ class CardRenderService:
         self._draw_crop_marks(draw)
         self._draw_borders(draw, theme["primary"], theme["secondary"])
 
-        # 2. 顶栏标识 (学校道门与全球唯一编号)
+        # 2. 顶栏标识 (流派与全球唯一编号)
         top_y = self.BLEED + 32
         font_tag = get_font("simsun.ttc", 22)
         font_num = get_font("msyh.ttc", 20)
@@ -172,7 +172,7 @@ class CardRenderService:
         master_name = data.get("master", theme["master"])
         motto = data.get("master_motto", "立足东方智慧 · 照亮人生之路")
         font_sub = get_font("msyh.ttc", 26)
-        sub_str = f"先圣 {master_name} 垂示 ｜ {motto}"
+        sub_str = f"先贤 {master_name} 寄语 ｜ {motto}"
         draw.text((self.WIDTH // 2 - (len(sub_str) * 13), 290), sub_str, fill=theme["secondary"], font=font_sub)
 
         # 5. 装饰横线
@@ -208,14 +208,14 @@ class CardRenderService:
             draw.text((self.WIDTH // 2 - (len(line) * 10), s_y), line, fill=(100, 95, 90), font=font_scene)
             s_y += 34
 
-        # 9. 底栏修持归属信息 (干支历、道号、印章)
+        # 9. 底栏信息 (节令、署名、印章)
         bottom_y = self.HEIGHT - self.BLEED - 110
         font_bot = get_font("simsun.ttc", 24)
         lunar_date = data.get("lunar_date", "丙午年 · 霜降")
-        user_name = data.get("user_nickname", "同修")
+        user_name = data.get("user_nickname", "朋友")
 
         draw.text((self.BLEED + 44, bottom_y), f"节令：{lunar_date}", fill=(80, 75, 70), font=font_bot)
-        draw.text((self.BLEED + 44, bottom_y + 36), f"求道者：{user_name}", fill=theme["primary"], font=font_bot)
+        draw.text((self.BLEED + 44, bottom_y + 36), f"使用者：{user_name}", fill=theme["primary"], font=font_bot)
 
         # 朱砂印章
         self._draw_seal(draw, self.WIDTH - self.BLEED - 100, bottom_y - 8, theme["seal_text"])
@@ -223,7 +223,7 @@ class CardRenderService:
         return img
 
     def render_card_back(self, data: Dict[str, Any]) -> Image.Image:
-        """渲染 300 DPI 打印级卡牌背面（行履·经典考据与当下功课）"""
+        """渲染 300 DPI 打印级卡牌背面（经典出处与今日小事）"""
         school_key = data.get("school", "confucianism")
         theme = self.SCHOOL_THEMES.get(school_key, self.SCHOOL_THEMES["confucianism"])
 
@@ -237,14 +237,18 @@ class CardRenderService:
         # 2. 背面标题
         top_y = self.BLEED + 32
         font_tag = get_font("simsun.ttc", 22)
-        draw.text((self.BLEED + 32, top_y), "【解脱行履 · 经典与功课】", fill=theme["primary"], font=font_tag)
+        draw.text((self.BLEED + 32, top_y), "【解忧笺 · 经典与行动】", fill=theme["primary"], font=font_tag)
 
-        # 3. 困扰溯源（脱敏心事）
+        # 3. 心事栏（默认渲染中性文案；仅 include_personal_note=True 显式开启时才渲染个人心事，
+        #    个人留念版正式开放前还需：前端显式勾选 + 不可撤回警示 + 九类 PII 扫描）
         draw.rectangle([self.BLEED + 30, 110, self.WIDTH - self.BLEED - 30, 220], fill=(245, 241, 232), outline=(230, 224, 212))
         font_sec = get_font("simsun.ttc", 24)
-        draw.text((self.BLEED + 44, 122), "【当事人心事洞察】", fill=theme["secondary"], font=font_sec)
+        draw.text((self.BLEED + 44, 122), "【今日心事 · 一句安放】", fill=theme["secondary"], font=font_sec)
         
-        user_problem = data.get("user_statement") or data.get("problem") or "心事多有内耗与纠结，求一份定心法门。"
+        if data.get("include_personal_note"):
+            user_problem = data.get("user_statement") or ""
+        else:
+            user_problem = "有些事压在心头，想找个安静的角落理一理。"
         font_txt = get_font("msyh.ttc", 21)
         prob_lines = wrap_text(user_problem, 26)[:2]
         p_y = 158
@@ -252,10 +256,10 @@ class CardRenderService:
             draw.text((self.BLEED + 46, p_y), line, fill=(60, 55, 50), font=font_txt)
             p_y += 28
 
-        # 4. 先圣原典示道 (引用)
+        # 4. 先贤原典 (引用)
         classic_box_y = 245
         draw.rectangle([self.BLEED + 30, classic_box_y, self.WIDTH - self.BLEED - 30, 570], fill=(255, 255, 255), outline=theme["secondary"])
-        draw.text((self.BLEED + 44, classic_box_y + 16), "【宗师引典 · 原真开示】", fill=theme["primary"], font=font_sec)
+        draw.text((self.BLEED + 44, classic_box_y + 16), "【先贤引典 · 原文与白话】", fill=theme["primary"], font=font_sec)
 
         book_info = data.get("classic_source") or "《论语·卫灵公》（春秋·孔子）"
         draw.text((self.BLEED + 44, classic_box_y + 50), book_info, fill=theme["secondary"], font=get_font("msyh.ttc", 20))
@@ -276,10 +280,10 @@ class CardRenderService:
             draw.text((self.BLEED + 48, i_y), line, fill=(70, 65, 60), font=font_interp)
             i_y += 30
 
-        # 5. 当下 5 分钟解脱功课
+        # 5. 今日 5 分钟微行动
         action_y = 595
         draw.rectangle([self.BLEED + 30, action_y, self.WIDTH - self.BLEED - 30, 890], fill=(245, 248, 245), outline=(200, 220, 205))
-        draw.text((self.BLEED + 44, action_y + 18), "【当下功课 · 今晚5分钟微修行】", fill=(45, 100, 60), font=font_sec)
+        draw.text((self.BLEED + 44, action_y + 18), "【今日小事 · 5 分钟微行动】", fill=(45, 100, 60), font=font_sec)
 
         action_title = data.get("action_title") or "静坐调息，记录眼前3件可控之事"
         draw.text((self.BLEED + 46, action_y + 54), f"● {action_title}", fill=(30, 30, 30), font=get_font("msyh.ttc", 23))
@@ -287,7 +291,7 @@ class CardRenderService:
         action_steps = data.get("action_steps") or [
             "停下手中的屏幕与辩解，合上双眼，做三次深长的腹式深呼吸。",
             "拿出一支笔，写下一件此刻力所能及的小事并立即动手完成。",
-            "完成后合掌默念心中定心真言，安然进入梦乡。"
+            "完成后在心里对自己说一句定心的话，安然进入梦乡。"
         ]
         s_y = action_y + 96
         font_step = get_font("msyh.ttc", 21)
@@ -299,8 +303,8 @@ class CardRenderService:
             s_y += 6
 
         # 6. 底栏防伪溯源码提示
-        draw.text((self.BLEED + 44, self.HEIGHT - self.BLEED - 70), "悟堂·东方解脱之道卡牌人生 ｜ 印刷专用母版", fill=(130, 125, 120), font=get_font("simsun.ttc", 20))
-        draw.text((self.BLEED + 44, self.HEIGHT - self.BLEED - 40), "Authentic Eastern Wisdom Liberation Card · 300 DPI TCG Ready", fill=(160, 155, 150), font=get_font("msyh.ttc", 17))
+        draw.text((self.BLEED + 44, self.HEIGHT - self.BLEED - 70), "悟堂·东方解忧处 ｜ 印刷专用母版", fill=(130, 125, 120), font=get_font("simsun.ttc", 20))
+        draw.text((self.BLEED + 44, self.HEIGHT - self.BLEED - 40), "Authentic Eastern Wisdom Relief Card · 300 DPI TCG Ready", fill=(160, 155, 150), font=get_font("msyh.ttc", 17))
 
         return img
 
@@ -359,7 +363,7 @@ class CardRenderService:
             zf.writestr("03_专色烫哑金遮罩_FoilMask.png", m_buf.getvalue())
 
             # 4. 打印店操作指南与参数台账
-            readme = f"""# 悟堂 · 儒释道解脱之道实体卡牌打印指南
+            readme = f"""# 悟堂 · 东方解忧实体卡牌打印指南
 
 - 最终成品裁切尺寸：63mm x 88mm (标准国际 TCG 卡牌规格)
 - 画布含出血尺寸：67mm x 92mm (四周各 2mm 出血，已绘制裁切基准线)
@@ -368,7 +372,7 @@ class CardRenderService:
 - 推荐工艺：正面局部烫哑金（请使用 03_专色烫哑金遮罩_FoilMask.png 出菲林板）
 - 适用卡套：标准 65mm x 90mm TCG 卡套、卡砖或集卡册
 
-本文件由「悟堂·东方智慧问答解惑与专属解脱卡牌系统」自动生成。
+本文件由「悟堂·东方智慧问答解惑与专属解忧卡牌系统」自动生成。
 """
             zf.writestr("印刷店下单说明_README.txt", readme.encode("utf-8"))
 
