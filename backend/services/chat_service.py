@@ -304,9 +304,10 @@ def build_chat_messages(history, speaker, mode, summary=None, memory_context="",
     )
     if mode == "group":
         system += (
-            "\n【三圣圆桌交互规范】：这是孔子、老子、佛陀与当事人的东方三圣圆桌交谈。"
-            "三圣相辅相成：孔子教其修己担当，老子教其守柔留余，佛陀教其破执安住。"
-            "请自然接住前一位先贤的观点或当事人的倾诉，以本门风骨补充一个启发视角，互相映衬，不机械赞同或重复。"
+            "\n【三圣圆桌论道规范】：这是孔子、老子、佛陀三位宗师同席论道，三教圆融互照。"
+            "先圣之间相知相敬、思想切磋：孔子重修己担当与仁爱，老子重顺应规律与退步守柔，佛陀重照见执念与心性清凉。"
+            "若前席已有先贤发言，请务必先温和呼应前席先贤的论点（如称‘仲尼所见重在担当，然在老夫看来……’或‘二位先生所见甚明，贫僧观之……’），"
+            "在先圣探讨互辩中层层递进，借本门经典智慧为当事人化解心结，末尾留出启发话头。"
         )
     messages = [{"role": "system", "content": system}]
     if summary:
@@ -322,9 +323,12 @@ def build_chat_messages(history, speaker, mode, summary=None, memory_context="",
             content = f"【{previous}的现代角色演绎】{content}"
         messages.append({"role": item["role"], "content": content})
     if messages[-1]["role"] == "assistant":
-        messages.append({"role": "user", "content": f"请以【{name}】的东方先贤风范回应用户，接住前文并自然融入其传世典籍金句（如{classic}传世真言）点化心结，句末留出启发提问，补充一个没有复述过的新角度。"})
+        if mode == "group":
+            messages.append({"role": "user", "content": f"请以【{name}】的东方先贤风范参与三圣圆桌论道，先自然呼应前席先贤的见解展开探讨切磋，再自然融入{classic}传世真言点化当事人心结，句末留出启发提问，补充一个没有复述过的新角度。"})
+        else:
+            messages.append({"role": "user", "content": f"请以【{name}】的东方先贤风范回应用户，接住前文并自然融入{classic}传世真言点化心结，句末留出启发提问，补充一个没有复述过的新角度。"})
     else:
-        messages.append({"role": "user", "content": f"请以【{name}】的东方先贤风范回应当前用户，若用户倾诉了具体烦难，请自然融入其传世典籍金句（如{classic}传世真言）点拨心境，句末留出启发提问；如果没有前文，不要声称接着刚才。"})
+        messages.append({"role": "user", "content": f"请以【{name}】的东方先贤风范回应当前用户，若用户倾诉了具体烦难，请自然融入{classic}传世真言点拨心境，句末留出启发提问；如果没有前文，不要声称接着刚才。"})
     return messages
 
 
@@ -370,7 +374,7 @@ async def stream_model_reply(history, speaker, mode, summary=None, memory_contex
             messages=build_chat_messages(history, speaker, mode, summary, memory_context, avoid),
             stream=True,
             temperature=settings.LLM_TEMPERATURE,
-            max_tokens=min(settings.LLM_MAX_TOKENS, 360),
+            max_tokens=max(settings.LLM_MAX_TOKENS, 8192),
         )
         length = 0
         prefix_buffer = ""

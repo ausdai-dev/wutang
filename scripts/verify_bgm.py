@@ -28,6 +28,17 @@ checks = [
     ("Zen Meditation audio file exists in assets/audio", os.path.exists(os.path.join(ROOT, "frontend", "assets", "audio", "Zen Meditation.m4a"))),
     ("Web-safe flowing_mind.m4a alias exists", os.path.exists(os.path.join(ROOT, "frontend", "assets", "audio", "flowing_mind.m4a"))),
     ("Web-safe zen_meditation.m4a alias exists", os.path.exists(os.path.join(ROOT, "frontend", "assets", "audio", "zen_meditation.m4a"))),
+    ("Cozy Bedtime Warmth audio exists", os.path.exists(os.path.join(ROOT, "frontend", "assets", "audio", "Cozy Bedtime Warmth.m4a"))),
+    ("Ethereal Sleep Drift audio exists", os.path.exists(os.path.join(ROOT, "frontend", "assets", "audio", "Ethereal Sleep Drift.m4a"))),
+    ("Nightfall Serenity audio exists", os.path.exists(os.path.join(ROOT, "frontend", "assets", "audio", "Nightfall Serenity.m4a"))),
+    ("Ocean Breeze Lullaby audio exists", os.path.exists(os.path.join(ROOT, "frontend", "assets", "audio", "Ocean Breeze Lullaby.m4a"))),
+    ("Slumber Piano Whispers audio exists", os.path.exists(os.path.join(ROOT, "frontend", "assets", "audio", "Slumber Piano Whispers.m4a"))),
+    ("Cozy Bedtime Warmth referenced in index.html", "cozy_bedtime_warmth.m4a" in content),
+    ("Ethereal Sleep Drift referenced in index.html", "ethereal_sleep_drift.m4a" in content),
+    ("Nightfall Serenity referenced in index.html", "nightfall_serenity.m4a" in content),
+    ("Ocean Breeze Lullaby referenced in index.html", "ocean_breeze_lullaby.m4a" in content),
+    ("Slumber Piano Whispers referenced in index.html", "slumber_piano_whispers.m4a" in content),
+    ("Total 9 sleep tracks in sleepTrackSelect", content.count("<option value=") >= 9),
 ]
 
 all_pass = True

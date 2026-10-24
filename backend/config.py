@@ -30,7 +30,7 @@ class Settings(BaseModel):
     LLM_MODEL: str = os.getenv("LLM_MODEL", "deepseek-v4-flash").strip()
     LLM_TIMEOUT: float = float(os.getenv("LLM_TIMEOUT", "30.0"))
     LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.7"))
-    LLM_MAX_TOKENS: int = int(os.getenv("LLM_MAX_TOKENS", "1500"))
+    LLM_MAX_TOKENS: int = int(os.getenv("LLM_MAX_TOKENS", "8192"))
 
     # 兜底与降级开关：未配置 API Key 或请求超时时，是否启用高质量离线解忧引擎流式生成
     ENABLE_FALLBACK_STREAM: bool = os.getenv("ENABLE_FALLBACK_STREAM", "true").lower() == "true"

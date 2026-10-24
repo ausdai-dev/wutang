@@ -1171,6 +1171,116 @@ body::after {
 .sleep-music-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--color-border); }
 .sleep-music-row label { color: var(--color-muted); font-size: 12px; }
 .sleep-music-row select { border: 1px solid var(--color-border); border-radius: 5px; background: var(--color-surface); padding: 6px 8px; color: var(--color-ink); }
+
+/* 助眠音乐呼吸示波器 (Sleep Music Breathing Oscilloscope) */
+.sleep-scope-wrap {
+  margin-top: 14px;
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  background: radial-gradient(ellipse at 50% 50%, #16241D 0%, #0D1612 100%);
+  border: 1px solid rgba(113, 131, 110, 0.35);
+  box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.45), 0 3px 12px rgba(18, 30, 23, 0.08);
+  overflow: hidden;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: pointer;
+  transition: border-color var(--trans), box-shadow var(--trans);
+  outline: none;
+}
+.sleep-scope-wrap:hover {
+  border-color: rgba(133, 227, 179, 0.55);
+  box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.45), 0 4px 18px rgba(113, 131, 110, 0.18);
+}
+.sleep-scope-wrap:focus-visible {
+  outline: 2px solid #85E3B3;
+  outline-offset: 2px;
+}
+.sleep-scope-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px 4px;
+  font-size: 11.5px;
+  color: rgba(220, 235, 225, 0.72);
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
+.sleep-scope-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.sleep-scope-led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #71836E;
+  box-shadow: 0 0 6px rgba(113, 131, 110, 0.6);
+  transition: all 0.3s ease;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.sleep-scope-wrap.is-playing .sleep-scope-led {
+  background: #85E3B3;
+  box-shadow: 0 0 8px #85E3B3, 0 0 16px rgba(133, 227, 179, 0.8);
+  animation: sleepLedBreathe 5.6s ease-in-out infinite;
+}
+@keyframes sleepLedBreathe {
+  0%, 100% { opacity: 0.45; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+.sleep-scope-breath-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: rgba(113, 131, 110, 0.18);
+  border: 1px solid rgba(133, 227, 179, 0.25);
+  color: #C8E6D3;
+  font-size: 11px;
+  transition: all 0.4s ease;
+}
+.sleep-scope-wrap.is-playing .sleep-scope-breath-pill {
+  border-color: rgba(133, 227, 179, 0.6);
+  background: rgba(113, 131, 110, 0.28);
+  box-shadow: 0 0 10px rgba(133, 227, 179, 0.25);
+}
+.sleep-scope-canvas {
+  display: block;
+  width: 100%;
+  height: 84px;
+  vertical-align: middle;
+}
+.sleep-scope-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 14px 7px;
+  font-size: 10.5px;
+  color: rgba(180, 205, 190, 0.55);
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
+.sleep-scope-hint {
+  font-size: 10.5px;
+  color: rgba(180, 205, 190, 0.5);
+}
+@media (max-width: 680px) {
+  .sleep-scope-canvas { height: 74px; }
+  .sleep-scope-head { padding: 6px 10px 2px; font-size: 11px; }
+  .sleep-scope-foot { padding: 2px 10px 6px; font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sleep-scope-led { animation: none !important; }
+}
+
 .sleep-session { display: none; margin-top: 18px; padding-top: 16px; border-top: 2px solid #71836E; }
 .sleep-session.is-open { display: block; }
 .sleep-session-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
@@ -3982,6 +4092,21 @@ body::after {
   line-height: 1.6;
 }
 
+/* 成长页五药丸面板：内嵌模块不再重复卡片外框，避免卡片套卡片 */
+.growth-entry-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.growth-entry-panel > .card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
 .entry-switch-bar {
 
   display: flex;
@@ -5838,150 +5963,265 @@ body::after {
 
 
 
-/* 卡背：神秘深空与金色天体罗盘 (参考萍生解忧 CardDeck) */
+/* ========================================================
+   卡背：神秘深空天体罗盘与星空粒子动画 (Cosmic Nebula & Starry Particles)
+   ======================================================== */
 
-.card-3d-back {
-
+.card-3d-back,
+.awareness-card-back.card-3d-back {
   position: absolute;
-
   inset: 0;
-
   top: 0;
-
   left: 0;
-
   width: 100%;
-
   height: 100%;
-
-  background: linear-gradient(135deg, #0c0924 0%, #170d3a 50%, #050212 100%);
-
-  border: 1px solid rgba(245, 158, 11, 0.35);
-
+  border-radius: 16px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 28%, #1c1145 0%, #0e082b 45%, #050212 100%) !important;
+  border: 1px solid rgba(245, 197, 66, 0.45) !important;
   display: flex;
-
   flex-direction: column;
-
   justify-content: space-between;
-
-  padding: 14px 12px;
-
+  padding: 16px 14px;
   color: #eeddbb;
-
   box-sizing: border-box;
-
+  box-shadow: inset 0 0 35px rgba(5, 2, 18, 0.9), 0 14px 38px rgba(5, 3, 18, 0.45);
 }
 
+/* 1. 动态流动星云 (Breathing Mystic Nebula) */
 .card-3d-back::before {
-
   content: "";
-
   position: absolute;
+  inset: -25%;
+  width: 150%;
+  height: 150%;
+  background: 
+    radial-gradient(circle at 45% 30%, rgba(139, 92, 246, 0.25) 0%, transparent 48%),
+    radial-gradient(circle at 75% 68%, rgba(217, 119, 6, 0.18) 0%, transparent 42%),
+    radial-gradient(circle at 25% 72%, rgba(14, 165, 233, 0.16) 0%, transparent 46%),
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.22) 0%, transparent 62%);
+  filter: blur(20px);
+  opacity: 0.85;
+  animation: cosmicNebulaShift 18s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
 
+/* 2. 漫天星尘与闪烁繁星 (Twinkling Star Dust Field) */
+.card-3d-back::after {
+  content: "";
+  position: absolute;
   inset: 0;
-
-  background: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
-
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1.2px 1.2px at 45px 75px, rgba(245, 197, 66, 0.85), transparent),
+    radial-gradient(1.5px 1.5px at 60px 160px, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(1px 1px at 95px 45px, rgba(147, 197, 253, 0.8), transparent),
+    radial-gradient(1.8px 1.8px at 135px 85px, rgba(255, 255, 255, 0.98), transparent),
+    radial-gradient(1px 1px at 170px 125px, rgba(253, 224, 71, 0.8), transparent),
+    radial-gradient(1.2px 1.2px at 215px 48px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1.6px 1.6px at 245px 100px, rgba(245, 197, 66, 0.95), transparent),
+    radial-gradient(1px 1px at 275px 145px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1.3px 1.3px at 32px 225px, rgba(196, 181, 253, 0.85), transparent),
+    radial-gradient(1px 1px at 75px 285px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1.5px 1.5px at 115px 245px, rgba(245, 197, 66, 0.9), transparent),
+    radial-gradient(1px 1px at 155px 315px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1.4px 1.4px at 205px 275px, rgba(147, 197, 253, 0.85), transparent),
+    radial-gradient(1px 1px at 255px 335px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.7px 1.7px at 285px 265px, rgba(253, 224, 71, 0.95), transparent),
+    radial-gradient(1px 1px at 48px 385px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1.3px 1.3px at 90px 425px, rgba(245, 197, 66, 0.8), transparent),
+    radial-gradient(1px 1px at 145px 395px, rgba(196, 181, 253, 0.8), transparent),
+    radial-gradient(1.6px 1.6px at 195px 445px, rgba(255, 255, 255, 0.98), transparent),
+    radial-gradient(1px 1px at 240px 405px, rgba(245, 197, 66, 0.85), transparent),
+    radial-gradient(1.3px 1.3px at 280px 455px, rgba(255, 255, 255, 0.8), transparent);
+  background-size: 310px 480px;
+  opacity: 0.85;
+  animation: starsTwinklePulse 6s ease-in-out infinite alternate;
   pointer-events: none;
-
+  z-index: 1;
 }
 
-.card-corner {
-
+/* 3. 独立星空粒子动态层 (Star Particles Layer) */
+.card-stars-layer {
   position: absolute;
-
-  width: 10px;
-
-  height: 10px;
-
-  border-color: rgba(245, 197, 66, 0.7);
-
+  inset: 0;
   pointer-events: none;
-
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 16px;
 }
 
-.card-corner.tl { top: 7px; left: 7px; border-top: 1.5px solid; border-left: 1.5px solid; }
+/* 十字星芒 (Glittering Star Glints) */
+.star-glint {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 6px 1.5px rgba(254, 240, 138, 0.95), 0 0 12px 2px rgba(245, 197, 66, 0.6);
+  pointer-events: none;
+}
+.star-glint::before, .star-glint::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to right, transparent, rgba(254, 240, 138, 0.95), transparent);
+}
+.star-glint::before { width: 14px; height: 1px; }
+.star-glint::after { width: 1px; height: 14px; }
 
-.card-corner.tr { top: 7px; right: 7px; border-top: 1.5px solid; border-right: 1.5px solid; }
+.star-glint.g1 { top: 16%; left: 20%; animation: glintBlink 4.2s ease-in-out infinite; }
+.star-glint.g2 { top: 24%; right: 18%; animation: glintBlink 5.6s ease-in-out 1.3s infinite; }
+.star-glint.g3 { bottom: 22%; left: 16%; animation: glintBlink 4.8s ease-in-out 2.2s infinite; }
+.star-glint.g4 { bottom: 18%; right: 22%; animation: glintBlink 6.2s ease-in-out 0.7s infinite; }
 
-.card-corner.bl { bottom: 7px; left: 7px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+/* 划过星空的流星 (Shooting Stars) */
+.card-meteor {
+  position: absolute;
+  top: 10%;
+  left: -50px;
+  width: 80px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(254, 240, 138, 0.85) 65%, #FFFFFF 100%);
+  transform: rotate(-35deg);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 5px rgba(254, 240, 138, 0.95));
+  opacity: 0;
+  animation: meteorShower 8.5s cubic-bezier(0.2, 0.7, 0.3, 1) infinite;
+  pointer-events: none;
+}
+.card-meteor.m2 {
+  top: 55%;
+  left: -40px;
+  width: 60px;
+  height: 1.2px;
+  animation-delay: 4.8s;
+  animation-duration: 9.5s;
+}
 
-.card-corner.br { bottom: 7px; right: 7px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
+/* 浮动金色微尘粒子 (Floating Stardust Particles) */
+.card-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(253, 230, 138, 0.85);
+  box-shadow: 0 0 6px rgba(245, 197, 66, 0.8);
+  pointer-events: none;
+}
+.card-particle.p1 { left: 18%; width: 2.5px; height: 2.5px; animation: particleFloat 7s ease-in-out infinite; }
+.card-particle.p2 { left: 42%; width: 2px; height: 2px; animation: particleFloat 9s ease-in-out 1.8s infinite; }
+.card-particle.p3 { left: 68%; width: 3px; height: 3px; animation: particleFloat 8s ease-in-out 3.2s infinite; }
+.card-particle.p4 { left: 28%; width: 1.8px; height: 1.8px; animation: particleFloat 10s ease-in-out 4.5s infinite; }
+.card-particle.p5 { left: 82%; width: 2.5px; height: 2.5px; animation: particleFloat 8.5s ease-in-out 2.4s infinite; }
 
+/* 4. 边角纹样与金色边线 */
+.card-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(245, 197, 66, 0.85);
+  filter: drop-shadow(0 0 3px rgba(245, 197, 66, 0.6));
+  pointer-events: none;
+  z-index: 3;
+}
 
+.card-corner.tl { top: 9px; left: 9px; border-top: 1.8px solid; border-left: 1.8px solid; }
+.card-corner.tr { top: 9px; right: 9px; border-top: 1.8px solid; border-right: 1.8px solid; }
+.card-corner.bl { bottom: 9px; left: 9px; border-bottom: 1.8px solid; border-left: 1.8px solid; }
+.card-corner.br { bottom: 9px; right: 9px; border-bottom: 1.8px solid; border-right: 1.8px solid; }
 
 .card-back-header {
-
   font-family: monospace;
-
-  font-size: 8.5px;
-
+  font-size: 9px;
   letter-spacing: 0.35em;
-
-  color: rgba(245, 197, 66, 0.75);
-
+  color: rgba(253, 230, 138, 0.9);
+  text-shadow: 0 0 8px rgba(245, 197, 66, 0.5);
   text-transform: uppercase;
-
-  z-index: 2;
-
+  z-index: 3;
   text-align: center;
-
 }
 
 .card-back-center {
-
   position: relative;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   height: 130px;
-
-  z-index: 2;
-
+  z-index: 3;
 }
 
+/* 中心天体星芒光晕 (Cosmic Ring Aura) */
+.card-back-center::before {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 197, 66, 0.22) 0%, rgba(220, 38, 38, 0.1) 45%, transparent 70%);
+  filter: blur(10px);
+  animation: pulseAura 4.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 天体外环带卫星星宿 */
 .card-orbit-ring {
-
   position: absolute;
-
   width: 110px;
-
   height: 110px;
-
   border-radius: 50%;
-
-  border: 1px dashed rgba(245, 197, 66, 0.4);
-
+  border: 1px dashed rgba(245, 197, 66, 0.5);
+  box-shadow: 0 0 16px rgba(245, 197, 66, 0.25), inset 0 0 12px rgba(245, 197, 66, 0.15);
   animation: orbitBreath 8s ease-in-out infinite;
-
+  z-index: 1;
 }
 
-.card-orbit-ring-inner {
-
+.card-orbit-ring::after {
+  content: "";
   position: absolute;
-
-  width: 80px;
-
-  height: 80px;
-
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-
-  border: 1px double rgba(245, 197, 66, 0.4);
-
-  animation: spinOrbitRev 25s linear infinite;
-
+  background: #FFFBEB;
+  box-shadow: 0 0 8px 2px rgba(245, 197, 66, 0.95);
 }
 
-/* 印章 · 悟 */
+/* 天体内环反向旋转 */
+.card-orbit-ring-inner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px double rgba(245, 197, 66, 0.5);
+  box-shadow: 0 0 10px rgba(245, 197, 66, 0.2);
+  animation: spinOrbitRev 22s linear infinite;
+  z-index: 1;
+}
+
+.card-orbit-ring-inner::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #FDE68A;
+  box-shadow: 0 0 6px 1.5px rgba(245, 197, 66, 0.9);
+}
+
+/* 印章 · 悟 (立体金边与朱砂神光) */
 .card-seal {
   position: relative;
   width: 44px;
   height: 44px;
-  background: var(--color-primary);
+  background: linear-gradient(135deg, #a82424 0%, #851c1c 100%);
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -5990,54 +6230,76 @@ body::after {
   font-size: 24px;
   font-weight: 700;
   color: #FDF6EC;
-  box-shadow: 0 0 10px rgba(142, 41, 39, 0.35);
+  box-shadow: 0 0 16px rgba(186, 44, 44, 0.65), 0 0 28px rgba(245, 197, 66, 0.35);
+  z-index: 3;
+  animation: sealBreath 5s ease-in-out infinite;
 }
 
 .card-seal::before {
   content: '';
   position: absolute;
   inset: 3px;
-  border: 1.5px solid rgba(253, 246, 236, 0.5);
+  border: 1.5px solid rgba(253, 246, 236, 0.55);
   border-radius: 3px;
 }
 
 .card-back-footer {
-
   font-family: var(--font-serif);
-
   font-size: 10px;
-
   letter-spacing: 0.25em;
-
-  color: rgba(245, 197, 66, 0.7);
-
+  color: rgba(253, 230, 138, 0.85);
+  text-shadow: 0 0 8px rgba(245, 197, 66, 0.4);
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
-  gap: 3px;
-
-  z-index: 2;
-
+  gap: 4px;
+  z-index: 3;
   text-align: center;
-
 }
 
 .card-back-footer .tap-hint {
-
   font-size: 9px;
-
-  color: rgba(255, 255, 255, 0.6);
-
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.1em;
-
   animation: pulseAura 2.5s infinite ease-in-out;
-
 }
 
+/* 核心关键帧动画 */
+@keyframes cosmicNebulaShift {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.75; }
+  50% { transform: scale(1.12) rotate(180deg); opacity: 0.95; }
+  100% { transform: scale(1) rotate(360deg); opacity: 0.75; }
+}
 
+@keyframes starsTwinklePulse {
+  0% { opacity: 0.65; transform: scale(0.99); }
+  50% { opacity: 0.95; transform: scale(1.01); }
+  100% { opacity: 0.75; transform: scale(1); }
+}
+
+@keyframes glintBlink {
+  0%, 100% { transform: scale(0.65); opacity: 0.3; }
+  50% { transform: scale(1.35); opacity: 1; filter: drop-shadow(0 0 6px rgba(254, 240, 138, 0.95)); }
+}
+
+@keyframes meteorShower {
+  0% { transform: translate(-60px, -40px) rotate(-35deg); opacity: 0; }
+  3% { opacity: 0.95; }
+  12% { transform: translate(340px, 230px) rotate(-35deg); opacity: 0; }
+  100% { transform: translate(340px, 230px) rotate(-35deg); opacity: 0; }
+}
+
+@keyframes particleFloat {
+  0% { bottom: -10px; opacity: 0; transform: translateX(0); }
+  20% { opacity: 0.85; }
+  80% { opacity: 0.75; }
+  100% { bottom: 105%; opacity: 0; transform: translateX(18px); }
+}
+
+@keyframes sealBreath {
+  0%, 100% { box-shadow: 0 0 14px rgba(186, 44, 44, 0.6), 0 0 24px rgba(245, 197, 66, 0.25); transform: scale(1); }
+  50% { box-shadow: 0 0 22px rgba(186, 44, 44, 0.85), 0 0 36px rgba(245, 197, 66, 0.45); transform: scale(1.03); }
+}
 
 @keyframes orbitBreath {
 
@@ -9704,9 +9966,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       <!-- 模块 0: 自我觉察与情境梳理 (三药丸: 1.今日觉察牌 / 2.我有件心事 / 3.情境练习) -->
       <section class="card" id="growthEntryMount" style="margin-bottom:0;border:1.5px solid var(--color-border-dark);">
         <div class="entry-switch-bar">
-          <button class="entry-pill active" id="entryBtnCard">抽一张今日觉察牌</button>
-          <button class="entry-pill" id="entryBtnDirect">我有件心事</button>
-          <button class="entry-pill" id="entryBtnPractice">情境练习</button>
+          <button class="entry-pill active" id="entryBtnCard">卡牌</button>
+          <button class="entry-pill" id="entryBtnJournal">日记</button>
+          <button class="entry-pill" id="entryBtnDirect">心事</button>
+          <button class="entry-pill" id="entryBtnPractice">练习</button>
+          <button class="entry-pill" id="entryBtnCalendar">日历</button>
         </div>
 
         <!-- 此时心境（可选） -->
@@ -9723,6 +9987,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
               <div class="awareness-card-container" id="awarenessCardBox" title="点击翻转卡牌">
                 <!-- 卡背 (3D 动态金色天体罗盘) -->
                 <div class="awareness-card-face awareness-card-back card-3d-back">
+                  <div class="card-stars-layer" aria-hidden="true"><div class="card-meteor"></div><div class="card-meteor m2"></div><div class="star-glint g1"></div><div class="star-glint g2"></div><div class="star-glint g3"></div><div class="star-glint g4"></div><div class="card-particle p1"></div><div class="card-particle p2"></div><div class="card-particle p3"></div><div class="card-particle p4"></div><div class="card-particle p5"></div></div>
                   <div class="card-corner tl"></div>
                   <div class="card-corner tr"></div>
                   <div class="card-corner bl"></div>
@@ -9824,7 +10089,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         <!-- 药丸 3: 情境练习 -->
         <div id="entryPracticeArea" class="hidden" style="display:flex;flex-direction:column;gap:18px;">
           <section class="card" style="margin-bottom:0;background:transparent;padding:0;box-shadow:none;border:none;">
-            <span class="badge ok" style="margin-bottom:6px;">情境演练 · 替代表达</span>
             <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">情境练习室 · 沟通助手</h2>
             <p style="margin:0;font-size:13.5px;color:var(--color-muted);">
               在安全的环境中，练习职场与人际边界沟通。AI 扮演对话对象，提供 4 维非评判反馈与高情商替代表达。
@@ -9880,470 +10144,471 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
             </div>
           </section>
         </div>
-      </section>
 
-      <!-- 模块 1 & 2 合并: 每日心境签到与 AI 心事日记 (F-10 / F-12) -->
+        <!-- 药丸 2: 日记（每日心境签到 + AI 心事日记 + 今日微行动复盘） -->
+        <div id="entryJournalArea" class="hidden growth-entry-panel">
+        <!-- 模块 1 & 2 合并: 每日心境签到与 AI 心事日记 (F-10 / F-12) -->
 
-      <section class="card" id="checkinAndJournalCard">
+        <section class="card" id="checkinAndJournalCard">
 
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
 
-          <div>
+            <div>
 
-            <span class="badge ok" style="margin-bottom:6px;">日常觉察 · 每日签到与心事日记</span>
+              <span class="badge ok" style="margin-bottom:6px;">日常觉察 · 每日签到与心事日记</span>
 
-            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">今天的你，感觉怎么样？</h2>
+              <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">今天的你，感觉怎么样？</h2>
 
-            <p style="margin:0;font-size:13.5px;color:var(--color-muted);">
+              <p style="margin:0;font-size:13.5px;color:var(--color-muted);">
 
-              用 10-30 秒留下主观心绪，或写下心事由 AI 结构化梳理。仅保存在本地设备。
+                用 10-30 秒留下主观心绪，或写下心事由 AI 结构化梳理。仅保存在本地设备。
+
+              </p>
+
+            </div>
+
+            <div style="font-size:12px;color:var(--color-gold);background:var(--color-gold-bg);border:1px solid var(--color-gold-border);padding:4px 10px;border-radius:14px;" id="checkinTodayDateBadge">
+
+              今日：2026-10-19
+
+            </div>
+
+          </div>
+
+
+
+          <div style="margin-top:16px;">
+
+            <div class="section-label" style="font-size:13px;margin-bottom:6px;">选择符合当下的感受标签（可多选）：</div>
+
+            <div class="mood-chip-group" id="moodChipGroup">
+
+              <div class="mood-chip" data-mood="calm">平静从容</div>
+
+              <div class="mood-chip" data-mood="joy">充实欣喜</div>
+
+              <div class="mood-chip" data-mood="tired">疲惫透支</div>
+
+              <div class="mood-chip" data-mood="anxious">焦虑心慌</div>
+
+              <div class="mood-chip" data-mood="frustrated">烦躁窝火</div>
+
+              <div class="mood-chip" data-mood="sad">沮丧失落</div>
+
+              <div class="mood-chip" data-mood="overthinking">内耗反刍</div>
+
+              <div class="mood-chip" data-mood="relieved">释怀看开</div>
+
+            </div>
+
+          </div>
+
+
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:16px;margin-top:16px;margin-bottom:12px;">
+
+            <!-- 精力状态数字滑块 (1-10分) -->
+            <div class="slider-control-card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <div class="section-label" style="font-size:13px;margin:0;font-weight:600;color:var(--color-ink);">当前的精力状态：</div>
+                <div class="slider-value-badge" id="energyValueBadge" style="background:var(--color-success-bg);color:var(--color-success);border:1px solid var(--color-success-border);padding:3px 10px;border-radius:14px;font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;">
+                  <span id="energyNumText" style="font-size:14px;font-family:var(--font-serif);font-weight:bold;">6</span>
+                  <span style="opacity:0.6;font-size:11px;">/ 10</span>
+                  <span style="opacity:0.4;">·</span>
+                  <span id="energyDescText">平稳</span>
+                </div>
+              </div>
+              <div class="slider-wrapper">
+                <input type="range" id="energyRangeInput" min="1" max="10" step="1" value="6" class="wt-slider wt-slider-energy" aria-label="当前的精力状态滑块">
+                <div class="slider-scale-labels" style="display:flex;justify-content:space-between;font-size:11px;color:var(--color-muted);margin-top:4px;padding:0 2px;">
+                  <span>1 透支</span>
+                  <span>3 疲惫</span>
+                  <span>5 平稳</span>
+                  <span>7 充沛</span>
+                  <span>10 饱满</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 主观压力感受数字滑块 (1-10分) -->
+            <div class="slider-control-card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <div class="section-label" style="font-size:13px;margin:0;font-weight:600;color:var(--color-ink);">主观压力感受：</div>
+                <div class="slider-value-badge" id="stressValueBadge" style="background:var(--color-gold-bg);color:var(--color-gold);border:1px solid var(--color-gold-border);padding:3px 10px;border-radius:14px;font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;">
+                  <span id="stressNumText" style="font-size:14px;font-family:var(--font-serif);font-weight:bold;">3</span>
+                  <span style="opacity:0.6;font-size:11px;">/ 10</span>
+                  <span style="opacity:0.4;">·</span>
+                  <span id="stressDescText">较轻</span>
+                </div>
+              </div>
+              <div class="slider-wrapper">
+                <input type="range" id="stressRangeInput" min="1" max="10" step="1" value="3" class="wt-slider wt-slider-stress" aria-label="主观压力感受滑块">
+                <div class="slider-scale-labels" style="display:flex;justify-content:space-between;font-size:11px;color:var(--color-muted);margin-top:4px;padding:0 2px;">
+                  <span>1 极轻</span>
+                  <span>3 较轻</span>
+                  <span>5 中等</span>
+                  <span>7 较大</span>
+                  <span>10 极大</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+          <!-- 合并后的心语与心事统一多行文本输入域 -->
+          <div style="margin-top:12px;">
+            <div class="section-label" style="font-size:13px;margin-bottom:6px;">留下一句心语，或写下想倾诉的心事（支持 AI 梳理）：</div>
+            <textarea id="journalInputText" class="form-textarea" placeholder="写下属于今天的一句心语，或倾诉一件心事……（例如：今天按时关掉了电脑；或今天和同事对方案，他当场否定了我，我特别难堪）" style="width:100%;box-sizing:border-box;min-height:96px;font-size:14px;padding:12px;line-height:1.6;border-radius:8px;"></textarea>
+            <!-- 兼容旧测试脚本与代码引用的隐藏 input -->
+            <input type="hidden" id="checkinNoteInput">
+          </div>
+
+
+
+          <!-- 合并后的操作按钮栏 -->
+
+          <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+
+              <button class="btn" id="btnSubmitCheckin">留下今日心境印记</button>
+
+              <button class="btn secondary" id="btnAiOrganizeJournal" style="border-color:var(--color-primary);color:var(--color-primary);">AI 结构化梳理心绪</button>
+
+            </div>
+
+            <div style="display:flex;gap:8px;align-items:center;">
+
+              <button class="btn ghost sm" id="btnFillJournalSample">示范倾诉</button>
+
+              <button class="btn secondary sm" id="btnClearJournalInput">清空</button>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- 签到成功温馨反馈 -->
+
+          <div id="checkinFeedbackBox" class="hidden" style="margin-top:18px;background:var(--color-primary-light);border:1px solid var(--color-primary-border);border-radius:10px;padding:16px;">
+
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+
+              <span class="badge ok" style="font-size:12px;">心境已安</span>
+
+              <strong style="color:var(--color-primary);font-size:15px;" id="checkinFeedbackTitle">已安顿好今日心境</strong>
+
+            </div>
+
+            <p style="margin:0 0 10px;font-size:13.5px;color:var(--color-ink-light);" id="checkinFeedbackDesc">
+
+              听见了你今天的感受。不管经历了什么，这一刻能停下来观照自己，就是很了不起的停顿。
+
+            </p>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+
+              <button class="btn sm" id="btnCheckinGoCard">查看今日推荐觉察卡 →</button>
+
+              <button class="btn sm secondary" id="btnCheckinReset">重新签到</button>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- 结构化整理结果呈现 -->
+
+          <div id="journalStructuredResult" class="hidden" style="margin-top:20px;border-top:1px dashed var(--color-border);padding-top:16px;">
+
+            <h3 style="font-family:var(--font-serif);font-size:17px;margin:0 0 10px;color:var(--color-ink);">AI 整理结果（所有推断已标明，可自由纠偏）：</h3>
+
+          
+
+            <div class="journal-dim-box">
+
+              <strong style="color:var(--color-primary);">01 发生了什么（客观事实）：</strong>
+
+              <p id="jResEvent" style="margin:3px 0 0;color:var(--color-ink-light);"></p>
+
+            </div>
+
+          
+
+            <div class="journal-dim-box" style="border-left-color:var(--color-gold);">
+
+              <strong style="color:var(--color-gold);">02 当时的想法（脑海评判）：</strong>
+
+              <p id="jResThoughts" style="margin:3px 0 0;color:var(--color-ink-light);"></p>
+
+            </div>
+
+
+
+            <div class="journal-dim-box" style="border-left-color:#3A6D4F;">
+
+              <strong style="color:#3A6D4F;">03 感受到的情绪：</strong>
+
+              <div id="jResFeelings" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"></div>
+
+            </div>
+
+
+
+            <div class="journal-dim-box" style="border-left-color:#8F2928;background:#FCF5F5;">
+
+              <strong style="color:#8F2928;">04 可能在意的需要（【待你确认】）：</strong>
+
+              <p id="jResNeeds" style="margin:3px 0 0;color:var(--color-ink);font-weight:500;"></p>
+
+            </div>
+
+
+
+            <div class="journal-dim-box" style="border-left-color:#2E7D32;">
+
+              <strong style="color:#2E7D32;">05 愿意尝试的下一步（微行动）：</strong>
+
+              <p id="jResNextStep" style="margin:3px 0 0;color:var(--color-ink-light);"></p>
+
+            </div>
+
+
+
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+
+              <button class="btn" id="btnSaveJournalToLocal">保存至我的日记本</button>
+
+              <button class="btn secondary" id="btnDiscardJournal">丢弃不保存</button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- 模块 3: 今日微行动与行动复盘 (F-11 / 18.7) -->
+
+        <section class="card">
+
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+
+            <div>
+
+              <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">今日微行动与行动复盘</h2>
+
+            </div>
+
+          </div>
+
+
+
+          <div style="margin-top:14px;background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
+
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+
+              <span class="badge" style="background:var(--color-primary-light);color:var(--color-primary);font-size:11.5px;">微行动</span>
+
+              <strong style="font-size:15px;color:var(--color-ink);" id="currentMicroActionTitle">今晚 5 分钟：把「事实」与「评价」分栏写下</strong>
+
+            </div>
+
+            <p style="margin:0;font-size:13px;color:var(--color-muted);" id="currentMicroActionDesc">
+
+              拿出一张纸划一道竖线，左边写事情经过，右边写脑海评判，写完合上即可。
 
             </p>
 
           </div>
 
-          <div style="font-size:12px;color:var(--color-gold);background:var(--color-gold-bg);border:1px solid var(--color-gold-border);padding:4px 10px;border-radius:14px;" id="checkinTodayDateBadge">
-
-            今日：2026-10-19
-
-          </div>
-
-        </div>
 
 
+          <div style="margin-top:14px;">
 
-        <div style="margin-top:16px;">
+            <div class="section-label" style="font-size:13px;margin-bottom:8px;">点击反馈你的微行动执行状态：</div>
 
-          <div class="section-label" style="font-size:13px;margin-bottom:6px;">选择符合当下的感受标签（可多选）：</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:8px;" id="actionFeedbackBtnGroup">
 
-          <div class="mood-chip-group" id="moodChipGroup">
+              <button class="btn sm secondary" data-action-status="completed">已做到</button>
 
-            <div class="mood-chip" data-mood="calm">平静从容</div>
+              <button class="btn sm secondary" data-action-status="partial">做了一部分</button>
 
-            <div class="mood-chip" data-mood="joy">充实欣喜</div>
+              <button class="btn sm secondary" data-action-status="not_started">还没开始</button>
 
-            <div class="mood-chip" data-mood="tired">疲惫透支</div>
+              <button class="btn sm secondary" data-action-status="unsuitable">方法不适合我</button>
 
-            <div class="mood-chip" data-mood="anxious">焦虑心慌</div>
+            </div>
 
-            <div class="mood-chip" data-mood="frustrated">烦躁窝火</div>
-
-            <div class="mood-chip" data-mood="sad">沮丧失落</div>
-
-            <div class="mood-chip" data-mood="overthinking">内耗反刍</div>
-
-            <div class="mood-chip" data-mood="relieved">释怀看开</div>
+            <div id="actionFeedbackToast" class="hidden" style="margin-top:10px;font-size:13px;padding:8px 12px;border-radius:6px;background:var(--color-primary-light);color:var(--color-primary);"></div>
 
           </div>
 
+        </section>
         </div>
 
+        <!-- 药丸 5: 日历（心境日历与成长线索 + 情绪触发地图） -->
+        <div id="entryCalendarArea" class="hidden growth-entry-panel">
+        <!-- 模块 4: 心境日历与成长线索 (F-13 / 18.4) -->
 
+        <section class="card" id="moodCalendarCardSection">
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:16px;margin-top:16px;margin-bottom:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
 
-          <!-- 精力状态数字滑块 (1-10分) -->
-          <div class="slider-control-card">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-              <div class="section-label" style="font-size:13px;margin:0;font-weight:600;color:var(--color-ink);">当前的精力状态：</div>
-              <div class="slider-value-badge" id="energyValueBadge" style="background:var(--color-success-bg);color:var(--color-success);border:1px solid var(--color-success-border);padding:3px 10px;border-radius:14px;font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;">
-                <span id="energyNumText" style="font-size:14px;font-family:var(--font-serif);font-weight:bold;">6</span>
-                <span style="opacity:0.6;font-size:11px;">/ 10</span>
-                <span style="opacity:0.4;">·</span>
-                <span id="energyDescText">平稳</span>
+            <div>
+
+              <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">心境日历与成长线索</h2>
+
+            </div>
+
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+
+              <!-- 视图切换按钮：日历网格 vs 心境走势折线图 -->
+              <div class="calendar-view-toggle" id="calViewToggle" style="display:inline-flex;background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:20px;padding:3px;gap:2px;">
+
+                <button type="button" class="view-toggle-btn active" id="btnCalViewMonth" style="border:none;background:var(--color-surface);color:var(--color-ink);padding:4px 12px;border-radius:16px;font-size:12.5px;cursor:pointer;font-weight:600;box-shadow:var(--shadow-sm);transition:all var(--trans);display:inline-flex;align-items:center;gap:4px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  日历网格
+                </button>
+
+                <button type="button" class="view-toggle-btn" id="btnCalViewTrend" style="border:none;background:transparent;color:var(--color-muted);padding:4px 12px;border-radius:16px;font-size:12.5px;cursor:pointer;transition:all var(--trans);display:inline-flex;align-items:center;gap:4px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                  心境走势
+                </button>
+
               </div>
+
+              <div style="font-size:12.5px;color:var(--color-muted);background:var(--color-surface-subtle);border:1px solid var(--color-border);padding:3px 10px;border-radius:14px;" id="calMonthLabel">2026 年 10 月</div>
+
             </div>
-            <div class="slider-wrapper">
-              <input type="range" id="energyRangeInput" min="1" max="10" step="1" value="6" class="wt-slider wt-slider-energy" aria-label="当前的精力状态滑块">
-              <div class="slider-scale-labels" style="display:flex;justify-content:space-between;font-size:11px;color:var(--color-muted);margin-top:4px;padding:0 2px;">
-                <span>1 透支</span>
-                <span>3 疲惫</span>
-                <span>5 平稳</span>
-                <span>7 充沛</span>
-                <span>10 饱满</span>
+
+          </div>
+
+
+
+          <!-- 视图 1: 经典日历网格视图 -->
+
+          <div id="calendarGridViewWrap">
+
+            <div class="mini-calendar-grid" id="miniCalendarGrid"></div>
+
+          </div>
+
+
+
+          <!-- 视图 2: 插值平滑折线图视图 -->
+
+          <div id="calendarTrendViewWrap" class="hidden">
+
+            <div class="mood-trend-chart-card">
+
+              <!-- 顶部图例与说明 -->
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--color-border);">
+                <div style="font-size:12px;color:var(--color-muted);display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+                  <span style="display:inline-flex;align-items:center;gap:6px;">
+                    <span style="display:inline-block;width:18px;height:3px;background:#3A6D4F;border-radius:2px;"></span>
+                    <span style="color:#3A6D4F;font-weight:600;">精力走势 (1-10)</span>
+                  </span>
+                  <span style="display:inline-flex;align-items:center;gap:6px;">
+                    <span style="display:inline-block;width:18px;height:3px;background:#8E2927;border-radius:2px;"></span>
+                    <span style="color:#8E2927;font-weight:600;">主观压力 (1-10)</span>
+                  </span>
+                  <span style="color:var(--color-muted);font-size:11.5px;background:var(--color-surface-subtle);padding:2px 8px;border-radius:10px;border:1px solid var(--color-border);">
+                    实线：连续日结 · 虚线：缺卡平滑插值
+                  </span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span id="chartDataStatsText" style="font-size:11.5px;color:var(--color-muted);">当月已修：0 天</span>
+                  <button type="button" id="btnChartDemoToggle" class="btn ghost sm" style="font-size:11px;padding:2px 8px;height:24px;line-height:20px;" onclick="handleToggleChartDemoData()">体验样例</button>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <!-- 主观压力感受数字滑块 (1-10分) -->
-          <div class="slider-control-card">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-              <div class="section-label" style="font-size:13px;margin:0;font-weight:600;color:var(--color-ink);">主观压力感受：</div>
-              <div class="slider-value-badge" id="stressValueBadge" style="background:var(--color-gold-bg);color:var(--color-gold);border:1px solid var(--color-gold-border);padding:3px 10px;border-radius:14px;font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;">
-                <span id="stressNumText" style="font-size:14px;font-family:var(--font-serif);font-weight:bold;">3</span>
-                <span style="opacity:0.6;font-size:11px;">/ 10</span>
-                <span style="opacity:0.4;">·</span>
-                <span id="stressDescText">较轻</span>
+              <!-- SVG 响应式画布容器 -->
+              <div style="position:relative;width:100%;min-height:230px;overflow:hidden;" id="trendChartSvgWrapper">
+                <!-- SVG 动态插入 -->
+                <svg id="moodTrendSvg" style="width:100%;height:230px;display:block;" viewBox="0 0 800 230" preserveAspectRatio="none"></svg>
+
+                <!-- 悬停信息浮窗 Tooltip -->
+                <div id="trendChartTooltip" class="chart-tooltip" style="display:none;opacity:0;"></div>
               </div>
-            </div>
-            <div class="slider-wrapper">
-              <input type="range" id="stressRangeInput" min="1" max="10" step="1" value="3" class="wt-slider wt-slider-stress" aria-label="主观压力感受滑块">
-              <div class="slider-scale-labels" style="display:flex;justify-content:space-between;font-size:11px;color:var(--color-muted);margin-top:4px;padding:0 2px;">
-                <span>1 极轻</span>
-                <span>3 较轻</span>
-                <span>5 中等</span>
-                <span>7 较大</span>
-                <span>10 极大</span>
-              </div>
-            </div>
-          </div>
 
-        </div>
-
-
-
-        <!-- 合并后的心语与心事统一多行文本输入域 -->
-        <div style="margin-top:12px;">
-          <div class="section-label" style="font-size:13px;margin-bottom:6px;">留下一句心语，或写下想倾诉的心事（支持 AI 梳理）：</div>
-          <textarea id="journalInputText" class="form-textarea" placeholder="写下属于今天的一句心语，或倾诉一件心事……（例如：今天按时关掉了电脑；或今天和同事对方案，他当场否定了我，我特别难堪）" style="width:100%;box-sizing:border-box;min-height:96px;font-size:14px;padding:12px;line-height:1.6;border-radius:8px;"></textarea>
-          <!-- 兼容旧测试脚本与代码引用的隐藏 input -->
-          <input type="hidden" id="checkinNoteInput">
-        </div>
-
-
-
-        <!-- 合并后的操作按钮栏 -->
-
-        <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-
-            <button class="btn" id="btnSubmitCheckin">留下今日心境印记</button>
-
-            <button class="btn secondary" id="btnAiOrganizeJournal" style="border-color:var(--color-primary);color:var(--color-primary);">AI 结构化梳理心绪</button>
-
-          </div>
-
-          <div style="display:flex;gap:8px;align-items:center;">
-
-            <button class="btn ghost sm" id="btnFillJournalSample">示范倾诉</button>
-
-            <button class="btn secondary sm" id="btnClearJournalInput">清空</button>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- 签到成功温馨反馈 -->
-
-        <div id="checkinFeedbackBox" class="hidden" style="margin-top:18px;background:var(--color-primary-light);border:1px solid var(--color-primary-border);border-radius:10px;padding:16px;">
-
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-
-            <span class="badge ok" style="font-size:12px;">心境已安</span>
-
-            <strong style="color:var(--color-primary);font-size:15px;" id="checkinFeedbackTitle">已安顿好今日心境</strong>
-
-          </div>
-
-          <p style="margin:0 0 10px;font-size:13.5px;color:var(--color-ink-light);" id="checkinFeedbackDesc">
-
-            听见了你今天的感受。不管经历了什么，这一刻能停下来观照自己，就是很了不起的停顿。
-
-          </p>
-
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-
-            <button class="btn sm" id="btnCheckinGoCard">查看今日推荐觉察卡 →</button>
-
-            <button class="btn sm secondary" id="btnCheckinReset">重新签到</button>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- 结构化整理结果呈现 -->
-
-        <div id="journalStructuredResult" class="hidden" style="margin-top:20px;border-top:1px dashed var(--color-border);padding-top:16px;">
-
-          <h3 style="font-family:var(--font-serif);font-size:17px;margin:0 0 10px;color:var(--color-ink);">AI 整理结果（所有推断已标明，可自由纠偏）：</h3>
-
-          
-
-          <div class="journal-dim-box">
-
-            <strong style="color:var(--color-primary);">01 发生了什么（客观事实）：</strong>
-
-            <p id="jResEvent" style="margin:3px 0 0;color:var(--color-ink-light);"></p>
-
-          </div>
-
-          
-
-          <div class="journal-dim-box" style="border-left-color:var(--color-gold);">
-
-            <strong style="color:var(--color-gold);">02 当时的想法（脑海评判）：</strong>
-
-            <p id="jResThoughts" style="margin:3px 0 0;color:var(--color-ink-light);"></p>
-
-          </div>
-
-
-
-          <div class="journal-dim-box" style="border-left-color:#3A6D4F;">
-
-            <strong style="color:#3A6D4F;">03 感受到的情绪：</strong>
-
-            <div id="jResFeelings" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"></div>
-
-          </div>
-
-
-
-          <div class="journal-dim-box" style="border-left-color:#8F2928;background:#FCF5F5;">
-
-            <strong style="color:#8F2928;">04 可能在意的需要（【待你确认】）：</strong>
-
-            <p id="jResNeeds" style="margin:3px 0 0;color:var(--color-ink);font-weight:500;"></p>
-
-          </div>
-
-
-
-          <div class="journal-dim-box" style="border-left-color:#2E7D32;">
-
-            <strong style="color:#2E7D32;">05 愿意尝试的下一步（微行动）：</strong>
-
-            <p id="jResNextStep" style="margin:3px 0 0;color:var(--color-ink-light);"></p>
-
-          </div>
-
-
-
-          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
-
-            <button class="btn" id="btnSaveJournalToLocal">保存至我的日记本</button>
-
-            <button class="btn secondary" id="btnDiscardJournal">丢弃不保存</button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 模块 3: 今日微行动与行动复盘 (F-11 / 18.7) -->
-
-      <section class="card">
-
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
-
-          <div>
-
-            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">今日微行动与行动复盘</h2>
-
-          </div>
-
-        </div>
-
-
-
-        <div style="margin-top:14px;background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
-
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-
-            <span class="badge" style="background:var(--color-primary-light);color:var(--color-primary);font-size:11.5px;">微行动</span>
-
-            <strong style="font-size:15px;color:var(--color-ink);" id="currentMicroActionTitle">今晚 5 分钟：把「事实」与「评价」分栏写下</strong>
-
-          </div>
-
-          <p style="margin:0;font-size:13px;color:var(--color-muted);" id="currentMicroActionDesc">
-
-            拿出一张纸划一道竖线，左边写事情经过，右边写脑海评判，写完合上即可。
-
-          </p>
-
-        </div>
-
-
-
-        <div style="margin-top:14px;">
-
-          <div class="section-label" style="font-size:13px;margin-bottom:8px;">点击反馈你的微行动执行状态：</div>
-
-          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:8px;" id="actionFeedbackBtnGroup">
-
-            <button class="btn sm secondary" data-action-status="completed">已做到</button>
-
-            <button class="btn sm secondary" data-action-status="partial">做了一部分</button>
-
-            <button class="btn sm secondary" data-action-status="not_started">还没开始</button>
-
-            <button class="btn sm secondary" data-action-status="unsuitable">方法不适合我</button>
-
-          </div>
-
-          <div id="actionFeedbackToast" class="hidden" style="margin-top:10px;font-size:13px;padding:8px 12px;border-radius:6px;background:var(--color-primary-light);color:var(--color-primary);"></div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 模块 4: 心境日历与成长线索 (F-13 / 18.4) -->
-
-      <section class="card" id="moodCalendarCardSection">
-
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
-
-          <div>
-
-            <h2 style="font-family:var(--font-serif);margin:0 0 4px;font-size:22px;">心境日历与成长线索</h2>
-
-          </div>
-
-          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-
-            <!-- 视图切换按钮：日历网格 vs 心境走势折线图 -->
-            <div class="calendar-view-toggle" id="calViewToggle" style="display:inline-flex;background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:20px;padding:3px;gap:2px;">
-
-              <button type="button" class="view-toggle-btn active" id="btnCalViewMonth" style="border:none;background:var(--color-surface);color:var(--color-ink);padding:4px 12px;border-radius:16px;font-size:12.5px;cursor:pointer;font-weight:600;box-shadow:var(--shadow-sm);transition:all var(--trans);display:inline-flex;align-items:center;gap:4px;">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                日历网格
-              </button>
-
-              <button type="button" class="view-toggle-btn" id="btnCalViewTrend" style="border:none;background:transparent;color:var(--color-muted);padding:4px 12px;border-radius:16px;font-size:12.5px;cursor:pointer;transition:all var(--trans);display:inline-flex;align-items:center;gap:4px;">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                心境走势
-              </button>
-
-            </div>
-
-            <div style="font-size:12.5px;color:var(--color-muted);background:var(--color-surface-subtle);border:1px solid var(--color-border);padding:3px 10px;border-radius:14px;" id="calMonthLabel">2026 年 10 月</div>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- 视图 1: 经典日历网格视图 -->
-
-        <div id="calendarGridViewWrap">
-
-          <div class="mini-calendar-grid" id="miniCalendarGrid"></div>
-
-        </div>
-
-
-
-        <!-- 视图 2: 插值平滑折线图视图 -->
-
-        <div id="calendarTrendViewWrap" class="hidden">
-
-          <div class="mood-trend-chart-card">
-
-            <!-- 顶部图例与说明 -->
-            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--color-border);">
-              <div style="font-size:12px;color:var(--color-muted);display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-                <span style="display:inline-flex;align-items:center;gap:6px;">
-                  <span style="display:inline-block;width:18px;height:3px;background:#3A6D4F;border-radius:2px;"></span>
-                  <span style="color:#3A6D4F;font-weight:600;">精力走势 (1-10)</span>
-                </span>
-                <span style="display:inline-flex;align-items:center;gap:6px;">
-                  <span style="display:inline-block;width:18px;height:3px;background:#8E2927;border-radius:2px;"></span>
-                  <span style="color:#8E2927;font-weight:600;">主观压力 (1-10)</span>
-                </span>
-                <span style="color:var(--color-muted);font-size:11.5px;background:var(--color-surface-subtle);padding:2px 8px;border-radius:10px;border:1px solid var(--color-border);">
-                  实线：连续日结 · 虚线：缺卡平滑插值
-                </span>
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;">
-                <span id="chartDataStatsText" style="font-size:11.5px;color:var(--color-muted);">当月已修：0 天</span>
-                <button type="button" id="btnChartDemoToggle" class="btn ghost sm" style="font-size:11px;padding:2px 8px;height:24px;line-height:20px;" onclick="handleToggleChartDemoData()">体验样例</button>
-              </div>
-            </div>
-
-            <!-- SVG 响应式画布容器 -->
-            <div style="position:relative;width:100%;min-height:230px;overflow:hidden;" id="trendChartSvgWrapper">
-              <!-- SVG 动态插入 -->
-              <svg id="moodTrendSvg" style="width:100%;height:230px;display:block;" viewBox="0 0 800 230" preserveAspectRatio="none"></svg>
-
-              <!-- 悬停信息浮窗 Tooltip -->
-              <div id="trendChartTooltip" class="chart-tooltip" style="display:none;opacity:0;"></div>
             </div>
 
           </div>
 
-        </div>
 
 
+          <div style="margin-top:18px;background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
 
-        <div style="margin-top:18px;background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
+            <h3 style="font-family:var(--font-serif);font-size:16px;margin:0 0 6px;display:flex;align-items:center;gap:6px;">
 
-          <h3 style="font-family:var(--font-serif);font-size:16px;margin:0 0 6px;display:flex;align-items:center;gap:6px;">
+              本周觉察回顾摘要
 
-            本周觉察回顾摘要
+            </h3>
 
-          </h3>
+            <p style="margin:0;font-size:13.5px;color:var(--color-ink-light);line-height:1.65;" id="weeklyReviewSummary">
 
-          <p style="margin:0;font-size:13.5px;color:var(--color-ink-light);line-height:1.65;" id="weeklyReviewSummary">
-
-            本周已沉淀 1 条心境签到。根据 PRD 3.0 规范：记录尚少时不擅自推断情绪周期与疾病趋势，先为你静静守护每一天的心声。
-
-          </p>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- 模块 5: 情绪触发地图与个人成长目标 (F-14 / 18.5 / 18.6) -->
-
-      <section class="card">
-
-        <h2 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;">情绪触发地图 · 个人成长地图</h2>
-
-        <p style="margin:0 0 16px;font-size:13.5px;color:var(--color-muted);">
-
-          识别你的敏感场景与习惯应对，自定成长节奏，无惩罚式打卡。
-
-        </p>
-
-
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:14px;">
-
-          <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
-
-            <h4 style="margin:0 0 8px;font-size:15px;color:var(--color-primary);font-family:var(--font-serif);">情绪触发场景归纳</h4>
-
-            <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--color-ink-light);line-height:1.7;" id="triggerMapList">
-
-              <li>临时加塞的任务 → 容易触发急躁与被越界感</li>
-
-              <li>公众发言被挑错 → 容易触发自我怀疑与内耗反刍</li>
-
-            </ul>
-
-          </div>
-
-          <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
-
-            <h4 style="margin:0 0 8px;font-size:15px;color:var(--color-gold);font-family:var(--font-serif);">当前成长主题：关系边界</h4>
-
-            <p style="margin:0 0 10px;font-size:13px;color:var(--color-ink-light);">
-
-              目标：在面对非必须的帮忙请求时，练习先停顿 3 秒再答复。
+              本周已沉淀 1 条心境签到。根据 PRD 3.0 规范：记录尚少时不擅自推断情绪周期与疾病趋势，先为你静静守护每一天的心声。
 
             </p>
 
-            <span class="badge ok" style="font-size:11px;">自定节奏 · 随时可暂停</span>
+          </div>
+
+        </section>
+
+        <!-- 模块 5: 情绪触发地图与个人成长目标 (F-14 / 18.5 / 18.6) -->
+
+        <section class="card">
+
+          <h2 style="font-family:var(--font-serif);margin:0 0 6px;font-size:22px;">情绪触发地图 · 个人成长地图</h2>
+
+          <p style="margin:0 0 16px;font-size:13.5px;color:var(--color-muted);">
+
+            识别你的敏感场景与习惯应对，自定成长节奏，无惩罚式打卡。
+
+          </p>
+
+
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:14px;">
+
+            <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
+
+              <h4 style="margin:0 0 8px;font-size:15px;color:var(--color-primary);font-family:var(--font-serif);">情绪触发场景归纳</h4>
+
+              <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--color-ink-light);line-height:1.7;" id="triggerMapList">
+
+                <li>临时加塞的任务 → 容易触发急躁与被越界感</li>
+
+                <li>公众发言被挑错 → 容易触发自我怀疑与内耗反刍</li>
+
+              </ul>
+
+            </div>
+
+            <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
+
+              <h4 style="margin:0 0 8px;font-size:15px;color:var(--color-gold);font-family:var(--font-serif);">当前成长主题：关系边界</h4>
+
+              <p style="margin:0 0 10px;font-size:13px;color:var(--color-ink-light);">
+
+                目标：在面对非必须的帮忙请求时，练习先停顿 3 秒再答复。
+
+              </p>
+
+              <span class="badge ok" style="font-size:11px;">自定节奏 · 随时可暂停</span>
+
+            </div>
 
           </div>
 
+        </section>
         </div>
-
       </section>
+
 
 
 
@@ -10385,11 +10650,30 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
           <button type="button" class="btn sm secondary" id="sleepMusicToggle">播放音乐</button>
           <button type="button" class="btn sm ghost" id="sleepMusicPanel">音乐面板</button>
           <label for="sleepTrackSelect">曲目</label>
-          <select id="sleepTrackSelect"><option value="0">行云流水</option><option value="1">禅境冥想</option><option value="2">秋雨箏韻</option><option value="3">秋雨琴簫合奏</option></select>
+          <select id="sleepTrackSelect"><option value="0">行云流水</option><option value="1">禅境冥想</option><option value="2">秋雨箏韻</option><option value="3">秋雨琴簫合奏</option><option value="4">枕畔温煦</option><option value="5">空灵入梦</option><option value="6">夜幕归宁</option><option value="7">海潮摇篮</option><option value="8">眠琴微语</option></select>
           <label for="sleepVolume">音量</label><input id="sleepVolume" type="range" min="0" max="100" value="25" aria-label="睡前音乐音量" style="width:80px;">
           <label for="sleepTimer">定时关闭</label><select id="sleepTimer"><option value="0">关闭</option><option value="5">5 分钟</option><option value="10">10 分钟</option><option value="20">20 分钟</option><option value="30">30 分钟</option></select>
           <label><input type="checkbox" id="sleepFade" checked> 渐弱</label>
         </div>
+
+        <!-- 助眠音乐呼吸示波器 (Sleep Music Breathing Oscilloscope) -->
+        <div class="sleep-scope-wrap" id="sleepScopeWrap" aria-label="助眠音乐呼吸示波器 · 点击切换播放" role="region" tabindex="0" title="点击播放 / 暂停助眠音乐">
+          <div class="sleep-scope-head">
+            <span class="sleep-scope-badge">
+              <span class="sleep-scope-led" id="sleepScopeLed"></span>
+              <span id="sleepScopeTrackTitle">助眠声波 · 随息安澜</span>
+            </span>
+            <span class="sleep-scope-breath-pill" id="sleepScopeBreathPill">
+              <span id="sleepScopeBreathText"><span style="opacity:0.6">○</span> 静息态 · 待播放</span>
+            </span>
+          </div>
+          <canvas class="sleep-scope-canvas" id="sleepScopeCanvas"></canvas>
+          <div class="sleep-scope-foot">
+            <span id="sleepScopeStatus">微澜初起 · 呼吸保持自然，不屏息、不规定次数</span>
+            <span class="sleep-scope-hint">点击波形切换播放</span>
+          </div>
+        </div>
+
         <div class="sleep-session" id="sleepSession" aria-live="polite">
           <div class="sleep-session-head"><div><div class="section-label" id="sleepStepNum"></div><h3 id="sleepFlowTitle" style="font-family:var(--font-serif);margin:3px 0 0;font-size:18px;"><span class="sleep-tw-live" aria-hidden="true"></span><span class="sleep-tw-full"></span></h3></div><button type="button" class="btn sm ghost" id="sleepStop">停止并退出</button></div>
           <div class="sleep-session-step" id="sleepStepText" tabindex="-1"><span class="sleep-tw-live" aria-hidden="true"></span><span class="sleep-tw-full"></span></div>
@@ -13804,6 +14088,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     var w = cards.wisdom;
 
     var a = cards.action;
+    var STARS_LAYER_HTML = '<div class="card-stars-layer" aria-hidden="true"><div class="card-meteor"></div><div class="card-meteor m2"></div><div class="star-glint g1"></div><div class="star-glint g2"></div><div class="star-glint g3"></div><div class="star-glint g4"></div><div class="card-particle p1"></div><div class="card-particle p2"></div><div class="card-particle p3"></div><div class="card-particle p4"></div><div class="card-particle p5"></div></div>';
 
     var mQuote = m.front_text || m.quote || '';
 
@@ -13817,7 +14102,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       + '<div class="card-3d-inner">'
 
-      + '  <div class="card-3d-face card-3d-back">'
+      + '  <div class="card-3d-face card-3d-back">' + STARS_LAYER_HTML
 
       + '    <div class="card-corner tl"></div><div class="card-corner tr"></div>'
 
@@ -13901,7 +14186,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       + '<div class="card-3d-inner">'
 
-      + '  <div class="card-3d-face card-3d-back">'
+      + '  <div class="card-3d-face card-3d-back">' + STARS_LAYER_HTML
 
       + '    <div class="card-corner tl"></div><div class="card-corner tr"></div>'
 
@@ -14001,7 +14286,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       + '<div class="card-3d-inner">'
 
-      + '  <div class="card-3d-face card-3d-back">'
+      + '  <div class="card-3d-face card-3d-back">' + STARS_LAYER_HTML
 
       + '    <div class="card-corner tl"></div><div class="card-corner tr"></div>'
 
@@ -18172,24 +18457,31 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-    // 3. 用户端三入口与交互 (心事倾诉、觉察牌、情境练习)
+    // 3. 用户端五入口与交互 (觉察牌、心事日记、心事倾诉、情境练习、心境日历)
     function switchEntryTab(tab) {
       appState.entryTab = tab;
-      var btnDirect = $('entryBtnDirect');
-      var btnCard = $('entryBtnCard');
-      var btnPractice = $('entryBtnPractice');
-      var directArea = $('entryDirectArea');
-      var cardArea = $('entryCardArea');
-      var practiceArea = $('entryPracticeArea');
+      var buttons = {
+        card: $('entryBtnCard'),
+        journal: $('entryBtnJournal'),
+        direct: $('entryBtnDirect'),
+        practice: $('entryBtnPractice'),
+        calendar: $('entryBtnCalendar')
+      };
+      var areas = {
+        card: $('entryCardArea'),
+        journal: $('entryJournalArea'),
+        direct: $('entryDirectArea'),
+        practice: $('entryPracticeArea'),
+        calendar: $('entryCalendarArea')
+      };
       var scenarioSec = $('scenarioSection');
 
-      if (btnDirect) btnDirect.classList.toggle('active', tab === 'direct');
-      if (btnCard) btnCard.classList.toggle('active', tab === 'card');
-      if (btnPractice) btnPractice.classList.toggle('active', tab === 'practice');
-
-      if (directArea) directArea.classList.toggle('hidden', tab !== 'direct');
-      if (cardArea) cardArea.classList.toggle('hidden', tab !== 'card');
-      if (practiceArea) practiceArea.classList.toggle('hidden', tab !== 'practice');
+      Object.keys(buttons).forEach(function(key) {
+        if (buttons[key]) buttons[key].classList.toggle('active', key === tab);
+      });
+      Object.keys(areas).forEach(function(key) {
+        if (areas[key]) areas[key].classList.toggle('hidden', key !== tab);
+      });
       if (scenarioSec) scenarioSec.classList.toggle('hidden', tab !== 'direct');
 
       if (tab === 'card') {
@@ -18202,13 +18494,21 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         if (typeof renderPracticeScenarioCards === 'function') {
           renderPracticeScenarioCards();
         }
+      } else if (tab === 'journal') {
+        var badge = $('checkinTodayDateBadge');
+        if (badge) badge.textContent = '今日：' + new Date().toISOString().slice(0, 10);
+      } else if (tab === 'calendar') {
+        renderMiniCalendar();
+        renderMoodTrendChart();
       }
     }
     window.switchEntryTab = switchEntryTab;
 
+    if ($('entryBtnJournal')) $('entryBtnJournal').onclick = function() { switchEntryTab('journal'); };
     if ($('entryBtnDirect')) $('entryBtnDirect').onclick = function() { switchEntryTab('direct'); };
     if ($('entryBtnCard')) $('entryBtnCard').onclick = function() { switchEntryTab('card'); };
     if ($('entryBtnPractice')) $('entryBtnPractice').onclick = function() { switchEntryTab('practice'); };
+    if ($('entryBtnCalendar')) $('entryBtnCalendar').onclick = function() { switchEntryTab('calendar'); };
 
 
 
@@ -20687,7 +20987,431 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     $('sleepTimer').addEventListener('change', sleepScheduleTimer);
     $('sleepSession').addEventListener('keydown', function(event) { if (event.key === 'Escape') sleepExit(); });
     window.addEventListener('pagehide', function() { sleepClearTimer(); sleepStopMusic(false); });
+  sleepOscilloscope.init();
   }
+
+  
+  /* ==========================================================================
+     助眠音乐呼吸示波器 (Sleep Music Breathing Oscilloscope)
+     ========================================================================== */
+  var sleepOscilloscope = (function() {
+    var canvas, ctx, wrap;
+    var ledEl, titleEl, breathTextEl, statusEl;
+    var animId = null;
+    var currentAmp = 3.2;
+    var phase1 = 0, phase2 = 0, phase3 = 0;
+    var isInitialized = false;
+
+    var SCOPE_TRACKS = [
+      {
+        name: '行云流水',
+        stroke: '#76D7B7',
+        secondary: '#5C9E96',
+        aura: 'rgba(118, 215, 183, ',
+        status: '行云流水 · 如水润物，心念流转不滞',
+        h1: 1.0, h2: 2.1, h3: 0.5
+      },
+      {
+        name: '禅境冥想',
+        stroke: '#E0C07A',
+        secondary: '#C49B5B',
+        aura: 'rgba(224, 192, 122, ',
+        status: '禅境冥想 · 虚室生白，凝神入定安然',
+        h1: 0.75, h2: 1.5, h3: 0.6
+      },
+      {
+        name: '秋雨箏韻',
+        stroke: '#85E3B3',
+        secondary: '#587C65',
+        aura: 'rgba(133, 227, 179, ',
+        status: '秋雨箏韻 · 筝声如雨，涤荡心尘渐远',
+        h1: 1.25, h2: 2.7, h3: 0.4
+      },
+      {
+        name: '秋雨琴簫合奏',
+        stroke: '#A8E6CF',
+        secondary: '#7E6B5A',
+        aura: 'rgba(168, 230, 207, ',
+        status: '秋雨琴簫合奏 · 琴箫和鸣，万籁自息入梦',
+        h1: 0.88, h2: 1.76, h3: 0.52
+      },
+      {
+        name: '枕畔温煦',
+        stroke: '#F4A261',
+        secondary: '#E76F51',
+        aura: 'rgba(244, 162, 97, ',
+        status: '枕畔温煦 · 暖意入怀，倦意舒展渐浓',
+        h1: 0.85, h2: 1.6, h3: 0.45
+      },
+      {
+        name: '空灵入梦',
+        stroke: '#B39DDB',
+        secondary: '#7E57C2',
+        aura: 'rgba(179, 157, 219, ',
+        status: '空灵入梦 · 空灵悠远，随风轻飏入梦',
+        h1: 0.65, h2: 1.3, h3: 0.55
+      },
+      {
+        name: '夜幕归宁',
+        stroke: '#64B5F6',
+        secondary: '#42A5F5',
+        aura: 'rgba(100, 181, 246, ',
+        status: '夜幕归宁 · 夜幕轻垂，晚籁自安息心',
+        h1: 0.92, h2: 1.84, h3: 0.48
+      },
+      {
+        name: '海潮摇篮',
+        stroke: '#4DD0E1',
+        secondary: '#26A69A',
+        aura: 'rgba(77, 208, 225, ',
+        status: '海潮摇篮 · 潮涌如息，枕浪安澜入眠',
+        h1: 0.72, h2: 1.44, h3: 0.38
+      },
+      {
+        name: '眠琴微语',
+        stroke: '#E8D7B8',
+        secondary: '#D4B896',
+        aura: 'rgba(232, 215, 184, ',
+        status: '眠琴微语 · 琴音轻抚，心绪归平渐恬',
+        h1: 1.15, h2: 2.3, h3: 0.6
+      }
+    ];
+
+    // 漂浮微光微粒 (Drifting Zen Dewdrop Particles)
+    var particles = [];
+    for (var i = 0; i < 14; i++) {
+      particles.push({
+        x: Math.random(),
+        speed: 0.0003 + Math.random() * 0.0006,
+        size: 0.8 + Math.random() * 1.5,
+        alpha: 0.25 + Math.random() * 0.55,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+
+    function isVisible() {
+      if (document.hidden) return false;
+      if (typeof appState !== 'undefined' && appState.mainTab && appState.mainTab !== 'wellbeing') return false;
+      if (typeof appState !== 'undefined' && appState.wellbeingTab && appState.wellbeingTab !== 'sleep') return false;
+      var sec = $('sleepHomeSection');
+      if (!sec || sec.offsetParent === null) return false;
+      var wbArea = $('wellbeingArea');
+      if (wbArea && wbArea.classList.contains('hidden')) return false;
+      return true;
+    }
+
+    function render(now) {
+      if (!canvas || !ctx) return;
+
+      var rect = canvas.getBoundingClientRect();
+      if (rect.width <= 0 || rect.height <= 0) {
+        if (animId) animId = requestAnimationFrame(render);
+        return;
+      }
+
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var targetW = Math.round(rect.width * dpr);
+      var targetH = Math.round(rect.height * dpr);
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
+
+      var w = canvas.width;
+      var h = canvas.height;
+      var midX = w / 2;
+      var midY = h / 2;
+
+      // 状态判断：优先检查睡前音乐是否开启
+      var isSleepStarted = (typeof sleepGuideState !== 'undefined' && sleepGuideState.musicStartedHere);
+      var isBgmPlaying = (typeof bgmEngine !== 'undefined' && bgmEngine.getState().isPlaying);
+      var isPlaying = isSleepStarted || isBgmPlaying;
+
+      var trackIdx = 0;
+      if ($('sleepTrackSelect')) {
+        trackIdx = parseInt($('sleepTrackSelect').value, 10) || 0;
+      }
+      if (trackIdx < 0 || trackIdx >= SCOPE_TRACKS.length) trackIdx = 0;
+      var theme = SCOPE_TRACKS[trackIdx];
+
+      // 呼吸节律：5.6s 完整自然呼吸周期
+      var breathCycle = 5600;
+      var breathPhase = ((now % breathCycle) / breathCycle) * (2 * Math.PI);
+      var breathSine = Math.sin(breathPhase - Math.PI / 2); // -1 (呼末) 到 +1 (吸顶)
+      var breathVal = 0.5 + 0.5 * breathSine; // 0 到 1
+      var breathAmp = 0.65 + 0.35 * breathVal;
+
+      // 振幅平滑插值
+      var vol = 0.25;
+      if ($('sleepVolume')) {
+        vol = (parseInt($('sleepVolume').value, 10) || 25) / 100;
+      }
+      var targetAmp = 3.2;
+      if (isPlaying) {
+        targetAmp = (10 + vol * 26) * dpr;
+      } else {
+        targetAmp = 3.2 * dpr;
+      }
+      currentAmp += (targetAmp - currentAmp) * 0.08;
+
+      // 相位推进
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduced) {
+        var speedMul = isPlaying ? (1.0 + vol * 0.6) : 0.45;
+        phase1 += 0.022 * speedMul;
+        phase2 += 0.016 * speedMul;
+        phase3 += 0.012 * speedMul;
+      }
+
+      // UI 文本与状态同步
+      if (wrap) {
+        if (isPlaying) {
+          if (!wrap.classList.contains('is-playing')) wrap.classList.add('is-playing');
+        } else {
+          if (wrap.classList.contains('is-playing')) wrap.classList.remove('is-playing');
+        }
+      }
+
+      if (titleEl) {
+        titleEl.textContent = isPlaying ? (theme.name + ' · 助眠声波') : '助眠声波 · 随息安澜';
+      }
+
+      if (breathTextEl) {
+        if (isPlaying) {
+          if (breathSine > 0.08) {
+            breathTextEl.innerHTML = '<span style="color:#85E3B3">▲</span> 吸气 · 身心充盈';
+          } else if (breathSine < -0.08) {
+            breathTextEl.innerHTML = '<span style="color:#71836E">▼</span> 呼气 · 缓缓释压';
+          } else {
+            breathTextEl.innerHTML = '<span style="color:#A8E6CF">●</span> 随息 · 安然流转';
+          }
+        } else {
+          breathTextEl.innerHTML = '<span style="opacity:0.6">○</span> 静息态 · 待播放';
+        }
+      }
+
+      if (statusEl) {
+        statusEl.textContent = isPlaying ? theme.status : '微澜初起 · 呼吸保持自然，不屏息、不规定次数';
+      }
+
+      // 1. 清空画布并绘制深色夜砚底色
+      ctx.fillStyle = '#0D1612';
+      ctx.fillRect(0, 0, w, h);
+
+      // 2. 呼吸柔光晕 (Breathing Radial Aura)
+      var auraAlpha = (isPlaying ? 0.25 : 0.08) * (0.6 + 0.4 * breathVal);
+      var radGrad = ctx.createRadialGradient(midX, midY, 6 * dpr, midX, midY, w * 0.52);
+      radGrad.addColorStop(0, theme.aura + auraAlpha + ')');
+      radGrad.addColorStop(0.55, theme.aura + (auraAlpha * 0.35) + ')');
+      radGrad.addColorStop(1, 'rgba(13, 22, 18, 0)');
+      ctx.fillStyle = radGrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // 3. 示波器坐标网格与基准标尺 (Oscilloscope Reticle & Grid)
+      ctx.save();
+      // 水平基线 (0V Baseline)
+      ctx.beginPath();
+      ctx.setLineDash([4 * dpr, 6 * dpr]);
+      ctx.strokeStyle = 'rgba(113, 131, 110, 0.22)';
+      ctx.lineWidth = 1 * dpr;
+      ctx.moveTo(0, midY);
+      ctx.lineTo(w, midY);
+      ctx.stroke();
+
+      // 水平辅助线 (±22px)
+      ctx.beginPath();
+      ctx.setLineDash([2 * dpr, 8 * dpr]);
+      ctx.strokeStyle = 'rgba(113, 131, 110, 0.08)';
+      var offsetGrid = 22 * dpr;
+      ctx.moveTo(0, midY - offsetGrid); ctx.lineTo(w, midY - offsetGrid);
+      ctx.moveTo(0, midY + offsetGrid); ctx.lineTo(w, midY + offsetGrid);
+      ctx.stroke();
+
+      // 垂直刻度点 (Tick marks)
+      ctx.setLineDash([]);
+      ctx.strokeStyle = 'rgba(113, 131, 110, 0.28)';
+      ctx.lineWidth = 1 * dpr;
+      var tickStep = 45 * dpr;
+      var tickStart = (midX % tickStep);
+      for (var tx = tickStart; tx < w; tx += tickStep) {
+        ctx.beginPath();
+        ctx.moveTo(tx, midY - 3 * dpr);
+        ctx.lineTo(tx, midY + 3 * dpr);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      // 4. 计算波形切片
+      var points = [];
+      var pointsSec = [];
+      var numPoints = Math.min(180, Math.max(80, Math.floor(w / (2.5 * dpr))));
+      for (var p = 0; p <= numPoints; p++) {
+        var u = p / numPoints; // 0 to 1
+        var px = u * w;
+        // 汉宁/正弦开窗包络，让左右两端自然平缓归零
+        var env = Math.pow(Math.sin(Math.PI * u), 0.82);
+
+        // 主波形合成 (谐波 + 呼吸调制)
+        var s1 = Math.sin(2 * Math.PI * theme.h1 * u * 2.8 - phase1);
+        var s2 = Math.sin(2 * Math.PI * theme.h2 * u * 2.8 + phase2);
+        var yMain = midY + env * (currentAmp * breathAmp) * (0.72 * s1 + 0.28 * s2);
+        points.push({ x: px, y: yMain });
+
+        // 副和弦波 (Ambient Harmonic Echo)
+        var s3 = Math.sin(2 * Math.PI * theme.h3 * u * 2.8 + phase3);
+        var s4 = Math.cos(2 * Math.PI * theme.h1 * 1.5 * u * 2.8 - phase1 * 0.7);
+        var ySec = midY + env * (currentAmp * 0.58 * (0.7 + 0.3 * breathVal)) * (0.65 * s3 + 0.35 * s4);
+        pointsSec.push({ x: px, y: ySec });
+      }
+
+      // 5. 柔和水墨光晕层 (Soft Ambient Wash under main wave)
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, midY);
+      for (var n = 0; n < points.length; n++) {
+        ctx.lineTo(points[n].x, points[n].y);
+      }
+      ctx.lineTo(points[points.length - 1].x, midY);
+      ctx.closePath();
+      var washGrad = ctx.createLinearGradient(0, midY - currentAmp, 0, midY + currentAmp);
+      washGrad.addColorStop(0, theme.aura + (isPlaying ? (0.16 * breathVal) : 0.04) + ')');
+      washGrad.addColorStop(0.5, theme.aura + (isPlaying ? (0.08 * breathVal) : 0.02) + ')');
+      washGrad.addColorStop(1, 'rgba(13, 22, 18, 0)');
+      ctx.fillStyle = washGrad;
+      ctx.fill();
+      ctx.restore();
+
+      // 6. 绘制副和弦波 (波形层 1 - 柔和金铜/墨绿谐波)
+      ctx.save();
+      ctx.beginPath();
+      for (var j = 0; j < pointsSec.length; j++) {
+        if (j === 0) ctx.moveTo(pointsSec[j].x, pointsSec[j].y);
+        else ctx.lineTo(pointsSec[j].x, pointsSec[j].y);
+      }
+      ctx.strokeStyle = theme.secondary;
+      ctx.lineWidth = 1.2 * dpr;
+      ctx.shadowColor = theme.secondary;
+      ctx.shadowBlur = 6 * dpr;
+      ctx.globalAlpha = isPlaying ? 0.6 : 0.25;
+      ctx.stroke();
+      ctx.restore();
+
+      // 7. 绘制主示波器波形 (波形层 2 - 荧光青碧主波)
+      ctx.save();
+      ctx.beginPath();
+      for (var k = 0; k < points.length; k++) {
+        if (k === 0) ctx.moveTo(points[k].x, points[k].y);
+        else ctx.lineTo(points[k].x, points[k].y);
+      }
+      ctx.strokeStyle = theme.stroke;
+      ctx.lineWidth = (isPlaying ? 2.4 : 1.5) * dpr;
+      ctx.shadowColor = theme.stroke;
+      ctx.shadowBlur = (isPlaying ? (12 + 6 * breathVal) : 5) * dpr;
+      ctx.globalAlpha = isPlaying ? 0.95 : 0.65;
+      ctx.stroke();
+      ctx.restore();
+
+      // 8. 绘制呼吸主扫描光斑 (Phosphor Sweep Beam Spot)
+      if (isPlaying && !reduced) {
+        var sweepU = ((now * 0.00018) % 1);
+        var sweepIdx = Math.floor(sweepU * (points.length - 1));
+        var pt = points[sweepIdx] || points[0];
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, (3.0 + 1.2 * breathVal) * dpr, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.shadowColor = theme.stroke;
+        ctx.shadowBlur = 14 * dpr;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // 9. 漂浮微光微粒 (Ambient Dewdrops)
+      ctx.save();
+      for (var m = 0; m < particles.length; m++) {
+        var pItem = particles[m];
+        if (!reduced) {
+          pItem.x += pItem.speed * (isPlaying ? 1.4 : 0.6);
+          if (pItem.x > 1) pItem.x -= 1;
+        }
+        var pU = pItem.x;
+        var pIdx = Math.floor(pU * (points.length - 1));
+        var waveRefY = points[pIdx] ? points[pIdx].y : midY;
+        var py = midY + (waveRefY - midY) * 0.65 + Math.sin(pItem.phase + now * 0.002) * (7 * dpr);
+        var px = pU * w;
+
+        ctx.beginPath();
+        ctx.arc(px, py, pItem.size * dpr, 0, Math.PI * 2);
+        ctx.fillStyle = theme.stroke;
+        ctx.shadowColor = theme.stroke;
+        ctx.shadowBlur = 5 * dpr;
+        ctx.globalAlpha = pItem.alpha * (0.4 + 0.6 * breathVal) * (isPlaying ? 0.85 : 0.35);
+        ctx.fill();
+      }
+      ctx.restore();
+
+      // 下一帧
+      animId = requestAnimationFrame(render);
+    }
+
+    function startLoop() {
+      if (!animId) {
+        animId = requestAnimationFrame(render);
+      }
+    }
+
+    function stopLoop() {
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    }
+
+    function init() {
+      wrap = $('sleepScopeWrap');
+      canvas = $('sleepScopeCanvas');
+      if (!wrap || !canvas || isInitialized) return;
+      isInitialized = true;
+      ctx = canvas.getContext('2d');
+
+      ledEl = $('sleepScopeLed');
+      titleEl = $('sleepScopeTrackTitle');
+      breathTextEl = $('sleepScopeBreathText');
+      statusEl = $('sleepScopeStatus');
+
+      // 点击示波器切换播放
+      wrap.addEventListener('click', function(e) {
+        e.preventDefault();
+        sleepToggleMusic();
+      });
+
+      // 键盘无障碍支持
+      wrap.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          sleepToggleMusic();
+        }
+      });
+
+      // 页面可见性与Tab切换监听
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) stopLoop();
+        else if (isVisible()) startLoop();
+      });
+
+      window.addEventListener('resize', function() {
+        if (isVisible() && !animId) startLoop();
+      });
+
+      startLoop();
+    }
+
+    return {
+      init: init,
+      start: startLoop,
+      stop: stopLoop
+    };
+  })();
 
   function switchWellbeingTab(tab) {
     appState.wellbeingTab = tab || 'sleep';
@@ -20707,6 +21431,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     if (assessmentSec) assessmentSec.classList.add('hidden');
     if (resourcesSec) resourcesSec.classList.add('hidden');
 
+    if (typeof sleepOscilloscope !== 'undefined') sleepOscilloscope.stop();
     if (tab === 'assessment') {
       if (btnAssessment) btnAssessment.classList.add('active');
       if (assessmentSec) assessmentSec.classList.remove('hidden');
@@ -20724,6 +21449,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       if (btnSleep) btnSleep.classList.add('active');
       if (sleepSec) sleepSec.classList.remove('hidden');
       initSleepGuide();
+      if (typeof sleepOscilloscope !== 'undefined') sleepOscilloscope.start();
     }
   }
 
@@ -20860,8 +21586,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     grid.innerHTML = list.map(function(sc, idx) {
 
       return '<div class="theme-pack-card" data-scid="' + sc.scenario_id + '">'
-
-        + '  <span class="badge ok" style="font-size:11px;margin-bottom:6px;">' + esc(sc.category) + '</span>'
 
         + '  <button type="button" class="practice-card-info" data-scid="' + sc.scenario_id + '" title="查看情境说明" style="position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;line-height:1;border-radius:50%;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-muted);font-size:12px;font-family:var(--font-serif);cursor:pointer;">i</button>'
 
@@ -21446,6 +22170,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
   window.writeJournalWithFavCard = function(name, core) {
     switchMainTab('growth');
+    if (typeof window.switchEntryTab === 'function') window.switchEntryTab('journal');
     var journalInput = $('journalInputText');
     if (journalInput) {
       journalInput.value = '【借境观心 · ' + name + '】\n' +
@@ -22294,7 +23019,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   // ==========================================================================
 
   // 悟堂 · 禅意背景音乐控制引擎 (Zen Ambient Background Music Engine)
-  // 包含《行云流水》《禅境冥想》《秋雨箏韻》《秋雨琴簫合奏》四首东方禅意音轨，支持自动循环轮播
+  // 包含《行云流水》《禅境冥想》《秋雨箏韻》《秋雨琴簫合奏》《枕畔温煦》《空灵入梦》《夜幕归宁》《海潮摇篮》《眠琴微语》九首东方禅意与助眠音轨，支持自动循环轮播
   // ==========================================================================
   var bgmEngine = (function() {
     var TRACKS = [
@@ -22329,6 +23054,46 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         src: 'assets/audio/autumn_rain_qinxiao.m4a',
         fallbackSrc: 'assets/audio/秋雨琴簫合奏.m4a',
         desc: '琴箫和鸣 · 虚室生白'
+      },
+      {
+        id: 'cozy_bedtime_warmth',
+        name: '枕畔温煦',
+        subtitle: 'Cozy Bedtime Warmth',
+        src: 'assets/audio/cozy_bedtime_warmth.m4a',
+        fallbackSrc: 'assets/audio/Cozy Bedtime Warmth.m4a',
+        desc: '暖意入怀 · 倦意舒安'
+      },
+      {
+        id: 'ethereal_sleep_drift',
+        name: '空灵入梦',
+        subtitle: 'Ethereal Sleep Drift',
+        src: 'assets/audio/ethereal_sleep_drift.m4a',
+        fallbackSrc: 'assets/audio/Ethereal Sleep Drift.m4a',
+        desc: '空灵悠远 · 随风入梦'
+      },
+      {
+        id: 'nightfall_serenity',
+        name: '夜幕归宁',
+        subtitle: 'Nightfall Serenity',
+        src: 'assets/audio/nightfall_serenity.m4a',
+        fallbackSrc: 'assets/audio/Nightfall Serenity.m4a',
+        desc: '夜幕轻垂 · 晚籁自安'
+      },
+      {
+        id: 'ocean_breeze_lullaby',
+        name: '海潮摇篮',
+        subtitle: 'Ocean Breeze Lullaby',
+        src: 'assets/audio/ocean_breeze_lullaby.m4a',
+        fallbackSrc: 'assets/audio/Ocean Breeze Lullaby.m4a',
+        desc: '潮涌如息 · 枕浪安澜'
+      },
+      {
+        id: 'slumber_piano_whispers',
+        name: '眠琴微语',
+        subtitle: 'Slumber Piano Whispers',
+        src: 'assets/audio/slumber_piano_whispers.m4a',
+        fallbackSrc: 'assets/audio/Slumber Piano Whispers.m4a',
+        desc: '琴音轻抚 · 心绪归平'
       }
     ];
 
@@ -23445,6 +24210,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     if (typeof switchMainTab === 'function') {
       switchMainTab('growth');
     }
+    if (typeof window.switchEntryTab === 'function') window.switchEntryTab('journal');
 
     var journalInput = $('journalInputText');
     if (journalInput) {
@@ -24043,7 +24809,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     if (chatToken) chatHeaders.Authorization = 'Bearer ' + chatToken;
     fetch(API_BASE + '/api/chat/stream', {
       method: 'POST', headers: chatHeaders,
-      body: JSON.stringify({ messages: requestMessages, summary: sageChat.summary, use_memory: !!chatToken && !$('chatSkipMemory').checked, mode: sageChat.mode, track: chatTrack, master: sageChat.mode === 'group' ? null : (appState.selectedMaster || sageChat.master), target: sageChat.mode === 'group' ? sageChat.target : null, round_limit: 2 }),
+      body: JSON.stringify({ messages: requestMessages, summary: sageChat.summary, use_memory: !!chatToken && !$('chatSkipMemory').checked, mode: sageChat.mode, track: chatTrack, master: sageChat.mode === 'group' ? null : (appState.selectedMaster || sageChat.master), target: sageChat.mode === 'group' ? sageChat.target : null, round_limit: sageChat.mode === 'group' ? 3 : 1 }),
       signal: sageChat.controller ? sageChat.controller.signal : undefined
     }).then(function(response) { return chatConsumeSse(response, requestId); }).catch(function(error) {
       if (requestId !== sageChat.requestId || (error && error.name === 'AbortError')) return;
