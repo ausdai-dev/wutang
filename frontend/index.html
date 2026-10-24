@@ -636,15 +636,14 @@ body::after {
 }
 
 .bgm-track-list {
-
   display: flex;
-
   flex-direction: column;
-
   gap: 7px;
-
   margin-bottom: 12px;
-
+  max-height: 220px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 2px;
 }
 
 .bgm-track-item {
@@ -8479,7 +8478,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <div class="bgm-panel-header">
 
-            <span class="bgm-panel-title">悟堂 · 禅意背景音</span>
+            <span class="bgm-panel-title">悟堂 · 禅意背景音 <span style="font-size:11px;font-weight:normal;color:var(--color-primary);margin-left:4px;">循环轮播</span></span>
 
             <span id="bgmClosePanel" style="cursor:pointer;color:var(--color-muted);font-size:16px;line-height:1;" title="收起面板">×</span>
 
@@ -21389,47 +21388,42 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   // ==========================================================================
 
   // 悟堂 · 禅意背景音乐控制引擎 (Zen Ambient Background Music Engine)
-
-  // 包含《Flowing Mind 行云流水》与《Zen Meditation 禅境冥想》两首东方禅意音轨
-
+  // 包含《行云流水》《禅境冥想》《秋雨箏韻》《秋雨琴簫合奏》四首东方禅意音轨，支持自动循环轮播
   // ==========================================================================
-
   var bgmEngine = (function() {
-
     var TRACKS = [
-
       {
-
         id: 'flowing_mind',
-
         name: '行云流水',
-
         subtitle: 'Flowing Mind',
-
         src: 'assets/audio/flowing_mind.m4a',
-
         fallbackSrc: 'assets/audio/Flowing Mind.m4a',
-
         desc: '空灵澄澈 · 清心释压'
-
       },
-
       {
-
         id: 'zen_meditation',
-
         name: '禅境冥想',
-
         subtitle: 'Zen Meditation',
-
         src: 'assets/audio/zen_meditation.m4a',
-
         fallbackSrc: 'assets/audio/Zen Meditation.m4a',
-
         desc: '沉静幽远 · 凝神入定'
-
+      },
+      {
+        id: 'autumn_rain_zheng',
+        name: '秋雨箏韻',
+        subtitle: 'Autumn Rain Zheng',
+        src: 'assets/audio/autumn_rain_zheng.m4a',
+        fallbackSrc: 'assets/audio/秋雨箏韻.m4a',
+        desc: '筝韵如水 · 涤净心尘'
+      },
+      {
+        id: 'autumn_rain_qinxiao',
+        name: '秋雨琴簫合奏',
+        subtitle: 'Autumn Rain Qin & Xiao',
+        src: 'assets/audio/autumn_rain_qinxiao.m4a',
+        fallbackSrc: 'assets/audio/秋雨琴簫合奏.m4a',
+        desc: '琴箫和鸣 · 虚室生白'
       }
-
     ];
 
 
@@ -21525,21 +21519,14 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
       audio.addEventListener('error', function() {
-
         var track = TRACKS[currentIndex];
-
-        if (track && track.fallbackSrc && audio.src !== track.fallbackSrc) {
-
-          audio.src = track.fallbackSrc;
-
+        if (track && track.fallbackSrc && !audio._fallbackTried) {
+          audio._fallbackTried = true;
+          audio.src = encodeURI(track.fallbackSrc);
           if (isPlaying) {
-
             audio.play().catch(function() {});
-
           }
-
         }
-
       });
 
 
@@ -21573,14 +21560,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
     function loadTrack(index, autoPlay) {
-
       if (index < 0 || index >= TRACKS.length) index = 0;
-
       currentIndex = index;
-
       var track = TRACKS[currentIndex];
-
-      audio.src = track.src;
+      if (audio) {
+        audio._fallbackTried = false;
+        audio.src = track.src;
+      }
 
       savePref();
 
