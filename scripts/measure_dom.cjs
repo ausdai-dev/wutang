@@ -154,6 +154,26 @@ async function main() {
         };
       `);
 
+      // 2.5 Growth Calendar & Map
+      await logMetrics(`2.5 Growth Calendar & Map (${w}px)`, `
+        document.getElementById('tabGrowth').click();
+        document.getElementById('entryBtnCalendar').click();
+
+        const mount = document.getElementById('growthEntryMount');
+        const calArea = document.getElementById('entryCalendarArea');
+        const mR = mount.getBoundingClientRect();
+        const mapCards = Array.from(calArea.querySelectorAll('.growth-map-card, [style*="minmax(260px, 1fr)"] > div, #triggerMapList'));
+
+        return {
+          mountW: mount.offsetWidth,
+          mountRight: mR.right,
+          mapCards: mapCards.map(s => {
+            const r = s.getBoundingClientRect();
+            return { w: s.offsetWidth, right: r.right, overflowRight: r.right - mR.right };
+          })
+        };
+      `);
+
       // 3. Wellbeing Resources
       await logMetrics(`3. Wellbeing Resources (${w}px)`, `
         document.getElementById('tabWellbeing').click();

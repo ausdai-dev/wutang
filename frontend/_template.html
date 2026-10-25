@@ -7703,6 +7703,29 @@ body::after {
   box-sizing: border-box;
 }
 
+/* 情绪触发地图与个人成长目标网格 */
+.growth-map-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.growth-map-card {
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 16px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
 .slider-control-card {
   background: var(--color-surface-subtle);
   border: 1px solid var(--color-border);
@@ -9227,6 +9250,15 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   .journal-sliders-grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  /* 移动端情绪触发地图与个人成长目标单列自适应 */
+  .growth-map-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .growth-map-card {
+    padding: 14px 12px;
   }
 
   /* 移动端心理健康资源导航卡片单列自适应 */
@@ -11022,20 +11054,20 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
                 悟堂沟通导师观察与反馈
               </h4>
 
-              <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:10px;margin-bottom:12px;">
-                <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(220px, 100%), 1fr));gap:10px;margin-bottom:12px;width:100%;max-width:100%;box-sizing:border-box;">
+                <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;box-sizing:border-box;min-width:0;max-width:100%;">
                   <strong style="font-size:12.5px;color:#8F2928;">边界清晰度：</strong>
-                  <div id="pfBoundaryText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;"></div>
+                  <div id="pfBoundaryText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;word-break:break-word;"></div>
                 </div>
-                <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;">
+                <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;box-sizing:border-box;min-width:0;max-width:100%;">
                   <strong style="font-size:12.5px;color:#9F7430;">语气与体面：</strong>
-                  <div id="pfToneText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;"></div>
+                  <div id="pfToneText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;word-break:break-word;"></div>
                 </div>
               </div>
 
-              <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;margin-bottom:12px;">
+              <div style="background:#FFF;padding:10px 12px;border-radius:8px;border:1px solid #E8DFCE;margin-bottom:12px;box-sizing:border-box;min-width:0;max-width:100%;">
                 <strong style="font-size:12.5px;color:#3A6D4F;">微调建议：</strong>
-                <div id="pfAdviceText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;"></div>
+                <div id="pfAdviceText" style="font-size:13px;color:var(--color-ink-light);margin-top:2px;word-break:break-word;"></div>
               </div>
 
               <h5 style="margin:12px 0 6px;font-size:13.5px;color:var(--color-ink);">推荐的替代表达范式（点击复制）：</h5>
@@ -11431,7 +11463,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-          <div style="margin-top:18px;background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
+          <div style="margin-top:18px;background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;box-sizing:border-box;min-width:0;max-width:100%;word-break:break-word;">
 
             <h3 style="font-family:var(--font-serif);font-size:16px;margin:0 0 6px;display:flex;align-items:center;gap:6px;">
 
@@ -11463,13 +11495,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:14px;">
+          <div class="growth-map-grid">
 
-            <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
+            <div class="growth-map-card">
 
               <h4 style="margin:0 0 8px;font-size:15px;color:var(--color-primary);font-family:var(--font-serif);">情绪触发场景归纳</h4>
 
-              <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--color-ink-light);line-height:1.7;" id="triggerMapList">
+              <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--color-ink-light);line-height:1.7;word-break:break-word;" id="triggerMapList">
 
                 <li>临时加塞的任务 → 容易触发急躁与被越界感</li>
 
@@ -11479,11 +11511,11 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
             </div>
 
-            <div style="background:var(--color-surface-subtle);border:1px solid var(--color-border);border-radius:10px;padding:16px;">
+            <div class="growth-map-card">
 
               <h4 style="margin:0 0 8px;font-size:15px;color:var(--color-gold);font-family:var(--font-serif);">当前成长主题：关系边界</h4>
 
-              <p style="margin:0;font-size:13px;color:var(--color-ink-light);">
+              <p style="margin:0;font-size:13px;color:var(--color-ink-light);word-break:break-word;">
 
                 目标：在面对非必须的帮忙请求时，练习先停顿 3 秒再答复。
 

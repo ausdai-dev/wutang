@@ -164,6 +164,16 @@ async function main() {
       await checkOverflow(`w${w}_GrowthJournal_InnerCard`, '#checkinAndJournalCard', '.slider-control-card, #journalInputText, input, textarea');
       await takeScreenshot(`view_${w}_growth_journal`);
 
+      // 2.5 Growth - Calendar & Growth Map
+      await evaluate(`
+        document.getElementById('tabGrowth').click();
+        const calTabBtn = document.getElementById('entryBtnCalendar');
+        if (calTabBtn) calTabBtn.click();
+      `);
+      await wait(400);
+      await checkOverflow(`w${w}_GrowthCalendar_Map`, '#growthEntryMount', '.growth-map-grid, .growth-map-card, #triggerMapList, .mini-calendar-grid, .mood-trend-chart-card');
+      await takeScreenshot(`view_${w}_growth_calendar`);
+
       // 3. Wellbeing - Resources
       await evaluate(`
         document.getElementById('tabWellbeing').click();
