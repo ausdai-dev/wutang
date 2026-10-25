@@ -9215,7 +9215,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     gap: 6px;
   }
   .brand-group {
-    padding-right: 92px;
+    padding-right: calc(108px + env(safe-area-inset-right, 0px));
   }
   .brand-text h1 {
     font-size: 16px;
@@ -9226,7 +9226,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: calc(100vw - 110px);
+    max-width: calc(100vw - 128px);
     margin-top: 3px;
   }
   .header-right {
@@ -9281,23 +9281,23 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     box-shadow: 0 2px 8px rgba(34, 31, 27, 0.1);
     font-weight: 700;
   }
-  /* 顶栏三大纽扣在手机端优化为 26px 精致微钮，紧贴顶栏右上角，彻底杜绝遮挡副标题文字 */
+  /* 顶栏三大纽扣在手机端优化为 26px 精致微钮，预留安全边距，杜绝贴边与截断 */
   .bgm-control-wrap {
     position: absolute;
-    top: 4px;
-    right: 0;
+    top: 11px;
+    right: calc(14px + env(safe-area-inset-right, 0px));
     z-index: 10;
   }
   .font-control-wrap {
     position: absolute;
-    top: 4px;
-    right: 30px;
+    top: 11px;
+    right: calc(46px + env(safe-area-inset-right, 0px));
     z-index: 10;
   }
   .ai-status-btn {
     position: absolute;
-    top: 4px;
-    right: 60px;
+    top: 11px;
+    right: calc(78px + env(safe-area-inset-right, 0px));
     z-index: 10;
   }
   .ai-status-btn,
@@ -9351,7 +9351,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   }
   .font-panel {
     width: min(300px, calc(100vw - 32px));
-    right: -30px;
+    right: -32px;
   }
 
   /* 下拉框、输入框不超出容器 */
@@ -9631,8 +9631,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
   body.mobile-chat-fit .global-header {
     flex: 0 0 auto !important;
+    margin-left: -10px !important;
+    margin-right: -10px !important;
     margin-bottom: 4px !important;
-    padding-bottom: 4px !important;
+    padding-top: 8px !important;
+    padding-bottom: 6px !important;
+    padding-left: calc(10px + env(safe-area-inset-left, 0px)) !important;
+    padding-right: calc(10px + env(safe-area-inset-right, 0px)) !important;
   }
 
   body.mobile-chat-fit .brand-text p {
@@ -24273,60 +24278,43 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
     var currentIndex = 0;
     var isPlaying = false;
-    var volume = 0.35; // 默认 35% 舒适背景音量
+    var volume = 0.15; // 默认 15% 柔和背景低音量
     var audio = null;
     var isPanelOpen = false;
     var playMode = 'single'; // single (单曲) | sequence (顺序轮播) | random (随机轮播)
-
-
+    var userManuallyPaused = false;
+    var autoplayUnlocked = false;
 
     function init() {
-
       audio = $('bgmAudio');
-
       if (!audio) {
-
         audio = new Audio();
-
         audio.id = 'bgmAudio';
-
-        audio.preload = 'none';
-
+        audio.preload = 'auto';
         document.body.appendChild(audio);
-
+      } else {
+        audio.preload = 'auto';
       }
 
-
-
       // 读取本地持久化偏好
-
       try {
-
         var saved = localStorage.getItem('wutang_bgm_pref');
-
         if (saved) {
-
           var pref = JSON.parse(saved);
-
-          if (typeof pref.volume === 'number') volume = Math.max(0, Math.min(1, pref.volume));
-
-          if (typeof pref.currentIndex === 'number' && pref.currentIndex >= 0 && pref.currentIndex < TRACKS.length) {
-
-            currentIndex = pref.currentIndex;
-
+          if (typeof pref.volume === 'number') {
+            if (pref.volume === 0.35) {
+              pref.volume = 0.15;
+            }
+            volume = Math.max(0, Math.min(1, pref.volume));
           }
-
+          if (typeof pref.currentIndex === 'number' && pref.currentIndex >= 0 && pref.currentIndex < TRACKS.length) {
+            currentIndex = pref.currentIndex;
+          }
         }
-
       } catch (e) {}
 
-
-
       audio.volume = volume;
-
-      loadTrack(currentIndex, false);
-
-
+      loadTrack(currentIndex, true); // 默认开启背景音乐
 
       // 事件监听
       audio.addEventListener('ended', function() {
@@ -24339,27 +24327,15 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         }
       });
 
-
-
       audio.addEventListener('play', function() {
-
         isPlaying = true;
-
         updateUI();
-
       });
-
-
 
       audio.addEventListener('pause', function() {
-
         isPlaying = false;
-
         updateUI();
-
       });
-
-
 
       audio.addEventListener('error', function() {
         var track = TRACKS[currentIndex];
@@ -24372,14 +24348,10 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
         }
       });
 
-
-
       renderTrackList();
-
       updateUI();
-
       setupBgmEvents();
-
+      setupAutoplayUnlock();
     }
 
 
@@ -24426,63 +24398,55 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
       if (autoPlay) {
-
-        play();
-
+        play(true);
       }
-
     }
 
-
-
-    function play() {
-
+    function play(silentFallback) {
+      userManuallyPaused = false;
       if (!audio.src) {
-
         audio.src = TRACKS[currentIndex].src;
-
       }
-
       var promise = audio.play();
-
       if (promise !== undefined) {
-
         promise.then(function() {
-
           isPlaying = true;
-
+          autoplayUnlocked = true;
           updateUI();
-
         }).catch(function(err) {
-
           console.warn('[BGM] 浏览器自动播放拦截或音频加载未完成:', err);
-
           isPlaying = false;
-
           updateUI();
-
-          if (typeof showToast === 'function') {
-
+          if (!silentFallback && typeof showToast === 'function') {
             showToast('请轻触屏幕以开启背景音乐');
-
           }
-
+          setupAutoplayUnlock();
         });
-
       }
-
     }
-
-
 
     function pause() {
-
+      userManuallyPaused = true;
       audio.pause();
-
       isPlaying = false;
-
       updateUI();
+    }
 
+    function setupAutoplayUnlock() {
+      if (autoplayUnlocked) return;
+      function unlock() {
+        if (autoplayUnlocked) return;
+        autoplayUnlocked = true;
+        ['click', 'touchstart', 'touchend', 'keydown'].forEach(function(evt) {
+          document.removeEventListener(evt, unlock, true);
+        });
+        if (!userManuallyPaused && !isPlaying && (typeof sleepGuideState === 'undefined' || !sleepGuideState.active)) {
+          play(true);
+        }
+      }
+      ['click', 'touchstart', 'touchend', 'keydown'].forEach(function(evt) {
+        document.addEventListener(evt, unlock, { once: true, capture: true, passive: true });
+      });
     }
 
 
@@ -24919,9 +24883,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           } else {
 
-            var last = parseFloat(volIcon.getAttribute('data-last-vol') || '0.35');
+            var last = parseFloat(volIcon.getAttribute('data-last-vol') || '0.15');
 
-            setVolume(last || 0.35);
+            setVolume(last || 0.15);
 
           }
 
