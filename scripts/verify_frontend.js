@@ -337,6 +337,33 @@ setTimeout(() => {
         wbBtnSleep.click();
         check('点击切回今夜安歇药丸', wbBtnSleep.classList.contains('active') && !sleepSec.classList.contains('hidden') && resSec.classList.contains('hidden'));
 
+        // ---------------- F. 先贤 @ 提及功能测试 ----------------
+        console.log('\n=== F. 先贤 @ 提及与特定人唤起 ===');
+        const chatInput = doc.getElementById('chatInput');
+        const btnChatAt = doc.getElementById('btnChatAt');
+        const chatMentionMenu = doc.getElementById('chatMentionMenu');
+        check('聊天输入框与 @ 触发按钮均存在', !!chatInput && !!btnChatAt && !!chatMentionMenu);
+        check('@ 候选菜单初始隐藏', chatMentionMenu.classList.contains('hidden'));
+
+        // 点击 @ 按钮测试
+        btnChatAt.click();
+        check('点击 @ 按钮后展开候选菜单', !chatMentionMenu.classList.contains('hidden'));
+        const candItems = chatMentionMenu.querySelectorAll('.chat-mention-item');
+        check('候选菜单中包含先贤候选项', candItems.length >= 10);
+
+        // 键入 @ 过滤测试
+        chatInput.value = '@su';
+        chatInput.selectionStart = chatInput.selectionEnd = 3;
+        chatInput.dispatchEvent(new window.Event('input', { bubbles: true }));
+        const filteredItems = chatMentionMenu.querySelectorAll('.chat-mention-item');
+        check('输入 @su 能够过滤出苏轼候选项', filteredItems.length > 0 && filteredItems[0].textContent.includes('苏轼'));
+
+        // 键盘 Enter 补全选择
+        const enterEvt = new window.KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true });
+        chatInput.dispatchEvent(enterEvt);
+        check('Enter 确认选择后自动补全为 @苏轼 ', chatInput.value.includes('@苏轼 '));
+        check('补全后候选菜单自动收起', chatMentionMenu.classList.contains('hidden'));
+
         console.log('\n=== 汇总 ===');
         const failed = results.filter((r) => !r.pass);
         console.log(`  ${results.length - failed.length}/${results.length} 通过`);

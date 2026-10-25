@@ -70,7 +70,7 @@
           "paused": false,
           "volume": 0.42,
           "currentTime": 12,
-          "readyState": 4,
+          "readyState": 1,
           "error": null
         },
         "untouched": {
@@ -90,7 +90,7 @@
         "src": "assets/audio/autumn_rain_zheng.m4a",
         "paused": false,
         "volume": 0.13,
-        "currentTime": 0.001295,
+        "currentTime": 0.018175,
         "readyState": 4,
         "error": null
       }
@@ -102,7 +102,7 @@
         "src": "assets/audio/flowing_mind.m4a",
         "paused": false,
         "volume": 0.42,
-        "currentTime": 12.239718,
+        "currentTime": 12.01671,
         "readyState": 4,
         "error": null
       }
@@ -114,7 +114,7 @@
         "src": "assets/audio/flowing_mind.m4a",
         "paused": false,
         "volume": 0.42,
-        "currentTime": 12.263327,
+        "currentTime": 12.022604,
         "readyState": 4,
         "error": null
       }
@@ -126,7 +126,7 @@
         "src": "assets/audio/autumn_rain_zheng.m4a",
         "paused": true,
         "volume": 0,
-        "currentTime": 0.020146,
+        "currentTime": 0.060125,
         "readyState": 4,
         "error": null
       }
@@ -138,7 +138,7 @@
         "src": "assets/audio/autumn_rain_zheng.m4a",
         "paused": true,
         "volume": 0,
-        "currentTime": 0.017829,
+        "currentTime": 0.020081,
         "readyState": 4,
         "error": null
       }
@@ -182,9 +182,9 @@
           104
         ],
         "flowTops": [
-          329,
-          329,
-          328
+          274,
+          274,
+          273
         ]
       }
     },
