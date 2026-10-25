@@ -665,19 +665,14 @@ body::after {
 }
 
 .brand-text h1 {
-
   margin: 0;
-
   font-size: 17.5px;
-
   font-weight: 700;
-
   letter-spacing: 0.16em;
-
   color: var(--color-primary);
-
   line-height: 1.25;
-
+  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .brand-text p {
@@ -9215,20 +9210,35 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     box-shadow: 0 2px 10px rgba(113, 131, 110, 0.06);
     gap: 6px;
   }
+  .seal-mark {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
   .brand-group {
-    padding-right: calc(108px + env(safe-area-inset-right, 0px));
+    gap: 8px;
+    min-width: 0;
+    padding-right: calc(92px + env(safe-area-inset-right, 0px));
+  }
+  .brand-text {
+    min-width: 0;
   }
   .brand-text h1 {
-    font-size: 16px;
-    letter-spacing: 0.1em;
+    font-size: 15.5px;
+    letter-spacing: 0.06em;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    line-height: 1.25;
   }
   .brand-text p {
-    font-size: 10.5px;
+    font-size: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: calc(100vw - 128px);
-    margin-top: 3px;
+    max-width: calc(100vw - 116px);
+    margin-top: 2px;
   }
   .header-right {
     width: auto;
@@ -9282,47 +9292,47 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
     box-shadow: 0 2px 8px rgba(34, 31, 27, 0.1);
     font-weight: 700;
   }
-  /* 顶栏三大纽扣在手机端优化为 26px 精致微钮，预留安全边距，杜绝贴边与截断 */
+  /* 顶栏三大纽扣在手机端优化为 24px 精致微钮，紧凑排列，预留充足空间彻底杜绝标题折行与重叠 */
   .bgm-control-wrap {
     position: absolute;
     top: 11px;
-    right: calc(14px + env(safe-area-inset-right, 0px));
+    right: calc(10px + env(safe-area-inset-right, 0px));
     z-index: 10;
   }
   .font-control-wrap {
     position: absolute;
     top: 11px;
-    right: calc(46px + env(safe-area-inset-right, 0px));
+    right: calc(38px + env(safe-area-inset-right, 0px));
     z-index: 10;
   }
   .ai-status-btn {
     position: absolute;
     top: 11px;
-    right: calc(78px + env(safe-area-inset-right, 0px));
+    right: calc(66px + env(safe-area-inset-right, 0px));
     z-index: 10;
   }
   .ai-status-btn,
   .font-btn,
   .bgm-btn {
-    width: 26px;
-    height: 26px;
-    min-width: 26px;
-    border-radius: 13px;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 12px;
     padding: 0;
     gap: 0;
     justify-content: center;
     box-sizing: border-box;
   }
-  /* 扩大触控热区，保证 26px 微型按钮依然具有顺畅的点按响应 */
+  /* 扩大触控热区，保证 24px 微型按钮依然具有顺畅好点的按键响应 */
   .ai-status-btn::after,
   .font-btn::after,
   .bgm-btn::after {
     content: '';
     position: absolute;
-    top: -6px;
-    bottom: -6px;
-    left: -6px;
-    right: -6px;
+    top: -8px;
+    bottom: -8px;
+    left: -5px;
+    right: -5px;
   }
   .ai-status-label,
   .ai-status-dot,
@@ -9332,27 +9342,68 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   }
   .ai-status-short {
     display: inline-block !important;
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: 700;
     line-height: 1;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.2px;
   }
   .font-btn-glyph {
-    font-size: 11.5px;
+    font-size: 11px;
+    line-height: 1;
     margin: 0;
   }
   .bgm-icon-note {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
     margin: 0;
   }
   .bgm-panel {
-    width: min(310px, calc(100vw - 32px));
+    width: min(310px, calc(100vw - 20px));
     right: 0;
   }
   .font-panel {
-    width: min(300px, calc(100vw - 32px));
-    right: -32px;
+    width: min(300px, calc(100vw - 20px));
+    right: -28px;
+  }
+
+  @media (max-width: 380px) {
+    .seal-mark {
+      width: 25px;
+      height: 25px;
+      flex: 0 0 25px;
+      font-size: 14px;
+    }
+    .brand-group {
+      gap: 6px;
+      padding-right: calc(84px + env(safe-area-inset-right, 0px));
+    }
+    .brand-text h1 {
+      font-size: 14.5px;
+      letter-spacing: 0.02em;
+    }
+    .brand-text p {
+      max-width: calc(100vw - 105px);
+    }
+    .bgm-control-wrap {
+      right: calc(8px + env(safe-area-inset-right, 0px));
+    }
+    .font-control-wrap {
+      right: calc(34px + env(safe-area-inset-right, 0px));
+    }
+    .ai-status-btn {
+      right: calc(60px + env(safe-area-inset-right, 0px));
+    }
+    .ai-status-btn,
+    .font-btn,
+    .bgm-btn {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      border-radius: 11px;
+    }
+    .font-panel {
+      right: -26px;
+    }
   }
 
   /* 下拉框、输入框不超出容器 */
@@ -9643,6 +9694,12 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
   body.mobile-chat-fit .brand-text p {
     display: none !important;
+  }
+
+  body.mobile-chat-fit .bgm-control-wrap,
+  body.mobile-chat-fit .font-control-wrap,
+  body.mobile-chat-fit .ai-status-btn {
+    top: 8px !important;
   }
 
   body.mobile-chat-fit #clientArea {
@@ -12671,6 +12728,14 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
       <section id="studioCards" class="card hidden">
 
+        <!-- 四大平级卡牌库导航选项卡 -->
+        <div class="pill-inspirations" id="managerCardLifeTabs" style="margin:0 0 18px;display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" class="card-lib-pill active" id="btnTabBase32" onclick="switchStudioCardLibrary('base32')">基础解忧牌 (32)</button>
+          <button type="button" class="card-lib-pill" id="btnTabPantheon" onclick="switchStudioCardLibrary('pantheon')">百八常道库 (108)</button>
+          <button type="button" class="card-lib-pill" id="btnTabZen96" onclick="switchStudioCardLibrary('zen96')">觉察牌画廊 (96)</button>
+          <button type="button" class="card-lib-pill" id="btnTabThemePacks" onclick="switchStudioCardLibrary('theme')">主题卡牌包 (6)</button>
+        </div>
+
         <!-- 顶部标题与说明 -->
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;flex-wrap:wrap;gap:12px;">
 
@@ -12703,16 +12768,6 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           </div>
 
-        </div>
-
-
-
-        <!-- 四大平级卡牌库导航选项卡 -->
-        <div class="pill-inspirations" id="managerCardLifeTabs" style="margin:0 0 18px;display:flex;gap:8px;flex-wrap:wrap;">
-          <button type="button" class="card-lib-pill active" id="btnTabBase32" onclick="switchStudioCardLibrary('base32')">基础解忧牌 (32)</button>
-          <button type="button" class="card-lib-pill" id="btnTabPantheon" onclick="switchStudioCardLibrary('pantheon')">百八常道库 (108)</button>
-          <button type="button" class="card-lib-pill" id="btnTabZen96" onclick="switchStudioCardLibrary('zen96')">觉察牌画廊 (96)</button>
-          <button type="button" class="card-lib-pill" id="btnTabThemePacks" onclick="switchStudioCardLibrary('theme')">主题卡牌包 (6)</button>
         </div>
 
 
