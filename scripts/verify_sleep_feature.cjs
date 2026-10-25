@@ -82,7 +82,7 @@ async function main() {
     check('键盘 Enter 启动流程', await evaluate(`sleepSession.classList.contains('is-open')`));
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
     check('键盘 Escape 停止流程', await evaluate(`!sleepSession.classList.contains('is-open')`));
-    await click('#sleepMusicPanel');
+    await evaluate(`bgmEngine.togglePanel()`);
     check('音乐面板和今夜安歇快捷入口可用', await evaluate(`bgmPanel.classList.contains('show') && !!document.getElementById('bgmSleepEntry')`));
     await click('#bgmSleepEntry');
     check('音乐面板入口进入心境并关闭面板', await evaluate(`!wellbeingArea.classList.contains('hidden')&&!bgmPanel.classList.contains('show')`));

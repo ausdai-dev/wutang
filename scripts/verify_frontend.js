@@ -342,16 +342,18 @@ setTimeout(() => {
         const chatInput = doc.getElementById('chatInput');
         const btnChatAt = doc.getElementById('btnChatAt');
         const chatMentionMenu = doc.getElementById('chatMentionMenu');
-        check('聊天输入框与 @ 触发按钮均存在', !!chatInput && !!btnChatAt && !!chatMentionMenu);
+        check('聊天输入框与 @ 候选菜单存在且 @ 按钮已依指示删除', !!chatInput && !btnChatAt && !!chatMentionMenu);
         check('@ 候选菜单初始隐藏', chatMentionMenu.classList.contains('hidden'));
 
-        // 点击 @ 按钮测试
-        btnChatAt.click();
-        check('点击 @ 按钮后展开候选菜单', !chatMentionMenu.classList.contains('hidden'));
+        // 键入 @ 唤起测试
+        chatInput.value = '@';
+        chatInput.selectionStart = chatInput.selectionEnd = 1;
+        chatInput.dispatchEvent(new window.Event('input', { bubbles: true }));
+        check('键入 @ 后展开候选菜单', !chatMentionMenu.classList.contains('hidden'));
         const candItems = chatMentionMenu.querySelectorAll('.chat-mention-item');
         check('候选菜单中包含先贤候选项', candItems.length >= 10);
 
-        // 键入 @ 过滤测试
+        // 键入 @su 过滤测试
         chatInput.value = '@su';
         chatInput.selectionStart = chatInput.selectionEnd = 3;
         chatInput.dispatchEvent(new window.Event('input', { bubbles: true }));
@@ -363,6 +365,21 @@ setTimeout(() => {
         chatInput.dispatchEvent(enterEvt);
         check('Enter 确认选择后自动补全为 @苏轼 ', chatInput.value.includes('@苏轼 '));
         check('补全后候选菜单自动收起', chatMentionMenu.classList.contains('hidden'));
+
+        // ---------------- G. 移动端自适应与免责声明栏删除验证 ----------------
+        console.log('\n=== G. 移动端自适应与免责声明栏删除验证 ===');
+        const boundaryFooter = doc.querySelector('.boundary-footer');
+        check('首页底部免责声明栏已按指示删除', !boundaryFooter);
+        const headerBrand = doc.getElementById('headerBrand');
+        if (headerBrand) headerBrand.click();
+        check('首页先贤对话具有 mobile-chat-fit 类名控制', doc.body.classList.contains('mobile-chat-fit'));
+        const tabGrowthBtn = doc.getElementById('tabGrowth');
+        if (tabGrowthBtn) {
+          tabGrowthBtn.click();
+          check('切换到成长页面后解除 mobile-chat-fit', !doc.body.classList.contains('mobile-chat-fit'));
+        }
+        if (headerBrand) headerBrand.click();
+        check('切回解忧首页对话后恢复 mobile-chat-fit', doc.body.classList.contains('mobile-chat-fit'));
 
         console.log('\n=== 汇总 ===');
         const failed = results.filter((r) => !r.pass);

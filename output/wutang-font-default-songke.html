@@ -8394,6 +8394,40 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   margin: 0 auto 14px;
   cursor: pointer;
   position: relative;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* 正面大图容器与图片：禁止成为手势目标，杜绝移动端浏览器唤起图像工具/查看器 */
+.zen-modal-front-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(1px);
+  -webkit-transform: translateZ(1px);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid #C4A47C;
+  background: #EAE4D8;
+  pointer-events: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+#zen96ModalImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
 }
 
 /* 东方觉察牌 3D 翻转反面：宋代宣纸自省解忧笺 */
@@ -8414,6 +8448,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   contain: paint;
   clip-path: inset(0 round 12px);
   -webkit-clip-path: inset(0 round 12px);
+  pointer-events: auto;
+  -webkit-touch-callout: none !important;
 }
 
 /* 反面独立柔和滚动画卷：彻底杜绝长文本溢出或遮盖底部按钮 */
@@ -23893,13 +23929,13 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
       <div class="zen-card-stage-3d" onclick="toggleZen96ModalFlip()" title="点击翻转卡牌查看正反面 / 双面赏析">
         <div id="zen96ModalFlipper" style="width:100%;height:100%;position:relative;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);border-radius:12px;box-shadow:0 16px 36px rgba(44,40,37,0.22);">
           
-          <!-- 正面：848x1264 超清工笔水墨大图原画 -->
-          <div style="position:absolute;width:100%;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(1px);-webkit-transform:translateZ(1px);border-radius:12px;overflow:hidden;border:1.5px solid #C4A47C;background:#EAE4D8;">
-            <img id="zen96ModalImg" src="" alt="东方觉察原画" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <!-- 正面：848x1264 超清工笔水墨大图原画 (禁用指针与手势，防止移动端误唤起图像工具) -->
+          <div class="zen-modal-front-face" style="position:absolute;width:100%;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(1px);-webkit-transform:translateZ(1px);border-radius:12px;overflow:hidden;border:1.5px solid #C4A47C;background:#EAE4D8;pointer-events:none;">
+            <img id="zen96ModalImg" src="" alt="东方觉察原画" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;" data-no-preview="true" draggable="false" oncontextmenu="return false;">
           </div>
 
           <!-- 反面：宋代宣纸解忧自省笺 -->
-          <div class="zen-modal-back-face">
+          <div class="zen-modal-back-face" oncontextmenu="return false;">
             <div class="zen-modal-back-scroll">
               <div>
                 <div class="zen-back-num-row">
