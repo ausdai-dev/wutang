@@ -4065,42 +4065,51 @@ body::after {
 
 
 
-/* 内容审核分栏 */
+/* 内容审核分栏与草稿选择器 */
+.draft-case-select-wrapper {
+  display: flex;
+  gap: 8px;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+#draftCaseSelect {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .review-grid {
-
   display: grid;
-
   grid-template-columns: 1.25fr 1fr;
-
   gap: 20px;
-
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 @media (max-width: 840px) {
-
   .review-grid { grid-template-columns: 1fr; }
-
 }
 
 .article-preview-pane {
-
   background: #FFFFFF;
-
   border: 1px solid var(--color-border);
-
   border-radius: 12px;
-
   padding: 24px;
-
   font-size: 14.5px;
-
   line-height: 1.8;
-
   max-height: 640px;
-
   overflow-y: auto;
-
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .article-preview-pane h3 {
@@ -4132,15 +4141,15 @@ body::after {
 
 
 .checklist-pane {
-
   background: #FAF8F4;
-
   border: 1px solid #EAE3D7;
-
   border-radius: 12px;
-
   padding: 20px;
-
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .checklist-pane h4 {
@@ -4420,6 +4429,10 @@ body::after {
   display: flex;
   flex-direction: column;
   gap: 26px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .growth-entry-panel > .card {
@@ -4428,6 +4441,10 @@ body::after {
   box-shadow: none;
   padding: 0;
   margin-bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .entry-switch-bar {
@@ -4553,6 +4570,8 @@ body::after {
 
   max-width: 800px;
 
+  min-width: 0;
+
   box-sizing: border-box;
 
 }
@@ -4560,6 +4579,12 @@ body::after {
 .awareness-card-column {
 
   flex: 0 0 320px;
+
+  width: 100%;
+
+  max-width: 320px;
+
+  min-width: 0;
 
   display: flex;
 
@@ -4569,13 +4594,17 @@ body::after {
 
   justify-content: flex-start;
 
+  box-sizing: border-box;
+
 }
 
 .awareness-card-container {
 
-  width: 320px;
+  width: min(300px, 100%);
 
-  height: 480px;
+  max-width: 100%;
+
+  height: auto;
 
   aspect-ratio: 2 / 3;
 
@@ -4595,6 +4624,8 @@ body::after {
 
   box-shadow: 0 12px 32px rgba(34, 31, 27, 0.15);
 
+  box-sizing: border-box;
+
 }
 
 .awareness-text-column {
@@ -4607,7 +4638,13 @@ body::after {
 
   justify-content: flex-start;
 
-  min-width: 300px;
+  min-width: 0;
+
+  max-width: 100%;
+
+  width: 100%;
+
+  box-sizing: border-box;
 
 }
 
@@ -5046,13 +5083,35 @@ body::after {
 
     flex: 0 0 auto;
 
+    width: 100%;
+
+    max-width: 100%;
+
+    box-sizing: border-box;
+
   }
 
   .awareness-text-column {
 
     width: 100%;
 
-    max-width: 360px;
+    max-width: 100%;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+
+  }
+
+  .awareness-card-container {
+
+    width: min(290px, 100%);
+
+    max-width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 2 / 3;
 
   }
 
@@ -5062,9 +5121,13 @@ body::after {
 
   .awareness-card-container {
 
-    width: 280px;
+    width: min(260px, 100%);
 
-    height: 420px;
+    max-width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 2 / 3;
 
   }
 
@@ -7629,6 +7692,17 @@ body::after {
 }
 
 /* 现代东方数字滑块定制样式 */
+.journal-sliders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 16px;
+  margin-top: 16px;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .slider-control-card {
   background: var(--color-surface-subtle);
   border: 1px solid var(--color-border);
@@ -7636,6 +7710,10 @@ body::after {
   padding: 12px 14px;
   box-sizing: border-box;
   transition: border-color var(--trans), box-shadow var(--trans);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 .slider-control-card:hover {
   border-color: var(--color-border-dark);
@@ -7644,6 +7722,9 @@ body::after {
 .slider-wrapper {
   position: relative;
   padding: 4px 2px 2px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .wt-slider {
   -webkit-appearance: none;
@@ -8120,35 +8201,29 @@ body::after {
 
 
 /* 资源卡片网格 */
-
 .resource-grid {
-
   display: grid;
-
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-
+  grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr));
   gap: 14px;
-
   margin-top: 14px;
-
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .resource-card {
-
   background: var(--color-surface);
-
   border: 1px solid var(--color-border);
-
   border-radius: 10px;
-
   padding: 16px;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: space-between;
-
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .resource-card:hover {
@@ -9147,6 +9222,35 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
   .app-container { padding: 0 14px calc(76px + env(safe-area-inset-bottom, 0px)); }
   .toast-notice { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
   .card { padding: 22px 16px; }
+
+  /* 移动端情绪日记滑块容器单列自适应 */
+  .journal-sliders-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* 移动端心理健康资源导航卡片单列自适应 */
+  .resource-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .resource-card {
+    padding: 14px 12px;
+  }
+
+  /* 移动端公众号草稿审核与排版预览自适应 */
+  .draft-case-select-wrapper {
+    width: 100%;
+  }
+  #draftCaseSelect {
+    width: 100% !important;
+  }
+  .article-preview-pane {
+    padding: 16px 14px;
+  }
+  .checklist-pane {
+    padding: 16px 14px;
+  }
 
   .practice-scenario-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -10992,7 +11096,7 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
 
-          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:16px;margin-top:16px;margin-bottom:12px;">
+          <div class="journal-sliders-grid">
 
             <!-- 精力状态数字滑块 (1-10分) -->
             <div class="slider-control-card">
@@ -11045,8 +11149,8 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
 
           <!-- 合并后的心语与心事统一多行文本输入域 -->
-          <div style="margin-top:12px;">
-            <textarea id="journalInputText" class="form-textarea" placeholder="写下属于今天的一句心语，或倾诉一件心事……（例如：今天按时关掉了电脑；或今天和同事对方案，他当场否定了我，我特别难堪）" style="width:100%;box-sizing:border-box;min-height:96px;font-size:14px;padding:12px;line-height:1.6;border-radius:8px;"></textarea>
+          <div style="margin-top:12px;width:100%;max-width:100%;min-width:0;box-sizing:border-box;">
+            <textarea id="journalInputText" class="form-textarea" placeholder="写下属于今天的一句心语，或倾诉一件心事……（例如：今天按时关掉了电脑；或今天和同事对方案，他当场否定了我，我特别难堪）" style="width:100%;max-width:100%;min-width:0;box-sizing:border-box;min-height:96px;font-size:14px;padding:12px;line-height:1.6;border-radius:8px;"></textarea>
             <!-- 兼容旧测试脚本与代码引用的隐藏 input -->
             <input type="hidden" id="checkinNoteInput">
           </div>
@@ -12523,9 +12627,9 @@ input:checked + .consent-slider:before { transform: translateX(20px); }
 
           <!-- 案例切换 -->
 
-          <div style="display:flex;gap:8px;">
+          <div class="draft-case-select-wrapper">
 
-            <select class="form-select" id="draftCaseSelect" style="width:auto;padding:6px 12px;font-size:13.5px;">
+            <select class="form-select" id="draftCaseSelect" style="padding:6px 12px;font-size:13.5px;">
 
               <option value="WUTANG-SYN-004">草稿 004：最难开口的那句「不」（职场推活）</option>
 
